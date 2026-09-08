@@ -18,8 +18,13 @@ EXPECTED = {
     "oci_network_inventory",
     "oci_buckets",
     "oci_resource_search",
-    "oci_limit_services",
-    "oci_limit_values",
+    "oci_limits",
+    "oci_whoami",
+    "oci_work_requests",
+    "oci_alarm_status",
+    "oci_audit_events",
+    "oci_metrics",
+    "oci_price_lookup",
     "oci_cost_summary",
 }
 
@@ -42,6 +47,11 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     for t in discovered
                 ), "Missing read-only annotations"
                 report["tool_count"] = len(discovered)
+                schema = json.dumps(
+                    [t.model_dump(exclude_none=True) for t in discovered], separators=(",", ":")
+                )
+                report["schema_characters"] = len(schema)
+                report["schema_tokens_estimate"] = (len(schema) + 3) // 4
                 # Invalid input must be rejected without any OCI credential access.
                 invalid = await session.call_tool(
                     "oci_instances", {"compartment_id": "invalid", "region": region}
@@ -59,7 +69,21 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     base = {"compartment_id": compartment, "region": region, "page_size": 1}
                     tenant_base = {"tenancy_id": tenancy, "region": region, "page_size": 1}
                     end = datetime.now(timezone.utc).date()
+                    now = datetime.now(timezone.utc).replace(second=0, microsecond=0)
+                    window = {
+                        "start_time": (now - timedelta(minutes=10)).isoformat(),
+                        "end_time": now.isoformat(),
+                    }
                     calls = [
+                        ("oci_whoami", {}),
+                        ("oci_work_requests", base),
+                        ("oci_alarm_status", base),
+                        ("oci_audit_events", {**base, **window}),
+                        (
+                            "oci_metrics",
+                            {"compartment_id": compartment, "region": region, **window},
+                        ),
+                        ("oci_price_lookup", {"part_number": "B88514", "currency": "USD"}),
                         ("oci_regions", {**tenant_base, "page_size": 100}),
                         ("oci_compartments", base),
                         ("oci_instances", base),
@@ -68,8 +92,8 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                         ("oci_network_inventory", {**base, "resource": "network_security_groups"}),
                         ("oci_buckets", base),
                         ("oci_resource_search", base),
-                        ("oci_limit_services", tenant_base),
-                        ("oci_limit_values", {**tenant_base, "service_name": "compute"}),
+                        ("oci_limits", tenant_base),
+                        ("oci_limits", {**tenant_base, "service_name": "compute"}),
                         (
                             "oci_cost_summary",
                             {
@@ -91,6 +115,8 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                         }
                         if check["ok"]:
                             check.update(count=payload["count"], truncated=payload["truncated"])
+                            if name == "oci_price_lookup" and not payload["count"]:
+                                check.update(ok=False, error_kind="public_sku_not_found")
                         else:
                             # Error dictionaries are server-sanitized; no raw MCP text or IDs.
                             check["error_kind"] = payload.get("error", {}).get(

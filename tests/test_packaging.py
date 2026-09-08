@@ -46,7 +46,7 @@ def test_host_config_starts_from_resolved_plugin_root(host, tmp_path):
                 async with ClientSession(read, write) as session:
                     await session.initialize()
                     tools = (await session.list_tools()).tools
-                    assert len(tools) == 9
+                    assert len(tools) == 14
                     assert all(t.annotations.readOnlyHint for t in tools)
                     assert all(not t.annotations.destructiveHint for t in tools)
 
