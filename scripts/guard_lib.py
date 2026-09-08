@@ -117,9 +117,8 @@ def inspect_command(command):
     if not isinstance(command, str) or len(command) > 131072:
         return 'ask'
     # These forms need shell evaluation to resolve; this advisory parser never evaluates them.
-    if re.search(r'`|\$\(|<\(|>\(|\beval\b|\b(base64|xxd)\b|\b(?:ba|da|z|k)?sh\s+-|\b(?:python[\d.]*|perl|ruby|node)\s+.*-[ce]\b', command):
-        return 'ask'
-    decisions = []
+    opaque = re.search(r'`|\$\(|<\(|>\(|\beval\b|\b(base64|xxd)\b|\b(?:ba|da|z|k)?sh\s+-|\b(?:python[\d.]*|perl|ruby|node)\s+.*-[ce]\b', command)
+    decisions = ['ask'] if opaque else []
     try:
         for argv in shell_segments(command):
             joined = ' '.join(argv)
@@ -130,7 +129,7 @@ def inspect_command(command):
             oci_indexes = [i for i, t in enumerate(argv) if Path(t).name == 'oci']
             for i in oci_indexes:
                 tail = argv[i + 1:]
-                decisions.append('ask' if any('$' in t for t in tail if not t.startswith('ocid')) else classify_oci(tail))
+                decisions.append(classify_oci(tail))
             for i, token in enumerate(argv):
                 if '/scripts/' in token and ('CLAUDE_PLUGIN_ROOT' in token or token.startswith(str(ROOT))):
                     decisions.append('allow' if readonly_argv(argv[i + 1:]) else 'deny')

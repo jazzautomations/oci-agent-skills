@@ -5,8 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from catalog import rows
-from catalog_rules import annotate
+from catalog import rows  # noqa: E402
+from catalog_rules import annotate  # noqa: E402
 
 
 def test_catalog_integrity():

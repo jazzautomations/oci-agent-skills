@@ -9,10 +9,10 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from catalog import rows
-from guard_lib import classify_leaf, inspect_command, readonly_argv
-from lib.oci_ro import ReadOnlyRefusal, run
-from redact import redact
+from catalog import rows  # noqa: E402
+from guard_lib import classify_leaf, inspect_command, readonly_argv, rules  # noqa: E402
+from lib.oci_ro import ReadOnlyRefusal, run  # noqa: E402
+from redact import redact  # noqa: E402
 
 
 def test_leaf_confusion_matrix():
@@ -20,6 +20,7 @@ def test_leaf_confusion_matrix():
     assert len(data) == 9145
     matrix = Counter((r['kind'], classify_leaf(r['path'])) for r in data)
     print('\nOCI leaf classifier ONLY:', json.dumps({'/'.join(k): v for k, v in sorted(matrix.items())}, sort_keys=True))
+    assert {'/'.join(k): v for k, v in sorted(matrix.items())} == rules()['measured_leaf_matrix']
     assert matrix[('mutating', 'allow')] == 0
     assert matrix[('read', 'allow')] == 3697
     assert matrix[('read', 'ask')] == 11
@@ -145,3 +146,12 @@ def test_hook_import_failure_is_review_without_payload_echo(tmp_path):
     assert result.returncode == 0
     assert json.loads(result.stdout)['hookSpecificOutput']['permissionDecision'] == 'ask'
     assert 'secret-input' not in result.stdout
+
+
+@pytest.mark.parametrize('option', ['--profile', '--auth', '--compartment-id'])
+def test_variable_option_values_do_not_change_leaf(option):
+    assert inspect_command('oci compute instance list ' + option + ' "$VALUE"') == 'allow'
+
+
+def test_opaque_segment_does_not_downgrade_a_known_denial():
+    assert inspect_command('oci os bucket delete; eval "$CMD"') == 'deny'

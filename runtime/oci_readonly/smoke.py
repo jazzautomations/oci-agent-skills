@@ -52,6 +52,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                 )
                 report["schema_characters"] = len(schema)
                 report["schema_tokens_estimate"] = (len(schema) + 3) // 4
+                assert report["schema_tokens_estimate"] <= 3500, "Schema estimate exceeds the foundation budget"
                 # Invalid input must be rejected without any OCI credential access.
                 invalid = await session.call_tool(
                     "oci_instances", {"compartment_id": "invalid", "region": region}

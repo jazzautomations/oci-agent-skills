@@ -175,3 +175,41 @@ server.main()
                         assert payload["ok"]
 
     asyncio.run(check())
+
+
+def test_subcompartment_subtree_uses_tenancy_api_and_filters_siblings(monkeypatch):
+    monkeypatch.setattr(server, "auth", lambda region: context())
+    monkeypatch.setenv("OCI_ALLOWED_COMPARTMENT_SUBTREES", ROOT)
+    grandchild = "ocid1.compartment.oc1..grandchild"
+    identity = Mock()
+    identity.list_compartments.return_value = response(
+        [
+            oci.identity.models.Compartment(id=ROOT, compartment_id=TENANCY, name="root"),
+            oci.identity.models.Compartment(id=CHILD, compartment_id=ROOT, name="child"),
+            oci.identity.models.Compartment(id=grandchild, compartment_id=CHILD, name="grandchild"),
+            oci.identity.models.Compartment(
+                id="ocid1.compartment.oc1..sibling",
+                compartment_id=TENANCY,
+                name="sibling",
+            ),
+        ]
+    )
+    monkeypatch.setattr(server, "client", lambda *a: identity)
+    first = asyncio.run(
+        server.oci_compartments(ROOT, REGION, page_size=1, include_subtree=True)
+    )
+    assert first["ok"] and first["items"][0]["id"] == CHILD and first["truncated"]
+    second = asyncio.run(
+        server.oci_compartments(
+            ROOT, REGION, page_size=1, cursor=first["next_cursor"], include_subtree=True
+        )
+    )
+    assert (
+        second["ok"]
+        and second["items"][0]["id"] == grandchild
+        and not second["truncated"]
+    )
+    assert all(
+        call.args[0] == TENANCY and call.kwargs["compartment_id_in_subtree"]
+        for call in identity.list_compartments.call_args_list
+    )

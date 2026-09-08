@@ -223,7 +223,7 @@ def require_subtree(compartment_id, region):
     return context
 
 
-def descendant_ids(compartment_id, region):
+def descendant_rows(compartment_id, region):
     context = require_subtree(compartment_id, region)
     identity = client(oci.identity.IdentityClient, region)
     entries, seen, cursor = [], set(), None
@@ -248,9 +248,16 @@ def descendant_ids(compartment_id, region):
     for _ in range(32):
         expanded = selected | {row.id for row in entries if row.compartment_id in selected}
         if expanded == selected:
-            return sorted(selected)
+            return sorted(
+                (row for row in entries if row.id in selected and row.id != compartment_id),
+                key=lambda row: row.id,
+            )
         selected = expanded
     raise ScopeError("Compartment depth exceeded its bound")
+
+
+def descendant_ids(compartment_id, region):
+    return [compartment_id, *(row.id for row in descendant_rows(compartment_id, region))]
 
 
 def client(factory, region: str):
@@ -378,10 +385,27 @@ def oci_compartments(
     include_subtree: bool = False,
 ) -> dict:
     """Discover child compartments. Subtree reads require a permitted subtree scope."""
-    if include_subtree:
+    context = (
         require_subtree(compartment_id, region)
-    else:
-        check_scope(compartment_id, region)
+        if include_subtree
+        else check_scope(compartment_id, region)
+    )
+    if include_subtree and compartment_id != context.tenancy_id:
+        # OCI only accepts its native subtree switch at the tenancy root.
+        after = ""
+        if cursor:
+            if not cursor.startswith("subtree:"):
+                raise ValueError("Expected a subtree cursor")
+            after = scope_id(cursor.removeprefix("subtree:"))
+        rows = [row for row in descendant_rows(compartment_id, region) if row.id > after]
+        selected = rows[:page_size]
+        result = synthetic_page(selected, "compartments", page_size)
+        result["truncated"] = len(rows) > page_size
+        result["next_cursor"] = "subtree:" + selected[-1].id if result["truncated"] else None
+        result["scope_note"] = (
+            "Permitted descendants filtered from bounded accessible-tenancy discovery. Inventory may change between pages."
+        )
+        return result
     response = client(oci.identity.IdentityClient, region).list_compartments(
         compartment_id,
         access_level="ACCESSIBLE",

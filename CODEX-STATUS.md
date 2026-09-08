@@ -1,15 +1,23 @@
 # Foundation progress
 
-- W01 done: JSONL catalog, strict read subset, service index, bounded query helper and catalog tests. Inventory scope and import errors live in `catalog/cli-meta.json` and `catalog/index.json`.
-- Validation: `uv run --frozen --project runtime pytest -q tests` — 47 passed. Two generator runs produced byte-identical CLI artifacts (CLI 3.91.0).
-- W02 done: Bash advisory guard, redaction, shared shell/Python read-only execution wrapper, catalog replay, 60 shell forms and 20 opaque-form tests. Non-OCI rules are explicitly unmeasured.
-- W02 validation: full suite passed (135 tests including W04 validator fixtures); leaf matrix is recorded in `catalog/guard.json`.
-- W04 done: house template, metadata/reference/fence/secret validators and CLI-pinned CI. All fenced commands passed installed live-help validation.
-- Current skill report: 16 routing-description violations and 25 cross-doc links are recorded in `catalog/validation-baseline.json`; existing skill content remains untouched. Strict validators report these findings; CI accepts only the exact baseline, including removal of stale exemptions. The new template passes without exemptions.
-- W05 done: auth cache TTL and credential-file mtime invalidation, single retry after 401, async worker dispatch, ancestry-checked subtree allowlists, explicit cost descendant/region scope and compartment depth, bounded untrusted resource names, full pytest discovery.
-- W05 validation: `uv run --frozen --project runtime pytest -q tests` — 142 passed, including concurrent real MCP stdio calls and offline token-expiry/scope tests.
-- W06 done: all six new diagnostic/pricing tools, consolidated `oci_limits`, fixed field projections, smoke entries and offline coverage.
-- W06 validation: live smoke against DEFAULT/us-chicago-1 passed all 18 checks; reports fourteen tools and a schema estimate of 3,461 tokens. Current combined suite passed 160 tests. Public prices handle both documented and observed localization fields and null results for absent SKUs.
-- Next exact step: finish copy-only installer checks, document reproducible foundation mechanisms and limitations, run all final checks, then commit installer and documentation.
-- Tool count decision: consolidate limit discovery and values into one MCP tool so all six requested additions fit the fourteen-tool surface.
-- Environment: duplicate execution of this identical handoff was overwriting shared files. Duplicate process tree rooted at PID 3207335 is paused; do not resume it into this worktree.
+Done on `v2-foundation`:
+
+- W01: deterministic JSONL inventory, strict read subset, service index, bounded query helper and catalog tests.
+- W02: advisory Bash hook, redaction, shared read-only execution wrappers, full leaf replay and shell/opaque-form fixtures. Variable option values preserve read classification; opaque segments cannot downgrade a known denial.
+- W04: house template, frontmatter/reference/fence/secret validators and CLI-pinned CI. Existing skill content is unchanged. The explicit legacy baseline contains 16 description-routing findings and 25 prohibited cross-doc links; new findings and stale exemptions fail CI.
+- W05: TTL/mtime auth refresh, one retry after 401, concurrent worker dispatch, verified ancestor/subtree restrictions, cost scope/depth, bounded names and full pytest discovery. Subcompartment subtree reads use bounded tenancy discovery and exclude sibling branches.
+- W06: all six requested additions, fixed response projections, offline tests and live smoke. `oci_limits` consolidates the old limit tools to retain a fourteen-tool surface. Public pricing handles both localization schemas and absent SKUs.
+- Installer and documentation: copy-only installation for Codex, Gemini CLI, Cursor and OpenCode v2, updated `.mcp.json`, host launcher tests and `docs/foundation.md` with exact verification commands and the unowned-services list.
+
+Validation completed:
+
+- `uv run --frozen --project runtime pytest -q tests`: **165 passed**; one upstream Authlib deprecation warning.
+- `uv run --no-project --with oci-cli==3.91.0 python scripts/inventory.py --format jsonl --index --check`: byte-identical, no import errors.
+- `uv run --frozen --project runtime oci-readonly-smoke`: fourteen tools, estimated schema size 3,461 tokens (characters / 4, rounded up).
+- `OCI_CONFIG_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1`: all 18 checks passed; no tenancy mutation commands were run.
+- Frontmatter and reference validators pass with the explicitly recorded legacy baseline. Installed live-help fence validation, tracked secret/symlink scan, Ruff and whitespace checks pass.
+- All generated host MCP launch commands pass stdio discovery from an unrelated working directory and an installation path containing spaces. No interactive host UI pickup is claimed.
+
+Next exact step: none for the requested foundation scope. W03 content and W07 marketplace/manifests remain intentionally outside this handoff; current skill baseline findings belong to the content work packages.
+
+Environment note: a duplicate process executing this identical handoff was overwriting shared files. Its process tree rooted at PID 3207335 remains paused to preserve state and prevent further writes. Inspect with `ps -o pid,stat,args -p 3207335`; do not resume it into this completed worktree.
