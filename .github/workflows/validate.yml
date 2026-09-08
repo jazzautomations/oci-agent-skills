@@ -21,3 +21,8 @@ jobs:
       - run: uv run --frozen --project runtime python scripts/ci/check_no_secrets.py
       - run: python scripts/inventory.py --format jsonl --index --check
       - run: uv run --frozen --project runtime oci-readonly-smoke
+      - run: uv run --frozen --project runtime python scripts/ci/check_portable.py --baseline catalog/validation-baseline.json
+      - run: uv run --frozen --project runtime python scripts/ci/check_budget.py --baseline catalog/validation-baseline.json
+      - run: uv run --frozen --project runtime python scripts/ci/check_licenses.py --baseline catalog/validation-baseline.json
+      - run: uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py
+      - run: python scripts/inventory.py --scripts --examples --check

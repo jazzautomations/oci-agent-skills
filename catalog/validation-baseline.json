@@ -2,8 +2,18 @@
   "frontmatter": [
     {
       "file": "skills/oci-ai-data/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-compute-network/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-compute-network/SKILL.md",
@@ -12,8 +22,18 @@
     },
     {
       "file": "skills/oci-devops/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-finops/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-finops/SKILL.md",
@@ -22,8 +42,18 @@
     },
     {
       "file": "skills/oci-iac/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-identity/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-identity/SKILL.md",
@@ -32,8 +62,18 @@
     },
     {
       "file": "skills/oci-navigator/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-observability/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-observability/SKILL.md",
@@ -42,8 +82,18 @@
     },
     {
       "file": "skills/oci-oke/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-reliability/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-reliability/SKILL.md",
@@ -52,8 +102,18 @@
     },
     {
       "file": "skills/oci-sdk/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-security/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oci-security/SKILL.md",
@@ -62,8 +122,18 @@
     },
     {
       "file": "skills/oci-storage/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-storage/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
     },
     {
       "file": "skills/oracle-apex/SKILL.md",
@@ -72,8 +142,28 @@
     },
     {
       "file": "skills/oracle-database/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 2,
+      "code": "unpinned_oracle_name"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
       "line": 3,
       "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 2,
+      "code": "unpinned_oracle_name"
     },
     {
       "file": "skills/oracle-multicloud-enterprise/SKILL.md",
@@ -82,6 +172,26 @@
     }
   ],
   "refs": [
+    {
+      "file": "references/error-triage.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/operator-contract.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/redaction.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/untrusted-output.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
     {
       "file": "skills/oci-ai-data/SKILL.md",
       "line": 6,
@@ -208,5 +318,275 @@
       "code": "cross_docs_reference"
     }
   ],
-  "fences": []
+  "portable": [
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-compute-network/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-compute-network/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-finops/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-finops/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-identity/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-identity/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-observability/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-observability/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-reliability/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-reliability/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-security/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-security/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-storage/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oci-storage/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 2,
+      "code": "unpinned_oracle_name"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 1,
+      "code": "metadata_verified"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 2,
+      "code": "unpinned_oracle_name"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    }
+  ],
+  "budget": [
+    {
+      "file": "references/redaction.md",
+      "line": 1,
+      "code": "body_budget_estimate"
+    },
+    {
+      "file": "references/untrusted-output.md",
+      "line": 1,
+      "code": "body_budget_estimate"
+    }
+  ],
+  "licenses": [
+    {
+      "file": "LICENSE",
+      "line": 1,
+      "code": "root_apache_license"
+    },
+    {
+      "file": "skills/oci-ai-data/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-compute-network/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-devops/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-finops/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-iac/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-identity/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-navigator/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-observability/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-oke/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-reliability/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-sdk/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-security/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oci-storage/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oracle-apex/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oracle-database/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/LICENSE.txt",
+      "line": 1,
+      "code": "missing_skill_license"
+    }
+  ]
 }

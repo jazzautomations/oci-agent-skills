@@ -1,0 +1,52 @@
+{
+  "host": "2.1.263 (Claude Code)",
+  "transport": "loopback mock API; no model or OCI calls",
+  "cases": [
+    {
+      "file": "match.tf",
+      "exit_code": 0,
+      "requests": 3,
+      "description_visible": [
+        true,
+        true,
+        true
+      ],
+      "body_visible": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "file": "other.txt",
+      "exit_code": 0,
+      "requests": 3,
+      "description_visible": [
+        true,
+        true,
+        true
+      ],
+      "body_visible": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "file": "control.txt",
+      "exit_code": 0,
+      "requests": 3,
+      "description_visible": [
+        true,
+        true,
+        true
+      ],
+      "body_visible": [
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "finding": "does not gate description availability in this host"
+}

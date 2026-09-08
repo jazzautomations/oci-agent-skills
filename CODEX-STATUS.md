@@ -20,6 +20,16 @@ Branch: `v2-foundation`. No tenancy mutations; protected content remains unchang
    `uv run --frozen --project runtime pytest -q tests`.
    Plan discrepancy retained: supplied purge regex gives destructive 1/997/328,
    not the stated 2/996/328; all 9,145 leaves replayed, 278 CRITICAL denied.
-4–8. Pending.
+4. Done: all nine CI validators, nightly links, Tuesday CLI/required-flag drift,
+   mutation marker/rollback lint, portable metadata, verified enum, reference
+   routing checks (non-Markdown exempt), budgets and license checks.
+   Installed-host paths probe found descriptions available regardless of paths;
+   no added body activation observed. Evidence: scripts/ci/paths-probe.json.
+   Strict content failures are recorded, not claimed green: 34 frontmatter,
+   34 portable, 29 reference, 2 budget, 17 license findings at this snapshot.
+   Ownership prevents fixing real skills/references/root LICENSE here.
+   Verification: `uv run --frozen --project runtime pytest -q tests`;
+   validator commands and baseline regeneration documented in docs/foundation.md.
+5–8. Pending.
 
-Next exact step: complete CI validators and empirically check paths activation (item 4).
+Next exact step: copy the plan template with errata applied (item 5).

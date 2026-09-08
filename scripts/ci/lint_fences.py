@@ -37,6 +37,8 @@ def commands(text):
 
 
 def validate(path, live=False):
+    if "_TEMPLATE" in path.parts:
+        return []
     result = []
     leaves, _ = catalog_data()
     for line, command in commands(path.read_text()):
@@ -47,6 +49,14 @@ def validate(path, live=False):
             if row is None:
                 raise ValueError("unknown_leaf")
             if not any(f in options for f in ("--help", "-h", "-?")):
+                if not row['read_only']:
+                    preceding = path.read_text().splitlines()[:line - 1]
+                    fence_start = max((i for i, text in enumerate(preceding) if re.match(r"^\s*(`{3,}|~{3,})", text)), default=0)
+                    header = '\n'.join(preceding[fence_start:])
+                    if '# MUTATING' not in header or '[shape-verified]' not in header:
+                        raise ValueError('mutation_marker')
+                    if not re.search(r'(?im)^\s*# rollback:\s*\S', header):
+                        raise ValueError('mutation_rollback')
                 if set(row["required"]) - options.keys():
                     raise ValueError("missing_required_flags")
                 if (
@@ -72,6 +82,8 @@ def validate(path, live=False):
                 if isinstance(exc, ValueError)
                 and str(exc)
                 in {
+                    "mutation_marker",
+                    "mutation_rollback",
                     "unknown_leaf",
                     "missing_required_flags",
                     "unbounded_list",

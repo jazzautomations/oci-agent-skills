@@ -20,8 +20,26 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_budget.py",
+      "sha256": "d803cc96200a36cc0d4ca5c6405645c33643d227522162f5b0d071c46b53977c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_frontmatter.py",
-      "sha256": "59b0bdcca8cccc0889c22406456664e0905bb1c6b02ac0f3193908e8ade0e334",
+      "sha256": "76a2404d226aca8a0559dd13cd5f21e1d11856074b9f82c8aaf279594287496e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_licenses.py",
+      "sha256": "890069cacca027316ffebb82e1da19b16edca22735222b34fcb106b519154711",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_links.py",
+      "sha256": "e8ea6d749056e309cec3dd7d5b33d5f3e32dc0aa7aeb631155cecdb20fcb2a7c",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -32,8 +50,26 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_portable.py",
+      "sha256": "28a7977cd6168f31bfa4b53f9331b6f863ba98b1e1be50d35b9f3ce661c3fd69",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_refs.py",
-      "sha256": "80618d936724198cda98ae4bb97d21ce2abd5350ede539685d3eb1b33d1aa4a7",
+      "sha256": "fe257b65f06deb1a665373baa05c62b913a7d90062fb3af51c1155b9e7bdb574",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_scripts_readonly.py",
+      "sha256": "213e6815aa2907fef45d1daf57fb96379389e35028443707ed1a5a79c25abc18",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/cli_drift.py",
+      "sha256": "a49e24da93444d91ec99cff99665458cc6e0f58f448259474bfd53ac42a7388d",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -45,13 +81,25 @@
     },
     {
       "path": "scripts/ci/lint_fences.py",
-      "sha256": "ab075ebcc12d678c3cf8a91426fc76323cf196cb86f3d477b25f3dbab20cd0d2",
+      "sha256": "f7c10471c937e4385fb77f6e5c94f2e41e082eadd98f2c0460a7ca0841670b28",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/probe_paths.py",
+      "sha256": "a504964fd4bbaaca51fda26db37f856eeb6df278a84c25138689688a81e8dfcf",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/update_baseline.py",
+      "sha256": "0ecc8a1f5f2f6dfa4781d9fa9eea27eb0763bcf4c09389830b6eb83090bf4394",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/console_url.py",
-      "sha256": "5d85c2f7d6384ce85cbc96bb4bbf39aacdbb7c6f68603bd2555de19717847eb2",
+      "sha256": "f54f2730431a9269ca48a5139b43d192d8fec313259a89dfa0e048fa56ac9476",
       "mode": "read-only",
       "oci_calls": []
     },

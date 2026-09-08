@@ -50,7 +50,8 @@ def build(ocid=None, *, kind=None, region=None, compartment_id=None,
         warnings.append('Region absent; Console may select its last-used region.')
     if not is_verified(kind):
         warnings.append('Detail route is a convention; confirm in browser.')
-    esc = lambda value: quote(value, safe='')
+    def esc(value):
+        return quote(value, safe='')
     if kind == 'bucket':
         if not namespace or not bucket:
             raise ValueError('Bucket requires namespace and bucket name')

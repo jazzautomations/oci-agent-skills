@@ -254,3 +254,42 @@ Run the complete offline regression suite with the required command:
 ```bash
 uv run --frozen --project runtime pytest -q tests
 ```
+
+## Handoff 2: CI and `paths` evidence
+
+Run the installed-host probe with `python3 scripts/ci/probe_paths.py`. It uses an
+isolated temporary plugin, a loopback mock Anthropic API, and Read/Skill tools;
+no model inference or OCI request occurs. The recorded output is
+`scripts/ci/paths-probe.json`. On Claude Code 2.1.263, the skill description is
+available both before and after reading `match.tf`, after reading `other.txt`,
+and in the control without `paths`. Thus `paths` does **not gate description
+availability** in this installed plugin host. No automatic body loading was
+observed; this is not evidence that paths add activation. The six planned keys
+can remain under N2's no-gating condition; real skill content was not edited.
+
+The new strict validators are `check_portable.py`, `check_budget.py`,
+`check_scripts_readonly.py`, `check_licenses.py`, and `check_links.py`, all under
+`scripts/ci/`. Invoke each with `uv run --frozen --project runtime python`.
+Links run nightly; `--offline` lists their inputs without requests. The known
+negative URL fixtures come from research/13 and are checked for HTTP 404.
+Budgets use characters / 4 rounded up, explicitly an estimate. Frontmatter now
+requires the colons in `Use when:` / `Not for:` and the verified enum
+`live | partial | shape-only`. The portable validator removes all keys outside
+the six-key profile, round-trips YAML, then applies the same metadata validator.
+
+Strict validators report protected legacy-content debt. CI compares it with
+`catalog/validation-baseline.json`; new or stale findings fail. Reproduce the
+snapshot explicitly with `uv run --frozen --project runtime python
+scripts/ci/update_baseline.py`; review the diff before committing, and never
+regenerate the baseline automatically in CI. The root license is not Apache-2.0
+and existing skills lack LICENSE.txt; these are outside the handoff's ownership.
+
+`check_scripts_readonly.py` checks executable Python AST/shell tokens for direct
+OCI calls and requires the wrapper in skill scripts. Pure utilities and CI
+programs that never call OCI do not need a meaningless wrapper import. Static
+checks and hashes are defense in depth, not a proof about arbitrary Python.
+`python3 scripts/inventory.py --scripts --examples --check` verifies the registry
+and fragment merge. `.github/workflows/cli-drift.yml` compares installed CLI
+`path<TAB>sorted required flags` on Tuesdays, retains a diff artifact, and opens
+an issue for drift. The renderer is `python3 scripts/ci/cli_drift.py` in an
+OCI-CLI environment; it invokes no Click callbacks.
