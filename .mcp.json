@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "oci-readonly": {
+      "command": "uv",
+      "args": ["run", "--frozen", "--project", "${CLAUDE_PLUGIN_ROOT}/runtime", "oci-readonly-mcp"]
+    }
+  }
+}

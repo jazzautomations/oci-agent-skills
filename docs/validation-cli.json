@@ -1,0 +1,223 @@
+{
+  "mode": "live_read_only",
+  "validated_at": "2026-09-08T04:20:44.026595+00:00",
+  "cli_version": "3.91.0",
+  "sdk_version": "2.185.0",
+  "region": "us-chicago-1",
+  "complete": false,
+  "scope_note": "Fixed read commands only. One page per call; no resource names, OCIDs, raw errors or credentials retained. Success validates a read API, not deployments or full inventory.",
+  "checks": [
+    {
+      "id": "identity-compartments",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "identity-regions",
+      "status": "passed",
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "id": "identity-policy",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "compute-instances",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "network-vcns",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "network-subnets",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "storage-namespace",
+      "status": "passed",
+      "truncated": false
+    },
+    {
+      "id": "storage-volumes",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "oke-clusters",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "oke-node-pools",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "devops-projects",
+      "status": "passed",
+      "count": 0,
+      "truncated": false
+    },
+    {
+      "id": "devops-artifacts",
+      "status": "failed",
+      "exit_code": 1,
+      "http_status": 403
+    },
+    {
+      "id": "devops-functions",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "devops-containers",
+      "status": "passed",
+      "count": 0,
+      "truncated": false
+    },
+    {
+      "id": "iac-stacks",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "iac-jobs",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "sre-alarms",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "sre-log-groups",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "cost-usage",
+      "status": "passed",
+      "count": 1,
+      "truncated": false,
+      "scope": "Tenancy-wide cost across compartments and resource regions; endpoint region is not a cost filter. UTC one-day window, one page."
+    },
+    {
+      "id": "cost-budgets",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "limits-services",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "limits-values",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "database-adb",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "database-versions",
+      "status": "passed",
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "id": "ai-models",
+      "status": "passed",
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "id": "data-workspaces",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "data-applications",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "security-problems",
+      "status": "failed",
+      "exit_code": 1,
+      "http_status": 404
+    },
+    {
+      "id": "security-secret-metadata",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "security-bastions",
+      "status": "passed",
+      "count": 0,
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "reliability-dr",
+      "status": "passed",
+      "count": 0,
+      "truncated": false
+    },
+    {
+      "id": "reliability-migrations",
+      "status": "passed",
+      "count": 0,
+      "truncated": false
+    },
+    {
+      "id": "reliability-os",
+      "status": "passed",
+      "count": 0,
+      "truncated": false
+    }
+  ],
+  "passed_count": 31,
+  "failed_count": 2,
+  "recheck_note": "Empty-list reads were rechecked after matching the OCI CLI documented-in-source empty renderer; service errors were retained without changing region, identity or scope."
+}

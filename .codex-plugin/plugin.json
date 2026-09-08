@@ -1,0 +1,25 @@
+{
+  "name": "oci-agent-skills",
+  "version": "0.1.0",
+  "description": "Oracle cloud engineering skills, verified CLI discovery and a bounded read-only OCI MCP.",
+  "author": {
+    "name": "OCI Agent Skills contributors"
+  },
+  "skills": "./skills/",
+  "mcpServers": {
+    "oci-readonly": {
+      "command": "uv",
+      "args": ["run", "--frozen", "--project", "runtime", "oci-readonly-mcp"],
+      "cwd": "."
+    }
+  },
+  "interface": {
+    "displayName": "OCI Agent Skills",
+    "shortDescription": "Operate Oracle cloud with scoped skills and verified commands.",
+    "longDescription": "Oracle cloud, database and DevOps workflows with a reproducible CLI/SDK catalog and a bounded read-only MCP adapter.",
+    "developerName": "OCI Agent Skills contributors",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Inspect my selected OCI compartment and explain the operational findings."
+  }
+}

@@ -1,0 +1,16 @@
+research/
+.local/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+*.pyc
+*.egg-info/
+.env
+.env.*
+*.pem
+*.key
+*.tfstate*
+*.tfplan
+*.zip
+STATUS.md

@@ -1,0 +1,7 @@
+{
+  "name": "oci-agent-skills",
+  "version": "0.1.0",
+  "description": "Oracle cloud engineering skills, verified CLI discovery and a bounded read-only OCI MCP.",
+  "author": {"name": "OCI Agent Skills contributors"},
+  "skills": "./skills/"
+}
