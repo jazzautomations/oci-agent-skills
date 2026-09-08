@@ -200,8 +200,8 @@ def test_limits_discovery_and_values_share_one_tool(monkeypatch):
     limits.list_services.return_value = response([])
     limits.list_limit_values.return_value = response([])
     monkeypatch.setattr(server, "client", lambda *args: limits)
-    assert asyncio.run(server.oci_limits(TENANCY, REGION))["ok"]
-    assert asyncio.run(server.oci_limits(TENANCY, REGION, service_name="compute"))["ok"]
+    assert asyncio.run(server.oci_limit_services(TENANCY, REGION))["ok"]
+    assert asyncio.run(server.oci_limit_values(TENANCY, REGION, service_name="compute"))["ok"]
     limits.list_services.assert_called_once()
     limits.list_limit_values.assert_called_once()
 

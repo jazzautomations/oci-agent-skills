@@ -65,7 +65,7 @@ def test_installed_host_launcher(installed, host, tmp_path):
                 async with ClientSession(read, write) as session:
                     await session.initialize()
                     tools = (await session.list_tools()).tools
-                    assert len(tools) == 14
+                    assert len(tools) == 15
                     assert all(
                         t.annotations.readOnlyHint and not t.annotations.destructiveHint
                         for t in tools

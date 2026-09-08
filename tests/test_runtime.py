@@ -212,4 +212,4 @@ def test_stdio_starts_without_credentials_and_rejects_bad_scope(monkeypatch):
     monkeypatch.setenv("OCI_CONFIG_FILE", "/nonexistent/oci-config")
     report = asyncio.run(run(False, REGION, 20))
     assert report["ok"] is True
-    assert report["tool_count"] == 14
+    assert report["tool_count"] == 15

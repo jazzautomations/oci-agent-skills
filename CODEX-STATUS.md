@@ -35,6 +35,15 @@ Branch: `v2-foundation`. No tenancy mutations; protected content remains unchang
    intentionally non-runnable placeholder template; content linters exempt it.
    Verification: `python3 scripts/ci/check_template.py` (requires local plan);
    `uv run --frozen --project runtime pytest -q tests`.
-6–8. Pending.
+6. Done: 15 shipped tools (14 credentialed + oci_price_lookup, credential-free),
+   provenance {source, trust, complete}, shared field sanitation with flags,
+   ASCII JSON text serialization, descriptive error results, and D7-only live smoke.
+   Offline schema estimate: 3,455 tokens (13,820 characters / 4, rounded up).
+   D7 live smoke: all 12 checks passed on 2026-09-08; five tools explicitly
+   shape-only. No mutation or broader-scope retry was run.
+   Verification: `uv run --frozen --project runtime oci-readonly-smoke`;
+   `OCI_CONFIG_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1`;
+   `uv run --frozen --project runtime pytest -q tests` (includes <100 ms responsiveness).
+7–8. Pending.
 
-Next exact step: replace MCP result notes with provenance and expose fifteen tools (item 6).
+Next exact step: complete W08a manifests, install gate and copy-shared packaging (item 7).

@@ -54,9 +54,12 @@ and IAM-limited discovery can still omit descendant costs. No cross-currency tot
 
 ## Tool contract
 
-`oci_limits` consolidates service discovery and configured values: omit `service_name`
-for discovery, or supply it for values. The old separate limit tool names are no longer
-advertised. All requested diagnostic additions are present in the current tool list.
+15 shipped tools (14 credentialed + oci_price_lookup, credential-free).
+`oci_limit_services` discovers service names; `oci_limit_values` reads configured
+values for one service. Results carry `source`, `trust`, and `complete`; completeness
+is relative to the requested scope/page and is false for truncated data. Field
+flags are advisory, and suspicious values remain visible. The shared sanitizer is
+included from scripts/lib/sanitize.py when building the runtime wheel.
 
 Most inventory tools return one page with `count`, `truncated`, `next_cursor` and
 `pagination_error`. An oversized API page is capped and loses its cursor rather than
