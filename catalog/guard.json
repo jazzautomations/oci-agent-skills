@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "note": "op-anchored (last token) allowlist; supersedes tier_allow_read in guard-hook-regex.json",
+  "op_write_prefix": "^(create|update|put|post|patch|upsert|delete|remove|purge|drop|destroy|terminate|set|configure|enable|disable|activate|deactivate|start|stop|restart|reboot|attach|detach|assign|unassign|add|move|change|import|upload|install|register|deregister|unregister|publish|promote|deploy|launch|provision|scale|resize|rotate|reset|restore|failover|switchover|cancel|abort|kill|clear|truncate|revoke|grant|apply|migrate|upgrade|downgrade|rollback|replace|sync|run|invoke|execute|submit|trigger|schedule|generate|initiate|perform|refresh|bulk|test|validate|copy|clone|backup|snapshot|accept|reject|approve|decline|confirm|complete|finalize|merge|commit|connect|associate|disassociate|link|unlink|subscribe|unsubscribe|retry|rerun|transfer|recover|reprovision|renew|request|send|notify|batch|load|modify|export|auto)(-|$)",
+  "op_read": "^(list|get|show|describe|head|read|fetch|view|inspect|summarize|summarise|search|query|find|resolve|lookup|preview|estimate|forecast|predict|recommend|recommendations|suggest|compare|diff|count|status|analyze|detect|classify|extract|translate|parse|download|tail|check|verify|evaluate)(-[a-z0-9-]*)?$",
+  "op_read_suffix": "-(search|query|list|kubeconfig)$",
+  "op_read_extra": "^(batch-detect-[a-z-]+|list_taskrun_lineages)$",
+  "tier_block": [
+    "\\b(purge|purge-[a-z-]+|[a-z-]+-purge)\\b",
+    "\\b(destroy|terminate|terminate-[a-z-]+)\\b",
+    "\\bdrop(-[a-z-]+)?\\b",
+    "^(db|bv|os|fs|mysql|nosql|opensearch|bds|recovery|dbmulticloud|distributed-database(-v26)?|psql|redis|queue|streaming|blockchain|analytics|goldengate|data-safe|data-catalog|data-integration|log-analytics|logging|database-management|media-services|kms|vault|secrets|certs-mgmt|certificates|marketplace-publisher|os-management-hub|object-storage|file-storage|adb|autonomous)\\s+.*\\b(cascading-)?delete(-[a-z-]+)?$",
+    "\\bdelete-(backup|data|storage|volume|database|bucket|object|file-system|snapshot|vault|key|secret)\\b",
+    "\\bcascading-delete\\b"
+  ],
+  "tier_ask_destructive": [
+    "\\bdelete(-[a-z-]+)?$",
+    "\\bremove(-[a-z0-9-]+)?$",
+    "\\b(revoke|deregister|unregister|disassociate|dissociate)(-[a-z-]+)?$",
+    "\\b(disable|deactivate)(-[a-z-]+)?$",
+    "\\b(detach|unassign|release|evict|withdraw)(-[a-z0-9-]+)?$",
+    "\\b(stop|reboot|shutdown|reset|softreset|suspend)(-[a-z-]+)?$",
+    "\\b(failover|fail-over|switchover|scale-down)(-[a-z-]+)?$",
+    "\\b(cancel|abort|close|expire|kill|clear|truncate)(-[a-z-]+)?$",
+    "\\b(rotate|restore)(-[a-z-]+)?$"
+  ],
+  "tier_ask_mutating": [
+    "\\bchange-compartment$",
+    "\\bupdate(-[a-z-]+)?$",
+    "\\b(create|launch|provision|deploy)(-[a-z-]+)?$",
+    "\\b(attach|assign|add|associate|link)(-[a-z-]+)?$",
+    "\\b(enable|activate|start)(-[a-z-]+)?$",
+    "\\b(patch|apply|migrate|upgrade|downgrade|rollback|replace|move|import|put|upload|set|configure|scale|resize|sync)(-[a-z-]+)?$",
+    "\\b(run|invoke|execute|submit|trigger|schedule|publish|promote|register|install)(-[a-z-]+)?$"
+  ],
+  "danger_flags": [
+    "--force",
+    "bulk-delete*",
+    "--empty-bucket*"
+  ],
+  "non_oci_ask": [
+    "\\bterraform\\b.*\\b(apply|destroy)\\b",
+    "\\bterraform\\b.*\\bstate\\s+(rm|push)\\b",
+    "-auto-approve\\b",
+    "\\bkubectl\\b.*\\b(delete|drain|apply|scale)\\b",
+    "\\b(drop|remove)\\b",
+    "(apex_instance_admin|ords)\\.[a-z_]*(drop|remove)",
+    "\\bapex\\s+import\\b"
+  ],
+  "non_oci_measurement": "Unmeasured hand rules; shell fixture tests are not a confusion matrix.",
+  "measured_leaf_matrix": {
+    "destructive/allow": 1,
+    "destructive/ask": 997,
+    "destructive/deny": 328,
+    "mutating/ask": 3781,
+    "read/allow": 3697,
+    "read/ask": 11,
+    "unknown/allow": 2,
+    "unknown/ask": 328
+  }
+}

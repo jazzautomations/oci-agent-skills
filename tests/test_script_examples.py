@@ -138,7 +138,7 @@ def test_live_timeout_no_shell_and_only_counts(monkeypatch):
         return SimpleNamespace(returncode=0, stdout='{"data":[{"name":"private"}]}')
 
     monkeypatch.setattr(checker.subprocess, "run", run)
-    assert checker.run_live([], "DEFAULT", "us-chicago-1") == {
+    assert checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1") == {
         "status": "passed",
         "count": 1,
         "truncated": False,
@@ -150,13 +150,13 @@ def test_live_timeout_is_structured(monkeypatch):
         raise subprocess.TimeoutExpired("private", 30, output="secret")
 
     monkeypatch.setattr(checker.subprocess, "run", run)
-    assert checker.run_live([], "DEFAULT", "us-chicago-1") == {"status": "timeout"}
+    assert checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1") == {"status": "timeout"}
 
 
 def test_cli_empty_list_render_is_success(monkeypatch):
     process = SimpleNamespace(returncode=0, stdout="", stderr="")
     monkeypatch.setattr(checker.subprocess, "run", lambda *args, **kwargs: process)
-    result = checker.run_live([], "DEFAULT", "us-chicago-1")
+    result = checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1")
     assert result["status"] == "passed"
     assert result["count"] == 0
     assert result["output_kind"] == "empty_cli_response"

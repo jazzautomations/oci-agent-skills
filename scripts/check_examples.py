@@ -11,6 +11,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from inventory import load_cli
+from lib.oci_ro import run as run_readonly, ReadOnlyRefusal
 
 # Exact read operations, individually reviewed. Never infer authorization from verbs.
 LIVE_PATHS = {
@@ -208,8 +209,6 @@ def run_live(argv, profile, region):
         "5",
         "--read-timeout",
         "20",
-        "--cli-rc-file",
-        os.devnull,
         *argv,
     ]
     environment = dict(os.environ)
@@ -217,14 +216,16 @@ def run_live(argv, profile, region):
     # OCI checks presence, not truthiness: even "False" enables interactive mode.
     environment.pop("OCI_CLI_AUTO_PROMPT", None)
     try:
-        completed = subprocess.run(
-            command,
+        completed = run_readonly(
+            command[3:], executable=command[:3],
             capture_output=True,
             text=True,
             timeout=30,
             env=environment,
             stdin=subprocess.DEVNULL,
         )
+    except ReadOnlyRefusal:
+        return {"status": "failed", "error": "read_only_refusal"}
     except subprocess.TimeoutExpired:
         return {"status": "timeout"}
     if completed.returncode:
