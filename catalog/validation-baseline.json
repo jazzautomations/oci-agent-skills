@@ -1,0 +1,212 @@
+{
+  "frontmatter": [
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-compute-network/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-finops/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-identity/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-observability/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-reliability/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-security/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oci-storage/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 3,
+      "code": "description_routing"
+    }
+  ],
+  "refs": [
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-ai-data/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-compute-network/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-devops/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-finops/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-iac/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-identity/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-navigator/SKILL.md",
+      "line": 10,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-observability/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-oke/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-reliability/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-sdk/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-security/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oci-storage/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-apex/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-database/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 6,
+      "code": "cross_docs_reference"
+    },
+    {
+      "file": "skills/oracle-multicloud-enterprise/SKILL.md",
+      "line": 7,
+      "code": "cross_docs_reference"
+    }
+  ],
+  "fences": []
+}
