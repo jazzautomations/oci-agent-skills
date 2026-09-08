@@ -1,0 +1,28 @@
+[
+  {
+    "id": "iac-stacks",
+    "skill": "oci-iac",
+    "argv": [
+      "resource-manager",
+      "stack",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "iac-jobs",
+    "skill": "oci-iac",
+    "argv": [
+      "resource-manager",
+      "job",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

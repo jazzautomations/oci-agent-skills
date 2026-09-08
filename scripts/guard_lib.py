@@ -1,4 +1,5 @@
 """Conservative shell inspection, never shell execution. Advisory; IAM is the boundary."""
+import hashlib
 import json
 import re
 import shlex
@@ -52,7 +53,7 @@ def readonly_argv(argv):
         path, opts = parse_oci(argv)
         leaves, _ = catalog_data()
         # Endpoint/config aliases and prompt modes can alter interpretation or execution.
-        forbidden = {'--endpoint', '--cli-auto-prompt', '--cli-rc-file', '--defaults-file',
+        forbidden = {'--cli-auto-prompt', '--cli-rc-file', '--defaults-file',
                      '--from-json', '--debug', '--proxy', '--federation-endpoint', '--force'}
         if forbidden & opts.keys():
             return False
@@ -60,6 +61,8 @@ def readonly_argv(argv):
             return path in leaves or any(p.startswith(path + ' ') for p in leaves) or not path
         if '--generate-full-command-json-input' in opts or '--generate-param-json-input' in opts:
             return path in leaves
+        if path == 'raw-request':
+            return opts.get('--http-method', '').upper() in {'GET', 'HEAD'} and bool(opts.get('--target-uri'))
         return bool(leaves.get(path, {}).get('read_only'))
     except (ValueError, OSError, KeyError):
         return False
@@ -113,6 +116,37 @@ def shell_segments(command):
         yield segment
 
 
+def plugin_script(token, argv):
+    """Unknown/changed scripts require review; a digest is provenance, not a sandbox."""
+    from lib.oci_ro import check
+    expanded = token.replace('${CLAUDE_PLUGIN_ROOT}', str(ROOT)).replace('$CLAUDE_PLUGIN_ROOT', str(ROOT))
+    try:
+        path = Path(expanded)
+        if path.is_symlink():
+            return 'ask'
+        relative = path.resolve().relative_to(ROOT.resolve()).as_posix()
+        raw = (ROOT / 'catalog/scripts.json').read_bytes()
+        if hashlib.sha256(raw).hexdigest() != rules().get('scripts_sha256'):
+            return 'ask'
+        rows = json.loads(raw)['scripts']
+        row = next((r for r in rows if r['path'] == relative), None)
+        if not row or row['mode'] != 'read-only' or hashlib.sha256(path.read_bytes()).hexdigest() != row['sha256']:
+            return 'ask'
+        if relative in {'scripts/lib/oci_ro.py', 'scripts/lib/oci_ro.sh'}:
+            tail = argv[argv.index('--') + 1:] if '--' in argv else argv
+            return 'allow' if check(tail)[0] else 'ask'
+        for value in argv:
+            if value in {'--profile', '--auth'}:
+                continue
+            if re.match(rules()['op_write_prefix'], value.lstrip('-')):
+                return 'ask'
+            if any(re.search(pattern, value) for pattern in rules()['tier_block']):
+                return 'ask'
+        return 'allow'
+    except (ValueError, OSError, KeyError, TypeError):
+        return 'ask'
+
+
 def inspect_command(command):
     if not isinstance(command, str) or len(command) > 131072:
         return 'ask'
@@ -124,7 +158,7 @@ def inspect_command(command):
             joined = ' '.join(argv)
             if any(re.search(pattern, joined, re.I) for pattern in rules()['non_oci_ask']):
                 decisions.append('ask')
-            if any(t == '.' or Path(t).name in {'sh', 'bash', 'dash', 'zsh', 'source', '.'} for t in argv):
+            if any(t == '.' or Path(t).name in {'sh', 'bash', 'dash', 'zsh', 'source', '.'} for t in argv) and not any('/scripts/' in t and ('CLAUDE_PLUGIN_ROOT' in t or t.startswith(str(ROOT))) for t in argv):
                 decisions.append('ask')
             oci_indexes = [i for i, t in enumerate(argv) if Path(t).name == 'oci']
             for i in oci_indexes:
@@ -132,7 +166,7 @@ def inspect_command(command):
                 decisions.append(classify_oci(tail))
             for i, token in enumerate(argv):
                 if '/scripts/' in token and ('CLAUDE_PLUGIN_ROOT' in token or token.startswith(str(ROOT))):
-                    decisions.append('allow' if readonly_argv(argv[i + 1:]) else 'deny')
+                    decisions.append(plugin_script(token, argv[i + 1:]))
             if not oci_indexes and any('$' in t and 'CLAUDE_PLUGIN_ROOT}/scripts/' not in t for t in argv[:1]):
                 decisions.append('ask')
     except (ValueError, OSError, KeyError):

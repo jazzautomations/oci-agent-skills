@@ -1,0 +1,41 @@
+[
+  {
+    "id": "security-problems",
+    "skill": "oci-security",
+    "argv": [
+      "cloud-guard",
+      "problem",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "security-secret-metadata",
+    "skill": "oci-security",
+    "argv": [
+      "vault",
+      "secret",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "security-bastions",
+    "skill": "oci-security",
+    "argv": [
+      "bastion",
+      "bastion",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

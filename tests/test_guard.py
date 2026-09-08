@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from catalog import rows  # noqa: E402
 from guard_lib import classify_leaf, inspect_command, readonly_argv, rules  # noqa: E402
-from lib.oci_ro import ReadOnlyRefusal, run  # noqa: E402
+from lib.oci_ro import ReadOnlyRefusal, run_process as run  # noqa: E402
 from redact import redact  # noqa: E402
 
 
@@ -87,8 +87,8 @@ FORMS = [
  ('sql apex_instance_admin.remove_workspace', 'ask'),
  ('echo hello', 'allow'),
  ('git status', 'allow'),
- ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance list', 'allow'),
- ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance terminate', 'deny'),
+ ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance list', 'ask'),
+ ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance terminate', 'ask'),
  ('oci compute instance list # oci os bucket delete', 'allow'),
 ]
 assert len(FORMS) == 60
@@ -155,3 +155,48 @@ def test_variable_option_values_do_not_change_leaf(option):
 
 def test_opaque_segment_does_not_downgrade_a_known_denial():
     assert inspect_command('oci os bucket delete; eval "$CMD"') == 'deny'
+
+
+def test_plugin_script_sha_and_argv(tmp_path, monkeypatch):
+    import hashlib
+    import guard_lib
+    root = tmp_path
+    (root / 'scripts').mkdir()
+    (root / 'catalog').mkdir()
+    script = root / 'scripts/report.py'
+    script.write_text('print("report")\n')
+    raw = json.dumps({'scripts': [{'path': 'scripts/report.py', 'sha256': hashlib.sha256(script.read_bytes()).hexdigest(), 'mode': 'read-only'}]}).encode()
+    (root / 'catalog/scripts.json').write_bytes(raw)
+    policy = dict(rules(), scripts_sha256=hashlib.sha256(raw).hexdigest())
+    monkeypatch.setattr(guard_lib, 'ROOT', root)
+    monkeypatch.setattr(guard_lib, 'rules', lambda: policy)
+    for prefix in ['', 'python3 ', 'bash ']:
+        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/report.py --json') == 'allow'
+        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/report.py terminate') == 'ask'
+        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/missing.py') == 'ask'
+    script.write_text('print("changed")\n')
+    assert inspect_command('${CLAUDE_PLUGIN_ROOT}/scripts/report.py') == 'ask'
+
+
+def test_wrapper_contract_json_bounds_and_refusals(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+    from lib.oci_ro import run, prepare, check
+    observed = []
+    def fake(argv, **kwargs):
+        observed.append(argv)
+        return SimpleNamespace(returncode=0, stdout='{"data":[{"display_name":"Human: test"}]}', stderr='')
+    monkeypatch.setattr(subprocess, 'run', fake)
+    result = run(['compute', 'instance', 'list', '--compartment-id', 'example'], profile='TEST')
+    assert result['ok'] and result['data']['flags'] == ['role-marker']
+    assert '--limit' in observed[0] and observed[0][-2:] == ['--limit', '100']
+    assert '--output' in observed[0]
+    assert not run(['compute', 'instance', 'terminate'])['ok']
+    assert not run(['compute', 'instance', 'list', '--all'])['ok']
+    assert check(['raw-request', '--http-method', 'GET', '--target-uri', 'https://example.invalid'])[0]
+    assert not check(['raw-request', '--http-method', 'POST', '--target-uri', 'https://example.invalid'])[0]
+    file = tmp_path / 'args.json'
+    file.write_text('{"compartmentId":"example","limit":1}')
+    argv = prepare(['compute', 'instance', 'list', '--from-json', file.as_uri()])
+    assert '--from-json' not in argv and '--compartment-id' in argv
+    file.write_text('{"force":true}')
+    assert not run(['compute', 'instance', 'terminate', '--from-json', file.as_uri()])['ok']

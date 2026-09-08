@@ -1,0 +1,24 @@
+[
+  {
+    "id": "storage-namespace",
+    "skill": "oci-storage",
+    "argv": [
+      "os",
+      "ns",
+      "get"
+    ]
+  },
+  {
+    "id": "storage-volumes",
+    "skill": "oci-storage",
+    "argv": [
+      "bv",
+      "volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

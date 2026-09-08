@@ -1,0 +1,39 @@
+[
+  {
+    "id": "identity-compartments",
+    "skill": "oci-identity",
+    "argv": [
+      "iam",
+      "compartment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "identity-regions",
+    "skill": "oci-identity",
+    "argv": [
+      "iam",
+      "region-subscription",
+      "list",
+      "--tenancy-id",
+      "${TENANCY_ID}"
+    ]
+  },
+  {
+    "id": "identity-policy",
+    "skill": "oci-identity",
+    "argv": [
+      "iam",
+      "policy",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

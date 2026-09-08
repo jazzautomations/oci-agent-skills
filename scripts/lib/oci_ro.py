@@ -1,40 +1,158 @@
 #!/usr/bin/env python3
-"""The only OCI subprocess entry point for plugin scripts; refusals exit 3."""
+"""The single OCI subprocess door. Fixed JSON output, bounded reads, no shell evaluation."""
+import json
 import os
 import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from guard_lib import readonly_argv
+from guard_lib import catalog_data, parse_oci, readonly_argv
+from lib.sanitize import envelope, emit
 
 
 class ReadOnlyRefusal(ValueError):
     pass
 
 
-def run(argv, *, executable=None, **kwargs):
-    if not readonly_argv(argv):
-        raise ReadOnlyRefusal('OCI command is outside the script read-only allowlist')
+def check(argv):
+    """Pure policy check. File-backed arguments must be resolved by the caller first."""
+    return (True, 'read-only') if readonly_argv(argv) else (False, 'verb|method|flag')
+
+
+def resolve_json(argv):
+    path, opts = parse_oci(argv)
+    value = opts.get('--from-json')
+    if value is None:
+        return list(argv)
+    if not isinstance(value, str) or not value.startswith('file://'):
+        raise ReadOnlyRefusal('flag')
+    source = Path(value[7:]).expanduser()
+    if source.stat().st_size > 1048576:
+        raise ReadOnlyRefusal('flag')
+    data = json.loads(source.read_text())
+    if not isinstance(data, dict):
+        raise ReadOnlyRefusal('flag')
+    leaves, _ = catalog_data()
+    # Only actual leaf flags are accepted; globals, command paths and opaque nested
+    # data cannot change interpretation. CLI flags explicitly supplied win.
+    flags = leaves.get(path, {}).get('flags', [])
+    spellings = {flag[2:].replace('-', '').lower(): flag for flag in flags}
+    result = path.split()
+    for key, item in data.items():
+        flag = spellings.get(key.replace('-', '').lower())
+        if not flag or flag in {'--from-json', '--force'} or isinstance(item, (dict, list)):
+            raise ReadOnlyRefusal('flag')
+        if flag not in opts:
+            opts[flag] = item
+    opts.pop('--from-json', None)
+    booleans = set(leaves.get(path, {}).get('boolean_flags', []))
+    for flag, value in opts.items():
+        if flag in booleans:
+            if value is True:
+                result.append(flag)
+            elif value is not False:
+                raise ReadOnlyRefusal('flag')
+        else:
+            result.extend([flag, str(value)])
+    return result
+
+
+def prepare(argv, *, profile=None, region=None, allow_all=False):
+    try:
+        argv = resolve_json(argv)
+        if not check(argv)[0]:
+            raise ReadOnlyRefusal('verb|method|flag')
+        path, opts = parse_oci(argv)
+        row = catalog_data()[0].get(path, {})
+        if '--all' in opts and not (allow_all or os.environ.get('OCI_RO_ALLOW_ALL') == '1'):
+            raise ReadOnlyRefusal('flag')
+        for flag, value in (('--profile', profile), ('--region', region)):
+            if value is not None and flag not in opts:
+                argv.extend([flag, value])
+        if '--output' in opts and opts['--output'] != 'json':
+            raise ReadOnlyRefusal('flag')
+        if '--output' not in opts:
+            argv.extend(['--output', 'json'])
+        if row.get('has_limit') and not {'--limit', '--all'} & opts.keys() and '--help' not in opts:
+            argv.extend(['--limit', '100'])
+        return ['--cli-rc-file', os.devnull, *argv]
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        raise ReadOnlyRefusal('verb|method|flag') from exc
+
+
+def run_process(argv, *, executable=None, **kwargs):
+    """Internal compatibility for help/validation consumers; errors remain local."""
+    prepared = prepare(argv, profile=kwargs.pop('profile', None), region=kwargs.pop('region', None), allow_all=kwargs.pop('allow_all', False))
     environment = dict(kwargs.pop('env', os.environ))
     for key in ('OCI_CLI_AUTO_PROMPT', 'OCI_CLI_ENDPOINT', 'OCI_ENDPOINT',
                 'OCI_CLI_RC_FILE', 'OCI_CLI_DEFAULTS_FILE'):
         environment.pop(key, None)
     if kwargs.pop('shell', False):
-        raise ReadOnlyRefusal('Shell execution is unavailable')
-    return subprocess.run([*(executable or ['oci']), '--cli-rc-file', os.devnull, *argv],
-                          env=environment, shell=False, **kwargs)
+        raise ReadOnlyRefusal('flag')
+    if os.environ.get('OCI_RO_TRACE') == '1':
+        print(emit({'argv': ['oci', *prepared]}), file=sys.stderr)
+    return subprocess.run([*(executable or ['oci']), *prepared], env=environment, shell=False, **kwargs)
+
+
+def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all=False):
+    from redact import redact
+    try:
+        prepared = prepare(argv, profile=profile, region=region, allow_all=allow_all)
+        response = run_process(argv, profile=profile, region=region, allow_all=allow_all,
+                               timeout=timeout, capture_output=True, text=True)
+        safe_argv = [redact(v) for v in prepared]
+        if response.returncode:
+            status = None
+            try:
+                error = json.loads(response.stderr[response.stderr.index('{'):])
+                status = error.get('status') if isinstance(error.get('status'), int) else None
+            except (ValueError, TypeError, AttributeError):
+                pass
+            return {'ok': False, 'error': {'kind': 'service', 'status': status}, 'argv': safe_argv, 'truncated': False}
+        try:
+            payload = json.loads(response.stdout) if response.stdout.strip() else None
+        except ValueError:
+            payload = response.stdout
+        data = envelope(payload, source='oci:cli:read', kind='generic', complete=False) if sanitize else payload
+        # Redaction is applied after cleaning, including nested returned values.
+        def visit(value):
+            if isinstance(value, dict):
+                return {k: visit(v) for k, v in value.items()}
+            if isinstance(value, list):
+                return [visit(v) for v in value]
+            return redact(value) if isinstance(value, str) else value
+        data = visit(data)
+        flags = data.get('flags', []) if isinstance(data, dict) else []
+        return {'ok': True, 'data': data, 'argv': safe_argv, 'truncated': 'truncated' in flags or bool(isinstance(payload, dict) and payload.get('opc-next-page'))}
+    except ReadOnlyRefusal:
+        return {'ok': False, 'error': {'kind': 'refused', 'reason': 'verb|method|flag'}, 'argv': [], 'truncated': False}
+    except (OSError, subprocess.TimeoutExpired):
+        return {'ok': False, 'error': {'kind': 'transport', 'status': None}, 'argv': [], 'truncated': False}
+    except Exception:
+        return {'ok': False, 'error': {'kind': 'internal', 'status': None}, 'argv': [], 'truncated': False}
 
 
 def main():
-    try:
-        return run(sys.argv[1:]).returncode
-    except ReadOnlyRefusal as exc:
-        print(str(exc), file=sys.stderr)
+    argv = sys.argv[1:]
+    if '--' in argv:
+        split = argv.index('--')
+        options, argv = argv[:split], argv[split + 1:]
+        if set(options) - {'--sanitize', '--trace'}:
+            print(emit({'error': 'refused', 'reason': 'flag', 'op': ''}))
+            return 3
+        if '--trace' in options:
+            os.environ['OCI_RO_TRACE'] = '1'
+    result = run(argv)
+    if result['ok']:
+        print(emit(result))
+        return 0
+    error = result['error']
+    if error['kind'] == 'refused':
+        print(emit({'error': 'refused', 'reason': error['reason'], 'op': ''}))
         return 3
-    except (OSError, ValueError):
-        print('OCI read could not be started', file=sys.stderr)
-        return 1
+    print(emit(error), file=sys.stderr)
+    return 2 if error['kind'] == 'internal' else 1
 
 
 if __name__ == '__main__':

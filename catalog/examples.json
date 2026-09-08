@@ -1,37 +1,14 @@
 {
+  "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
   "description": "Scoped read-only CLI argv templates. Validation does not imply deployed service coverage. Replace placeholders locally; never publish account values.",
   "examples": [
     {
-      "id": "identity-compartments",
-      "skill": "oci-identity",
+      "id": "ai-models",
+      "skill": "oci-ai-data",
       "argv": [
-        "iam",
-        "compartment",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "identity-regions",
-      "skill": "oci-identity",
-      "argv": [
-        "iam",
-        "region-subscription",
-        "list",
-        "--tenancy-id",
-        "${TENANCY_ID}"
-      ]
-    },
-    {
-      "id": "identity-policy",
-      "skill": "oci-identity",
-      "argv": [
-        "iam",
-        "policy",
-        "list",
+        "generative-ai",
+        "model-collection",
+        "list-models",
         "--compartment-id",
         "${COMPARTMENT_ID}",
         "--limit",
@@ -52,177 +29,12 @@
       ]
     },
     {
-      "id": "network-vcns",
-      "skill": "oci-compute-network",
+      "id": "cost-budgets",
+      "skill": "oci-finops",
       "argv": [
-        "network",
-        "vcn",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "network-subnets",
-      "skill": "oci-compute-network",
-      "argv": [
-        "network",
-        "subnet",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "storage-namespace",
-      "skill": "oci-storage",
-      "argv": [
-        "os",
-        "ns",
-        "get"
-      ]
-    },
-    {
-      "id": "storage-volumes",
-      "skill": "oci-storage",
-      "argv": [
-        "bv",
-        "volume",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "oke-clusters",
-      "skill": "oci-oke",
-      "argv": [
-        "ce",
-        "cluster",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "oke-node-pools",
-      "skill": "oci-oke",
-      "argv": [
-        "ce",
-        "node-pool",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-projects",
-      "skill": "oci-devops",
-      "argv": [
-        "devops",
-        "project",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-artifacts",
-      "skill": "oci-devops",
-      "argv": [
-        "artifacts",
-        "container",
-        "repository",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-functions",
-      "skill": "oci-devops",
-      "argv": [
-        "fn",
-        "application",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-containers",
-      "skill": "oci-devops",
-      "argv": [
-        "container-instances",
-        "container-instance",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "iac-stacks",
-      "skill": "oci-iac",
-      "argv": [
-        "resource-manager",
-        "stack",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "iac-jobs",
-      "skill": "oci-iac",
-      "argv": [
-        "resource-manager",
-        "job",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "sre-alarms",
-      "skill": "oci-observability",
-      "argv": [
-        "monitoring",
-        "alarm",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "sre-log-groups",
-      "skill": "oci-observability",
-      "argv": [
-        "logging",
-        "log-group",
+        "budgets",
+        "budget",
+        "budget",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -250,12 +62,11 @@
       ]
     },
     {
-      "id": "cost-budgets",
-      "skill": "oci-finops",
+      "id": "data-applications",
+      "skill": "oci-ai-data",
       "argv": [
-        "budgets",
-        "budget",
-        "budget",
+        "data-flow",
+        "application",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -264,29 +75,14 @@
       ]
     },
     {
-      "id": "limits-services",
-      "skill": "oci-finops",
+      "id": "data-workspaces",
+      "skill": "oci-ai-data",
       "argv": [
-        "limits",
-        "service",
+        "data-integration",
+        "workspace",
         "list",
         "--compartment-id",
-        "${TENANCY_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "limits-values",
-      "skill": "oci-finops",
-      "argv": [
-        "limits",
-        "value",
-        "list",
-        "--compartment-id",
-        "${TENANCY_ID}",
-        "--service-name",
-        "compute",
+        "${COMPARTMENT_ID}",
         "--limit",
         "10"
       ]
@@ -318,24 +114,12 @@
       ]
     },
     {
-      "id": "ai-models",
-      "skill": "oci-ai-data",
+      "id": "devops-artifacts",
+      "skill": "oci-devops",
       "argv": [
-        "generative-ai",
-        "model-collection",
-        "list-models",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "data-workspaces",
-      "skill": "oci-ai-data",
-      "argv": [
-        "data-integration",
-        "workspace",
+        "artifacts",
+        "container",
+        "repository",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -344,10 +128,23 @@
       ]
     },
     {
-      "id": "data-applications",
-      "skill": "oci-ai-data",
+      "id": "devops-containers",
+      "skill": "oci-devops",
       "argv": [
-        "data-flow",
+        "container-instances",
+        "container-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "devops-functions",
+      "skill": "oci-devops",
+      "argv": [
+        "fn",
         "application",
         "list",
         "--compartment-id",
@@ -357,11 +154,11 @@
       ]
     },
     {
-      "id": "security-problems",
-      "skill": "oci-security",
+      "id": "devops-projects",
+      "skill": "oci-devops",
       "argv": [
-        "cloud-guard",
-        "problem",
+        "devops",
+        "project",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -370,11 +167,11 @@
       ]
     },
     {
-      "id": "security-secret-metadata",
-      "skill": "oci-security",
+      "id": "iac-jobs",
+      "skill": "oci-iac",
       "argv": [
-        "vault",
-        "secret",
+        "resource-manager",
+        "job",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -383,11 +180,128 @@
       ]
     },
     {
-      "id": "security-bastions",
-      "skill": "oci-security",
+      "id": "iac-stacks",
+      "skill": "oci-iac",
       "argv": [
-        "bastion",
-        "bastion",
+        "resource-manager",
+        "stack",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "identity-compartments",
+      "skill": "oci-identity",
+      "argv": [
+        "iam",
+        "compartment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "identity-policy",
+      "skill": "oci-identity",
+      "argv": [
+        "iam",
+        "policy",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "identity-regions",
+      "skill": "oci-identity",
+      "argv": [
+        "iam",
+        "region-subscription",
+        "list",
+        "--tenancy-id",
+        "${TENANCY_ID}"
+      ]
+    },
+    {
+      "id": "limits-services",
+      "skill": "oci-finops",
+      "argv": [
+        "limits",
+        "service",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "limits-values",
+      "skill": "oci-finops",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "network-subnets",
+      "skill": "oci-compute-network",
+      "argv": [
+        "network",
+        "subnet",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "network-vcns",
+      "skill": "oci-compute-network",
+      "argv": [
+        "network",
+        "vcn",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "oke-clusters",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "cluster",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "oke-node-pools",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "node-pool",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",
@@ -427,6 +341,93 @@
       "argv": [
         "os-management-hub",
         "managed-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "security-bastions",
+      "skill": "oci-security",
+      "argv": [
+        "bastion",
+        "bastion",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "security-problems",
+      "skill": "oci-security",
+      "argv": [
+        "cloud-guard",
+        "problem",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "security-secret-metadata",
+      "skill": "oci-security",
+      "argv": [
+        "vault",
+        "secret",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "sre-alarms",
+      "skill": "oci-observability",
+      "argv": [
+        "monitoring",
+        "alarm",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "sre-log-groups",
+      "skill": "oci-observability",
+      "argv": [
+        "logging",
+        "log-group",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "storage-namespace",
+      "skill": "oci-storage",
+      "argv": [
+        "os",
+        "ns",
+        "get"
+      ]
+    },
+    {
+      "id": "storage-volumes",
+      "skill": "oci-storage",
+      "argv": [
+        "bv",
+        "volume",
         "list",
         "--compartment-id",
         "${COMPARTMENT_ID}",

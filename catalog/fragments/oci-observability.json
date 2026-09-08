@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sre-alarms",
+    "skill": "oci-observability",
+    "argv": [
+      "monitoring",
+      "alarm",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "sre-log-groups",
+    "skill": "oci-observability",
+    "argv": [
+      "logging",
+      "log-group",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

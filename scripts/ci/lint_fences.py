@@ -8,7 +8,7 @@ from common import ROOT, arguments, files, finding, finish
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from guard_lib import catalog_data, parse_oci
-from lib.oci_ro import run
+from lib.oci_ro import run_process as run
 
 
 def commands(text):

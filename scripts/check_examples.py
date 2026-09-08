@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from inventory import load_cli
-from lib.oci_ro import run as run_readonly, ReadOnlyRefusal
+from lib.oci_ro import run_process as run_readonly, ReadOnlyRefusal
 
 # Exact read operations, individually reviewed. Never infer authorization from verbs.
 LIVE_PATHS = {

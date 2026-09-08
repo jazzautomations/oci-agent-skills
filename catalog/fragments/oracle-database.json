@@ -1,0 +1,28 @@
+[
+  {
+    "id": "database-adb",
+    "skill": "oracle-database",
+    "argv": [
+      "db",
+      "autonomous-database",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "database-versions",
+    "skill": "oracle-database",
+    "argv": [
+      "db",
+      "version",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

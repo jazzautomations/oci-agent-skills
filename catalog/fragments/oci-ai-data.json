@@ -1,0 +1,41 @@
+[
+  {
+    "id": "ai-models",
+    "skill": "oci-ai-data",
+    "argv": [
+      "generative-ai",
+      "model-collection",
+      "list-models",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "data-workspaces",
+    "skill": "oci-ai-data",
+    "argv": [
+      "data-integration",
+      "workspace",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "data-applications",
+    "skill": "oci-ai-data",
+    "argv": [
+      "data-flow",
+      "application",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

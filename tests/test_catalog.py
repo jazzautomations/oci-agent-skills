@@ -43,3 +43,22 @@ def test_query_budget_and_discovery():
         result = subprocess.check_output([sys.executable, str(ROOT / 'scripts/catalog.py'), *query])
         assert len(result) <= 400
         assert result.strip() and b'No matching' not in result
+
+
+def test_generated_scripts_and_fragments():
+    from inventory_artifacts import artifacts
+    first = artifacts(scripts=True, examples=True)
+    assert first == artifacts(scripts=True, examples=True)
+    for name, content in first.items():
+        assert (ROOT / 'catalog' / name).read_text() == content
+
+
+def test_duplicate_fragment_rejected(tmp_path):
+    import pytest
+    from inventory_artifacts import artifacts
+    (tmp_path / 'catalog/fragments').mkdir(parents=True)
+    (tmp_path / 'catalog/cli-meta.json').write_text('{"scope":"fixture"}')
+    row = {'id': 'same', 'skill': 'oci-example', 'argv': ['iam', 'region', 'list']}
+    (tmp_path / 'catalog/fragments/oci-example.json').write_text(json.dumps([row, row]))
+    with pytest.raises(ValueError, match='Duplicate'):
+        artifacts(examples=True, root=tmp_path)

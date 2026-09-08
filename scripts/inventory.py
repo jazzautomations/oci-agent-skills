@@ -148,7 +148,21 @@ def main():
     parser.add_argument("--format", choices=["jsonl"], default="jsonl")
     parser.add_argument("--index", action="store_true")
     parser.add_argument("--check", action="store_true", help="Regenerate in a temporary directory and compare shipped artifacts")
+    parser.add_argument("--scripts", action="store_true", help="Generate script SHA256 registry and guard binding")
+    parser.add_argument("--examples", action="store_true", help="Merge catalog/fragments/*.json")
     options = parser.parse_args()
+    if options.scripts or options.examples:
+        from inventory_artifacts import artifacts
+        for name, content in artifacts(scripts=options.scripts, examples=options.examples).items():
+            path = options.output / name
+            if options.check:
+                if not path.is_file() or path.read_text() != content:
+                    raise SystemExit("Catalog differs: " + name)
+            else:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content)
+        print("Script/example artifacts verified." if options.check else "Script/example artifacts generated.")
+        return
     result = cli_inventory()
     if result["cli_version"] != "3.91.0":
         raise SystemExit("Catalog requires OCI CLI 3.91.0")

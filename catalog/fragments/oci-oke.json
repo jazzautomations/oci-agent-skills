@@ -1,0 +1,28 @@
+[
+  {
+    "id": "oke-clusters",
+    "skill": "oci-oke",
+    "argv": [
+      "ce",
+      "cluster",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "oke-node-pools",
+    "skill": "oci-oke",
+    "argv": [
+      "ce",
+      "node-pool",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]

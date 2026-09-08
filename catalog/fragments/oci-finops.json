@@ -1,0 +1,63 @@
+[
+  {
+    "id": "cost-usage",
+    "skill": "oci-finops",
+    "argv": [
+      "usage-api",
+      "usage-summary",
+      "request-summarized-usages",
+      "--tenant-id",
+      "${TENANCY_ID}",
+      "--granularity",
+      "DAILY",
+      "--time-usage-started",
+      "${START_TIME}",
+      "--time-usage-ended",
+      "${END_TIME}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-budgets",
+    "skill": "oci-finops",
+    "argv": [
+      "budgets",
+      "budget",
+      "budget",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "limits-services",
+    "skill": "oci-finops",
+    "argv": [
+      "limits",
+      "service",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "limits-values",
+    "skill": "oci-finops",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "10"
+    ]
+  }
+]

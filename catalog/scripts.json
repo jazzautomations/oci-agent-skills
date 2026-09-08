@@ -1,0 +1,113 @@
+{
+  "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
+  "scripts": [
+    {
+      "path": "scripts/catalog.py",
+      "sha256": "f7f543e3ee2944573c4a82105998afafffdfa65e8d91b39a456c992eeec04f75",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/catalog_rules.py",
+      "sha256": "610f0bd24a94782ccf5d88a5d47e2b27b7b8c5ac15570af3e38be1eaa8ad9762",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/check_examples.py",
+      "sha256": "f1c18bf044b8fbf97ce7b93b86a3f69606242d1f6f617a0f940ac0c0a37cc994",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_frontmatter.py",
+      "sha256": "59b0bdcca8cccc0889c22406456664e0905bb1c6b02ac0f3193908e8ade0e334",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_no_secrets.py",
+      "sha256": "db6d9cb6ec6b74ee7669d29006850c36d8bdad84e60964e059859e05045f7241",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_refs.py",
+      "sha256": "80618d936724198cda98ae4bb97d21ce2abd5350ede539685d3eb1b33d1aa4a7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/common.py",
+      "sha256": "47b7da600e8f272288389fb4fc8a61754610d87aa41944c0f14ad9a277ae55d3",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/lint_fences.py",
+      "sha256": "ab075ebcc12d678c3cf8a91426fc76323cf196cb86f3d477b25f3dbab20cd0d2",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/console_url.py",
+      "sha256": "5d85c2f7d6384ce85cbc96bb4bbf39aacdbb7c6f68603bd2555de19717847eb2",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/foundation_report.py",
+      "sha256": "85f1f0ea2408297d3a32398f8a3c987da109e1efa2f38089de4742551f87cd65",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/guard_lib.py",
+      "sha256": "313f494deb9cec2241fe20cf08f86586aa53471c098a06dc9d633ad7f5db1890",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/guard_oci.py",
+      "sha256": "2bc40afaaed42db50484502dd942a90ad3afc45396ddb2c3366242f80d482be2",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/inventory.py",
+      "sha256": "b930b660322dd5eab987aacaf12d5db326859fd09964005a78ee65ae5cdb9a2a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/inventory_artifacts.py",
+      "sha256": "ccb75b29884ad8858d0127369723be29a1ac6c313bd62e29c0c014413bdcc710",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/oci_ro.py",
+      "sha256": "0f75c88ab7c8791992d5245b889082e7ab11d968852b5b7150bdd2cd342637b7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/oci_ro.sh",
+      "sha256": "6805a250d696c9ee8acca077ab8af7c377a5db1a620085381c217a5b60e25d71",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/sanitize.py",
+      "sha256": "c041cd7f7efa37b46ae6ad3564905e9e999e531fe5b3f09df389a5882255a1ac",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/redact.py",
+      "sha256": "07c843a28be50e229f289395882f8bb4fb04affb7aa7943b357a29f368a662fb",
+      "mode": "read-only",
+      "oci_calls": []
+    }
+  ]
+}
