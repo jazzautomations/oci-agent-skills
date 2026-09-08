@@ -7,7 +7,9 @@ import importlib.metadata
 import inspect
 import json
 import pkgutil
+import tempfile
 from pathlib import Path
+from catalog_rules import annotate
 
 
 def load_cli():
@@ -56,11 +58,16 @@ def cli_inventory():
             for name, child in sorted(command.commands.items()):
                 walk(child, path + [name])
         else:
-            commands.append({"path": " ".join(path), **option_details(command)})
+            details = option_details(command)
+            commands.append({"path": " ".join(path), **details,
+                **annotate(" ".join(path)),
+                "short_help": (command.short_help or (command.help or "").strip().split("\n")[0])[:180],
+                **{"has_" + flag.replace("-", "_"): "--" + flag in details["flags"]
+                   for flag in ("dry-run", "wait-for-state", "all", "force", "limit")}})
 
     walk(root, [])
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "cli_version": importlib.metadata.version("oci-cli"),
         "sdk_version": importlib.metadata.version("oci"),
         "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
@@ -98,7 +105,7 @@ def sdk_inventory():
         except Exception as exc:
             errors.append({"module": "oci." + info.name, "error": type(exc).__name__})
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "sdk_version": oci.__version__,
         "scope": "Installed OCI SDK packages exporting service *Client classes. Operation count is public functions defined directly on those classes; excludes __init__, private methods and CompositeOperations classes. Inventory only, not Oracle product coverage or a safety classification.",
         "package_count": len(packages),
@@ -113,32 +120,48 @@ def sdk_inventory():
     }
 
 
+def write_cli(output, result, index=True):
+    output.mkdir(parents=True, exist_ok=True)
+    rows = result.pop("commands")
+    # Inventory scope applies to both JSONL files through this shared sidecar.
+    (output / "cli-meta.json").write_text(json.dumps(result, indent=2) + "\n")
+    for filename, selected in [("cli.jsonl", rows), ("cli-read.jsonl", [r for r in rows if r["read_only"]])]:
+        (output / filename).write_text("".join(json.dumps({"cli_version": result["cli_version"], **r}, ensure_ascii=True) + "\n" for r in selected))
+    if index:
+        from oci_cli.cli_root import cli
+        services = []
+        for name, command in sorted(cli.commands.items()):
+            selected = [r for r in rows if r["path"].split()[0] == name]
+            services.append({"name": name, "ops": len(selected),
+                **{kind: sum(r["kind"] == kind for r in selected) for kind in ("read", "mutating", "destructive", "unknown")},
+                "read_only": sum(r["read_only"] for r in selected),
+                "purpose": (command.short_help or (command.help or "").strip().split("\n")[0])[:180]})
+        (output / "index.json").write_text(json.dumps({**result, "services": services}, indent=2) + "\n")
+    print(json.dumps({"commands": len(rows), "read_only": sum(r["read_only"] for r in rows), "import_errors": result["import_errors"]}))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--output", type=Path, default=Path(__file__).resolve().parents[1] / "catalog"
     )
+    parser.add_argument("--format", choices=["jsonl"], default="jsonl")
+    parser.add_argument("--index", action="store_true")
+    parser.add_argument("--check", action="store_true", help="Regenerate in a temporary directory and compare shipped artifacts")
     options = parser.parse_args()
-    options.output.mkdir(parents=True, exist_ok=True)
-    for name, build in [("cli", cli_inventory), ("sdk", sdk_inventory)]:
-        result = build()
-        (options.output / f"{name}.json").write_text(
-            json.dumps(result, separators=(",", ":"), ensure_ascii=True) + "\n",
-            encoding="utf-8",
-        )
-        print(
-            json.dumps(
-                {
-                    "catalog": name,
-                    **{
-                        key: value
-                        for key, value in result.items()
-                        if key.endswith("_count") or key.endswith("_version")
-                    },
-                    "import_errors": len(result["import_errors"]),
-                }
-            )
-        )
+    result = cli_inventory()
+    if result["cli_version"] != "3.91.0":
+        raise SystemExit("Catalog requires OCI CLI 3.91.0")
+    if options.check:
+        with tempfile.TemporaryDirectory() as directory:
+            generated = Path(directory)
+            write_cli(generated, result, options.index)
+            for path in generated.iterdir():
+                if not (options.output / path.name).is_file() or path.read_bytes() != (options.output / path.name).read_bytes():
+                    raise SystemExit("Catalog differs: " + path.name)
+        print("Catalog regeneration is byte-identical.")
+    else:
+        write_cli(options.output, result, options.index)
 
 
 if __name__ == "__main__":
