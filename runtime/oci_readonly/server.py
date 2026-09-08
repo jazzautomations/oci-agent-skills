@@ -388,7 +388,7 @@ def page_result(response, kind: str, page_size: int, *, collection: bool = False
     next_cursor = response.headers.get("opc-next-page") or None
     # OCI is expected to respect limit. Never silently skip oversized response rows.
     oversized = len(rows) > page_size
-    return {
+    result = {
         "ok": True,
         **envelope(shaped(rows[:page_size], kind), source=SOURCES.get(kind, 'oci:' + kind + ':read'),
                    kind=kind, complete=not (next_cursor or oversized)),
@@ -400,6 +400,8 @@ def page_result(response, kind: str, page_size: int, *, collection: bool = False
         else None,
     }
 
+    result["complete"] = result["complete"] and "truncated" not in result["flags"]
+    return result
 
 @mcp.tool(annotations=READ)
 @guarded

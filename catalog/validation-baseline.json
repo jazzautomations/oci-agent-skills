@@ -173,12 +173,42 @@
   ],
   "refs": [
     {
+      "file": "references/auth-modes.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/console-links.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/cross-service-pitfalls.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
       "file": "references/error-triage.md",
       "line": 1,
       "code": "unnamed_shared_reference"
     },
     {
+      "file": "references/iam-variables.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/jmespath.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
       "file": "references/operator-contract.md",
+      "line": 1,
+      "code": "unnamed_shared_reference"
+    },
+    {
+      "file": "references/realms-endpoints.md",
       "line": 1,
       "code": "unnamed_shared_reference"
     },
@@ -492,7 +522,7 @@
   ],
   "budget": [
     {
-      "file": "references/redaction.md",
+      "file": "references/console-links.md",
       "line": 1,
       "code": "body_budget_estimate"
     },

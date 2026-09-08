@@ -206,3 +206,14 @@ def test_manual_stdin_argv_preflight():
     result = subprocess.run([sys.executable, str(ROOT / 'scripts/guard_oci.py'), '--stdin-argv'], input=json.dumps(['oci', 'compute', 'instance', 'list']), text=True, capture_output=True)
     assert result.returncode == 0
     assert json.loads(result.stdout)['hookSpecificOutput']['permissionDecision'] == 'allow'
+
+
+@pytest.mark.parametrize('option', ['--profile', '--auth'])
+@pytest.mark.parametrize('value', ['drop', 'remove', 'terminate', 'update'])
+def test_d4_selection_values_are_not_operations(option, value):
+    assert inspect_command('oci compute instance list ' + option + ' ' + value) == 'allow'
+
+
+def test_plugin_unknown_root_path_requires_review():
+    assert inspect_command(str(ROOT / 'unknown.py')) == 'ask'
+    assert inspect_command('python3 ' + str(ROOT / 'unknown.py')) == 'ask'

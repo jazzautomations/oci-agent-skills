@@ -26,6 +26,7 @@ def main():
         'critical_denied': sum(r['severity'] == 'CRITICAL' and classify_leaf(r['path']) == 'deny' for r in data),
         'critical_total': sum(r['severity'] == 'CRITICAL' for r in data),
         'legacy_validation_findings': {k: len(v) for k, v in baseline.items()},
+        'planned_unowned_services': [{'name': r['name'], 'ops': r['ops']} for r in index['services'] if r['name'] in {'marketplace-publisher', 'marketplace-private-offer', 'costad', 'demand-signal', 'mngdmac', 'cpg', 'dif', 'gdp', 'ccc', 'psa', 'ddfs'}],
         'unowned_services': unowned}, indent=2))
 
 

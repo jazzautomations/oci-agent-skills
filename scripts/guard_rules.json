@@ -43,13 +43,13 @@
     "\\bterraform\\b.*\\bstate\\s+(rm|push)\\b",
     "-auto-approve\\b",
     "\\bkubectl\\b.*\\b(delete|drain|apply|scale)\\b",
-    "\\b(drop|remove)\\b",
     "(apex_instance_admin|ords)\\.[a-z_]*(drop|remove)",
     "\\bapex\\s+import\\b",
     "\\bAUTO_APPROVED\\b",
     "-sweep\\S*",
     "\\bapex\\s+export\\b.*-force\\b",
-    "\\b(sql|sqlplus)\\b.*\\b(truncate|delete\\s+from)\\b"
+    "\\b(sql|sqlplus)\\b.*\\b(truncate|delete\\s+from)\\b",
+    "\\b(sql|sqlplus)\\b.*\\b(drop|remove)\\b"
   ],
   "non_oci_measurement": "Unmeasured hand rules; shell fixture tests are not a confusion matrix.",
   "measured_leaf_matrix": {

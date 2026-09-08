@@ -3,7 +3,7 @@
   "scripts": [
     {
       "path": "scripts/catalog.py",
-      "sha256": "f7f543e3ee2944573c4a82105998afafffdfa65e8d91b39a456c992eeec04f75",
+      "sha256": "f90800eb1b752a536812a970656dfd8ba1dff9dbfbc8eebf826511f82e942e52",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -28,6 +28,12 @@
     {
       "path": "scripts/ci/check_frontmatter.py",
       "sha256": "76a2404d226aca8a0559dd13cd5f21e1d11856074b9f82c8aaf279594287496e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_history.py",
+      "sha256": "c87e2ff1177c1347cce8faeb72505e613702aab107a51874633fa2e73e1402c8",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -80,6 +86,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/cli_breaking.py",
+      "sha256": "debdaa51b1de45a732e173325bc8bf83b44ab6adc90273eca60c3af61c9a926a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/cli_drift.py",
       "sha256": "a49e24da93444d91ec99cff99665458cc6e0f58f448259474bfd53ac42a7388d",
       "mode": "read-only",
@@ -117,25 +129,25 @@
     },
     {
       "path": "scripts/foundation_report.py",
-      "sha256": "85f1f0ea2408297d3a32398f8a3c987da109e1efa2f38089de4742551f87cd65",
+      "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/guard_lib.py",
-      "sha256": "313f494deb9cec2241fe20cf08f86586aa53471c098a06dc9d633ad7f5db1890",
+      "sha256": "f895783ba07bbca0ec942161b4a4d27c05d5ab54a8dd7df9fb472c64aa7f31df",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/guard_oci.py",
-      "sha256": "fc21eb369d1c8ba0430b7ba4600f1eb72ac182aec9ae08566df9e5592ba56c72",
+      "sha256": "f2a1cfcf7c4daea8e46bd31c5f2feec797931b13dd72e8a857273c6ff0a7e1ce",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/inventory.py",
-      "sha256": "b930b660322dd5eab987aacaf12d5db326859fd09964005a78ee65ae5cdb9a2a",
+      "sha256": "3c61cdd7c35a1b552d64e6cd168a0f9b9d2e00e11758eeff7a00f23030b0d431",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -158,6 +170,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/lib/redact.py",
+      "sha256": "07c843a28be50e229f289395882f8bb4fb04affb7aa7943b357a29f368a662fb",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/lib/sanitize.py",
       "sha256": "c041cd7f7efa37b46ae6ad3564905e9e999e531fe5b3f09df389a5882255a1ac",
       "mode": "read-only",
@@ -165,7 +183,7 @@
     },
     {
       "path": "scripts/redact.py",
-      "sha256": "07c843a28be50e229f289395882f8bb4fb04affb7aa7943b357a29f368a662fb",
+      "sha256": "c2a26048a71892ffa6230837b8184b0a53c17aed9664b98e7c94c68c145bf080",
       "mode": "read-only",
       "oci_calls": []
     }

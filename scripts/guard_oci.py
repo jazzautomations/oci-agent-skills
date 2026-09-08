@@ -29,7 +29,7 @@ def main():
     except Exception:
         decision = 'ask'
     print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse',
-          'permissionDecision': decision, 'permissionDecisionReason': reason}}))
+          'permissionDecision': decision, 'permissionDecisionReason': reason, 'additionalContext': ''}}))
     return 2 if decision == 'deny' else 0
 
 

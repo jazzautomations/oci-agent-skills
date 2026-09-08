@@ -20,6 +20,10 @@ jobs:
       - run: python scripts/ci/cli_drift.py > /tmp/current.tsv
       - name: Compare required flags
         run: diff -u /tmp/pinned.tsv /tmp/current.tsv > cli-drift.diff || test "$?" -eq 1
+      - name: Check breaking notes for shipped paths
+        run: |
+          curl -fLsS https://raw.githubusercontent.com/oracle/oci-cli/master/CHANGELOG.rst -o /tmp/oci-changelog.rst
+          python scripts/ci/cli_breaking.py /tmp/oci-changelog.rst >> cli-drift.diff
       - uses: actions/upload-artifact@v4
         with:
           name: cli-drift

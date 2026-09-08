@@ -135,8 +135,15 @@ def plugin_script(token, argv):
         if relative in {'scripts/lib/oci_ro.py', 'scripts/lib/oci_ro.sh'}:
             tail = argv[argv.index('--') + 1:] if '--' in argv else argv
             return 'allow' if check(tail)[0] else 'ask'
+        skip_value = False
         for value in argv:
+            if skip_value:
+                skip_value = False
+                continue
             if value in {'--profile', '--auth'}:
+                skip_value = True
+                continue
+            if value.startswith(('--profile=', '--auth=')):
                 continue
             if re.match(rules()['op_write_prefix'], value.lstrip('-')):
                 return 'ask'
@@ -165,7 +172,7 @@ def inspect_command(command):
                 tail = argv[i + 1:]
                 decisions.append(classify_oci(tail))
             for i, token in enumerate(argv):
-                if '/scripts/' in token and ('CLAUDE_PLUGIN_ROOT' in token or token.startswith(str(ROOT))):
+                if ('CLAUDE_PLUGIN_ROOT' in token or token.startswith(str(ROOT) + '/')) and (i == 0 or Path(argv[i - 1]).name in {'python', 'python3', 'bash', 'sh', 'env', 'sudo'}):
                     decisions.append(plugin_script(token, argv[i + 1:]))
             if not oci_indexes and any('$' in t and 'CLAUDE_PLUGIN_ROOT}/scripts/' not in t for t in argv[:1]):
                 decisions.append('ask')

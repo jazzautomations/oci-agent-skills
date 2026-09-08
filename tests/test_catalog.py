@@ -62,3 +62,13 @@ def test_duplicate_fragment_rejected(tmp_path):
     (tmp_path / 'catalog/fragments/oci-example.json').write_text(json.dumps([row, row]))
     with pytest.raises(ValueError, match='Duplicate'):
         artifacts(examples=True, root=tmp_path)
+
+
+def test_required_query_json_and_miss():
+    for argv in [('required', 'compute instance list'), ('query', '--service', 'compute'), ('query', '--skill', 'oci-identity'), ('query', '--product', 'Compute')]:
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts/catalog.py'), *argv, '--json'], capture_output=True, check=True)
+        assert len(result.stdout) <= 400
+        assert json.loads(result.stdout)['ok']
+    result = subprocess.run([sys.executable, str(ROOT / 'scripts/catalog.py'), 'help', 'compute instance lis', '--json'], capture_output=True)
+    assert result.returncode == 1
+    assert json.loads(result.stdout)['items'][0]['suggestions']

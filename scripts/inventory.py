@@ -126,7 +126,7 @@ def write_cli(output, result, index=True):
     # Inventory scope applies to both JSONL files through this shared sidecar.
     (output / "cli-meta.json").write_text(json.dumps(result, indent=2) + "\n")
     for filename, selected in [("cli.jsonl", rows), ("cli-read.jsonl", [r for r in rows if r["read_only"]])]:
-        (output / filename).write_text("".join(json.dumps({"cli_version": result["cli_version"], **r}, ensure_ascii=True) + "\n" for r in selected))
+        (output / filename).write_text("".join(json.dumps({"scope": result["scope"], "cli_version": result["cli_version"], **r}, ensure_ascii=True) + "\n" for r in selected))
     if index:
         from oci_cli.cli_root import cli
         services = []
