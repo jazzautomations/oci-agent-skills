@@ -68,6 +68,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_template.py",
+      "sha256": "8cd578e282d7c20bd5f34214eed6423fc72715f9c9ca4f98b9a007415da6a64a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/cli_drift.py",
       "sha256": "a49e24da93444d91ec99cff99665458cc6e0f58f448259474bfd53ac42a7388d",
       "mode": "read-only",

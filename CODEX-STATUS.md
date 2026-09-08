@@ -30,6 +30,11 @@ Branch: `v2-foundation`. No tenancy mutations; protected content remains unchang
    Ownership prevents fixing real skills/references/root LICENSE here.
    Verification: `uv run --frozen --project runtime pytest -q tests`;
    validator commands and baseline regeneration documented in docs/foundation.md.
-5–8. Pending.
+5. Done: exact plan §4.1 stencil with only the overriding B3 canonical
+   references/error-corpus.json path and N3 partial enum applied. It is an
+   intentionally non-runnable placeholder template; content linters exempt it.
+   Verification: `python3 scripts/ci/check_template.py` (requires local plan);
+   `uv run --frozen --project runtime pytest -q tests`.
+6–8. Pending.
 
-Next exact step: copy the plan template with errata applied (item 5).
+Next exact step: replace MCP result notes with provenance and expose fifteen tools (item 6).
