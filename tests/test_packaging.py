@@ -51,3 +51,18 @@ def test_host_config_starts_from_resolved_plugin_root(host, tmp_path):
                     assert all(not t.annotations.destructiveHint for t in tools)
 
     asyncio.run(check())
+
+
+def test_w08a_manifest_shape():
+    plugin = json.loads((ROOT / '.claude-plugin/plugin.json').read_text())
+    market = json.loads((ROOT / '.claude-plugin/marketplace.json').read_text())
+    assert plugin['version'] == '0.2.1' and 'skills' not in plugin
+    assert {entry['name'] for entry in market['plugins']} == {'oci-agent-skills', 'oci-agent-skills-db', 'oci-agent-skills-devops'}
+    for entry in market['plugins']:
+        assert 'skills' not in entry
+        assert entry['hooks'] == './hooks/hooks.json'
+        assert (ROOT / entry['hooks']).is_file()
+        assert 'not affiliated with' in entry['description']
+    codex = json.loads((ROOT / '.codex-plugin/plugin.json').read_text())
+    assert 'hooks' not in codex
+    assert codex['mcpServers']['oci-readonly']['cwd'] == '.'

@@ -44,6 +44,8 @@ def ignored(name):
             ".ruff_cache",
             ".git",
             "research",
+            "vendor",
+            "_TEMPLATE",
             "node_modules",
         }
         or name.startswith(".env")
@@ -138,7 +140,39 @@ def host_configs(staging, final, selected):
             )
 
 
-def install(target, host="all"):
+def materialize_shared(staging):
+    """Copy root shared references into each skill with collision-free depth-one names."""
+    shared = staging / 'references'
+    if not shared.is_dir():
+        return
+    for skill in sorted((staging / 'skills').iterdir()):
+        if not skill.is_dir() or skill.name.startswith('_'):
+            continue
+        refs = skill / 'references'
+        refs.mkdir(exist_ok=True)
+        mapping = {p.name: 'shared-' + p.name for p in shared.iterdir() if p.is_file()}
+        for source in sorted(shared.iterdir()):
+            if not source.is_file():
+                raise ValueError('Shared references must have depth one')
+            target = refs / mapping[source.name]
+            if target.exists():
+                raise ValueError('Shared reference copy would overwrite a skill file')
+            copy_payload(source, target)
+            if source.suffix == '.md':
+                text = target.read_text()
+                for old, new in mapping.items():
+                    text = text.replace('](' + old, '](' + new)
+                target.write_text(text)
+        for markdown in skill.rglob('*.md'):
+            text = markdown.read_text()
+            for old, new in mapping.items():
+                text = text.replace('../../references/' + old, 'references/' + new if markdown.parent == skill else new)
+            markdown.write_text(text)
+
+
+def install(target, host="all", *, accept_unguarded=False, copy_shared=False):
+    if host != 'claude' and not accept_unguarded:
+        raise ValueError('UNGUARDED host: --i-accept-unguarded is required; the Bash guard is unavailable')
     target = target.expanduser().absolute()
     if any(p.is_symlink() for p in [target, *target.parents]):
         raise ValueError("Target path must not contain symlinks")
@@ -162,19 +196,25 @@ def install(target, host="all"):
         for name in PAYLOAD:
             if (SOURCE / name).exists():
                 copy_payload(SOURCE / name, staging / name)
-        selected = list(HOSTS) if host == "all" else [host]
+        if copy_shared:
+            materialize_shared(staging)
+        selected = list(HOSTS) if host == "all" else ([] if host == "claude" else [host])
         host_configs(staging, target, selected)
         os.replace(staging, target)
-    return {"ok": True, "hosts": selected, "copy_only": True}
+    return {"ok": True, "hosts": selected or ["claude"], "copy_only": True,
+            "guard": "guarded: advisory Bash PreToolUse" if host == "claude" else "UNGUARDED: no automatic Bash guard",
+            "shared_copied": copy_shared}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--target", required=True, type=Path)
-    parser.add_argument("--host", choices=["all", *HOSTS], default="all")
+    parser.add_argument("--host", choices=["all", "claude", *HOSTS], default="all")
+    parser.add_argument("--i-accept-unguarded", action="store_true")
+    parser.add_argument("--copy-shared", action="store_true")
     args = parser.parse_args()
     try:
-        print(json.dumps(install(args.target, args.host)))
+        print(json.dumps(install(args.target, args.host, accept_unguarded=args.i_accept_unguarded, copy_shared=args.copy_shared)))
     except (OSError, ValueError) as exc:
         # Paths can contain private usernames; fixed errors only.
         message = (

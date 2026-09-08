@@ -1,0 +1,39 @@
+{
+  "name": "oci-agent-skills",
+  "owner": {
+    "name": "OCI Agent Skills contributors"
+  },
+  "plugins": [
+    {
+      "name": "oci-agent-skills",
+      "source": "./",
+      "version": "0.2.1",
+      "description": "OCI skills foundation. Oracle, Oracle Cloud Infrastructure, OCI, Autonomous Database, Exadata and APEX are trademarks or registered trademarks of Oracle and/or its affiliates. This project is an independent, community-maintained set of agent skills. It is **not affiliated with, endorsed by, or supported by Oracle**. Any command it emits runs under your own OCI credentials and IAM policies; you are responsible for what you run.",
+      "hooks": "./hooks/hooks.json",
+      "mcpServers": "./.mcp.json",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "oci-agent-skills-db",
+      "source": "./",
+      "version": "0.2.1",
+      "description": "Database routing foundation; skill subset arrives in W08b. Oracle, Oracle Cloud Infrastructure, OCI, Autonomous Database, Exadata and APEX are trademarks or registered trademarks of Oracle and/or its affiliates. This project is an independent, community-maintained set of agent skills. It is **not affiliated with, endorsed by, or supported by Oracle**. Any command it emits runs under your own OCI credentials and IAM policies; you are responsible for what you run.",
+      "hooks": "./hooks/hooks.json",
+      "mcpServers": "./.mcp.json",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "oci-agent-skills-devops",
+      "source": "./",
+      "version": "0.2.1",
+      "description": "DevOps routing foundation; skill subset arrives in W08b. Oracle, Oracle Cloud Infrastructure, OCI, Autonomous Database, Exadata and APEX are trademarks or registered trademarks of Oracle and/or its affiliates. This project is an independent, community-maintained set of agent skills. It is **not affiliated with, endorsed by, or supported by Oracle**. Any command it emits runs under your own OCI credentials and IAM policies; you are responsible for what you run.",
+      "hooks": "./hooks/hooks.json",
+      "mcpServers": "./.mcp.json",
+      "license": "Apache-2.0"
+    }
+  ],
+  "metadata": {
+    "description": "Independent OCI agent skills foundation with guarded shell integration and read-only MCP.",
+    "version": "0.2.1"
+  }
+}

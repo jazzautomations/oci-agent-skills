@@ -44,6 +44,17 @@ Branch: `v2-foundation`. No tenancy mutations; protected content remains unchang
    Verification: `uv run --frozen --project runtime oci-readonly-smoke`;
    `OCI_CONFIG_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1`;
    `uv run --frozen --project runtime pytest -q tests` (includes <100 ms responsiveness).
-7–8. Pending.
+7. Done: W08a Claude/Codex manifests, three marketplace entries with hooks and
+   no skills arrays, install/docs, unguarded-host refusal, manual argv preflight,
+   self-contained shared-reference copies, and host stdio launch tests.
+   The copied distribution excludes the placeholder template, research/vendor
+   and environments. It contains no symlinks before runtime initialization.
+   Literal source `find . -type l` remains nonempty due to pre-existing protected
+   research links and generated runtime/.venv links; neither is distributed.
+   Root strict validation sees the deliberately invalid placeholder stencil;
+   W08b content selection and release licensing remain deferred per errata.
+   Verification: `python3 scripts/ci/check_manifests.py --host-validation`;
+   `uv run --frozen --project runtime pytest -q tests`.
+8. Pending.
 
-Next exact step: complete W08a manifests, install gate and copy-shared packaging (item 7).
+Next exact step: audit all W01–W08 done-when checks and finish the verification guide (item 8).

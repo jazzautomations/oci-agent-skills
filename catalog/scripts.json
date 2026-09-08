@@ -44,6 +44,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_manifests.py",
+      "sha256": "7c1d0744d29bec0c672e4f0bd5af5469cefb69cab821d622d773cf0c4fe65e58",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_no_secrets.py",
       "sha256": "db6d9cb6ec6b74ee7669d29006850c36d8bdad84e60964e059859e05045f7241",
       "mode": "read-only",
@@ -123,7 +129,7 @@
     },
     {
       "path": "scripts/guard_oci.py",
-      "sha256": "2bc40afaaed42db50484502dd942a90ad3afc45396ddb2c3366242f80d482be2",
+      "sha256": "fc21eb369d1c8ba0430b7ba4600f1eb72ac182aec9ae08566df9e5592ba56c72",
       "mode": "read-only",
       "oci_calls": []
     },

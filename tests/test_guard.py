@@ -200,3 +200,9 @@ def test_wrapper_contract_json_bounds_and_refusals(monkeypatch, tmp_path):
     assert '--from-json' not in argv and '--compartment-id' in argv
     file.write_text('{"force":true}')
     assert not run(['compute', 'instance', 'terminate', '--from-json', file.as_uri()])['ok']
+
+
+def test_manual_stdin_argv_preflight():
+    result = subprocess.run([sys.executable, str(ROOT / 'scripts/guard_oci.py'), '--stdin-argv'], input=json.dumps(['oci', 'compute', 'instance', 'list']), text=True, capture_output=True)
+    assert result.returncode == 0
+    assert json.loads(result.stdout)['hookSpecificOutput']['permissionDecision'] == 'allow'
