@@ -78,6 +78,11 @@ before updating evidence. Existing routing, live-coverage and host-evaluation
 gaps remain release blockers; a nonzero exit is expected until they are resolved.
 Public-link checks run separately from offline checks.
 
+Template checks use the committed `scripts/ci/template-source.json` fingerprint,
+so a clean clone needs no private research. To revise the authoring stencil from
+a reviewed plan, use `python3 scripts/ci/check_template.py --plan PATH --write`;
+review both the template and provenance diff, then regenerate the script registry.
+
 ## Inspect the installation
 
 ```bash

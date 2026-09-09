@@ -87,7 +87,7 @@
     },
     {
       "path": "scripts/ci/check_template.py",
-      "sha256": "79fc27e91160be47a184df280142f7a087c28bffd6867b8ae87c3d43e25dd902",
+      "sha256": "4b044bcac71b3eee6f7dd3d221f990dc27fdf12852da10af59aaf1ecb888d370",
       "mode": "read-only",
       "oci_calls": []
     },

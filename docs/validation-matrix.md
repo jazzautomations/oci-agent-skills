@@ -19,7 +19,7 @@ Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py 
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-09 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-09 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-09 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 360 passed, 1 warning in 49.97s |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 362 passed, 1 warning in 54.37s |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-09 | Command passed. Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check` | PASS | 2026-09-09 | Command passed. Subcheck V16-regeneration: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-09 | Command passed. |

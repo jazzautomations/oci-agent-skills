@@ -2,6 +2,10 @@
 
 ## Unreleased — presentation and documentation
 
+Fixed fresh-checkout CI template validation: verify a committed plan-derived
+fingerprint without requiring ignored research files. Two regression tests cover
+missing research, stencil drift and explicit regeneration inputs.
+
 Organized reader documentation, machine-readable evidence and historical build
 records. Added generated skill and MCP catalogs, a documentation index,
 contributor guidance, security reporting and a roadmap with acceptance criteria.

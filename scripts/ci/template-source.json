@@ -1,0 +1,10 @@
+{
+  "source": "research/00-PLAN-V2.1.md",
+  "section": "4.1",
+  "source_sha256": "b28912134f2690e7f32b64b7a5314dde42ab40e1590f5e610aa566a69c0ab0f6",
+  "applied_errata": [
+    "B3: shared error corpus path",
+    "N3: partial verification label"
+  ],
+  "template_sha256": "3844c684825dff38f7401bf00f1cc712c610674631c0f30c5767f90382a655a7"
+}
