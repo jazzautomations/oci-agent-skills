@@ -1,0 +1,5 @@
+# Reachability
+Source: research/04c Networking/LB; research/09b §§16–19.
+Trace client DNS → source route → gateway/peering → destination route → NSG/security list → host firewall → listening process. Compare TCP refused with a timeout; neither alone proves an OCI security-rule failure.
+NAT provides outbound connectivity, not unsolicited ingress. An allowed-public-IP subnet is insufficient without an internet route and assigned public address.
+Check both security lists and NSGs for unexpected exposure. Avoid widening source CIDRs as a diagnostic step. Capture a specific source, destination, protocol, port and time window before proposing a rule.

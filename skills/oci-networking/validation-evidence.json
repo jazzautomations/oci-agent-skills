@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-09",
+  "cli": "3.91.0",
+  "scope_verified": true,
+  "scope": "selected profile; configured region; root compartment unless COMPARTMENT_ID supplied",
+  "live": [
+    {
+      "example": "oci-networking-1",
+      "ok": true,
+      "count": 6,
+      "scope": "bounded sample"
+    },
+    {
+      "example": "oci-networking-2",
+      "ok": true,
+      "count": 6,
+      "scope": "bounded sample"
+    },
+    {
+      "example": "oci-networking-3",
+      "ok": true,
+      "count": 0,
+      "scope": "bounded sample"
+    }
+  ],
+  "documentation": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/overview.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/networksecuritygroups.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/hub-spoke-network-drg/index.html",
+      "status": 200
+    }
+  ]
+}
