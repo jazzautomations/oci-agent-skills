@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-09",
+  "cli": "3.91.0",
+  "scope_verified": true,
+  "scope": "selected profile; configured region; root compartment unless COMPARTMENT_ID supplied",
+  "live": [
+    {
+      "example": "oci-compute-1",
+      "ok": true,
+      "count": 3,
+      "scope": "single resource or unpaginated metadata"
+    },
+    {
+      "example": "oci-compute-2",
+      "ok": true,
+      "count": 9,
+      "scope": "bounded sample"
+    },
+    {
+      "example": "oci-compute-3",
+      "ok": true,
+      "count": 1,
+      "scope": "bounded sample"
+    },
+    {
+      "example": "oci-compute-4",
+      "ok": true,
+      "count": 1,
+      "scope": "bounded sample"
+    }
+  ],
+  "documentation": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/troubleshooting-out-of-host-capacity.htm",
+      "status": 200
+    }
+  ]
+}

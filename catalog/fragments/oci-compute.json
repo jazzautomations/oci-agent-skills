@@ -1,0 +1,152 @@
+[
+  {
+    "id": "oci-compute-1",
+    "skill": "oci-compute",
+    "argv": [
+      "iam",
+      "availability-domain",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--all",
+      "--query",
+      "data[].name",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-2",
+    "skill": "oci-compute",
+    "argv": [
+      "compute",
+      "shape",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{shape:shape,ocpu:\"ocpu-options\",memory:\"memory-options\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-3",
+    "skill": "oci-compute",
+    "argv": [
+      "compute",
+      "image",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--operating-system",
+      "Oracle Linux",
+      "--operating-system-version",
+      "9",
+      "--shape",
+      "${SHAPE}",
+      "--sort-by",
+      "TIMECREATED",
+      "--sort-order",
+      "DESC",
+      "--limit",
+      "1",
+      "--query",
+      "data[].{id:id,name:\"display-name\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-4",
+    "skill": "oci-compute",
+    "argv": [
+      "compute",
+      "instance",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\",shape:shape}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-5",
+    "skill": "oci-compute",
+    "argv": [
+      "compute-management",
+      "instance-pool",
+      "list-instances",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--instance-pool-id",
+      "${POOL_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:state}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-6",
+    "skill": "oci-compute",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{name:name,value:value,ad:\"availability-domain\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-compute-7",
+    "skill": "oci-compute",
+    "argv": [
+      "limits",
+      "resource-availability",
+      "get",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--service-name",
+      "compute",
+      "--limit-name",
+      "${LIMIT_NAME}",
+      "--availability-domain",
+      "${AD}",
+      "--query",
+      "data.{available:available,used:used}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]
