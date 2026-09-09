@@ -1,0 +1,485 @@
+{
+ "arm": "adibirzu",
+ "labels": [
+  {
+   "id": "R01",
+   "skill": "oci-administrator"
+  },
+  {
+   "id": "R02",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R03",
+   "skill": "oci-administrator"
+  },
+  {
+   "id": "R04",
+   "skill": "oci-administrator"
+  },
+  {
+   "id": "R05",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R06",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R07",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R08",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R09",
+   "skill": "oci-networking-compute"
+  },
+  {
+   "id": "R10",
+   "skill": "oci-networking-compute"
+  },
+  {
+   "id": "R11",
+   "skill": "oci-networking-compute"
+  },
+  {
+   "id": "R12",
+   "skill": "oci-networking-compute"
+  },
+  {
+   "id": "R13",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R14",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R15",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R16",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R17",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R18",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R19",
+   "skill": "oci-bastion-access"
+  },
+  {
+   "id": "R20",
+   "skill": "oci-bastion-access"
+  },
+  {
+   "id": "R21",
+   "skill": "oci-oke-admin"
+  },
+  {
+   "id": "R22",
+   "skill": "oci-oke-admin"
+  },
+  {
+   "id": "R23",
+   "skill": "oci-developer-services"
+  },
+  {
+   "id": "R24",
+   "skill": "oci-developer-services"
+  },
+  {
+   "id": "R25",
+   "skill": "oci-events-functions"
+  },
+  {
+   "id": "R26",
+   "skill": "oci-developer-services"
+  },
+  {
+   "id": "R27",
+   "skill": "oci-terraform-authoring"
+  },
+  {
+   "id": "R28",
+   "skill": "oci-terraform-authoring"
+  },
+  {
+   "id": "R29",
+   "skill": "oci-resource-manager"
+  },
+  {
+   "id": "R30",
+   "skill": "oci-resource-manager"
+  },
+  {
+   "id": "R31",
+   "skill": "oci-observability-db"
+  },
+  {
+   "id": "R32",
+   "skill": "oci-observability-db"
+  },
+  {
+   "id": "R33",
+   "skill": "oci-log-analytics"
+  },
+  {
+   "id": "R34",
+   "skill": "oci-log-analytics"
+  },
+  {
+   "id": "R35",
+   "skill": "oci-administrator"
+  },
+  {
+   "id": "R36",
+   "skill": "oci-administrator"
+  },
+  {
+   "id": "R37",
+   "skill": "oci-security-compliance"
+  },
+  {
+   "id": "R38",
+   "skill": "oci-security-compliance"
+  },
+  {
+   "id": "R39",
+   "skill": "oci-security-compliance"
+  },
+  {
+   "id": "R40",
+   "skill": "oci-security-compliance"
+  },
+  {
+   "id": "R41",
+   "skill": "oci-cost"
+  },
+  {
+   "id": "R42",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R43",
+   "skill": "oci-cost"
+  },
+  {
+   "id": "R44",
+   "skill": "oci-cost"
+  },
+  {
+   "id": "R45",
+   "skill": null
+  },
+  {
+   "id": "R46",
+   "skill": null
+  },
+  {
+   "id": "R47",
+   "skill": "oci-autonomous-db"
+  },
+  {
+   "id": "R48",
+   "skill": "oci-autonomous-db"
+  },
+  {
+   "id": "R49",
+   "skill": "oci-database-cloud"
+  },
+  {
+   "id": "R50",
+   "skill": "oci-database-cloud"
+  },
+  {
+   "id": "R51",
+   "skill": null
+  },
+  {
+   "id": "R52",
+   "skill": null
+  },
+  {
+   "id": "R53",
+   "skill": "oci-autonomous-db"
+  },
+  {
+   "id": "R54",
+   "skill": "oci-autonomous-db"
+  },
+  {
+   "id": "R55",
+   "skill": null
+  },
+  {
+   "id": "R56",
+   "skill": null
+  },
+  {
+   "id": "R57",
+   "skill": null
+  },
+  {
+   "id": "R58",
+   "skill": null
+  },
+  {
+   "id": "R59",
+   "skill": null
+  },
+  {
+   "id": "R60",
+   "skill": null
+  },
+  {
+   "id": "R61",
+   "skill": null
+  },
+  {
+   "id": "R62",
+   "skill": null
+  },
+  {
+   "id": "R63",
+   "skill": "oci-events-functions"
+  },
+  {
+   "id": "R64",
+   "skill": "oci-events-functions"
+  },
+  {
+   "id": "R65",
+   "skill": null
+  },
+  {
+   "id": "R66",
+   "skill": null
+  },
+  {
+   "id": "R67",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R68",
+   "skill": "oci-storage"
+  },
+  {
+   "id": "R69",
+   "skill": null
+  },
+  {
+   "id": "R70",
+   "skill": "oci-os-management"
+  },
+  {
+   "id": "R71",
+   "skill": null
+  },
+  {
+   "id": "R72",
+   "skill": null
+  },
+  {
+   "id": "R73",
+   "skill": "oci-iam-admin"
+  },
+  {
+   "id": "R74",
+   "skill": "oci-security-compliance"
+  },
+  {
+   "id": "R75",
+   "skill": "oci-developer-services"
+  },
+  {
+   "id": "R76",
+   "skill": "oci-oke-admin"
+  },
+  {
+   "id": "R77",
+   "skill": null
+  },
+  {
+   "id": "R78",
+   "skill": null
+  },
+  {
+   "id": "R79",
+   "skill": "oci-networking-compute"
+  },
+  {
+   "id": "R80",
+   "skill": null
+  },
+  {
+   "id": "N01",
+   "skill": null
+  },
+  {
+   "id": "N02",
+   "skill": null
+  },
+  {
+   "id": "N03",
+   "skill": null
+  },
+  {
+   "id": "N04",
+   "skill": null
+  },
+  {
+   "id": "N05",
+   "skill": null
+  },
+  {
+   "id": "N06",
+   "skill": null
+  },
+  {
+   "id": "N07",
+   "skill": null
+  },
+  {
+   "id": "N08",
+   "skill": null
+  },
+  {
+   "id": "N09",
+   "skill": null
+  },
+  {
+   "id": "N10",
+   "skill": null
+  },
+  {
+   "id": "N11",
+   "skill": null
+  },
+  {
+   "id": "N12",
+   "skill": null
+  },
+  {
+   "id": "N13",
+   "skill": null
+  },
+  {
+   "id": "N14",
+   "skill": null
+  },
+  {
+   "id": "N15",
+   "skill": null
+  },
+  {
+   "id": "N16",
+   "skill": null
+  },
+  {
+   "id": "N17",
+   "skill": null
+  },
+  {
+   "id": "N18",
+   "skill": null
+  },
+  {
+   "id": "N19",
+   "skill": null
+  },
+  {
+   "id": "N20",
+   "skill": null
+  },
+  {
+   "id": "N21",
+   "skill": null
+  },
+  {
+   "id": "N22",
+   "skill": null
+  },
+  {
+   "id": "N23",
+   "skill": null
+  },
+  {
+   "id": "N24",
+   "skill": null
+  },
+  {
+   "id": "N25",
+   "skill": null
+  },
+  {
+   "id": "N26",
+   "skill": null
+  },
+  {
+   "id": "N27",
+   "skill": null
+  },
+  {
+   "id": "N28",
+   "skill": null
+  },
+  {
+   "id": "N29",
+   "skill": null
+  },
+  {
+   "id": "N30",
+   "skill": null
+  },
+  {
+   "id": "N31",
+   "skill": null
+  },
+  {
+   "id": "N32",
+   "skill": null
+  },
+  {
+   "id": "N33",
+   "skill": null
+  },
+  {
+   "id": "N34",
+   "skill": null
+  },
+  {
+   "id": "N35",
+   "skill": null
+  },
+  {
+   "id": "N36",
+   "skill": null
+  },
+  {
+   "id": "N37",
+   "skill": null
+  },
+  {
+   "id": "N38",
+   "skill": null
+  },
+  {
+   "id": "N39",
+   "skill": null
+  },
+  {
+   "id": "N40",
+   "skill": null
+  }
+ ]
+}

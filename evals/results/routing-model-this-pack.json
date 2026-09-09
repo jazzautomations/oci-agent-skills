@@ -1,0 +1,485 @@
+{
+  "arm": "this-pack",
+  "labels": [
+    {
+      "id": "R01",
+      "skill": "oci-navigator"
+    },
+    {
+      "id": "R02",
+      "skill": "oci-tenancy-governance"
+    },
+    {
+      "id": "R03",
+      "skill": "oci-cli-auth"
+    },
+    {
+      "id": "R04",
+      "skill": "oci-cli-auth"
+    },
+    {
+      "id": "R05",
+      "skill": "oci-tenancy-governance"
+    },
+    {
+      "id": "R06",
+      "skill": "oci-tenancy-governance"
+    },
+    {
+      "id": "R07",
+      "skill": "oci-iam-policy"
+    },
+    {
+      "id": "R08",
+      "skill": "oci-iam-policy"
+    },
+    {
+      "id": "R09",
+      "skill": "oci-compute"
+    },
+    {
+      "id": "R10",
+      "skill": "oci-compute"
+    },
+    {
+      "id": "R11",
+      "skill": "oci-networking"
+    },
+    {
+      "id": "R12",
+      "skill": "oci-networking"
+    },
+    {
+      "id": "R13",
+      "skill": "oci-support-limits"
+    },
+    {
+      "id": "R14",
+      "skill": "oci-support-limits"
+    },
+    {
+      "id": "R15",
+      "skill": "oci-object-storage"
+    },
+    {
+      "id": "R16",
+      "skill": "oci-object-storage"
+    },
+    {
+      "id": "R17",
+      "skill": "oci-block-file-storage"
+    },
+    {
+      "id": "R18",
+      "skill": "oci-block-file-storage"
+    },
+    {
+      "id": "R19",
+      "skill": "oci-bastion-access"
+    },
+    {
+      "id": "R20",
+      "skill": "oci-bastion-access"
+    },
+    {
+      "id": "R21",
+      "skill": "oci-oke"
+    },
+    {
+      "id": "R22",
+      "skill": "oci-oke"
+    },
+    {
+      "id": "R23",
+      "skill": "oci-devops-pipelines"
+    },
+    {
+      "id": "R24",
+      "skill": "oci-devops-pipelines"
+    },
+    {
+      "id": "R25",
+      "skill": "oci-serverless"
+    },
+    {
+      "id": "R26",
+      "skill": "oci-serverless"
+    },
+    {
+      "id": "R27",
+      "skill": "oci-terraform"
+    },
+    {
+      "id": "R28",
+      "skill": "oci-terraform"
+    },
+    {
+      "id": "R29",
+      "skill": "oci-terraform"
+    },
+    {
+      "id": "R30",
+      "skill": "oci-terraform"
+    },
+    {
+      "id": "R31",
+      "skill": "oci-monitoring-alarms"
+    },
+    {
+      "id": "R32",
+      "skill": "oci-monitoring-alarms"
+    },
+    {
+      "id": "R33",
+      "skill": "oci-logging-audit"
+    },
+    {
+      "id": "R34",
+      "skill": "oci-logging-audit"
+    },
+    {
+      "id": "R35",
+      "skill": "oci-incident-triage"
+    },
+    {
+      "id": "R36",
+      "skill": "oci-incident-triage"
+    },
+    {
+      "id": "R37",
+      "skill": "oci-security-posture"
+    },
+    {
+      "id": "R38",
+      "skill": "oci-security-posture"
+    },
+    {
+      "id": "R39",
+      "skill": "oci-vault-certificates"
+    },
+    {
+      "id": "R40",
+      "skill": "oci-vault-certificates"
+    },
+    {
+      "id": "R41",
+      "skill": "oci-cost-analysis"
+    },
+    {
+      "id": "R42",
+      "skill": "oci-cost-analysis"
+    },
+    {
+      "id": "R43",
+      "skill": "oci-cost-analysis"
+    },
+    {
+      "id": "R44",
+      "skill": "oci-cost-analysis"
+    },
+    {
+      "id": "R45",
+      "skill": "oci-free-tier"
+    },
+    {
+      "id": "R46",
+      "skill": "oci-free-tier"
+    },
+    {
+      "id": "R47",
+      "skill": "oracle-autonomous-db"
+    },
+    {
+      "id": "R48",
+      "skill": "oracle-autonomous-db"
+    },
+    {
+      "id": "R49",
+      "skill": "oracle-db-fleet"
+    },
+    {
+      "id": "R50",
+      "skill": "oracle-db-fleet"
+    },
+    {
+      "id": "R51",
+      "skill": "oracle-db-vector-ai"
+    },
+    {
+      "id": "R52",
+      "skill": "oracle-db-vector-ai"
+    },
+    {
+      "id": "R53",
+      "skill": "oracle-db-sql-access"
+    },
+    {
+      "id": "R54",
+      "skill": "oracle-db-sql-access"
+    },
+    {
+      "id": "R55",
+      "skill": "oracle-apex"
+    },
+    {
+      "id": "R56",
+      "skill": "oracle-apex"
+    },
+    {
+      "id": "R57",
+      "skill": "oci-generative-ai"
+    },
+    {
+      "id": "R58",
+      "skill": "oci-generative-ai"
+    },
+    {
+      "id": "R59",
+      "skill": "oci-generative-ai"
+    },
+    {
+      "id": "R60",
+      "skill": "oci-generative-ai"
+    },
+    {
+      "id": "R61",
+      "skill": "oci-ai-services"
+    },
+    {
+      "id": "R62",
+      "skill": "oci-ai-services"
+    },
+    {
+      "id": "R63",
+      "skill": "oci-data-platform"
+    },
+    {
+      "id": "R64",
+      "skill": "oci-data-platform"
+    },
+    {
+      "id": "R65",
+      "skill": "oci-sdk-patterns"
+    },
+    {
+      "id": "R66",
+      "skill": "oci-sdk-patterns"
+    },
+    {
+      "id": "R67",
+      "skill": "oci-dr-backup"
+    },
+    {
+      "id": "R68",
+      "skill": "oci-block-file-storage"
+    },
+    {
+      "id": "R69",
+      "skill": "oci-migration-patching"
+    },
+    {
+      "id": "R70",
+      "skill": "oci-migration-patching"
+    },
+    {
+      "id": "R71",
+      "skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "R72",
+      "skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "R73",
+      "skill": "oci-iam-policy"
+    },
+    {
+      "id": "R74",
+      "skill": "oci-security-posture"
+    },
+    {
+      "id": "R75",
+      "skill": "oci-devops-pipelines"
+    },
+    {
+      "id": "R76",
+      "skill": "oci-oke"
+    },
+    {
+      "id": "R77",
+      "skill": "oracle-db-vector-ai"
+    },
+    {
+      "id": "R78",
+      "skill": "oci-generative-ai"
+    },
+    {
+      "id": "R79",
+      "skill": "oci-compute"
+    },
+    {
+      "id": "R80",
+      "skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "N01",
+      "skill": null
+    },
+    {
+      "id": "N02",
+      "skill": null
+    },
+    {
+      "id": "N03",
+      "skill": null
+    },
+    {
+      "id": "N04",
+      "skill": null
+    },
+    {
+      "id": "N05",
+      "skill": null
+    },
+    {
+      "id": "N06",
+      "skill": null
+    },
+    {
+      "id": "N07",
+      "skill": null
+    },
+    {
+      "id": "N08",
+      "skill": null
+    },
+    {
+      "id": "N09",
+      "skill": null
+    },
+    {
+      "id": "N10",
+      "skill": null
+    },
+    {
+      "id": "N11",
+      "skill": null
+    },
+    {
+      "id": "N12",
+      "skill": null
+    },
+    {
+      "id": "N13",
+      "skill": null
+    },
+    {
+      "id": "N14",
+      "skill": null
+    },
+    {
+      "id": "N15",
+      "skill": null
+    },
+    {
+      "id": "N16",
+      "skill": null
+    },
+    {
+      "id": "N17",
+      "skill": null
+    },
+    {
+      "id": "N18",
+      "skill": null
+    },
+    {
+      "id": "N19",
+      "skill": null
+    },
+    {
+      "id": "N20",
+      "skill": null
+    },
+    {
+      "id": "N21",
+      "skill": null
+    },
+    {
+      "id": "N22",
+      "skill": null
+    },
+    {
+      "id": "N23",
+      "skill": null
+    },
+    {
+      "id": "N24",
+      "skill": null
+    },
+    {
+      "id": "N25",
+      "skill": null
+    },
+    {
+      "id": "N26",
+      "skill": null
+    },
+    {
+      "id": "N27",
+      "skill": null
+    },
+    {
+      "id": "N28",
+      "skill": null
+    },
+    {
+      "id": "N29",
+      "skill": null
+    },
+    {
+      "id": "N30",
+      "skill": null
+    },
+    {
+      "id": "N31",
+      "skill": null
+    },
+    {
+      "id": "N32",
+      "skill": null
+    },
+    {
+      "id": "N33",
+      "skill": null
+    },
+    {
+      "id": "N34",
+      "skill": null
+    },
+    {
+      "id": "N35",
+      "skill": null
+    },
+    {
+      "id": "N36",
+      "skill": null
+    },
+    {
+      "id": "N37",
+      "skill": null
+    },
+    {
+      "id": "N38",
+      "skill": null
+    },
+    {
+      "id": "N39",
+      "skill": null
+    },
+    {
+      "id": "N40",
+      "skill": null
+    }
+  ]
+}
