@@ -12,3 +12,9 @@ ORDER BY VECTOR_DISTANCE(embedding, :qvec, COSINE)
 FETCH APPROX FIRST 5 ROWS ONLY;
 ```
 Only one vector index type can serve a vector column. Verify the execution plan through an authorized diagnostics session; EXPLAIN PLAN can write PLAN_TABLE and is not in the read-only script.
+
+## Diagnostic signals
+
+| Error string | Distinguish | Source |
+|---|---|---|
+| ORA-01031 / ORA-00942 | Missing privileges or inaccessible objects can prevent a feature probe; do not infer feature absence from that result. | research/08a read-only identity checks [unverified here] |

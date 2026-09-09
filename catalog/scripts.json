@@ -39,7 +39,7 @@
     },
     {
       "path": "scripts/ci/check_history.py",
-      "sha256": "c87e2ff1177c1347cce8faeb72505e613702aab107a51874633fa2e73e1402c8",
+      "sha256": "01a189171b0fb4d9ef60fc5bcffae62995ec2563c03d12eefc9c4abb518dbcd2",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -123,7 +123,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "cdb86268cb6ec93a6aac2fcd1bbb4c3723688a0c3440cfc8a6333167bf9bb54c",
+      "sha256": "dec38f777dc2ea61ab3d1b61194cf8705b3b45f1a681fbc49e76e08033c92f10",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -153,7 +153,7 @@
     },
     {
       "path": "scripts/eval/import_corpus.py",
-      "sha256": "ee60276d6f136d1d444ce20dec0314ee285cb599114bd2ceef3595dac6902217",
+      "sha256": "d387c1a2fdd47be0e6f2ce7001765e3e7868a754cc23649b35411164d62b2964",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -165,7 +165,7 @@
     },
     {
       "path": "scripts/eval/score_routing_model.py",
-      "sha256": "d354450bb0917172cc91c7e5aa329749f575cd586fa5a8b283d2f85a215aba25",
+      "sha256": "26e5777571f5dabd59c208ba229171d3d5a7ae067dcd641b803c7a3f2343587e",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -224,6 +224,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/measure_context.py",
+      "sha256": "1c02f6ba9c1582838ef6c13f6cd3c95ac54b1ecbe55d89d889e33ae0f0600c61",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/redact.py",
       "sha256": "c2a26048a71892ffa6230837b8184b0a53c17aed9664b98e7c94c68c145bf080",
       "mode": "read-only",
@@ -231,7 +237,7 @@
     },
     {
       "path": "scripts/release_report.py",
-      "sha256": "bfbc2a58b2b3c26ba0cdf3050c821e3b5f69cac4a57b227be31fc234a2630e80",
+      "sha256": "44f7dab3549bfe57f29326f92e912bc98ba5f3d6706171f89fd7caa354e39fe8",
       "mode": "read-only",
       "oci_calls": []
     },

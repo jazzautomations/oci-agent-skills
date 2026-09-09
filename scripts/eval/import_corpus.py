@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import the unedited research corpus and dual task shapes; research is build-only."""
+"""Import the frozen shipped corpus and dual task shapes; research is build-only."""
 import ast
 import json
 from pathlib import Path
@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def main():
-    corpus = json.loads((ROOT / 'research/data/eval-corpus.json').read_text())
+    corpus = json.loads((ROOT / 'evals/corpus/eval-corpus.json').read_text())
     target = ROOT / 'evals'
     target.mkdir(exist_ok=True)
     def write(name, value):

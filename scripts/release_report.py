@@ -27,6 +27,9 @@ def main():
     services=Counter(r['path'].split()[0] for r in leaves)
     report={'skills':len(skills),'description_characters':desc,'description_tokens_estimate':(desc+3)//4,
         'mcp_tools':[t.name for t in tools], 'mcp_schema_tokens_estimate':(schemas+3)//4,
+        'host_context_measurement':json.loads((ROOT/'docs/context-measurement.json').read_text()),
+        'independent_guard_matrix':json.loads((ROOT/'docs/guard-severity-matrix.json').read_text()),
+        'raw_estimate_method':'ceil(description characters / 4) + ceil(serialized MCP schema characters / 4); excludes host framing',
         'resident_tokens_estimate':(desc+3)//4+(schemas+3)//4,
         'published_planning_floor':'≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates)',
         'examples':len(json.loads((ROOT/'catalog/examples.json').read_text())['examples']),

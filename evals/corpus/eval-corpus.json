@@ -1660,5 +1660,5 @@
    "cli_status": "verified"
   }
  ],
- "note_v2_1": "expected_skill names remapped to the v2.1 merged skill set on 2026-09-09 (capacity-limits→support-limits, resource-manager→terraform, pricing→cost-analysis, ai-agents→generative-ai)"
+ "note_v2_1": "Frozen original pre-merge expected_skill labels, reconciled against the shipped routing/tasks imports on 2026-09-09. Scorers apply evals/remap.json; prompts are unchanged."
 }

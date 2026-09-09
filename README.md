@@ -2,7 +2,7 @@
 
 33 skills for scoped OCI operations, Oracle databases, APEX and delivery workflows, with an advisory shell guard and 15 shipped tools (14 credentialed + oci_price_lookup, credential-free).
 
-**Release status:** the strict content and regression checks pass, but this branch is not release-ready. Offline description routing is below its required threshold, and model-backed task evaluation is unavailable. See [evaluations](docs/evals.md), [head-to-head results](docs/head-to-head.md) and the [validation matrix](docs/validation-matrix.md).
+**Release status:** the repaired content and regression checks pass; this branch is not release-ready. History hygiene and live script coverage have additional open gates. Offline description routing is below its required threshold, and model-backed task evaluation is unavailable. See [evaluations](docs/evals.md), [head-to-head results](docs/head-to-head.md) and the [validation matrix](docs/validation-matrix.md).
 
 ## Install
 
@@ -59,9 +59,11 @@ The historical Oracle denylist audit reported 374 destructive and 2,644 mutating
 
 ## Context cost
 
-≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates).
+The raw source estimate is **6,386 tokens**: 11,722 description characters → 2,931, plus serialized MCP schemas → 3,455 (characters / 4, rounded up separately). It excludes host framing. The older ≈6.3–6.5k planning figure used this method.
 
-That is the plan's published estimate. The shipped snapshot measures approximately 2,931 description tokens plus 3,455 schema tokens, totaling 6,386, using characters / 4 rounded up. The guard adds no always-resident prompt; this pack has no UserPromptSubmit injection. Skill bodies and references are loaded on demand. Reproduce every count with `uv run --frozen --project runtime python scripts/release_report.py`.
+**Measured skills-only host delta: 5,517 tokens** in Claude Code 2.1.266, from 16,394 baseline input tokens to 21,911 with the 33 skills. An identical no-tool-call prompt ran from an empty directory; input, cache creation and cache read tokens were summed. MCP was disabled to isolate skill framing. Adding the 3,455 schema estimate gives **8,972 estimated tokens**, not a measured MCP-on total. See [measurement and scope](docs/context-measurement.json).
+
+Reproduce the raw counts with `uv run --frozen --project runtime python scripts/release_report.py`. After a copy install, measure framing with `uv run --frozen --project runtime python scripts/measure_context.py --plugin-dir /tmp/oci-plugin --report /tmp/context-measurement.json`. Host/version and prompt framing can change the result. Bodies and references load on demand.
 
 ## Verify
 

@@ -1,7 +1,11 @@
 {
-  "command": "claude plugin eval . --threshold 0.8 --json evals/results/run.json",
+  "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
   "status": "unavailable",
-  "reason": "plugin eval is currently in early access",
+  "exit_code": 1,
+  "reason": "`plugin eval` is currently in early access",
   "date": "2026-09-09",
-  "substitution": "scripts/eval/run.py, offline proxies only; no skill-creator model-backed evaluation performed"
+  "host_version": "2.1.266 (Claude Code)",
+  "source_commit": "dc8db6edf08f33b9f4cb10c54e90cc97dcc7f8eb",
+  "scope": "No tool grants, mock MCP, absent OCI configuration, no scaffold or report publication.",
+  "substitution": "Offline proxies only; no qualifying task score."
 }

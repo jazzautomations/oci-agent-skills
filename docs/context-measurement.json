@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-09",
+  "host": "2.1.266 (Claude Code)",
+  "prompt": "Reply with exactly OK. Do not call any tools.",
+  "method": "One A/B pair in an empty cwd, identical prompt and settings; input + cache creation + cache read tokens. CLI stream init records skill/tool counts. No tool calls; absent OCI config. Actual host framing, not chars/4; host deferred-tool behavior is included. Strict empty MCP configuration isolates skills-only framing; bundled MCP schemas are excluded from this observed delta.",
+  "runs": [
+    {
+      "arm": "base",
+      "exit_code": 0,
+      "error": false,
+      "tool_calls": false,
+      "skill_count": 18,
+      "bundled_mcp_tools": 0,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3652,
+        "cache_read_input_tokens": 12740,
+        "output_tokens": 4
+      }
+    },
+    {
+      "arm": "plugin",
+      "exit_code": 0,
+      "error": false,
+      "tool_calls": false,
+      "skill_count": 51,
+      "bundled_mcp_tools": 0,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 9169,
+        "cache_read_input_tokens": 12740,
+        "output_tokens": 4
+      }
+    }
+  ],
+  "base_input_tokens": 16394,
+  "plugin_input_tokens": 21911,
+  "plugin_delta_tokens": 5517,
+  "combined_with_raw_mcp_schema_estimate": 8972
+}

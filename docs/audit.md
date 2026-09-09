@@ -27,7 +27,7 @@ Snapshots are data for offline grading, never executed plugin instructions. Refr
 
 The installed census has 174 groups and 9,145 leaves including aliases. These are installed syntax facts, not complete cloud product coverage. Artifacts retain scope disclaimers: “including aliases”, “no safety or authorization classification”, and “conditional requirements may exist in callbacks”, plus per-module import_errors and validation_levels. Census labels are heuristic inputs to measured guard tests, never an IAM authorization model.
 
-The current OCI-only guard matrix is read 3,697/11/0; mutating 0/3,781/0; destructive 1/997/328; unknown 2/328/0 (allow/ask/deny). All 278 CRITICAL leaves are denied. The single destructive-labelled allowance is an estimate operation mislabelled by the census. This is the actual stricter matrix, not the older 2/996 plan split. Non-OCI rules remain unmeasured hand rules.
+The current OCI-only guard matrix is read 3,596/112/0; mutating 0/3,781/0; destructive 1/997/328; unknown 2/328/0 (allow/ask/deny). All 278 CRITICAL leaves are denied. The independent severity replay is published in `docs/guard-severity-matrix.json`, sourced from the frozen research labels in `tests/fixtures/guard-severity.json`; zero allows lie outside the strict read-only catalog. The single destructive-labelled allowance is an estimate operation mislabelled by the census. This is the actual stricter matrix, not the older 2/996 plan split. Non-OCI rules remain unmeasured hand rules.
 
 The source historical Oracle audit reports 2,222 denylist entries, 374 destructive and 2,644 mutating leaves allowed, 135 reads denied. Current prefix replay gives 374, 2,511 and zero respectively. Both are retained with their distinct classification/matching basis; no current-server claim is derived from historical counts. A generic executor's denied-command list is not a read-only boundary.
 
@@ -73,3 +73,7 @@ Named research gaps carried forward:
 - case.yaml grader key spelling is early-access blocked (17 §1/§6).
 
 The offline description matcher misses its routing threshold. Model-backed task completion, leakage, live injection, confirmation behavior and behavioral no-plugin deltas remain unmeasured. The original live head-to-head gate is not satisfied by static descriptors. docs/validation-matrix.md names each red gate's reason and owner; there is no release-readiness claim.
+
+History gate V22 now includes all reachable author/committer metadata and patch bodies, scanning real-length OCIDs, email addresses and key blocks. Historical email matches make this gate red. Owner: repository history owner; rewriting existing history requires a separate publication decision. No arbitrary tenancy/display-name denylist is claimed.
+
+Context measurement: raw source/schema estimate 6,386 tokens; measured skills-only host framing delta 5,517 tokens (Claude Code 2.1.266, one identical-prompt A/B pair, 33 added skills, zero bundled MCP tools in the isolated measurement). Adding the raw schema estimate yields 8,972 as a mixed estimate, not an observed full-host total. Reproduce with `scripts/measure_context.py` and `scripts/release_report.py`; see `docs/context-measurement.json`.
