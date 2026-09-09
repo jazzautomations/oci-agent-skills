@@ -17,6 +17,8 @@ Run from this repository, choosing an absent or empty target outside it:
 
 ```bash
 bash installers/install.sh --target /tmp/oci-plugin --host claude --copy-shared
+uv sync --frozen --project /tmp/oci-plugin/runtime
+uv run --frozen --project /tmp/oci-plugin/runtime oci-readonly-smoke
 claude --plugin-dir /tmp/oci-plugin
 ```
 
@@ -84,3 +86,5 @@ Open the installed directory as the host project. These commands produce local c
 To remove a copy, first move any user work out of its installation directory, then remove that directory yourself. The installer never overwrites a nonempty target and does not remove other installations.
 
 Current license: Apache-2.0 with LICENSE.txt in every skill. NOTICE preserves pre-v2 MIT attribution, and evaluation snapshots keep upstream MIT/UPL notices. Run `uv run --frozen --project runtime python scripts/ci/check_licenses.py`.
+
+The copy installer excludes `CODEX-STATUS.md`. Run the emitted `runtime_setup` argv in the target before opening any host. If omitted, the first MCP launch runs `uv` in that target, installs its environment, and needs package download access. A source-checkout sync does not warm the copied target.

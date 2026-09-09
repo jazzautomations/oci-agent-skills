@@ -48,6 +48,7 @@ def ignored(name):
             "research",
             "vendor",
             "_TEMPLATE",
+            "CODEX-STATUS.md",
             "node_modules",
         }
         or name.startswith((".env", ".handoff-"))
@@ -205,7 +206,9 @@ def install(target, host="all", *, accept_unguarded=False, copy_shared=False):
         os.replace(staging, target)
     return {"ok": True, "hosts": selected or ["claude"], "copy_only": True,
             "guard": "guarded: advisory Bash PreToolUse" if host == "claude" else "UNGUARDED: no automatic Bash guard",
-            "shared_copied": copy_shared}
+            "shared_copied": copy_shared,
+            "runtime_setup": ["uv", "sync", "--frozen", "--project", str(target / "runtime")],
+            "runtime_note": "Run runtime_setup before starting the host. Otherwise the first MCP launch installs the target environment and requires package access."}
 
 
 def main():

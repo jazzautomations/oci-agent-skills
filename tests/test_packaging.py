@@ -12,10 +12,11 @@ from mcp.client.stdio import stdio_client
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_live_smoke_requires_explicit_region(monkeypatch):
+def test_live_smoke_requires_a_resolvable_region(monkeypatch, tmp_path):
     from oci_readonly import smoke
 
     monkeypatch.delenv("OCI_REGION", raising=False)
+    monkeypatch.setenv("OCI_CONFIG_FILE", str(tmp_path / "missing"))
     monkeypatch.setattr("sys.argv", ["oci-readonly-smoke", "--live"])
     with pytest.raises(SystemExit) as caught:
         smoke.main()
@@ -56,6 +57,8 @@ def test_host_config_starts_from_resolved_plugin_root(host, tmp_path):
 def test_w08b_manifest_shape():
     plugin = json.loads((ROOT / '.claude-plugin/plugin.json').read_text())
     market = json.loads((ROOT / '.claude-plugin/marketplace.json').read_text())
+    assert plugin['mcpServers'] == './.mcp.json'
+    assert (ROOT / plugin['mcpServers']).is_file()
     assert plugin['version'] == '0.2.1' and 'skills' not in plugin
     assert {entry['name'] for entry in market['plugins']} == {'oci-agent-skills', 'oci-agent-skills-db', 'oci-agent-skills-devops'}
     for entry in market['plugins']:
@@ -67,3 +70,12 @@ def test_w08b_manifest_shape():
     codex = json.loads((ROOT / '.codex-plugin/plugin.json').read_text())
     assert 'hooks' not in codex
     assert codex['mcpServers']['oci-readonly']['cwd'] == '.'
+
+
+def test_smoke_profile_region(monkeypatch, tmp_path):
+    from oci_readonly.smoke import profile_region
+    config=tmp_path/'config'
+    config.write_text('[DEFAULT]\nregion=us-ashburn-1\n[OTHER]\nregion=us-phoenix-1\n')
+    monkeypatch.setenv('OCI_CONFIG_FILE',str(config))
+    monkeypatch.setenv('OCI_CONFIG_PROFILE','OTHER')
+    assert profile_region() == 'us-phoenix-1'

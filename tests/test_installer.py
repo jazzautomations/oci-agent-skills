@@ -28,6 +28,8 @@ def test_installed_copies_and_refs(installed):
     assert not any(p.is_symlink() for p in installed.rglob("*"))
     assert not (installed / "runtime/.venv").exists()
     assert not (installed / "research").exists()
+    assert not list(installed.rglob("CODEX-STATUS.md"))
+    assert not list(installed.rglob(".handoff-*"))
     for folder in (".agents", ".gemini", ".cursor", ".opencode"):
         skills = list((installed / folder / "skills").glob("*/SKILL.md"))
         assert len(skills) == 33
@@ -114,7 +116,9 @@ def test_unguarded_install_gate(tmp_path, host):
 def test_copy_shared_and_claude_install(tmp_path):
     target = tmp_path / 'claude'
     result = subprocess.run(['bash', str(ROOT / 'installers/install.sh'), '--target', str(target), '--host', 'claude', '--copy-shared'], check=True, capture_output=True, text=True)
-    assert json.loads(result.stdout)['shared_copied']
+    report = json.loads(result.stdout)
+    assert report['shared_copied']
+    assert report['runtime_setup'] == ['uv','sync','--frozen','--project',str(target/'runtime')]
     assert not any(p.is_symlink() for p in target.rglob('*'))
     assert not (target / 'skills/_TEMPLATE').exists()
     shared = list((ROOT / 'references').glob('*'))

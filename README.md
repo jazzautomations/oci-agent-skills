@@ -9,9 +9,9 @@
 Use Python 3.13+, `uv`, and OCI CLI 3.91.0 for reproducible CLI validation. Credentials are unnecessary for offline checks and public pricing. Keep credentials outside the checkout.
 
 ```bash
-uv sync --frozen --project runtime
-uv run --frozen --project runtime oci-readonly-smoke
 bash installers/install.sh --target /tmp/oci-plugin --host claude --copy-shared
+uv sync --frozen --project /tmp/oci-plugin/runtime
+uv run --frozen --project /tmp/oci-plugin/runtime oci-readonly-smoke
 claude --plugin-dir /tmp/oci-plugin
 ```
 

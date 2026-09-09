@@ -2,6 +2,8 @@
 
 import argparse
 import asyncio
+import configparser
+from pathlib import Path
 import json
 import os
 import sys
@@ -93,6 +95,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     ]
                     report["shape_only_tools"] = sorted(EXPECTED - {name for name, _ in calls})
                     report["live_scope"] = "D7 only; skipped tools have offline/schema coverage"
+                    report["shape_only_reasons"] = {name:("Tool summarizes metric datapoints; it does not expose D7 metric-metadata list." if name == "oci_metrics" else "No approved deployed-resource fixture in this smoke.") for name in report["shape_only_tools"]}
                     for name, arguments in calls:
                         response = await session.call_tool(name, arguments)
                         payload = response.structuredContent
@@ -118,6 +121,18 @@ async def run(live: bool, region: str, timeout: float) -> dict:
     return report
 
 
+def profile_region():
+    """Read only the selected profile's region; no signer or credential validation."""
+    config = configparser.ConfigParser(interpolation=None)
+    location = os.getenv('OCI_CONFIG_FILE') or os.getenv('OCI_CLI_CONFIG_FILE') or '~/.oci/config'
+    profile = os.getenv('OCI_CONFIG_PROFILE') or os.getenv('OCI_CLI_PROFILE') or 'DEFAULT'
+    try:
+        config.read(Path(location).expanduser())
+        return config.get(profile, 'region', fallback=None)
+    except (OSError, configparser.Error):
+        return None
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -129,7 +144,9 @@ def main():
     parser.add_argument("--timeout", type=float, default=180)
     options = parser.parse_args()
     if options.live and not options.region:
-        parser.error("--region (or OCI_REGION) is required for live reads")
+        options.region = profile_region()
+        if not options.region:
+            parser.error("Set --region, OCI_REGION, or a region in the selected profile")
     try:
         # Offline smoke uses a syntactically valid region only; it makes no OCI calls.
         report = asyncio.run(run(options.live, options.region or "us-ashburn-1", options.timeout))
