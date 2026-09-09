@@ -1,6 +1,6 @@
 {
   "mode": "live_read_only",
-  "validated_at": "2026-09-09T17:57:58.493293+00:00",
+  "validated_at": "2026-09-09T18:22:04.512217+00:00",
   "cli_version": "3.91.0",
   "sdk_version": "2.185.0",
   "region": "us-chicago-1",
@@ -1346,6 +1346,12 @@
       "status": "passed",
       "count": 1,
       "truncated": true
+    }
+  ],
+  "bootstrap_checks": [
+    {
+      "id": "namespace_discovery",
+      "status": "passed"
     }
   ]
 }

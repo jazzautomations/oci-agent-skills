@@ -1,6 +1,6 @@
 {
   "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
-  "description": "Scoped read-only CLI argv templates. Validation does not imply deployed service coverage. Replace placeholders locally; never publish account values.",
+  "description": "CLI argv templates, including inert mutation recipes. Shape validation grants no live authorization and does not imply deployed service coverage. Replace placeholders locally; never publish account values.",
   "examples": [
     {
       "id": "cli-auth-compartment-subtree",

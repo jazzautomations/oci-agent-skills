@@ -49,5 +49,5 @@ def artifacts(*, scripts=False, examples=False, root=ROOT):
                     raise ValueError('Duplicate example id: ' + row['id'])
                 ids.add(row['id'])
                 rows.append(row)
-        result['examples.json'] = json.dumps({'scope': scope, 'description': 'Scoped read-only CLI argv templates. Validation does not imply deployed service coverage. Replace placeholders locally; never publish account values.', 'examples': sorted(rows, key=lambda row: row['id'])}, indent=2) + '\n'
+        result['examples.json'] = json.dumps({'scope': scope, 'description': 'CLI argv templates, including inert mutation recipes. Shape validation grants no live authorization and does not imply deployed service coverage. Replace placeholders locally; never publish account values.', 'examples': sorted(rows, key=lambda row: row['id'])}, indent=2) + '\n'
     return result

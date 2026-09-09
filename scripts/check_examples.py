@@ -239,6 +239,29 @@ def run_live(argv, profile, region):
     return result
 
 
+def discover_namespace(profile, region):
+    """Return a private substitution and a public status; a failed read stays failed."""
+    environment = dict(os.environ)
+    environment.pop("OCI_CLI_AUTO_PROMPT", None)
+    try:
+        response = run_readonly(
+            ["--profile", profile, "--region", region, "--output", "json",
+             "--no-retry", "--connection-timeout", "5", "--read-timeout", "20",
+             "os", "ns", "get"],
+            capture_output=True, text=True, timeout=30, stdin=subprocess.DEVNULL,
+            env=environment,
+        )
+        if response.returncode:
+            return None, {"status": "failed", "error": "namespace_discovery_failed",
+                          "exit_code": response.returncode}
+        value = json.loads(response.stdout)["data"]
+        if not isinstance(value, str) or not value:
+            raise ValueError("invalid namespace response")
+        return value, {"status": "passed"}
+    except (ValueError, KeyError, TypeError, subprocess.TimeoutExpired, ReadOnlyRefusal):
+        return None, {"status": "failed", "error": "namespace_discovery_failed"}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -286,6 +309,7 @@ def main():
             )
             return 1
         substitutions = {}
+        bootstrap_checks = []
         if options.live:
             import oci
 
@@ -317,21 +341,13 @@ def main():
                 "END_TIME": str(end) + "T00:00:00Z",
             }
             # Namespace discovery is a single scoped read; never retain its value.
-            namespace = run_readonly(
-                ["--profile", options.profile, "--region", options.region,
-                 "--output", "json", "--no-retry", "os", "ns", "get"],
-                capture_output=True, text=True, timeout=30, stdin=subprocess.DEVNULL,
-            )
-            if namespace.returncode == 0:
-                try:
-                    value = json.loads(namespace.stdout)["data"]
-                    if isinstance(value, str):
-                        substitutions["NAMESPACE"] = value
-                except (ValueError, KeyError, TypeError):
-                    pass
+            namespace, status = discover_namespace(options.profile, options.region)
+            bootstrap_checks.append({"id": "namespace_discovery", **status})
+            if namespace is not None:
+                substitutions["NAMESPACE"] = namespace
             if os.getenv("OCI_SMOKE_NAMESPACE"):
                 substitutions["NAMESPACE"] = os.environ["OCI_SMOKE_NAMESPACE"]
-        failed = False
+        failed = any(row["status"] != "passed" for row in bootstrap_checks)
         seen = set()
         reports = []
         for example in examples:
@@ -380,6 +396,7 @@ def main():
                 "complete": not failed,
                 "scope_note": "Fixed read commands only. One page per call; no resource names, OCIDs, raw errors or credentials retained. Success validates a read API, not deployments or full inventory.",
                 "checks": reports,
+                "bootstrap_checks": bootstrap_checks,
             }
             options.report.parent.mkdir(parents=True, exist_ok=True)
             options.report.write_text(

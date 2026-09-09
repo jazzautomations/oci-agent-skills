@@ -15,7 +15,7 @@
     },
     {
       "path": "scripts/check_examples.py",
-      "sha256": "cdb600169dd86fc5f502ef1833168ad220bea7ef5fe0bc56578552e8153473cf",
+      "sha256": "893c29efa5bb71469913c383319ab294cde3983a308bd00fed68809e03ba3dd0",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -116,6 +116,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/release_gate.py",
+      "sha256": "6167cb5297a29c7c160a569e5d253f83deb1358626a983b5bf2e3b541709d373",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/update_baseline.py",
       "sha256": "0ecc8a1f5f2f6dfa4781d9fa9eea27eb0763bcf4c09389830b6eb83090bf4394",
       "mode": "read-only",
@@ -177,7 +183,7 @@
     },
     {
       "path": "scripts/inventory_artifacts.py",
-      "sha256": "ccb75b29884ad8858d0127369723be29a1ac6c313bd62e29c0c014413bdcc710",
+      "sha256": "b74f8dfafd21c577f52908b0f36c419494bf92726b12c128e84a436396d85df9",
       "mode": "read-only",
       "oci_calls": []
     },

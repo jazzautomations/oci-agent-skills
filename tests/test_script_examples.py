@@ -171,3 +171,17 @@ def test_global_options_are_validated_without_callbacks(cli):
     # Offline recognition grants no live authorization.
     with pytest.raises(ValueError):
         checker.live_argv(record, path, values, {}, {'PROFILE': 'DEFAULT'})
+
+
+def test_namespace_discovery_failure_is_retained(monkeypatch):
+    monkeypatch.setattr(checker, 'run_readonly', lambda *a, **kw: SimpleNamespace(returncode=1, stdout='', stderr='private raw service error'))
+    namespace, status = checker.discover_namespace('DEFAULT', 'us-chicago-1')
+    assert namespace is None and status['status'] == 'failed'
+    assert 'private' not in str(status)
+
+
+def test_namespace_discovery_keeps_value_out_of_public_report(monkeypatch):
+    monkeypatch.setattr(checker, 'run_readonly', lambda *a, **kw: SimpleNamespace(returncode=0, stdout='{"data":"private-example-namespace"}'))
+    namespace, status = checker.discover_namespace('DEFAULT', 'us-chicago-1')
+    assert namespace == 'private-example-namespace'
+    assert status == {'status':'passed'}

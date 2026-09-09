@@ -95,7 +95,7 @@ assert len(FORMS) == 60
 
 
 @pytest.mark.parametrize('command,expected', FORMS)
-def test_shell_forms(command, expected):
+def test_parse_shell_forms(command, expected):
     assert inspect_command(command) == expected
 
 
@@ -114,7 +114,7 @@ assert len(BYPASSES) == 20
 
 
 @pytest.mark.parametrize('command', BYPASSES)
-def test_opaque_shell_requires_review(command):
+def test_parse_opaque_shell_requires_review(command):
     assert inspect_command(command) != 'allow'
 
 

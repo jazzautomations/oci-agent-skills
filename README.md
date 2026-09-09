@@ -2,7 +2,7 @@
 
 33 skills for scoped OCI operations, Oracle databases, APEX and delivery workflows, with an advisory shell guard and 15 shipped tools (14 credentialed + oci_price_lookup, credential-free).
 
-**Release status:** the strict content and regression checks pass, but this branch is not release-ready. Offline description routing is below its required threshold, and model-backed task evaluation is unavailable. See [evaluations](docs/evals.md), [head-to-head results](docs/head-to-head.md) and the validation matrix (written by the final gate package).
+**Release status:** the strict content and regression checks pass, but this branch is not release-ready. Offline description routing is below its required threshold, and model-backed task evaluation is unavailable. See [evaluations](docs/evals.md), [head-to-head results](docs/head-to-head.md) and the [validation matrix](docs/validation-matrix.md).
 
 ## Install
 
