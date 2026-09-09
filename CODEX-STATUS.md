@@ -246,3 +246,13 @@ For live helper checks, set the documented profile, region and scope variables e
 - Global secret scanning, Git-history secret scanning, template comparison and manifest validation pass. Generated scripts/examples/guard binding and baseline retirement belong to W42a; final skill selection and installer expectations belong to the integration/release work. Generated catalogs, root license and other owners’ content were left unchanged.
 
 - Preserved the pre-existing uncommitted `references/auth-modes.md` edit byte-for-byte and the three oracle-autonomous-db `.handoff-*` files. They are not part of these commits.
+
+## Handoff 6 — Wave 3 (2026-09-09)
+
+### Package 1 — retire v1 and enforce strict gates
+
+Removed the 13 named v1 directories and fragments; 33 v2 skills remain. Retired all baseline exemptions and removed CI baseline arguments. Applied ERRATA N10/N11 budgets and routed the shared command cards. Supplied Apache-2.0 licenses consistently, preserving the original MIT notice in NOTICE. Installer excludes private handoff scratch files and includes NOTICE. Preserved the pre-existing auth-modes edit and untracked handoff files outside this commit.
+
+To satisfy the required green gate for this cleanup commit, pulled forward the mechanical W42a artifact regeneration and 33-skill test count; updated the catalog query regression to the surviving IAM skill. W42a still owns installed-Click example validation and repeat regeneration evidence.
+
+Validation: full root plus three skill regression suites passed (208 tests); all strict content linters, template, manifests, fence lint and history scan passed. Commands: `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests`; each `scripts/ci/check_{frontmatter,portable,refs,budget,no_secrets,licenses,scripts_readonly,template,manifests,history}.py` and `scripts/ci/lint_fences.py` through the same Python environment. No tenancy operations executed.

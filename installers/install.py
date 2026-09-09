@@ -24,6 +24,7 @@ PAYLOAD = (
     ".codex-plugin",
     ".mcp.json",
     "LICENSE",
+    "NOTICE",
     "README.md",
 )
 HOSTS = {
@@ -48,7 +49,7 @@ def ignored(name):
             "_TEMPLATE",
             "node_modules",
         }
-        or name.startswith(".env")
+        or name.startswith((".env", ".handoff-"))
         or name.endswith((".pyc", ".pem", ".key", ".tfstate", ".tfplan"))
     )
 

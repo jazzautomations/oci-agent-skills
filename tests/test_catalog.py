@@ -65,7 +65,7 @@ def test_duplicate_fragment_rejected(tmp_path):
 
 
 def test_required_query_json_and_miss():
-    for argv in [('required', 'compute instance list'), ('query', '--service', 'compute'), ('query', '--skill', 'oci-identity'), ('query', '--product', 'Compute')]:
+    for argv in [('required', 'compute instance list'), ('query', '--service', 'compute'), ('query', '--skill', 'oci-iam-policy'), ('query', '--product', 'Compute')]:
         result = subprocess.run([sys.executable, str(ROOT / 'scripts/catalog.py'), *argv, '--json'], capture_output=True, check=True)
         assert len(result.stdout) <= 400
         assert json.loads(result.stdout)['ok']

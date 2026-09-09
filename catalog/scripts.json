@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/ci/check_budget.py",
-      "sha256": "d803cc96200a36cc0d4ca5c6405645c33643d227522162f5b0d071c46b53977c",
+      "sha256": "33d0083dfeed852fdc2e65af7b33a1ecec516fc74788265fffd2ed1d9fb5668a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -184,6 +184,346 @@
     {
       "path": "scripts/redact.py",
       "sha256": "c2a26048a71892ffa6230837b8184b0a53c17aed9664b98e7c94c68c145bf080",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-bastion-access/scripts/bastion_session.sh",
+      "sha256": "edefa24283e44baed8c0f7f71b4e2c9d4eedf68be9bec44d81b2cddb00697c00",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-block-file-storage/scripts/orphan_volumes.sh",
+      "sha256": "039937c70041396ed98b3ec3556520592e117a5197f315ee32fadace055bff84",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cli-auth/scripts/list_all.sh",
+      "sha256": "2e884b703a1046107862008f7b2b93072348911a7eba7f8c1693b3e0de7c1c52",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cli-auth/scripts/whoami.sh",
+      "sha256": "b5c95bc804202326fd35345ce0d68c48fc259f8b0f2e83146f0271cee547d45a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-compute/scripts/capacity_probe.sh",
+      "sha256": "7244aafbb905c218ecfa5e0bedda25bb30937f2ee81fe8d8e60639cdc95de144",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-compute/scripts/resolve_image.sh",
+      "sha256": "df43ad7809a2474334f67eb90d2673fbd0df64bca0b6b3edaf2871ab55210ddf",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cost-analysis/scripts/cost_delta.sh",
+      "sha256": "9c50fcb9949046091ba15e107f7c03f20e98d694368847edb2867df3d2389e4c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cost-analysis/scripts/price.sh",
+      "sha256": "2c200d690656a0691c24d4586dd4ec9868e5686e900dccdb9828b74197c9472c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-devops-pipelines/scripts/devops_preflight.sh",
+      "sha256": "f7b2403b85046f414fb2e4075242fbfa79dd3965193073e5aaefbe0f27ad6a2a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-free-tier/scripts/freetier_audit.sh",
+      "sha256": "5809c9c3097444a61d2d929d267b8bf7325d8532027e0089b78f85c39e510dd3",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-generative-ai/scripts/chat_min.py",
+      "sha256": "7d5839f545505ef48c023692c34feff88d455fa54acbb849babfbccf5e8f3740",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-generative-ai/scripts/list_models.sh",
+      "sha256": "9d4cda90e19db73a28a943b49faec7ddc8958fff803b0f0c8dc51dcd9789a1d2",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-iam-policy/scripts/policy_lint.py",
+      "sha256": "1f18e987fa422036a5d7d51d1d22fcdad0997c81d85c1436c0dca6629b8ab903",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "policy",
+          "get",
+          "--policy-id",
+          "--query",
+          "data.statements"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-iam-policy/scripts/policy_lint.sh",
+      "sha256": "cd34f3b0f32723840af1baa0f802826ec8a23d6bc83c7b07d181ca53298665d7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-incident-triage/scripts/triage.py",
+      "sha256": "a003859a424cd071d4dd22f615d1fdeddf87991a63e7c5444e7ead52ebd1f74f",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-incident-triage/scripts/triage.sh",
+      "sha256": "f87ed91568ae0c2ebdc492935aa4710fe9b310d19631fc9976551f72a6b5ded7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-logging-audit/scripts/audit_window.py",
+      "sha256": "0219191458a927ed10b41a249df1eb0e4afc5fdd5c8971f86980546580308163",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-logging-audit/scripts/audit_window.sh",
+      "sha256": "9a8e73086102de65eefbd1ccb7c21a0e08971d7c9c42c0f358f459f70e81f1aa",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-monitoring-alarms/scripts/validate_mql.py",
+      "sha256": "9069b2880e61ca7b01ec805ec87ed728e15e322e1675029ce8f4b68a89420b50",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-monitoring-alarms/scripts/validate_mql.sh",
+      "sha256": "6749d35b4b5c30c5fce6f01f7228dba3ff17dd8590e4a3803899fa8303719f3c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-networking/scripts/merge_rules.py",
+      "sha256": "a714503444b027ce6028bb226ab087b2bd6bfa2f5a59b520808ab6a728af134d",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-object-storage/scripts/multipart_audit.sh",
+      "sha256": "7f4016fec4cd3e046bde34d20f29b612d87db56d66c9f55a76ae8e1ebf6dd78d",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-oke/scripts/oke_preflight.sh",
+      "sha256": "122d4421c0e8e9cdc1f65a37b6bca3d60a01118df68ef8f6275efc6297eb4300",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-sdk-patterns/scripts/fetch_spec.py",
+      "sha256": "25cf8e1d886e497e94c0ffaf17eb2ab30bea46a0d931811e3451d8c2d5c8aa06",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-sdk-patterns/scripts/verify_auth.py",
+      "sha256": "91ad81064bd7d3b7ea7094d49d532638ddd0733c5fd1ec848bebc254ac3d94d6",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "region",
+          "list",
+          "--query",
+          "length(data)"
+        ],
+        [
+          "iam",
+          "compartment",
+          "get",
+          "--compartment-id",
+          "--query",
+          "data.\"lifecycle-state\""
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-security-posture/scripts/posture.py",
+      "sha256": "2c534d3d0e945930185271182b890ce333009fd528950c1d77eb91e8e96684e0",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "user",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{n:name,mfa:\"is-mfa-activated\"}"
+        ],
+        [
+          "iam",
+          "user",
+          "api-key",
+          "list",
+          "--user-id",
+          "--query",
+          "data[].{c:\"time-created\"}"
+        ],
+        [
+          "iam",
+          "policy",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "100",
+          "--query",
+          "data[].{n:name,s:statements}"
+        ],
+        [
+          "os",
+          "ns",
+          "get",
+          "--query",
+          "data"
+        ],
+        [
+          "os",
+          "bucket",
+          "list",
+          "--compartment-id",
+          "--namespace-name",
+          "--limit",
+          "--query",
+          "data[].name"
+        ],
+        [
+          "os",
+          "bucket",
+          "get",
+          "--namespace-name",
+          "--bucket-name",
+          "--query",
+          "data.{p:\"public-access-type\",k:\"kms-key-id\"}"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-security-posture/scripts/posture.sh",
+      "sha256": "db207a28e5008da2028a172661332d8199e9d238f0f4ded17cb4f32e02d125ab",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-serverless/scripts/fn_preflight.sh",
+      "sha256": "595969e65397895e0d716968fa1085225e0db8c77599d9cd4a43323dc780a496",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-support-limits/scripts/capacity.sh",
+      "sha256": "dd31d8ec27558a48259449fd372c970d9966ee3543971be1f75a541e1d571bea",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-tenancy-governance/scripts/governance_audit.py",
+      "sha256": "da586f09b4ac1ae37716f2dac0c0fb4f5e7b765f8f242ddac858432010dc1fd2",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "compartment",
+          "list",
+          "--compartment-id",
+          "--compartment-id-in-subtree",
+          "true",
+          "--access-level",
+          "ANY",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ],
+        [
+          "iam",
+          "tag-namespace",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ],
+        [
+          "iam",
+          "tag",
+          "list-cost-tracking",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:join('.',[\"tag-namespace-name\",name])}"
+        ],
+        [
+          "iam",
+          "tag-default",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:\"tag-definition-name\",required:\"is-required\"}"
+        ],
+        [
+          "limits",
+          "quota",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-tenancy-governance/scripts/governance_audit.sh",
+      "sha256": "309a23f9595f2e62421486f26a3828f043656bfee727273bd59ead3fc3e199ce",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-terraform/scripts/plan_summary.py",
+      "sha256": "74e077f2b566a0944d0e97e746fede1c8fd93ee71a4b00e6ecf04181791b0ce0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-vault-certificates/scripts/cert_expiry.py",
+      "sha256": "6954ebd1f8e1f96e762bb372bacac37a0cb219c3263e97b9959f15fab1c04940",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-vault-certificates/scripts/cert_expiry.sh",
+      "sha256": "9360164ded1b85ad8004dd3033b44810b48e993efedbe2c4b58b3f1c98c65af0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oracle-autonomous-db/scripts/adb_preflight.sh",
+      "sha256": "918893bc0a713dc7a506ecd42996dfc44b4fb9cbf3774c596fee8886f34a66fb",
       "mode": "read-only",
       "oci_calls": []
     }

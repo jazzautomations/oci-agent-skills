@@ -30,7 +30,7 @@ def test_installed_copies_and_refs(installed):
     assert not (installed / "research").exists()
     for folder in (".agents", ".gemini", ".cursor", ".opencode"):
         skills = list((installed / folder / "skills").glob("*/SKILL.md"))
-        assert len(skills) == 16
+        assert len(skills) == 33
         import re
 
         for skill in skills:

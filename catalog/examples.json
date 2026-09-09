@@ -3,224 +3,39 @@
   "description": "Scoped read-only CLI argv templates. Validation does not imply deployed service coverage. Replace placeholders locally; never publish account values.",
   "examples": [
     {
-      "id": "ai-models",
-      "skill": "oci-ai-data",
-      "argv": [
-        "generative-ai",
-        "model-collection",
-        "list-models",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "compute-instances",
-      "skill": "oci-compute-network",
-      "argv": [
-        "compute",
-        "instance",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "cost-budgets",
-      "skill": "oci-finops",
-      "argv": [
-        "budgets",
-        "budget",
-        "budget",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "cost-usage",
-      "skill": "oci-finops",
-      "argv": [
-        "usage-api",
-        "usage-summary",
-        "request-summarized-usages",
-        "--tenant-id",
-        "${TENANCY_ID}",
-        "--granularity",
-        "DAILY",
-        "--time-usage-started",
-        "${START_TIME}",
-        "--time-usage-ended",
-        "${END_TIME}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "data-applications",
-      "skill": "oci-ai-data",
-      "argv": [
-        "data-flow",
-        "application",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "data-workspaces",
-      "skill": "oci-ai-data",
-      "argv": [
-        "data-integration",
-        "workspace",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "database-adb",
-      "skill": "oracle-database",
-      "argv": [
-        "db",
-        "autonomous-database",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "database-versions",
-      "skill": "oracle-database",
-      "argv": [
-        "db",
-        "version",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-artifacts",
-      "skill": "oci-devops",
-      "argv": [
-        "artifacts",
-        "container",
-        "repository",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-containers",
-      "skill": "oci-devops",
-      "argv": [
-        "container-instances",
-        "container-instance",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-functions",
-      "skill": "oci-devops",
-      "argv": [
-        "fn",
-        "application",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "devops-projects",
-      "skill": "oci-devops",
-      "argv": [
-        "devops",
-        "project",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "iac-jobs",
-      "skill": "oci-iac",
-      "argv": [
-        "resource-manager",
-        "job",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "iac-stacks",
-      "skill": "oci-iac",
-      "argv": [
-        "resource-manager",
-        "stack",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "identity-compartments",
-      "skill": "oci-identity",
+      "id": "cli-auth-compartment-subtree",
+      "skill": "oci-cli-auth",
+      "live": false,
       "argv": [
         "iam",
         "compartment",
         "list",
         "--compartment-id",
-        "${COMPARTMENT_ID}",
+        "${TENANCY_ID}",
+        "--compartment-id-in-subtree",
+        "true",
+        "--access-level",
+        "ANY",
         "--limit",
         "10"
       ]
     },
     {
-      "id": "identity-policy",
-      "skill": "oci-identity",
+      "id": "cli-auth-search-scope",
+      "skill": "oci-cli-auth",
       "argv": [
-        "iam",
-        "policy",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
+        "search",
+        "resource",
+        "structured-search",
+        "--query-text",
+        "query all resources where compartmentId = '${COMPARTMENT_ID}'",
         "--limit",
         "10"
       ]
     },
     {
-      "id": "identity-regions",
-      "skill": "oci-identity",
+      "id": "cli-auth-subscriptions",
+      "skill": "oci-cli-auth",
       "argv": [
         "iam",
         "region-subscription",
@@ -230,8 +45,4365 @@
       ]
     },
     {
-      "id": "limits-services",
-      "skill": "oci-finops",
+      "id": "cli-auth-work-requests",
+      "skill": "oci-cli-auth",
+      "live": false,
+      "argv": [
+        "work-requests",
+        "work-request",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-anomaly-monitors",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "budgets",
+        "cost-ad",
+        "cost-anomaly-monitor-collection",
+        "list-monitors",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-budgets",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "budgets",
+        "budget",
+        "budget",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-focus-reports",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "os",
+        "object",
+        "list",
+        "--namespace-name",
+        "bling",
+        "--bucket-name",
+        "${TENANCY_ID}",
+        "--prefix",
+        "FOCUS Reports",
+        "--limit",
+        "5"
+      ]
+    },
+    {
+      "id": "cost-analysis-saved-queries",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "usage-api",
+        "query",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-schedules",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "usage-api",
+        "schedule",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-tag-namespaces",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "iam",
+        "tag-namespace",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-usage-by-service",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "usage-api",
+        "usage-summary",
+        "request-summarized-usages",
+        "--tenant-id",
+        "${TENANCY_ID}",
+        "--time-usage-started",
+        "${START_TIME}",
+        "--time-usage-ended",
+        "${END_TIME}",
+        "--granularity",
+        "DAILY",
+        "--query-type",
+        "COST",
+        "--group-by",
+        "[\"service\"]",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "cost-analysis-usage-by-sku",
+      "skill": "oci-cost-analysis",
+      "argv": [
+        "usage-api",
+        "usage-summary",
+        "request-summarized-usages",
+        "--tenant-id",
+        "${TENANCY_ID}",
+        "--time-usage-started",
+        "${START_TIME}",
+        "--time-usage-ended",
+        "${END_TIME}",
+        "--granularity",
+        "MONTHLY",
+        "--group-by",
+        "[\"service\",\"skuName\"]",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "free-tier-allotment",
+      "skill": "oci-free-tier",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--name",
+        "standard-a1-core-count",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "free-tier-always-free-adb",
+      "skill": "oci-free-tier",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "free-tier-headroom",
+      "skill": "oci-free-tier",
+      "argv": [
+        "limits",
+        "resource-availability",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "vcn",
+        "--limit-name",
+        "vcn-count"
+      ]
+    },
+    {
+      "id": "free-tier-home-region",
+      "skill": "oci-free-tier",
+      "argv": [
+        "iam",
+        "region-subscription",
+        "list",
+        "--tenancy-id",
+        "${TENANCY_ID}"
+      ]
+    },
+    {
+      "id": "free-tier-idle-cpu",
+      "skill": "oci-free-tier",
+      "argv": [
+        "monitoring",
+        "metric-data",
+        "summarize-metrics-data",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--namespace",
+        "oci_computeagent",
+        "--query-text",
+        "CpuUtilization[1d].percentile(0.95)",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}"
+      ]
+    },
+    {
+      "id": "free-tier-limit-scope",
+      "skill": "oci-free-tier",
+      "argv": [
+        "limits",
+        "definition",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--name",
+        "standard-a1-core-count",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "free-tier-object-cap",
+      "skill": "oci-free-tier",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "object-storage",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "free-tier-offered-shapes",
+      "skill": "oci-free-tier",
+      "argv": [
+        "compute",
+        "shape",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "governance-budgets",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "budgets",
+        "budget",
+        "budget",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "governance-compartment-subtree",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "iam",
+        "compartment",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--compartment-id-in-subtree",
+        "true",
+        "--access-level",
+        "ANY",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "governance-cost-tracking-tags",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "iam",
+        "tag",
+        "list-cost-tracking",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "governance-quotas",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "limits",
+        "quota",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "governance-rules",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "governance-rules-control-plane",
+        "governance-rule",
+        "governance-rule",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "governance-tag-defaults",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "iam",
+        "tag-default",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "governance-tag-namespaces",
+      "skill": "oci-tenancy-governance",
+      "live": true,
+      "argv": [
+        "iam",
+        "tag-namespace",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "nav-email-endpoints",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "email",
+        "configuration",
+        "get-email",
+        "--compartment-id",
+        "${COMPARTMENT_ID}"
+      ]
+    },
+    {
+      "id": "nav-email-limits",
+      "skill": "oci-navigator",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "email-delivery",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "nav-email-senders",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "email",
+        "sender",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "nav-email-suppressions",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "email",
+        "suppression",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "nav-envelope-fusion",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "fusion-apps",
+        "fusion-environment-family",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "nav-marketplace-listings",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "marketplace",
+        "listing",
+        "list",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "nav-region-subscriptions",
+      "skill": "oci-navigator",
+      "argv": [
+        "iam",
+        "region-subscription",
+        "list",
+        "--tenancy-id",
+        "${TENANCY_ID}"
+      ]
+    },
+    {
+      "id": "nav-regions-in-realm",
+      "skill": "oci-navigator",
+      "live": false,
+      "argv": [
+        "iam",
+        "region",
+        "list"
+      ]
+    },
+    {
+      "id": "nav-service-known",
+      "skill": "oci-navigator",
+      "argv": [
+        "limits",
+        "service",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "nav-tenancy-holdings",
+      "skill": "oci-navigator",
+      "argv": [
+        "search",
+        "resource",
+        "structured-search",
+        "--query-text",
+        "query all resources where compartmentId = '${COMPARTMENT_ID}'",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "oci-ai-services-1",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-vision",
+        "project-collection",
+        "list-projects",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-2",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-vision",
+        "model-collection",
+        "list-models",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-3",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai",
+        "language",
+        "project",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-4",
+      "skill": "oci-ai-services",
+      "argv": [
+        "speech",
+        "transcription-job",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-5",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-document",
+        "project",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-bastion-access-1",
+      "skill": "oci-bastion-access",
+      "argv": [
+        "bastion",
+        "bastion",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-bastion-access-2",
+      "skill": "oci-bastion-access",
+      "argv": [
+        "bastion",
+        "bastion",
+        "get",
+        "--bastion-id",
+        "${BASTION_ID}",
+        "--query",
+        "data.{subnet:\"target-subnet-id\",allowed:\"client-cidr-block-allow-list\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-bastion-access-3",
+      "skill": "oci-bastion-access",
+      "argv": [
+        "bastion",
+        "session",
+        "list",
+        "--bastion-id",
+        "${BASTION_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",ttl:\"session-ttl-in-seconds\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-bastion-access-4",
+      "skill": "oci-bastion-access",
+      "argv": [
+        "bastion",
+        "session",
+        "get",
+        "--session-id",
+        "${SESSION_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\",ttl:\"session-ttl-in-seconds\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-bastion-access-5",
+      "skill": "oci-bastion-access",
+      "argv": [
+        "instance-agent",
+        "plugin",
+        "get",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--instanceagent-id",
+        "${INSTANCE_ID}",
+        "--plugin-name",
+        "Bastion",
+        "--query",
+        "data.{name:name,status:status}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-1",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "bv",
+        "volume",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,size:\"size-in-gbs\",vpu:\"vpus-per-gb\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-2",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "bv",
+        "boot-volume",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-3",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "compute",
+        "volume-attachment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{volume:\"volume-id\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-4",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "bv",
+        "backup",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,source:\"volume-id\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-5",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "fs",
+        "mount-target",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,exports:\"export-set-id\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-6",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "bv",
+        "volume",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}",
+        "--limit",
+        "100",
+        "--no-retry"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-7",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "compute",
+        "volume-attachment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--query",
+        "data[].{volume:\"volume-id\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}",
+        "--limit",
+        "100",
+        "--no-retry"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-8",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "bv",
+        "boot-volume",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}",
+        "--limit",
+        "100",
+        "--no-retry"
+      ]
+    },
+    {
+      "id": "oci-block-file-storage-9",
+      "skill": "oci-block-file-storage",
+      "argv": [
+        "compute",
+        "boot-volume-attachment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--availability-domain",
+        "${AD}",
+        "--query",
+        "data[].{volume:\"boot-volume-id\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}",
+        "--limit",
+        "100",
+        "--no-retry"
+      ]
+    },
+    {
+      "id": "oci-cli-auth-reference-1",
+      "skill": "oci-cli-auth",
+      "live": false,
+      "argv": [
+        "iam",
+        "user",
+        "get",
+        "--user-id",
+        "${USER_ID}",
+        "--query",
+        "data.{name:name,mfa:\"is-mfa-activated\"}"
+      ]
+    },
+    {
+      "id": "oci-compute-1",
+      "skill": "oci-compute",
+      "argv": [
+        "iam",
+        "availability-domain",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--all",
+        "--query",
+        "data[].name",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-2",
+      "skill": "oci-compute",
+      "argv": [
+        "compute",
+        "shape",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{shape:shape,ocpu:\"ocpu-options\",memory:\"memory-options\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-3",
+      "skill": "oci-compute",
+      "argv": [
+        "compute",
+        "image",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--operating-system",
+        "Oracle Linux",
+        "--operating-system-version",
+        "9",
+        "--shape",
+        "${SHAPE}",
+        "--sort-by",
+        "TIMECREATED",
+        "--sort-order",
+        "DESC",
+        "--limit",
+        "1",
+        "--query",
+        "data[].{id:id,name:\"display-name\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-4",
+      "skill": "oci-compute",
+      "argv": [
+        "compute",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",shape:shape}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-5",
+      "skill": "oci-compute",
+      "argv": [
+        "compute-management",
+        "instance-pool",
+        "list-instances",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--instance-pool-id",
+        "${POOL_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:state}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-6",
+      "skill": "oci-compute",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{name:name,value:value,ad:\"availability-domain\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-compute-7",
+      "skill": "oci-compute",
+      "argv": [
+        "limits",
+        "resource-availability",
+        "get",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--service-name",
+        "compute",
+        "--limit-name",
+        "${LIMIT_NAME}",
+        "--availability-domain",
+        "${AD}",
+        "--query",
+        "data.{available:available,used:used}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-cost-analysis-reference-1",
+      "skill": "oci-cost-analysis",
+      "live": false,
+      "argv": [
+        "budgets",
+        "budget",
+        "alert-rule",
+        "list",
+        "--budget-id",
+        "${BUDGET_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].[type,threshold,\"threshold-type\"]",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-cost-analysis-reference-2",
+      "skill": "oci-cost-analysis",
+      "live": false,
+      "argv": [
+        "os",
+        "object",
+        "get",
+        "--namespace-name",
+        "bling",
+        "--bucket-name",
+        "${TENANCY_ID}",
+        "--name",
+        "${OBJECT_NAME}",
+        "--file",
+        "./cost.csv.gz",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-1",
+      "skill": "oci-data-platform",
+      "argv": [
+        "streaming",
+        "admin",
+        "stream",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,endpoint:\"messages-endpoint\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-2",
+      "skill": "oci-data-platform",
+      "argv": [
+        "queue",
+        "queue-admin",
+        "queue",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-3",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-flow",
+        "application",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,spark:\"spark-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-4",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-integration",
+        "workspace",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-5",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-science",
+        "notebook-session",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-6",
+      "skill": "oci-data-platform",
+      "argv": [
+        "bds",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-7",
+      "skill": "oci-data-platform",
+      "argv": [
+        "goldengate",
+        "deployment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-8",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-catalog",
+        "catalog",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-devops-pipelines-1",
+      "skill": "oci-devops-pipelines",
+      "argv": [
+        "devops",
+        "project",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,name:name,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-devops-pipelines-2",
+      "skill": "oci-devops-pipelines",
+      "argv": [
+        "devops",
+        "build-pipeline",
+        "list",
+        "--project-id",
+        "${PROJECT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,name:\"display-name\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-devops-pipelines-3",
+      "skill": "oci-devops-pipelines",
+      "argv": [
+        "devops",
+        "build-run",
+        "get",
+        "--build-run-id",
+        "${BUILD_RUN_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\",progress:\"build-run-progress\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-devops-pipelines-4",
+      "skill": "oci-devops-pipelines",
+      "argv": [
+        "devops",
+        "deployment",
+        "list",
+        "--pipeline-id",
+        "${DEPLOY_PIPELINE_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-devops-pipelines-5",
+      "skill": "oci-devops-pipelines",
+      "argv": [
+        "artifacts",
+        "container",
+        "repository",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,name:\"display-name\",public:\"is-public\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-1",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-protection-group",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,role:role}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-2",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-plan",
+        "list",
+        "--dr-protection-group-id",
+        "${DR_GROUP_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,type:\"type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-3",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-plan-execution",
+        "list",
+        "--dr-protection-group-id",
+        "${DR_GROUP_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-4",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "bv",
+        "backup",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-5",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "bv",
+        "boot-volume-backup",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-6",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "fs",
+        "snapshot",
+        "list",
+        "--file-system-id",
+        "${FILE_SYSTEM_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-7",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "iam",
+        "availability-domain",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--all",
+        "--query",
+        "data[].name",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-8",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "compute",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{ad:\"availability-domain\",fd:\"fault-domain\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-1",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "model-collection",
+        "list-models",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,cap:capabilities,retired:\"time-deprecated\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-2",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "endpoint-collection",
+        "list-endpoints",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-3",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "dedicated-ai-cluster-collection",
+        "list-dedicated-ai-clusters",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-4",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai-agent",
+        "agent",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-5",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai-agent",
+        "knowledge-base",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-iam-policy-1",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "iam",
+        "domain",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{name:\"display-name\",url:url}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-2",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "iam",
+        "region-subscription",
+        "list",
+        "--tenancy-id",
+        "${TENANCY_ID}",
+        "--all",
+        "--query",
+        "data[?\"is-home-region\"].{r:\"region-name\",k:\"region-key\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-3",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "iam",
+        "policy",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data[].{n:name,at:\"compartment-id\",st:statements}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-4",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "iam",
+        "dynamic-group",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data[].{n:name,rule:\"matching-rule\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-5",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "identity-domains",
+        "identity-providers",
+        "list",
+        "--endpoint",
+        "${DOMAIN_URL}",
+        "--all",
+        "--query",
+        "data.resources[].{n:\"partner-name\",e:enabled}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-6",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "identity-domains",
+        "groups",
+        "list",
+        "--endpoint",
+        "${DOMAIN_URL}",
+        "--limit",
+        "50",
+        "--query",
+        "data.resources[].{n:\"display-name\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-iam-policy-7",
+      "skill": "oci-iam-policy",
+      "argv": [
+        "iam",
+        "policy",
+        "get",
+        "--policy-id",
+        "${POLICY_ID}",
+        "--query",
+        "data.statements",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ],
+      "live": true
+    },
+    {
+      "id": "oci-incident-triage-1",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "monitoring",
+        "alarm-status",
+        "list-alarms-status",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-10",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "work-requests",
+        "work-request",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-11",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "work-requests",
+        "work-request-error",
+        "list",
+        "--work-request-id",
+        "${WORK_REQUEST_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-12",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit",
+        "200"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-13",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "limits",
+        "resource-availability",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit-name",
+        "standard-e4-core-count",
+        "--availability-domain",
+        "${AVAILABILITY_DOMAIN}"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-14",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "lb",
+        "load-balancer-health",
+        "get",
+        "--load-balancer-id",
+        "${LOAD_BALANCER_ID}"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-15",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "support",
+        "incident",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-2",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "audit",
+        "event",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}",
+        "--all"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-3",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "cloud-guard",
+        "problem",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--lifecycle-detail",
+        "OPEN",
+        "--risk-level",
+        "CRITICAL",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-4",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "monitoring",
+        "metric",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "200"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-5",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "monitoring",
+        "metric-data",
+        "summarize-metrics-data",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--namespace",
+        "oci_computeagent",
+        "--query-text",
+        "CpuUtilization[5m].groupBy(resourceId).mean()",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-6",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "logging-search",
+        "search-logs",
+        "--search-query",
+        "search \"${COMPARTMENT_ID}\" | where \"data.level\" = 'ERROR' | sort by datetime desc",
+        "--time-start",
+        "${START_TIME}",
+        "--time-end",
+        "${END_TIME}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-7",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "compute",
+        "instance",
+        "get",
+        "--instance-id",
+        "${INSTANCE_ID}"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-8",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "compute",
+        "instance",
+        "list-vnics",
+        "--instance-id",
+        "${INSTANCE_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "oci-incident-triage-9",
+      "skill": "oci-incident-triage",
+      "argv": [
+        "compute",
+        "instance-maintenance-event",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-1",
+      "skill": "oci-logging-audit",
+      "argv": [
+        "logging",
+        "log-group",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-2",
+      "skill": "oci-logging-audit",
+      "argv": [
+        "logging-search",
+        "search-logs",
+        "--search-query",
+        "search \"${COMPARTMENT_ID}\" | sort by datetime desc",
+        "--time-start",
+        "${START_TIME}",
+        "--time-end",
+        "${END_TIME}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-3",
+      "skill": "oci-logging-audit",
+      "argv": [
+        "logging-search",
+        "search-logs",
+        "--search-query",
+        "search \"${COMPARTMENT_ID}\" | summarize count() by \"data.eventName\"",
+        "--time-start",
+        "${START_TIME}",
+        "--time-end",
+        "${END_TIME}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-4",
+      "skill": "oci-logging-audit",
+      "argv": [
+        "audit",
+        "event",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}",
+        "--all"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-reference-1",
+      "skill": "oci-logging-audit",
+      "live": false,
+      "argv": [
+        "logging",
+        "log",
+        "list",
+        "--log-group-id",
+        "${LOG_GROUP_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{n:\"display-name\",t:\"log-type\",s:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-reference-2",
+      "skill": "oci-logging-audit",
+      "live": false,
+      "argv": [
+        "sch",
+        "service-connector",
+        "list",
+        "--compartment-id",
+        "<c>",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "oci-logging-audit-reference-3",
+      "skill": "oci-logging-audit",
+      "live": false,
+      "argv": [
+        "log-analytics",
+        "namespace",
+        "list",
+        "--compartment-id",
+        "<tenancy>",
+        "--all"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-1",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "cloud-migrations",
+        "migration",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-2",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "cloud-bridge",
+        "inventory",
+        "inventory",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-3",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "database-migration",
+        "migration",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-4",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "os-management-hub",
+        "managed-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:status}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-5",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "jms",
+        "fleet",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-6",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "fleet-apps-management",
+        "fleet-collection",
+        "list-fleets",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-7",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "fleet-software-update",
+        "fsu-collection-summary",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-8",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "ocvs",
+        "sddc",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-1",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "monitoring",
+        "metric",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{namespace:namespace,name:name}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-2",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "monitoring",
+        "metric-data",
+        "summarize-metrics-data",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--namespace",
+        "${METRIC_NAMESPACE}",
+        "--query-text",
+        "${MQL}",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}",
+        "--query",
+        "data[].{points:\"aggregated-datapoints\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-3",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "monitoring",
+        "alarm",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,enabled:\"is-enabled\",severity:severity}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-4",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "ons",
+        "subscription",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--topic-id",
+        "${TOPIC_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{protocol:protocol,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-5",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "stack-monitoring",
+        "resource",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,status:status}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-monitoring-alarms-6",
+      "skill": "oci-monitoring-alarms",
+      "argv": [
+        "monitoring",
+        "metric-data",
+        "summarize-metrics-data",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--namespace",
+        "${METRIC_NAMESPACE}",
+        "--query-text",
+        "${MQL}",
+        "--start-time",
+        "${START_TIME}",
+        "--end-time",
+        "${END_TIME}",
+        "--query",
+        "data[].{points:\"aggregated-datapoints\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}",
+        "--no-retry"
+      ]
+    },
+    {
+      "id": "oci-networking-1",
+      "skill": "oci-networking",
+      "argv": [
+        "network",
+        "vcn",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,cidrs:\"cidr-blocks\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-networking-2",
+      "skill": "oci-networking",
+      "argv": [
+        "network",
+        "subnet",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,vcn:\"vcn-id\",route:\"route-table-id\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-networking-3",
+      "skill": "oci-networking",
+      "argv": [
+        "network",
+        "nsg",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,vcn:\"vcn-id\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-networking-4",
+      "skill": "oci-networking",
+      "argv": [
+        "network",
+        "nsg",
+        "rules",
+        "list",
+        "--nsg-id",
+        "${NSG_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,direction:direction,source:source,protocol:protocol}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-networking-5",
+      "skill": "oci-networking",
+      "argv": [
+        "lb",
+        "backend-set-health",
+        "get",
+        "--load-balancer-id",
+        "${LB_ID}",
+        "--backend-set-name",
+        "${BACKEND_SET}",
+        "--query",
+        "data.{status:status,critical:\"critical-state-backend-names\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-object-storage-1",
+      "skill": "oci-object-storage",
+      "argv": [
+        "os",
+        "ns",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--query",
+        "data",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-object-storage-2",
+      "skill": "oci-object-storage",
+      "argv": [
+        "os",
+        "bucket",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--namespace-name",
+        "${NAMESPACE}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{name:name,created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-object-storage-3",
+      "skill": "oci-object-storage",
+      "argv": [
+        "os",
+        "object",
+        "list",
+        "--namespace-name",
+        "${NAMESPACE}",
+        "--bucket-name",
+        "${BUCKET}",
+        "--prefix",
+        "${PREFIX}",
+        "--limit",
+        "20",
+        "--query",
+        "{items:data[].{name:name,size:size},next:\"next-start-with\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-object-storage-4",
+      "skill": "oci-object-storage",
+      "argv": [
+        "os",
+        "multipart",
+        "list",
+        "--namespace-name",
+        "${NAMESPACE}",
+        "--bucket-name",
+        "${BUCKET}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{object:object,id:\"upload-id\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-object-storage-5",
+      "skill": "oci-object-storage",
+      "argv": [
+        "os",
+        "object-lifecycle-policy",
+        "get",
+        "--namespace-name",
+        "${NAMESPACE}",
+        "--bucket-name",
+        "${BUCKET}",
+        "--query",
+        "data.items",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-1",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "cluster-options",
+        "get",
+        "--cluster-option-id",
+        "all",
+        "--query",
+        "data.\"kubernetes-versions\"",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-2",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "node-pool-options",
+        "get",
+        "--node-pool-option-id",
+        "all",
+        "--query",
+        "data.{shapes:shapes,sources:sources}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-3",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "cluster",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,type:type,version:\"kubernetes-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-4",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "node-pool",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--cluster-id",
+        "${CLUSTER_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,version:\"kubernetes-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-5",
+      "skill": "oci-oke",
+      "argv": [
+        "ce",
+        "work-request-error",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--work-request-id",
+        "${WORK_REQUEST_ID}",
+        "--all",
+        "--query",
+        "data[].{code:code,message:message}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-oke-6",
+      "skill": "oci-oke",
+      "argv": [
+        "limits",
+        "value",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "container-engine",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{name:name,value:value}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-1",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "cloud-guard",
+        "configuration",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-10",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "host",
+        "scan",
+        "result",
+        "cis-benchmark",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{i:\"instance-id\",f:\"failed-count\",t:\"time-finished\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-11",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "container",
+        "scan",
+        "result",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{r:\"repository\",sev:\"highest-problem-severity\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-12",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "data-safe",
+        "target-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--compartment-id-in-subtree",
+        "true",
+        "--limit",
+        "50",
+        "--query",
+        "data[].{n:\"display-name\",t:\"database-type\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-13",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "data-safe",
+        "security-assessment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data[].{n:\"display-name\",t:\"triggered-by\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-14",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "data-safe",
+        "user-assessment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data[].{n:\"display-name\",t:\"triggered-by\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-15",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "data-safe",
+        "audit-trail",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{t:\"target-id\",s:status,st:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-16",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "waf",
+        "web-app-firewall-policy",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-17",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "waf",
+        "web-app-firewall",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",lb:\"load-balancer-id\",p:\"web-app-firewall-policy-id\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-18",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "waf",
+        "protection-capability",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{k:key,v:version,n:\"display-name\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-19",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "network-firewall",
+        "network-firewall",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",s:\"lifecycle-state\",ip:\"ipv4-address\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-2",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "cloud-guard",
+        "problem",
+        "list-problem-histories",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--problem-id",
+        "${PROBLEM_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{t:\"time-created\",a:\"actor-type\",s:\"delta-status\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-20",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "network-firewall",
+        "network-firewall-policy",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-21",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "network-firewall",
+        "security-rule",
+        "list",
+        "--network-firewall-policy-id",
+        "${NETWORK_FIREWALL_POLICY_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:name,a:action}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-22",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "zpr",
+        "zpr-policy",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:name,s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-23",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "zpr",
+        "configuration",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--query",
+        "data.{s:\"zpr-status\",t:\"time-created\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-3",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "cloud-guard",
+        "target",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{n:\"display-name\",c:\"target-resource-id\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-4",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "cloud-guard",
+        "detector-recipe",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{n:\"display-name\",o:owner}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-5",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "cloud-guard",
+        "security-zone",
+        "get",
+        "--security-zone-id",
+        "${SECURITY_ZONE_ID}",
+        "--query",
+        "data.{n:\"display-name\",c:\"compartment-id\",r:\"security-zone-recipe-id\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-6",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "host",
+        "vulnerability",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--severity",
+        "CRITICAL",
+        "--query",
+        "data.items[].{cve:\"cve-reference\",sev:severity,hosts:\"host-count\",t:\"time-last-detected\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-7",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "host",
+        "vulnerability",
+        "list-impacted-hosts",
+        "--host-vulnerability-id",
+        "${HOST_VULNERABILITY_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{i:\"instance-id\",s:severity}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-8",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "host",
+        "scan",
+        "target",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",r:\"host-scan-recipe-id\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-security-posture-reference-9",
+      "skill": "oci-security-posture",
+      "live": false,
+      "argv": [
+        "vulnerability-scanning",
+        "host",
+        "scan",
+        "recipe",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "50",
+        "--query",
+        "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+      ]
+    },
+    {
+      "id": "oci-serverless-1",
+      "skill": "oci-serverless",
+      "argv": [
+        "fn",
+        "application",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,architecture:shape,subnets:\"subnet-ids\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-serverless-2",
+      "skill": "oci-serverless",
+      "argv": [
+        "fn",
+        "function",
+        "list",
+        "--application-id",
+        "${APPLICATION_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,memory:\"memory-in-mbs\",timeout:\"timeout-in-seconds\",digest:\"image-digest\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-serverless-3",
+      "skill": "oci-serverless",
+      "argv": [
+        "container-instances",
+        "container-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,shape:shape,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-serverless-4",
+      "skill": "oci-serverless",
+      "argv": [
+        "container-instances",
+        "container-instance",
+        "list-shapes",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{name:name,ocpus:\"ocpu-options\",memory:\"memory-options\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-serverless-5",
+      "skill": "oci-serverless",
+      "argv": [
+        "api-gateway",
+        "gateway",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,type:\"endpoint-type\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-support-limits-reference-1",
+      "skill": "oci-support-limits",
+      "live": false,
+      "argv": [
+        "limits-increase",
+        "limits-increase-request",
+        "get",
+        "--id",
+        "${REQUEST_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",items:\"limits-increase-item-requests\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-support-limits-reference-2",
+      "skill": "oci-support-limits",
+      "live": false,
+      "argv": [
+        "capacity-management",
+        "occ-availability-catalog-collection",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,ns:namespace,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-support-limits-reference-3",
+      "skill": "oci-support-limits",
+      "live": false,
+      "argv": [
+        "capacity-management",
+        "occ-availability-collection",
+        "list",
+        "--occ-availability-catalog-id",
+        "${CATALOG_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{shape:\"resource-name\",date:\"date-final-customer-order\",qty:\"available-quantity\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-support-limits-reference-4",
+      "skill": "oci-support-limits",
+      "live": false,
+      "argv": [
+        "capacity-management",
+        "occ-overview-collection",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--namespace",
+        "COMPUTE",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[]",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-support-limits-reference-5",
+      "skill": "oci-support-limits",
+      "live": false,
+      "argv": [
+        "support",
+        "incident",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--ocid",
+        "${USER_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{key:key,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-terraform-1",
+      "skill": "oci-terraform",
+      "argv": [
+        "resource-manager",
+        "stack",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,version:\"terraform-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-terraform-2",
+      "skill": "oci-terraform",
+      "argv": [
+        "resource-manager",
+        "job",
+        "list",
+        "--stack-id",
+        "${STACK_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,operation:operation,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-terraform-3",
+      "skill": "oci-terraform",
+      "argv": [
+        "resource-manager",
+        "job",
+        "get",
+        "--job-id",
+        "${JOB_ID}",
+        "--query",
+        "data.{id:id,operation:operation,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-terraform-4",
+      "skill": "oci-terraform",
+      "argv": [
+        "resource-manager",
+        "stack",
+        "list-terraform-versions",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--all",
+        "--query",
+        "data.items[].{name:name,default:\"is-default\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-terraform-5",
+      "skill": "oci-terraform",
+      "argv": [
+        "resource-manager",
+        "stack",
+        "list-resource-discovery-services",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--all",
+        "--query",
+        "data.items[].{name:name,scope:\"discovery-scope\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-1",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "kms",
+        "management",
+        "vault",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,management:\"management-endpoint\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-2",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "kms",
+        "management",
+        "key",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--endpoint",
+        "${MGMT_ENDPOINT}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,mode:\"protection-mode\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-3",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "vault",
+        "secret",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-4",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "certs-mgmt",
+        "certificate",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--sort-by",
+        "EXPIRATIONDATE",
+        "--sort-order",
+        "ASC",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,expires:\"current-version-summary\".validity.\"time-of-validity-not-after\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-5",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "certs-mgmt",
+        "certificate-authority",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-vault-certificates-6",
+      "skill": "oci-vault-certificates",
+      "argv": [
+        "certs-mgmt",
+        "certificate",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--sort-by",
+        "EXPIRATIONDATE",
+        "--sort-order",
+        "ASC",
+        "--limit",
+        "100",
+        "--query",
+        "data.items[].{expires:\"current-version-summary\".validity.\"time-of-validity-not-after\"}",
+        "--no-retry",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-1",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,workload:\"db-workload\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-2",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"apex-details\"",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-3",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"connection-urls\".{apex:\"apex-url\",ords:\"ords-url\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-4",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"db-tools-details\"[].{name:name,enabled:\"is-enabled\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-5",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",free:\"is-free-tier\",acl:\"whitelisted-ips\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-1",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",version:\"db-version\",free:\"is-free-tier\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-2",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",mtls:\"is-mtls-connection-required\",acl:\"whitelisted-ips\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-3",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-db-version",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{version:version,workload:\"db-workload\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-4",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database-backup",
+        "list",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-5",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database-character-sets",
+        "list",
+        "--is-shared",
+        "true",
+        "--all",
+        "--query",
+        "data[].{name:name}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-1",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "system",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-2",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "cloud-exa-infra",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-3",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "mysql",
+        "db-system",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-4",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "psql",
+        "db-system-collection",
+        "list-db-systems",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-5",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-6",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list-awr-dbs",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-7",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "opsi",
+        "database-insights",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-8",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "pluggable-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-1",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "connection",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-2",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "connection",
+        "get",
+        "--connection-id",
+        "${CONNECTION_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-3",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "private-endpoint",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-4",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "private-endpoint",
+        "get",
+        "--private-endpoint-id",
+        "${PRIVATE_ENDPOINT_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-5",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",mtls:\"is-mtls-connection-required\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-1",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,version:\"db-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-2",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{version:\"db-version\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-3",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-db-version",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].version",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-4",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "get",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--query",
+        "data.{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-5",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list-database-parameters",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--name",
+        "vector",
+        "--all",
+        "--query",
+        "data.items[].{name:name,value:value}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-1",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "fusion-apps",
+        "fusion-environment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-2",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "integration",
+        "integration-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-3",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "analytics",
+        "analytics-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-4",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "visual-builder",
+        "vb-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-5",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-6",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "management",
+        "skill",
+        "list",
+        "--oda-instance-id",
+        "${ODA_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,version:version}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-7",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "management",
+        "channel",
+        "list",
+        "--oda-instance-id",
+        "${ODA_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-8",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "wlms",
+        "wls-domain",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "posture-broad-policies",
+      "skill": "oci-security-posture",
+      "argv": [
+        "iam",
+        "policy",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "posture-bucket-exposure",
+      "skill": "oci-security-posture",
+      "argv": [
+        "os",
+        "bucket",
+        "get",
+        "--namespace-name",
+        "${NAMESPACE}",
+        "--bucket-name",
+        "${BUCKET}"
+      ]
+    },
+    {
+      "id": "posture-cloud-guard-problems",
+      "skill": "oci-security-posture",
+      "argv": [
+        "cloud-guard",
+        "problem",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--compartment-id-in-subtree",
+        "true",
+        "--lifecycle-detail",
+        "OPEN",
+        "--risk-level",
+        "CRITICAL",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "posture-inventory",
+      "skill": "oci-security-posture",
+      "argv": [
+        "search",
+        "resource",
+        "structured-search",
+        "--query-text",
+        "query bucket, securitylist, networksecuritygroup resources where compartmentId = '${COMPARTMENT_ID}'",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "posture-open-ingress",
+      "skill": "oci-security-posture",
+      "argv": [
+        "network",
+        "security-list",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "100"
+      ]
+    },
+    {
+      "id": "posture-users-without-mfa",
+      "skill": "oci-security-posture",
+      "argv": [
+        "iam",
+        "user",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "sdk-compartment-walk",
+      "skill": "oci-sdk-patterns",
+      "live": false,
+      "argv": [
+        "iam",
+        "compartment",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--compartment-id-in-subtree",
+        "true",
+        "--access-level",
+        "ACCESSIBLE",
+        "--lifecycle-state",
+        "ACTIVE",
+        "--limit",
+        "50"
+      ]
+    },
+    {
+      "id": "sdk-model-discovery",
+      "skill": "oci-sdk-patterns",
+      "argv": [
+        "generative-ai",
+        "model-collection",
+        "list-models",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "sdk-region-subscriptions",
+      "skill": "oci-sdk-patterns",
+      "argv": [
+        "iam",
+        "region-subscription",
+        "list",
+        "--tenancy-id",
+        "${TENANCY_ID}"
+      ]
+    },
+    {
+      "id": "sdk-regions",
+      "skill": "oci-sdk-patterns",
+      "live": false,
+      "argv": [
+        "iam",
+        "region",
+        "list"
+      ]
+    },
+    {
+      "id": "sdk-work-requests",
+      "skill": "oci-sdk-patterns",
+      "live": false,
+      "argv": [
+        "work-requests",
+        "work-request",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20"
+      ]
+    },
+    {
+      "id": "support-limits-availability",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits",
+        "resource-availability",
+        "get",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit-name",
+        "custom-image-count"
+      ]
+    },
+    {
+      "id": "support-limits-definitions",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits",
+        "definition",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-increase-items",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits-increase",
+        "item",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-increase-questions",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits-increase",
+        "question",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--service-name",
+        "compute",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-increase-requests",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits-increase",
+        "limits-increase-request",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-occ-capacity-requests",
+      "skill": "oci-support-limits",
+      "argv": [
+        "capacity-management",
+        "occ-capacity-request-collection",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-occ-customer-groups",
+      "skill": "oci-support-limits",
+      "argv": [
+        "capacity-management",
+        "occ-customer-group-collection",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-quotas",
+      "skill": "oci-support-limits",
+      "argv": [
+        "limits",
+        "quota",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-resource-types",
+      "skill": "oci-support-limits",
+      "argv": [
+        "support",
+        "incident-resource-type",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--problem-type",
+        "LIMIT",
+        "--limit",
+        "10"
+      ]
+    },
+    {
+      "id": "support-limits-services",
+      "skill": "oci-support-limits",
       "argv": [
         "limits",
         "service",
@@ -243,8 +4415,19 @@
       ]
     },
     {
-      "id": "limits-values",
-      "skill": "oci-finops",
+      "id": "support-limits-validate-user",
+      "skill": "oci-support-limits",
+      "argv": [
+        "support",
+        "validation-response",
+        "validate-user",
+        "--problem-type",
+        "LIMIT"
+      ]
+    },
+    {
+      "id": "support-limits-values",
+      "skill": "oci-support-limits",
       "argv": [
         "limits",
         "value",
@@ -253,184 +4436,6 @@
         "${TENANCY_ID}",
         "--service-name",
         "compute",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "network-subnets",
-      "skill": "oci-compute-network",
-      "argv": [
-        "network",
-        "subnet",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "network-vcns",
-      "skill": "oci-compute-network",
-      "argv": [
-        "network",
-        "vcn",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "oke-clusters",
-      "skill": "oci-oke",
-      "argv": [
-        "ce",
-        "cluster",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "oke-node-pools",
-      "skill": "oci-oke",
-      "argv": [
-        "ce",
-        "node-pool",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "reliability-dr",
-      "skill": "oci-reliability",
-      "argv": [
-        "disaster-recovery",
-        "dr-protection-group",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "reliability-migrations",
-      "skill": "oci-reliability",
-      "argv": [
-        "database-migration",
-        "migration",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "reliability-os",
-      "skill": "oci-reliability",
-      "argv": [
-        "os-management-hub",
-        "managed-instance",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "security-bastions",
-      "skill": "oci-security",
-      "argv": [
-        "bastion",
-        "bastion",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "security-problems",
-      "skill": "oci-security",
-      "argv": [
-        "cloud-guard",
-        "problem",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "security-secret-metadata",
-      "skill": "oci-security",
-      "argv": [
-        "vault",
-        "secret",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "sre-alarms",
-      "skill": "oci-observability",
-      "argv": [
-        "monitoring",
-        "alarm",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "sre-log-groups",
-      "skill": "oci-observability",
-      "argv": [
-        "logging",
-        "log-group",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
-        "--limit",
-        "10"
-      ]
-    },
-    {
-      "id": "storage-namespace",
-      "skill": "oci-storage",
-      "argv": [
-        "os",
-        "ns",
-        "get"
-      ]
-    },
-    {
-      "id": "storage-volumes",
-      "skill": "oci-storage",
-      "argv": [
-        "bv",
-        "volume",
-        "list",
-        "--compartment-id",
-        "${COMPARTMENT_ID}",
         "--limit",
         "10"
       ]

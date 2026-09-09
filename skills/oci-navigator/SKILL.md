@@ -28,8 +28,10 @@ No skill-local script: routing composes `../../scripts/catalog.py` (offline leaf
 `../../scripts/console_url.py`.
 
 ## Route
+
 | The user says… | Load | Why |
 |---|---|---|
+| CLI | `../../references/service-command-cards.md` | load when choosing a read |
 | which CLI for Fusion, OIC, WebLogic | `references/control-plane-map.md` | load when a product is named |
 | "No such command", a renamed group | `references/name-traps.md` | load when a spelling failed |
 | "does OCI have X" | `references/service-index.md` | load when existence unproven |

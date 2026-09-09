@@ -5,7 +5,7 @@ import sys
 import yaml
 from common import ROOT, arguments, files, finding, finish
 
-CAPS = {'untrusted-output.md': 400, 'operator-contract.md': 1200, 'error-triage.md': 1600,
+CAPS = {'untrusted-output.md': 600, 'service-command-cards.md': 2100, 'operator-contract.md': 1200, 'error-triage.md': 1600,
         'redaction.md': 500, 'cross-service-pitfalls.md': 1400, 'auth-modes.md': 1600,
         'jmespath.md': 1200, 'iam-variables.md': 2000, 'console-links.md': 1200,
         'realms-endpoints.md': 1400, 'architecture-center.md': 1800,
