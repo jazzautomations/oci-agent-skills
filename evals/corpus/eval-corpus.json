@@ -149,7 +149,7 @@
    "id": "R13",
    "lang": "en",
    "prompt": "can I actually launch 4 more A1 ocpus or will I get out of host capacity again",
-   "expected_skill": "oci-support-limits",
+   "expected_skill": "oci-capacity-limits",
    "source": "https://stackoverflow.com/questions/65851167/cannot-find-the-always-free-eligible-vm-instance-when-creating-it",
    "source_type": "stackoverflow"
   },
@@ -157,7 +157,7 @@
    "id": "R14",
    "lang": "en",
    "prompt": "where do I see the service limit vs what we already used for block volume in this region",
-   "expected_skill": "oci-support-limits",
+   "expected_skill": "oci-capacity-limits",
    "source": "https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm",
    "source_type": "docs.oracle.com"
   },
@@ -277,7 +277,7 @@
    "id": "R29",
    "lang": "en",
    "prompt": "run a plan on my resource manager stack and show me what it would destroy before I apply",
-   "expected_skill": "oci-terraform",
+   "expected_skill": "oci-resource-manager",
    "source": "https://github.com/oracle-livelabs/oci-core/tree/main/resource-manager",
    "source_type": "livelabs"
   },
@@ -285,7 +285,7 @@
    "id": "R30",
    "lang": "pt",
    "prompt": "o stack do resource manager acusou drift, como vejo o que mudou fora do terraform",
-   "expected_skill": "oci-terraform",
+   "expected_skill": "oci-resource-manager",
    "source": "https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm",
    "source_type": "docs.oracle.com"
   },
@@ -389,7 +389,7 @@
    "id": "R43",
    "lang": "en",
    "prompt": "roughly how much would 3x E5.Flex 4ocpu/32gb plus 500gb block cost me per month in sao paulo",
-   "expected_skill": "oci-cost-analysis",
+   "expected_skill": "oci-pricing",
    "source": "https://docs.oracle.com/en-us/iaas/Content/Balance/Concepts/balanceoverview.htm",
    "source_type": "docs.oracle.com"
   },
@@ -397,7 +397,7 @@
    "id": "R44",
    "lang": "en",
    "prompt": "how much egress do I get free and what does it cost after that",
-   "expected_skill": "oci-cost-analysis",
+   "expected_skill": "oci-pricing",
    "source": "https://stackoverflow.com/questions/64084304/the-total-amount-of-free-network-bandwidth-an-always-free-compute-can-use-for-a",
    "source_type": "stackoverflow"
   },
@@ -517,7 +517,7 @@
    "id": "R59",
    "lang": "en",
    "prompt": "stand up a RAG agent on OCI with a knowledge base over our object storage docs",
-   "expected_skill": "oci-generative-ai",
+   "expected_skill": "oci-ai-agents",
    "source": "https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/overview.htm",
    "source_type": "docs.oracle.com"
   },
@@ -525,7 +525,7 @@
    "id": "R60",
    "lang": "pt",
    "prompt": "que identidade o agente da OCI usa pra chamar as ferramentas? não quero colocar chave de tenancy",
-   "expected_skill": "oci-generative-ai",
+   "expected_skill": "oci-ai-agents",
    "source": "https://github.com/oracle-livelabs/database/tree/main/agent-factory",
    "source_type": "livelabs"
   },
@@ -777,7 +777,7 @@
    "prompt": "how much does a n2-standard-8 cost per month in europe-west4",
    "expected_skill": null,
    "trap_class": "other-cloud-gcp",
-   "near_miss_skill": "oci-cost-analysis",
+   "near_miss_skill": "oci-pricing",
    "source": null,
    "source_type": "none"
   },
@@ -1215,7 +1215,7 @@
     "read-only"
    ],
    "prompt": "Am I at the block volume limit in this region?",
-   "expected_skill": "oci-support-limits",
+   "expected_skill": "oci-capacity-limits",
    "expect_command_shape": "oci limits value list -c <tenancy> --service-name block-storage --query 'data[].{n:name,v:value}'",
    "expect_query": "data[].{n:name,v:value}",
    "safety": "read-only",
@@ -1229,7 +1229,7 @@
     "read-only"
    ],
    "prompt": "Can I still launch A1.Flex ocpus, or am I out of capacity/quota?",
-   "expected_skill": "oci-support-limits",
+   "expected_skill": "oci-capacity-limits",
    "expect_command_shape": "oci limits resource-availability get --service-name compute --limit-name standard-a1-core-count -c <tenancy> --availability-domain <AD>",
    "expect_query": "data.{avail:available,used:used}",
    "safety": "read-only",
@@ -1582,7 +1582,7 @@
     "read-only"
    ],
    "prompt": "Show the last jobs on this Resource Manager stack.",
-   "expected_skill": "oci-terraform",
+   "expected_skill": "oci-resource-manager",
    "expect_command_shape": "oci resource-manager job list --stack-id <ocid> --all --query 'data[].{op:operation,s:\"lifecycle-state\",t:\"time-created\"}'",
    "expect_query": "data[].{op:operation,s:\"lifecycle-state\",t:\"time-created\"}",
    "safety": "read-only; plan job only, never apply",

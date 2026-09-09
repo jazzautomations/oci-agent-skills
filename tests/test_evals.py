@@ -10,10 +10,7 @@ from graders import select, routing, negative, safety
 
 
 def test_corpus_import_is_unedited():
-    source = ROOT / 'research/data/eval-corpus.json'
-    if not source.exists():
-        import pytest
-        pytest.skip('Build-only research checkout absent')
+    source = ROOT / 'evals/corpus/eval-corpus.json'
     corpus = json.loads(source.read_text())
     for key, file in [('routing','routing.json'), ('negatives','negatives.json'), ('cases','tasks.json')]:
         assert json.loads((ROOT / 'evals' / file).read_text()) == corpus[key]

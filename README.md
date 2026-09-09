@@ -42,18 +42,18 @@ Shared references load on demand. Discover command shapes with `python3 scripts/
 
 ## Safety model
 
-IAM and host permissions are the access boundary. The Bash hook is advisory; unknown commands and changed plugin-script hashes ask for review. Script reads pass through `scripts/lib/oci_ro`. The MCP uses fixed operations, explicit scopes, projected fields and bounded pages; it has no arbitrary CLI, SQL or SDK executor. Returned names, tags, logs and other values are untrusted data, never instructions. All mutation recipes remain shape-only and require an explicit change/recovery plan.
+IAM and host permissions are the access boundary. The Bash hook is advisory; unknown OCI leaves, recognized opaque shell forms and changed plugin-script hashes ask for review; unrecognized commands return no decision, preserving host permissions. Script reads pass through `scripts/lib/oci_ro`. The MCP uses fixed operations, explicit scopes, projected fields and bounded pages; it has no arbitrary CLI, SQL or SDK executor. Returned names, tags, logs and other values are untrusted data, never instructions. All mutation recipes remain shape-only and require an explicit change/recovery plan.
 
 Measured OCI leaf classifier, reproduced by `uv run --frozen --project runtime python scripts/release_report.py`:
 
 | Census label | Allow | Ask | Deny |
 |---|---:|---:|---:|
-| Read | 3,697 | 11 | 0 |
+| Read | 3,596 | 112 | 0 |
 | Mutating | 0 | 3,781 | 0 |
 | Destructive | 1 | 997 | 328 |
 | Unknown | 2 | 328 | 0 |
 
-All 278 CRITICAL-labelled leaves are denied. The destructive-labelled allow is `log-analytics storage estimate-release-data-size`, a census false positive; the unknown allows are resource-search reads. This current matrix is stricter than the plan's older destructive 2/996 split. Terraform, kubectl, SQL and APEX rules are **unmeasured hand rules**, not part of this matrix.
+All 278 CRITICAL-labelled leaves are denied. The [independent severity matrix](docs/guard-severity-matrix.json) uses frozen research severity labels, separately from catalog verb labels; zero allows fall outside the strict read-only set. Danger flags only raise severity. The destructive-labelled allow is `log-analytics storage estimate-release-data-size`, a census false positive; the unknown allows are resource-search reads. This current matrix is stricter than the plan's older destructive 2/996 split. Terraform, kubectl, SQL and APEX rules are **unmeasured hand rules**, not part of this matrix.
 
 The historical Oracle denylist audit reported 374 destructive and 2,644 mutating operations permitted, and 135 reads denied, from 2,222 entries. Its source is preserved in [the research artifact](docs/denylist-coverage-research.json). Current prefix-based replay differs: 374 destructive and 2,511 mutating leaves allowed, zero reads denied. Both calculations and their different matching/classification bases are printed by `scripts/release_report.py`; do not present the historical figures as today's server behavior. A Bash hook does not intercept generic MCP executor calls. Oracle API MCP stays opt-in; Oracle Cloud MCP is skipped. See [optional MCP boundaries](docs/mcp-optional.md).
 

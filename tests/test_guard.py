@@ -22,8 +22,8 @@ def test_leaf_confusion_matrix():
     print('\nOCI leaf classifier ONLY:', json.dumps({'/'.join(k): v for k, v in sorted(matrix.items())}, sort_keys=True))
     assert {'/'.join(k): v for k, v in sorted(matrix.items())} == rules()['measured_leaf_matrix']
     assert matrix[('mutating', 'allow')] == 0
-    assert matrix[('read', 'allow')] == 3697
-    assert matrix[('read', 'ask')] == 11
+    assert matrix[('read', 'allow')] == 3596
+    assert matrix[('read', 'ask')] == 112
     assert matrix[('destructive', 'allow')] == 1  # estimate-release-data-size is a census false positive.
     assert all(classify_leaf(r['path']) == 'deny' for r in data if r['severity'] == 'CRITICAL')
 
@@ -50,9 +50,9 @@ FORMS = [
  ('oci compute instance --help', 'allow'),
  ('oci --help', 'allow'),
  ('oci compute instance list --from-json file://input.json', 'ask'),
- ('oci compute instance terminate --force', 'ask'),
- ('oci iam compartment bulk-delete-resources', 'ask'),
- ('oci os bucket delete --empty-bucket', 'ask'),
+ ('oci compute instance terminate --force', 'deny'),
+ ('oci iam compartment bulk-delete-resources', 'deny'),
+ ('oci os bucket delete --empty-bucket', 'deny'),
  ('sudo oci compute instance list', 'allow'),
  ('sudo -u root oci compute instance terminate', 'deny'),
  ('env OCI_CLI_PROFILE=DEFAULT oci compute instance list', 'allow'),
@@ -62,11 +62,11 @@ FORMS = [
  ('true; oci compute instance terminate', 'deny'),
  ('false || oci compute instance terminate', 'deny'),
  ('true && oci compute instance terminate', 'deny'),
- ('oci compute instance list | cat', 'allow'),
+ ('oci compute instance list | cat', None),
  ('oci compute instance list; oci os bucket delete', 'deny'),
  ('oci compute instance list\noci os bucket delete', 'deny'),
  ('echo x | xargs oci compute instance terminate', 'deny'),
- ('echo x | xargs -n 1 oci compute instance list', 'allow'),
+ ('echo x | xargs -n 1 oci compute instance list', None),
  ('oci compute instance launch && oci compute instance list', 'ask'),
  ('oci compute instance list --unknown x', 'ask'),
  ('oci compute instance list --limit', 'ask'),
@@ -75,18 +75,18 @@ FORMS = [
  ('oci raw-request --http-method GET --target-uri https://example.invalid', 'allow'),
  ('oci raw-request --http-method HEAD --target-uri https://example.invalid', 'allow'),
  ('oci raw-request --http-method POST --target-uri https://example.invalid', 'ask'),
- ('terraform plan', 'allow'),
+ ('terraform plan', None),
  ('terraform apply', 'ask'),
  ('terraform destroy', 'ask'),
  ('terraform state rm example', 'ask'),
  ('terraform apply -auto-approve', 'ask'),
- ('kubectl get pods', 'allow'),
+ ('kubectl get pods', None),
  ('kubectl delete pod example', 'ask'),
  ('kubectl drain example', 'ask'),
  ('sql drop user example', 'ask'),
  ('sql apex_instance_admin.remove_workspace', 'ask'),
- ('echo hello', 'allow'),
- ('git status', 'allow'),
+ ('echo hello', None),
+ ('git status', None),
  ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance list', 'ask'),
  ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance terminate', 'ask'),
  ('oci compute instance list # oci os bucket delete', 'allow'),
@@ -217,3 +217,55 @@ def test_d4_selection_values_are_not_operations(option, value):
 def test_plugin_unknown_root_path_requires_review():
     assert inspect_command(str(ROOT / 'unknown.py')) == 'ask'
     assert inspect_command('python3 ' + str(ROOT / 'unknown.py')) == 'ask'
+
+
+def test_independent_severity_matrix():
+    import hashlib
+    fixture = json.loads((ROOT / 'tests/fixtures/guard-severity.json').read_text())
+    research = ROOT / fixture['source']
+    if research.exists():
+        assert hashlib.sha256(research.read_bytes()).hexdigest() == fixture['source_sha256']
+    matrix = Counter((r['class'], r['severity'], classify_leaf(r['path'])) for r in fixture['operations'])
+    published = json.loads((ROOT / 'docs/guard-severity-matrix.json').read_text())
+    assert {'/'.join(k): v for k, v in sorted(matrix.items())} == published['matrix']
+    assert all(classify_leaf(r['path']) == 'deny' for r in fixture['operations'] if r['severity'] == 'CRITICAL')
+    assert not any(classify_leaf(r['path']) == 'allow' for r in fixture['operations'] if r['class'] == 'mutating')
+    assert not any(classify_leaf(r['path']) == 'allow' and not r['read_only'] for r in rows())
+
+
+def test_danger_flags_never_lower_leaf_tier():
+    from guard_lib import classify_oci, RANK
+    for row in rows():
+        if '--force' in row['flags']:
+            before = classify_leaf(row['path'])
+            after = classify_oci(row['path'].split() + (['--force'] if '--force' in row['boolean_flags'] else ['--force', 'true']))
+            assert RANK[after] == min(RANK[before] + 1, RANK['deny'])
+
+
+@pytest.mark.parametrize('command', [
+    'ssh example.invalid status', 'oci_cli --version', 'awk BEGIN{}',
+    '/tmp/example --version', 'curl --version', 'python3 example.py',
+    'node example.js', 'make --version', 'npx --version', 'rm --help',
+    'printf hello', 'docker --version', 'systemctl --version', 'git status',
+    'pulumi version', 'ansible-playbook --version', 'gawk BEGIN{}',
+    'find --version', 'kubectl version', 'oci.exe --version',
+    'terraform version', 'echo hello', 'true', 'false', 'example.sh --flag',
+])
+def test_unrecognized_executor_keeps_host_permissions(command):
+    # Inert executor shapes: no shell evaluation, remote calls or mutation payloads.
+    assert inspect_command(command) is None
+
+
+def test_hook_no_decision_contract():
+    for command in ['git status', 'oci compute instance list; example.sh --flag']:
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts/guard_oci.py')],
+            input=json.dumps({'tool_name':'Bash', 'tool_input':{'command':command}}),
+            text=True, capture_output=True)
+        assert result.returncode == 0
+        assert 'permissionDecision' not in result.stdout
+        assert json.loads(result.stdout) == {}
+
+
+def test_plugin_shell_suffix_is_not_shell_binary():
+    assert inspect_command('bash ${CLAUDE_PLUGIN_ROOT}/skills/oci-compute/scripts/capacity_probe.sh --help') == 'allow'
+    assert inspect_command('bash -c "echo hello"') == 'ask'

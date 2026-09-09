@@ -57,8 +57,8 @@
     "destructive/ask": 997,
     "destructive/deny": 328,
     "mutating/ask": 3781,
-    "read/allow": 3697,
-    "read/ask": 11,
+    "read/allow": 3596,
+    "read/ask": 112,
     "unknown/allow": 2,
     "unknown/ask": 328
   }

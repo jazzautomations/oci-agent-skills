@@ -72,6 +72,9 @@ def classify_leaf(path):
     rule = rules()
     if any(re.search(pattern, path) for pattern in rule['tier_block']):
         return 'deny'
+    leaves, _ = catalog_data()
+    if not leaves.get(path, {}).get('read_only'):
+        return 'ask'
     op = path.split()[-1]
     if (re.match(rule['op_read_extra'], op) or
             (not re.match(rule['op_write_prefix'], op) and
@@ -84,20 +87,27 @@ def classify_oci(argv):
     try:
         path, opts = parse_oci(argv)
     except ValueError:
+        # Malformed options cannot weaken a resolved blocked leaf.
+        for end in range(len(argv), 0, -1):
+            try:
+                prefix, _ = parse_oci(argv[:end])
+                if prefix in catalog_data()[0] and classify_leaf(prefix) == 'deny':
+                    return 'deny'
+            except ValueError:
+                continue
         return 'ask'
     if any(k in opts for k in ('--help', '-h', '-?')) and readonly_argv(argv):
         return 'allow'
-    if '--force' in opts or any(k.startswith('--empty-bucket') for k in opts) or 'bulk-delete' in path:
-        return 'ask'
-    if '--from-json' in opts:
-        # JSON can override request data. Do not open arbitrary files from a tool payload.
-        return 'ask'
-    if path == 'raw-request':
-        return 'allow' if opts.get('--http-method', '').upper() in ('GET', 'HEAD') else 'ask'
     leaves, _ = catalog_data()
-    if path not in leaves:
-        return 'ask'
-    return classify_leaf(path)
+    tier = classify_leaf(path) if path in leaves else 'ask'
+    if path == 'raw-request':
+        tier = 'allow' if readonly_argv(argv) else 'ask'
+    dangerous = '--force' in opts or any(k.startswith('--empty-bucket') for k in opts) or 'bulk-delete' in path
+    if dangerous:
+        tier = {'allow': 'ask', 'ask': 'deny', 'deny': 'deny'}[tier]
+    if '--from-json' in opts:
+        tier = max(tier, 'ask', key=RANK.get)
+    return tier
 
 
 def shell_segments(command):
@@ -158,10 +168,12 @@ def inspect_command(command):
     if not isinstance(command, str) or len(command) > 131072:
         return 'ask'
     # These forms need shell evaluation to resolve; this advisory parser never evaluates them.
-    opaque = re.search(r'`|\$\(|<\(|>\(|\beval\b|\b(base64|xxd)\b|\b(?:ba|da|z|k)?sh\s+-|\b(?:python[\d.]*|perl|ruby|node)\s+.*-[ce]\b', command)
+    opaque = re.search(r'`|\$\(|<\(|>\(|\beval\b|\b(base64|xxd)\b|(?<![\w./-])(?:/(?:[^\s/]+/)*)?(?:ba|da|z|k)?sh\s+-|\b(?:python[\d.]*|perl|ruby|node)\s+.*-[ce]\b', command)
     decisions = ['ask'] if opaque else []
+    unclassified = False
     try:
         for argv in shell_segments(command):
+            before = len(decisions)
             joined = ' '.join(argv)
             if any(re.search(pattern, joined, re.I) for pattern in rules()['non_oci_ask']):
                 decisions.append('ask')
@@ -176,6 +188,9 @@ def inspect_command(command):
                     decisions.append(plugin_script(token, argv[i + 1:]))
             if not oci_indexes and any('$' in t and 'CLAUDE_PLUGIN_ROOT}/scripts/' not in t for t in argv[:1]):
                 decisions.append('ask')
+            if len(decisions) == before:
+                unclassified = True
     except (ValueError, OSError, KeyError):
         return 'ask'
-    return max(decisions, key=RANK.get, default='allow')
+    decision = max(decisions, key=RANK.get, default=None)
+    return None if decision == 'allow' and unclassified else decision

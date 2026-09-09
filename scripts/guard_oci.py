@@ -21,8 +21,11 @@ def main():
             payload = json.loads(raw)
         if payload.get('tool_name') == 'Bash':
             decision = inspect_command(payload['tool_input']['command'])
+        if payload.get('tool_name') != 'Bash' or decision is None:
+            print('{}')
+            return 0
         reason = redact({
-            'allow': 'Read operation or unrelated command. Advisory guard; IAM is the boundary.',
+            'allow': 'Recognized read operation. Advisory guard; IAM is the boundary.',
             'ask': reason,
             'deny': 'Blocked operation. Use list/get to inspect state. Advisory guard; IAM is the boundary.',
         }[decision])

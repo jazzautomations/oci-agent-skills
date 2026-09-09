@@ -57,11 +57,11 @@
     "destructive/ask": 997,
     "destructive/deny": 328,
     "mutating/ask": 3781,
-    "read/allow": 3697,
-    "read/ask": 11,
+    "read/allow": 3596,
+    "read/ask": 112,
     "unknown/allow": 2,
     "unknown/ask": 328
   },
   "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
-  "scripts_sha256": "fffe12accadfa2f990791e950dd5020a99b0be07928374173cd194f3d91036f2"
+  "scripts_sha256": "106aad3771708b54eaae5e0fb18f7c9f7fad4bfa3ee9d6885ab212abfbe21ab3"
 }

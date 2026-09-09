@@ -158,6 +158,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/score_routing_model.py",
+      "sha256": "d354450bb0917172cc91c7e5aa329749f575cd586fa5a8b283d2f85a215aba25",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/foundation_report.py",
       "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
       "mode": "read-only",
@@ -165,13 +171,13 @@
     },
     {
       "path": "scripts/guard_lib.py",
-      "sha256": "f895783ba07bbca0ec942161b4a4d27c05d5ab54a8dd7df9fb472c64aa7f31df",
+      "sha256": "a1ed81f40a2e101d30f917bbafe426d2175618acbdb63e2567ef4f4fc2720ad0",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/guard_oci.py",
-      "sha256": "f2a1cfcf7c4daea8e46bd31c5f2feec797931b13dd72e8a857273c6ff0a7e1ce",
+      "sha256": "167f36008edcd7a7d92de83c71bd3d0b32fa25da833d23b66a2c250ad2d0c069",
       "mode": "read-only",
       "oci_calls": []
     },
