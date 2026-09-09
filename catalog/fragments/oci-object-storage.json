@@ -1,0 +1,103 @@
+[
+  {
+    "id": "oci-object-storage-1",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "ns",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--query",
+      "data",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-object-storage-2",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "bucket",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{name:name,created:\"time-created\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-object-storage-3",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "object",
+      "list",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--bucket-name",
+      "${BUCKET}",
+      "--prefix",
+      "${PREFIX}",
+      "--limit",
+      "20",
+      "--query",
+      "{items:data[].{name:name,size:size},next:\"next-start-with\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-object-storage-4",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "multipart",
+      "list",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--bucket-name",
+      "${BUCKET}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{object:object,id:\"upload-id\",created:\"time-created\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-object-storage-5",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "object-lifecycle-policy",
+      "get",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--bucket-name",
+      "${BUCKET}",
+      "--query",
+      "data.items",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]
