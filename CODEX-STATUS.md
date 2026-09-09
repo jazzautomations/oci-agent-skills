@@ -1,51 +1,55 @@
-# Handoff 8 — complete, merged locally
+# Handoff 9 — complete on main
 
-`v2-foundation` was merged into `main` with `--no-ff` at `eac838d`. All four handoff
-items were committed separately before the merge. No push, tenancy mutation, or
-history rewrite was performed.
+All three items were completed in order, with one commit per item on `main`.
+No push, tenancy mutation, new credentialed tenancy read, or history rewrite was
+performed. Research remains build-only and is excluded from the distribution.
 
 | Item | Commit | Result |
 |---|---|---|
-| 1 Scoped script sweep | `861a155` | DEFAULT profile, profile region, tenancy-root compartment, first root instance or explicit skip, and the fixed last-hour MQL probe. Data gaps have a distinct status. |
-| 2 Empty responses | `18054e5` | Successful blank list/summarize output becomes an empty collection. Monitoring reports `no_datapoints`; malformed responses and service errors remain failures. Collection-consumer regressions cover the shared wrapper, monitoring, certificates, and Audit. |
-| 3 History | `daa7d44` | Patch-body scanning exempts Git identities and commit trailers, reports exact blob locations, and suppresses matched values. The owner-operated purge and optional identity rewrite are documented; neither was executed. |
-| 4 Release evidence | `0c52607` | Reviewed and committed refreshed evidence on v2-foundation before merging. The report generator uses the actual branch and the script sweep derives its region from the profile. |
+| 1 Guard paths | `bc316be` | Recognizes root and skill script paths, directly or after `bash`/`python3`, including plugin-root variables, absolute paths and root-relative forms. Script and registry SHA pins remain required; missing or changed scripts require review. |
+| 2 Severity wording | `df4be4b` | README, foundation docs and the V8 report generator describe the shared generator and sha-pinned severity snapshot. The independent assertion is zero allows outside the strict read-only set. |
+| 3 Cleanup and evidence | This commit | Removed `skills/oracle-autonomous-db/.handoff-live.json`, added `skills/*/.handoff-*` to `.gitignore`, applied reviewed release-gate diffs and recorded this status. |
 
-## Validation on main
+## Validation
 
-Validation at merge commit `eac838d` passed **295 tests**. Strict package validators,
-manifest checks, catalog regeneration, and copied-distribution checks passed without
-baseline exemptions. The installed CLI help sweep also passed during this handoff.
-The copy contains 33 skills, 15 bundled MCP tools, 16 shared reference files, hooks,
-and the portable runtime; research, environments, the authoring stencil, handoff
-scratch, and symlinks are excluded.
+The full suite passed **354 tests** before each item commit; item 3's suite is
+recorded as V14 in the [validation matrix](docs/validation-matrix.md). The existing
+Authlib deprecation warning remains. Guard coverage includes 60 combinations of
+script directory, extension, root prefix and interpreter, with unknown paths,
+changed script hashes and changed registry hashes requiring review. The fixtures
+are inspected as text and never executed.
 
-The refreshed [validation matrix](docs/validation-matrix.md) records **22 PASS and
-6 nonpassing gates**. Main validation reuses dated live CLI, MCP, and public-link
-evidence; it does not claim those probes were repeated after the merge.
+Strict package validators passed without baseline exemptions: frontmatter,
+portability, references, fences, tracked-file secret scanning, budgets, licenses,
+read-only script policy, template, manifests, both host strict validations,
+script/example and CLI catalog regeneration, offline examples, routing negatives
+and copied-distribution inspection. The installed CLI help sweep passed for item 1;
+later items used strict snapshot fence validation with unchanged command shapes.
+Catalog script/example artifacts were regenerated after script changes.
 
-The refreshed [script sweep](docs/validation-scripts.json) invoked all 35 Python/shell
-entrypoints: **20 passed, 2 ran with data gaps, 7 failed or returned incomplete
-evidence, and 6 stopped for missing prerequisites**. Four SQL examples stayed inert.
-Both monitoring entrypoints now record `ran, gap` for the empty fixed MQL probe.
-No scope was broadened or resource created to fill missing evidence.
+The copy installer produced a portable tree containing 33 skills, scripts, shared
+references and runtime together. Research, environments, the authoring stencil,
+handoff scratch and `CODEX-STATUS.md` are excluded; the fresh tree has no symlinks.
+The copied guard also passed direct inspection of the new invocation forms without
+executing the scripts. Existing auth-modes content was preserved unchanged.
 
-An earlier concurrent test run hit the existing credential-free stdio smoke timeout.
-Its isolated rerun and subsequent complete suites passed unchanged. The final suite
-retains the existing Authlib deprecation warning.
+## Release evidence and remaining owners
 
-## Remaining release gates and owners
+`uv run --frozen --project runtime python scripts/ci/release_gate.py` ran in its
+default diff mode, writing evidence outside the checkout. The reviewed matrix,
+offline-example timestamp and host-probe provenance were copied into the tree.
+Its exit code was **1**, as expected with **22 PASS and 6 nonpassing gates**.
+Live CLI, script, MCP and public-link evidence was reused with its recorded dates;
+those probes were not repeated for this handoff.
 
 | Gate | Remaining work | Owner |
 |---|---|---|
-| V19 FAIL | Description routing proxy is 37.5%, below 90%; no qualifying host-routing result replaces it. | Evaluation/routing maintainers |
-| V22 FAIL | One historical audit blob contains two email occurrences, visible in its addition and removal patches. Follow the [exact purge plan](docs/history-purge.md) before the first push. Git identity metadata and commit trailers are exempt. | Repository history owner |
-| V24 PARTIAL | Local CLI drift checks passed; hosted Tuesday execution and issue creation remain unmeasured. | Repository CI maintainers |
-| V25 FAIL | Resolve the 7 failed/incomplete script results and 6 missing prerequisites; the 2 no-data results remain explicit coverage gaps. | OCI operator / skill maintainers |
+| V19 FAIL | Description routing proxy remains 37.5%, below 90%; no qualifying host-routing result replaces it. | Evaluation/routing maintainers |
+| V22 FAIL | Historical patch bodies still contain the previously identified email occurrences. Follow the [history purge plan](docs/history-purge.md) before the first push; the current tracked-file scan passes. | Repository history owner |
+| V24 PARTIAL | Local CLI drift checks pass; hosted Tuesday execution and issue creation remain unmeasured. | Repository CI maintainers |
+| V25 FAIL | Archived script evidence still has 7 failed/incomplete results and 6 missing prerequisites; 2 no-data results remain explicit coverage gaps. | OCI operator / skill maintainers |
 | V27 UNAVAILABLE | Installed `plugin eval` remains early-access restricted; no qualifying host task score. | Evaluation maintainers / installed host provider |
 | V28 PARTIAL | Four offline arms are complete; the model-backed behavioral comparison remains unmeasured. | Evaluation maintainers |
 
-The merge is complete; the package is **not release-ready**. The existing auth-modes
-content and Autonomous Database `.handoff-live.json` user scratch were preserved
-byte-for-byte. All package changes are on v2-foundation and included by the merge;
-main's final documentation records the post-merge checks.
+Handoff 9 is complete. The package remains **not release-ready** for the reasons
+above; no baseline exemptions or scope expansion were used to change those gates.

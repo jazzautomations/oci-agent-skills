@@ -14,3 +14,4 @@ research/
 *.tfplan
 *.zip
 STATUS.md
+skills/*/.handoff-*

@@ -13,13 +13,13 @@ Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py 
 | V5 | `uv run --frozen --project runtime python scripts/ci/check_refs.py` | PASS | 2026-09-09 | Command passed. |
 | V6 | `uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md` | PASS | 2026-09-09 | Command passed. |
 | V7 | `uv run --frozen --project runtime python scripts/ci/check_links.py` | PASS | 2026-09-09 | Recorded evidence from this handoff; see docs/validation-links.json. |
-| V8 | `uv run --frozen --project runtime pytest -q tests/test_guard.py` | PASS | 2026-09-09 | Independent research-severity matrix: docs/guard-severity-matrix.json; 278 critical leaves denied, zero allows outside strict reads. Non-OCI rules are unmeasured. |
+| V8 | `uv run --frozen --project runtime pytest -q tests/test_guard.py` | PASS | 2026-09-09 | Severity matrix: docs/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured. |
 | V9 | `uv run --frozen --project runtime pytest -q tests -k parse` | PASS | 2026-09-09 | Command passed. |
 | V10 | `uv run --frozen --project runtime pytest -q tests -k plugin_script` | PASS | 2026-09-09 | Command passed. |
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-09 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-09 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-09 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 295 passed, 1 warning in 70.16s (0:01:10) |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 354 passed, 1 warning in 68.57s (0:01:08) |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-09 | Command passed. Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check` | PASS | 2026-09-09 | Command passed. Subcheck V16-regeneration: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-09 | Command passed. |

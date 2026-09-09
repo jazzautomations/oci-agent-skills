@@ -71,7 +71,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Independent research-severity matrix: docs/guard-severity-matrix.json; 278 critical leaves denied, zero allows outside strict reads. Non-OCI rules are unmeasured.",
+      "detail": "Severity matrix: docs/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.",
       "owner": null
     },
     {
@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "295 passed, 1 warning in 70.16s (0:01:10)",
+      "detail": "354 passed, 1 warning in 68.57s (0:01:08)",
       "owner": null
     },
     {
