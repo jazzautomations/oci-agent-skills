@@ -1,0 +1,96 @@
+{
+  "examples": [
+    {
+      "id": "oracle-autonomous-db-1",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",version:\"db-version\",free:\"is-free-tier\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-2",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",mtls:\"is-mtls-connection-required\",acl:\"whitelisted-ips\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-3",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-db-version",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{version:version,workload:\"db-workload\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-4",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database-backup",
+        "list",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-autonomous-db-5",
+      "skill": "oracle-autonomous-db",
+      "argv": [
+        "db",
+        "autonomous-database-character-sets",
+        "list",
+        "--is-shared",
+        "true",
+        "--all",
+        "--query",
+        "data[].{name:name}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
