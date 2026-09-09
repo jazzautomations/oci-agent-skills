@@ -1,6 +1,6 @@
 # Final validation matrix — 2026-09-09
 
-Branch: `v2-foundation`. **Not release-ready.** No tenancy mutations.
+Branch: `main`. **Not release-ready.** No tenancy mutations.
 
 Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py --live --links --live-help`. Writes scratch evidence outside the checkout and prints unified diffs against tracked reports. This repeats only scoped read operations and public documentation GETs; skill prerequisites may remain blocked. Omit these flags to reuse dated live/link evidence and use snapshot fence lint. CLI_PYTHON denotes Python from the pinned OCI CLI installation; pass --cli-python to select it explicitly. A nonzero exit is expected while any gate remains red or unmeasured.
 
@@ -19,7 +19,7 @@ Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py 
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-09 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-09 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-09 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 295 passed, 1 warning in 141.70s (0:02:21) |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 295 passed, 1 warning in 70.16s (0:01:10) |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-09 | Command passed. Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check` | PASS | 2026-09-09 | Command passed. Subcheck V16-regeneration: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-09 | Command passed. |

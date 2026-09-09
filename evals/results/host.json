@@ -3,8 +3,8 @@
   "status": "unavailable",
   "reason": "`plugin eval` is currently in early access",
   "date": "2026-09-09",
-  "host_version": "2.1.266 (Claude Code)",
+  "host_version": "2.1.267 (Claude Code)",
   "exit_code": 1,
-  "source_commit": "daa7d4427fb4dc8d78033451180ec30c6bd3949d",
+  "source_commit": "eac838db61e247b430073b3b2d72e8e9ac68d197",
   "scope": "No tool grants, mock MCP, absent OCI config, no scaffold or publication."
 }

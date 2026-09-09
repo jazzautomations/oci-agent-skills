@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "branch": "v2-foundation",
+  "branch": "main",
   "ready": false,
   "rows": [
     {
@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "295 passed, 1 warning in 141.70s (0:02:21)",
+      "detail": "295 passed, 1 warning in 70.16s (0:01:10)",
       "owner": null
     },
     {
