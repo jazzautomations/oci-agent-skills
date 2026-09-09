@@ -126,12 +126,20 @@ def shell_segments(command):
         yield segment
 
 
+def plugin_path(token):
+    """Recognize plugin-root paths without shell expansion or basename guessing."""
+    return (token.startswith(('${CLAUDE_PLUGIN_ROOT}/', '$CLAUDE_PLUGIN_ROOT/', str(ROOT) + '/')) or
+            bool(re.match(r'^(?:\./)?(?:scripts/|skills/[^/]+/scripts/)', token)))
+
+
 def plugin_script(token, argv):
     """Unknown/changed scripts require review; a digest is provenance, not a sandbox."""
     from lib.oci_ro import check
     expanded = token.replace('${CLAUDE_PLUGIN_ROOT}', str(ROOT)).replace('$CLAUDE_PLUGIN_ROOT', str(ROOT))
     try:
         path = Path(expanded)
+        if not path.is_absolute():
+            path = ROOT / path
         if path.is_symlink():
             return 'ask'
         relative = path.resolve().relative_to(ROOT.resolve()).as_posix()
@@ -177,16 +185,17 @@ def inspect_command(command):
             joined = ' '.join(argv)
             if any(re.search(pattern, joined, re.I) for pattern in rules()['non_oci_ask']):
                 decisions.append('ask')
-            if any(t == '.' or Path(t).name in {'sh', 'bash', 'dash', 'zsh', 'source', '.'} for t in argv) and not any('/scripts/' in t and ('CLAUDE_PLUGIN_ROOT' in t or t.startswith(str(ROOT))) for t in argv):
+            script_indexes = [i for i, token in enumerate(argv) if plugin_path(token) and
+                              (i == 0 or Path(argv[i - 1]).name in {'python', 'python3', 'bash', 'sh', 'env', 'sudo'})]
+            if any(t == '.' or Path(t).name in {'sh', 'bash', 'dash', 'zsh', 'source', '.'} for t in argv) and not script_indexes:
                 decisions.append('ask')
             oci_indexes = [i for i, t in enumerate(argv) if Path(t).name == 'oci']
             for i in oci_indexes:
                 tail = argv[i + 1:]
                 decisions.append(classify_oci(tail))
-            for i, token in enumerate(argv):
-                if ('CLAUDE_PLUGIN_ROOT' in token or token.startswith(str(ROOT) + '/')) and (i == 0 or Path(argv[i - 1]).name in {'python', 'python3', 'bash', 'sh', 'env', 'sudo'}):
-                    decisions.append(plugin_script(token, argv[i + 1:]))
-            if not oci_indexes and any('$' in t and 'CLAUDE_PLUGIN_ROOT}/scripts/' not in t for t in argv[:1]):
+            for i in script_indexes:
+                decisions.append(plugin_script(argv[i], argv[i + 1:]))
+            if not oci_indexes and '$' in argv[0] and 0 not in script_indexes:
                 decisions.append('ask')
             if len(decisions) == before:
                 unclassified = True

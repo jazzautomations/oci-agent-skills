@@ -157,25 +157,38 @@ def test_opaque_segment_does_not_downgrade_a_known_denial():
     assert inspect_command('oci os bucket delete; eval "$CMD"') == 'deny'
 
 
-def test_plugin_script_sha_and_argv(tmp_path, monkeypatch):
+@pytest.mark.parametrize('directory', ['scripts', 'skills/example/scripts'])
+@pytest.mark.parametrize('extension', ['py', 'sh'])
+@pytest.mark.parametrize('root_prefix', ['${CLAUDE_PLUGIN_ROOT}/', '$CLAUDE_PLUGIN_ROOT/', '', './', 'absolute'])
+@pytest.mark.parametrize('interpreter', ['', 'python3 ', 'bash '])
+def test_plugin_script_sha_and_argv(tmp_path, monkeypatch, directory, extension, root_prefix, interpreter):
     import hashlib
     import guard_lib
-    root = tmp_path
-    (root / 'scripts').mkdir()
+    root = tmp_path / 'plugin'
+    (root / directory).mkdir(parents=True)
     (root / 'catalog').mkdir()
-    script = root / 'scripts/report.py'
+    relative = f'{directory}/report.{extension}'
+    script = root / relative
     script.write_text('print("report")\n')
-    raw = json.dumps({'scripts': [{'path': 'scripts/report.py', 'sha256': hashlib.sha256(script.read_bytes()).hexdigest(), 'mode': 'read-only'}]}).encode()
+    raw = json.dumps({'scripts': [{'path': relative, 'sha256': hashlib.sha256(script.read_bytes()).hexdigest(), 'mode': 'read-only'}]}).encode()
     (root / 'catalog/scripts.json').write_bytes(raw)
     policy = dict(rules(), scripts_sha256=hashlib.sha256(raw).hexdigest())
     monkeypatch.setattr(guard_lib, 'ROOT', root)
     monkeypatch.setattr(guard_lib, 'rules', lambda: policy)
-    for prefix in ['', 'python3 ', 'bash ']:
-        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/report.py --json') == 'allow'
-        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/report.py terminate') == 'ask'
-        assert inspect_command(prefix + '${CLAUDE_PLUGIN_ROOT}/scripts/missing.py') == 'ask'
+    # Relative forms must use the plugin root, even from an unrelated workspace.
+    monkeypatch.chdir(tmp_path)
+    prefix = str(root) + '/' if root_prefix == 'absolute' else root_prefix
+    command = interpreter + prefix + relative
+    assert inspect_command(command + ' --help') == 'allow'
+    assert inspect_command(command + ' --json') == 'allow'
+    assert inspect_command(command + ' terminate') == 'ask'
+    assert inspect_command(interpreter + prefix + directory + '/missing.py') == 'ask'
+    # A registry change cannot authorize a script without updating the guard pin.
+    (root / 'catalog/scripts.json').write_bytes(raw + b'\n')
+    assert inspect_command(command + ' --help') == 'ask'
+    (root / 'catalog/scripts.json').write_bytes(raw)
     script.write_text('print("changed")\n')
-    assert inspect_command('${CLAUDE_PLUGIN_ROOT}/scripts/report.py') == 'ask'
+    assert inspect_command(command + ' --help') == 'ask'
 
 
 def test_wrapper_contract_json_bounds_and_refusals(monkeypatch, tmp_path):
