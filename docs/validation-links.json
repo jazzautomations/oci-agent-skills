@@ -1,0 +1,751 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cliconcepts.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/code_editor_intro.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdk_authentication_methods.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdks.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/signingrequests.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/usingapi.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/workrequests.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliusing.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdkconcepts.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/powershell.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Audit/Concepts/auditoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/budgetsoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/costanalysisoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/usagereportsoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Billing/Tasks/changingpaymentmethod.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/bootvolumes.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/schedulingvolumebackups.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ComplianceDocuments/Concepts/compliancedocsoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/troubleshooting-out-of-host-capacity.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ContEng/Concepts/contengoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contenggrantingworkloadaccesstoresources.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Database/Tasks/usingdataguard.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Email/Concepts/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Email/Concepts/troubleshooting.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Email/Tasks/configuresmtpconnection.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/File/Tasks/managingsnapshots.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/resourceref.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsaccessingociresources.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/Reference/getting-started-as-devops.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/support/getting-help.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/support/validate-user.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/organization/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/service-limits/create-request.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/service-limits/default.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Concepts/policyadvancedfeatures.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/domains/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/dynamicgroups/managingdynamicgroups.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policieshow/iam-cross-domain.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policymgmt/policy-limits-compartment-hierarchy.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policysyntax/conditions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policysyntax/policy-syntax.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/regions/managingregions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/managingsecrets.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Logging/Concepts/loggingoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Logging/Reference/query_language_specification.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Monitoring/Concepts/monitoringoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Monitoring/Reference/mql.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/To_delete_uncommitted_multipart_uploads.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Quotas/Concepts/quota_policy_syntax.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Quotas/Concepts/resourcequotas.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Quotas/Concepts/sample_quotas.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Reference/terraformversions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Search/Concepts/queryoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Streaming/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Tagging/Concepts/taggingoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Tagging/Tasks/managingaccesswithtags.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Tagging/Tasks/managingtagdefaults.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/WAF/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-adoption-framework/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-adoption-framework/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-migration/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/connector-hub/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/control-center/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/dev/terraform/resource-discovery.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/devops/using/getting_started.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/devops/using/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/digital-assistant/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/limit-model-access.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/gov-cloud/govfedramp.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/multicloud/interconnect.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/multicloud/subscriptions-mc.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/network-firewall/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/secret-management/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/services.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/sovereign-cloud/eu-sovereign-cloud.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/speech/using/speech.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/uk-sovereign-cloud/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/zero-trust-packet-routing/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/api/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/api/#/en/identity-domains/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/api/#/en/usage/20200107/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/api/specs/index.json",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/application-integration/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-always-free.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/connect-tools.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-examples.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/use-mcp-server.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/cloud-guard/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/data-flow/using/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/data-integration/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/data-safe/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/database-management/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/disaster-recovery/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/document-understanding/document-understanding/using/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/exadata-fleet-update/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/language/using/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/logging-analytics/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/operations-insights/doc/operations-insights.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/osmh/doc/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/scanning/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/security-zone/using/security-zone-policies.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/capacity-management.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/identity-domains.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/python/latest/pagination.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/python/latest/sdk_behaviors/retries.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/vision/vision/using/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/wlms/doc/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/apex/26.1/aeapi/APEX_AI.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/apex/26.1/aeapi/GET_APPLICATION_Function.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/application-express/24.2/aeadm/oracle-apex-administration-guide.pdf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/create-tables-using-vector-data-type.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/guidelines-using-vector-indexes.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.1/orddg/ORDS-reference.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.4/sqcug/configuring-restrict-levels-sqlcl-mcp-server.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/sql-developer-command-line/26.1/sqcug/apexlang.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/error-help/db/ora-12506/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/deploy-autonomous-database-and-app/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/deploy-baseline-lz/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-distributed-cloud/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-operations/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-performance/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-reliability/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices/deploy-multicloud-oci-oracle-database-services1.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/iaas/Content/GSG/Tasks/signingup_topic-What_Happens_When_the_Promotion_Expires.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/pls/topic/lookup?ctx=en/solutions/hub-spoke-network-drg&id=github-oci-arch-hub-spoke-drg",
+      "status": 200,
+      "expected": 200
+    }
+  ],
+  "validated_at": "2026-09-09T19:33:38.349778+00:00"
+}

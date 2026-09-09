@@ -1,0 +1,95 @@
+[
+  {
+    "id": "oci-bastion-access-1",
+    "skill": "oci-bastion-access",
+    "argv": [
+      "bastion",
+      "bastion",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-bastion-access-2",
+    "skill": "oci-bastion-access",
+    "argv": [
+      "bastion",
+      "bastion",
+      "get",
+      "--bastion-id",
+      "${BASTION_ID}",
+      "--query",
+      "data.{subnet:\"target-subnet-id\",allowed:\"client-cidr-block-allow-list\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-bastion-access-3",
+    "skill": "oci-bastion-access",
+    "argv": [
+      "bastion",
+      "session",
+      "list",
+      "--bastion-id",
+      "${BASTION_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\",ttl:\"session-ttl-in-seconds\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-bastion-access-4",
+    "skill": "oci-bastion-access",
+    "argv": [
+      "bastion",
+      "session",
+      "get",
+      "--session-id",
+      "${SESSION_ID}",
+      "--query",
+      "data.{id:id,state:\"lifecycle-state\",ttl:\"session-ttl-in-seconds\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-bastion-access-5",
+    "skill": "oci-bastion-access",
+    "argv": [
+      "instance-agent",
+      "plugin",
+      "get",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--instanceagent-id",
+      "${INSTANCE_ID}",
+      "--plugin-name",
+      "Bastion",
+      "--query",
+      "data.{name:name,status:status}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

@@ -1,0 +1,144 @@
+{
+  "_header": {
+    "purpose": "IAM resource-type family -> individual members, so a policy linter can expand `<verb> <family>` into the equivalent per-member statements.",
+    "source": "Hand-derived from research/04b-iam-security-cost-freetier.md §1-14 (§4 'Resource-types and family members'); generated 2026-09-08; verified-on CLI 3.91.0",
+    "hand_derived": true,
+    "rules": [
+      "`<verb> <family>` is exactly equivalent to one statement per individual member.",
+      "A family silently widens: a new individual resource-type is folded into its service family automatically. Prefer individual resource-types in generated policy.",
+      "IAM has no family resource-type - only individual ones (see `no_family_individual_types`).",
+      "Some API operations need several resource-types at once (LaunchInstance = instances + network; CreateVolumeBackup = volumes + volume-backups); permissions are additive across groups.",
+      "Membership below is only what Oracle publishes verbatim in the Core Services / Object Storage policy reference. Families listed in `families_membership_not_enumerated` exist but their member lists are not reproduced here - read the per-service policy-reference page."
+    ],
+    "docs": [
+      "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/objectstoragepolicyreference.htm",
+      "https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm"
+    ]
+  },
+  "families": {
+    "virtual-network-family": [
+      "vcns",
+      "subnets",
+      "route-tables",
+      "network-security-groups",
+      "security-lists",
+      "dhcp-options",
+      "private-ips",
+      "public-ips",
+      "ipv6s",
+      "internet-gateways",
+      "nat-gateways",
+      "service-gateways",
+      "local-peering-gateways",
+      "local-peering-from",
+      "local-peering-to",
+      "remote-peering-connections",
+      "remote-peering-from",
+      "remote-peering-to",
+      "drg-object",
+      "drg-attachments",
+      "drg-route-tables",
+      "drg-route-distributions",
+      "cpes",
+      "ipsec-connections",
+      "cross-connects",
+      "cross-connect-groups",
+      "virtual-circuits",
+      "vnics",
+      "vtaps",
+      "vnic-attachments",
+      "vlans",
+      "byoiprange",
+      "publicippool",
+      "ipam"
+    ],
+    "instance-family": [
+      "app-catalog-listing",
+      "console-histories",
+      "instances",
+      "instance-console-connection",
+      "instance-images",
+      "volume-attachments"
+    ],
+    "compute-management-family": [
+      "instance-configurations",
+      "instance-pools",
+      "cluster-networks"
+    ],
+    "instance-agent-family": [
+      "instance-agent-plugins"
+    ],
+    "instance-agent-command-family": [
+      "instance-agent-commands"
+    ],
+    "volume-family": [
+      "volumes",
+      "volume-attachments",
+      "volume-backups",
+      "boot-volume-backups",
+      "backup-policies",
+      "backup-policy-assignments",
+      "volume-groups",
+      "volume-group-backups"
+    ],
+    "object-family": [
+      "objectstorage-namespaces",
+      "buckets",
+      "objects"
+    ]
+  },
+  "aggregates": {
+    "drgs": [
+      "drg-object",
+      "drg-route-table",
+      "drg-route-distribution",
+      "drg-attachment"
+    ],
+    "all-resources": "Every resource-type in the tenancy. Never generate it outside a deliberate admin or read-only-audit grant."
+  },
+  "notes_on_members": {
+    "instance-family.volume-attachments": "Only the permissions needed to attach volumes; full volume-attachment control comes from volume-family.",
+    "virtual-network-family": "`inspect virtual-network-family` returns FULL security-list and route-table contents - it is not a metadata-only grant."
+  },
+  "families_membership_not_enumerated": [
+    "cluster-family",
+    "data-catalog-family",
+    "data-science-family",
+    "database-family",
+    "datasafe-family-resources",
+    "dns",
+    "email-family",
+    "file-family",
+    "optimizer-api-family",
+    "appmgmt-family",
+    "stack-monitoring-family"
+  ],
+  "no_family_individual_types": {
+    "iam": [
+      "users",
+      "groups",
+      "policies",
+      "compartments",
+      "dynamic-groups",
+      "tag-namespaces"
+    ],
+    "exhaustive": false,
+    "note": "IAM ships no family aggregate; write one statement per individual resource-type. The `iam` list is illustrative, not exhaustive - the source ends it with an ellipsis, so other IAM resource-types (e.g. `tag-defaults`, `authentication-policies`) exist; read the IAM policy-reference page."
+  },
+  "standalone_compute_types": [
+    "auto-scaling-configurations",
+    "compute-bare-metal-hosts",
+    "compute-capacity-reports",
+    "compute-capacity-reservations",
+    "compute-clusters",
+    "compute-global-image-capability-schema",
+    "compute-gpu-memory-clusters",
+    "compute-gpu-memory-fabrics",
+    "compute-host-groups",
+    "compute-image-capability-schema",
+    "dedicated-vm-hosts",
+    "instance-agent-commands",
+    "work-requests"
+  ]
+}

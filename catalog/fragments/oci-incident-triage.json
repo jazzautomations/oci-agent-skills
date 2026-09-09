@@ -1,0 +1,215 @@
+[
+  {
+    "id": "oci-incident-triage-1",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "monitoring",
+      "alarm-status",
+      "list-alarms-status",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-2",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "audit",
+      "event",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}",
+      "--all"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-3",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "cloud-guard",
+      "problem",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--lifecycle-detail",
+      "OPEN",
+      "--risk-level",
+      "CRITICAL",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-4",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "monitoring",
+      "metric",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "200"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-5",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "monitoring",
+      "metric-data",
+      "summarize-metrics-data",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace",
+      "oci_computeagent",
+      "--query-text",
+      "CpuUtilization[5m].groupBy(resourceId).mean()",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-6",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "logging-search",
+      "search-logs",
+      "--search-query",
+      "search \"${COMPARTMENT_ID}\" | where \"data.level\" = 'ERROR' | sort by datetime desc",
+      "--time-start",
+      "${START_TIME}",
+      "--time-end",
+      "${END_TIME}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-7",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "compute",
+      "instance",
+      "get",
+      "--instance-id",
+      "${INSTANCE_ID}"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-8",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "compute",
+      "instance",
+      "list-vnics",
+      "--instance-id",
+      "${INSTANCE_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-9",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "compute",
+      "instance-maintenance-event",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-10",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "work-requests",
+      "work-request",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-11",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "work-requests",
+      "work-request-error",
+      "list",
+      "--work-request-id",
+      "${WORK_REQUEST_ID}",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-12",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "200"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-13",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "limits",
+      "resource-availability",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit-name",
+      "standard-e4-core-count",
+      "--availability-domain",
+      "${AVAILABILITY_DOMAIN}"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-14",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "lb",
+      "load-balancer-health",
+      "get",
+      "--load-balancer-id",
+      "${LOAD_BALANCER_ID}"
+    ]
+  },
+  {
+    "id": "oci-incident-triage-15",
+    "skill": "oci-incident-triage",
+    "argv": [
+      "support",
+      "incident",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "20"
+    ]
+  }
+]

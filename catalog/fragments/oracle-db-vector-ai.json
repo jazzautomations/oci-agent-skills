@@ -1,0 +1,96 @@
+{
+  "examples": [
+    {
+      "id": "oracle-db-vector-ai-1",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,version:\"db-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-2",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{version:\"db-version\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-3",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "db",
+        "autonomous-db-version",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].version",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-4",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "get",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--query",
+        "data.{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-vector-ai-5",
+      "skill": "oracle-db-vector-ai",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list-database-parameters",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--name",
+        "vector",
+        "--all",
+        "--query",
+        "data.items[].{name:name,value:value}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}

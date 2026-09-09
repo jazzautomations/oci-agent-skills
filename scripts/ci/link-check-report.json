@@ -1,0 +1,147 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/code_editor_intro.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/Concepts/usingapi.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliusing.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contenggrantingworkloadaccesstoresources.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsaccessingociresources.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/console.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/General/service-limits/default.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policysyntax/conditions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Tasks/managingsecrets.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Quotas/Concepts/quota_policy_syntax.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Search/Concepts/queryoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Tagging/Tasks/managingaccesswithtags.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/deploy-baseline-lz/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-distributed-cloud/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-operations/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-performance/index.html",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices-reliability/index.html",
+      "status": 404,
+      "expected": 404
+    }
+  ],
+  "checked_on": "2026-09-08",
+  "command": "python3 scripts/ci/check_links.py references"
+}

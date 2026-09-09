@@ -1,0 +1,158 @@
+{
+  "examples": [
+    {
+      "id": "oci-data-platform-1",
+      "skill": "oci-data-platform",
+      "argv": [
+        "streaming",
+        "admin",
+        "stream",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,endpoint:\"messages-endpoint\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-2",
+      "skill": "oci-data-platform",
+      "argv": [
+        "queue",
+        "queue-admin",
+        "queue",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-3",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-flow",
+        "application",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,spark:\"spark-version\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-4",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-integration",
+        "workspace",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-5",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-science",
+        "notebook-session",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-6",
+      "skill": "oci-data-platform",
+      "argv": [
+        "bds",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-7",
+      "skill": "oci-data-platform",
+      "argv": [
+        "goldengate",
+        "deployment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-data-platform-8",
+      "skill": "oci-data-platform",
+      "argv": [
+        "data-catalog",
+        "catalog",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}

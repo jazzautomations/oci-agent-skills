@@ -1,0 +1,18 @@
+{
+  "source": "research/data/destructive-ops.json",
+  "source_sha256": "6f5a8f1aab4b1e33ea56cad0d88569fddee08a9893b09a5bc6155ec3f75c0205",
+  "matrix": {
+    "destructive/CRITICAL/deny": 278,
+    "destructive/HIGH/ask": 514,
+    "destructive/HIGH/deny": 13,
+    "destructive/LOW/ask": 63,
+    "destructive/MEDIUM/allow": 1,
+    "destructive/MEDIUM/ask": 420,
+    "destructive/MEDIUM/deny": 37,
+    "mutating/LOW/ask": 1769,
+    "mutating/MEDIUM/ask": 2012,
+    "unclassified/REVIEW/allow": 2,
+    "unclassified/REVIEW/ask": 328
+  },
+  "allowed_outside_strict_reads": 0
+}

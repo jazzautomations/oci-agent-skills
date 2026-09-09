@@ -1,0 +1,1056 @@
+{
+  "mode": "offline_help",
+  "validated_at": "2026-09-09T20:19:55.850675+00:00",
+  "cli_version": "3.91.0",
+  "sdk_version": "2.185.0",
+  "region": null,
+  "complete": true,
+  "scope_note": "Fixed read commands only. One page per call; no resource names, OCIDs, raw errors or credentials retained. Success validates a read API, not deployments or full inventory.",
+  "checks": [
+    {
+      "id": "cli-auth-compartment-subtree",
+      "status": "help_validated"
+    },
+    {
+      "id": "cli-auth-search-scope",
+      "status": "help_validated"
+    },
+    {
+      "id": "cli-auth-subscriptions",
+      "status": "help_validated"
+    },
+    {
+      "id": "cli-auth-work-requests",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-anomaly-monitors",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-budgets",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-focus-reports",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-saved-queries",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-schedules",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-tag-namespaces",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-usage-by-service",
+      "status": "help_validated"
+    },
+    {
+      "id": "cost-analysis-usage-by-sku",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-availability-domains",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-buckets",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-compartments",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-images",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-namespace",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-subnets",
+      "status": "help_validated"
+    },
+    {
+      "id": "d7-vcn",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-allotment",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-always-free-adb",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-headroom",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-home-region",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-idle-cpu",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-limit-scope",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-object-cap",
+      "status": "help_validated"
+    },
+    {
+      "id": "free-tier-offered-shapes",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-budgets",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-compartment-subtree",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-cost-tracking-tags",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-quotas",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-rules",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-tag-defaults",
+      "status": "help_validated"
+    },
+    {
+      "id": "governance-tag-namespaces",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-email-endpoints",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-email-limits",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-email-senders",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-email-suppressions",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-envelope-fusion",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-marketplace-listings",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-region-subscriptions",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-regions-in-realm",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-service-known",
+      "status": "help_validated"
+    },
+    {
+      "id": "nav-tenancy-holdings",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-ai-services-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-ai-services-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-ai-services-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-ai-services-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-ai-services-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-bastion-access-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-bastion-access-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-bastion-access-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-bastion-access-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-bastion-access-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-block-file-storage-9",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-cli-auth-reference-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-compute-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-cost-analysis-reference-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-cost-analysis-reference-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-data-platform-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-devops-pipelines-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-devops-pipelines-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-devops-pipelines-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-devops-pipelines-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-devops-pipelines-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-dr-backup-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-generative-ai-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-generative-ai-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-generative-ai-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-generative-ai-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-generative-ai-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-iam-policy-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-10",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-11",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-12",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-13",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-14",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-15",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-incident-triage-9",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-reference-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-reference-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-logging-audit-reference-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-patching-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-monitoring-alarms-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-object-storage-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-object-storage-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-object-storage-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-object-storage-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-object-storage-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-oke-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-10",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-11",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-12",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-13",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-14",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-15",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-16",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-17",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-18",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-19",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-20",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-21",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-22",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-23",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-security-posture-reference-9",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-serverless-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-serverless-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-serverless-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-serverless-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-serverless-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-support-limits-reference-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-support-limits-reference-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-support-limits-reference-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-support-limits-reference-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-support-limits-reference-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-terraform-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-terraform-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-terraform-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-terraform-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-terraform-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-vault-certificates-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-apex-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-apex-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-apex-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-apex-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-apex-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-autonomous-db-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-autonomous-db-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-autonomous-db-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-autonomous-db-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-autonomous-db-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-fleet-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-sql-access-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-sql-access-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-sql-access-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-sql-access-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-sql-access-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-vector-ai-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-vector-ai-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-vector-ai-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-vector-ai-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-db-vector-ai-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-4",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-6",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-7",
+      "status": "help_validated"
+    },
+    {
+      "id": "oracle-enterprise-apps-8",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-broad-policies",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-bucket-exposure",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-cloud-guard-problems",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-inventory",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-open-ingress",
+      "status": "help_validated"
+    },
+    {
+      "id": "posture-users-without-mfa",
+      "status": "help_validated"
+    },
+    {
+      "id": "sdk-compartment-walk",
+      "status": "help_validated"
+    },
+    {
+      "id": "sdk-model-discovery",
+      "status": "help_validated"
+    },
+    {
+      "id": "sdk-region-subscriptions",
+      "status": "help_validated"
+    },
+    {
+      "id": "sdk-regions",
+      "status": "help_validated"
+    },
+    {
+      "id": "sdk-work-requests",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-availability",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-definitions",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-increase-items",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-increase-questions",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-increase-requests",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-occ-capacity-requests",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-occ-customer-groups",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-quotas",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-resource-types",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-services",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-validate-user",
+      "status": "help_validated"
+    },
+    {
+      "id": "support-limits-values",
+      "status": "help_validated"
+    }
+  ],
+  "bootstrap_checks": []
+}

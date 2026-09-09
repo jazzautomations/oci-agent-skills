@@ -13,14 +13,14 @@ another profile or a broader principal after an error. A region subscription, an
 IAM grant, a quota and available capacity are four different facts.
 
 The runtime accepts an explicit region and scope on each tool. Its optional
-`OCI_ALLOWED_COMPARTMENT_IDS` is an exact list for compartment tools. OCI IAM is the
+`OCI_ALLOWED_COMPARTMENT_IDS` permits listed roots and descendants by default; set `OCI_ALLOWED_COMPARTMENT_MODE=exact` for exact matching. OCI IAM is the
 authoritative permission boundary. Authentication settings and tool limits are in
 [runtime/README.md](../runtime/README.md).
 
 ## Discover syntax, then execute
 
 Use the installed CLI's `--help` for the exact command path and parameters. The
-bundled [CLI snapshot](../catalog/cli.json) is an index, not proof that another
+bundled [CLI snapshot](../catalog/cli.jsonl) is an index, not proof that another
 installed version supports the same syntax. [Examples](../catalog/examples.json)
 are executable argv templates validated by `scripts/check_examples.py`.
 

@@ -1,0 +1,9 @@
+{
+  "source": "research/data/eval-corpus.json",
+  "routing": 80,
+  "negatives": 40,
+  "tasks": 40,
+  "safety": "research/15 section 9, retained fixtures from tests/test_sanitize.py; class list references/untrusted-output.md",
+  "prompt_edits": 0,
+  "schema_status": "Claude grader keys unverified; skill-creator JSON alternate supplied"
+}

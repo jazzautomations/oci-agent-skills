@@ -1,0 +1,12 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: resource-availability
+prompt: Can I still launch A1.Flex ocpus, or am I out of capacity/quota?
+tags:
+- capacity
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

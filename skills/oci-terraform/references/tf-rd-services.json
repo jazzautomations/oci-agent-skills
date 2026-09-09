@@ -1,0 +1,530 @@
+[
+{
+"Name": "zpr",
+"Scope": "tenancy"
+},
+{
+"Name": "budget",
+"Scope": "tenancy"
+},
+{
+"Name": "cloud_guard_tenancy",
+"Scope": "tenancy"
+},
+{
+"Name": "email_tenancy",
+"Scope": "tenancy"
+},
+{
+"Name": "log_analytics_tenancy",
+"Scope": "tenancy"
+},
+{
+"Name": "metering_computation",
+"Scope": "tenancy"
+},
+{
+"Name": "optimizer",
+"Scope": "tenancy"
+},
+{
+"Name": "security_attribute",
+"Scope": "tenancy"
+},
+{
+"Name": "usage_proxy",
+"Scope": "tenancy"
+},
+{
+"Name": "identity",
+"Scope": "tenancy"
+},
+{
+"Name": "limits",
+"Scope": "tenancy"
+},
+{
+"Name": "vbs_inst",
+"Scope": "tenancy"
+},
+{
+"Name": "ai_vision",
+"Scope": "compartment"
+},
+{
+"Name": "apm_traces",
+"Scope": "compartment"
+},
+{
+"Name": "blockchain",
+"Scope": "compartment"
+},
+{
+"Name": "database_tools",
+"Scope": "compartment"
+},
+{
+"Name": "dataintegration",
+"Scope": "compartment"
+},
+{
+"Name": "opa",
+"Scope": "compartment"
+},
+{
+"Name": "queue",
+"Scope": "compartment"
+},
+{
+"Name": "auto_scaling",
+"Scope": "compartment"
+},
+{
+"Name": "data_safe",
+"Scope": "compartment"
+},
+{
+"Name": "datascience",
+"Scope": "compartment"
+},
+{
+"Name": "load_balancer",
+"Scope": "compartment"
+},
+{
+"Name": "streaming",
+"Scope": "compartment"
+},
+{
+"Name": "adm",
+"Scope": "compartment"
+},
+{
+"Name": "functions",
+"Scope": "compartment"
+},
+{
+"Name": "os_management_hub",
+"Scope": "compartment"
+},
+{
+"Name": "waf",
+"Scope": "compartment"
+},
+{
+"Name": "database_migration",
+"Scope": "compartment"
+},
+{
+"Name": "email",
+"Scope": "compartment"
+},
+{
+"Name": "metering_computation",
+"Scope": "compartment"
+},
+{
+"Name": "opsi",
+"Scope": "compartment"
+},
+{
+"Name": "analytics",
+"Scope": "compartment"
+},
+{
+"Name": "nosql",
+"Scope": "compartment"
+},
+{
+"Name": "vulnerability_scanning",
+"Scope": "compartment"
+},
+{
+"Name": "cluster_health",
+"Scope": "compartment"
+},
+{
+"Name": "dbmulticloud",
+"Scope": "compartment"
+},
+{
+"Name": "costad",
+"Scope": "compartment"
+},
+{
+"Name": "log_analytics",
+"Scope": "compartment"
+},
+{
+"Name": "resource_scheduler",
+"Scope": "compartment"
+},
+{
+"Name": "capacity_management",
+"Scope": "compartment"
+},
+{
+"Name": "ai_data_platform",
+"Scope": "compartment"
+},
+{
+"Name": "waas",
+"Scope": "compartment"
+},
+{
+"Name": "cloud_guard",
+"Scope": "compartment"
+},
+{
+"Name": "cloud_migrations",
+"Scope": "compartment"
+},
+{
+"Name": "psa",
+"Scope": "compartment"
+},
+{
+"Name": "vn_monitoring",
+"Scope": "compartment"
+},
+{
+"Name": "ai_language",
+"Scope": "compartment"
+},
+{
+"Name": "announcements_service",
+"Scope": "compartment"
+},
+{
+"Name": "cloud_bridge",
+"Scope": "compartment"
+},
+{
+"Name": "dblm",
+"Scope": "compartment"
+},
+{
+"Name": "fleet_apps_management",
+"Scope": "compartment"
+},
+{
+"Name": "fleet_software_update",
+"Scope": "compartment"
+},
+{
+"Name": "jms",
+"Scope": "compartment"
+},
+{
+"Name": "kms",
+"Scope": "compartment"
+},
+{
+"Name": "delegate_access_control",
+"Scope": "compartment"
+},
+{
+"Name": "ai_document",
+"Scope": "compartment"
+},
+{
+"Name": "lustre_file_storage",
+"Scope": "compartment"
+},
+{
+"Name": "network_load_balancer",
+"Scope": "compartment"
+},
+{
+"Name": "resource_analytics",
+"Scope": "compartment"
+},
+{
+"Name": "core",
+"Scope": "compartment"
+},
+{
+"Name": "marketplace",
+"Scope": "compartment"
+},
+{
+"Name": "apm",
+"Scope": "compartment"
+},
+{
+"Name": "fusion_apps",
+"Scope": "compartment"
+},
+{
+"Name": "license_manager",
+"Scope": "compartment"
+},
+{
+"Name": "mysql",
+"Scope": "compartment"
+},
+{
+"Name": "osp_gateway",
+"Scope": "compartment"
+},
+{
+"Name": "oce",
+"Scope": "compartment"
+},
+{
+"Name": "bds",
+"Scope": "compartment"
+},
+{
+"Name": "data_labeling_service",
+"Scope": "compartment"
+},
+{
+"Name": "containerengine",
+"Scope": "compartment"
+},
+{
+"Name": "dataflow",
+"Scope": "compartment"
+},
+{
+"Name": "devops",
+"Scope": "compartment"
+},
+{
+"Name": "waa",
+"Scope": "compartment"
+},
+{
+"Name": "database",
+"Scope": "compartment"
+},
+{
+"Name": "oda",
+"Scope": "compartment"
+},
+{
+"Name": "ons",
+"Scope": "compartment"
+},
+{
+"Name": "artifacts",
+"Scope": "compartment"
+},
+{
+"Name": "health_checks",
+"Scope": "compartment"
+},
+{
+"Name": "bastion",
+"Scope": "compartment"
+},
+{
+"Name": "compute_cloud_at_customer",
+"Scope": "compartment"
+},
+{
+"Name": "events",
+"Scope": "compartment"
+},
+{
+"Name": "ddfs",
+"Scope": "compartment"
+},
+{
+"Name": "identity_data_plane",
+"Scope": "compartment"
+},
+{
+"Name": "sch",
+"Scope": "compartment"
+},
+{
+"Name": "stack_monitoring",
+"Scope": "compartment"
+},
+{
+"Name": "datacc",
+"Scope": "compartment"
+},
+{
+"Name": "disaster_recovery",
+"Scope": "compartment"
+},
+{
+"Name": "generative_ai",
+"Scope": "compartment"
+},
+{
+"Name": "self",
+"Scope": "compartment"
+},
+{
+"Name": "managed_kafka",
+"Scope": "compartment"
+},
+{
+"Name": "availability_domain",
+"Scope": "compartment"
+},
+{
+"Name": "apiaccesscontrol",
+"Scope": "compartment"
+},
+{
+"Name": "apm_synthetics",
+"Scope": "compartment"
+},
+{
+"Name": "jms_utils",
+"Scope": "compartment"
+},
+{
+"Name": "object_storage",
+"Scope": "compartment"
+},
+{
+"Name": "datacatalog",
+"Scope": "compartment"
+},
+{
+"Name": "desktops",
+"Scope": "compartment"
+},
+{
+"Name": "dif",
+"Scope": "compartment"
+},
+{
+"Name": "cluster_placement_groups",
+"Scope": "compartment"
+},
+{
+"Name": "apm_config",
+"Scope": "compartment"
+},
+{
+"Name": "api_platform",
+"Scope": "compartment"
+},
+{
+"Name": "gdp",
+"Scope": "compartment"
+},
+{
+"Name": "logging",
+"Scope": "compartment"
+},
+{
+"Name": "vault",
+"Scope": "compartment"
+},
+{
+"Name": "apigateway",
+"Scope": "compartment"
+},
+{
+"Name": "iot",
+"Scope": "compartment"
+},
+{
+"Name": "dns",
+"Scope": "compartment"
+},
+{
+"Name": "file_storage",
+"Scope": "compartment"
+},
+{
+"Name": "generative_ai_agent",
+"Scope": "compartment"
+},
+{
+"Name": "management_agent",
+"Scope": "compartment"
+},
+{
+"Name": "media_services",
+"Scope": "compartment"
+},
+{
+"Name": "recovery",
+"Scope": "compartment"
+},
+{
+"Name": "redis",
+"Scope": "compartment"
+},
+{
+"Name": "tenantmanagercontrolplane",
+"Scope": "compartment"
+},
+{
+"Name": "batch",
+"Scope": "compartment"
+},
+{
+"Name": "ocvp",
+"Scope": "compartment"
+},
+{
+"Name": "database_tools_runtime",
+"Scope": "compartment"
+},
+{
+"Name": "operator_access_control",
+"Scope": "compartment"
+},
+{
+"Name": "tagging",
+"Scope": "compartment"
+},
+{
+"Name": "monitoring",
+"Scope": "compartment"
+},
+{
+"Name": "visual_builder",
+"Scope": "compartment"
+},
+{
+"Name": "certificates_management",
+"Scope": "compartment"
+},
+{
+"Name": "container_instances",
+"Scope": "compartment"
+},
+{
+"Name": "identity_domains",
+"Scope": "compartment"
+},
+{
+"Name": "network_firewall",
+"Scope": "compartment"
+},
+{
+"Name": "resourcemanager",
+"Scope": "compartment"
+},
+{
+"Name": "demand_signal",
+"Scope": "compartment"
+},
+{
+"Name": "golden_gate",
+"Scope": "compartment"
+},
+{
+"Name": "integration",
+"Scope": "compartment"
+},
+{
+"Name": "opensearch",
+"Scope": "compartment"
+},
+{
+"Name": "psql",
+"Scope": "compartment"
+}
+]

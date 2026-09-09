@@ -1,0 +1,93 @@
+{
+  "examples": [
+    {
+      "id": "oracle-db-sql-access-1",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "connection",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-2",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "connection",
+        "get",
+        "--connection-id",
+        "${CONNECTION_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\",type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-3",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "private-endpoint",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-4",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "dbtools",
+        "private-endpoint",
+        "get",
+        "--private-endpoint-id",
+        "${PRIVATE_ENDPOINT_ID}",
+        "--query",
+        "data.{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-sql-access-5",
+      "skill": "oracle-db-sql-access",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",mtls:\"is-mtls-connection-required\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}

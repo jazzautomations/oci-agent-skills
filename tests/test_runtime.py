@@ -1,10 +1,8 @@
 import asyncio
 from types import SimpleNamespace
 from unittest.mock import Mock, create_autospec
-
 import oci
 import pytest
-
 from oci_readonly import server
 from oci_readonly.smoke import EXPECTED, run
 
@@ -51,16 +49,22 @@ def test_scope_rejects_non_identifiers(value):
 
 def test_allowlist_is_exact_and_checks_before_client(context, monkeypatch):
     monkeypatch.setenv("OCI_ALLOWED_COMPARTMENT_IDS", COMPARTMENT)
+    monkeypatch.setenv("OCI_ALLOWED_COMPARTMENT_MODE", "exact")
     factory = Mock()
     monkeypatch.setattr(server, "client", factory)
-    assert server.oci_instances(TENANCY, REGION)["error"]["kind"] == "invalid_scope"
+    assert (
+        asyncio.run(server.oci_instances(TENANCY, REGION))["error"]["kind"]
+        == "invalid_scope"
+    )
     factory.assert_not_called()
     assert server.check_scope(COMPARTMENT, REGION) is context
 
 
 def test_tenancy_tools_cannot_choose_other_tenancy(context):
     assert (
-        server.oci_regions("ocid1.tenancy.oc1..other", REGION)["error"]["kind"]
+        asyncio.run(server.oci_regions("ocid1.tenancy.oc1..other", REGION))["error"][
+            "kind"
+        ]
         == "invalid_scope"
     )
 
@@ -70,7 +74,7 @@ def test_bad_auth_configuration_is_distinct_and_sanitized(monkeypatch):
     monkeypatch.setattr(
         server, "build_auth_context", Mock(side_effect=ValueError("secret-path"))
     )
-    result = server.oci_instances(COMPARTMENT, REGION)
+    result = asyncio.run(server.oci_instances(COMPARTMENT, REGION))
     assert result["error"]["kind"] == "authentication"
     assert "secret-path" not in str(result)
     server.auth.cache_clear()
@@ -145,7 +149,7 @@ def test_client_carries_auth_user_agent_and_timeout(context, signer):
 )
 def test_errors_never_echo_exception_or_headers(context, monkeypatch, error, kind):
     monkeypatch.setattr(server, "client", Mock(side_effect=error))
-    result = server.oci_instances(COMPARTMENT, REGION)
+    result = asyncio.run(server.oci_instances(COMPARTMENT, REGION))
     assert result["error"]["kind"] == kind
     assert "secret" not in str(result)
 
@@ -154,7 +158,7 @@ def test_one_page_call_passes_exact_scope_and_cursor(context, monkeypatch):
     compute = Mock()
     compute.list_instances.return_value = response([], "next")
     monkeypatch.setattr(server, "client", lambda factory, region: compute)
-    result = server.oci_instances(COMPARTMENT, REGION, 2, "previous")
+    result = asyncio.run(server.oci_instances(COMPARTMENT, REGION, 2, "previous"))
     compute.list_instances.assert_called_once_with(
         COMPARTMENT, limit=2, page="previous"
     )
@@ -165,7 +169,7 @@ def test_search_uses_only_validated_compartment(context, monkeypatch):
     search = Mock()
     search.search_resources.return_value = response(SimpleNamespace(items=[]))
     monkeypatch.setattr(server, "client", lambda factory, region: search)
-    assert server.oci_resource_search(COMPARTMENT, REGION)["ok"]
+    assert asyncio.run(server.oci_resource_search(COMPARTMENT, REGION))["ok"]
     query = search.search_resources.call_args.args[0].query
     assert query == f"query all resources where compartmentId = '{COMPARTMENT}'"
 
@@ -176,7 +180,9 @@ def test_network_uses_real_sdk_signature(context, monkeypatch, resource):
     operation = getattr(network, "list_" + resource)
     operation.return_value = response([])
     monkeypatch.setattr(server, "client", lambda factory, region: network)
-    assert server.oci_network_inventory(COMPARTMENT, REGION, resource)["ok"]
+    assert asyncio.run(server.oci_network_inventory(COMPARTMENT, REGION, resource))[
+        "ok"
+    ]
     operation.assert_called_once_with(compartment_id=COMPARTMENT, limit=50, page=None)
 
 
@@ -186,13 +192,13 @@ def test_cost_filters_exact_compartment_region_and_rejects_unbounded_window(
     usage = Mock()
     usage.request_summarized_usages.return_value = response(SimpleNamespace(items=[]))
     monkeypatch.setattr(server, "client", lambda factory, region: usage)
-    assert not server.oci_cost_summary(COMPARTMENT, REGION, "2026-01-01", "2026-03-01")[
-        "ok"
-    ]
+    assert not asyncio.run(
+        server.oci_cost_summary(COMPARTMENT, REGION, "2026-01-01", "2026-03-01")
+    )["ok"]
     usage.request_summarized_usages.assert_not_called()
-    assert server.oci_cost_summary(COMPARTMENT, REGION, "2026-01-01", "2026-01-02")[
-        "ok"
-    ]
+    assert asyncio.run(
+        server.oci_cost_summary(COMPARTMENT, REGION, "2026-01-01", "2026-01-02")
+    )["ok"]
     details = usage.request_summarized_usages.call_args.args[0]
     assert details.tenant_id == TENANCY
     assert details.filter.operator == "AND"
@@ -206,4 +212,4 @@ def test_stdio_starts_without_credentials_and_rejects_bad_scope(monkeypatch):
     monkeypatch.setenv("OCI_CONFIG_FILE", "/nonexistent/oci-config")
     report = asyncio.run(run(False, REGION, 20))
     assert report["ok"] is True
-    assert report["tool_count"] == 9
+    assert report["tool_count"] == 15

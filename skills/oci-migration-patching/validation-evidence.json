@@ -1,0 +1,179 @@
+{
+  "validated_at": "2026-09-09T15:44:23.366040+00:00",
+  "cli": "3.91.0",
+  "sdk": "2.185.0",
+  "fragments": {
+    "ok": true,
+    "examples": 8,
+    "method": "exact fenced argv parity and installed Click option/required-flag validation; domain placeholders substituted offline only"
+  },
+  "validators": {
+    "check_frontmatter.py": {
+      "validator": "frontmatter",
+      "checked": 1,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_refs.py": {
+      "validator": "refs",
+      "checked": 8,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_portable.py": {
+      "validator": "portable",
+      "checked": 1,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "lint_fences.py": {
+      "validator": "fences",
+      "checked": 8,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_budget.py": {
+      "validator": "budget",
+      "checked": 8,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_no_secrets.py": {
+      "validator": "secrets",
+      "checked": 11,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_scripts_readonly.py": {
+      "validator": "scripts_readonly",
+      "checked": 0,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    }
+  },
+  "tenancy_smoke": {
+    "validated_at": "2026-09-09T15:44:23.366040+00:00",
+    "profile_selection": "explicit existing DEFAULT API-key profile",
+    "region": "us-chicago-1",
+    "scope": "configured tenancy root; no recursive traversal",
+    "scope_note": "Only permitted smoke reads; counts only, no identifiers or resource values retained. Samples are not complete inventories.",
+    "checks": [
+      {
+        "name": "identity",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "subscriptions",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "compartment",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "shapes",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "images",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "availability-domains",
+        "ok": true,
+        "error": null,
+        "count": 3
+      },
+      {
+        "name": "network",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "namespace",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "vaults",
+        "ok": true,
+        "error": null,
+        "count": 0
+      },
+      {
+        "name": "monitoring",
+        "ok": true,
+        "error": null,
+        "count": 1
+      }
+    ]
+  },
+  "docs": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-migration/home.htm",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en-us/iaas/Content/cloud-migration/home.htm"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/osmh/doc/overview.htm",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en-us/iaas/osmh/doc/overview.htm"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/exadata-fleet-update/index.html",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en-us/iaas/exadata-fleet-update/index.html"
+    }
+  ],
+  "full_pytest": {
+    "exit_code": 1,
+    "summary": "2 failed, 199 passed, 1 warning in 44.82s",
+    "failures": [
+      "tests/test_catalog.py::test_generated_scripts_and_fragments",
+      "tests/test_installer.py::test_installed_copies_and_refs"
+    ]
+  },
+  "licenses": {
+    "owned_skill_ok": true,
+    "repository_ok": false,
+    "outside_scope_findings": 27,
+    "note": "Declared Apache-2.0 license supplied for this skill; root LICENSE and other skill licensing belong to their owners."
+  },
+  "projection_fix": "OCVS list uses SDK SddcCollection: corrected data[] to data.items[] in Commands and fragment; nonempty fixture projection passed.",
+  "quick_validate": {
+    "ok": false,
+    "output": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name",
+    "note": "Generic validator does not accept compatibility; the repository stencil requires it and repository frontmatter/portable validators pass."
+  },
+  "domain_verification": "shape-only: domain APIs not run; no workload execution or provisioning",
+  "limitations": [
+    "W42a fragment merge/script registry is deferred; generated catalogs are outside this task.",
+    "Installer assertion still expects 16 skills; test is outside this task."
+  ]
+}

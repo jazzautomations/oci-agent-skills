@@ -1,0 +1,48 @@
+{
+  "source": "research/refs/oracle_mcp",
+  "candidates": [
+    {
+      "name": "get_oci_command_help",
+      "description": "Returns helpful instructions for running an OCI CLI command.\n\nIMPORTANT:\n  - Only provide the command _after_ 'oci' — do not include the string\n    'oci' in `command`.\n  - Provide command-path tokens only. Options and option values are not accepted.\n  - Never use the information returned by this tool to instruct an end\n    user directly. Use it only to determine which command to run\n    yourself using run_oci_command.\n\nCommand structure guidance:\n  - OCI subcommands are organized as:\n        <service> <subcommand> <subcommand> ...\n    e.g.\n    compute instance list OR\n    compute instance action-name OR\n    recovery protected-database-collection list-protected-databases\n  - Services vary in how they structure their CLI. Some use\n    explicit resource tokens (compute instance list), others use\n    collection names or hyphenated actions\n    (e.g. list-protected-databases),\n    and some have deeper subcommand chains (service sub1 sub2 sub3 ...).\n\nHow to ask for help:\n  - Start with the most specific form you think is correct, for example:\n      compute instance list\n      compute instance action-name\n      recovery protected-database-collection list-protected-databases\n  - If the specific request returns an error, progressively make it\n    less specific:\n      1. try the full command (most specific)\n      2. remove the final token and try again\n      3. repeat until you reach just the service name (e.g. compute)\n  - Additionally, if a service commonly uses hyphenated commands for\n    list operations, try hyphenated forms as well\n    e.g.\n      recovery protected-database-collection list-protected-databases OR\n      psql db-system-collection list-db-systems.",
+      "signature": "command: str",
+      "server": "oci-api"
+    },
+    {
+      "name": "run_oci_command",
+      "description": "Runs an OCI CLI command.\nThis tool allows you to run OCI CLI commands on the user's behalf.\n\nOnly provide the command after 'oci', do not include the string 'oci'\nin your command.\n\nNever tell the user which command to run, only run it for them using\nthis tool.\n\nTry your best to avoid using extra flags on the command if possible.\nIf you absolutely need to use flags in the command, call the get_oci_command_help\ntool on the command first to understand the flags better.",
+      "signature": "command: Annotated[str, \"The OCI CLI command to run. Do not include 'oci' in your command\"]",
+      "server": "oci-api"
+    },
+    {
+      "name": "find_oci_api",
+      "description": "Thin keyword/resource-action fallback search across OCI Python SDK client methods. Use this only when you cannot infer a plausible client class or method well enough to call list_client_operations or describe_oci_operation first.",
+      "signature": "query: Annotated[str, \"Short SDK-oriented resource/action query such as 'list regions', 'launch instance', or 'vcn create'. Reduce requests to concise search terms; do not pass full sentences. This is an escape hatch, not the normal first step.\"], client_fqn: Annotated[Optional[str], \"Optional fully-qualified client class to narrow the search, e.g. 'oci.core.ComputeClient'.\"]=None, limit: Annotated[int, 'Maximum matches to return. Keep this small (3-5) for initial discovery.']=5, include_params: Annotated[bool, 'Include compact signatures for each match.']=False",
+      "server": "oci-cloud"
+    },
+    {
+      "name": "describe_oci_operation",
+      "description": "Describe a specific OCI Python SDK client method, including required params, optional params, pagination behavior, aliases, and request model hints.",
+      "signature": "client_fqn: Annotated[str, \"Fully-qualified client class, e.g. 'oci.core.VirtualNetworkClient'\"], operation: Annotated[str, \"Operation name, e.g. 'create_vcn' or 'list_instances'\"], max_model_fields: Annotated[int, 'Maximum number of model fields to include per request model hint.']=_DEFAULT_MODEL_FIELDS",
+      "server": "oci-cloud"
+    },
+    {
+      "name": "invoke_oci_api",
+      "description": "Invoke an OCI Python SDK client method by fully-qualified client class and operation name. This is a thin wrapper over the OCI Python SDK call. Equivalent Python `oci.core.ComputeClient.list_instances(compartment_id='...')` maps to `client_fqn='oci.core.ComputeClient', operation='list_instances', params={'compartment_id': '...'}`. The default result_mode='auto' keeps list, summarize, and paginated results compact.",
+      "signature": "client_fqn: Annotated[str, \"Fully-qualified client class, e.g. 'oci.core.ComputeClient'\"], operation: Annotated[str, \"Client method/operation name, e.g. 'list_instances' or 'get_instance'\"], params: Annotated[Optional[Dict[str, Any]], 'Keyword arguments for the SDK method (JSON object). These are the snake_case kwargs you would pass in Python.']=None, fields: Annotated[Optional[List[str]], \"Optional top-level response fields to project after serialization, e.g. ['id', 'display_name', 'lifecycle_state']. This shapes the returned payload only; it does not change the SDK call contract.\"]=None, max_results: Annotated[Optional[int], 'Optionally limit returned records for paginated operations, or trim top-level lists after serialization.']=None, result_mode: Annotated[Literal['auto', 'full', 'summary'], \"Use 'auto' for compact defaults, 'summary' for a compact structural summary, or 'full' for the full payload.\"]='auto'",
+      "server": "oci-cloud"
+    },
+    {
+      "name": "list_client_operations",
+      "description": "List public callable OCI Python SDK methods for a given client class. Prefer this over find_oci_api when you already know the likely client family.",
+      "signature": "client_fqn: Annotated[str, \"Fully-qualified client class, e.g. 'oci.core.ComputeClient'\"], query: Annotated[Optional[str], \"Optional keyword/resource filter to keep the result compact, e.g. 'instance' or 'launch'.\"]=None, limit: Annotated[Optional[int], 'Optional maximum number of operations to return.']=None, include_params: Annotated[bool, 'Include compact method signatures in the response.']=True",
+      "server": "oci-cloud"
+    },
+    {
+      "name": "list_oci_clients",
+      "description": "List OCI Python SDK client classes discoverable in the current environment. Prefer direct SDK-shaped calls or find_oci_api for task-oriented requests; use this for capability discovery or debugging.",
+      "signature": "",
+      "server": "oci-cloud"
+    }
+  ],
+  "scope": "Static descriptions/signatures; no imported server code or live tool calls."
+}

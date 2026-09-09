@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-09",
+  "cli": "3.91.0",
+  "scope_verified": true,
+  "scope": "selected profile; configured region; root compartment unless COMPARTMENT_ID supplied",
+  "live": [
+    {
+      "example": "oci-monitoring-alarms-1",
+      "ok": true,
+      "count": 20,
+      "scope": "bounded sample"
+    }
+  ],
+  "documentation": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Monitoring/Concepts/monitoringoverview.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Monitoring/Reference/mql.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/managingalarms.htm",
+      "status": 200
+    }
+  ]
+}

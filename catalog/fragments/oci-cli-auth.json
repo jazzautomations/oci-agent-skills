@@ -1,0 +1,72 @@
+[
+  {
+    "id": "cli-auth-subscriptions",
+    "skill": "oci-cli-auth",
+    "argv": [
+      "iam",
+      "region-subscription",
+      "list",
+      "--tenancy-id",
+      "${TENANCY_ID}"
+    ]
+  },
+  {
+    "id": "cli-auth-compartment-subtree",
+    "skill": "oci-cli-auth",
+    "live": false,
+    "argv": [
+      "iam",
+      "compartment",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--compartment-id-in-subtree",
+      "true",
+      "--access-level",
+      "ANY",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cli-auth-search-scope",
+    "skill": "oci-cli-auth",
+    "argv": [
+      "search",
+      "resource",
+      "structured-search",
+      "--query-text",
+      "query all resources where compartmentId = '${COMPARTMENT_ID}'",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cli-auth-work-requests",
+    "skill": "oci-cli-auth",
+    "live": false,
+    "argv": [
+      "work-requests",
+      "work-request",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "oci-cli-auth-reference-1",
+    "skill": "oci-cli-auth",
+    "live": false,
+    "argv": [
+      "iam",
+      "user",
+      "get",
+      "--user-id",
+      "${USER_ID}",
+      "--query",
+      "data.{name:name,mfa:\"is-mfa-activated\"}"
+    ]
+  }
+]

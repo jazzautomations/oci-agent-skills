@@ -1,0 +1,585 @@
+{
+  "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
+  "scripts": [
+    {
+      "path": "scripts/catalog.py",
+      "sha256": "f90800eb1b752a536812a970656dfd8ba1dff9dbfbc8eebf826511f82e942e52",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/catalog_rules.py",
+      "sha256": "610f0bd24a94782ccf5d88a5d47e2b27b7b8c5ac15570af3e38be1eaa8ad9762",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/check_examples.py",
+      "sha256": "893c29efa5bb71469913c383319ab294cde3983a308bd00fed68809e03ba3dd0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/check_skill_scripts.py",
+      "sha256": "7426c6d752d3bf0fdff3651a3ab780f42e0afca467bdb18fe8b36b949411ab4b",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_budget.py",
+      "sha256": "33d0083dfeed852fdc2e65af7b33a1ecec516fc74788265fffd2ed1d9fb5668a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_frontmatter.py",
+      "sha256": "a4a0eb120cd010a3c7779b9d5ed157ae0c27a55d6a519a4df14bd5037ecc9453",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_history.py",
+      "sha256": "705155f7637dd01f7d142e5688189591a9df86b4227beca4dc919835b1c192a6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_licenses.py",
+      "sha256": "890069cacca027316ffebb82e1da19b16edca22735222b34fcb106b519154711",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_links.py",
+      "sha256": "2b924f8532be83b0db3bb727e323b546b7ca36bfde93a36ba300e2a2c2c0781b",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_manifests.py",
+      "sha256": "244d5b82048d362439261f1981ddf9f03a114801a64d13be0f6973759d6d486c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_no_secrets.py",
+      "sha256": "db6d9cb6ec6b74ee7669d29006850c36d8bdad84e60964e059859e05045f7241",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_portable.py",
+      "sha256": "28a7977cd6168f31bfa4b53f9331b6f863ba98b1e1be50d35b9f3ce661c3fd69",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_refs.py",
+      "sha256": "be904e4c69bcbdc163b51893b926bcc717029f3349010ea2c8912289e145f5a0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_scripts_readonly.py",
+      "sha256": "2fd27ee20d814f50f2a936e284ec2bddf350665e23fbd277c2bd6b22682e36f4",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/check_template.py",
+      "sha256": "79fc27e91160be47a184df280142f7a087c28bffd6867b8ae87c3d43e25dd902",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/cli_breaking.py",
+      "sha256": "debdaa51b1de45a732e173325bc8bf83b44ab6adc90273eca60c3af61c9a926a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/cli_drift.py",
+      "sha256": "a49e24da93444d91ec99cff99665458cc6e0f58f448259474bfd53ac42a7388d",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/common.py",
+      "sha256": "47b7da600e8f272288389fb4fc8a61754610d87aa41944c0f14ad9a277ae55d3",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/lint_fences.py",
+      "sha256": "5df510dd4cae2653c1abf080c17b90ad8c65345b1dfd2c3afcb7d6c3741aed0e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/probe_paths.py",
+      "sha256": "a504964fd4bbaaca51fda26db37f856eeb6df278a84c25138689688a81e8dfcf",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/release_gate.py",
+      "sha256": "944b9c670631968db876bf4a861940d1eb9eb501ae14d000bbc6b3b2a1f10ef6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/update_baseline.py",
+      "sha256": "0ecc8a1f5f2f6dfa4781d9fa9eea27eb0763bcf4c09389830b6eb83090bf4394",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/console_url.py",
+      "sha256": "f54f2730431a9269ca48a5139b43d192d8fec313259a89dfa0e048fa56ac9476",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/graders.py",
+      "sha256": "2e396f3b627419fa80cd06efe71328ff83d12ac0e3538ddf5029e936f9261e9f",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/head_to_head.py",
+      "sha256": "0e2187c0fc9d67cd136ad0921be477172fa8a9819ead114e8ffd9ee3137476f5",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/import_corpus.py",
+      "sha256": "d387c1a2fdd47be0e6f2ce7001765e3e7868a754cc23649b35411164d62b2964",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/run.py",
+      "sha256": "ad507ae6f258c8c5f71d0fe3d3b3c7e29d9dd4ea8034f73ecb42999f505b70fc",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/score_routing_model.py",
+      "sha256": "26e5777571f5dabd59c208ba229171d3d5a7ae067dcd641b803c7a3f2343587e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/foundation_report.py",
+      "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/guard_lib.py",
+      "sha256": "a1ed81f40a2e101d30f917bbafe426d2175618acbdb63e2567ef4f4fc2720ad0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/guard_oci.py",
+      "sha256": "167f36008edcd7a7d92de83c71bd3d0b32fa25da833d23b66a2c250ad2d0c069",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/inventory.py",
+      "sha256": "3c61cdd7c35a1b552d64e6cd168a0f9b9d2e00e11758eeff7a00f23030b0d431",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/inventory_artifacts.py",
+      "sha256": "b74f8dfafd21c577f52908b0f36c419494bf92726b12c128e84a436396d85df9",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/oci_ro.py",
+      "sha256": "8f5e76c56c408ae55eef0f8b4383df1b01931b0a85f5597624e7d2ed375bd550",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/oci_ro.sh",
+      "sha256": "6805a250d696c9ee8acca077ab8af7c377a5db1a620085381c217a5b60e25d71",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/redact.py",
+      "sha256": "07c843a28be50e229f289395882f8bb4fb04affb7aa7943b357a29f368a662fb",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/sanitize.py",
+      "sha256": "5863beab1bb5f058c96901319decf9490d75d029380173cbf50db77fba6d9165",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/measure_context.py",
+      "sha256": "1c02f6ba9c1582838ef6c13f6cd3c95ac54b1ecbe55d89d889e33ae0f0600c61",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/redact.py",
+      "sha256": "c2a26048a71892ffa6230837b8184b0a53c17aed9664b98e7c94c68c145bf080",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/release_report.py",
+      "sha256": "44f7dab3549bfe57f29326f92e912bc98ba5f3d6706171f89fd7caa354e39fe8",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-bastion-access/scripts/bastion_session.sh",
+      "sha256": "edefa24283e44baed8c0f7f71b4e2c9d4eedf68be9bec44d81b2cddb00697c00",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-block-file-storage/scripts/orphan_volumes.sh",
+      "sha256": "039937c70041396ed98b3ec3556520592e117a5197f315ee32fadace055bff84",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cli-auth/scripts/list_all.sh",
+      "sha256": "2e884b703a1046107862008f7b2b93072348911a7eba7f8c1693b3e0de7c1c52",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cli-auth/scripts/whoami.sh",
+      "sha256": "b5c95bc804202326fd35345ce0d68c48fc259f8b0f2e83146f0271cee547d45a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-compute/scripts/capacity_probe.sh",
+      "sha256": "7244aafbb905c218ecfa5e0bedda25bb30937f2ee81fe8d8e60639cdc95de144",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-compute/scripts/resolve_image.sh",
+      "sha256": "df43ad7809a2474334f67eb90d2673fbd0df64bca0b6b3edaf2871ab55210ddf",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cost-analysis/scripts/cost_delta.sh",
+      "sha256": "9c50fcb9949046091ba15e107f7c03f20e98d694368847edb2867df3d2389e4c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cost-analysis/scripts/price.sh",
+      "sha256": "2c200d690656a0691c24d4586dd4ec9868e5686e900dccdb9828b74197c9472c",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-devops-pipelines/scripts/devops_preflight.sh",
+      "sha256": "f7b2403b85046f414fb2e4075242fbfa79dd3965193073e5aaefbe0f27ad6a2a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-free-tier/scripts/freetier_audit.sh",
+      "sha256": "5809c9c3097444a61d2d929d267b8bf7325d8532027e0089b78f85c39e510dd3",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-generative-ai/scripts/chat_min.py",
+      "sha256": "7d5839f545505ef48c023692c34feff88d455fa54acbb849babfbccf5e8f3740",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-generative-ai/scripts/list_models.sh",
+      "sha256": "9d4cda90e19db73a28a943b49faec7ddc8958fff803b0f0c8dc51dcd9789a1d2",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-iam-policy/scripts/policy_lint.py",
+      "sha256": "1f18e987fa422036a5d7d51d1d22fcdad0997c81d85c1436c0dca6629b8ab903",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "policy",
+          "get",
+          "--policy-id",
+          "--query",
+          "data.statements"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-iam-policy/scripts/policy_lint.sh",
+      "sha256": "33c6ca0253142b2f32b9e369f44ce8387db78bc7f0c2d0b86de760b2211d8e21",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-incident-triage/scripts/triage.py",
+      "sha256": "e48cf2407dfa1c10cf1ae7a2ad9a2ab603f101f42978d8e246d5e0d1c9c0e53a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-incident-triage/scripts/triage.sh",
+      "sha256": "f87ed91568ae0c2ebdc492935aa4710fe9b310d19631fc9976551f72a6b5ded7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-logging-audit/scripts/audit_window.py",
+      "sha256": "0219191458a927ed10b41a249df1eb0e4afc5fdd5c8971f86980546580308163",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-logging-audit/scripts/audit_window.sh",
+      "sha256": "bb277a4c41a006fcb7edea5dea9bbfae3b7e8b79972155b758e1d2eff670aac6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-monitoring-alarms/scripts/validate_mql.py",
+      "sha256": "7e8f75ddf2f7c8e115b23c21055708806e11b69230dbc21594da88043f6fa6e0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-monitoring-alarms/scripts/validate_mql.sh",
+      "sha256": "5f5968e0fb088172311661a4fda1527617e8886bbce5b430bd2915f96e95533f",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-networking/scripts/merge_rules.py",
+      "sha256": "3f63f1796a87d380d9ec7cbdb662161933dc188e5d266cca4a156e8fb379a9eb",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-object-storage/scripts/multipart_audit.sh",
+      "sha256": "7f4016fec4cd3e046bde34d20f29b612d87db56d66c9f55a76ae8e1ebf6dd78d",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-oke/scripts/oke_preflight.sh",
+      "sha256": "122d4421c0e8e9cdc1f65a37b6bca3d60a01118df68ef8f6275efc6297eb4300",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-sdk-patterns/scripts/fetch_spec.py",
+      "sha256": "25cf8e1d886e497e94c0ffaf17eb2ab30bea46a0d931811e3451d8c2d5c8aa06",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-sdk-patterns/scripts/verify_auth.py",
+      "sha256": "91ad81064bd7d3b7ea7094d49d532638ddd0733c5fd1ec848bebc254ac3d94d6",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "region",
+          "list",
+          "--query",
+          "length(data)"
+        ],
+        [
+          "iam",
+          "compartment",
+          "get",
+          "--compartment-id",
+          "--query",
+          "data.\"lifecycle-state\""
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-security-posture/scripts/posture.py",
+      "sha256": "2c534d3d0e945930185271182b890ce333009fd528950c1d77eb91e8e96684e0",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "user",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{n:name,mfa:\"is-mfa-activated\"}"
+        ],
+        [
+          "iam",
+          "user",
+          "api-key",
+          "list",
+          "--user-id",
+          "--query",
+          "data[].{c:\"time-created\"}"
+        ],
+        [
+          "iam",
+          "policy",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "100",
+          "--query",
+          "data[].{n:name,s:statements}"
+        ],
+        [
+          "os",
+          "ns",
+          "get",
+          "--query",
+          "data"
+        ],
+        [
+          "os",
+          "bucket",
+          "list",
+          "--compartment-id",
+          "--namespace-name",
+          "--limit",
+          "--query",
+          "data[].name"
+        ],
+        [
+          "os",
+          "bucket",
+          "get",
+          "--namespace-name",
+          "--bucket-name",
+          "--query",
+          "data.{p:\"public-access-type\",k:\"kms-key-id\"}"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-security-posture/scripts/posture.sh",
+      "sha256": "72732c139a750b1e9f80ccb59b0c38f52484e9f757f21f56109082325cc8952a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-serverless/scripts/fn_preflight.sh",
+      "sha256": "595969e65397895e0d716968fa1085225e0db8c77599d9cd4a43323dc780a496",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-support-limits/scripts/capacity.sh",
+      "sha256": "dd31d8ec27558a48259449fd372c970d9966ee3543971be1f75a541e1d571bea",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-tenancy-governance/scripts/governance_audit.py",
+      "sha256": "da586f09b4ac1ae37716f2dac0c0fb4f5e7b765f8f242ddac858432010dc1fd2",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "iam",
+          "compartment",
+          "list",
+          "--compartment-id",
+          "--compartment-id-in-subtree",
+          "true",
+          "--access-level",
+          "ANY",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ],
+        [
+          "iam",
+          "tag-namespace",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ],
+        [
+          "iam",
+          "tag",
+          "list-cost-tracking",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:join('.',[\"tag-namespace-name\",name])}"
+        ],
+        [
+          "iam",
+          "tag-default",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:\"tag-definition-name\",required:\"is-required\"}"
+        ],
+        [
+          "limits",
+          "quota",
+          "list",
+          "--compartment-id",
+          "--limit",
+          "--query",
+          "data[].{name:name}"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-tenancy-governance/scripts/governance_audit.sh",
+      "sha256": "a912130b269d59959bcdb2c9b370452a143a3056827b37597acc3f23b215d9a0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-terraform/scripts/plan_summary.py",
+      "sha256": "3a2611275dcb491ea5687fe8b314b5c856747dc3af2e7e01fd8e8b00bf8bc08d",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-vault-certificates/scripts/cert_expiry.py",
+      "sha256": "955fa8264707e496e710f4c10940bbbd6feb92f944a61bcab7b12592011f126e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-vault-certificates/scripts/cert_expiry.sh",
+      "sha256": "5ef5fe33132fe133b14252ced6e70df1a9623e19041679c6dde8755e0c87606a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oracle-autonomous-db/scripts/adb_preflight.sh",
+      "sha256": "918893bc0a713dc7a506ecd42996dfc44b4fb9cbf3774c596fee8886f34a66fb",
+      "mode": "read-only",
+      "oci_calls": []
+    }
+  ]
+}

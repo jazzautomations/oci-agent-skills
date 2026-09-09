@@ -1,0 +1,6 @@
+{
+  "oci-capacity-limits": "oci-support-limits",
+  "oci-resource-manager": "oci-terraform",
+  "oci-pricing": "oci-cost-analysis",
+  "oci-ai-agents": "oci-generative-ai"
+}

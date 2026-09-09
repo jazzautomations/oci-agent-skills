@@ -1,0 +1,268 @@
+[
+  {
+    "id": "support-limits-services",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits",
+      "service",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-definitions",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits",
+      "definition",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-values",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-availability",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits",
+      "resource-availability",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit-name",
+      "custom-image-count"
+    ]
+  },
+  {
+    "id": "support-limits-quotas",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits",
+      "quota",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-increase-requests",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits-increase",
+      "limits-increase-request",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-increase-items",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits-increase",
+      "item",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-increase-questions",
+    "skill": "oci-support-limits",
+    "argv": [
+      "limits-increase",
+      "question",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-validate-user",
+    "skill": "oci-support-limits",
+    "argv": [
+      "support",
+      "validation-response",
+      "validate-user",
+      "--problem-type",
+      "LIMIT"
+    ]
+  },
+  {
+    "id": "support-limits-resource-types",
+    "skill": "oci-support-limits",
+    "argv": [
+      "support",
+      "incident-resource-type",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--problem-type",
+      "LIMIT",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-occ-customer-groups",
+    "skill": "oci-support-limits",
+    "argv": [
+      "capacity-management",
+      "occ-customer-group-collection",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "support-limits-occ-capacity-requests",
+    "skill": "oci-support-limits",
+    "argv": [
+      "capacity-management",
+      "occ-capacity-request-collection",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "oci-support-limits-reference-1",
+    "skill": "oci-support-limits",
+    "live": false,
+    "argv": [
+      "limits-increase",
+      "limits-increase-request",
+      "get",
+      "--id",
+      "${REQUEST_ID}",
+      "--query",
+      "data.{state:\"lifecycle-state\",items:\"limits-increase-item-requests\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-support-limits-reference-2",
+    "skill": "oci-support-limits",
+    "live": false,
+    "argv": [
+      "capacity-management",
+      "occ-availability-catalog-collection",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10",
+      "--query",
+      "data.items[].{id:id,ns:namespace,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-support-limits-reference-3",
+    "skill": "oci-support-limits",
+    "live": false,
+    "argv": [
+      "capacity-management",
+      "occ-availability-collection",
+      "list",
+      "--occ-availability-catalog-id",
+      "${CATALOG_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{shape:\"resource-name\",date:\"date-final-customer-order\",qty:\"available-quantity\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-support-limits-reference-4",
+    "skill": "oci-support-limits",
+    "live": false,
+    "argv": [
+      "capacity-management",
+      "occ-overview-collection",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--namespace",
+      "COMPUTE",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[]",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-support-limits-reference-5",
+    "skill": "oci-support-limits",
+    "live": false,
+    "argv": [
+      "support",
+      "incident",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--ocid",
+      "${USER_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{key:key,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: running-instances
+prompt: How many compute instances are running in the dev compartment and what shapes?
+tags:
+- compute
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

@@ -1,0 +1,100 @@
+{
+  "examples": [
+    {
+      "id": "oci-ai-services-1",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-vision",
+        "project-collection",
+        "list-projects",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-2",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-vision",
+        "model-collection",
+        "list-models",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-3",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai",
+        "language",
+        "project",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-4",
+      "skill": "oci-ai-services",
+      "argv": [
+        "speech",
+        "transcription-job",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-ai-services-5",
+      "skill": "oci-ai-services",
+      "argv": [
+        "ai-document",
+        "project",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}

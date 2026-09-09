@@ -1,0 +1,12 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: nsg-rules
+prompt: Dump the rules of this NSG so I can see why 443 is blocked.
+tags:
+- networking
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

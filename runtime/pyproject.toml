@@ -19,9 +19,8 @@ packages = ["oci_readonly"]
 [dependency-groups]
 dev = ["pytest==9.0.2", "ruff==0.15.5"]
 
-[tool.pytest.ini_options]
-testpaths = ["../tests"]
-python_files = ["test_runtime*.py"]
-
 [tool.ruff]
 line-length = 100
+
+[tool.hatch.build.targets.wheel.force-include]
+"../scripts/lib/sanitize.py" = "oci_readonly/sanitize.py"

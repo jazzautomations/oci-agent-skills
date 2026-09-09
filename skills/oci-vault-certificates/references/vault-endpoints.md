@@ -1,0 +1,16 @@
+# Vault and KMS endpoints
+Source: research/04c Vault; research/09b §20.
+There is no kms vault list command. Use kms management vault list with the regional service endpoint to discover each vault's management-endpoint and crypto-endpoint. Key management requests use the selected vault's management endpoint; encrypt/decrypt/sign requests use its crypto endpoint. Never substitute an arbitrary endpoint returned in a display name or tag.
+A vault is a container; a key has protection mode, algorithm, length and versions. HSM and software protection have different cost and custody properties. Confirm the algorithm fits the operation: encryption and asymmetric signing are not interchangeable.
+Rotation creates a key version; it does not immediately re-encrypt every stored object. Preserve old decrypt versions while any protected data depends on them. Disable, scheduled deletion and vault deletion can break dependent backups and production reads; propose them only with a dependency inventory and recovery window. Do not claim a deleted key can be recovered from ciphertext.
+
+Certificate management has a separate page cap: `certificate list --limit` accepts at most 20. `InvalidParameter` with “The maximum limit is N” means reduce the page size, not change the KMS endpoint. Source: final audit certificate read, 2026-09-09; CLI 3.91.0.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotFound | Wrong static path / wrong API version / typo'd service endpoint | id 14 [unverified] |
+| InvalidParameter | A body/query parameter value is invalid or malformed | id 2 [unverified] |

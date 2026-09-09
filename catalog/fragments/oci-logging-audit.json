@@ -1,0 +1,110 @@
+[
+  {
+    "id": "oci-logging-audit-1",
+    "skill": "oci-logging-audit",
+    "argv": [
+      "logging",
+      "log-group",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-2",
+    "skill": "oci-logging-audit",
+    "argv": [
+      "logging-search",
+      "search-logs",
+      "--search-query",
+      "search \"${COMPARTMENT_ID}\" | sort by datetime desc",
+      "--time-start",
+      "${START_TIME}",
+      "--time-end",
+      "${END_TIME}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-3",
+    "skill": "oci-logging-audit",
+    "argv": [
+      "logging-search",
+      "search-logs",
+      "--search-query",
+      "search \"${COMPARTMENT_ID}\" | summarize count() by \"data.eventName\"",
+      "--time-start",
+      "${START_TIME}",
+      "--time-end",
+      "${END_TIME}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-4",
+    "skill": "oci-logging-audit",
+    "argv": [
+      "audit",
+      "event",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}",
+      "--all"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-reference-1",
+    "skill": "oci-logging-audit",
+    "live": false,
+    "argv": [
+      "logging",
+      "log",
+      "list",
+      "--log-group-id",
+      "${LOG_GROUP_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{n:\"display-name\",t:\"log-type\",s:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-reference-2",
+    "skill": "oci-logging-audit",
+    "live": false,
+    "argv": [
+      "sch",
+      "service-connector",
+      "list",
+      "--compartment-id",
+      "<c>",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "oci-logging-audit-reference-3",
+    "skill": "oci-logging-audit",
+    "live": false,
+    "argv": [
+      "log-analytics",
+      "namespace",
+      "list",
+      "--compartment-id",
+      "<tenancy>",
+      "--all"
+    ]
+  }
+]

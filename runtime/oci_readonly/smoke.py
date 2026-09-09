@@ -2,6 +2,8 @@
 
 import argparse
 import asyncio
+import configparser
+from pathlib import Path
 import json
 import os
 import sys
@@ -20,6 +22,12 @@ EXPECTED = {
     "oci_resource_search",
     "oci_limit_services",
     "oci_limit_values",
+    "oci_whoami",
+    "oci_work_requests",
+    "oci_alarm_status",
+    "oci_audit_events",
+    "oci_metrics",
+    "oci_price_lookup",
     "oci_cost_summary",
 }
 
@@ -42,6 +50,12 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     for t in discovered
                 ), "Missing read-only annotations"
                 report["tool_count"] = len(discovered)
+                schema = json.dumps(
+                    [t.model_dump(exclude_none=True) for t in discovered], separators=(",", ":")
+                )
+                report["schema_characters"] = len(schema)
+                report["schema_tokens_estimate"] = (len(schema) + 3) // 4
+                assert report["schema_tokens_estimate"] <= 3500, "Schema estimate exceeds the foundation budget"
                 # Invalid input must be rejected without any OCI credential access.
                 invalid = await session.call_tool(
                     "oci_instances", {"compartment_id": "invalid", "region": region}
@@ -60,12 +74,12 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     tenant_base = {"tenancy_id": tenancy, "region": region, "page_size": 1}
                     end = datetime.now(timezone.utc).date()
                     calls = [
+                        ("oci_whoami", {}),
+                        ("oci_price_lookup", {"part_number": "B88514", "currency": "USD"}),
                         ("oci_regions", {**tenant_base, "page_size": 100}),
                         ("oci_compartments", base),
-                        ("oci_instances", base),
                         ("oci_network_inventory", base),
                         ("oci_network_inventory", {**base, "resource": "subnets"}),
-                        ("oci_network_inventory", {**base, "resource": "network_security_groups"}),
                         ("oci_buckets", base),
                         ("oci_resource_search", base),
                         ("oci_limit_services", tenant_base),
@@ -79,6 +93,9 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                             },
                         ),
                     ]
+                    report["shape_only_tools"] = sorted(EXPECTED - {name for name, _ in calls})
+                    report["live_scope"] = "D7 only; skipped tools have offline/schema coverage"
+                    report["shape_only_reasons"] = {name:("Tool summarizes metric datapoints; it does not expose D7 metric-metadata list." if name == "oci_metrics" else "No approved deployed-resource fixture in this smoke.") for name in report["shape_only_tools"]}
                     for name, arguments in calls:
                         response = await session.call_tool(name, arguments)
                         payload = response.structuredContent
@@ -91,6 +108,8 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                         }
                         if check["ok"]:
                             check.update(count=payload["count"], truncated=payload["truncated"])
+                            if name == "oci_price_lookup" and not payload["count"]:
+                                check.update(ok=False, error_kind="public_sku_not_found")
                         else:
                             # Error dictionaries are server-sanitized; no raw MCP text or IDs.
                             check["error_kind"] = payload.get("error", {}).get(
@@ -100,6 +119,18 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                         report["checks"].append(check)
     report["ok"] = all(check["ok"] for check in report["checks"])
     return report
+
+
+def profile_region():
+    """Read only the selected profile's region; no signer or credential validation."""
+    config = configparser.ConfigParser(interpolation=None)
+    location = os.getenv('OCI_CONFIG_FILE') or os.getenv('OCI_CLI_CONFIG_FILE') or '~/.oci/config'
+    profile = os.getenv('OCI_CONFIG_PROFILE') or os.getenv('OCI_CLI_PROFILE') or 'DEFAULT'
+    try:
+        config.read(Path(location).expanduser())
+        return config.get(profile, 'region', fallback=None)
+    except (OSError, configparser.Error):
+        return None
 
 
 def main():
@@ -113,7 +144,9 @@ def main():
     parser.add_argument("--timeout", type=float, default=180)
     options = parser.parse_args()
     if options.live and not options.region:
-        parser.error("--region (or OCI_REGION) is required for live reads")
+        options.region = profile_region()
+        if not options.region:
+            parser.error("Set --region, OCI_REGION, or a region in the selected profile")
     try:
         # Offline smoke uses a syntactically valid region only; it makes no OCI calls.
         report = asyncio.run(run(options.live, options.region or "us-ashburn-1", options.timeout))

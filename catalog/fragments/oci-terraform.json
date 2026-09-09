@@ -1,0 +1,93 @@
+[
+  {
+    "id": "oci-terraform-1",
+    "skill": "oci-terraform",
+    "argv": [
+      "resource-manager",
+      "stack",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,version:\"terraform-version\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-terraform-2",
+    "skill": "oci-terraform",
+    "argv": [
+      "resource-manager",
+      "job",
+      "list",
+      "--stack-id",
+      "${STACK_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,operation:operation,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-terraform-3",
+    "skill": "oci-terraform",
+    "argv": [
+      "resource-manager",
+      "job",
+      "get",
+      "--job-id",
+      "${JOB_ID}",
+      "--query",
+      "data.{id:id,operation:operation,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-terraform-4",
+    "skill": "oci-terraform",
+    "argv": [
+      "resource-manager",
+      "stack",
+      "list-terraform-versions",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--all",
+      "--query",
+      "data.items[].{name:name,default:\"is-default\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-terraform-5",
+    "skill": "oci-terraform",
+    "argv": [
+      "resource-manager",
+      "stack",
+      "list-resource-discovery-services",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--all",
+      "--query",
+      "data.items[].{name:name,scope:\"discovery-scope\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

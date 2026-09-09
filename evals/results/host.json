@@ -1,0 +1,10 @@
+{
+  "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
+  "status": "unavailable",
+  "reason": "`plugin eval` is currently in early access",
+  "date": "2026-09-09",
+  "host_version": "2.1.266 (Claude Code)",
+  "exit_code": 1,
+  "source_commit": "daa7d4427fb4dc8d78033451180ec30c6bd3949d",
+  "scope": "No tool grants, mock MCP, absent OCI config, no scaffold or publication."
+}

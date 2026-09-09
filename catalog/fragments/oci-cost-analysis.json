@@ -1,0 +1,173 @@
+[
+  {
+    "id": "cost-analysis-usage-by-service",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "usage-api",
+      "usage-summary",
+      "request-summarized-usages",
+      "--tenant-id",
+      "${TENANCY_ID}",
+      "--time-usage-started",
+      "${START_TIME}",
+      "--time-usage-ended",
+      "${END_TIME}",
+      "--granularity",
+      "DAILY",
+      "--query-type",
+      "COST",
+      "--group-by",
+      "[\"service\"]",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-usage-by-sku",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "usage-api",
+      "usage-summary",
+      "request-summarized-usages",
+      "--tenant-id",
+      "${TENANCY_ID}",
+      "--time-usage-started",
+      "${START_TIME}",
+      "--time-usage-ended",
+      "${END_TIME}",
+      "--granularity",
+      "MONTHLY",
+      "--group-by",
+      "[\"service\",\"skuName\"]",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-budgets",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "budgets",
+      "budget",
+      "budget",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-anomaly-monitors",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "budgets",
+      "cost-ad",
+      "cost-anomaly-monitor-collection",
+      "list-monitors",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-focus-reports",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "os",
+      "object",
+      "list",
+      "--namespace-name",
+      "bling",
+      "--bucket-name",
+      "${TENANCY_ID}",
+      "--prefix",
+      "FOCUS Reports",
+      "--limit",
+      "5"
+    ]
+  },
+  {
+    "id": "cost-analysis-tag-namespaces",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "iam",
+      "tag-namespace",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-saved-queries",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "usage-api",
+      "query",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "cost-analysis-schedules",
+    "skill": "oci-cost-analysis",
+    "argv": [
+      "usage-api",
+      "schedule",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "oci-cost-analysis-reference-1",
+    "skill": "oci-cost-analysis",
+    "live": false,
+    "argv": [
+      "budgets",
+      "budget",
+      "alert-rule",
+      "list",
+      "--budget-id",
+      "${BUDGET_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].[type,threshold,\"threshold-type\"]",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-cost-analysis-reference-2",
+    "skill": "oci-cost-analysis",
+    "live": false,
+    "argv": [
+      "os",
+      "object",
+      "get",
+      "--namespace-name",
+      "bling",
+      "--bucket-name",
+      "${TENANCY_ID}",
+      "--name",
+      "${OBJECT_NAME}",
+      "--file",
+      "./cost.csv.gz",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

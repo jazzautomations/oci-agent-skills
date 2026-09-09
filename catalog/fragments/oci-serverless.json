@@ -1,0 +1,97 @@
+[
+  {
+    "id": "oci-serverless-1",
+    "skill": "oci-serverless",
+    "argv": [
+      "fn",
+      "application",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,architecture:shape,subnets:\"subnet-ids\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-serverless-2",
+    "skill": "oci-serverless",
+    "argv": [
+      "fn",
+      "function",
+      "list",
+      "--application-id",
+      "${APPLICATION_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,memory:\"memory-in-mbs\",timeout:\"timeout-in-seconds\",digest:\"image-digest\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-serverless-3",
+    "skill": "oci-serverless",
+    "argv": [
+      "container-instances",
+      "container-instance",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,shape:shape,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-serverless-4",
+    "skill": "oci-serverless",
+    "argv": [
+      "container-instances",
+      "container-instance",
+      "list-shapes",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{name:name,ocpus:\"ocpu-options\",memory:\"memory-options\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-serverless-5",
+    "skill": "oci-serverless",
+    "argv": [
+      "api-gateway",
+      "gateway",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,type:\"endpoint-type\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

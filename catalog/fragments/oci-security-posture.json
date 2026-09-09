@@ -1,0 +1,463 @@
+[
+  {
+    "id": "posture-inventory",
+    "skill": "oci-security-posture",
+    "argv": [
+      "search",
+      "resource",
+      "structured-search",
+      "--query-text",
+      "query bucket, securitylist, networksecuritygroup resources where compartmentId = '${COMPARTMENT_ID}'",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "posture-users-without-mfa",
+    "skill": "oci-security-posture",
+    "argv": [
+      "iam",
+      "user",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "posture-broad-policies",
+    "skill": "oci-security-posture",
+    "argv": [
+      "iam",
+      "policy",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "posture-bucket-exposure",
+    "skill": "oci-security-posture",
+    "argv": [
+      "os",
+      "bucket",
+      "get",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--bucket-name",
+      "${BUCKET}"
+    ]
+  },
+  {
+    "id": "posture-open-ingress",
+    "skill": "oci-security-posture",
+    "argv": [
+      "network",
+      "security-list",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "posture-cloud-guard-problems",
+    "skill": "oci-security-posture",
+    "argv": [
+      "cloud-guard",
+      "problem",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--compartment-id-in-subtree",
+      "true",
+      "--lifecycle-detail",
+      "OPEN",
+      "--risk-level",
+      "CRITICAL",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-1",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "cloud-guard",
+      "configuration",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-2",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "cloud-guard",
+      "problem",
+      "list-problem-histories",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--problem-id",
+      "${PROBLEM_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{t:\"time-created\",a:\"actor-type\",s:\"delta-status\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-3",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "cloud-guard",
+      "target",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{n:\"display-name\",c:\"target-resource-id\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-4",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "cloud-guard",
+      "detector-recipe",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{n:\"display-name\",o:owner}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-5",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "cloud-guard",
+      "security-zone",
+      "get",
+      "--security-zone-id",
+      "${SECURITY_ZONE_ID}",
+      "--query",
+      "data.{n:\"display-name\",c:\"compartment-id\",r:\"security-zone-recipe-id\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-6",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "host",
+      "vulnerability",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--severity",
+      "CRITICAL",
+      "--query",
+      "data.items[].{cve:\"cve-reference\",sev:severity,hosts:\"host-count\",t:\"time-last-detected\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-7",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "host",
+      "vulnerability",
+      "list-impacted-hosts",
+      "--host-vulnerability-id",
+      "${HOST_VULNERABILITY_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{i:\"instance-id\",s:severity}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-8",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "host",
+      "scan",
+      "target",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",r:\"host-scan-recipe-id\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-9",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "host",
+      "scan",
+      "recipe",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-10",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "host",
+      "scan",
+      "result",
+      "cis-benchmark",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{i:\"instance-id\",f:\"failed-count\",t:\"time-finished\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-11",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "vulnerability-scanning",
+      "container",
+      "scan",
+      "result",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{r:\"repository\",sev:\"highest-problem-severity\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-12",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "data-safe",
+      "target-database",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--compartment-id-in-subtree",
+      "true",
+      "--limit",
+      "50",
+      "--query",
+      "data[].{n:\"display-name\",t:\"database-type\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-13",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "data-safe",
+      "security-assessment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data[].{n:\"display-name\",t:\"triggered-by\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-14",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "data-safe",
+      "user-assessment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data[].{n:\"display-name\",t:\"triggered-by\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-15",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "data-safe",
+      "audit-trail",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{t:\"target-id\",s:status,st:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-16",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "waf",
+      "web-app-firewall-policy",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-17",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "waf",
+      "web-app-firewall",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",lb:\"load-balancer-id\",p:\"web-app-firewall-policy-id\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-18",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "waf",
+      "protection-capability",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{k:key,v:version,n:\"display-name\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-19",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "network-firewall",
+      "network-firewall",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",s:\"lifecycle-state\",ip:\"ipv4-address\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-20",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "network-firewall",
+      "network-firewall-policy",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:\"display-name\",s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-21",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "network-firewall",
+      "security-rule",
+      "list",
+      "--network-firewall-policy-id",
+      "${NETWORK_FIREWALL_POLICY_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:name,a:action}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-22",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "zpr",
+      "zpr-policy",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data.items[].{n:name,s:\"lifecycle-state\"}"
+    ]
+  },
+  {
+    "id": "oci-security-posture-reference-23",
+    "skill": "oci-security-posture",
+    "live": false,
+    "argv": [
+      "zpr",
+      "configuration",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--query",
+      "data.{s:\"zpr-status\",t:\"time-created\"}"
+    ]
+  }
+]

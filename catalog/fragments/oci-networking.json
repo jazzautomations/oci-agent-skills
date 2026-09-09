@@ -1,0 +1,98 @@
+[
+  {
+    "id": "oci-networking-1",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "vcn",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,cidrs:\"cidr-blocks\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-networking-2",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "subnet",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,vcn:\"vcn-id\",route:\"route-table-id\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-networking-3",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "nsg",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,vcn:\"vcn-id\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-networking-4",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "nsg",
+      "rules",
+      "list",
+      "--nsg-id",
+      "${NSG_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,direction:direction,source:source,protocol:protocol}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-networking-5",
+    "skill": "oci-networking",
+    "argv": [
+      "lb",
+      "backend-set-health",
+      "get",
+      "--load-balancer-id",
+      "${LB_ID}",
+      "--backend-set-name",
+      "${BACKEND_SET}",
+      "--query",
+      "data.{status:status,critical:\"critical-state-backend-names\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]

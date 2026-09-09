@@ -1,0 +1,21 @@
+name: Nightly Oracle documentation links
+on:
+  schedule:
+    - cron: '31 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python scripts/ci/check_links.py > link-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oracle-link-report
+          path: link-report.json

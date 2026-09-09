@@ -1,0 +1,156 @@
+{
+  "examples": [
+    {
+      "id": "oracle-db-fleet-1",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "system",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-2",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "cloud-exa-infra",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-3",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "mysql",
+        "db-system",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-4",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "psql",
+        "db-system-collection",
+        "list-db-systems",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-5",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-6",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "database-management",
+        "managed-database",
+        "list-awr-dbs",
+        "--managed-database-id",
+        "${MANAGED_DB_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-7",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "opsi",
+        "database-insights",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data.items[].{id:id,type:\"database-type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-db-fleet-8",
+      "skill": "oracle-db-fleet",
+      "argv": [
+        "db",
+        "pluggable-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}

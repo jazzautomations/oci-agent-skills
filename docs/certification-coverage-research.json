@@ -1,0 +1,11 @@
+{
+  "source": "research/10b-certification-taxonomy.md",
+  "source_sha256": "8c5956a7945e7b9b6f55b3fdb4d4dd006e18d776dc3f42f513a425a6e194467d",
+  "source_summary": "277 leaves, 15 domains, 47 subdomains. Status counts: **ok 157 / thin 101 / gap 19**.",
+  "reported_counts": {
+    "ok": 157,
+    "thin": 101,
+    "gap": 19
+  },
+  "scope": "Historical reported certification counts; not recalculated from grouped prose bullets and not current completeness."
+}

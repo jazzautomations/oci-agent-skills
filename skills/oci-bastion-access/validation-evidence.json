@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-09",
+  "cli": "3.91.0",
+  "scope_verified": true,
+  "scope": "selected profile; configured region; root compartment unless COMPARTMENT_ID supplied",
+  "live": [],
+  "documentation": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Bastion/Tasks/managingsessions.htm",
+      "status": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/manage-plugins.htm",
+      "status": 200
+    }
+  ]
+}

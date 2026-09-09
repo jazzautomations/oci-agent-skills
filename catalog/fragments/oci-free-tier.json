@@ -1,0 +1,122 @@
+[
+  {
+    "id": "free-tier-home-region",
+    "skill": "oci-free-tier",
+    "argv": [
+      "iam",
+      "region-subscription",
+      "list",
+      "--tenancy-id",
+      "${TENANCY_ID}"
+    ]
+  },
+  {
+    "id": "free-tier-allotment",
+    "skill": "oci-free-tier",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--name",
+      "standard-a1-core-count",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "free-tier-limit-scope",
+    "skill": "oci-free-tier",
+    "argv": [
+      "limits",
+      "definition",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "compute",
+      "--name",
+      "standard-a1-core-count",
+      "--limit",
+      "10"
+    ]
+  },
+  {
+    "id": "free-tier-headroom",
+    "skill": "oci-free-tier",
+    "argv": [
+      "limits",
+      "resource-availability",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "vcn",
+      "--limit-name",
+      "vcn-count"
+    ]
+  },
+  {
+    "id": "free-tier-offered-shapes",
+    "skill": "oci-free-tier",
+    "argv": [
+      "compute",
+      "shape",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "free-tier-idle-cpu",
+    "skill": "oci-free-tier",
+    "argv": [
+      "monitoring",
+      "metric-data",
+      "summarize-metrics-data",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace",
+      "oci_computeagent",
+      "--query-text",
+      "CpuUtilization[1d].percentile(0.95)",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}"
+    ]
+  },
+  {
+    "id": "free-tier-always-free-adb",
+    "skill": "oci-free-tier",
+    "argv": [
+      "db",
+      "autonomous-database",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "free-tier-object-cap",
+    "skill": "oci-free-tier",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "object-storage",
+      "--limit",
+      "20"
+    ]
+  }
+]

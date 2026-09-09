@@ -1,0 +1,12 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: bucket-lifecycle
+prompt: Does this bucket have a lifecycle policy?
+tags:
+- storage
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md
