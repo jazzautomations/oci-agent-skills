@@ -1,0 +1,138 @@
+[
+  {
+    "id": "oci-iam-policy-1",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "iam",
+      "domain",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{name:\"display-name\",url:url}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-2",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "iam",
+      "region-subscription",
+      "list",
+      "--tenancy-id",
+      "${TENANCY_ID}",
+      "--all",
+      "--query",
+      "data[?\"is-home-region\"].{r:\"region-name\",k:\"region-key\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-3",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "iam",
+      "policy",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data[].{n:name,at:\"compartment-id\",st:statements}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-4",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "iam",
+      "dynamic-group",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50",
+      "--query",
+      "data[].{n:name,rule:\"matching-rule\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-5",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "identity-domains",
+      "identity-providers",
+      "list",
+      "--endpoint",
+      "${DOMAIN_URL}",
+      "--all",
+      "--query",
+      "data.resources[].{n:\"partner-name\",e:enabled}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-6",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "identity-domains",
+      "groups",
+      "list",
+      "--endpoint",
+      "${DOMAIN_URL}",
+      "--limit",
+      "50",
+      "--query",
+      "data.resources[].{n:\"display-name\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  },
+  {
+    "id": "oci-iam-policy-7",
+    "skill": "oci-iam-policy",
+    "argv": [
+      "iam",
+      "policy",
+      "get",
+      "--policy-id",
+      "${POLICY_ID}",
+      "--query",
+      "data.statements",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ],
+    "live": true
+  }
+]
