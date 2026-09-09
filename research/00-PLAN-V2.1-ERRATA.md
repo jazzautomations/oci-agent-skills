@@ -36,3 +36,4 @@ W05-ish: skills/_TEMPLATE + scripts/ci/{check_frontmatter,check_refs,lint_fences
 W08a-ish: installers/install.sh copy-only + .mcp.json + docs/foundation.md. Tests: 165 passing. See docs/foundation.md and CODEX-STATUS.md.
 Gaps vs v2.1 Wave 0/1 are closed by HANDOFF-CODEX-2.md (code) and the references workflow (content).
 N10 `references/untrusted-output.md` cap raised 400 → 600 tokens (the verbatim §5 paragraph alone is ~340 tokens; the ten classes must stay). Every other §2.4 cap unchanged.
+N11 `references/service-command-cards.md` is a 16th shared reference (index card per top CLI service group: 3-5 read commands + one gotcha), cap 2,100 tokens, used by navigator and every infra/ops skill as the "which command" lookup before catalog.py. §2.4 table gains this row.
