@@ -1,0 +1,91 @@
+{
+  "examples": [
+    {
+      "id": "oracle-apex-1",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "10",
+        "--query",
+        "data[].{id:id,workload:\"db-workload\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-2",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"apex-details\"",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-3",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"connection-urls\".{apex:\"apex-url\",ords:\"ords-url\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-4",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.\"db-tools-details\"[].{name:name,enabled:\"is-enabled\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-apex-5",
+      "skill": "oracle-apex",
+      "argv": [
+        "db",
+        "autonomous-database",
+        "get",
+        "--autonomous-database-id",
+        "${ADB_ID}",
+        "--query",
+        "data.{state:\"lifecycle-state\",free:\"is-free-tier\",acl:\"whitelisted-ips\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
