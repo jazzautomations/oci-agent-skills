@@ -180,3 +180,69 @@ The first seven skills were already committed through `7356b1f` (oci-ai-services
 - Every skill's fresh full pytest run had **199 passed, 2 failed**. Remaining failures are tests/test_catalog.py::test_generated_scripts_and_fragments (W42a regeneration) and tests/test_installer.py::test_installed_copies_and_refs (hard-coded 16 skills). No unrelated tests or generated catalogs were changed to hide those failures. The latest run also exercised the reference contents committed here.
 - Additional validator boundaries: the generic skill-creator validator rejects the repository-required compatibility key; repository frontmatter and portable validation pass. The four owned skill licenses are now present; root/other-skill licensing remains outside this task.
 - No tenancy mutations executed. None of the other engine's skill directories or fragments were edited or included in these commits.
+
+## Handoff 5 — Wave 2 batch A (2026-09-09)
+
+Implemented and committed all 11 skill packages individually on `v2-foundation`, including their fragments. Applied the supplied findings for eight packages and independently reviewed security-posture, free-tier and SDK-patterns. **The strict repository-wide green gate is not met:** the existing two pytest failures and unrelated global validator debt remain below. These are reported, not hidden by a refreshed baseline.
+
+No mutating OCI operation was executed. Live reads used the explicitly selected existing API-key profile in us-chicago-1, with tenancy-root/compartment scope taken from its local config. Audit/log checks used bounded recent windows; the Free Tier metric window was seven days. Public documentation, prices and specs used credential-free GETs. No tenancy identifiers, names, logs, keys or raw resource payloads were added to Git.
+
+### Per-skill results
+
+Each row passed all eight scoped checks: frontmatter, portable metadata, references, token budget, secrets, read-only scripts, fenced OCI commands with fresh `--help`, and Oracle documentation links. Descriptions compare exactly to the §3.2 rows. All 11 packages contain Apache-2.0 LICENSE.txt matching their declared metadata; root licensing remains separate.
+
+| Skill | Commit | Fragment rows | Fixes and live evidence |
+|---|---|---:|---|
+| `oci-navigator` | `7c2b06a` | 10 | Corrected Email data-plane routing; added license; bounded Search evidence and partial verification. **Live:** Four successful reads; Fusion family list returned 404. Search bounded at 50; Email configuration available. |
+| `oci-cli-auth` | `3a8789d` | 5 | Fixed dead work-request URL, wrong corpus citation, expired-session claim and untrusted-output link; explicit profile/config handling and failed-read exit status. **Live:** All five fences succeeded; whoami succeeded and list_all returned 44 regions with complete=true. |
+| `oci-tenancy-governance` | `8a897ad` | 7 | Added the missing untrusted-output reference and aligned the skill license with its metadata. **Live:** All seven reads succeeded. Governance helper completed six reads with no unreadable scope. |
+| `oci-iam-policy` | `6c59523` | 7 | Removed IAM/limits misrouting, corrected missing-endpoint behavior, required the documented environment for live policy linting, and qualified propagation evidence. **Live:** All seven reads succeeded. Live policy lint read one statement and returned advisory findings (exit 1), not a transport failure. |
+| `oci-support-limits` | `e9707ec` | 17 | AD is optional for region-scoped limits and supplied only when applicable; both scope variants tested. Six mutation fences have rollback comments. **Live:** Definitions, values and question list succeeded. Capacity helper returned three successful envelopes for both REGION and AD limits. |
+| `oci-logging-audit` | `8f3824d` | 7 | Replaced invalid bin/=~/top/rename grammar, corrected nested-field and scope syntax guidance, retention claims and Audit envelope description; documented JSON helper. **Live:** Both log searches and Audit returned rows; no customer log groups. Audit helper succeeded; six corrected query variants parsed live. log-list success remains shape-only. |
+| `oci-incident-triage` | `efcd0e0` | 15 | Ten calls in actual step order; filters read methods/operations from write candidates; failed steps exit 1 with ok=false; fixed relative link, variables, help and corpus citations. **Live:** Seven fences succeeded. Ten-step script exited 1 with Cloud Guard/Support gaps; no degraded resource or LB was simulated. |
+| `oci-security-posture` | `b35775e` | 29 | Independent review: scoped Search, explicit tenancy variable, ambiguous 404 handling, TCP ranges/all protocols/IPv6 severity, pseudonymous report labels and invalid age handling. **Live:** Five fences succeeded; Cloud Guard 404. Posture helper completed, including key-age read; 30 advisory findings, no resource names retained in this status. |
+| `oci-cost-analysis` | `a1925cb` | 10 | Fixed flat object-list projections and false empty-report evidence, UTC-midnight forecast precision, Windows arithmetic, TOTAL help description and unverified throttling tags. **Live:** All five fences succeeded; FOCUS and classic CSV listings nonempty, budgets empty. Two-window helper and public price helper succeeded. |
+| `oci-free-tier` | `c154196` | 8 | Independent review: daily metric samples retained across the full window; no claim that one daily percentile proves seven-day eligibility; qualified PAYG capacity/reclamation claims and stopped-ADB attribution. **Live:** All five fences and all five helper reads succeeded. Metrics empty; no reclamation or account lifecycle was triggered. |
+| `oci-sdk-patterns` | `9ecdca8` | 5 | Independent review: selected auth/config forwarded explicitly, missing profiles cannot guess instance principal, fixed circuitbreaker import and pagination signature, guarded inference examples, refreshed hash-resolved specs and six-mode/four-language routing matrix. **Live:** All five CLI reads and both explicit API-key probe reads succeeded. Public Identity spec resolved and cached; no SDK write recipe or other signer was executed. |
+
+### Verification and source corrections
+
+- Final suite: **206 passed, 2 failed**, one dependency deprecation warning. The seven added regression tests pass. The two failures are unchanged from the start of the handoff: `tests/test_catalog.py::test_generated_scripts_and_fragments` (W42a artifacts stale) and `tests/test_installer.py::test_installed_copies_and_refs` (hard-coded 16 skills). Every initial skill commit had a fresh full root test run with 199 passed and those same two failures. Final fragment additions were checked together with the final full suite before being folded into the owning commits.
+
+- All **120 fragment rows** resolve to installed CLI 3.91.0 leaves with required options; IDs are unique within the batch. Coverage includes each fenced read leaf in the skill and its references. Validation checked root-level options separately and allowed the documented environment placeholders. This is not a claim that the stock `check_examples.py` accepts these fragments: its narrow placeholder/global-option handling and merged-artifact input remain W42a integration work.
+
+- The Windows source research arithmetic is wrong: the public B88318 rate is 0.092 per OCPU-hour, so 2 × 730 hours is 134.32, not 67.16. Both shipped references now use the corrected figure. Forecast with 2026-10-15T12:30:00Z returned InvalidParameter/400; 2026-10-15T00:00:00Z succeeded, disproving the month-alignment remedy.
+
+- The Logging specification and live parses confirm rounddown, wildcard comparison, top-by and select aliases. A 14-day search span is not a retention limit. API field paths and whole quoted dotted keys are distinct. SDK 2.185.0 introspection confirms `CircuitBreakerError` comes from `circuitbreaker`, and pagination takes record_limit before page_size.
+
+- Live findings are bounded samples, not inventories or compliance certification. Other SDK signers/languages, successful Cloud Guard/Support bodies, provisioned VSS/Data Safe/zone resources, actual incidents and all mutations remain unverified end to end. Generic 404s are retained as ambiguity, not proof of absence.
+
+- Oracle documentation link checks passed, including negative fixtures. Additional public documentation links were reachable; Cloud Customer Connect returned HTTP 403 to this checker and remains accessibility-unverified. Example API endpoint roots and placeholders are not documentation links.
+
+- The scripts retain the repository convention of unconditional JSON (some shell composers emit JSON Lines); new/updated Python entrypoints accept --json where useful. No repo-wide CLI-interface rewrite was attempted. Navigator intentionally composes shared helpers instead of a local script.
+
+### Reproduce the checks
+
+Run from the repository root, substituting the skill name:
+
+```bash
+uv run --frozen --project runtime python scripts/ci/check_frontmatter.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/check_portable.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/check_refs.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/check_budget.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/check_no_secrets.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py skills/oci-sdk-patterns
+uv run --frozen --project runtime python scripts/ci/lint_fences.py skills/oci-sdk-patterns --live-help
+uv run --frozen --project runtime python scripts/ci/check_links.py skills/oci-sdk-patterns
+uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests
+```
+
+For live helper checks, set the documented profile, region and scope variables explicitly; use each helper’s --help. `capacity.sh` was tested with custom-image-count and no AD, then standard-a1-core-count with a selected AD. Repeating reads does not require provisioning targets.
+
+### Remaining repository-wide gates
+
+- Root validators still report 28 frontmatter findings, 28 portable findings, 20 reference findings, 2 budget findings, 21 license findings and 2 script-registry findings. None names an owned batch-A skill. Budgets concern total legacy-plus-v2 descriptions and the shared untrusted-output cap; the latter still predates ERRATA N10. Reference checks do not yet recognize the N11 service-command-cards addition.
+
+- Global secret scanning, Git-history secret scanning, template comparison and manifest validation pass. Generated scripts/examples/guard binding and baseline retirement belong to W42a; final skill selection and installer expectations belong to the integration/release work. Generated catalogs, root license and other owners’ content were left unchanged.
+
+- Preserved the pre-existing uncommitted `references/auth-modes.md` edit byte-for-byte and the three oracle-autonomous-db `.handoff-*` files. They are not part of these commits.
