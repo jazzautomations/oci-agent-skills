@@ -1,0 +1,58 @@
+[
+  {
+    "id": "nav-region-subscriptions",
+    "skill": "oci-navigator",
+    "argv": ["iam", "region-subscription", "list", "--tenancy-id", "${TENANCY_ID}"]
+  },
+  {
+    "id": "nav-service-known",
+    "skill": "oci-navigator",
+    "argv": ["limits", "service", "list", "--compartment-id", "${TENANCY_ID}", "--limit", "100"]
+  },
+  {
+    "id": "nav-tenancy-holdings",
+    "skill": "oci-navigator",
+    "argv": ["search", "resource", "structured-search", "--query-text", "query all resources where compartmentId = '${COMPARTMENT_ID}'", "--limit", "50"]
+  },
+  {
+    "id": "nav-email-limits",
+    "skill": "oci-navigator",
+    "argv": ["limits", "value", "list", "--compartment-id", "${TENANCY_ID}", "--service-name", "email-delivery", "--limit", "50"]
+  },
+  {
+    "id": "nav-regions-in-realm",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["iam", "region", "list"]
+  },
+  {
+    "id": "nav-envelope-fusion",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["fusion-apps", "fusion-environment-family", "list", "--compartment-id", "${COMPARTMENT_ID}", "--limit", "20"]
+  },
+  {
+    "id": "nav-email-endpoints",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["email", "configuration", "get-email", "--compartment-id", "${COMPARTMENT_ID}"]
+  },
+  {
+    "id": "nav-email-senders",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["email", "sender", "list", "--compartment-id", "${COMPARTMENT_ID}", "--limit", "50"]
+  },
+  {
+    "id": "nav-email-suppressions",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["email", "suppression", "list", "--compartment-id", "${COMPARTMENT_ID}", "--limit", "50"]
+  },
+  {
+    "id": "nav-marketplace-listings",
+    "skill": "oci-navigator",
+    "live": false,
+    "argv": ["marketplace", "listing", "list", "--limit", "20"]
+  }
+]
