@@ -232,7 +232,7 @@ def test_plugin_unknown_root_path_requires_review():
     assert inspect_command('python3 ' + str(ROOT / 'unknown.py')) == 'ask'
 
 
-def test_independent_severity_matrix():
+def test_severity_snapshot_and_strict_read_allowlist():
     import hashlib
     fixture = json.loads((ROOT / 'tests/fixtures/guard-severity.json').read_text())
     research = ROOT / fixture['source']

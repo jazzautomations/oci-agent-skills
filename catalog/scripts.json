@@ -123,7 +123,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "944b9c670631968db876bf4a861940d1eb9eb501ae14d000bbc6b3b2a1f10ef6",
+      "sha256": "89c15eede281d7e9820573b70969400a1d9cf62f72d8ea71c12ca33ff4f71741",
       "mode": "read-only",
       "oci_calls": []
     },
