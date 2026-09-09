@@ -45,7 +45,7 @@
     },
     {
       "path": "scripts/ci/check_links.py",
-      "sha256": "e8ea6d749056e309cec3dd7d5b33d5f3e32dc0aa7aeb631155cecdb20fcb2a7c",
+      "sha256": "2b924f8532be83b0db3bb727e323b546b7ca36bfde93a36ba300e2a2c2c0781b",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -208,6 +208,12 @@
     {
       "path": "scripts/redact.py",
       "sha256": "c2a26048a71892ffa6230837b8184b0a53c17aed9664b98e7c94c68c145bf080",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/release_report.py",
+      "sha256": "bfbc2a58b2b3c26ba0cdf3050c821e3b5f69cac4a57b227be31fc234a2630e80",
       "mode": "read-only",
       "oci_calls": []
     },

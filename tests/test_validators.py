@@ -120,3 +120,9 @@ def test_cli_breaking_uses_new_versions_and_shipped_paths():
     text = '3.92.0 - 2026-09-09\n\n* [BREAKING] Changed `oci compute instance list`.\n\n* [BREAKING] Changed `oci unrelated get`.\n\n3.91.0 - 2026-09-01\n\n* [BREAKING] Old `oci compute instance list`.\n'
     result = parser.matching_blocks(text, [{'argv': ['compute', 'instance', 'list', '--limit', '1']}])
     assert len(result) == 1 and result[0]['version'] == '3.92.0'
+
+
+def test_link_extraction_quoted_urls_and_template_paths():
+    import check_links
+    assert check_links.urls("'https://docs.oracle.com/en/solutions/example/'") == {'https://docs.oracle.com/en/solutions/example/'}
+    assert not check_links.urls('`https://docs.oracle.com/en/learn/<slug>/`')

@@ -40,6 +40,10 @@ Schema measurements and live-read scope are reproduced by:
 uv run --frozen --project runtime oci-readonly-smoke
 ```
 
-Schema tokens are estimates (JSON characters / 4, rounded up). Future skill
-activation evaluations, not this runtime smoke, establish the final resident
-budget. The plan's target is ≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates).
+Schema tokens are estimates (JSON characters / 4, rounded up). Description and schema estimates are reproduced together by
+`uv run --frozen --project runtime python scripts/release_report.py`.
+Model-backed skill activation remains unmeasured. The plan's target is ≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates).
+
+The historical denylist comparison comes from research/data/denylist-coverage.json, shipped as docs/denylist-coverage-research.json: 2,222 entries, 374 destructive and 2,644 mutating leaves permitted, 135 reads denied. This is historical audit evidence. Current prefix replay against the shipped CLI census yields 374 destructive and 2,511 mutating leaves permitted and zero reads denied; do not mix matching/classification bases. `scripts/release_report.py` prints both results.
+
+W44 compares static descriptions from both Oracle servers without launching either. Arm c is a tool-discovery proxy and its description token count omits full schemas; it is not a live capability or safety measurement. Recovered upstream startup/read evidence is shipped in docs/oracle-mcp-research.json from research/data/oracle-mcp-smoke.json, not reconstructed from a lost session. Successful discovery does not prove successful operational reads.

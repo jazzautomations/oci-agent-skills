@@ -1,80 +1,75 @@
-# Audit synthesis and provenance
+# Audit, provenance and limits
 
-Reviewed 2026-09-08. Original research inspected the repositories below and produced
-local notes, command inventories and MCP stdio results. This document records the
-decisions reused in the package. Private research transcripts and unredacted smoke
-output are deliberately excluded from distribution.
+Reviewed 2026-09-09. This pack's content and CLI shapes are checked independently; a research citation does not establish successful runtime behavior. Research and upstream checkouts are build-only. Sanitized upstream measurements and licensed evaluation snapshots ship where needed to reproduce published comparisons.
 
-## Reference repositories
+## Provenance matrix
 
-| Source | Useful contribution | Decision in this package |
-| --- | --- | --- |
-| [adibirzu/oci-skills](https://github.com/adibirzu/oci-skills), commit `a4fbf70fd26d1a1c820261a7d4761ebb55457c84` | Scoped context, plan review, CLI-help verification, domain breadth | Reuse design ideas; author smaller skills and verify our own examples. No mandatory router hook or broad safety claims based on command-name heuristics |
-| [marcocanto/oci-support-request-skill](https://github.com/marcocanto/oci-support-request-skill), commit `be4dcf27eafea066e2ba95924aee2ebd1b808864` | Exact command argument arrays, bounded inspection, metadata projection, conditional changes | Use fixed read operations, explicit scope and projected output |
-| [araidon/oci-skills](https://github.com/araidon/oci-skills) | Diagram generation from concise specs and reusable assets | Keep diagramming outside the initial runtime; prefer code-generated artifacts over huge inline image payloads |
-| [cvranjith/arch-diagram-skill](https://github.com/cvranjith/arch-diagram-skill) | Architecture review and reproducible visual deliverables | Use architecture/ownership decisions; do not copy a personal workspace wholesale |
-| [oci-ai-architects/claude-code-oci-ai-architect-skills](https://github.com/oci-ai-architects/claude-code-oci-ai-architect-skills) | AI and architecture topic discovery | Treat prose as research leads; validate syntax, names and product availability separately |
-| [Oreo-Tech/oci-mcp](https://github.com/Oreo-Tech/oci-mcp) | Task-oriented inventory and compartment scoping | Do not import its mixed read/action tool surface; fixed read adapter instead |
-| [jasonwilbur/oci-pricing-mcp](https://github.com/jasonwilbur/oci-pricing-mcp) | Cached pricing and explicit cost-calculator workflows | Document pricing as a separate current-data problem; do not ship stale price claims |
-| [oracle/mcp](https://github.com/oracle/mcp), commit `e3cdae7fad817173ef62882f4d04b6baa32f0be2` | Shared auth, API discovery, typed schemas and server implementations | Depend on `oracle-mcp-common==0.1.3`; expose a smaller fixed read subset with consistent bounds |
+| Source | Material used | Shipped implementation/evidence |
+|---|---|---|
+| Plan v2.1 and errata; research 04a–04d, 06–16 | Skill ownership, scope, command pitfalls, auth, references, catalog and Windows gaps | 33 SKILL.md files and shared/skill-specific references; plan stencil retained as SKILL.md.template |
+| research 05 and guard-hook-regex-v2 | CLI census labels, parser risks, denylist counter-evidence | guard_rules.json, guard classifier/replay tests, catalog snapshots; historical denylist artifact in docs/denylist-coverage-research.json |
+| research 15 | Untrusted-output contract and ten carrier classes | shared sanitizer, skill hard rules, evals/safety.json; no live injection claim |
+| research 17 and data/eval-corpus.json | Unedited routing/negative/task prompts with source URLs | evals/routing.json, negatives.json, tasks.json, both task shapes and explicit remaps |
+| adibirzu/oci-skills at a4fbf70fd26d1a1c820261a7d4761ebb55457c84 | Scoped workflow, CLI-help verification, domain breadth; comparison inputs | Independently authored skills; evaluation snapshot b.json, MIT notice and prompt-hook token count |
+| oracle/mcp at e3cdae7fad817173ef62882f4d04b6baa32f0be2 | Auth library, typed tools and API discovery; comparison inputs | Locked oracle-mcp-common dependency; API/Cloud descriptions and denylist snapshot with UPL notice |
+| research/data/oracle-mcp-smoke.json | Recovered upstream initialize/tools-list and operational-read evidence | docs/oracle-mcp-research.json, preserved rather than inferred from a lost session |
+| marcocanto/oci-support-request-skill at be4dcf27eafea066e2ba95924aee2ebd1b808864 | Fixed argv, bounded inspection, scope projection and conditional changes | Support/limits skill and shared read wrappers; idea reuse, no blanket feature parity |
+| araidon/oci-skills; cvranjith/arch-diagram-skill | Diagram/spec and architecture review ideas | Architecture routing references; diagram tooling stays outside the runtime |
+| oci-ai-architects/claude-code-oci-ai-architect-skills | AI/architecture topic discovery | Research leads checked against installed command shapes |
+| Oreo-Tech/oci-mcp | Task inventory and compartment scoping | Fixed read adapter; mixed write surface not imported |
+| jasonwilbur/oci-pricing-mcp | Pricing workflow and caching ideas | Fixed public Price List request; no pricing server vendored |
 
-These are idea/provenance relationships, not a claim that upstream code was merged
-or that every upstream feature was reimplemented. Runtime dependencies retain their
-own licenses. New package code/instructions were authored for this repository.
+Snapshots are data for offline grading, never executed plugin instructions. Refresh comparison snapshots with `uv run --frozen --project runtime python scripts/eval/head_to_head.py --refresh-snapshots`. Runtime dependencies retain their own licenses; LICENSE/NOTICE and evals/arms/LICENSE-* preserve project and snapshot attribution.
 
-## Findings that changed implementation
+## Measured surface
 
-**Authentication was inconsistent across the Oracle servers.** Some typed servers
-assumed a session-token file even when an API-key profile was selected. The shared
-authentication library supports multiple modes, so the adapter depends on it rather
-than reproducing individual server factories. Only API-key auth was exercised live;
-the existence of library support does not count as a live principal-auth test.
+`uv run --frozen --project runtime python scripts/release_report.py` reproduces skill/example counts, the guard matrix, token estimates, unowned service counts and both denylist comparisons. CLI regeneration is `python scripts/inventory.py --format jsonl --index --check` using Python with OCI CLI 3.91.0 installed. Script/fragment regeneration is `python scripts/inventory.py --scripts --examples`; repeated outputs are byte-identical.
 
-**Pagination and output limits were not uniform.** Some implementations consumed all
-pages, others treated page size as an overall result limit, and others omitted
-continuation information. The new tools issue one bounded page and report count,
-truncation and cursor explicitly. Metadata/user data/tags are excluded by field
-projection. Tests cover unexpected page shapes and actual cursor continuation.
+The installed census has 174 groups and 9,145 leaves including aliases. These are installed syntax facts, not complete cloud product coverage. Artifacts retain scope disclaimers: “including aliases”, “no safety or authorization classification”, and “conditional requirements may exist in callbacks”, plus per-module import_errors and validation_levels. Census labels are heuristic inputs to measured guard tests, never an IAM authorization model.
 
-**Broad command execution is not a read-only boundary.** Operation-name denylists
-and descriptive hints cannot establish the behavior of arbitrary commands. This
-adapter has no generic executor and exposes only reviewed SDK reads. No mutation
-or dangerous-command reproduction was needed for validation.
+The current OCI-only guard matrix is read 3,697/11/0; mutating 0/3,781/0; destructive 1/997/328; unknown 2/328/0 (allow/ask/deny). All 278 CRITICAL leaves are denied. The single destructive-labelled allowance is an estimate operation mislabelled by the census. This is the actual stricter matrix, not the older 2/996 plan split. Non-OCI rules remain unmeasured hand rules.
 
-**Tool discovery and successful operational reads are different tests.** Recovered
-upstream smoke results showed successful initialize/tools-list for Compute, Identity,
-Usage and Limits while their attempted reads returned errors. Those results are not
-reported as successful integrations. The new adapter passed the actual reads for
-these domains. Upstream Database/Load Balancer/Cloud/API/Pricing had some successful
-reads in the recovered evidence; this is historical evidence, not a current blanket
-compatibility guarantee.
+The source historical Oracle audit reports 2,222 denylist entries, 374 destructive and 2,644 mutating leaves allowed, 135 reads denied. Current prefix replay gives 374, 2,511 and zero respectively. Both are retained with their distinct classification/matching basis; no current-server claim is derived from historical counts. A generic executor's denied-command list is not a read-only boundary.
 
-**Command paths are surprisingly nonuniform.** Budgets use
-`budgets budget budget list`, database systems use `db system list`, and available
-Resource Manager Terraform versions use `resource-manager stack list-terraform-versions`.
-The help validator found and corrected a new example typo during this build. The
-catalog records installed syntax instead of extrapolating resource names.
+≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates).
 
-**The CLI can return successful empty output.** Some list commands intentionally
-emit nothing when the result is empty. The live checker distinguishes that successful
-case from a failed process, malformed nonempty output or HTTP access error. It also
-removes `OCI_CLI_AUTO_PROMPT` entirely for noninteractive checks, because mere presence
-enables prompting even with a text value of `False`.
+This is the prescribed planning estimate. Current shipped descriptions are 11,722 characters, approximately 2,931 tokens; serialized MCP schemas add approximately 3,455, total 6,386. These are characters/4 estimates, not tokenizer results. There is no always-on prompt hook in this pack. The offline competitor report includes its router injection separately.
 
-**One large database schema is expensive agent context.** The recovered Database
-server advertised 147 tools; the new runtime has nine focused tools. Database SQL,
-APEX delivery and other product control planes remain separate workflows instead
-of automatically loading every integration into each conversation.
+## Unowned services
 
-## What remains outside validation
+The plan assigns 163 groups / 8,887 leaves to skill owners. Ownership is a coverage map, not proof that every operation has a runnable workflow. The following 11 groups / 258 leaves remain unowned, reproduced by scripts/release_report.py:
 
-The regenerated CLI/SDK catalog measures the installed distribution, not all public
-or private Oracle APIs. It does not certify that every method works in every realm,
-region, license or account. Original broad research tracks about certification
-objectives, every SDK language's runnable recipes and exhaustive managed-service
-deployment patterns were unfinished; their unverified scope is documented in
-[the product map](oracle-product-map.md) and [SDK guide](sdk-and-devops.md).
+| Group | Leaves | Future candidate, not current coverage |
+|---|---:|---|
+| marketplace-publisher | 111 | none |
+| marketplace-private-offer | 27 | none |
+| costad | 16 | cost analysis |
+| demand-signal | 16 | none |
+| mngdmac | 14 | none |
+| cpg | 13 | compute |
+| dif | 13 | none |
+| gdp | 13 | none |
+| ccc | 12 | compute |
+| psa | 12 | networking |
+| ddfs | 11 | none |
 
-This release makes that research useful through bounded working tools, operational
-skills and explicit coverage. It does not claim to be the best possible package,
-an exhaustive Oracle inventory or an independently certified security product.
+Dedicated Region/C3/Roving Edge/Alloy/media/iot are navigator routing rows only. The 101 thin and 19 gap certification leaves in research 10b are a coverage map, not a claim of completeness; those historical classification counts are outside the CLI ownership denominator and are not newly measured here.
+
+## Validation boundaries and named gaps
+
+D7 live evidence covers explicitly selected identity/scope, region, limits, usage, resource-search, namespace/buckets, shape/image/AD, VCN/subnet and metric-metadata reads, plus public pricing. The CLI report records 35 successful reads and 226 shape-only examples, with no failed attempt reclassified as empty. MCP selected checks passed. These are bounded samples from one API-key profile, one region and one commercial realm. Metadata success does not validate a provisioned workload, other signer modes, sovereign realms, multi-region behavior or large payloads.
+
+Historical upstream discovery and successful reads are different outcomes. Compute/Identity/Usage/Limits initialization in research/data/oracle-mcp-smoke.json does not establish that their attempted operations passed. docs/oracle-mcp-research.json preserves that evidence; this pack's current smoke is separately recorded. No provisioning was done to fill coverage gaps.
+
+Named research gaps carried forward:
+
+- identity-domain federation depth (04b).
+- the AWR id chain and the FSU discovery→cycle chain, asserted from --help, never run (11 §16).
+- Console detail-page routes are convention only — a 200 from cloud.oracle.com proves nothing (12 B1/B4).
+- no machine-readable Architecture Center index exists and dcterms.modified is unpublished, so freshness is a floor (13 §8).
+- Oracle publishes no machine-readable error catalogue; message text is not a contract, branch on code+status (14 §17).
+- no live injection test was performed; the 15 §9 strings are fixtures (15 §10).
+- every PowerShell cell is a translation, not an executed command (16 §F).
+- case.yaml grader key spelling is early-access blocked (17 §1/§6).
+
+The offline description matcher misses its routing threshold. Model-backed task completion, leakage, live injection, confirmation behavior and behavioral no-plugin deltas remain unmeasured. The original live head-to-head gate is not satisfied by static descriptors. docs/validation-matrix.md names each red gate's reason and owner; there is no release-readiness claim.

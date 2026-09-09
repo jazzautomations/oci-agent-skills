@@ -1,4 +1,4 @@
-# Install the foundation
+# Install OCI Agent Skills
 
 Python 3.13+, `uv`, and OCI CLI 3.91.0 are the reproducible baseline. OCI credentials
 are needed only when calling credentialed tools. The bundled MCP exposes
@@ -60,9 +60,27 @@ configurations are tested from unrelated workspaces with bogus credentials:
 uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py
 ```
 
-The W08a marketplace has three entries, all with hooks and MCP, and no `skills[]`
-yet. Database/DevOps subset selection and strict content validation are W08b;
-these entries currently resolve the same foundation. Manifest license metadata
-follows the planned Apache-2.0 release, but the protected root LICENSE remains
-MIT and per-skill licenses are missing. Publication remains blocked on that
-content-owner correction; this handoff does not relicense existing material.
+The marketplace entries now select 33 full-pack, 8 database and 9 DevOps skills. Each carries hooks and MCP; the database subset includes the five DB skills plus navigator, CLI auth and IAM policy. The DevOps subset includes OKE, pipelines, serverless, Terraform, monitoring, logging and incident triage plus navigator and CLI auth.
+
+Validate the source manifests and bare skill directory:
+
+```bash
+claude plugin validate . --strict
+claude plugin validate ./skills --strict
+```
+
+The authoring stencil is SKILL.md.template, not a discoverable skill. The installer copies the active skills, shared references, scripts, catalog, hooks, .mcp.json, runtime, evals and license notices. It excludes local handoff scratch files. A `find . -type l` inside the fresh copied tree returns nothing before any runtime environment is created.
+
+Examples for the other project adapters:
+
+```bash
+bash installers/install.sh --target /tmp/oci-gemini --host gemini --copy-shared --i-accept-unguarded
+bash installers/install.sh --target /tmp/oci-cursor --host cursor --copy-shared --i-accept-unguarded
+bash installers/install.sh --target /tmp/oci-opencode --host opencode --copy-shared --i-accept-unguarded
+```
+
+Open the installed directory as the host project. These commands produce local configuration; they do not register marketplaces or modify global host settings. Interactive discovery remains host/version dependent. Codex's plugin manifest carries an inline MCP map and anchors the runtime working directory to the plugin root; its copied adapter uses .agents/skills and .codex/config.toml. Gemini and Cursor use .gemini/settings.json and .cursor/mcp.json. The opencode adapter targets the tested v2 schema; no v1 compatibility claim is made.
+
+To remove a copy, first move any user work out of its installation directory, then remove that directory yourself. The installer never overwrites a nonempty target and does not remove other installations.
+
+Current license: Apache-2.0 with LICENSE.txt in every skill. NOTICE preserves pre-v2 MIT attribution, and evaluation snapshots keep upstream MIT/UPL notices. Run `uv run --frozen --project runtime python scripts/ci/check_licenses.py`.

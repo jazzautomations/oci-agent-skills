@@ -11,7 +11,12 @@ from common import ROOT, files
 
 
 def urls(text):
-    return set(re.findall(r'https://docs\.oracle\.com/[^\s<>`"\])]+', text))
+    # A quoted URL ends at the quote; a <slug> path is documentation syntax,
+    # not a concrete public page. Do not probe its truncated prefix.
+    pattern = r"https://docs\.oracle\.com/[^\s<>`\"\])']+"
+    return {match.group() for match in re.finditer(pattern, text)
+            if text[match.end():match.end()+1] != '<'}
+
 
 
 def status(url):
