@@ -8,7 +8,7 @@ All arms receive identical unedited prompts, the same description matcher, one d
 | Arm | Routing proxy | Negative firing rate | Authored fence validity | Unconfirmed guard exposure | Resident token estimate |
 |---|---:|---:|---:|---:|---:|
 | This pack | 37.5% | 0.0% | 100.0% / 277 | 0/20 | 6386 |
-| adibirzu skills | 13.8% | 0.0% | 59.6% / 114 | 20/20 | 4218 |
+| adibirzu skills | 13.8% | 0.0% | 14.0% / 114 | 20/20 | 4218 |
 | Oracle API + Cloud tools | 6.2% | 0.0% | unmeasured (no authored fences) | 5/20 | 823 |
 | Bare descriptor baseline | 0.0% | 0.0% | unmeasured (no authored fences) | 20/20 | 0 |
 

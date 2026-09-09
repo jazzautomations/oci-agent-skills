@@ -38,7 +38,7 @@ Validate IDs with the scoped list/get below.
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
-| preflight | `scripts/merge_rules.py --help` | Load when using merge_rules.py for preflight. |
+| preflight | `scripts/merge_rules.py --help` | Load when merging complete rule arrays. |
 | Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands

@@ -22,10 +22,10 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Vision and OCR | [Guide](references/vision.md) | Load when reviewing vision and ocr. |
-| Language, translation and PII | [Guide](references/language.md) | Load when reviewing language, translation and pii. |
-| Speech transcription and TTS | [Guide](references/speech.md) | Load when reviewing speech transcription and tts. |
-| Document Understanding | [Guide](references/document-understanding.md) | Load when reviewing document understanding. |
+| Vision and OCR | [Guide](references/vision.md) | Load when matching supported image features. |
+| Language, translation and PII | [Guide](references/language.md) | Load when checking batch APIs and language support. |
+| Speech transcription and TTS | [Guide](references/speech.md) | Load when separating job and task failures. |
+| Document Understanding | [Guide](references/document-understanding.md) | Load when choosing layout and field extraction. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

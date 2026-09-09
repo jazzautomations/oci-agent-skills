@@ -22,11 +22,11 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Service envelope versus application | [Guide](references/envelope-only.md) | Load when investigating service envelope versus application. |
-| Fusion and NetSuite health | [Guide](references/fusion-netsuite-health.md) | Load when investigating fusion and netsuite health. |
-| Responsibility matrix | [Guide](references/responsibility-matrix.md) | Load when investigating responsibility matrix. |
-| Digital Assistant content plane | [Guide](references/oda.md) | Load when investigating digital assistant content plane. |
-| WebLogic and self-managed runtimes | [Guide](references/weblogic.md) | Load when investigating weblogic and self-managed runtimes. |
+| Service envelope versus application | [Guide](references/envelope-only.md) | Load when separating service and application APIs. |
+| Fusion and NetSuite health | [Guide](references/fusion-netsuite-health.md) | Load when locating the product-specific status plane. |
+| Responsibility matrix | [Guide](references/responsibility-matrix.md) | Load when assigning the owning control plane. |
+| Digital Assistant content plane | [Guide](references/oda.md) | Load when checking assistant content-plane operations. |
+| WebLogic and self-managed runtimes | [Guide](references/weblogic.md) | Load when separating stack and domain management. |
 | realms-endpoints | [Reference](../../references/realms-endpoints.md) | Load when checking realm availability. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |

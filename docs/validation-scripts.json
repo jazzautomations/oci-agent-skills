@@ -1,5 +1,5 @@
 {
-  "validated_at": "2026-09-09T19:17:14.185738+00:00",
+  "validated_at": "2026-09-09T19:37:04.926769+00:00",
   "mode": "scoped_script_execution",
   "scope": "Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.",
   "bootstrap": [

@@ -23,9 +23,9 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| SQLcl MCP and read-only users | [Guide](references/sqlcl-mcp.md) | Load when reviewing sqlcl mcp and read-only users. |
-| Choose the database MCP plane | [Guide](references/db-mcp-choices.md) | Load when reviewing choose the database mcp plane. |
-| ORDS modules and AutoREST | [Guide](references/ords-rest.md) | Load when reviewing ords modules and autorest. |
+| SQLcl MCP and read-only users | [Guide](references/sqlcl-mcp.md) | Load when checking SQLcl restrictions and grants. |
+| Choose the database MCP plane | [Guide](references/db-mcp-choices.md) | Load when choosing a SQL transport. |
+| ORDS modules and AutoREST | [Guide](references/ords-rest.md) | Load when checking schema aliases and REST privileges. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

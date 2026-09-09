@@ -22,12 +22,12 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Migration paths | [Guide](references/migration-paths.md) | Load when reviewing migration paths. |
-| OS Management Hub and Ksplice | [Guide](references/os-management-hub.md) | Load when reviewing os management hub and ksplice. |
-| Java estate and GraalVM | [Guide](references/java-estate.md) | Load when reviewing java estate and graalvm. |
-| Fleet Application Management | [Guide](references/fleet-apps-management.md) | Load when reviewing fleet application management. |
-| Exadata Fleet Update | [Guide](references/exadata-fleet-update.md) | Load when reviewing exadata fleet update. |
-| Oracle Cloud VMware Solution | [Guide](references/ocvs.md) | Load when reviewing oracle cloud vmware solution. |
+| Migration paths | [Guide](references/migration-paths.md) | Load when choosing discovery and migration planes. |
+| OS Management Hub and Ksplice | [Guide](references/os-management-hub.md) | Load when checking software sources and lifecycle stages. |
+| Java estate and GraalVM | [Guide](references/java-estate.md) | Load when separating JVM usage and fleet lifecycle. |
+| Fleet Application Management | [Guide](references/fleet-apps-management.md) | Load when checking fleets and maintenance schedules. |
+| Exadata Fleet Update | [Guide](references/exadata-fleet-update.md) | Load when tracing collections, cycles and actions. |
+| Oracle Cloud VMware Solution | [Guide](references/ocvs.md) | Load when separating OCI and VMware ownership. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

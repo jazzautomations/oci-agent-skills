@@ -26,9 +26,9 @@ Validate IDs with the scoped list/get below.
 |---|---|---|
 | Vector columns and feature probes | [Guide](references/vector-ddl.md) | Load when reviewing vector columns and feature probes. |
 | HNSW, IVF and query plans | [Guide](references/indexes.md) | Load when reviewing hnsw, ivf and query plans. |
-| Hybrid retrieval and chunking | [Guide](references/hybrid-search.md) | Load when reviewing hybrid retrieval and chunking. |
-| Select AI and NL2SQL | [Guide](references/select-ai.md) | Load when reviewing select ai and nl2sql. |
-| In-database ONNX embeddings | [Guide](references/onnx.md) | Load when reviewing in-database onnx embeddings. |
+| Hybrid retrieval and chunking | [Guide](references/hybrid-search.md) | Load when checking Text support and retrieval design. |
+| Select AI and NL2SQL | [Guide](references/select-ai.md) | Load when checking provider access and table scope. |
+| In-database ONNX embeddings | [Guide](references/onnx.md) | Load when checking model format and execution location. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

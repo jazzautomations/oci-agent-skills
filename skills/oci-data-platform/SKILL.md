@@ -22,11 +22,11 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Streaming and Queue | [Guide](references/streaming-queue.md) | Load when reviewing streaming and queue. |
-| Spark and Batch | [Guide](references/data-flow.md) | Load when reviewing spark and batch. |
-| Integration, Catalog and GoldenGate | [Guide](references/data-integration.md) | Load when reviewing integration, catalog and goldengate. |
-| Data Science | [Guide](references/data-science.md) | Load when reviewing data science. |
-| BDS, OpenSearch and Redis | [Guide](references/bds.md) | Load when reviewing bds, opensearch and redis. |
+| Streaming and Queue | [Guide](references/streaming-queue.md) | Load when choosing replay or acknowledged delivery. |
+| Spark and Batch | [Guide](references/data-flow.md) | Load when separating application config and runs. |
+| Integration, Catalog and GoldenGate | [Guide](references/data-integration.md) | Load when tracing workspace objects and task runs. |
+| Data Science | [Guide](references/data-science.md) | Load when separating artifacts and serving capacity. |
+| BDS, OpenSearch and Redis | [Guide](references/bds.md) | Load when checking cluster versions and dependencies. |
 | cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |

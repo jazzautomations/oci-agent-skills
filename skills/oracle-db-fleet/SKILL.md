@@ -22,12 +22,12 @@ Check IDs with scoped reads.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Database product noun sets | [Guide](references/noun-sets.md) | Load when reviewing database product noun sets. |
-| Database at Azure, AWS or Google | [Guide](references/multicloud-db.md) | Load when reviewing database at azure, aws or google. |
-| Database Management and AWR | [Guide](references/dbmgmt-awr.md) | Load when reviewing database management and awr. |
-| CDB/PDB, backup, patch and Data Guard | [Guide](references/dba-lifecycle.md) | Load when reviewing cdb/pdb, backup, patch and data guard. |
-| Data Pump movement | [Guide](references/datapump.md) | Load when reviewing data pump movement. |
-| Ops Insights enrollment and forecasts | [Guide](references/opsi.md) | Load when reviewing ops insights enrollment and forecasts. |
+| Database product noun sets | [Guide](references/noun-sets.md) | Load when choosing the database product API. |
+| Database at Azure, AWS or Google | [Guide](references/multicloud-db.md) | Load when separating OCI and partner planes. |
+| Database Management and AWR | [Guide](references/dbmgmt-awr.md) | Load when checking managed database enrollment. |
+| CDB/PDB, backup, patch and Data Guard | [Guide](references/dba-lifecycle.md) | Load when separating instance, home and PDB state. |
+| Data Pump movement | [Guide](references/datapump.md) | Load when selecting database-side transfer tooling. |
+| Ops Insights enrollment and forecasts | [Guide](references/opsi.md) | Load when checking enrollment and historical trends. |
 | cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |

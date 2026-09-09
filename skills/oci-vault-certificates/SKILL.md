@@ -25,9 +25,9 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| KMS endpoint or key lifecycle | [Guide](references/vault-endpoints.md) | Load when investigating kms endpoint or key lifecycle. |
-| secret stages or rotation | [Guide](references/secrets.md) | Load when investigating secret stages or rotation. |
-| certificate expiry or mTLS | [Guide](references/certificates.md) | Load when investigating certificate expiry or mtls. |
+| KMS endpoint or key lifecycle | [Guide](references/vault-endpoints.md) | Load when selecting management and crypto endpoints. |
+| secret stages or rotation | [Guide](references/secrets.md) | Load when separating metadata and secret content. |
+| certificate expiry or mTLS | [Guide](references/certificates.md) | Load when checking validity without fetching bundles. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |

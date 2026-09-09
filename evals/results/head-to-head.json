@@ -1584,7 +1584,7 @@
     "b": {
       "routing_accuracy": 0.1375,
       "false_positive_rate": 0.0,
-      "command_validity": 0.5964912280701754,
+      "command_validity": 0.14035087719298245,
       "fence_count": 114,
       "guard_unconfirmed_exposure": 20,
       "guard_replay_count": 20,
@@ -2794,8 +2794,8 @@
         {
           "source": "references/cost-management.md",
           "line": 28,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/cost-management.md",
@@ -2819,7 +2819,7 @@
           "source": "references/data-safe.md",
           "line": 72,
           "valid": false,
-          "finding": "unbounded_list"
+          "finding": "missing_read_query"
         },
         {
           "source": "references/data-safe.md",
@@ -2830,14 +2830,14 @@
         {
           "source": "references/dbm-opsi.md",
           "line": 76,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/dbm-opsi.md",
           "line": 85,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/dbm-opsi.md",
@@ -2855,13 +2855,13 @@
           "source": "references/events-functions.md",
           "line": 133,
           "valid": false,
-          "finding": "unbounded_list"
+          "finding": "missing_read_query"
         },
         {
           "source": "references/events-functions.md",
           "line": 149,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/events-functions.md",
@@ -2872,26 +2872,26 @@
         {
           "source": "references/helper-conventions.md",
           "line": 20,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
           "line": 27,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/iam-tenancy.md",
           "line": 61,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/iam-tenancy.md",
           "line": 63,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
@@ -2902,8 +2902,8 @@
         {
           "source": "references/iam-tenancy.md",
           "line": 107,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/iam-tenancy.md",
@@ -2914,8 +2914,8 @@
         {
           "source": "references/iam-tenancy.md",
           "line": 138,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/iam-tenancy.md",
@@ -2938,14 +2938,14 @@
         {
           "source": "references/iam-tenancy.md",
           "line": 196,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
           "line": 214,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
@@ -2962,8 +2962,8 @@
         {
           "source": "references/iam-tenancy.md",
           "line": 234,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
@@ -2974,20 +2974,20 @@
         {
           "source": "references/iam-tenancy.md",
           "line": 268,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/iam-tenancy.md",
           "line": 272,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/log-analytics.md",
           "line": 90,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/log-analytics.md",
@@ -3005,19 +3005,19 @@
           "source": "references/log-analytics.md",
           "line": 140,
           "valid": false,
-          "finding": "unbounded_list"
+          "finding": "missing_read_query"
         },
         {
           "source": "references/named-contexts.md",
           "line": 50,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/networking-compute.md",
           "line": 37,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/networking-compute.md",
@@ -3028,8 +3028,8 @@
         {
           "source": "references/networking-compute.md",
           "line": 64,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/networking-compute.md",
@@ -3040,8 +3040,8 @@
         {
           "source": "references/networking-compute.md",
           "line": 119,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/networking-compute.md",
@@ -3052,20 +3052,20 @@
         {
           "source": "references/networking-compute.md",
           "line": 144,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/networking-compute.md",
           "line": 145,
           "valid": false,
-          "finding": "unbounded_list"
+          "finding": "missing_read_query"
         },
         {
           "source": "references/networking-compute.md",
           "line": 157,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/networking-compute.md",
@@ -3076,8 +3076,8 @@
         {
           "source": "references/networking-compute.md",
           "line": 196,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "references/networking-compute.md",
@@ -3112,20 +3112,20 @@
         {
           "source": "references/observability-db.md",
           "line": 49,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/observability-db.md",
           "line": 90,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/observability-db.md",
           "line": 102,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/observability-db.md",
@@ -3160,20 +3160,20 @@
         {
           "source": "references/observability-db.md",
           "line": 217,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/observability-db.md",
           "line": 232,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/oci-error-catalog.md",
           "line": 125,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/oke-operations.md",
@@ -3184,50 +3184,50 @@
         {
           "source": "references/oke-operations.md",
           "line": 389,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/resource-manager.md",
           "line": 33,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/resource-manager.md",
           "line": 68,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/resource-manager.md",
           "line": 69,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 28,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 29,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 30,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 33,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
@@ -3238,20 +3238,20 @@
         {
           "source": "references/security-compliance.md",
           "line": 64,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 65,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
           "line": 66,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/security-compliance.md",
@@ -3280,26 +3280,26 @@
         {
           "source": "references/security-compliance.md",
           "line": 294,
-          "valid": false,
-          "finding": "unbounded_list"
+          "valid": true,
+          "finding": null
         },
         {
           "source": "references/security-compliance.md",
           "line": 368,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/tenancy-safety.md",
           "line": 157,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/zpr-visibility.md",
           "line": 49,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/zpr-visibility.md",
@@ -3310,8 +3310,8 @@
         {
           "source": "skills/oci-autonomous-db/SKILL.md",
           "line": 81,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "skills/oci-autonomous-db/SKILL.md",
@@ -3340,14 +3340,14 @@
         {
           "source": "skills/oci-cost/SKILL.md",
           "line": 65,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-cost/SKILL.md",
           "line": 73,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-cost/SKILL.md",
@@ -3370,14 +3370,14 @@
         {
           "source": "skills/oci-iam-admin/SKILL.md",
           "line": 75,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-iam-admin/SKILL.md",
           "line": 79,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "unbounded_list"
         },
         {
           "source": "skills/oci-iam-admin/SKILL.md",
@@ -3388,14 +3388,14 @@
         {
           "source": "skills/oci-iam-admin/SKILL.md",
           "line": 103,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-log-analytics/SKILL.md",
           "line": 72,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-log-analytics/SKILL.md",
@@ -3406,8 +3406,8 @@
         {
           "source": "references/prometheus-mql-host-dashboards.md",
           "line": 123,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "references/prometheus-mql-host-dashboards.md",
@@ -3424,8 +3424,8 @@
         {
           "source": "skills/oci-resource-manager/SKILL.md",
           "line": 61,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         },
         {
           "source": "skills/oci-security-compliance/SKILL.md",
@@ -3448,8 +3448,8 @@
         {
           "source": "skills/oci-security-compliance/SKILL.md",
           "line": 133,
-          "valid": true,
-          "finding": null
+          "valid": false,
+          "finding": "missing_read_query"
         }
       ],
       "guard_replay": [
@@ -5946,31 +5946,31 @@
         },
         {
           "source": "skills/oci-ai-services/SKILL.md",
-          "line": 44,
+          "line": 42,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-ai-services/SKILL.md",
-          "line": 50,
+          "line": 48,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-ai-services/SKILL.md",
-          "line": 56,
+          "line": 54,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-ai-services/SKILL.md",
-          "line": 62,
+          "line": 60,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-ai-services/SKILL.md",
-          "line": 68,
+          "line": 66,
           "valid": true,
           "finding": null
         },
@@ -6120,31 +6120,31 @@
         },
         {
           "source": "skills/oci-cost-analysis/SKILL.md",
-          "line": 44,
+          "line": 43,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-cost-analysis/SKILL.md",
-          "line": 50,
+          "line": 49,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-cost-analysis/SKILL.md",
-          "line": 56,
+          "line": 55,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-cost-analysis/SKILL.md",
-          "line": 62,
+          "line": 61,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-cost-analysis/SKILL.md",
-          "line": 68,
+          "line": 67,
           "valid": true,
           "finding": null
         },
@@ -6204,49 +6204,49 @@
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 46,
+          "line": 44,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 52,
+          "line": 50,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 58,
+          "line": 56,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 64,
+          "line": 62,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 70,
+          "line": 68,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 76,
+          "line": 74,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 82,
+          "line": 80,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-data-platform/SKILL.md",
-          "line": 88,
+          "line": 86,
           "valid": true,
           "finding": null
         },
@@ -6288,79 +6288,79 @@
         },
         {
           "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 44,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 50,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 56,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 62,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 68,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 74,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 80,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-dr-backup/SKILL.md",
+          "line": 86,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-free-tier/SKILL.md",
+          "line": 40,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-free-tier/SKILL.md",
           "line": 46,
           "valid": true,
           "finding": null
         },
         {
-          "source": "skills/oci-dr-backup/SKILL.md",
+          "source": "skills/oci-free-tier/SKILL.md",
           "line": 52,
           "valid": true,
           "finding": null
         },
         {
-          "source": "skills/oci-dr-backup/SKILL.md",
+          "source": "skills/oci-free-tier/SKILL.md",
           "line": 58,
           "valid": true,
           "finding": null
         },
         {
-          "source": "skills/oci-dr-backup/SKILL.md",
+          "source": "skills/oci-free-tier/SKILL.md",
           "line": 64,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-dr-backup/SKILL.md",
-          "line": 70,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-dr-backup/SKILL.md",
-          "line": 76,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-dr-backup/SKILL.md",
-          "line": 82,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-dr-backup/SKILL.md",
-          "line": 88,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-free-tier/SKILL.md",
-          "line": 41,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-free-tier/SKILL.md",
-          "line": 47,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-free-tier/SKILL.md",
-          "line": 53,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-free-tier/SKILL.md",
-          "line": 59,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-free-tier/SKILL.md",
-          "line": 65,
           "valid": true,
           "finding": null
         },
@@ -6432,19 +6432,13 @@
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 37,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-iam-policy/SKILL.md",
           "line": 38,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 44,
+          "line": 39,
           "valid": true,
           "finding": null
         },
@@ -6456,13 +6450,13 @@
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 51,
+          "line": 46,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 57,
+          "line": 52,
           "valid": true,
           "finding": null
         },
@@ -6474,13 +6468,19 @@
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 66,
+          "line": 59,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-iam-policy/SKILL.md",
-          "line": 74,
+          "line": 67,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-iam-policy/SKILL.md",
+          "line": 75,
           "valid": true,
           "finding": null
         },
@@ -6492,43 +6492,43 @@
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 39,
+          "line": 40,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 45,
+          "line": 46,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 51,
+          "line": 52,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 57,
+          "line": 58,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 63,
+          "line": 64,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 69,
+          "line": 70,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-incident-triage/SKILL.md",
-          "line": 75,
+          "line": 76,
           "valid": true,
           "finding": null
         },
@@ -6594,49 +6594,49 @@
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 46,
+          "line": 44,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 52,
+          "line": 50,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 58,
+          "line": 56,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 64,
+          "line": 62,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 70,
+          "line": 68,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 76,
+          "line": 74,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 82,
+          "line": 80,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-migration-patching/SKILL.md",
-          "line": 88,
+          "line": 86,
           "valid": true,
           "finding": null
         },
@@ -6678,31 +6678,31 @@
         },
         {
           "source": "skills/oci-navigator/SKILL.md",
-          "line": 56,
+          "line": 52,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-navigator/SKILL.md",
-          "line": 61,
+          "line": 57,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-navigator/SKILL.md",
-          "line": 66,
+          "line": 62,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-navigator/SKILL.md",
-          "line": 71,
+          "line": 67,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-navigator/SKILL.md",
-          "line": 76,
+          "line": 72,
           "valid": true,
           "finding": null
         },
@@ -6864,37 +6864,37 @@
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 46,
+          "line": 47,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 52,
+          "line": 53,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 59,
+          "line": 60,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 67,
+          "line": 68,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 74,
+          "line": 75,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-sdk-patterns/SKILL.md",
-          "line": 83,
+          "line": 84,
           "valid": true,
           "finding": null
         },
@@ -7122,31 +7122,31 @@
         },
         {
           "source": "skills/oci-support-limits/SKILL.md",
-          "line": 44,
+          "line": 43,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-support-limits/SKILL.md",
-          "line": 50,
+          "line": 49,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-support-limits/SKILL.md",
-          "line": 56,
+          "line": 55,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-support-limits/SKILL.md",
-          "line": 62,
+          "line": 61,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-support-limits/SKILL.md",
-          "line": 70,
+          "line": 69,
           "valid": true,
           "finding": null
         },
@@ -7302,295 +7302,295 @@
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 51,
+          "line": 50,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 57,
+          "line": 56,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 63,
+          "line": 62,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 69,
+          "line": 68,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 75,
+          "line": 74,
           "valid": true,
           "finding": null
         },
         {
           "source": "skills/oci-terraform/SKILL.md",
-          "line": 83,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 43,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 49,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 55,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 61,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 67,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oci-vault-certificates/SKILL.md",
-          "line": 75,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-apex/SKILL.md",
-          "line": 45,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-apex/SKILL.md",
-          "line": 51,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-apex/SKILL.md",
-          "line": 57,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-apex/SKILL.md",
-          "line": 63,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-apex/SKILL.md",
-          "line": 69,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 43,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 49,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 55,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 61,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 67,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-autonomous-db/SKILL.md",
-          "line": 75,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 47,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 53,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 59,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 65,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 71,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 77,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 83,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-fleet/SKILL.md",
-          "line": 89,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-sql-access/SKILL.md",
-          "line": 43,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-sql-access/SKILL.md",
-          "line": 49,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-sql-access/SKILL.md",
-          "line": 55,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-sql-access/SKILL.md",
-          "line": 61,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-sql-access/SKILL.md",
-          "line": 67,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-vector-ai/SKILL.md",
-          "line": 45,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-vector-ai/SKILL.md",
-          "line": 51,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-vector-ai/SKILL.md",
-          "line": 57,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-vector-ai/SKILL.md",
-          "line": 63,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-db-vector-ai/SKILL.md",
-          "line": 69,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 46,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 52,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 58,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 64,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 70,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 76,
-          "valid": true,
-          "finding": null
-        },
-        {
-          "source": "skills/oracle-enterprise-apps/SKILL.md",
           "line": 82,
           "valid": true,
           "finding": null
         },
         {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 44,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 50,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 56,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 62,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 68,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oci-vault-certificates/SKILL.md",
+          "line": 76,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-apex/SKILL.md",
+          "line": 44,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-apex/SKILL.md",
+          "line": 50,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-apex/SKILL.md",
+          "line": 56,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-apex/SKILL.md",
+          "line": 62,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-apex/SKILL.md",
+          "line": 68,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 42,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 48,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 54,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 60,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 66,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-autonomous-db/SKILL.md",
+          "line": 74,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 44,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 50,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 56,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 62,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 68,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 74,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 80,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-fleet/SKILL.md",
+          "line": 86,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-sql-access/SKILL.md",
+          "line": 42,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-sql-access/SKILL.md",
+          "line": 48,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-sql-access/SKILL.md",
+          "line": 54,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-sql-access/SKILL.md",
+          "line": 60,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-sql-access/SKILL.md",
+          "line": 66,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-vector-ai/SKILL.md",
+          "line": 44,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-vector-ai/SKILL.md",
+          "line": 50,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-vector-ai/SKILL.md",
+          "line": 56,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-vector-ai/SKILL.md",
+          "line": 62,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-db-vector-ai/SKILL.md",
+          "line": 68,
+          "valid": true,
+          "finding": null
+        },
+        {
           "source": "skills/oracle-enterprise-apps/SKILL.md",
-          "line": 88,
+          "line": 43,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 49,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 55,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 61,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 67,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 73,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 79,
+          "valid": true,
+          "finding": null
+        },
+        {
+          "source": "skills/oracle-enterprise-apps/SKILL.md",
+          "line": 85,
           "valid": true,
           "finding": null
         }
@@ -7599,52 +7599,52 @@
         {
           "id": "T37",
           "run": 1,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T37",
           "run": 2,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T37",
           "run": 3,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T37",
           "run": 4,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T37",
           "run": 5,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T38",
           "run": 1,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T38",
           "run": 2,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T38",
           "run": 3,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T38",
           "run": 4,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T38",
           "run": 5,
-          "decision": "ask"
+          "decision": "deny"
         },
         {
           "id": "T39",

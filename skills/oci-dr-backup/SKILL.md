@@ -22,10 +22,10 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Full Stack DR | [Guide](references/full-stack-dr.md) | Load when investigating full stack dr. |
-| Backup and replication matrix | [Guide](references/backup-matrix.md) | Load when investigating backup and replication matrix. |
-| AD and fault-domain spread | [Guide](references/ad-fd-spread.md) | Load when investigating ad and fault-domain spread. |
-| DR topology and proof | [Guide](references/dr-topologies.md) | Load when investigating dr topology and proof. |
+| Full Stack DR | [Guide](references/full-stack-dr.md) | Load when inspecting paired groups and execution steps. |
+| Backup and replication matrix | [Guide](references/backup-matrix.md) | Load when locating service-specific recovery evidence. |
+| AD and fault-domain spread | [Guide](references/ad-fd-spread.md) | Load when checking placement across failure domains. |
+| DR topology and proof | [Guide](references/dr-topologies.md) | Load when matching topology to RPO and RTO. |
 | architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |
 | cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |

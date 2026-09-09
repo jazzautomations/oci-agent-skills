@@ -24,11 +24,11 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Workspace, schema and upgrade lifecycle | [Guide](references/lifecycle.md) | Load when reviewing workspace, schema and upgrade lifecycle. |
-| Export, import and drift | [Guide](references/export-import-ci.md) | Load when reviewing export, import and drift. |
-| ORDS ownership and REST access | [Guide](references/ords.md) | Load when reviewing ords ownership and rest access. |
-| APEX Assistant and AI providers | [Guide](references/apex-ai.md) | Load when reviewing apex assistant and ai providers. |
-| Pages, session state and authorization | [Guide](references/page-building.md) | Load when reviewing pages, session state and authorization. |
+| Workspace, schema and upgrade lifecycle | [Guide](references/lifecycle.md) | Load when checking workspace and schema ownership. |
+| Export, import and drift | [Guide](references/export-import-ci.md) | Load when reviewing export artifacts and deployment. |
+| ORDS ownership and REST access | [Guide](references/ords.md) | Load when separating database state and REST routing. |
+| APEX Assistant and AI providers | [Guide](references/apex-ai.md) | Load when checking workspace providers and credentials. |
+| Pages, session state and authorization | [Guide](references/page-building.md) | Load when checking session state and authorization. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

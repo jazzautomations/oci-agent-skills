@@ -17,4 +17,4 @@ Only one vector index type can serve a vector column. Verify the execution plan 
 
 | Error string | Distinguish | Source |
 |---|---|---|
-| ORA-01031 / ORA-00942 | Missing privileges or inaccessible objects can prevent a feature probe; do not infer feature absence from that result. | research/08a read-only identity checks [unverified here] |
+| ORA-01031 / ORA-00942 | Missing privileges or inaccessible objects can prevent a feature probe; do not infer feature absence from that result. | research/08a read-only identity checks [unverified] |

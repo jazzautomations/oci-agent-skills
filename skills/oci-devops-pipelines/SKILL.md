@@ -26,10 +26,10 @@ Validate IDs with the scoped list/get below.
 | The user says… | Load | Why |
 |---|---|---|
 | build_spec.yaml validation | [Guide](references/build-spec-schema.md) | Load when investigating build_spec.yaml validation. |
-| stage, trigger or deployment failure | [Guide](references/pipelines.md) | Load when investigating stage, trigger or deployment failure. |
-| registry login or push | [Guide](references/ocir.md) | Load when investigating registry login or push. |
-| sign image or audit vulnerabilities | [Guide](references/signing-scanning.md) | Load when investigating sign image or audit vulnerabilities. |
-| GitHub Actions or runner credentials | [Guide](references/ci-auth-matrix.md) | Load when investigating github actions or runner credentials. |
+| stage, trigger or deployment failure | [Guide](references/pipelines.md) | Load when checking project and stage dependencies. |
+| registry login or push | [Guide](references/ocir.md) | Load when checking registry names and credentials. |
+| sign image or audit vulnerabilities | [Guide](references/signing-scanning.md) | Load when checking key algorithms and image digests. |
+| GitHub Actions or runner credentials | [Guide](references/ci-auth-matrix.md) | Load when matching runner identity to IAM. |
 | auth-modes | [Reference](../../references/auth-modes.md) | Load when choosing a signer. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |

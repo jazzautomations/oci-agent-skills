@@ -24,21 +24,21 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| provider credentials or aliases | [Guide](references/provider-auth.md) | Load when investigating provider credentials or aliases. |
-| plan review or replacement | [Guide](references/plan-review.md) | Load when investigating plan review or replacement. |
-| adopt existing resources | [Guide](references/import.md) | Load when investigating adopt existing resources. |
-| resource discovery or generated HCL | [Guide](references/resource-discovery.md) | Load when investigating resource discovery or generated hcl. |
-| oracle.oci inventory | [Guide](references/ansible.md) | Load when investigating oracle.oci inventory. |
-| remote state or locking | [Guide](references/remote-state.md) | Load when investigating remote state or locking. |
-| Resource Manager stack or job | [Guide](references/stack-lifecycle.md) | Load when investigating resource manager stack or job. |
-| drift or refresh | [Guide](references/drift.md) | Load when investigating drift or refresh. |
+| provider credentials or aliases | [Guide](references/provider-auth.md) | Load when checking provider version and signer. |
+| plan review or replacement | [Guide](references/plan-review.md) | Load when reviewing a saved change artifact. |
+| adopt existing resources | [Guide](references/import.md) | Load when checking state ownership before adoption. |
+| resource discovery or generated HCL | [Guide](references/resource-discovery.md) | Load when checking supported export scopes. |
+| oracle.oci inventory | [Guide](references/ansible.md) | Load when scoping inventory and signer settings. |
+| remote state or locking | [Guide](references/remote-state.md) | Load when checking locking and state protection. |
+| Resource Manager stack or job | [Guide](references/stack-lifecycle.md) | Load when tracing stack configuration into jobs. |
+| drift or refresh | [Guide](references/drift.md) | Load when comparing configuration, state and resources. |
 | auth-modes | [Reference](../../references/auth-modes.md) | Load when choosing a signer. |
 | architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
-| preflight | `scripts/plan_summary.py --help` | Load when using plan_summary.py for preflight. |
+| preflight | `scripts/plan_summary.py --help` | Load when summarizing saved plan changes. |
 | Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands

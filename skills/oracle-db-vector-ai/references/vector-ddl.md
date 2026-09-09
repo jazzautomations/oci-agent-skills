@@ -6,7 +6,7 @@ Pin dimensions and format to the embedding model. A bare VECTOR permits incompat
 
 [unverified SQL; proposal only]
 ```sql
--- MUTATING — not run in this repo; [shape-only, SQL unverified]; requires DBA review.
+-- MUTATING — not run in this repo; [shape-only] [unverified]; requires DBA review.
 -- rollback: DROP TABLE doc_chunks; NONE for any data subsequently stored.
 CREATE TABLE doc_chunks (
   id NUMBER PRIMARY KEY,
@@ -20,5 +20,5 @@ Model changes normally require re-embedding; do not silently mix embeddings. JSO
 
 | Error string | Dimension check | Source |
 |---|---|---|
-| ORA-51801 | Check the type-specific dimension ceiling before defining the column. | research/08a §1 [unverified here] |
-| ORA-51813 | BINARY dimensions must be a multiple of eight. | research/08a §1 [unverified here] |
+| ORA-51801 | Check the type-specific dimension ceiling before defining the column. | research/08a §1 [unverified] |
+| ORA-51813 | BINARY dimensions must be a multiple of eight. | research/08a §1 [unverified] |

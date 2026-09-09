@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-09",
+  "host": "2.1.266 (Claude Code)",
+  "method": "Copied plugin via --plugin-dir from unrelated cwd; ToolSearch waits for asynchronous MCP registration. Built-in tools restricted to ToolSearch, absent OCI config, no OCI tool invoked.",
+  "bundled_tools": [
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_alarm_status",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_audit_events",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_buckets",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_compartments",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_cost_summary",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_instances",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_limit_services",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_limit_values",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_metrics",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_network_inventory",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_price_lookup",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_regions",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_resource_search",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_whoami",
+    "mcp__plugin_oci-agent-skills_oci-readonly__oci_work_requests"
+  ],
+  "called_tools": [
+    "ToolSearch"
+  ],
+  "ok": true
+}

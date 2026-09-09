@@ -25,9 +25,9 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| function deploy, timeout or resource principal | [Guide](references/functions.md) | Load when investigating function deploy, timeout or resource principal. |
-| container instance or crash loop | [Guide](references/container-instances.md) | Load when investigating container instance or crash loop. |
-| gateway 404, 504 or auth | [Guide](references/api-gateway.md) | Load when investigating gateway 404, 504 or auth. |
+| function deploy, timeout or resource principal | [Guide](references/functions.md) | Load when checking architecture, image and timeout. |
+| container instance or crash loop | [Guide](references/container-instances.md) | Load when checking shapes and container lifecycle. |
+| gateway 404, 504 or auth | [Guide](references/api-gateway.md) | Load when tracing route policies and backends. |
 | auth-modes | [Reference](../../references/auth-modes.md) | Load when choosing a signer. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |

@@ -23,14 +23,14 @@ Check IDs with scoped reads.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Model availability | [Guide](references/models.md) | Load when reviewing model availability. |
-| Chat and embeddings | [Guide](references/chat-shapes.md) | Load when reviewing chat and embeddings. |
-| Endpoint routing | [Guide](references/endpoints.md) | Load when reviewing endpoint routing. |
-| Dedicated clusters | [Guide](references/dedicated-clusters.md) | Load when reviewing dedicated clusters. |
-| Managed agents and tools | [Guide](references/agents-service.md) | Load when reviewing managed agents and tools. |
-| Knowledge bases and ingestion | [Guide](references/knowledge-bases.md) | Load when reviewing knowledge bases and ingestion. |
-| OCI ADK | [Guide](references/adk.md) | Load when reviewing oci adk. |
-| Agent identity and model IAM | [Guide](references/agent-identity.md) | Load when reviewing agent identity and model iam. |
+| Model availability | [Guide](references/models.md) | Load when checking current model capabilities. |
+| Chat and embeddings | [Guide](references/chat-shapes.md) | Load when selecting chat request fields. |
+| Endpoint routing | [Guide](references/endpoints.md) | Load when separating control and inference APIs. |
+| Dedicated clusters | [Guide](references/dedicated-clusters.md) | Load when checking hosting shape and lifecycle. |
+| Managed agents and tools | [Guide](references/agents-service.md) | Load when reviewing tools and endpoint state. |
+| Knowledge bases and ingestion | [Guide](references/knowledge-bases.md) | Load when tracing sources through ingestion. |
+| OCI ADK | [Guide](references/adk.md) | Load when pinning the SDK and ADK integration. |
+| Agent identity and model IAM | [Guide](references/agent-identity.md) | Load when separating caller and downstream principals. |
 | architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |

@@ -23,10 +23,10 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Provisioning and Always Free | [Guide](references/provision.md) | Load when reviewing provisioning and always free. |
-| TLS, wallets and ORA-12506 | [Guide](references/connect.md) | Load when reviewing tls, wallets and ora-12506. |
-| Read-only database identity | [Guide](references/readonly-user.md) | Load when reviewing read-only database identity. |
-| ADB and APEX application topology | [Guide](references/app-patterns.md) | Load when reviewing adb and apex application topology. |
+| Provisioning and Always Free | [Guide](references/provision.md) | Load when reviewing region and entitlement prerequisites. |
+| TLS, wallets and ORA-12506 | [Guide](references/connect.md) | Load when checking ACL, TLS and wallet aliases. |
+| Read-only database identity | [Guide](references/readonly-user.md) | Load when checking explicit database grants. |
+| ADB and APEX application topology | [Guide](references/app-patterns.md) | Load when checking application and database placement. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |

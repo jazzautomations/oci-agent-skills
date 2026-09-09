@@ -50,7 +50,7 @@
     },
     {
       "id": "V6",
-      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs README.md --live-help",
+      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md --live-help",
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
@@ -71,7 +71,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Measured current matrix is stricter than the original plan: destructive 1/997/328, not 2/996/328; non-OCI rules remain unmeasured.",
+      "detail": "Independent research-severity matrix: docs/guard-severity-matrix.json; 278 critical leaves denied, zero allows outside strict reads. Non-OCI rules are unmeasured.",
       "owner": null
     },
     {
@@ -80,12 +80,8 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Existing parser tests renamed so the prescribed selector runs 80 cases; all passed.",
-      "owner": null,
-      "prior_attempt": {
-        "exit_code": 5,
-        "reason": "Selector matched no tests before parser-test naming was corrected."
-      }
+      "detail": "Command passed.",
+      "owner": null
     },
     {
       "id": "V10",
@@ -129,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "216 passed, 1 warning in 93.41s (0:01:33)",
+      "detail": "260 passed, 1 warning in 52.39s",
       "owner": null
     },
     {
@@ -198,11 +194,11 @@
     {
       "id": "V22",
       "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py",
-      "result": "PASS",
+      "result": "FAIL",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Command passed. Subcheck V22-history: PASS.",
-      "owner": null
+      "detail": "Command passed. Subcheck V22-history: FAIL.",
+      "owner": "repository history owner"
     },
     {
       "id": "V23",
@@ -224,11 +220,11 @@
     {
       "id": "V25",
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json",
-      "result": "PASS",
+      "result": "FAIL",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Command passed.",
-      "owner": null
+      "detail": "Command passed. Skill entrypoint execution: FAIL; see docs/validation-scripts.json.",
+      "owner": "OCI operator / skill maintainers"
     },
     {
       "id": "V26",
@@ -240,11 +236,11 @@
     },
     {
       "id": "V27",
-      "command": "claude plugin eval . --threshold 0.8 --json evals/results/run.json",
+      "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
       "result": "UNAVAILABLE",
       "date": "2026-09-09",
-      "detail": "Prior handoff attempt returned early-access unavailable (evals/results/host.json). Both task shapes supplied; no model-backed skill-creator score measured. Offline proxy cannot establish \u22650.8.",
-      "owner": "Claude early-access provider / evaluation maintainers"
+      "detail": "`plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score.",
+      "owner": "evaluation maintainers / installed host provider"
     },
     {
       "id": "V28",
@@ -257,26 +253,26 @@
   ],
   "subchecks": [
     {
-      "id": "V16-regeneration",
-      "command": "CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
-      "result": "PASS",
-      "date": "2026-09-09",
-      "exit_code": 0,
-      "detail": "Command passed.",
-      "owner": null
-    },
-    {
       "id": "V22-history",
       "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
-      "result": "PASS",
+      "result": "FAIL",
       "date": "2026-09-09",
-      "exit_code": 0,
-      "detail": "Command passed.",
-      "owner": null
+      "exit_code": 1,
+      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 156, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
+      "owner": "repository history owner"
     },
     {
       "id": "V28-offline",
       "command": "uv run --frozen --project runtime python scripts/eval/head_to_head.py",
+      "result": "PASS",
+      "date": "2026-09-09",
+      "exit_code": 0,
+      "detail": "Command passed.",
+      "owner": null
+    },
+    {
+      "id": "V16-regeneration",
+      "command": "CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,

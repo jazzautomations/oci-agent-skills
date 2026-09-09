@@ -24,8 +24,8 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| managed SSH or port forwarding | [Guide](references/session-types.md) | Load when investigating managed ssh or port forwarding. |
-| timeout, expiry or plugin failure | [Guide](references/preconditions.md) | Load when investigating timeout, expiry or plugin failure. |
+| managed SSH or port forwarding | [Guide](references/session-types.md) | Load when choosing forwarding or managed SSH. |
+| timeout, expiry or plugin failure | [Guide](references/preconditions.md) | Load when checking egress CIDR and target access. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |

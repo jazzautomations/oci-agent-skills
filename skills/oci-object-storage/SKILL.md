@@ -24,10 +24,10 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| bucket, namespace or prefix | [Guide](references/buckets-objects.md) | Load when investigating bucket, namespace or prefix. |
-| PAR access or expiry | [Guide](references/par.md) | Load when investigating par access or expiry. |
-| archive or retention policy | [Guide](references/lifecycle-retention.md) | Load when investigating archive or retention policy. |
-| replication, sync or multipart | [Guide](references/replication-sync.md) | Load when investigating replication, sync or multipart. |
+| bucket, namespace or prefix | [Guide](references/buckets-objects.md) | Load when checking namespace, region and object keys. |
+| PAR access or expiry | [Guide](references/par.md) | Load when reviewing bearer access and expiry. |
+| archive or retention policy | [Guide](references/lifecycle-retention.md) | Load when reviewing replace-all lifecycle policies. |
+| replication, sync or multipart | [Guide](references/replication-sync.md) | Load when checking replication roles and regions. |
 | cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |

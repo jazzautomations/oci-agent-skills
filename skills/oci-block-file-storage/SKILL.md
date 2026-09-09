@@ -24,9 +24,9 @@ Validate IDs with the scoped list/get below.
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| disk resize or attachments | [Guide](references/volumes.md) | Load when investigating disk resize or attachments. |
-| backup policy or clone | [Guide](references/backups-clones.md) | Load when investigating backup policy or clone. |
-| NFS or mount target | [Guide](references/fss.md) | Load when investigating nfs or mount target. |
+| disk resize or attachments | [Guide](references/volumes.md) | Load when correlating volumes and attachments. |
+| backup policy or clone | [Guide](references/backups-clones.md) | Load when verifying backup policy assignments. |
+| NFS or mount target | [Guide](references/fss.md) | Load when checking exports and client access. |
 | cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
 | operator-contract | [Reference](../../references/operator-contract.md) | Load when confirming scope and recovery. |
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
