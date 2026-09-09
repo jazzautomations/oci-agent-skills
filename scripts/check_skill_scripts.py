@@ -15,6 +15,8 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+INSTANCE_SCRIPTS = {'triage.py', 'triage.sh'}
+GAP_KINDS = {'no_datapoints', 'no_data'}
 
 
 def outcome(returncode, stdout, stderr):
@@ -28,11 +30,21 @@ def outcome(returncode, stdout, stderr):
             break
         objects.append(value)
         rest = rest[end:].lstrip()
-    def failed(value):
+    def failures(value):
         if isinstance(value, dict):
-            return value.get('ok') is False or bool(value.get('error')) or any(failed(v) for v in value.values())
-        return isinstance(value, list) and any(failed(v) for v in value)
-    if returncode == 0 and not any(failed(v) for v in objects):
+            children = [issue for v in value.values() for issue in failures(v)]
+            if value.get('error'):
+                return ['failed', *children]
+            if value.get('ok') is False and not children:
+                return ['gap' if value.get('kind') in GAP_KINDS else 'failed']
+            return children
+        if isinstance(value, list):
+            return [issue for v in value for issue in failures(v)]
+        return []
+    issues = [issue for value in objects for issue in failures(value)]
+    if issues and set(issues) == {'gap'} and not rest and returncode in {0, 1} and not stderr.strip():
+        return 'ran, gap'
+    if returncode == 0 and not issues:
         return 'passed'
     if 'required' in stderr.lower() or 'set ' in stderr.lower() or 'unbound variable' in stderr:
         return 'blocked_missing_prerequisite'
@@ -42,8 +54,8 @@ def outcome(returncode, stdout, stderr):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--live', action='store_true', required=True)
-    parser.add_argument('--profile', required=True)
-    parser.add_argument('--region', required=True)
+    parser.add_argument('--profile', default='DEFAULT')
+    parser.add_argument('--region', help='Must match the selected profile region; defaults to that region')
     parser.add_argument('--report', type=Path, required=True)
     args = parser.parse_args()
     try:
@@ -51,6 +63,10 @@ def main():
         config.read(Path(os.getenv('OCI_CLI_CONFIG_FILE', '~/.oci/config')).expanduser())
         section = config[args.profile]
         tenancy = section['tenancy']
+        region = section['region']
+        if args.region and args.region != region:
+            raise ValueError('Region differs from selected profile')
+        args.region = region
         if section.get('endpoint'):
             raise ValueError('Endpoint override')
         environment = {k:v for k,v in os.environ.items() if not k.endswith('_ID') and k not in {'OCI_RO_TRACE','OCI_RO_ALLOW_ALL','OCI_CLI_ENDPOINT','OCI_ENDPOINT','AD','LIMIT_NAME','SHAPE','MQL','BUCKET','NAMESPACE','POLICY_ID','INSTANCE_ID'}}
@@ -62,7 +78,7 @@ def main():
         end = datetime.now(timezone.utc).date()
         moment = datetime.now(timezone.utc)
         environment.update(START_TIME=(moment-timedelta(hours=1)).isoformat(), END_TIME=moment.isoformat(),
-                           METRIC_NAMESPACE='oci_computeagent', MQL='CpuUtilization[5m].mean()')
+                           METRIC_NAMESPACE='oci_computeagent', MQL='CpuUtilization[1m].mean()')
         environment.update(PRIOR_START=str(end-timedelta(days=2)), PRIOR_END=str(end-timedelta(days=1)),
                            CURRENT_START=str(end-timedelta(days=1)), CURRENT_END=str(end), WINDOW_HOURS='1')
     except (KeyError, ValueError, OSError):
@@ -77,6 +93,7 @@ def main():
         ('INSTANCE_ID', ['compute','instance','list','--compartment-id',tenancy,'--limit','1','--query','data[0].id']),
     ]
     bootstrap = []
+    no_instance = False
     for name, argv in discovery:
         try:
             response = run_process([*argv,'--profile',args.profile,'--region',args.region,'--no-retry'],
@@ -84,6 +101,8 @@ def main():
             value = json.loads(response.stdout) if response.returncode == 0 and response.stdout.strip() else None
             if isinstance(value, str) and value:
                 environment[name] = value
+            if name == 'INSTANCE_ID':
+                no_instance = response.returncode == 0 and value in (None, [])
             bootstrap.append({'field':name,'resolved':name in environment})
         except (OSError, ValueError, subprocess.TimeoutExpired):
             bootstrap.append({'field':name,'resolved':False})
@@ -102,6 +121,8 @@ def main():
             row = {'script':path.relative_to(ROOT).as_posix()}
             if path.suffix not in {'.py','.sh'}:
                 row.update(status='inert_not_executed', reason='Non-executable example; no database session or mutation fixture is run.')
+            elif path.name in INSTANCE_SCRIPTS and no_instance:
+                row.update(status='skipped: no instance', owner='OCI operator / skill maintainer')
             else:
                 command = [sys.executable if path.suffix == '.py' else 'bash',str(path),*tails.get(path.name,[])]
                 try:
@@ -121,6 +142,12 @@ def main():
             print(json.dumps(row),flush=True)
     report = {'validated_at':datetime.now(timezone.utc).isoformat(), 'mode':'scoped_script_execution',
               'scope':'Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.',
+              'scope_inputs':{'profile':args.profile, 'region':'selected profile region',
+                              'compartment':'tenancy root', 'instance':'first instance in root, if present',
+                              'metric_namespace':'oci_computeagent', 'mql':'CpuUtilization[1m].mean()',
+                              'metric_window':'last hour'},
+              'status_meanings':{'ran, gap':'Executed; explicit no-data result, not a script failure. Coverage remains incomplete.',
+                                 'skipped: no instance':'Successful root instance discovery found no instance; script was not executed.'},
               'bootstrap':bootstrap, 'complete':all(r['status'] in {'passed','inert_not_executed'} for r in rows), 'checks':rows}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(report,indent=2)+'\n')
