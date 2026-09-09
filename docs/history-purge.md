@@ -1,8 +1,10 @@
-# History purge required before the first push
+# Historical content cleanup before public release
 
-Owner: **repository history owner**. Handoff 8 documents this operation; it does not
-execute it. The local merge is not publication approval. No push is part of this
-procedure.
+Owner: **repository history owner**. The repository has already been pushed to
+private GitHub. The earlier pre-push plan below was not executed; current
+patch-body findings remain recorded in V22. Coordinate any history rewrite with
+collaborators and preserve a private backup first. This document is a procedure,
+not authorization to force-push or change repository visibility.
 
 The scanner checks textual patch bodies, including additions and deletions.
 Author/committer metadata and commit-message `Co-Authored-By` / `Claude-Session`

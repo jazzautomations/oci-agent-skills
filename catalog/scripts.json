@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/check_skill_scripts.py",
-      "sha256": "7426c6d752d3bf0fdff3651a3ab780f42e0afca467bdb18fe8b36b949411ab4b",
+      "sha256": "718b2ba661b67d52a9a9790573d37b41c157e9da527156dc228ff5fa18769d8e",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -75,7 +75,7 @@
     },
     {
       "path": "scripts/ci/check_refs.py",
-      "sha256": "be904e4c69bcbdc163b51893b926bcc717029f3349010ea2c8912289e145f5a0",
+      "sha256": "edb858d1b7ac3ac1ae04e1fddf990e2d7332cb0f5f3bd99a9e3616cc30d08067",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -123,7 +123,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "89c15eede281d7e9820573b70969400a1d9cf62f72d8ea71c12ca33ff4f71741",
+      "sha256": "b6f6d88c96c6d60f442ff43b09d3e70e718b931abf7edfcf91ea01037ac7972a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -136,6 +136,12 @@
     {
       "path": "scripts/console_url.py",
       "sha256": "f54f2730431a9269ca48a5139b43d192d8fec313259a89dfa0e048fa56ac9476",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/doc-gen/catalogs.py",
+      "sha256": "19be41bbb62229900c1fe205736da26a6fc268bf3436d8b725e94a9a31ee901b",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -237,7 +243,7 @@
     },
     {
       "path": "scripts/release_report.py",
-      "sha256": "44f7dab3549bfe57f29326f92e912bc98ba5f3d6706171f89fd7caa354e39fe8",
+      "sha256": "8dd79a31ffe490d7111ca9c712e62d712f3d2915905fc454bd38b38d827844d6",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -261,7 +267,7 @@
     },
     {
       "path": "skills/oci-cli-auth/scripts/whoami.sh",
-      "sha256": "b5c95bc804202326fd35345ce0d68c48fc259f8b0f2e83146f0271cee547d45a",
+      "sha256": "7c6d62d2bd7f2a8fe10ed240f7bcb99ce22623a317fe725abcd2a87e8eb6be2a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -497,7 +503,7 @@
     },
     {
       "path": "skills/oci-tenancy-governance/scripts/governance_audit.py",
-      "sha256": "da586f09b4ac1ae37716f2dac0c0fb4f5e7b765f8f242ddac858432010dc1fd2",
+      "sha256": "544050597fdbb8327ffd6a362f9a23ec033ff5bbb78c89bf687d1fb9ee597d3c",
       "mode": "read-only",
       "oci_calls": [
         [
@@ -506,7 +512,6 @@
           "list",
           "--compartment-id",
           "--compartment-id-in-subtree",
-          "true",
           "--access-level",
           "ANY",
           "--limit",

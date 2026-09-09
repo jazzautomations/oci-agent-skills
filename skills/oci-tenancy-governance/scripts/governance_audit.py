@@ -17,7 +17,7 @@ def read(argv, profile, region):
     if not result.get('ok'):
         return None
     data = result.get('data')
-    return data if isinstance(data, list) else []
+    return data if isinstance(data, list) else None
 
 
 def names(rows, key):
@@ -30,7 +30,9 @@ def main():
         description=__doc__,
         epilog='Env: PROFILE, REGION, TENANCY_ID (root compartment) required; '
                'COMPARTMENT_ID optional, scopes the tag-default read. Bounded at 200 rows.')
-    parser.parse_args()
+    parser.add_argument('--include-subtree', action='store_true',
+                        help='Explicitly request descendant compartments; default is direct children')
+    args = parser.parse_args()
     required = ('PROFILE', 'REGION', 'TENANCY_ID')
     if not all(os.environ.get(k) for k in required):
         parser.error('Set ' + ', '.join(required) + ' (TENANCY_ID is the root compartment)')
@@ -39,7 +41,7 @@ def main():
     scope = os.environ.get('COMPARTMENT_ID', root)
 
     compartments = read(['iam', 'compartment', 'list', '--compartment-id', root,
-                         '--compartment-id-in-subtree', 'true', '--access-level', 'ANY',
+                         '--compartment-id-in-subtree', str(args.include_subtree).lower(), '--access-level', 'ANY',
                          '--limit', LIMIT, '--query', 'data[].{name:name}'], profile, region)
     namespaces = read(['iam', 'tag-namespace', 'list', '--compartment-id', root,
                        '--limit', LIMIT, '--query', 'data[].{name:name}'], profile, region)
@@ -62,7 +64,7 @@ def main():
     counts = {k: len(v) for k, v in reads.items() if v is not None}
     findings = []
     if compartments is not None and not compartments:
-        findings.append('everything_lives_in_root_compartment')
+        findings.append('no_visible_child_compartments_in_sample')
     if quotas is not None and not quotas:
         findings.append('no_compartment_quota_blocks_spend')
     if budgets is not None and not budgets:
@@ -74,6 +76,7 @@ def main():
         findings.append('no_required_tag_default_in_scope')
 
     print(emit({'ok': not unreadable, 'scope': 'tenancy_root_plus_one_compartment',
+                'include_subtree': args.include_subtree,
                 'complete': False, 'bounded_at': int(LIMIT), 'counts': counts,
                 'cost_tracking_tags': names(cost_tags or [], 'name'),
                 'tag_namespaces': names(namespaces or [], 'name'),

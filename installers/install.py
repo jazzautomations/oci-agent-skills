@@ -8,7 +8,7 @@ import re
 import shutil
 import tempfile
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 
 SOURCE = Path(__file__).resolve().parents[1]
 PAYLOAD = (
@@ -27,6 +27,8 @@ PAYLOAD = (
     "LICENSE",
     "NOTICE",
     "README.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
 )
 HOSTS = {
     "codex": ".agents",
@@ -49,6 +51,7 @@ def ignored(name):
             "vendor",
             "_TEMPLATE",
             "CODEX-STATUS.md",
+            "build-log",
             "node_modules",
         }
         or name.startswith((".env", ".handoff-"))
@@ -88,6 +91,33 @@ def relocate_links(text, original, destination, root):
         )
 
     return re.sub(r"\]\((<[^>]+>|[^\s)]+)(\s+[^)]*\)|\))", replace, text)
+
+
+def source_document_links(staging):
+    """Keep omitted authoring documents accessible without shipping build records."""
+    for markdown in staging.rglob("*.md"):
+        original = SOURCE / markdown.relative_to(staging)
+        if not original.is_file():
+            continue
+
+        def replace(match):
+            parsed = urlsplit(unquote(match[1].strip("<>")))
+            if parsed.scheme or parsed.netloc or not parsed.path:
+                return match[0]
+            if (markdown.parent / parsed.path).exists():
+                return match[0]
+            source = (original.parent / parsed.path).resolve()
+            if not source.is_relative_to(SOURCE) or not source.exists():
+                return match[0]  # Do not conceal an actually broken source link.
+            kind = "tree" if source.is_dir() else "blob"
+            target = f"https://github.com/jazzautomations/oci-agent-skills/{kind}/main/"
+            target += quote(source.relative_to(SOURCE).as_posix())
+            if parsed.fragment:
+                target += "#" + parsed.fragment
+            return "](" + target + match[2]
+
+        markdown.write_text(re.sub(r"\]\((<[^>]+>|[^\s)]+)(\s+[^)]*\)|\))", replace,
+                                  markdown.read_text()))
 
 
 def host_configs(staging, final, selected):
@@ -201,6 +231,7 @@ def install(target, host="all", *, accept_unguarded=False, copy_shared=False):
                 copy_payload(SOURCE / name, staging / name)
         if copy_shared:
             materialize_shared(staging)
+        source_document_links(staging)
         selected = list(HOSTS) if host == "all" else ([] if host == "claude" else [host])
         host_configs(staging, target, selected)
         os.replace(staging, target)

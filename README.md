@@ -1,88 +1,181 @@
 # OCI Agent Skills
 
-33 skills for scoped OCI operations, Oracle databases, APEX and delivery workflows, with an advisory shell guard and 15 shipped tools (14 credentialed + oci_price_lookup, credential-free).
+**Oracle cloud engineering, from the first diagnostic to a reviewed change plan.**
 
-**Release status:** the repaired content and regression checks pass; this branch is not release-ready. History hygiene and live script coverage have additional open gates. Offline description routing is below its required threshold, and model-backed task evaluation is unavailable. See [evaluations](docs/evals.md), [head-to-head results](docs/head-to-head.md) and the [validation matrix](docs/validation-matrix.md).
+33 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-## Install
+[![Regression tests: 360](https://img.shields.io/badge/regression_tests-360_passed-2D6A4F)](docs/validation-matrix.md)
+[![Skills: 33](https://img.shields.io/badge/skills-33-C74634)](docs/skills.md)
+[![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
+[![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-555555)](LICENSE)
 
-Use Python 3.13+, `uv`, and OCI CLI 3.91.0 for reproducible CLI validation. Credentials are unnecessary for offline checks and public pricing. Keep credentials outside the checkout.
+**v2 skill set · package 0.2.1 (preview)** — [22 validation gates pass; 6 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
+
+[Get started](#get-started) · [Browse skills](docs/skills.md) · [MCP reference](docs/mcp-tools.md) · [Evidence](#evidence-you-can-inspect) · [Documentation](docs/README.md)
+
+## In 30 seconds
+
+These requests come from the evaluation corpus. The table describes the intended workflow, not a recorded agent execution or fabricated cloud output.
+
+| Ask your agent | Skill | What it helps you do |
+|---|---|---|
+| “port 80 is open in the security list but the site still times out from outside” | [oci-networking](skills/oci-networking/SKILL.md) | Inspect scoped VCNs, subnets and NSG rules; trace the failing hop before proposing a rule change. |
+| “tô tomando NotAuthorizedOrNotFound em tudo, mas o usuário é admin. como descubro com qual identidade o cli tá autenticando?” | [oci-cli-auth](skills/oci-cli-auth/SKILL.md) | Establish profile identity and region subscriptions; distinguish missing resources from missing access. |
+| “launch an ARM VM.Standard.A1.Flex with 2 ocpus and 12gb in my dev compartment” | [oci-compute](skills/oci-compute/SKILL.md) | Read shape and image compatibility, then prepare a scoped launch and recovery plan for review. |
+
+Reads retain explicit scope and bounded output. The Claude Bash guard reviews recognized writes; mutation recipes are marked **shape-verified only**. [Corpus and evaluation limits →](docs/evals.md)
+
+## Get started
+
+Prerequisites: Python 3.13+, `uv`, and OCI CLI 3.91.0 for the reproducible baseline. Configure your OCI profile outside the checkout when you need credentialed reads. Offline smoke tests require no cloud credentials.
+
+Clone this repository, then run these two commands from its root:
 
 ```bash
-bash installers/install.sh --target /tmp/oci-plugin --host claude --copy-shared
-uv sync --frozen --project /tmp/oci-plugin/runtime
-uv run --frozen --project /tmp/oci-plugin/runtime oci-readonly-smoke
-claude --plugin-dir /tmp/oci-plugin
+uv sync --frozen --project runtime
+claude --plugin-dir .
 ```
 
-The target must be absent or empty and outside this checkout. The installer copies the complete plugin without symlinks. Marketplace entries select the full pack, database subset or DevOps subset; all carry hooks and MCP.
+For a self-contained copy, project adapters and runtime configuration, follow the [installation guide](docs/install.md).
 
-| Host | Installation | Shell guard |
+| Host | Entry point | Shell guard supplied by this pack |
 |---|---|---|
-| Claude Code | Local plugin above; marketplace entries select 33 / 8 / 9 skills | Advisory Bash PreToolUse |
-| Codex | `.codex-plugin/plugin.json`, or installer `--host codex` | **UNGUARDED** by this adapter |
-| Gemini CLI | Installer `--host gemini` | **UNGUARDED** |
-| Cursor | Installer `--host cursor` | **UNGUARDED** |
-| opencode | Installer `--host opencode` | **UNGUARDED** |
+| Claude Code | Native plugin; full, database or DevOps selection | Advisory Bash `PreToolUse` hook |
+| Codex | Plugin manifest or copy installer `--host codex` | **UNGUARDED** |
+| Gemini CLI | Copy installer `--host gemini` | **UNGUARDED** |
+| Cursor | Copy installer `--host cursor` | **UNGUARDED** |
+| OpenCode v2 | Copy installer `--host opencode` | **UNGUARDED** |
+| Other MCP clients | Bundled stdio server | Fixed read-only tools; shell controls belong to the host |
 
-For those copied adapters, add `--i-accept-unguarded`; the installer refuses otherwise. Use `--copy-shared` to materialize shared references inside each skill. Codex's `--sandbox read-only` restricts filesystem writes, not OCI network writes. Host discovery and launcher tests are not a claim of interactive validation in every host. See [complete installation instructions](docs/install.md).
+The four unguarded copy adapters require `--i-accept-unguarded`. Host configuration and launcher checks do not establish interactive compatibility with every host version. IAM remains the cloud access boundary.
 
 ## What's inside
 
-| Area | Skills |
-|---|---|
-| Routing, identity and governance | navigator, CLI auth, tenancy governance, IAM policy, support/limits |
-| Infrastructure | compute, networking, object storage, block/file storage, bastion |
-| Delivery | OKE, DevOps pipelines, serverless, Terraform |
-| Operations | monitoring/alarms, logging/audit, incident triage, security posture, vault/certificates, cost analysis, Free Tier |
-| Database | Autonomous DB, DB fleet, vector AI, SQL access, APEX |
-| Data and enterprise | Generative AI, AI services, data platform, SDK patterns, DR/backup, migration/patching, enterprise apps |
+Each skill combines a scope check, symptom-based routing, command examples, focused references and failure modes. The [full catalog](docs/skills.md) shows verification labels, helper scripts, references and read examples for every skill.
 
-Shared references load on demand. Discover command shapes with `python3 scripts/catalog.py find 'list instances'`; avoid loading the full catalog into context. The catalog covers installed CLI leaves, including aliases; syntax coverage is not service coverage or an authorization decision. [Audit and provenance](docs/audit.md) names unowned services and research gaps.
+<!-- skills:start -->
+| Domain | Skill | Purpose |
+|---|---|---|
+| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Routes an Oracle or OCI product request to the right control plane: which `oci` CLI group, which product-owned REST API, or a stop-and-hand-off. |
+|  | [oci-cli-auth](skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. |
+|  | [oci-tenancy-governance](skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. |
+|  | [oci-iam-policy](skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. |
+|  | [oci-support-limits](skills/oci-support-limits/SKILL.md) | Answers "can I actually create this" and files the request when the answer is no: service limits vs compartment quotas vs physical capacity, resource-availability per AD, limit-increase requests, and OCI support incidents. |
+| Compute, network & storage | [oci-compute](skills/oci-compute/SKILL.md) | Launches, resizes and triages OCI Compute. |
+|  | [oci-networking](skills/oci-networking/SKILL.md) | Builds and debugs OCI VCN networking. |
+|  | [oci-object-storage](skills/oci-object-storage/SKILL.md) | Operates OCI Object Storage. |
+|  | [oci-block-file-storage](skills/oci-block-file-storage/SKILL.md) | Operates OCI Block, boot and File Storage. |
+|  | [oci-bastion-access](skills/oci-bastion-access/SKILL.md) | Reaches a private OCI host or database through OCI Bastion. |
+| Delivery & infrastructure as code | [oci-oke](skills/oci-oke/SKILL.md) | Creates and operates OKE Kubernetes clusters. |
+|  | [oci-devops-pipelines](skills/oci-devops-pipelines/SKILL.md) | Builds OCI DevOps CI/CD. |
+|  | [oci-serverless](skills/oci-serverless/SKILL.md) | Deploys OCI Functions, Container Instances and API Gateway. |
+|  | [oci-terraform](skills/oci-terraform/SKILL.md) | Authors and reviews OCI Terraform/OpenTofu and drives Resource Manager stacks. |
+| Operations & security | [oci-monitoring-alarms](skills/oci-monitoring-alarms/SKILL.md) | Queries OCI metrics and sets alarms, including Stack Monitoring. |
+|  | [oci-logging-audit](skills/oci-logging-audit/SKILL.md) | Searches OCI logs and Audit events. |
+|  | [oci-incident-triage](skills/oci-incident-triage/SKILL.md) | Read-only runbook for an OCI resource that is down or degraded: alarm state, recent Audit mutations, Cloud Guard, metrics, logs, work requests, maintenance events and limits, then ranked hypotheses. |
+|  | [oci-security-posture](skills/oci-security-posture/SKILL.md) | Audits OCI security posture against CIS. |
+|  | [oci-vault-certificates](skills/oci-vault-certificates/SKILL.md) | Handles OCI Vault, KMS keys, Secrets and Certificates. |
+| Cost & Free Tier | [oci-cost-analysis](skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. |
+|  | [oci-free-tier](skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. |
+| Oracle Database & APEX | [oracle-autonomous-db](skills/oracle-autonomous-db/SKILL.md) | Provisions and connects Oracle Autonomous Database. |
+|  | [oracle-db-fleet](skills/oracle-db-fleet/SKILL.md) | Operates non-Autonomous databases and fleet diagnostics: Base DB, Exadata, MySQL, PostgreSQL, multicloud and DBA lifecycle. |
+|  | [oracle-db-vector-ai](skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. |
+|  | [oracle-db-sql-access](skills/oracle-db-sql-access/SKILL.md) | Configures agent SQL access with database-enforced read privileges, SQLcl MCP, ORDS and Database Tools. |
+|  | [oracle-apex](skills/oracle-apex/SKILL.md) | Delivers Oracle APEX. |
+| AI & data | [oci-generative-ai](skills/oci-generative-ai/SKILL.md) | Discovers OCI GenAI models and plans chat, embeddings, clusters and agents. |
+|  | [oci-ai-services](skills/oci-ai-services/SKILL.md) | Uses OCI pretrained AI services: Vision, Language (nested `oci ai language`) sentiment/PII/translation, Speech transcription and TTS, Document Understanding. |
+|  | [oci-data-platform](skills/oci-data-platform/SKILL.md) | Moves and processes data on OCI: Streaming (Kafka-compatible) and Queue, Data Flow Spark, Data Integration, Data Catalog, GoldenGate CDC, Big Data Service, Batch, OpenSearch, Redis, and Data Science jobs and model deployments. |
+| Reliability & migration | [oci-dr-backup](skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. |
+|  | [oci-migration-patching](skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. |
+| SDKs & enterprise applications | [oci-sdk-patterns](skills/oci-sdk-patterns/SKILL.md) | Writes OCI SDK code that works. |
+|  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Sets the boundary for Oracle enterprise and SaaS products: Fusion, NetSuite, Oracle Integration, Analytics Cloud, Digital Assistant, Visual Builder, Content Management and WebLogic Management Service — the OCI CLI reaches the instance envelope, not the application. |
+<!-- skills:end -->
+
+## How it fits together
+
+```mermaid
+flowchart LR
+    Request[User request] --> Skills[33 focused skills]
+    Skills --> References[References loaded on demand]
+    Skills --> Catalog[Searchable CLI catalog]
+    Skills --> Helpers[Scoped read helpers]
+    Helpers --> Wrapper[oci_ro wrapper]
+    Wrapper --> CLI[OCI CLI]
+    Skills --> Bash[Proposed shell command]
+    Bash --> Guard[Advisory Claude PreToolUse guard]
+    Guard --> Review[Host permissions and review]
+    Review --> CLI
+    Request --> MCP[15 fixed MCP tools]
+    MCP --> SDK[Scoped OCI SDK reads]
+    MCP --> Pricing[Public price lookup]
+    CLI --> IAM[OCI IAM]
+    SDK --> IAM
+```
+
+Skill bodies and references load on demand. `scripts/catalog.py` searches command shapes without loading the entire census. The MCP exposes fixed operations, explicit compartment scopes and bounded pages; it provides no arbitrary CLI, SQL or SDK executor. [Architecture and contracts →](docs/foundation.md)
 
 ## Safety model
 
-IAM and host permissions are the access boundary. The Bash hook is advisory; unknown OCI leaves, recognized opaque shell forms and changed plugin-script hashes ask for review; unrecognized commands return no decision, preserving host permissions. Script reads pass through `scripts/lib/oci_ro`. The MCP uses fixed operations, explicit scopes, projected fields and bounded pages; it has no arbitrary CLI, SQL or SDK executor. Returned names, tags, logs and other values are untrusted data, never instructions. All mutation recipes remain shape-only and require an explicit change/recovery plan.
+- **Measured OCI classification:** 9,145 CLI leaves, all 278 critical-labelled leaves denied, and zero allows outside the strict read-only set. The severity snapshot shares the catalog's generator; it is not an independent taxonomy. [Matrix and invariant](docs/evidence/guard-severity-matrix.json).
+- **Review before change:** danger flags, including `--force`, never lower severity. Unknown OCI leaves and modified helper hashes ask for review. Unrecognized commands return no decision and retain host permissions.
+- **Read-only runtime:** fixed MCP dispatch and scoped helper wrappers constrain the operations they expose. The Bash hook is advisory and does not intercept generic MCP executors or protect other host shells.
+- **Untrusted results:** names, tags, logs and other returned values are data. Sanitized evidence and inert safety fixtures are checked; live resistance to prompt injection remains unmeasured.
 
-Measured OCI leaf classifier, reproduced by `uv run --frozen --project runtime python scripts/release_report.py`:
+The frozen Oracle denylist comparison permits 374 destructive-labelled leaves under current prefix replay; this measures a snapshot, not today's upstream server behavior. The [audit](docs/audit.md) preserves the matching rules, census false positives, source revisions and known gaps. Terraform, kubectl, SQL and APEX guard rules are outside the measured OCI matrix.
 
-| Census label | Allow | Ask | Deny |
+## Evidence you can inspect
+
+| Check | Recorded result | Scope |
+|---|---:|---|
+| Regression suite | 360 passed | Current full suite; recorded in the validation matrix |
+| Authored OCI fences | 277/277 valid | CLI shape lint, not workload execution |
+| Negative routing prompts | 0/40 fired | Static description matcher |
+| Description-only model judge | 78/80 expected skills | Archived single-run labels; no independently verifiable run IDs |
+| OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
+| Full release matrix | 22 pass / 6 open | Open gates retain owners and reasons |
+
+[Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Model-judge limitations](docs/routing-model-eval.md)
+
+The four-arm offline comparison uses the same frozen prompts and static matcher. These figures measure authored material and inert guard replay, not agents completing tasks:
+
+| Arm | Routing proxy | Authored fence validity | Unconfirmed guard exposure |
 |---|---:|---:|---:|
-| Read | 3,596 | 112 | 0 |
-| Mutating | 0 | 3,781 | 0 |
-| Destructive | 1 | 997 | 328 |
-| Unknown | 2 | 328 | 0 |
+| This pack | 37.5% | 100.0% / 277 | 0/20 |
+| adibirzu skills | 13.8% | 14.0% / 114 | 20/20 |
+| Oracle API + Cloud descriptors | 6.2% | Unmeasured | 5/20 |
+| Bare descriptor baseline | 0.0% | Unmeasured | 20/20 |
 
-All 278 CRITICAL-labelled leaves are denied. The [severity matrix](docs/guard-severity-matrix.json) is measured against a sha-pinned severity snapshot derived from the same generator as the catalog. The independent check is that zero allows fall outside the strict read-only set: after deny rules, `classify_leaf` returns `ask` whenever `read_only` is false, and the test asserts this invariant across the catalog. Danger flags only raise severity. The destructive-labelled allow is `log-analytics storage estimate-release-data-size`, a census false positive; the unknown allows are resource-search reads. This current matrix is stricter than the plan's older destructive 2/996 split. Terraform, kubectl, SQL and APEX rules are **unmeasured hand rules**, not part of this matrix.
-
-The historical Oracle denylist audit reported 374 destructive and 2,644 mutating operations permitted, and 135 reads denied, from 2,222 entries. Its source is preserved in [the research artifact](docs/denylist-coverage-research.json). Current prefix-based replay differs: 374 destructive and 2,511 mutating leaves allowed, zero reads denied. Both calculations and their different matching/classification bases are printed by `scripts/release_report.py`; do not present the historical figures as today's server behavior. A Bash hook does not intercept generic MCP executor calls. Oracle API MCP stays opt-in; Oracle Cloud MCP is skipped. See [optional MCP boundaries](docs/mcp-optional.md).
-
-## Context cost
-
-The raw source estimate is **6,386 tokens**: 11,722 description characters → 2,931, plus serialized MCP schemas → 3,455 (characters / 4, rounded up separately). It excludes host framing. The older ≈6.3–6.5k planning figure used this method.
-
-**Measured skills-only host delta: 5,517 tokens** in Claude Code 2.1.266, from 16,394 baseline input tokens to 21,911 with the 33 skills. An identical no-tool-call prompt ran from an empty directory; input, cache creation and cache read tokens were summed. MCP was disabled to isolate skill framing. Adding the 3,455 schema estimate gives **8,972 estimated tokens**, not a measured MCP-on total. See [measurement and scope](docs/context-measurement.json).
-
-Reproduce the raw counts with `uv run --frozen --project runtime python scripts/release_report.py`. After a copy install, measure framing with `uv run --frozen --project runtime python scripts/measure_context.py --plugin-dir /tmp/oci-plugin --report /tmp/context-measurement.json`. Host/version and prompt framing can change the result. Bodies and references load on demand.
-
-## Verify
+The bare arm has no descriptions and abstains; it does not measure a bare model's knowledge. Oracle's arm measures tool discovery and denylist replay. See the [full comparison and reproduction command](docs/head-to-head.md) before comparing these unlike interfaces.
 
 ```bash
 uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests
-claude plugin validate . --strict
-claude plugin validate ./skills --strict
-uv run --frozen --project runtime python scripts/ci/check_frontmatter.py
-uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py
-uv run --frozen --project runtime python scripts/inventory.py --scripts --examples --check
-uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json
+uv run --frozen --project runtime oci-readonly-smoke
+uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check
+uv run --frozen --project runtime python scripts/ci/release_gate.py
 ```
 
-The last command intentionally fails while routing misses its gate. Run `scripts/check_examples.py` with Python from the pinned CLI installation; the runtime environment does not contain oci-cli. Add `--live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json` only for authorized scoped reads. [CLI evidence](docs/validation-cli.json) distinguishes passed reads from shape-only examples; [MCP evidence](docs/validation-mcp.json) lists selected live checks. Empty or failed reads do not prove that a service or workload is absent. No tenancy mutation was used for this release work.
+The release gate writes evidence outside the checkout and prints diffs. It exits nonzero while any release gate is open. Default mode reuses dated cloud/link evidence. [Contributor checks →](CONTRIBUTING.md)
 
-Only API-key auth, a single region and the commercial realm have live evidence here. Provisioned database, cluster and fleet workflows, principal alternatives, PowerShell, large payloads and multi-region behavior remain unverified end to end. The offline comparison does not measure model task completion, generated-command quality or live injection resistance.
+**Context cost:** 6,386 tokens by characters/4 for descriptions plus MCP schemas, excluding host framing. One Claude Code measurement found a 5,517-token skills-only delta; adding the schema estimate yields 8,972 estimated tokens, not a measured MCP-on total. [Method and raw counts](docs/evidence/context-measurement.json).
 
-## License and independence
+## Open work
 
-Apache-2.0; original MIT attribution remains in NOTICE. Third-party evaluation snapshots retain their MIT/UPL notices. No pricing server is vendored.
+1. **Routing:** the static proxy scores 37.5%, below the required 90%; archived model-judge labels do not replace that gate.
+2. **History hygiene:** historical patch bodies retain email occurrences. The current tree scan passes; publication hygiene needs a separately reviewed history cleanup.
+3. **Scheduled drift:** local CLI drift checks pass; the hosted schedule and issue-creation path lack recorded verification.
+4. **Live workflows:** selected API-key reads in one region passed. Script prerequisites, database/cluster workloads, principal alternatives, PowerShell and cross-region behavior remain incomplete.
+5. **Host evaluation:** the installed plugin task evaluator returned an early-access restriction; no qualifying task-completion score is available.
+6. **Behavioral comparison:** the four-arm offline comparison is complete; model-backed task and injection outcomes remain unmeasured.
 
-Oracle, Oracle Cloud Infrastructure, OCI, Autonomous Database, Exadata and APEX are trademarks or registered trademarks of Oracle and/or its affiliates. This project is an independent, community-maintained set of agent skills. It is **not affiliated with, endorsed by, or supported by Oracle**. Any command it emits runs under your own OCI credentials and IAM policies; you are responsible for what you run.
+The [roadmap](docs/roadmap.md) separates implementation work, missing infrastructure and external access. Eleven niche CLI groups remain without dedicated skill ownership; the [coverage map](docs/audit.md#unowned-services) lists them explicitly.
+
+## Built from research, checked against code
+
+The build combined OCI documentation and CLI/SDK inventories, a research plan, implementation passes and adversarial audits. Community and official projects informed the design: adibirzu/oci-skills, araidon/oci-skills, oracle/mcp, oci-ai-architects, marcocanto, cvranjith, jasonwilbur and Oreo-Tech. Their contributions, pinned comparison snapshots and license notices are recorded in the [provenance matrix](docs/audit.md). The [build record](docs/build-log/README.md) preserves implementation history; research and build notes are excluded from installations.
+
+Contributions: [CONTRIBUTING.md](CONTRIBUTING.md). Security scope and reporting: [SECURITY.md](SECURITY.md).
+
+Created by **Felipe Salvego / Jazz Automations**. Licensed under [Apache-2.0](LICENSE); retained upstream attribution is in [NOTICE](NOTICE).
+
+Oracle and its product names are trademarks of Oracle and/or its affiliates. This independent project is not affiliated with, endorsed by or supported by Oracle.

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # There is no `oci whoami`. This composes the four probes that answer it, cheapest first:
 # the profile read offline, then the user behind the profile, then home region and
-# subscriptions, then the compartment tree. Read-only: every call goes through oci_ro.
+# subscriptions, then direct child compartments. Every call goes through oci_ro.
 set -euo pipefail
 
 usage() {
   cat <<'USAGE'
-whoami.sh [--profile NAME] [--region ID] [--config PATH]
+whoami.sh [--profile NAME] [--region ID] [--config PATH] [--include-subtree]
 
 Establishes identity BEFORE any other OCI call. Prints one JSON object:
   {profile, config, auth_hint, user_ocid, tenancy_ocid, region, identity,
@@ -15,18 +15,21 @@ Establishes identity BEFORE any other OCI call. Prints one JSON object:
 security_token_file and no user is a session profile; neither key present means an
 instance or resource principal, and `identity` will be null by design.
 An explicit --profile or OCI_CLI_PROFILE is required. Missing config exits 2;
-unreachable probes come back null.
+unreachable probes come back null. Lists direct children by default;
+--include-subtree explicitly requests descendants and may be refused by scope policy.
 USAGE
 }
 
 profile="${OCI_CLI_PROFILE:-}"
 config="${OCI_CLI_CONFIG_FILE:-$HOME/.oci/config}"
 region=""
+subtree=false
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --profile) profile="$2"; shift 2 ;;
     --region) region="$2"; shift 2 ;;
     --config) config="$2"; shift 2 ;;
+    --include-subtree) subtree=true; shift ;;
     --help|-h) usage; exit 0 ;;
     *) usage >&2; exit 2 ;;
   esac
@@ -76,7 +79,7 @@ if [[ -n "$tenancy" ]]; then
   subscriptions="$(probe iam region-subscription list --tenancy-id "$tenancy" \
     --query 'data[].{region:"region-name",key:"region-key",home:"is-home-region"}')"
   compartments="$(probe iam compartment list --compartment-id "$tenancy" \
-    --compartment-id-in-subtree true --access-level ANY --limit 100 \
+    --compartment-id-in-subtree "$subtree" --access-level ANY --limit 100 \
     --query 'data[].{name:name,state:"lifecycle-state"}')"
 else
   compartments=null

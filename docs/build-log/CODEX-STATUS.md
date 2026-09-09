@@ -13,7 +13,7 @@ performed. Research remains build-only and is excluded from the distribution.
 ## Validation
 
 The full suite passed **354 tests** before each item commit; item 3's suite is
-recorded as V14 in the [validation matrix](docs/validation-matrix.md). The existing
+recorded as V14 in the [validation matrix](../validation-matrix.md). The existing
 Authlib deprecation warning remains. Guard coverage includes 60 combinations of
 script directory, extension, root prefix and interpreter, with unknown paths,
 changed script hashes and changed registry hashes requiring review. The fixtures
@@ -45,7 +45,7 @@ those probes were not repeated for this handoff.
 | Gate | Remaining work | Owner |
 |---|---|---|
 | V19 FAIL | Description routing proxy remains 37.5%, below 90%; no qualifying host-routing result replaces it. | Evaluation/routing maintainers |
-| V22 FAIL | Historical patch bodies still contain the previously identified email occurrences. Follow the [history purge plan](docs/history-purge.md) before the first push; the current tracked-file scan passes. | Repository history owner |
+| V22 FAIL | Historical patch bodies still contain the previously identified email occurrences. Follow the [history purge plan](../history-purge.md) before the first push; the current tracked-file scan passes. | Repository history owner |
 | V24 PARTIAL | Local CLI drift checks pass; hosted Tuesday execution and issue creation remain unmeasured. | Repository CI maintainers |
 | V25 FAIL | Archived script evidence still has 7 failed/incomplete results and 6 missing prerequisites; 2 no-data results remain explicit coverage gaps. | OCI operator / skill maintainers |
 | V27 UNAVAILABLE | Installed `plugin eval` remains early-access restricted; no qualifying host task score. | Evaluation maintainers / installed host provider |

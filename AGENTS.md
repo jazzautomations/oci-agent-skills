@@ -1,9 +1,40 @@
-# Repository work
+# Working on OCI Agent Skills
 
-Read the active handoff and research plan/errata before changing package scope. Research is build-only and does not ship. Preserve source provenance and explicit unverified claims.
+This repository packages OCI skills, a CLI catalog, an advisory shell guard and a
+bounded read-only MCP runtime. Start with [CONTRIBUTING.md](CONTRIBUTING.md),
+[architecture](docs/foundation.md) and the [validation matrix](docs/validation-matrix.md).
 
-OCI validation is read-only: use bounded, explicitly scoped reads through scripts/lib/oci_ro; never provision, change IAM, run generic executor tools or execute mutation fixtures. Never print or commit tenancy identifiers, credentials, account data or raw service errors. Mutation examples are inert and must have a shape-only marker and rollback guidance.
+## Scope and evidence
 
-Regenerate catalog/scripts.json, examples.json and guard.json with scripts/inventory.py --scripts --examples after script/fragment changes. Run pytest and strict scripts/ci validators before commits; no baseline exemptions. Record red evaluation/release gates honestly with an owner. Keep package commits on the user's named branch; do not merge to main unless explicitly requested.
+OCI validation is read-only. Use bounded, explicitly scoped reads through
+`scripts/lib/oci_ro`; never provision, change IAM, run generic executor tools or
+execute mutation fixtures as repository validation. Mutation recipes are inert,
+carry a shape-only marker and include rollback guidance. Preserve explicit
+unverified claims, dated evidence and source provenance.
 
-Use the copy installer to inspect the distributed tree. It excludes research, environments, the authoring stencil and handoff scratch files. Skills, scripts, shared references and runtime must remain portable together. The pre-existing local auth-modes edit and Autonomous Database handoff scratch files are user work; do not discard them.
+Never print or commit tenancy identifiers, credentials, account data or raw
+service errors. Research and local environments are build-only and excluded from
+Git and the distribution. Do not change repository visibility or rewrite published
+history as part of ordinary maintenance.
+
+## Package structure
+
+Each `skills/<name>/SKILL.md` owns one domain, with selective routes to local
+references and shared `references/`. Use `skills/_TEMPLATE/SKILL.md.template`
+for new skills. OCI helper calls go through the shared read-only wrappers.
+Examples belong in `catalog/fragments/<name>.json`; generated catalogs must not
+be hand-edited. Keep descriptions specific enough to avoid unrelated requests.
+
+## Before committing
+
+Regenerate `catalog/scripts.json`, `catalog/examples.json` and `catalog/guard.json`
+with `python3 scripts/inventory.py --scripts --examples` after script or fragment
+changes. Regenerate reader catalogs with
+`uv run --frozen --project runtime python scripts/doc-gen/catalogs.py` after skill
+or MCP schema changes. Run pytest and all strict CI validators without baseline
+exemptions. Record failing release gates honestly with an owner.
+
+Use the copy installer to inspect the distributed tree: skills, scripts, shared
+references and runtime must stay portable together. The fresh package must have
+no symlinks or authoring-only files. Preserve existing user changes and keep work
+on the active branch unless instructed otherwise.

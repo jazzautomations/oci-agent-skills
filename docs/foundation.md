@@ -8,7 +8,7 @@ Skills establish profile, region, compartment, decision criteria and recovery pl
 
 The Bash PreToolUse hook parses shell segments, inspects known OCI leaves and recognized plugin script invocations, and returns allow/ask/deny decisions. Script hashes bind the registry to guard metadata; unknown or modified scripts require review. The guard is advisory and cannot intercept arbitrary MCP servers or prove arbitrary program behavior. IAM remains the boundary. Profile/auth overrides are allowed; unknown OCI leaves and recognized opaque shell forms require review. Unrecognized commands return no decision and retain the host permission policy. Non-OCI rules are hand rules, not a measured confusion matrix.
 
-V8 measures the [severity matrix](guard-severity-matrix.json) against the sha-pinned snapshot in `tests/fixtures/guard-severity.json`, derived from the same generator as `catalog/cli.jsonl`. All 5,437 severity labels match the catalog. The independent check asserts that zero allows fall outside the strict read-only set: after deny rules, `classify_leaf` returns `ask` whenever `read_only` is false. The snapshot is not an independent severity taxonomy.
+V8 measures the [severity matrix](evidence/guard-severity-matrix.json) against the sha-pinned snapshot in `tests/fixtures/guard-severity.json`, derived from the same generator as `catalog/cli.jsonl`. All 5,437 severity labels match the catalog. The independent check asserts that zero allows fall outside the strict read-only set: after deny rules, `classify_leaf` returns `ask` whenever `read_only` is false. The snapshot is not an independent severity taxonomy.
 
 Plugin scripts route OCI through scripts/lib/oci_ro.py or oci_ro.sh. The wrapper resolves installed snapshot paths, rejects unsafe flags and refuses non-allowlisted operations. OCI help inspection constructs fresh leaf-only help invocations and never executes example callbacks. Static script lint adds a check for direct CLI/SDK calls and opaque execution; it is not proof against arbitrary Python.
 
@@ -28,4 +28,12 @@ uv run --frozen --project runtime python scripts/inventory.py --scripts --exampl
 
 CLI inventory and offline example validation additionally need Python with pinned OCI CLI installed. The runtime environment intentionally does not include the CLI. CLI drift runs on the scheduled workflow; public documentation links are a nightly check. Creating hosted issues or running CI schedules was not part of local validation.
 
-Always-resident planning floor: ≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates). This is a raw source-size estimate that excludes host framing. `release_report.py` prints it alongside `docs/context-measurement.json`, which measures the host framing separately. Readiness depends on the complete release matrix, not on this architecture description or a passing smoke test.
+Always-resident planning floor: ≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates). This is a raw source-size estimate that excludes host framing. `release_report.py` prints it alongside `docs/evidence/context-measurement.json`, which measures the host framing separately. Readiness depends on the complete release matrix, not on this architecture description or a passing smoke test.
+
+## Reader catalogs
+
+`uv run --frozen --project runtime python scripts/doc-gen/catalogs.py` regenerates
+`docs/skills.md`, `docs/mcp-tools.md` and the README skill table from current
+frontmatter and offline MCP schemas. `--check` detects drift without writing.
+No OCI credentials or service calls are used. Domain ownership is explicit; an
+unmapped or duplicate skill fails generation.

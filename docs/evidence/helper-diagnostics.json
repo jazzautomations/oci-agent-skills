@@ -1,0 +1,39 @@
+{
+  "validated_at": "2026-09-09T20:59:26.707100+00:00",
+  "scope": "Same selected profile, tenancy-root compartment and region as the script sweep. User comes only from the selected profile. Bounded reads; response values discarded.",
+  "checks": [
+    {
+      "script": "skills/oci-security-posture/scripts/posture.py",
+      "exit_code": 0,
+      "status": "passed",
+      "execution_mode": "live_read"
+    },
+    {
+      "script": "skills/oci-security-posture/scripts/posture.sh",
+      "exit_code": 0,
+      "status": "passed",
+      "execution_mode": "live_read"
+    },
+    {
+      "script": "skills/oci-incident-triage/scripts/triage.py",
+      "exit_code": 1,
+      "errors": [
+        {
+          "operation": "cloud-guard problem list",
+          "error": {
+            "kind": "service",
+            "status": 404
+          }
+        },
+        {
+          "operation": "support incident list",
+          "error": {
+            "kind": "service",
+            "status": 403
+          }
+        }
+      ],
+      "execution_mode": "live_read"
+    }
+  ]
+}

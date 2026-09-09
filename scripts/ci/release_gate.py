@@ -49,7 +49,7 @@ def archived(identifier, path, command, key, *, owner):
         data=json.loads(path.read_text())
         ok=bool(data[key])
         return {'id':identifier,'command':command,'result':'PASS' if ok else 'FAIL',
-                'date':data.get('validated_at', data.get('date', 'unrecorded'))[:10], 'detail':'Recorded evidence from this handoff; see '+str(Path(*path.parts[-2:]))+'.', 'owner':None if ok else owner}
+                'date':data.get('validated_at', data.get('date', 'unrecorded'))[:10], 'detail':'Recorded evidence from this handoff; see '+'/'.join(path.parts[-3:])+'.', 'owner':None if ok else owner}
     except (OSError,ValueError,KeyError):
         return {'id':identifier,'command':command,'result':'UNMEASURED','date':DATE,'detail':'No valid recorded evidence.','owner':owner}
 
@@ -125,7 +125,7 @@ def main():
         parser.error('--output-dir must be outside the checkout')
     if output.exists() and any(output.iterdir()):
         parser.error('--output-dir must be empty to prevent stale evidence')
-    for directory in ('docs','evals/results'):
+    for directory in ('docs/evidence','evals/results'):
         (output/directory).mkdir(parents=True,exist_ok=True)
     executable=shutil.which('oci')
     cli_python=args.cli_python or (Path(executable).resolve().parent/'python' if executable else Path(sys.executable))
@@ -140,7 +140,7 @@ def main():
     add('V2',['claude','plugin','validate','./skills','--strict'])
     check('V3','check_frontmatter'); check('V4','check_portable'); check('V5','check_refs')
     check('V6','lint_fences','skills','docs','references','README.md', *(['--live-help'] if args.live_help else []),timeout=1200)
-    test('V8','tests/test_guard.py',note='Severity matrix: docs/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.')
+    test('V8','tests/test_guard.py',note='Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.')
     test('V9','tests','-k','parse')
     test('V10','tests','-k','plugin_script')
     check('V11','check_scripts_readonly')
@@ -150,7 +150,7 @@ def main():
     test('V15','tests/test_packaging.py','tests/test_installer.py',timeout=360)
     test('V16','tests/test_catalog.py')
     test('V17','tests/test_console_url.py')
-    add('V18',[str(cli_python),'scripts/check_examples.py','--report',str(output/'docs/validation-examples-offline.json')],'CLI_PYTHON scripts/check_examples.py --report docs/validation-examples-offline.json')
+    add('V18',[str(cli_python),'scripts/check_examples.py','--report',str(output/'docs/evidence/validation-examples-offline.json')],'CLI_PYTHON scripts/check_examples.py --report docs/evidence/validation-examples-offline.json')
     add('V19',PYTHON+['scripts/eval/run.py','--json',str(output/'evals/results/offline.json')],'uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json',owner='evaluation/routing maintainers')
     add('V20',PYTHON+['evals/run_routing.py','--negatives'],'uv run --frozen --project runtime python evals/run_routing.py --negatives',note='Zero negative firings required; the matcher is a static proxy.')
     check('V21','check_budget');check('V22','check_no_secrets');check('V23','check_licenses')
@@ -172,27 +172,27 @@ def main():
         # Checker returns fixed public URLs/statuses only.
         data=json.loads(result.stdout)
         data['validated_at']=datetime.now(timezone.utc).isoformat()
-        (output/'docs/validation-links.json').write_text(json.dumps(data,indent=2)+'\n')
-    rows.append(archived('V7',(output if args.links else ROOT)/'docs/validation-links.json','uv run --frozen --project runtime python scripts/ci/check_links.py','ok',owner='documentation maintainers / public documentation host'))
+        (output/'docs/evidence/validation-links.json').write_text(json.dumps(data,indent=2)+'\n')
+    rows.append(archived('V7',(output if args.links else ROOT)/'docs/evidence/validation-links.json','uv run --frozen --project runtime python scripts/ci/check_links.py','ok',owner='documentation maintainers / public documentation host'))
     if args.live:
-        row=execute('V25',[str(cli_python),'scripts/check_examples.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report',str(output/'docs/validation-cli.json')],
-                    'CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json',timeout=600,owner='OCI operator / CLI validation maintainers')
-        scripts_row=execute('V25-scripts',PYTHON+['scripts/check_skill_scripts.py','--live','--profile','DEFAULT','--report',str(output/'docs/validation-scripts.json')], 'python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/validation-scripts.json', timeout=1800,owner='OCI operator / skill maintainers')
-        row['detail'] += ' Skill entrypoint execution: '+scripts_row['result']+'; see docs/validation-scripts.json.'
+        row=execute('V25',[str(cli_python),'scripts/check_examples.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report',str(output/'docs/evidence/validation-cli.json')],
+                    'CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json',timeout=600,owner='OCI operator / CLI validation maintainers')
+        scripts_row=execute('V25-scripts',PYTHON+['scripts/check_skill_scripts.py','--live','--profile','DEFAULT','--report',str(output/'docs/evidence/validation-scripts.json')], 'python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/evidence/validation-scripts.json', timeout=1800,owner='OCI operator / skill maintainers')
+        row['detail'] += ' Skill entrypoint execution: '+scripts_row['result']+'; see docs/evidence/validation-scripts.json.'
         if scripts_row['result'] != 'PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
         environment=dict(os.environ,OCI_CONFIG_PROFILE='DEFAULT',OCI_CLI_PROFILE='DEFAULT')
         result=subprocess.run(['uv','run','--frozen','--project','runtime','oci-readonly-smoke','--live','--region','us-chicago-1'],cwd=ROOT,env=environment,capture_output=True,text=True,timeout=240)
         data=json.loads(result.stdout)
         data['validated_at']=datetime.now(timezone.utc).isoformat()
-        (output/'docs/validation-mcp.json').write_text(json.dumps(data,indent=2)+'\n')
+        (output/'docs/evidence/validation-mcp.json').write_text(json.dumps(data,indent=2)+'\n')
     else:
-        row=archived('V25',ROOT/'docs/validation-cli.json','CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json','complete',owner='OCI operator / CLI validation maintainers')
-        scripts_row=archived('V25-scripts',ROOT/'docs/validation-scripts.json','python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/validation-scripts.json','complete',owner='OCI operator / skill maintainers')
-        row['detail']+=' Skill execution: '+scripts_row['result']+'; see docs/validation-scripts.json.'
+        row=archived('V25',ROOT/'docs/evidence/validation-cli.json','CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json','complete',owner='OCI operator / CLI validation maintainers')
+        scripts_row=archived('V25-scripts',ROOT/'docs/evidence/validation-scripts.json','python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/evidence/validation-scripts.json','complete',owner='OCI operator / skill maintainers')
+        row['detail']+=' Skill execution: '+scripts_row['result']+'; see docs/evidence/validation-scripts.json.'
         if scripts_row['result']!='PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
-    rows.append(archived('V26',(output if args.live else ROOT)/'docs/validation-mcp.json','OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1','ok',owner='OCI operator / MCP maintainers'))
+    rows.append(archived('V26',(output if args.live else ROOT)/'docs/evidence/validation-mcp.json','OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1','ok',owner='OCI operator / MCP maintainers'))
     host = probe_host(output)
     # Hosted workflow issue creation remains outside the release check.
     rows.extend([
@@ -216,7 +216,7 @@ def main():
     assert len(rows)==28
     report={'date':DATE,'branch':subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip(),
             'ready':all(r['result']=='PASS' for r in rows),'rows':rows,'subchecks':list(extras.values())}
-    (output/'docs/validation-matrix.json').write_text(json.dumps(report,indent=2)+'\n')
+    (output/'docs/evidence/validation-matrix.json').write_text(json.dumps(report,indent=2)+'\n')
     readiness = 'Release-ready.' if report['ready'] else 'Not release-ready.'
     text=f"# Final validation matrix — {DATE}\n\nBranch: `{report['branch']}`. **{readiness}** No tenancy mutations.\n\n"
     text+='Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py --live --links --live-help`. Writes scratch evidence outside the checkout and prints unified diffs against tracked reports. This repeats only scoped read operations and public documentation GETs; skill prerequisites may remain blocked. Omit these flags to reuse dated live/link evidence and use snapshot fence lint. CLI_PYTHON denotes Python from the pinned OCI CLI installation; pass --cli-python to select it explicitly. A nonzero exit is expected while any gate remains red or unmeasured.\n\n'

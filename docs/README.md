@@ -1,0 +1,44 @@
+# Documentation
+
+Start with [installation](install.md), then choose a [skill](skills.md) or inspect
+the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overview.
+
+## Use the package
+
+| Guide | What you will find |
+|---|---|
+| [Installation](install.md) | Native plugin, copied host adapters and runtime setup |
+| [Skills catalog](skills.md) | Every skill's purpose, triggers, verification and helpers |
+| [MCP tool reference](mcp-tools.md) | Generated tool schemas and required arguments |
+| [Runtime configuration](../runtime/README.md) | Authentication, scope, pagination and server behavior |
+| [Operations](operations.md) | Operational patterns and diagnostic boundaries |
+| [Oracle product map](oracle-product-map.md) | Product families and their routing coverage |
+| [SDK and DevOps](sdk-and-devops.md) | SDK patterns and delivery workflow boundaries |
+| [Optional MCP servers](mcp-optional.md) | Upstream server setup, selection and limitations |
+
+## Understand the evidence
+
+| Document | What it establishes |
+|---|---|
+| [Architecture](foundation.md) | Package structure, wrappers, guard and runtime contracts |
+| [Audit and provenance](audit.md) | Sources, measured surface and unowned services |
+| [Validation matrix](validation-matrix.md) | All 28 release gates, outcomes, dates and owners |
+| [Evaluation method](evals.md) | Corpus, static metrics and behavioral limits |
+| [Offline comparison](head-to-head.md) | Four arms, frozen snapshots and scoring rules |
+| [Model-judge routing](routing-model-eval.md) | Archived description labels and provenance limits |
+| [Evidence index](evidence/README.md) | Machine-readable reports and their scope |
+
+## Maintain and contribute
+
+| Document | Purpose |
+|---|---|
+| [Contributing](../CONTRIBUTING.md) | Skill authoring, regeneration and checks |
+| [Agent guidance](../AGENTS.md) | Repository-specific working rules |
+| [Security](../SECURITY.md) | Security boundaries and reporting |
+| [Roadmap](roadmap.md) | Acceptance criteria and environment prerequisites |
+| [History cleanup](history-purge.md) | Historical content findings and owner-operated cleanup |
+| [Changelog](../CHANGELOG.md) | Package changes and release status |
+| [Build record](build-log/README.md) | Archived implementation and review passes |
+
+Research, environments and build records are not installed. Links to authoring-only
+resources in copied documentation point back to the source repository.

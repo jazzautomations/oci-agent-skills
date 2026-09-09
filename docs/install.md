@@ -71,7 +71,7 @@ claude plugin validate . --strict
 claude plugin validate ./skills --strict
 ```
 
-The authoring stencil is SKILL.md.template, not a discoverable skill. The installer copies the active skills, shared references, scripts, catalog, hooks, .mcp.json, runtime, evals and license notices. It excludes local handoff scratch files. A `find . -type l` inside the fresh copied tree returns nothing before any runtime environment is created.
+The authoring stencil is SKILL.md.template, not a discoverable skill. The installer copies the active skills, shared references, scripts, catalog, hooks, .mcp.json, runtime, evals and license notices. It excludes local handoff scratch files and the build log under `docs/build-log/`. A `find . -type l` inside the fresh copied tree returns nothing before any runtime environment is created.
 
 Examples for the other project adapters:
 
@@ -87,6 +87,6 @@ To remove a copy, first move any user work out of its installation directory, th
 
 Current license: Apache-2.0 with LICENSE.txt in every skill. NOTICE preserves pre-v2 MIT attribution, and evaluation snapshots keep upstream MIT/UPL notices. Run `uv run --frozen --project runtime python scripts/ci/check_licenses.py`.
 
-The copy installer excludes `CODEX-STATUS.md`. Run the emitted `runtime_setup` argv in the target before opening any host. If omitted, the first MCP launch runs `uv` in that target, installs its environment, and needs package download access. A source-checkout sync does not warm the copied target.
+The copy installer excludes `CODEX-STATUS.md` and the `docs/build-log/` handoff history. Run the emitted `runtime_setup` argv in the target before opening any host. If omitted, the first MCP launch runs `uv` in that target, installs its environment, and needs package download access. A source-checkout sync does not warm the copied target.
 
-Host registration was checked in Claude Code 2.1.266 from an unrelated working directory: all 15 bundled tools appeared after asynchronous MCP startup. The probe used ToolSearch for schema discovery and invoked no OCI tool; see [host discovery evidence](plugin-host-discovery.json).
+Host registration was checked in Claude Code 2.1.266 from an unrelated working directory: all 15 bundled tools appeared after asynchronous MCP startup. The probe used ToolSearch for schema discovery and invoked no OCI tool; see [host discovery evidence](evidence/plugin-host-discovery.json).

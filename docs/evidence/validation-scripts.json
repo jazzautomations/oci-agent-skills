@@ -1,5 +1,5 @@
 {
-  "validated_at": "2026-09-09T20:14:37.562548+00:00",
+  "validated_at": "2026-09-09T20:59:13.277499+00:00",
   "mode": "scoped_script_execution",
   "scope": "Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.",
   "scope_inputs": {
@@ -9,7 +9,8 @@
     "instance": "first instance in root, if present",
     "metric_namespace": "oci_computeagent",
     "mql": "CpuUtilization[1m].mean()",
-    "metric_window": "last hour"
+    "metric_window": "last hour",
+    "user": "selected profile user, if present; posture checks revalidated with this input"
   },
   "status_meanings": {
     "ran, gap": "Executed; explicit no-data result, not a script failure. Coverage remains incomplete.",
@@ -33,213 +34,249 @@
   "checks": [
     {
       "script": "skills/oci-bastion-access/scripts/bastion_session.sh",
+      "execution_mode": "live_read",
       "status": "blocked_missing_prerequisite",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-block-file-storage/scripts/orphan_volumes.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-cli-auth/scripts/list_all.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-cli-auth/scripts/whoami.sh",
-      "status": "failed_incomplete_identity",
-      "exit_code": 0,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "live_read",
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-compute/scripts/capacity_probe.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-compute/scripts/resolve_image.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-cost-analysis/scripts/cost_delta.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-cost-analysis/scripts/price.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-devops-pipelines/scripts/devops_preflight.sh",
+      "execution_mode": "live_read",
       "status": "blocked_missing_prerequisite",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-free-tier/scripts/freetier_audit.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-generative-ai/scripts/chat_min.py",
+      "execution_mode": "offline",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-generative-ai/scripts/list_models.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-iam-policy/scripts/policy_lint.py",
-      "status": "blocked_missing_prerequisite",
-      "exit_code": 2,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "offline",
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-iam-policy/scripts/policy_lint.sh",
-      "status": "blocked_missing_prerequisite",
-      "exit_code": 2,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "offline",
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-incident-triage/scripts/triage.py",
+      "execution_mode": "live_read",
       "status": "failed",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-incident-triage/scripts/triage.sh",
+      "execution_mode": "live_read",
       "status": "failed",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-logging-audit/scripts/audit_window.py",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-logging-audit/scripts/audit_window.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-monitoring-alarms/scripts/validate_mql.py",
+      "execution_mode": "live_read",
       "status": "ran, gap",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-monitoring-alarms/scripts/validate_mql.sh",
+      "execution_mode": "live_read",
       "status": "ran, gap",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-networking/scripts/merge_rules.py",
+      "execution_mode": "offline",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-object-storage/scripts/multipart_audit.sh",
+      "execution_mode": "live_read",
       "status": "blocked_missing_prerequisite",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-oke/scripts/oke_preflight.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-sdk-patterns/scripts/fetch_spec.py",
+      "execution_mode": "offline",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-sdk-patterns/scripts/verify_auth.py",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-security-posture/scripts/posture.py",
-      "status": "failed",
-      "exit_code": 1,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "live_read",
+      "status": "passed",
+      "exit_code": 0,
+      "revalidated_at": "2026-09-09T20:59:26.707100+00:00"
     },
     {
       "script": "skills/oci-security-posture/scripts/posture.sh",
-      "status": "failed",
-      "exit_code": 1,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "live_read",
+      "status": "passed",
+      "exit_code": 0,
+      "revalidated_at": "2026-09-09T20:59:26.707100+00:00"
     },
     {
       "script": "skills/oci-serverless/scripts/fn_preflight.sh",
+      "execution_mode": "live_read",
       "status": "blocked_missing_prerequisite",
       "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-support-limits/scripts/capacity.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-tenancy-governance/scripts/governance_audit.py",
-      "status": "failed",
-      "exit_code": 1,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "live_read",
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-tenancy-governance/scripts/governance_audit.sh",
-      "status": "failed",
-      "exit_code": 1,
-      "owner": "OCI operator / skill maintainer"
+      "execution_mode": "live_read",
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-terraform/scripts/plan_summary.py",
+      "execution_mode": "offline",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-vault-certificates/scripts/cert_expiry.py",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oci-vault-certificates/scripts/cert_expiry.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oracle-apex/scripts/apex_drift.sql",
+      "execution_mode": "inert",
       "status": "inert_not_executed",
       "reason": "Non-executable example; no database session or mutation fixture is run."
     },
     {
       "script": "skills/oracle-autonomous-db/scripts/adb_preflight.sh",
+      "execution_mode": "live_read",
       "status": "passed",
       "exit_code": 0
     },
     {
       "script": "skills/oracle-db-sql-access/scripts/negative_test.sql",
+      "execution_mode": "inert",
       "status": "inert_not_executed",
       "reason": "Non-executable example; no database session or mutation fixture is run."
     },
     {
       "script": "skills/oracle-db-sql-access/scripts/readonly_user.sql",
+      "execution_mode": "inert",
       "status": "inert_not_executed",
       "reason": "Non-executable example; no database session or mutation fixture is run."
     },
     {
       "script": "skills/oracle-db-vector-ai/scripts/vector_check.sql",
+      "execution_mode": "inert",
       "status": "inert_not_executed",
       "reason": "Non-executable example; no database session or mutation fixture is run."
     }
-  ]
+  ],
+  "supplemental_evidence": "helper-diagnostics.json",
+  "supplemental_validated_at": "2026-09-09T20:59:26.707100+00:00"
 }

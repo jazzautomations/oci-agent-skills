@@ -1,0 +1,136 @@
+{
+  "skills": 33,
+  "description_characters": 11722,
+  "description_tokens_estimate": 2931,
+  "mcp_tools": [
+    "oci_regions",
+    "oci_compartments",
+    "oci_instances",
+    "oci_network_inventory",
+    "oci_buckets",
+    "oci_resource_search",
+    "oci_limit_services",
+    "oci_limit_values",
+    "oci_cost_summary",
+    "oci_whoami",
+    "oci_work_requests",
+    "oci_alarm_status",
+    "oci_audit_events",
+    "oci_metrics",
+    "oci_price_lookup"
+  ],
+  "mcp_schema_tokens_estimate": 3455,
+  "host_context_measurement": {
+    "date": "2026-09-09",
+    "host": "2.1.266 (Claude Code)",
+    "prompt": "Reply with exactly OK. Do not call any tools.",
+    "method": "One A/B pair in an empty cwd, identical prompt and settings; input + cache creation + cache read tokens. CLI stream init records skill/tool counts. No tool calls; absent OCI config. Actual host framing, not chars/4; host deferred-tool behavior is included. Strict empty MCP configuration isolates skills-only framing; bundled MCP schemas are excluded from this observed delta.",
+    "runs": [
+      {
+        "arm": "base",
+        "exit_code": 0,
+        "error": false,
+        "tool_calls": false,
+        "skill_count": 18,
+        "bundled_mcp_tools": 0,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 3652,
+          "cache_read_input_tokens": 12740,
+          "output_tokens": 4
+        }
+      },
+      {
+        "arm": "plugin",
+        "exit_code": 0,
+        "error": false,
+        "tool_calls": false,
+        "skill_count": 51,
+        "bundled_mcp_tools": 0,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 9169,
+          "cache_read_input_tokens": 12740,
+          "output_tokens": 4
+        }
+      }
+    ],
+    "base_input_tokens": 16394,
+    "plugin_input_tokens": 21911,
+    "plugin_delta_tokens": 5517,
+    "combined_with_raw_mcp_schema_estimate": 8972
+  },
+  "independent_guard_matrix": {
+    "source": "research/data/destructive-ops.json",
+    "source_sha256": "6f5a8f1aab4b1e33ea56cad0d88569fddee08a9893b09a5bc6155ec3f75c0205",
+    "matrix": {
+      "destructive/CRITICAL/deny": 278,
+      "destructive/HIGH/ask": 514,
+      "destructive/HIGH/deny": 13,
+      "destructive/LOW/ask": 63,
+      "destructive/MEDIUM/allow": 1,
+      "destructive/MEDIUM/ask": 420,
+      "destructive/MEDIUM/deny": 37,
+      "mutating/LOW/ask": 1769,
+      "mutating/MEDIUM/ask": 2012,
+      "unclassified/REVIEW/allow": 2,
+      "unclassified/REVIEW/ask": 328
+    },
+    "allowed_outside_strict_reads": 0
+  },
+  "raw_estimate_method": "ceil(description characters / 4) + ceil(serialized MCP schema characters / 4); excludes host framing",
+  "resident_tokens_estimate": 6386,
+  "published_planning_floor": "\u22486.3\u20136.5k tokens (\u22483,020 descriptions + \u22483,300\u20133,500 MCP schemas, estimates)",
+  "examples": 261,
+  "cli_leaves": 9145,
+  "cli_groups": 174,
+  "guard_matrix": {
+    "destructive/allow": 1,
+    "destructive/ask": 997,
+    "destructive/deny": 328,
+    "mutating/ask": 3781,
+    "read/allow": 3596,
+    "read/ask": 112,
+    "unknown/allow": 2,
+    "unknown/ask": 328
+  },
+  "critical_denied": 278,
+  "oracle_historical": {
+    "entries": 2222,
+    "destructive_allowed": 374,
+    "mutating_allowed": 2644,
+    "reads_denied": 135,
+    "source": "research/data/denylist-coverage.json, shipped as docs/evidence/denylist-coverage-research.json; historical matching/classification differs from current prefix replay"
+  },
+  "oracle_current_prefix_replay": {
+    "destructive/allowed": 374,
+    "destructive/denied": 952,
+    "mutating/allowed": 2511,
+    "mutating/denied": 1270,
+    "read/allowed": 3708,
+    "unknown/allowed": 330
+  },
+  "historical_certification_counts": {
+    "ok": 157,
+    "thin": 101,
+    "gap": 19
+  },
+  "unowned_services": {
+    "ccc": 12,
+    "costad": 16,
+    "cpg": 13,
+    "ddfs": 11,
+    "demand-signal": 16,
+    "dif": 13,
+    "gdp": 13,
+    "marketplace-private-offer": 27,
+    "marketplace-publisher": 111,
+    "mngdmac": 14,
+    "psa": 12
+  },
+  "unowned_leaves": 258,
+  "live_cli_statuses": {
+    "shape-verified": 226,
+    "passed": 35
+  }
+}

@@ -74,6 +74,9 @@ def main():
             COMPARTMENT_ID=tenancy, OCI_CLI_PROFILE=args.profile, OCI_CLI_REGION=args.region,
             OCI_RO_SMOKE_SCOPE=tenancy, OCI_RO_SMOKE_PROFILE=args.profile, OCI_RO_SMOKE_REGION=args.region,
             CLAUDE_PLUGIN_ROOT=str(ROOT), SHAPE='VM.Standard.A1.Flex', SERVICE='compute')
+        # Key-age posture checks inspect only the selected profile's own user.
+        if section.get('user'):
+            environment['USER_ID'] = section['user']
         # Explicit bounded time windows; never request historical account dumps.
         end = datetime.now(timezone.utc).date()
         moment = datetime.now(timezone.utc)
@@ -109,18 +112,24 @@ def main():
     rows = []
     with tempfile.TemporaryDirectory(prefix='oci-skill-smoke-') as directory:
         empty = Path(directory)/'empty.json'; empty.write_text('[]')
+        policy = Path(directory)/'policy.json'
+        policy.write_text(json.dumps(['Allow group ExampleReaders to read instances in compartment ExampleProject']))
         plan = Path(directory)/'plan.json'; plan.write_text('{"format_version":"1.2","resource_changes":[]}')
         tails = {'chat_min.py':['--api-format','GENERIC'], 'merge_rules.py':[str(empty),str(empty)],
                  'plan_summary.py':[str(plan)], 'fetch_spec.py':['identity','--url'],
                  'price.sh':['B88514','USD'], 'list_all.sh':['os ns get','--profile',args.profile,'--region',args.region,'--query','data'],
                  'whoami.sh':['--profile',args.profile,'--region',args.region],
+                 'policy_lint.py':['--file',str(policy)],
+                 'policy_lint.sh':['--file',str(policy)],
                  'verify_auth.py':['--profile',args.profile,'--region',args.region,'--auth','api_key']}
         for path in sorted((ROOT/'skills').glob('*/scripts/*')):
             if not path.is_file():
                 continue
             row = {'script':path.relative_to(ROOT).as_posix()}
+            row['execution_mode'] = ('offline' if path.name in {'chat_min.py', 'merge_rules.py',
+                'plan_summary.py', 'fetch_spec.py', 'policy_lint.py', 'policy_lint.sh'} else 'live_read')
             if path.suffix not in {'.py','.sh'}:
-                row.update(status='inert_not_executed', reason='Non-executable example; no database session or mutation fixture is run.')
+                row.update(execution_mode='inert', status='inert_not_executed', reason='Non-executable example; no database session or mutation fixture is run.')
             elif path.name in INSTANCE_SCRIPTS and no_instance:
                 row.update(status='skipped: no instance', owner='OCI operator / skill maintainer')
             else:
@@ -144,6 +153,7 @@ def main():
               'scope':'Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.',
               'scope_inputs':{'profile':args.profile, 'region':'selected profile region',
                               'compartment':'tenancy root', 'instance':'first instance in root, if present',
+                              'user':'selected profile user, if present',
                               'metric_namespace':'oci_computeagent', 'mql':'CpuUtilization[1m].mean()',
                               'metric_window':'last hour'},
               'status_meanings':{'ran, gap':'Executed; explicit no-data result, not a script failure. Coverage remains incomplete.',

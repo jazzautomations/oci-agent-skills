@@ -17,6 +17,7 @@ jobs:
       - run: uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests
       - run: uv run --frozen --project runtime python scripts/ci/check_frontmatter.py
       - run: uv run --frozen --project runtime python scripts/ci/check_refs.py
+      - run: uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check
       - run: uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help
       - run: uv run --frozen --project runtime python scripts/ci/check_no_secrets.py
       - run: python scripts/inventory.py --format jsonl --index --check
@@ -25,8 +26,17 @@ jobs:
       - run: uv run --frozen --project runtime python scripts/ci/check_budget.py
       - run: uv run --frozen --project runtime python scripts/ci/check_licenses.py
       - run: uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py
+      - run: uv run --frozen --project runtime python scripts/ci/check_template.py
       - run: python scripts/inventory.py --scripts --examples --check
       - run: python scripts/ci/check_manifests.py
       - run: python scripts/check_examples.py
       - run: uv run --frozen --project runtime python evals/run_routing.py --negatives
-      - run: uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json
+      - name: Offline evaluation gates
+        run: uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json
+      - name: Preserve evaluation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-evaluation
+          path: /tmp/oci-offline-evaluation.json
+          if-no-files-found: ignore

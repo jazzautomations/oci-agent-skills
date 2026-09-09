@@ -67,7 +67,8 @@ def shared_findings(root=ROOT):
 
 def main():
     args = arguments(__doc__)
-    selected = files(args.paths or [ROOT / "skills", ROOT / "references"])
+    selected = files(args.paths or [ROOT / "skills", ROOT / "references", ROOT / "docs",
+                                   ROOT / "runtime/README.md", *ROOT.glob("*.md")])
     return finish(
         "refs", [f for p in selected for f in validate(p)] + (shared_findings() if not args.paths else []), args, len(selected)
     )

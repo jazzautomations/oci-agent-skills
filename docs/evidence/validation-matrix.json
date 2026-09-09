@@ -62,7 +62,7 @@
       "command": "uv run --frozen --project runtime python scripts/ci/check_links.py",
       "result": "PASS",
       "date": "2026-09-09",
-      "detail": "Recorded evidence from this handoff; see docs/validation-links.json.",
+      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-links.json.",
       "owner": null
     },
     {
@@ -71,7 +71,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "Severity matrix: docs/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.",
+      "detail": "Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.",
       "owner": null
     },
     {
@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "354 passed, 1 warning in 68.57s (0:01:08)",
+      "detail": "360 passed, 1 warning in 49.97s",
       "owner": null
     },
     {
@@ -157,7 +157,7 @@
     },
     {
       "id": "V18",
-      "command": "CLI_PYTHON scripts/check_examples.py --report docs/validation-examples-offline.json",
+      "command": "CLI_PYTHON scripts/check_examples.py --report docs/evidence/validation-examples-offline.json",
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
@@ -219,10 +219,10 @@
     },
     {
       "id": "V25",
-      "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json",
+      "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
       "date": "2026-09-09",
-      "detail": "Recorded evidence from this handoff; see docs/validation-cli.json. Skill execution: FAIL; see docs/validation-scripts.json.",
+      "detail": "Script sweep: 4 blocked_missing_prerequisite, 2 failed, 4 inert_not_executed, 27 passed, 2 ran, gap. Identity, governance, policy-input and profile-user defects corrected. Scoped triage still receives Cloud Guard 404 and Support 403; see docs/evidence/helper-diagnostics.json. Missing prerequisites and no-data coverage remain explicit.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -230,7 +230,7 @@
       "command": "OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1",
       "result": "PASS",
       "date": "2026-09-09",
-      "detail": "Recorded evidence from this handoff; see docs/validation-mcp.json.",
+      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-mcp.json.",
       "owner": null
     },
     {

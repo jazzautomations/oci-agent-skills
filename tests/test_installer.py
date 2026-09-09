@@ -2,6 +2,7 @@ import asyncio
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import tomllib
@@ -29,6 +30,7 @@ def test_installed_copies_and_refs(installed):
     assert not (installed / "runtime/.venv").exists()
     assert not (installed / "research").exists()
     assert not list(installed.rglob("CODEX-STATUS.md"))
+    assert not (installed / "docs/build-log").exists()
     assert not list(installed.rglob(".handoff-*"))
     for folder in (".agents", ".gemini", ".cursor", ".opencode"):
         skills = list((installed / folder / "skills").glob("*/SKILL.md"))
@@ -40,6 +42,21 @@ def test_installed_copies_and_refs(installed):
                 if not target.startswith(("http:", "https:", "#")):
                     assert (skill.parent / target).exists(), (skill, target)
     assert (installed / "scripts/lib/oci_ro.sh").is_file()
+
+
+def test_installed_reader_documentation_links(installed):
+    from urllib.parse import unquote, urlsplit
+
+    documents = [installed / "README.md", installed / "SECURITY.md",
+                 installed / "CHANGELOG.md", *(installed / "docs").rglob("*.md")]
+    for document in documents:
+        text = re.sub(r"(?ms)^(`{3,}|~{3,}).*?^\1[^\n]*", "", document.read_text())
+        for target in re.findall(r"\]\(([^\s)]+)\)", text):
+            parsed = urlsplit(unquote(target))
+            if parsed.scheme or parsed.netloc or not parsed.path:
+                continue
+            assert (document.parent / parsed.path).exists(), (document, target)
+    assert "https://github.com/jazzautomations/oci-agent-skills/blob/main/docs/build-log/README.md" in (installed / "README.md").read_text()
 
 
 @pytest.mark.parametrize("host", ["codex", "gemini", "cursor", "opencode"])

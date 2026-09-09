@@ -239,7 +239,7 @@ def test_severity_snapshot_and_strict_read_allowlist():
     if research.exists():
         assert hashlib.sha256(research.read_bytes()).hexdigest() == fixture['source_sha256']
     matrix = Counter((r['class'], r['severity'], classify_leaf(r['path'])) for r in fixture['operations'])
-    published = json.loads((ROOT / 'docs/guard-severity-matrix.json').read_text())
+    published = json.loads((ROOT / 'docs/evidence/guard-severity-matrix.json').read_text())
     assert {'/'.join(k): v for k, v in sorted(matrix.items())} == published['matrix']
     assert all(classify_leaf(r['path']) == 'deny' for r in fixture['operations'] if r['severity'] == 'CRITICAL')
     assert not any(classify_leaf(r['path']) == 'allow' for r in fixture['operations'] if r['class'] == 'mutating')
