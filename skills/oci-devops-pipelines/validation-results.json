@@ -1,0 +1,68 @@
+{
+  "check_frontmatter": {
+    "validator": "frontmatter",
+    "checked": 1,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "check_refs": {
+    "validator": "refs",
+    "checked": 7,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "check_portable": {
+    "validator": "portable",
+    "checked": 1,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "lint_fences": {
+    "validator": "fences",
+    "checked": 7,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "check_budget": {
+    "validator": "budget",
+    "checked": 7,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "check_no_secrets": {
+    "validator": "secrets",
+    "checked": 12,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "check_scripts_readonly": {
+    "validator": "scripts_readonly",
+    "checked": 1,
+    "findings": [],
+    "baseline_matches": null,
+    "ok": true
+  },
+  "fragment": {
+    "ok": true,
+    "reads": 5
+  },
+  "script_help": {
+    "ok": true
+  },
+  "pytest": {
+    "scope_ok": true,
+    "full_suite_ok": false,
+    "summary": "2 failed, 199 passed, 1 warning in 112.95s (0:01:52)",
+    "full_suite": "2 failed, 199 passed, 1 warning in 112.95s (0:01:52)",
+    "deferred": [
+      "tests/test_catalog.py::test_generated_scripts_and_fragments",
+      "tests/test_installer.py::test_installed_copies_and_refs"
+    ]
+  }
+}

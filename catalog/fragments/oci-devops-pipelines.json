@@ -1,0 +1,96 @@
+[
+  {
+    "id": "oci-devops-pipelines-1",
+    "skill": "oci-devops-pipelines",
+    "argv": [
+      "devops",
+      "project",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,name:name,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-devops-pipelines-2",
+    "skill": "oci-devops-pipelines",
+    "argv": [
+      "devops",
+      "build-pipeline",
+      "list",
+      "--project-id",
+      "${PROJECT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,name:\"display-name\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-devops-pipelines-3",
+    "skill": "oci-devops-pipelines",
+    "argv": [
+      "devops",
+      "build-run",
+      "get",
+      "--build-run-id",
+      "${BUILD_RUN_ID}",
+      "--query",
+      "data.{id:id,state:\"lifecycle-state\",progress:\"build-run-progress\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-devops-pipelines-4",
+    "skill": "oci-devops-pipelines",
+    "argv": [
+      "devops",
+      "deployment",
+      "list",
+      "--pipeline-id",
+      "${DEPLOY_PIPELINE_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-devops-pipelines-5",
+    "skill": "oci-devops-pipelines",
+    "argv": [
+      "artifacts",
+      "container",
+      "repository",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,name:\"display-name\",public:\"is-public\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]
