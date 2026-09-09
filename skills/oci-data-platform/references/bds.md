@@ -1,0 +1,6 @@
+# BDS, OpenSearch and Redis
+
+Big Data Service provisions clusters with distinct network, storage and management dependencies. Inspect cluster version, node inventory, lifecycle and work requests before planning scale/patch work. Management tools and data access are not equivalent to BDS control-plane IAM. Version compatibility, Kerberos, DNS and node disk pressure require workload-level evidence.
+OpenSearch control plane manages clusters, backups and pipelines; index mappings, shards, documents and queries use the cluster data plane. An ACTIVE cluster is not proof of green index health. Snapshot compatibility, shard sizing and restore tests matter more than a backup object count; no snapshot/restore or query execution was attempted.
+Redis/OCI Cache CLI retains redis groups while newer nouns use oci-cache. Cluster discovery is redis redis-cluster redis-cluster-summary list-redis-clusters, not a guessed plain list. Confirm supported engine/version and topology. Cluster administration does not grant application data access; never run flush or import keys as a diagnostic.
+For all three, migration plans must handle schema/protocol compatibility, application connection changes, consistency and rollback after new writes. Do not infer data durability from cache replicas or equate an index snapshot with a tested recovery.

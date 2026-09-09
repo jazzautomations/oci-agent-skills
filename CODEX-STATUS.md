@@ -122,3 +122,18 @@ the content baseline, and finish W08b. New skill scripts ask until W42a binds th
 No OCI tenancy mutation was run. No changes were made to references/, research/,
 real skills, README.md or root LICENSE. The other engine's untracked references/
 work is intentionally excluded from these commits.
+
+## Handoff 4 — resumed validation (2026-09-09)
+
+The first seven skills were already committed through `7356b1f` (oci-ai-services). The remaining four are validated and committed individually below, with their catalog fragments. Live scope is the explicitly selected existing API-key profile, us-chicago-1, tenancy root, without recursive traversal. No tenancy mutations executed.
+
+### oci-data-platform
+
+- All seven handoff linters passed, including `lint_fences.py --live-help`; generic quick validation rejects the stencil-required compatibility key. The declared Apache-2.0 LICENSE.txt is supplied.
+- Fragment: 8 examples match Commands exactly and pass installed Click validation.
+- Full pytest: 2 failed, 199 passed, 1 warning in 41.63s.
+- Live: all ten identity/scope, shape/image/AD, VCN, namespace, vault and monitoring metadata probes passed; three ADs discovered. No identifiers or raw resource values retained.
+- Domain evidence: shape-only: domain APIs not run; no workload execution or provisioning.
+- All 3 linked Oracle documentation pages returned HTTP 200.
+- Exceptions: full-suite catalog regeneration and the fixed 16-skill installer assertion fail outside ownership; W42a and test-owner work remain. Repository licensing also has findings outside this skill. All §3.2 files, mode, exact description and canonical no-script line are present; domain workloads remain unexecuted because no provisioned validation targets were supplied.
+- Details: [skill status](skills/oci-data-platform/CODEX-STATUS.md), [validation evidence](skills/oci-data-platform/validation-evidence.json).

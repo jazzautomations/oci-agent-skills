@@ -1,0 +1,6 @@
+# Streaming and Queue
+
+Streaming is an append-only partitioned log for replay and fan-out. Queue is work distribution with per-message acknowledgment, visibility and dead-letter handling. Choose based on ordering, replay and delivery semantics, not just API similarity.
+Streaming control plane is streaming admin; its data plane needs the selected stream's messagesEndpoint from stream get. Queue control plane is queue queue-admin queue; its data plane likewise uses the queue's own messages endpoint. Region alone does not select a data-plane cell. Never construct endpoints or use a response-provided URL without verifying it belongs to the intended service/resource.
+Kafka compatibility is configured on a stream pool. Use its advertised bootstrap endpoints, TLS/SASL and approved IAM auth-token delivery; an API signing key is not a Kafka password. Never log the username/tenancy tuple or token. Verify supported Kafka APIs before assuming broker equivalence.
+Do not execute cursor creation, group commits, message publishing, acknowledgment or queue receive in a read-only workflow. Queue receive alters visibility even though its name says get. Retries require idempotent processing; a dead-letter queue is evidence to investigate, not a backlog to purge. Review partition counts, retention, consumer lag and replay boundaries before any proposed mutation.
