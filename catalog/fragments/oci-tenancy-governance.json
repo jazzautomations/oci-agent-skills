@@ -1,0 +1,106 @@
+[
+  {
+    "id": "governance-compartment-subtree",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "iam",
+      "compartment",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--compartment-id-in-subtree",
+      "true",
+      "--access-level",
+      "ANY",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "governance-tag-namespaces",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "iam",
+      "tag-namespace",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "governance-cost-tracking-tags",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "iam",
+      "tag",
+      "list-cost-tracking",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "governance-tag-defaults",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "iam",
+      "tag-default",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "governance-budgets",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "budgets",
+      "budget",
+      "budget",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "governance-quotas",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "limits",
+      "quota",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "governance-rules",
+    "skill": "oci-tenancy-governance",
+    "live": true,
+    "argv": [
+      "governance-rules-control-plane",
+      "governance-rule",
+      "governance-rule",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "10"
+    ]
+  }
+]
