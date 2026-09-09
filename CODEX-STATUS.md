@@ -137,3 +137,14 @@ The first seven skills were already committed through `7356b1f` (oci-ai-services
 - All 3 linked Oracle documentation pages returned HTTP 200.
 - Exceptions: full-suite catalog regeneration and the fixed 16-skill installer assertion fail outside ownership; W42a and test-owner work remain. Repository licensing also has findings outside this skill. All §3.2 files, mode, exact description and canonical no-script line are present; domain workloads remain unexecuted because no provisioned validation targets were supplied.
 - Details: [skill status](skills/oci-data-platform/CODEX-STATUS.md), [validation evidence](skills/oci-data-platform/validation-evidence.json).
+
+### oci-dr-backup
+
+- All seven handoff linters passed, including `lint_fences.py --live-help`; generic quick validation rejects the stencil-required compatibility key. The declared Apache-2.0 LICENSE.txt is supplied.
+- Fragment: 8 examples match Commands exactly and pass installed Click validation.
+- Full pytest: 2 failed, 199 passed, 1 warning in 35.28s.
+- Live: all ten identity/scope, shape/image/AD, VCN, namespace, vault and monitoring metadata probes passed; three ADs discovered. No identifiers or raw resource values retained.
+- Domain evidence: partial: Commands availability-domain list ran live; DR, backups, snapshots and instance placement remain shape-only.
+- All 3 linked Oracle documentation pages returned HTTP 200.
+- Exceptions: full-suite catalog regeneration and the fixed 16-skill installer assertion fail outside ownership; W42a and test-owner work remain. Repository licensing also has findings outside this skill. All §3.2 files, mode, exact description and canonical no-script line are present; domain workloads remain unexecuted because no provisioned validation targets were supplied.
+- Details: [skill status](skills/oci-dr-backup/CODEX-STATUS.md), [validation evidence](skills/oci-dr-backup/validation-evidence.json).

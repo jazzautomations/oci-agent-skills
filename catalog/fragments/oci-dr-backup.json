@@ -1,0 +1,155 @@
+{
+  "examples": [
+    {
+      "id": "oci-dr-backup-1",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-protection-group",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,role:role}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-2",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-plan",
+        "list",
+        "--dr-protection-group-id",
+        "${DR_GROUP_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,type:\"type\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-3",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "disaster-recovery",
+        "dr-plan-execution",
+        "list",
+        "--dr-protection-group-id",
+        "${DR_GROUP_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-4",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "bv",
+        "backup",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-5",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "bv",
+        "boot-volume-backup",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-6",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "fs",
+        "snapshot",
+        "list",
+        "--file-system-id",
+        "${FILE_SYSTEM_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{state:\"lifecycle-state\",created:\"time-created\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-7",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "iam",
+        "availability-domain",
+        "list",
+        "--compartment-id",
+        "${TENANCY_ID}",
+        "--all",
+        "--query",
+        "data[].name",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-dr-backup-8",
+      "skill": "oci-dr-backup",
+      "argv": [
+        "compute",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{ad:\"availability-domain\",fd:\"fault-domain\",state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
