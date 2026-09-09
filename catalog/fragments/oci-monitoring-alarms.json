@@ -1,0 +1,131 @@
+[
+  {
+    "id": "oci-monitoring-alarms-1",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "monitoring",
+      "metric",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{namespace:namespace,name:name}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-monitoring-alarms-2",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "monitoring",
+      "metric-data",
+      "summarize-metrics-data",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace",
+      "${METRIC_NAMESPACE}",
+      "--query-text",
+      "${MQL}",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}",
+      "--query",
+      "data[].{points:\"aggregated-datapoints\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-monitoring-alarms-3",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "monitoring",
+      "alarm",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,enabled:\"is-enabled\",severity:severity}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-monitoring-alarms-4",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "ons",
+      "subscription",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--topic-id",
+      "${TOPIC_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{protocol:protocol,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-monitoring-alarms-5",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "stack-monitoring",
+      "resource",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,status:status}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-monitoring-alarms-6",
+    "skill": "oci-monitoring-alarms",
+    "argv": [
+      "monitoring",
+      "metric-data",
+      "summarize-metrics-data",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace",
+      "${METRIC_NAMESPACE}",
+      "--query-text",
+      "${MQL}",
+      "--start-time",
+      "${START_TIME}",
+      "--end-time",
+      "${END_TIME}",
+      "--query",
+      "data[].{points:\"aggregated-datapoints\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}",
+      "--no-retry"
+    ]
+  }
+]
