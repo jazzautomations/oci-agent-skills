@@ -160,3 +160,14 @@ def test_cli_empty_list_render_is_success(monkeypatch):
     assert result["status"] == "passed"
     assert result["count"] == 0
     assert result["output_kind"] == "empty_cli_response"
+
+
+def test_global_options_are_validated_without_callbacks(cli):
+    cli.params.append(click.Option(['--profile']))
+    record = example('--profile', '${PROFILE}')
+    path, values, _ = checker.validate_example(record, cli)
+    assert path == 'compute instance list'
+    assert values['--profile'] == '${PROFILE}'
+    # Offline recognition grants no live authorization.
+    with pytest.raises(ValueError):
+        checker.live_argv(record, path, values, {}, {'PROFILE': 'DEFAULT'})

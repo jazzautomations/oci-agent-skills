@@ -57,7 +57,7 @@ LIVE_PATHS = {
     "database-migration migration list",
     "os-management-hub managed-instance list",
 }
-PLACEHOLDERS = {"COMPARTMENT_ID", "TENANCY_ID", "START_TIME", "END_TIME", "NAMESPACE"}
+PLACEHOLDERS = {'FILE_SYSTEM_ID', 'JOB_ID', 'PROBLEM_ID', 'ADB_ID', 'DOMAIN_URL', 'SECURITY_ZONE_ID', 'REGION', 'BUDGET_ID', 'USER_ID', 'STACK_ID', 'START_TIME', 'BACKEND_SET', 'CATALOG_ID', 'PREFIX', 'APPLICATION_ID', 'END_TIME', 'PROFILE', 'NETWORK_FIREWALL_POLICY_ID', 'SHAPE', 'TOPIC_ID', 'NSG_ID', 'PROJECT_ID', 'LOG_GROUP_ID', 'HOST_VULNERABILITY_ID', 'CLUSTER_ID', 'DR_GROUP_ID', 'TENANCY_ID', 'LIMIT_NAME', 'SESSION_ID', 'LOAD_BALANCER_ID', 'COMPARTMENT_ID', 'AD', 'BASTION_ID', 'INSTANCE_ID', 'METRIC_NAMESPACE', 'WORK_REQUEST_ID', 'POOL_ID', 'OBJECT_NAME', 'MGMT_ENDPOINT', 'ODA_ID', 'MQL', 'BUCKET', 'PRIVATE_ENDPOINT_ID', 'AVAILABILITY_DOMAIN', 'DEPLOY_PIPELINE_ID', 'POLICY_ID', 'NAMESPACE', 'CONNECTION_ID', 'BUILD_RUN_ID', 'REQUEST_ID', 'MANAGED_DB_ID', 'LB_ID'}
 # Live examples may use only these operational options. No CLI config, endpoint,
 # filesystem, wait, query-output, raw body, debug, or all-pages options are accepted.
 LIVE_FLAGS = {
@@ -109,7 +109,7 @@ def validate_example(example, root):
         index += 1
     options = {
         name: parameter
-        for parameter in command.params
+        for parameter in [*root.params, *command.params]
         if isinstance(parameter, click.Option)
         for name in parameter.opts + parameter.secondary_opts
     }
