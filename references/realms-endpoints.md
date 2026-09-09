@@ -1,4 +1,4 @@
-Purpose: read the realm before answering — 20 realms, three region counts, why an endpoint is never string-built, how gov/sovereign realms differ.
+Purpose: realms, region counts, endpoints and gov/sovereign differences.
 Source: research/16-oracle-runtimes-email-compliance.md §C, research/data/regions-endpoints.json, research/data/regions.json; generated 2026-09-08; verified-on CLI 3.91.0
 
 ## 1. Realms and second-level domains
@@ -31,8 +31,7 @@ regions that aren't in your realm" [verified].
 
 ## 3. Never string-build an endpoint
 
-**165 of the 170 SDK endpoint templates carry `{secondLevelDomain}`**, supplied by the realm
-[verified]: 130 plain `https://<svc>.{region}.oci.{secondLevelDomain}` + 24 other `.oci.`
+**165 of the 170 SDK endpoint templates carry `{secondLevelDomain}`**, supplied by the realm [verified]: 130 plain `https://<svc>.{region}.oci.{secondLevelDomain}` + 24 other `.oci.`
 variants + 9 `.ocp.` + 2 `.ocs.` (`network_firewall`, `service_manager_proxy`). Of those 24:
 12 carry `{dualStack?ds.:}` (renders plain when off), `core`/`object_storage` carry
 `{dualStack?ds.oci.:}` (drops `oci` when off), 10 have no `.oci.` label (`audit`, `database`,
@@ -76,9 +75,9 @@ fleet-apps-management`) — *patch* compliance of your own fleet, not Oracle's a
 
 ## 6. Agent rules
 
-1. Read the realm from the config/region in use; never assume `oc1`.
+1. Read the config/region realm; never assume `oc1`.
 2. Build no URLs — endpoints, Console links or docs (§3).
-3. Service absence in gov/sovereign realms is an answer, not a retry (§4).
+3. Gov/sovereign service absence is an answer, not a retry (§4).
 4. Never copy an OCID, tenancy name or region key across realms.
 
 ## Docs

@@ -1,4 +1,4 @@
-Purpose: write an OCI CLI `--query` that returns the right rows — envelope, key case, the 20 live-run patterns, the traps.
+Purpose: OCI CLI `--query` — envelopes, key case, 20 live-run patterns and traps.
 Source: research/04a-cli-auth-ergonomics.md (§2.1–2.3, §3 P6/P7), research/10a-sdk-developer-patterns.md (§2.7–2.10); generated 2026-09-08; verified-on CLI 3.91.0
 
 ## 1. Where a query starts

@@ -170,3 +170,13 @@ The first seven skills were already committed through `7356b1f` (oci-ai-services
 - All 3 linked Oracle documentation pages returned HTTP 200.
 - Exceptions: full-suite catalog regeneration and the fixed 16-skill installer assertion fail outside ownership; W42a and test-owner work remain. Repository licensing also has findings outside this skill. All §3.2 files, mode, exact description and canonical no-script line are present; domain workloads remain unexecuted because no provisioned validation targets were supplied.
 - Details: [skill status](skills/oracle-enterprise-apps/CODEX-STATUS.md), [validation evidence](skills/oracle-enterprise-apps/validation-evidence.json).
+
+### Reference trim and completion
+
+- Skill commits: `bf3e425` oci-data-platform; `951ba17` oci-dr-backup; `47be2c2` oci-migration-patching; `d94e4a6` oracle-enterprise-apps. Each includes its own catalog/fragments/<name>.json, fresh validation evidence and this status update.
+- Reviewed and retained the existing wording trims: references/jmespath.md is **4,778 bytes ≤4,780**; references/realms-endpoints.md is **5,554 bytes ≤5,560**. Redundant introductions/wording were shortened; facts remain in the body. Exact comparisons against HEAD confirm no URLs, verification tags, table rows or fenced examples changed.
+- All seven scoped reference validator invocations passed (frontmatter/portable have no applicable SKILL.md input). Template and manifest checks also passed. All commit whitespace checks passed.
+- references/auth-modes.md is unchanged from the start of this resumed work (6,339 bytes); its pre-existing uncommitted trim is retained.
+- Every skill's fresh full pytest run had **199 passed, 2 failed**. Remaining failures are tests/test_catalog.py::test_generated_scripts_and_fragments (W42a regeneration) and tests/test_installer.py::test_installed_copies_and_refs (hard-coded 16 skills). No unrelated tests or generated catalogs were changed to hide those failures. The latest run also exercised the reference contents committed here.
+- Additional validator boundaries: the generic skill-creator validator rejects the repository-required compatibility key; repository frontmatter and portable validation pass. The four owned skill licenses are now present; root/other-skill licensing remains outside this task.
+- No tenancy mutations executed. None of the other engine's skill directories or fragments were edited or included in these commits.
