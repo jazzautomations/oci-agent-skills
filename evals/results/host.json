@@ -5,6 +5,6 @@
   "date": "2026-09-09",
   "host_version": "2.1.266 (Claude Code)",
   "exit_code": 1,
-  "source_commit": "a3207001f6b59458cb62735940ff96146970fbe0",
+  "source_commit": "daa7d4427fb4dc8d78033451180ec30c6bd3949d",
   "scope": "No tool grants, mock MCP, absent OCI config, no scaffold or publication."
 }

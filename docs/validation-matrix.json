@@ -50,7 +50,7 @@
     },
     {
       "id": "V6",
-      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md --live-help",
+      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md",
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-09",
       "exit_code": 0,
-      "detail": "260 passed, 1 warning in 52.39s",
+      "detail": "295 passed, 1 warning in 141.70s (0:02:21)",
       "owner": null
     },
     {
@@ -222,8 +222,7 @@
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json",
       "result": "FAIL",
       "date": "2026-09-09",
-      "exit_code": 0,
-      "detail": "Command passed. Skill entrypoint execution: FAIL; see docs/validation-scripts.json.",
+      "detail": "Recorded evidence from this handoff; see docs/validation-cli.json. Skill execution: FAIL; see docs/validation-scripts.json.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -258,7 +257,7 @@
       "result": "FAIL",
       "date": "2026-09-09",
       "exit_code": 1,
-      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 156, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
+      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 4, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
       "owner": "repository history owner"
     },
     {

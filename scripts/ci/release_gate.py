@@ -177,7 +177,7 @@ def main():
     if args.live:
         row=execute('V25',[str(cli_python),'scripts/check_examples.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report',str(output/'docs/validation-cli.json')],
                     'CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json',timeout=600,owner='OCI operator / CLI validation maintainers')
-        scripts_row=execute('V25-scripts',PYTHON+['scripts/check_skill_scripts.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report',str(output/'docs/validation-scripts.json')], 'python scripts/check_skill_scripts.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-scripts.json', timeout=1800,owner='OCI operator / skill maintainers')
+        scripts_row=execute('V25-scripts',PYTHON+['scripts/check_skill_scripts.py','--live','--profile','DEFAULT','--report',str(output/'docs/validation-scripts.json')], 'python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/validation-scripts.json', timeout=1800,owner='OCI operator / skill maintainers')
         row['detail'] += ' Skill entrypoint execution: '+scripts_row['result']+'; see docs/validation-scripts.json.'
         if scripts_row['result'] != 'PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
@@ -188,7 +188,7 @@ def main():
         (output/'docs/validation-mcp.json').write_text(json.dumps(data,indent=2)+'\n')
     else:
         row=archived('V25',ROOT/'docs/validation-cli.json','CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json','complete',owner='OCI operator / CLI validation maintainers')
-        scripts_row=archived('V25-scripts',ROOT/'docs/validation-scripts.json','python scripts/check_skill_scripts.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-scripts.json','complete',owner='OCI operator / skill maintainers')
+        scripts_row=archived('V25-scripts',ROOT/'docs/validation-scripts.json','python scripts/check_skill_scripts.py --live --profile DEFAULT --report docs/validation-scripts.json','complete',owner='OCI operator / skill maintainers')
         row['detail']+=' Skill execution: '+scripts_row['result']+'; see docs/validation-scripts.json.'
         if scripts_row['result']!='PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
@@ -217,7 +217,8 @@ def main():
     report={'date':DATE,'branch':subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip(),
             'ready':all(r['result']=='PASS' for r in rows),'rows':rows,'subchecks':list(extras.values())}
     (output/'docs/validation-matrix.json').write_text(json.dumps(report,indent=2)+'\n')
-    text='# Final validation matrix — '+DATE+'\n\nBranch: v2-foundation. **Not release-ready.** No merge and no tenancy mutations.\n\n'
+    readiness = 'Release-ready.' if report['ready'] else 'Not release-ready.'
+    text=f"# Final validation matrix — {DATE}\n\nBranch: `{report['branch']}`. **{readiness}** No tenancy mutations.\n\n"
     text+='Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py --live --links --live-help`. Writes scratch evidence outside the checkout and prints unified diffs against tracked reports. This repeats only scoped read operations and public documentation GETs; skill prerequisites may remain blocked. Omit these flags to reuse dated live/link evidence and use snapshot fence lint. CLI_PYTHON denotes Python from the pinned OCI CLI installation; pass --cli-python to select it explicitly. A nonzero exit is expected while any gate remains red or unmeasured.\n\n'
     text+='| Gate | Command | Result | Date | Evidence / reason / owner |\n|---|---|---|---|---|\n'
     for row in rows:
