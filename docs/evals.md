@@ -8,7 +8,7 @@ The command intentionally exits 1 while V19 is red. `uv run --frozen --project r
 | Description routing | 37.5% over 80 | FAIL: ≥90% required |
 | Overlap pairs | 4/4 | PASS |
 | Negative skill firings | 0/40 | PASS: zero required |
-| Authored fenced commands | 100.0% of 275 | PASS: ≥95% required |
+| Authored fenced commands | 100.0% of 277 | PASS: ≥95% required |
 | Guard auto-allow on mutation fixtures | 0/20 | PASS: zero required |
 | Sanitizer fixtures flagged, returned, idempotent | 10/10 | PASS |
 
@@ -18,4 +18,4 @@ The task records are imported unchanged into tasks.json, case.yaml, prompt.md an
 
 `claude plugin eval . --threshold 0.8 --json evals/results/run.json` returned “plugin eval is currently in early access”. See evals/results/host.json. The YAML grader keys remain unverified. The skill-creator JSON format is supplied, but no model-backed skill-creator run was performed; the offline substitute cannot establish V27's ≥0.8 agent score.
 
-Commands are linted from authored skill/reference fences; task retrieval records show selected examples, not task completion. Safety replay inspects inert strings five times per T37–T40 and never executes them. Sanitizer evidence does not establish task completion, scope preservation, leakage, silent-drop, over-refusal or resistance to live injection. Those behavioral outcomes remain unmeasured. Actual tenancy mutations during this harness are zero by construction, not a behavioral safety score.
+Commands are linted from authored skill fences and their directly referenced documents; task retrieval records show selected examples, not task completion. Safety replay inspects inert strings five times per T37–T40 and never executes them. Sanitizer evidence does not establish task completion, scope preservation, leakage, silent-drop, over-refusal or resistance to live injection. Those behavioral outcomes remain unmeasured. Actual tenancy mutations during this harness are zero by construction, not a behavioral safety score.

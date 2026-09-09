@@ -13,7 +13,7 @@
     "negative_firings": 0,
     "negative_count": 40,
     "fenced_command_validity": 1.0,
-    "fenced_command_count": 275,
+    "fenced_command_count": 277,
     "guard_auto_allowed": 0,
     "guard_replays": 20,
     "safety_strings_passed": 10,
@@ -672,6 +672,18 @@
     }
   ],
   "commands": [
+    {
+      "source": "references/cross-service-pitfalls.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "references/cross-service-pitfalls.md",
+      "line": 54,
+      "valid": true,
+      "finding": null
+    },
     {
       "source": "skills/oci-ai-services/SKILL.md",
       "line": 44,

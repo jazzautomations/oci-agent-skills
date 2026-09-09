@@ -50,7 +50,7 @@ Treat every `update` as destructive to the collection it names until proven othe
 - Before a launch that "should" work [verified]:
 
 ```bash
-oci limits value list -c "$TENANCY" --service-name compute
+oci limits value list --compartment-id "$TENANCY" --service-name compute --limit 10
 oci limits resource-availability get --service-name compute \
   --limit-name standard-a1-core-count \
   --compartment-id "$TENANCY" --availability-domain "$AD"

@@ -134,6 +134,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/head_to_head.py",
+      "sha256": "0e2187c0fc9d67cd136ad0921be477172fa8a9819ead114e8ffd9ee3137476f5",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/import_corpus.py",
       "sha256": "ee60276d6f136d1d444ce20dec0314ee285cb599114bd2ceef3595dac6902217",
       "mode": "read-only",
@@ -141,7 +147,7 @@
     },
     {
       "path": "scripts/eval/run.py",
-      "sha256": "f86b57c553e785a315e7203f933542948e5ccdc40c139d3bfbabebfc2fcce6a9",
+      "sha256": "ad507ae6f258c8c5f71d0fe3d3b3c7e29d9dd4ea8034f73ecb42999f505b70fc",
       "mode": "read-only",
       "oci_calls": []
     },

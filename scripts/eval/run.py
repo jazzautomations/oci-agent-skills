@@ -34,13 +34,21 @@ def candidates(root=ROOT):
 
 def commands(choices):
     output = []
+    documents = set()
+    import re
     for choice in choices:
         path = Path(choice['path'])
-        for document in [path, *sorted((path.parent / 'references').glob('*.md'))]:
-            findings = lint_fences.validate(document)
-            by_line = {f['line']: f['code'] for f in findings}
-            for line, _ in lint_fences.commands(document.read_text()):
-                output.append({'source': str(document.relative_to(ROOT)), 'line': line, 'valid': line not in by_line, 'finding': by_line.get(line)})
+        documents.add(path)
+        documents.update((path.parent / 'references').glob('*.md'))
+        for reference in re.findall(r'(?:\.\./)*references/[A-Za-z0-9_.-]+\.md', path.read_text()):
+            target = (path.parent / reference).resolve()
+            if target.is_file() and target.is_relative_to(ROOT):
+                documents.add(target)
+    for document in sorted(documents):
+        findings = lint_fences.validate(document)
+        by_line = {f['line']: f['code'] for f in findings}
+        for line, _ in lint_fences.commands(document.read_text()):
+            output.append({'source': str(document.relative_to(ROOT)), 'line': line, 'valid': line not in by_line, 'finding': by_line.get(line)})
     return output
 
 
