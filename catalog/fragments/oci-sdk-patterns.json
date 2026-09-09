@@ -1,0 +1,70 @@
+[
+  {
+    "id": "sdk-regions",
+    "skill": "oci-sdk-patterns",
+    "live": false,
+    "argv": [
+      "iam",
+      "region",
+      "list"
+    ]
+  },
+  {
+    "id": "sdk-region-subscriptions",
+    "skill": "oci-sdk-patterns",
+    "argv": [
+      "iam",
+      "region-subscription",
+      "list",
+      "--tenancy-id",
+      "${TENANCY_ID}"
+    ]
+  },
+  {
+    "id": "sdk-compartment-walk",
+    "skill": "oci-sdk-patterns",
+    "live": false,
+    "argv": [
+      "iam",
+      "compartment",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--compartment-id-in-subtree",
+      "true",
+      "--access-level",
+      "ACCESSIBLE",
+      "--lifecycle-state",
+      "ACTIVE",
+      "--limit",
+      "50"
+    ]
+  },
+  {
+    "id": "sdk-model-discovery",
+    "skill": "oci-sdk-patterns",
+    "argv": [
+      "generative-ai",
+      "model-collection",
+      "list-models",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  },
+  {
+    "id": "sdk-work-requests",
+    "skill": "oci-sdk-patterns",
+    "live": false,
+    "argv": [
+      "work-requests",
+      "work-request",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  }
+]
