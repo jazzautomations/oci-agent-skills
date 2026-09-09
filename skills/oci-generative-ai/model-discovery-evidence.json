@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-09",
+  "region": "us-chicago-1",
+  "operation": "generative-ai model-collection list-models",
+  "limit": 20,
+  "ok": true,
+  "count": 20,
+  "error": null,
+  "inference_executed": false
+}

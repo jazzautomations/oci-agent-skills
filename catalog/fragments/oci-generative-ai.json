@@ -1,0 +1,99 @@
+{
+  "examples": [
+    {
+      "id": "oci-generative-ai-1",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "model-collection",
+        "list-models",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,cap:capabilities,retired:\"time-deprecated\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-2",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "endpoint-collection",
+        "list-endpoints",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-3",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai",
+        "dedicated-ai-cluster-collection",
+        "list-dedicated-ai-clusters",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-4",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai-agent",
+        "agent",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-generative-ai-5",
+      "skill": "oci-generative-ai",
+      "argv": [
+        "generative-ai-agent",
+        "knowledge-base",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
