@@ -46,7 +46,8 @@ def main():
     except (ValueError,KeyError,TypeError):
         print(emit({'ok':False,'kind':'failed_or_malformed_read','ready_for_review':False}))
         return 2
-    print(emit({'ok':points>0,'datapoints':points,'series':len(result['data']),
+    print(emit({'ok':points>0, **({'kind':'no_datapoints'} if not points else {}),
+                'datapoints':points,'series':len(result['data']),
                 'ready_for_review':points>0,'alarm_created':False,'approved':False}))
     return 0 if points else 1
 

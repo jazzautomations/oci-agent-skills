@@ -111,6 +111,12 @@ def run_process(argv, *, executable=None, **kwargs):
 
 
 def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all=False):
+    """Read once; blank successful list/summarize output means an empty collection.
+
+    sanitize=False exposes that collection as data=[]; the default retains the
+    untrusted-output envelope with items=[]. Nonempty malformed JSON is preserved
+    for callers to reject, and failed reads never become empty successes.
+    """
     from redact import redact
     try:
         prepared = prepare(argv, profile=profile, region=region, allow_all=allow_all)
@@ -126,7 +132,12 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
                 pass
             return {'ok': False, 'error': {'kind': 'service', 'status': status}, 'argv': safe_argv, 'truncated': False}
         try:
-            payload = json.loads(response.stdout) if response.stdout.strip() else None
+            path, _ = parse_oci(prepared)
+            operation = path.rsplit(' ', 1)[-1]
+            collection = (operation in {'list', 'summarize'}
+                          or operation.startswith(('list-', 'summarize-', 'request-summarized-'))
+                          or operation.endswith('-list'))
+            payload = json.loads(response.stdout) if response.stdout.strip() else ([] if collection else None)
         except ValueError:
             payload = response.stdout
         data = envelope(payload, source='oci:cli:read', kind='generic', complete=False) if sanitize else payload

@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/check_skill_scripts.py",
-      "sha256": "6ec808fedfc5da46d835551a6be09c2dde6afe5e83378455afd46a56d966b8ed",
+      "sha256": "7426c6d752d3bf0fdff3651a3ab780f42e0afca467bdb18fe8b36b949411ab4b",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -201,7 +201,7 @@
     },
     {
       "path": "scripts/lib/oci_ro.py",
-      "sha256": "bff7ad9bf8edb76576a339ddfda24526929a714cf914bf900bfbfd0941cf7c2f",
+      "sha256": "8f5e76c56c408ae55eef0f8b4383df1b01931b0a85f5597624e7d2ed375bd550",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -360,7 +360,7 @@
     },
     {
       "path": "skills/oci-monitoring-alarms/scripts/validate_mql.py",
-      "sha256": "9069b2880e61ca7b01ec805ec87ed728e15e322e1675029ce8f4b68a89420b50",
+      "sha256": "7e8f75ddf2f7c8e115b23c21055708806e11b69230dbc21594da88043f6fa6e0",
       "mode": "read-only",
       "oci_calls": []
     },

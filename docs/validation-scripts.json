@@ -1,5 +1,5 @@
 {
-  "validated_at": "2026-09-09T20:03:57.332598+00:00",
+  "validated_at": "2026-09-09T20:14:37.562548+00:00",
   "mode": "scoped_script_execution",
   "scope": "Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.",
   "scope_inputs": {
@@ -130,14 +130,14 @@
     },
     {
       "script": "skills/oci-monitoring-alarms/scripts/validate_mql.py",
-      "status": "failed",
-      "exit_code": 2,
+      "status": "ran, gap",
+      "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
       "script": "skills/oci-monitoring-alarms/scripts/validate_mql.sh",
-      "status": "failed",
-      "exit_code": 2,
+      "status": "ran, gap",
+      "exit_code": 1,
       "owner": "OCI operator / skill maintainer"
     },
     {
