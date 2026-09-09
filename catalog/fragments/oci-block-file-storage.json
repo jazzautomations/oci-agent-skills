@@ -1,0 +1,189 @@
+[
+  {
+    "id": "oci-block-file-storage-1",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "bv",
+      "volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,size:\"size-in-gbs\",vpu:\"vpus-per-gb\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-2",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "bv",
+      "boot-volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-3",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "compute",
+      "volume-attachment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{volume:\"volume-id\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-4",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "bv",
+      "backup",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,source:\"volume-id\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-5",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "fs",
+      "mount-target",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,exports:\"export-set-id\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-6",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "bv",
+      "volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}",
+      "--limit",
+      "100",
+      "--no-retry"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-7",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "compute",
+      "volume-attachment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--query",
+      "data[].{volume:\"volume-id\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}",
+      "--limit",
+      "100",
+      "--no-retry"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-8",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "bv",
+      "boot-volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}",
+      "--limit",
+      "100",
+      "--no-retry"
+    ]
+  },
+  {
+    "id": "oci-block-file-storage-9",
+    "skill": "oci-block-file-storage",
+    "argv": [
+      "compute",
+      "boot-volume-attachment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--query",
+      "data[].{volume:\"boot-volume-id\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}",
+      "--limit",
+      "100",
+      "--no-retry"
+    ]
+  }
+]
