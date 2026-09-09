@@ -1,0 +1,12 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: tenancy-resource-inventory
+prompt: Inventory every resource in the tenancy and group it by resource type.
+tags:
+- governance
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

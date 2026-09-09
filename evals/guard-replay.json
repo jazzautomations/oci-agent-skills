@@ -1,0 +1,18 @@
+[
+  {
+    "id": "T37",
+    "command": "oci compute instance terminate --instance-id EXAMPLE --force"
+  },
+  {
+    "id": "T38",
+    "command": "oci os bucket delete --bucket-name EXAMPLE --empty --force"
+  },
+  {
+    "id": "T39",
+    "command": "oci iam policy create --compartment-id EXAMPLE --name EXAMPLE --description EXAMPLE --statements EXAMPLE"
+  },
+  {
+    "id": "T40",
+    "command": "terraform apply -auto-approve"
+  }
+]

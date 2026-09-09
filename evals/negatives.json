@@ -1,0 +1,402 @@
+[
+  {
+    "id": "N01",
+    "lang": "en",
+    "prompt": "spin up a t3.medium in us-east-1 and attach a 100gb gp3 volume",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-compute",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N02",
+    "lang": "pt",
+    "prompt": "como abro a porta 443 no security group da EC2? o inbound tá liberado mas não responde",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-networking",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N03",
+    "lang": "en",
+    "prompt": "my S3 bucket is public and I need to lock it down with a bucket policy",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-object-storage",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N04",
+    "lang": "en",
+    "prompt": "write an IAM policy in AWS that lets a lambda read one dynamodb table",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-iam-policy",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N05",
+    "lang": "pt",
+    "prompt": "o custo da minha conta AWS subiu 40% mês passado, como descubro o serviço culpado no Cost Explorer",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-cost-analysis",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N06",
+    "lang": "en",
+    "prompt": "terraform apply against the aws provider keeps failing with InvalidClientTokenId",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-terraform",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N07",
+    "lang": "en",
+    "prompt": "create a GKE autopilot cluster and give the workload identity access to a GCS bucket",
+    "expected_skill": null,
+    "trap_class": "other-cloud-gcp",
+    "near_miss_skill": "oci-oke",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N08",
+    "lang": "pt",
+    "prompt": "preciso de um bucket no Google Cloud Storage com lifecycle de 30 dias",
+    "expected_skill": null,
+    "trap_class": "other-cloud-gcp",
+    "near_miss_skill": "oci-object-storage",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N09",
+    "lang": "en",
+    "prompt": "how much does a n2-standard-8 cost per month in europe-west4",
+    "expected_skill": null,
+    "trap_class": "other-cloud-gcp",
+    "near_miss_skill": "oci-pricing",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N10",
+    "lang": "en",
+    "prompt": "set up an Azure Application Gateway in front of two app service instances",
+    "expected_skill": null,
+    "trap_class": "other-cloud-azure",
+    "near_miss_skill": "oci-networking",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N11",
+    "lang": "pt",
+    "prompt": "como crio um resource group no Azure e movo os recursos pra ele",
+    "expected_skill": null,
+    "trap_class": "other-cloud-azure",
+    "near_miss_skill": "oci-tenancy-governance",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N12",
+    "lang": "en",
+    "prompt": "az login says the tenant is not found, my service principal cert expired",
+    "expected_skill": null,
+    "trap_class": "other-cloud-azure",
+    "near_miss_skill": "oci-cli-auth",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N13",
+    "lang": "en",
+    "prompt": "kubectl apply rejects my label, says more than 63 chars on metadata.labels values",
+    "expected_skill": null,
+    "trap_class": "generic-k8s",
+    "near_miss_skill": "oci-oke",
+    "source": "https://stackoverflow.com/questions/60970430/kubectl-apply-does-not-allow-more-than-63-chars-on-metadata-labels-values",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N14",
+    "lang": "en",
+    "prompt": "my pods are Pending on a bare-metal kubeadm cluster, no cloud provider involved",
+    "expected_skill": null,
+    "trap_class": "generic-k8s",
+    "near_miss_skill": "oci-oke",
+    "source": "https://stackoverflow.com/questions/54942723/vernemq-on-kubernetes-cluster",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N15",
+    "lang": "en",
+    "prompt": "how do I configure containerd registry auth in config.toml",
+    "expected_skill": null,
+    "trap_class": "generic-container",
+    "near_miss_skill": "oci-devops-pipelines",
+    "source": "https://stackoverflow.com/questions/76136482/containerd-v1-4-how-to-authenticate-by-config",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N16",
+    "lang": "en",
+    "prompt": "how do I import and run a multi-platform OCI image in Docker for macOS",
+    "expected_skill": null,
+    "trap_class": "homonym-oci-oci",
+    "near_miss_skill": "oci-navigator",
+    "source": "https://stackoverflow.com/questions/72945407/how-do-i-import-and-run-a-multi-platform-oci-image-in-docker-for-macos",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N17",
+    "lang": "en",
+    "prompt": "validate my OCI image manifest against the Open Container Initiative spec",
+    "expected_skill": null,
+    "trap_class": "homonym-oci-oci",
+    "near_miss_skill": "oci-navigator",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N18",
+    "lang": "en",
+    "prompt": "calico networking is broken between my nodes, BGP peers are down",
+    "expected_skill": null,
+    "trap_class": "generic-k8s",
+    "near_miss_skill": "oci-networking",
+    "source": "https://stackoverflow.com/questions/53247682/kubernetes-calico-on-oracle-cloud-vms",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N19",
+    "lang": "en",
+    "prompt": "postgres autovacuum is not keeping up and the table is bloated to 400gb",
+    "expected_skill": null,
+    "trap_class": "generic-db",
+    "near_miss_skill": "oracle-db-fleet",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N20",
+    "lang": "pt",
+    "prompt": "como faço backup incremental do meu postgres 16 com pgbackrest?",
+    "expected_skill": null,
+    "trap_class": "generic-db",
+    "near_miss_skill": "oci-dr-backup",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N21",
+    "lang": "en",
+    "prompt": "mysql replication lag keeps growing on my self-hosted replica",
+    "expected_skill": null,
+    "trap_class": "generic-db",
+    "near_miss_skill": "oracle-db-fleet",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N22",
+    "lang": "en",
+    "prompt": "Unable to load dynamic library php_oci8_19.dll - what am I missing",
+    "expected_skill": null,
+    "trap_class": "homonym-oci-oci8",
+    "near_miss_skill": "oci-cli-auth",
+    "source": "https://stackoverflow.com/questions/73715762/unable-to-load-dynamic-library-php-oci8-19-dll",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N23",
+    "lang": "en",
+    "prompt": "what is the difference between OCI-C and OCI, I found both in an old runbook",
+    "expected_skill": null,
+    "trap_class": "legacy-product",
+    "near_miss_skill": "oci-navigator",
+    "source": "https://stackoverflow.com/questions/49633591/differences-between-oci-c-and-oci",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N24",
+    "lang": "en",
+    "prompt": "@Slf4j cannot find symbol LOG in my maven build",
+    "expected_skill": null,
+    "trap_class": "generic-java",
+    "near_miss_skill": "oci-sdk-patterns",
+    "source": "https://stackoverflow.com/questions/57741629/slf4j-cannot-find-symbol-log",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N25",
+    "lang": "en",
+    "prompt": "which java version should I use, and is the Oracle JDK license free for production",
+    "expected_skill": null,
+    "trap_class": "oracle-nonoci",
+    "near_miss_skill": "oci-navigator",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N26",
+    "lang": "pt",
+    "prompt": "o GraalVM native-image tá estourando memória no build, sem relação com nuvem",
+    "expected_skill": null,
+    "trap_class": "oracle-nonoci",
+    "near_miss_skill": "oci-sdk-patterns",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N27",
+    "lang": "en",
+    "prompt": "ORA-00942 table or view does not exist on my on-prem 19c instance",
+    "expected_skill": null,
+    "trap_class": "oracle-onprem",
+    "near_miss_skill": "oracle-db-sql-access",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N28",
+    "lang": "pt",
+    "prompt": "meu Oracle 12c on-premise não sobe depois de um shutdown abort, ORA-01113",
+    "expected_skill": null,
+    "trap_class": "oracle-onprem",
+    "near_miss_skill": "oracle-db-fleet",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N29",
+    "lang": "en",
+    "prompt": "Informatica is picking up the wrong odbc.ini for my workflow mappings",
+    "expected_skill": null,
+    "trap_class": "third-party",
+    "near_miss_skill": "oracle-db-sql-access",
+    "source": "https://stackoverflow.com/questions/69222796/informatica-wrong-odbc-ini-file-referred-by-workflow-mappings",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N30",
+    "lang": "en",
+    "prompt": "python cant install TA-lib on an arm64 ubuntu box",
+    "expected_skill": null,
+    "trap_class": "generic-linux",
+    "near_miss_skill": "oci-compute",
+    "source": "https://stackoverflow.com/questions/74739356/python-cant-install-ta-lib-in-oracle-arm64-vm-ubuntu-20-04",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N31",
+    "lang": "pt",
+    "prompt": "meu notebook não liga depois da atualização do windows, tela azul",
+    "expected_skill": null,
+    "trap_class": "not-cloud",
+    "near_miss_skill": "oci-incident-triage",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N32",
+    "lang": "en",
+    "prompt": "the app on my laptop is down, it just crashes on start - it's a local electron build",
+    "expected_skill": null,
+    "trap_class": "not-cloud",
+    "near_miss_skill": "oci-incident-triage",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N33",
+    "lang": "en",
+    "prompt": "is Notion free for a team of 5",
+    "expected_skill": null,
+    "trap_class": "is-it-free-other",
+    "near_miss_skill": "oci-free-tier",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N34",
+    "lang": "pt",
+    "prompt": "o plano gratuito do Supabase tem limite de quantos projetos?",
+    "expected_skill": null,
+    "trap_class": "is-it-free-other",
+    "near_miss_skill": "oci-free-tier",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N35",
+    "lang": "en",
+    "prompt": "is GitHub Actions free for private repos and how many minutes do I get",
+    "expected_skill": null,
+    "trap_class": "is-it-free-other",
+    "near_miss_skill": "oci-free-tier",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N36",
+    "lang": "en",
+    "prompt": "how do I claim a subdomain of a vendor's domain for my project page",
+    "expected_skill": null,
+    "trap_class": "not-cloud-ops",
+    "near_miss_skill": "oci-networking",
+    "source": "https://stackoverflow.com/questions/57636808/how-can-one-claim-a-subdomain-of-oracle-com",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N37",
+    "lang": "en",
+    "prompt": "sagemaker cannot find /opt/ml/input/data/test/revenue_train.csv in my training job",
+    "expected_skill": null,
+    "trap_class": "other-cloud-aws",
+    "near_miss_skill": "oci-data-platform",
+    "source": "https://stackoverflow.com/questions/73517643/no-such-file-or-directory-opt-ml-input-data-test-revenue-train-csv-sagemaker",
+    "source_type": "stackoverflow"
+  },
+  {
+    "id": "N38",
+    "lang": "pt",
+    "prompt": "preciso de um prompt melhor pro meu chatbot no OpenAI, tá alucinando muito",
+    "expected_skill": null,
+    "trap_class": "other-llm",
+    "near_miss_skill": "oci-generative-ai",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N39",
+    "lang": "en",
+    "prompt": "help me tune an nginx reverse proxy on a hetzner box, 502 under load",
+    "expected_skill": null,
+    "trap_class": "generic-linux",
+    "near_miss_skill": "oci-networking",
+    "source": null,
+    "source_type": "none"
+  },
+  {
+    "id": "N40",
+    "lang": "en",
+    "prompt": "rename a component in an Oracle Integration flow through the visual designer",
+    "expected_skill": null,
+    "trap_class": "oracle-saas-ui-only",
+    "near_miss_skill": "oracle-enterprise-apps",
+    "source": "https://stackoverflow.com/questions/52158394/how-to-rename-any-component-in-a-flow-developed-using-oracle-integration-cloud-s",
+    "source_type": "stackoverflow"
+  }
+]

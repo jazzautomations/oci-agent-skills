@@ -1,0 +1,7 @@
+{
+  "command": "claude plugin eval . --threshold 0.8 --json evals/results/run.json",
+  "status": "unavailable",
+  "reason": "plugin eval is currently in early access",
+  "date": "2026-09-09",
+  "substitution": "scripts/eval/run.py, offline proxies only; no skill-creator model-backed evaluation performed"
+}

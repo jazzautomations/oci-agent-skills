@@ -1,0 +1,13 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: open-security-lists
+prompt: Find every security list that allows 0.0.0.0/0 on port 22.
+tags:
+- security
+- networking
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

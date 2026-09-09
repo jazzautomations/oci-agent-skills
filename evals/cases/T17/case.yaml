@@ -1,0 +1,13 @@
+# Grader key spelling is early-access unverified; evals/evals.json is the alternate shape.
+name: orphan-volumes
+prompt: Find detached block volumes that are still billing.
+tags:
+- storage
+- finops
+- read-only
+runs: 3
+max_turns: 12
+timeout_seconds: 300
+graders:
+- type: llm
+  file: graders/criteria.md

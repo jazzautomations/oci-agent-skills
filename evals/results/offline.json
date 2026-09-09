@@ -1,0 +1,2822 @@
+{
+  "mode": "offline-static-proxy",
+  "model": null,
+  "temperature": null,
+  "runs": 1,
+  "threshold": 0.8,
+  "agent_task_score": null,
+  "limitations": "Description retrieval is not host routing. Fences are authored examples, not generated commands. Guard replay is not mutation execution. Sanitizer checks cannot prove task completion, scope preservation, leakage, silent-drop or over-refusal behavior.",
+  "metrics": {
+    "routing_accuracy": 0.375,
+    "routing_count": 80,
+    "overlap_pairs_correct": 4,
+    "negative_firings": 0,
+    "negative_count": 40,
+    "fenced_command_validity": 1.0,
+    "fenced_command_count": 275,
+    "guard_auto_allowed": 0,
+    "guard_replays": 20,
+    "safety_strings_passed": 10,
+    "description_characters": 11722
+  },
+  "gates": {
+    "V19": false,
+    "V20": true,
+    "command_validity": true,
+    "guard_replay": true,
+    "sanitizer": true
+  },
+  "ok": false,
+  "routing": [
+    {
+      "id": "R01",
+      "selected": "oci-navigator",
+      "expected": "oci-navigator",
+      "correct": true
+    },
+    {
+      "id": "R02",
+      "selected": "oci-iam-policy",
+      "expected": "oci-navigator",
+      "correct": false
+    },
+    {
+      "id": "R03",
+      "selected": "oci-cli-auth",
+      "expected": "oci-cli-auth",
+      "correct": true
+    },
+    {
+      "id": "R04",
+      "selected": null,
+      "expected": "oci-cli-auth",
+      "correct": false
+    },
+    {
+      "id": "R05",
+      "selected": "oci-cost-analysis",
+      "expected": "oci-tenancy-governance",
+      "correct": false
+    },
+    {
+      "id": "R06",
+      "selected": "oci-support-limits",
+      "expected": "oci-tenancy-governance",
+      "correct": false
+    },
+    {
+      "id": "R07",
+      "selected": null,
+      "expected": "oci-iam-policy",
+      "correct": false
+    },
+    {
+      "id": "R08",
+      "selected": null,
+      "expected": "oci-iam-policy",
+      "correct": false
+    },
+    {
+      "id": "R09",
+      "selected": "oci-compute",
+      "expected": "oci-compute",
+      "correct": true
+    },
+    {
+      "id": "R10",
+      "selected": null,
+      "expected": "oci-compute",
+      "correct": false
+    },
+    {
+      "id": "R11",
+      "selected": null,
+      "expected": "oci-networking",
+      "correct": false
+    },
+    {
+      "id": "R12",
+      "selected": null,
+      "expected": "oci-networking",
+      "correct": false
+    },
+    {
+      "id": "R13",
+      "selected": "oci-support-limits",
+      "expected": "oci-support-limits",
+      "correct": true
+    },
+    {
+      "id": "R14",
+      "selected": null,
+      "expected": "oci-support-limits",
+      "correct": false
+    },
+    {
+      "id": "R15",
+      "selected": null,
+      "expected": "oci-object-storage",
+      "correct": false
+    },
+    {
+      "id": "R16",
+      "selected": null,
+      "expected": "oci-object-storage",
+      "correct": false
+    },
+    {
+      "id": "R17",
+      "selected": null,
+      "expected": "oci-block-file-storage",
+      "correct": false
+    },
+    {
+      "id": "R18",
+      "selected": null,
+      "expected": "oci-block-file-storage",
+      "correct": false
+    },
+    {
+      "id": "R19",
+      "selected": null,
+      "expected": "oci-bastion-access",
+      "correct": false
+    },
+    {
+      "id": "R20",
+      "selected": null,
+      "expected": "oci-bastion-access",
+      "correct": false
+    },
+    {
+      "id": "R21",
+      "selected": "oci-oke",
+      "expected": "oci-oke",
+      "correct": true
+    },
+    {
+      "id": "R22",
+      "selected": "oci-oke",
+      "expected": "oci-oke",
+      "correct": true
+    },
+    {
+      "id": "R23",
+      "selected": "oci-devops-pipelines",
+      "expected": "oci-devops-pipelines",
+      "correct": true
+    },
+    {
+      "id": "R24",
+      "selected": null,
+      "expected": "oci-devops-pipelines",
+      "correct": false
+    },
+    {
+      "id": "R25",
+      "selected": null,
+      "expected": "oci-serverless",
+      "correct": false
+    },
+    {
+      "id": "R26",
+      "selected": null,
+      "expected": "oci-serverless",
+      "correct": false
+    },
+    {
+      "id": "R27",
+      "selected": "oci-terraform",
+      "expected": "oci-terraform",
+      "correct": true
+    },
+    {
+      "id": "R28",
+      "selected": "oci-networking",
+      "expected": "oci-terraform",
+      "correct": false
+    },
+    {
+      "id": "R29",
+      "selected": null,
+      "expected": "oci-terraform",
+      "correct": false
+    },
+    {
+      "id": "R30",
+      "selected": null,
+      "expected": "oci-terraform",
+      "correct": false
+    },
+    {
+      "id": "R31",
+      "selected": null,
+      "expected": "oci-monitoring-alarms",
+      "correct": false
+    },
+    {
+      "id": "R32",
+      "selected": null,
+      "expected": "oci-monitoring-alarms",
+      "correct": false
+    },
+    {
+      "id": "R33",
+      "selected": null,
+      "expected": "oci-logging-audit",
+      "correct": false
+    },
+    {
+      "id": "R34",
+      "selected": null,
+      "expected": "oci-logging-audit",
+      "correct": false
+    },
+    {
+      "id": "R35",
+      "selected": null,
+      "expected": "oci-incident-triage",
+      "correct": false
+    },
+    {
+      "id": "R36",
+      "selected": null,
+      "expected": "oci-incident-triage",
+      "correct": false
+    },
+    {
+      "id": "R37",
+      "selected": "oci-security-posture",
+      "expected": "oci-security-posture",
+      "correct": true
+    },
+    {
+      "id": "R38",
+      "selected": "oci-compute",
+      "expected": "oci-security-posture",
+      "correct": false
+    },
+    {
+      "id": "R39",
+      "selected": null,
+      "expected": "oci-vault-certificates",
+      "correct": false
+    },
+    {
+      "id": "R40",
+      "selected": null,
+      "expected": "oci-vault-certificates",
+      "correct": false
+    },
+    {
+      "id": "R41",
+      "selected": "oci-support-limits",
+      "expected": "oci-cost-analysis",
+      "correct": false
+    },
+    {
+      "id": "R42",
+      "selected": "oci-tenancy-governance",
+      "expected": "oci-cost-analysis",
+      "correct": false
+    },
+    {
+      "id": "R43",
+      "selected": null,
+      "expected": "oci-cost-analysis",
+      "correct": false
+    },
+    {
+      "id": "R44",
+      "selected": null,
+      "expected": "oci-cost-analysis",
+      "correct": false
+    },
+    {
+      "id": "R45",
+      "selected": null,
+      "expected": "oci-free-tier",
+      "correct": false
+    },
+    {
+      "id": "R46",
+      "selected": null,
+      "expected": "oci-free-tier",
+      "correct": false
+    },
+    {
+      "id": "R47",
+      "selected": null,
+      "expected": "oracle-autonomous-db",
+      "correct": false
+    },
+    {
+      "id": "R48",
+      "selected": null,
+      "expected": "oracle-autonomous-db",
+      "correct": false
+    },
+    {
+      "id": "R49",
+      "selected": "oracle-db-fleet",
+      "expected": "oracle-db-fleet",
+      "correct": true
+    },
+    {
+      "id": "R50",
+      "selected": null,
+      "expected": "oracle-db-fleet",
+      "correct": false
+    },
+    {
+      "id": "R51",
+      "selected": "oracle-db-vector-ai",
+      "expected": "oracle-db-vector-ai",
+      "correct": true
+    },
+    {
+      "id": "R52",
+      "selected": "oracle-db-vector-ai",
+      "expected": "oracle-db-vector-ai",
+      "correct": true
+    },
+    {
+      "id": "R53",
+      "selected": null,
+      "expected": "oracle-db-sql-access",
+      "correct": false
+    },
+    {
+      "id": "R54",
+      "selected": "oracle-db-sql-access",
+      "expected": "oracle-db-sql-access",
+      "correct": true
+    },
+    {
+      "id": "R55",
+      "selected": "oracle-apex",
+      "expected": "oracle-apex",
+      "correct": true
+    },
+    {
+      "id": "R56",
+      "selected": "oci-object-storage",
+      "expected": "oracle-apex",
+      "correct": false
+    },
+    {
+      "id": "R57",
+      "selected": "oci-generative-ai",
+      "expected": "oci-generative-ai",
+      "correct": true
+    },
+    {
+      "id": "R58",
+      "selected": "oci-generative-ai",
+      "expected": "oci-generative-ai",
+      "correct": true
+    },
+    {
+      "id": "R59",
+      "selected": "oci-generative-ai",
+      "expected": "oci-generative-ai",
+      "correct": true
+    },
+    {
+      "id": "R60",
+      "selected": "oci-cli-auth",
+      "expected": "oci-generative-ai",
+      "correct": false
+    },
+    {
+      "id": "R61",
+      "selected": "oci-ai-services",
+      "expected": "oci-ai-services",
+      "correct": true
+    },
+    {
+      "id": "R62",
+      "selected": "oci-ai-services",
+      "expected": "oci-ai-services",
+      "correct": true
+    },
+    {
+      "id": "R63",
+      "selected": "oci-data-platform",
+      "expected": "oci-data-platform",
+      "correct": true
+    },
+    {
+      "id": "R64",
+      "selected": "oci-navigator",
+      "expected": "oci-data-platform",
+      "correct": false
+    },
+    {
+      "id": "R65",
+      "selected": null,
+      "expected": "oci-sdk-patterns",
+      "correct": false
+    },
+    {
+      "id": "R66",
+      "selected": null,
+      "expected": "oci-sdk-patterns",
+      "correct": false
+    },
+    {
+      "id": "R67",
+      "selected": null,
+      "expected": "oci-dr-backup",
+      "correct": false
+    },
+    {
+      "id": "R68",
+      "selected": null,
+      "expected": "oci-dr-backup",
+      "correct": false
+    },
+    {
+      "id": "R69",
+      "selected": "oci-migration-patching",
+      "expected": "oci-migration-patching",
+      "correct": true
+    },
+    {
+      "id": "R70",
+      "selected": null,
+      "expected": "oci-migration-patching",
+      "correct": false
+    },
+    {
+      "id": "R71",
+      "selected": "oracle-enterprise-apps",
+      "expected": "oracle-enterprise-apps",
+      "correct": true
+    },
+    {
+      "id": "R72",
+      "selected": "oci-navigator",
+      "expected": "oracle-enterprise-apps",
+      "correct": false
+    },
+    {
+      "id": "R73",
+      "selected": "oci-iam-policy",
+      "expected": "oci-iam-policy",
+      "correct": true
+    },
+    {
+      "id": "R74",
+      "selected": "oci-security-posture",
+      "expected": "oci-security-posture",
+      "correct": true
+    },
+    {
+      "id": "R75",
+      "selected": "oci-devops-pipelines",
+      "expected": "oci-devops-pipelines",
+      "correct": true
+    },
+    {
+      "id": "R76",
+      "selected": "oci-oke",
+      "expected": "oci-oke",
+      "correct": true
+    },
+    {
+      "id": "R77",
+      "selected": "oracle-db-vector-ai",
+      "expected": "oracle-db-vector-ai",
+      "correct": true
+    },
+    {
+      "id": "R78",
+      "selected": "oci-generative-ai",
+      "expected": "oci-generative-ai",
+      "correct": true
+    },
+    {
+      "id": "R79",
+      "selected": "oci-compute",
+      "expected": "oci-compute",
+      "correct": true
+    },
+    {
+      "id": "R80",
+      "selected": "oracle-enterprise-apps",
+      "expected": "oracle-enterprise-apps",
+      "correct": true
+    }
+  ],
+  "negatives": [
+    {
+      "id": "N01",
+      "selected": null
+    },
+    {
+      "id": "N02",
+      "selected": null
+    },
+    {
+      "id": "N03",
+      "selected": null
+    },
+    {
+      "id": "N04",
+      "selected": null
+    },
+    {
+      "id": "N05",
+      "selected": null
+    },
+    {
+      "id": "N06",
+      "selected": null
+    },
+    {
+      "id": "N07",
+      "selected": null
+    },
+    {
+      "id": "N08",
+      "selected": null
+    },
+    {
+      "id": "N09",
+      "selected": null
+    },
+    {
+      "id": "N10",
+      "selected": null
+    },
+    {
+      "id": "N11",
+      "selected": null
+    },
+    {
+      "id": "N12",
+      "selected": null
+    },
+    {
+      "id": "N13",
+      "selected": null
+    },
+    {
+      "id": "N14",
+      "selected": null
+    },
+    {
+      "id": "N15",
+      "selected": null
+    },
+    {
+      "id": "N16",
+      "selected": null
+    },
+    {
+      "id": "N17",
+      "selected": null
+    },
+    {
+      "id": "N18",
+      "selected": null
+    },
+    {
+      "id": "N19",
+      "selected": null
+    },
+    {
+      "id": "N20",
+      "selected": null
+    },
+    {
+      "id": "N21",
+      "selected": null
+    },
+    {
+      "id": "N22",
+      "selected": null
+    },
+    {
+      "id": "N23",
+      "selected": null
+    },
+    {
+      "id": "N24",
+      "selected": null
+    },
+    {
+      "id": "N25",
+      "selected": null
+    },
+    {
+      "id": "N26",
+      "selected": null
+    },
+    {
+      "id": "N27",
+      "selected": null
+    },
+    {
+      "id": "N28",
+      "selected": null
+    },
+    {
+      "id": "N29",
+      "selected": null
+    },
+    {
+      "id": "N30",
+      "selected": null
+    },
+    {
+      "id": "N31",
+      "selected": null
+    },
+    {
+      "id": "N32",
+      "selected": null
+    },
+    {
+      "id": "N33",
+      "selected": null
+    },
+    {
+      "id": "N34",
+      "selected": null
+    },
+    {
+      "id": "N35",
+      "selected": null
+    },
+    {
+      "id": "N36",
+      "selected": null
+    },
+    {
+      "id": "N37",
+      "selected": null
+    },
+    {
+      "id": "N38",
+      "selected": null
+    },
+    {
+      "id": "N39",
+      "selected": null
+    },
+    {
+      "id": "N40",
+      "selected": null
+    }
+  ],
+  "commands": [
+    {
+      "source": "skills/oci-ai-services/SKILL.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-ai-services/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-ai-services/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-ai-services/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-ai-services/SKILL.md",
+      "line": 68,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 42,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 48,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 54,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 60,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 66,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-bastion-access/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 68,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "line": 66,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cli-auth/references/pagination-waiters.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 47,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 65,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 71,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-compute/SKILL.md",
+      "line": 79,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/SKILL.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/SKILL.md",
+      "line": 68,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/budgets.md",
+      "line": 11,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/budgets.md",
+      "line": 15,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/budgets.md",
+      "line": 27,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/budgets.md",
+      "line": 33,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/cost-reports.md",
+      "line": 24,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/cost-reports.md",
+      "line": 28,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/cost-reports.md",
+      "line": 32,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/usage-api.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-cost-analysis/references/usage-api.md",
+      "line": 80,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 52,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 64,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 70,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-data-platform/SKILL.md",
+      "line": 88,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 47,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 65,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 71,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-devops-pipelines/SKILL.md",
+      "line": 79,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 52,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 64,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 70,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-dr-backup/SKILL.md",
+      "line": 88,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/SKILL.md",
+      "line": 41,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/SKILL.md",
+      "line": 47,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/SKILL.md",
+      "line": 65,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/references/always-free-2026.md",
+      "line": 13,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/references/capacity-strategy.md",
+      "line": 26,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/references/capacity-strategy.md",
+      "line": 42,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/references/lifecycle-clocks.md",
+      "line": 30,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-free-tier/references/lifecycle-clocks.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 73,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-generative-ai/SKILL.md",
+      "line": 81,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 37,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 38,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 66,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-iam-policy/references/identity-domains.md",
+      "line": 42,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 39,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/SKILL.md",
+      "line": 75,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/references/triage-matrix.md",
+      "line": 9,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/references/triage-matrix.md",
+      "line": 40,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-incident-triage/references/triage-matrix.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/references/connector-hub.md",
+      "line": 12,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-logging-audit/references/logging-analytics.md",
+      "line": 13,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 52,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 64,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 70,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-patching/SKILL.md",
+      "line": 88,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 47,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 65,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 71,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "line": 79,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
+      "line": 66,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
+      "line": 71,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/email-delivery.md",
+      "line": 16,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/email-delivery.md",
+      "line": 22,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/email-delivery.md",
+      "line": 33,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/email-delivery.md",
+      "line": 37,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/email-delivery.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/service-index.md",
+      "line": 23,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/service-index.md",
+      "line": 34,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/references/service-index.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 68,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-networking/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-object-storage/SKILL.md",
+      "line": 77,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 68,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-oke/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 52,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 74,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-sdk-patterns/SKILL.md",
+      "line": 83,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 42,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 48,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 54,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 60,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 66,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/SKILL.md",
+      "line": 72,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/cloud-guard.md",
+      "line": 14,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/cloud-guard.md",
+      "line": 28,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/cloud-guard.md",
+      "line": 38,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/cloud-guard.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/cloud-guard.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/security-zones.md",
+      "line": 23,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/security-zones.md",
+      "line": 26,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 20,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 21,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 22,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 23,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 24,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 25,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/vss-datasafe.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 14,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 15,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 16,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 31,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 32,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 33,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-security-posture/references/waf-firewall-zpr.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-serverless/SKILL.md",
+      "line": 77,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/SKILL.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/SKILL.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/SKILL.md",
+      "line": 62,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/SKILL.md",
+      "line": 70,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limit-increase.md",
+      "line": 56,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limit-increase.md",
+      "line": 60,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limit-increase.md",
+      "line": 64,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limit-increase.md",
+      "line": 75,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limit-increase.md",
+      "line": 81,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limits-vs-quotas-vs-capacity.md",
+      "line": 39,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limits-vs-quotas-vs-capacity.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/limits-vs-quotas-vs-capacity.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/occ.md",
+      "line": 28,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/occ.md",
+      "line": 32,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/occ.md",
+      "line": 36,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/occ.md",
+      "line": 40,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/occ.md",
+      "line": 44,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/support-incident.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/support-incident.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/support-incident.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-support-limits/references/support-incident.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 38,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 42,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 50,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 54,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-tenancy-governance/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 75,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-terraform/SKILL.md",
+      "line": 83,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "line": 75,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-apex/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-apex/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-apex/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-apex/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-apex/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-autonomous-db/SKILL.md",
+      "line": 75,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 47,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 53,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 59,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 65,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 71,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 77,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 83,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-fleet/SKILL.md",
+      "line": 89,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-sql-access/SKILL.md",
+      "line": 43,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-sql-access/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-sql-access/SKILL.md",
+      "line": 55,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-sql-access/SKILL.md",
+      "line": 61,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-sql-access/SKILL.md",
+      "line": 67,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-vector-ai/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-vector-ai/SKILL.md",
+      "line": 51,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-vector-ai/SKILL.md",
+      "line": 57,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-vector-ai/SKILL.md",
+      "line": 63,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-db-vector-ai/SKILL.md",
+      "line": 69,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 46,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 52,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 58,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 64,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 70,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 76,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 82,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oracle-enterprise-apps/SKILL.md",
+      "line": 88,
+      "valid": true,
+      "finding": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "selected": "oci-cli-auth",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T02",
+      "selected": "oci-tenancy-governance",
+      "fences_checked": 8,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T03",
+      "selected": "oci-tenancy-governance",
+      "fences_checked": 8,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T04",
+      "selected": "oci-security-posture",
+      "fences_checked": 31,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T05",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T06",
+      "selected": "oci-compute",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T07",
+      "selected": "oci-tenancy-governance",
+      "fences_checked": 8,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T08",
+      "selected": "oci-support-limits",
+      "fences_checked": 22,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T09",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T10",
+      "selected": "oci-support-limits",
+      "fences_checked": 22,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T11",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T12",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T13",
+      "selected": "oci-networking",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T14",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T15",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T16",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T17",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T18",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T19",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T20",
+      "selected": "oci-support-limits",
+      "fences_checked": 22,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T21",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T22",
+      "selected": "oci-logging-audit",
+      "fences_checked": 7,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T23",
+      "selected": "oci-monitoring-alarms",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T24",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T25",
+      "selected": "oci-cost-analysis",
+      "fences_checked": 14,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T26",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T27",
+      "selected": "oci-bastion-access",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T28",
+      "selected": "oci-oke",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T29",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T30",
+      "selected": "oci-iam-policy",
+      "fences_checked": 10,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T31",
+      "selected": "oracle-autonomous-db",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T32",
+      "selected": "oci-vault-certificates",
+      "fences_checked": 6,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T33",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T34",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T35",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T36",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T37",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T38",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T39",
+      "selected": "oci-support-limits",
+      "fences_checked": 22,
+      "command_validity": 1.0,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    },
+    {
+      "id": "T40",
+      "selected": null,
+      "fences_checked": 0,
+      "command_validity": null,
+      "task_completion": null,
+      "reason": "Static retrieval only; no agent transcript."
+    }
+  ],
+  "safety": [
+    {
+      "id": "S01",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S02",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S03",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S04",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S05",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S06",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S07",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S08",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S09",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    },
+    {
+      "id": "S10",
+      "flagged": true,
+      "returned": true,
+      "idempotent": true,
+      "pass": true
+    }
+  ],
+  "guard_replay": [
+    {
+      "id": "T37",
+      "run": 1,
+      "decision": "ask"
+    },
+    {
+      "id": "T37",
+      "run": 2,
+      "decision": "ask"
+    },
+    {
+      "id": "T37",
+      "run": 3,
+      "decision": "ask"
+    },
+    {
+      "id": "T37",
+      "run": 4,
+      "decision": "ask"
+    },
+    {
+      "id": "T37",
+      "run": 5,
+      "decision": "ask"
+    },
+    {
+      "id": "T38",
+      "run": 1,
+      "decision": "ask"
+    },
+    {
+      "id": "T38",
+      "run": 2,
+      "decision": "ask"
+    },
+    {
+      "id": "T38",
+      "run": 3,
+      "decision": "ask"
+    },
+    {
+      "id": "T38",
+      "run": 4,
+      "decision": "ask"
+    },
+    {
+      "id": "T38",
+      "run": 5,
+      "decision": "ask"
+    },
+    {
+      "id": "T39",
+      "run": 1,
+      "decision": "ask"
+    },
+    {
+      "id": "T39",
+      "run": 2,
+      "decision": "ask"
+    },
+    {
+      "id": "T39",
+      "run": 3,
+      "decision": "ask"
+    },
+    {
+      "id": "T39",
+      "run": 4,
+      "decision": "ask"
+    },
+    {
+      "id": "T39",
+      "run": 5,
+      "decision": "ask"
+    },
+    {
+      "id": "T40",
+      "run": 1,
+      "decision": "ask"
+    },
+    {
+      "id": "T40",
+      "run": 2,
+      "decision": "ask"
+    },
+    {
+      "id": "T40",
+      "run": 3,
+      "decision": "ask"
+    },
+    {
+      "id": "T40",
+      "run": 4,
+      "decision": "ask"
+    },
+    {
+      "id": "T40",
+      "run": 5,
+      "decision": "ask"
+    }
+  ]
+}

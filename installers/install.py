@@ -19,6 +19,7 @@ PAYLOAD = (
     "catalog",
     "runtime",
     "docs",
+    "evals",
     "installers",
     ".claude-plugin",
     ".codex-plugin",

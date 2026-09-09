@@ -128,6 +128,24 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/graders.py",
+      "sha256": "2e396f3b627419fa80cd06efe71328ff83d12ac0e3538ddf5029e936f9261e9f",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/import_corpus.py",
+      "sha256": "ee60276d6f136d1d444ce20dec0314ee285cb599114bd2ceef3595dac6902217",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/run.py",
+      "sha256": "f86b57c553e785a315e7203f933542948e5ccdc40c139d3bfbabebfc2fcce6a9",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/foundation_report.py",
       "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
       "mode": "read-only",

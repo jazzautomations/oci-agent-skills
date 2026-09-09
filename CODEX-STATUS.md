@@ -268,3 +268,9 @@ Restricted live execution to the D7 allowlist and bounded templates. Added seven
 ### Package 4 — W08b install shapes
 
 Marketplace selections are 33 full / 8 database / 9 DevOps, with hooks and MCP on every entry. Both `claude plugin validate . --strict` and `claude plugin validate ./skills --strict` pass. The plan's deliberately invalid authoring stencil is retained byte-for-byte as skills/_TEMPLATE/SKILL.md.template, excluded from host discovery and distribution; check_template.py follows that filename. Installer tests exercise copied skills, shared references, hooks, launchers, explicit unguarded-host acceptance and absence of distributed symlinks. Full suite: 209 passed; strict linters green. No tenancy operations in this package.
+
+### Package 5 — W43 corpus and offline graders
+
+Imported the 80 routing, 40 negative and 40 task rows unchanged, with four explicit skill remaps and both case.yaml/prompt.md and skill-creator evals.json shapes. Ten injection strings retain the research fixture classes. Shipped description routing, negative, authored-fence validity, sanitizer and inert guard-replay graders plus per-task retrieval evidence. Import-integrity and grader failure-detection tests pass.
+
+`uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json` reports routing 37.5% (V19 FAIL, owner evaluation/routing maintainers), overlap pairs 4/4, negatives 0/40, authored CLI fences 275/275, mutation fixtures auto-allowed 0/20, sanitizer 10/10. No tuning against expected labels. The runner correctly exits nonzero for the red gate. `claude plugin eval . --threshold 0.8 --json evals/results/run.json` is early-access unavailable; both shapes are supplied but model-backed V27 remains unmeasured. docs/evals.md states the limits and exact commands. Full suite 213 passed; all strict content linters green. No tenancy operations.
