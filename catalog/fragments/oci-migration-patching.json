@@ -1,0 +1,157 @@
+{
+  "examples": [
+    {
+      "id": "oci-migration-patching-1",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "cloud-migrations",
+        "migration",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-2",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "cloud-bridge",
+        "inventory",
+        "inventory",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-3",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "database-migration",
+        "migration",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-4",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "os-management-hub",
+        "managed-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:status}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-5",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "jms",
+        "fleet",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-6",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "fleet-apps-management",
+        "fleet-collection",
+        "list-fleets",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-7",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "fleet-software-update",
+        "fsu-collection-summary",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].id",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oci-migration-patching-8",
+      "skill": "oci-migration-patching",
+      "argv": [
+        "ocvs",
+        "sddc",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
