@@ -6,6 +6,7 @@ paths; those paths identify the original measurement rather than current links.
 
 | Report | Scope |
 |---|---|
+| [Review demo](review-demo.json) | Offline catalog, inert command classification and actual MCP stdio checks; implementation input hashes |
 | [Release matrix](validation-matrix.json) | Structured V1–V28 outcomes and owners |
 | [Release metrics](release-metrics.json) | Counts, classifier replay and context estimates |
 | [CLI reads](validation-cli.json) | Selected live reads and syntax-only examples |

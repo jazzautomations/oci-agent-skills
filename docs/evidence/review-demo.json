@@ -1,0 +1,66 @@
+{
+  "validated_at": "2026-09-09T21:16:29.633450+00:00",
+  "mode": "offline_component_walkthrough",
+  "ok": true,
+  "scope": "Catalog lookup, inert argv classification and MCP stdio discovery/invalid-scope rejection. No agent task, OCI operation or host permission enforcement was measured.",
+  "credentials": "OCI environment selectors removed; both config paths point to an absent file.",
+  "checks": [
+    {
+      "name": "catalog_required_scope",
+      "ok": true,
+      "result": {
+        "ok": true,
+        "items": [
+          {
+            "path": "compute instance list",
+            "required": [
+              "--compartment-id"
+            ]
+          }
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "name": "read_classification",
+      "ok": true,
+      "decision": "allow"
+    },
+    {
+      "name": "write_requires_review",
+      "ok": true,
+      "decision": "ask",
+      "executed": false
+    },
+    {
+      "name": "mcp_stdio",
+      "ok": true,
+      "result": {
+        "transport": "stdio",
+        "live": false,
+        "checks": [
+          {
+            "name": "invalid_scope_rejected",
+            "ok": true
+          }
+        ],
+        "tool_count": 15,
+        "schema_characters": 13820,
+        "schema_tokens_estimate": 3455,
+        "ok": true
+      }
+    }
+  ],
+  "inputs_sha256": {
+    "scripts/review/demo.py": "6312e169c4865bf676dc8dfc83dd4d3d25a0658b2cf572476bd30cec43653823",
+    "scripts/catalog.py": "f90800eb1b752a536812a970656dfd8ba1dff9dbfbc8eebf826511f82e942e52",
+    "scripts/guard_oci.py": "167f36008edcd7a7d92de83c71bd3d0b32fa25da833d23b66a2c250ad2d0c069",
+    "scripts/guard_lib.py": "2748986bbcfc4d15f14b3cc078ddb37559e1596f0fc7a775cdf5ef01ffc65c28",
+    "catalog/cli.jsonl": "506bbfc7db8da3666bf704bc67d1117018b06106fd69a9530b5393e22d2ea546",
+    "catalog/guard.json": "d370a5f24f4e00a46af92b8da2317da83f384f0abf913e81c48f443754f273dc",
+    "catalog/scripts.json": "99e36ce724f3ffb3ed4fbbea2cf1bde19126d439c4cdc8ff9a48d46cdfcf5ede",
+    "runtime/oci_readonly/server.py": "72fc68bf61a49685008a97e87932559a46c4e3282af52da4dd228c996cabd9f0",
+    "runtime/oci_readonly/smoke.py": "5e2ca996ef2c916c48686bc6aaec4ab928414eaeebd42ab0eb3b43db1e86d4cf",
+    "runtime/uv.lock": "635ca23bdd1f335d83d4725e9e03bfd48b23d48ea06204af9f68578e23c83151"
+  }
+}

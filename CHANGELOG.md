@@ -2,6 +2,11 @@
 
 ## Unreleased — presentation and documentation
 
+Added a private technical review pack: Portuguese briefing PDF, five-minute
+offline component walkthrough, recorded input hashes, feedback template and
+an unsent introduction draft. The demo exercises catalog lookup, inert guard
+classification and the actual MCP stdio server without cloud operations.
+
 Fixed fresh-checkout CI template validation: verify a committed plan-derived
 fingerprint without requiring ignored research files. Two regression tests cover
 missing research, stencil drift and explicit regeneration inputs.

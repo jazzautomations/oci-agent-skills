@@ -63,5 +63,5 @@
     "unknown/ask": 328
   },
   "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
-  "scripts_sha256": "dfd7e11572b90e9b0ea80c2c8c5440da998a8dbb5aa3752fe99fb0612eb6d103"
+  "scripts_sha256": "99e36ce724f3ffb3ed4fbbea2cf1bde19126d439c4cdc8ff9a48d46cdfcf5ede"
 }

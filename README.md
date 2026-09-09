@@ -16,6 +16,8 @@
 
 [Get started](#get-started) · [Browse skills](docs/skills.md) · [MCP reference](docs/mcp-tools.md) · [Evidence](#evidence-you-can-inspect) · [Documentation](docs/README.md)
 
+**Reviewing the preview?** Start with the [technical review pack](docs/review/README.md): a short Portuguese PDF, a reproducible five-minute demo and focused feedback prompts.
+
 ## In 30 seconds
 
 These requests come from the evaluation corpus. The table describes the intended workflow, not a recorded agent execution or fabricated cloud output.

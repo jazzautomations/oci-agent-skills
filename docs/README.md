@@ -20,6 +20,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 
 | Document | What it establishes |
 |---|---|
+| [Technical review pack](review/README.md) | Private preview brief, component demo and requested feedback |
 | [Architecture](foundation.md) | Package structure, wrappers, guard and runtime contracts |
 | [Audit and provenance](audit.md) | Sources, measured surface and unowned services |
 | [Validation matrix](validation-matrix.md) | All 28 release gates, outcomes, dates and owners |

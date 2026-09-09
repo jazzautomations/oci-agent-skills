@@ -248,6 +248,18 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/review/brief_pdf.py",
+      "sha256": "12d41053c5b491568e0b7322d25f43ef0904064a74430e7a19cd2fb6737d7b49",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/review/demo.py",
+      "sha256": "6312e169c4865bf676dc8dfc83dd4d3d25a0658b2cf572476bd30cec43653823",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "skills/oci-bastion-access/scripts/bastion_session.sh",
       "sha256": "edefa24283e44baed8c0f7f71b4e2c9d4eedf68be9bec44d81b2cddb00697c00",
       "mode": "read-only",
