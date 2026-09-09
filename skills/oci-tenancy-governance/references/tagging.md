@@ -55,3 +55,12 @@ Docs: https://docs.oracle.com/en-us/iaas/Content/Tagging/Concepts/taggingovervie
 tag defaults: https://docs.oracle.com/en-us/iaas/Content/Tagging/Tasks/managingtagdefaults.htm ·
 advanced policy: https://docs.oracle.com/en-us/iaas/Content/Identity/Concepts/policyadvancedfeatures.htm ·
 ZPR: https://docs.oracle.com/en-us/iaas/Content/zero-trust-packet-routing/home.htm
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |
+| NoEtagMatch | Optimistic-concurrency `if-match` stale | id 23 [unverified] |

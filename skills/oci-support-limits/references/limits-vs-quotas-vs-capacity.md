@@ -36,7 +36,7 @@ request, or you file a ticket for something that was going to fix itself (resear
 ## 3. Reads
 
 ```bash
-oci limits service list --compartment-id "$TENANCY_ID" --all --query 'data[].name' --profile "$PROFILE" --region "$REGION"
+oci limits service list --compartment-id "$TENANCY_ID" --query 'data[].name' --profile "$PROFILE" --region "$REGION" --limit 20
 ```
 
 ```bash

@@ -46,3 +46,12 @@ an explicit inventory of what they will touch, and never as part of a cleanup sw
 
 Docs: https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm ·
 policy limits per hierarchy: https://docs.oracle.com/en-us/iaas/Content/Identity/policymgmt/policy-limits-compartment-hierarchy.htm
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |
+| NoEtagMatch | Optimistic-concurrency `if-match` stale | id 23 [unverified] |

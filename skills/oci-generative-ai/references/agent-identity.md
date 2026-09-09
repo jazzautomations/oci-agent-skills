@@ -3,3 +3,12 @@
 Separate human caller, host resource principal, managed agent service principal and each tool's downstream database/API identity. Confirm compartment and tenancy boundaries for each hop. Never solve a denial by granting manage all-resources.
 Model discovery permission does not imply permission to invoke. The target.model.id condition can restrict supported chat, embedding and rerank inference; it is not a blanket restriction on model-management resources. Verify the current IAM reference before proposing policy text.
 An endpoint OCID is a routing identifier, not a credential. Do not place signing keys, API keys, saved DB credentials or user access tokens in prompts, tool schemas or logs. Use approved secret delivery and preserve caller authorization across retrieval and tools.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| SignUpRequired | Service not enabled for the tenancy (common on Gen-AI, some ADB features) | id 12 [unverified] |
+| InvalidParameter | A body/query parameter value is invalid or malformed | id 2 [unverified] |

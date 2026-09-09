@@ -44,6 +44,8 @@ def validate_data(path, data):
                     "oracle-db-sql-access", "oracle-apex", "oracle-enterprise-apps"}
     if isinstance(name, str) and name.startswith("oracle-") and name not in oracle_names:
         result.append(finding(path, 2, "unpinned_oracle_name"))
+    if '/scripts/*' in str(data.get('allowed-tools','')) and not (path.parent/'scripts').is_dir():
+        result.append(finding(path, 1, 'missing_allowed_scripts'))
     metadata = data.get("metadata")
     if not isinstance(metadata, dict) or metadata.get("verified") not in {"live", "partial", "shape-only"}:
         result.append(finding(path, 1, "metadata_verified"))

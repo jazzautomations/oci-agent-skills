@@ -18,11 +18,11 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-sdk-patterns/scripts/*)
 
 # OCI SDK patterns
 
-SDK signers, pagination, waiters and errors. CLI troubleshooting: `oci-cli-auth`.
+SDK patterns; CLI troubleshooting: `oci-cli-auth`.
 
 ## Scope check
-Set OCI_CLI_PROFILE and OCI_CLI_REGION. `scripts/verify_auth.py --auth api_key` checks
-the chosen CLI signer/config through two reads; it does not execute SDK recipes.
+Set `SMTP_ID`, `T`, `U`.
+Check IDs with scoped reads.
 
 ## Route
 | The user says… | Load | Why |
@@ -32,10 +32,11 @@ the chosen CLI signer/config through two reads; it does not execute SDK recipes.
 | `ServiceError`, retry | `references/errors.md` | load when a call fails |
 | upload, PAR, secret, chat | `references/recipes.md` | load when writing code |
 | "what fields does X take" | `references/openapi-specs.md` | load when a model is odd |
-| which principal signs | `../../references/auth-modes.md` | load when auth is odd |
-| a 4xx/5xx | `../../references/error-triage.md` | load on triage |
-| endpoint, realm | `../../references/realms-endpoints.md` | load when a region fails |
-| pwsh quoting | `../../references/windows-powershell.md` | load when off bash |
+| which principal signs | `../../references/auth-modes.md` | Load when choosing a signer. |
+| a 4xx/5xx | `../../references/error-triage.md` | Load when classifying API failures. |
+| endpoint, realm | `../../references/realms-endpoints.md` | Load when checking realm availability. |
+| pwsh quoting | `../../references/windows-powershell.md` | Load when translating shell syntax. |
+| Read lookup | [Cards](../../references/service-command-cards.md) | Load when choosing a command. |
 
 ## Commands
 `T`, `U` = tenancy and profile-user OCIDs. CLI equivalents:
@@ -43,7 +44,7 @@ the chosen CLI signer/config through two reads; it does not execute SDK recipes.
 `get_region_from_short_name("ord")` maps a key to a legal `region`:
 
 ```bash
-oci iam region list --all --query 'data[].{key:key,name:name}'
+oci iam region list --query 'data[].{key:key,name:name}'
 ```
 
 `endpoint_for` builds any endpoint; only subscribed ones answer:

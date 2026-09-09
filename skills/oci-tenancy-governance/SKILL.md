@@ -16,10 +16,9 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-tenancy-governance/scripts/
 Owns compartments, tags, quotas, budgets, landing zones and organizations.
 
 ## Scope check
-Set PROFILE and REGION explicitly; never assume DEFAULT. Quotas, budgets and cost tags are
-tenancy-scoped: read them at `$TENANCY_ID`, the root compartment, never at a child.
-`oci iam compartment get --compartment-id "$TENANCY_ID"` names the tenancy you are in;
-`oci iam region-subscription list --tenancy-id "$TENANCY_ID"` names the home region.
+Set `COMPARTMENT_ID`, `NEW_QUOTA_ID`, `TENANCY_ID` for the fences below.
+Validate IDs with the scoped list/get below.
+`NEW_` values are proposal inputs or metadata from a separately authorized change.
 
 ## Route
 | The user says… | Load | Why |
@@ -27,8 +26,9 @@ tenancy-scoped: read them at `$TENANCY_ID`, the root compartment, never at a chi
 | compartment structure, segregation of duties | [Design](references/compartment-design.md) | load when shaping the tree |
 | tagging, cost tag, quota, budget alert | [Tags](references/tagging.md) · [Quotas](references/quota-language.md) | load when a guardrail binds |
 | landing zone, CIS, which pillar | [LZ](references/landing-zones.md) · [WA](references/well-architected.md) | load when proposing one |
-| conditions, architectures, traps | [Vars](../../references/iam-variables.md) · [Arch](../../references/architecture-center.md) · [Traps](../../references/cross-service-pitfalls.md) | load when design spans services |
+| conditions, architectures, traps | [Vars](../../references/iam-variables.md) · [Arch](../../references/architecture-center.md) · [Traps](../../references/cross-service-pitfalls.md) | Load when reviewing IAM conditions. |
 | audit this tenancy | `scripts/governance_audit.sh --help` | load when auditing |
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 Seven reads, all live 2026-09-09 `[verified]`; each a sample, never an inventory.

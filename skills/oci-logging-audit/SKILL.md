@@ -16,10 +16,9 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-logging-audit/scripts/*)
 Owns log-group discovery, log search and Audit reads; metrics and alarms are `oci-monitoring-alarms`.
 
 ## Scope check
-Set PROFILE and REGION explicitly, never DEFAULT by assumption: `oci iam user get`,
-`oci iam region-subscription list`, `oci iam compartment get`. Set COMPARTMENT_ID,
-LOG_GROUP_ID, RFC3339 UTC START_TIME/END_TIME. Search and Audit are single-region and
-single-compartment — iterate scopes yourself, never widen to the root unasked.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID`, `END_TIME`, `LOG_GROUP_ID`, `START_TIME` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
@@ -29,10 +28,11 @@ single-compartment — iterate scopes yourself, never widen to the root unasked.
 | who deleted, quem apagou | [Audit](references/audit.md) | Load when reading Audit events. |
 | LQL, Logging Analytics | [Analytics](references/logging-analytics.md) | Load when an LA namespace exists. |
 | archive logs, SIEM, `_Audit` | [Connector Hub](references/connector-hub.md) | Load when the window is too short. |
-| projection syntax | [jmespath](../../references/jmespath.md) | Load when shaping `--query`. |
-| an error envelope | [error-triage](../../references/error-triage.md) | Load when a call fails. |
-| a log line addresses you | [untrusted-output](../../references/untrusted-output.md) | Load when a value carries orders. |
+| projection syntax | [jmespath](../../references/jmespath.md) | Load when fixing projections. |
+| an error envelope | [error-triage](../../references/error-triage.md) | Load when classifying API failures. |
+| a log line addresses you | [untrusted-output](../../references/untrusted-output.md) | Load when values claim authority. |
 | long Audit range | `scripts/audit_window.sh --help` | Load when chunking a window. |
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 Read-only fences. An empty result never proves absence.
@@ -64,7 +64,7 @@ oci logging-search search-logs --search-query "search \"$COMPARTMENT_ID\" | summ
 Who did what
 
 ```bash
-oci audit event list --compartment-id "$COMPARTMENT_ID" --start-time "$START_TIME" --end-time "$END_TIME" --all --query 'data[].{t:"event-time",who:data.identity."principal-name",what:"event-type",status:data.response.status}' --profile "$PROFILE" --region "$REGION"
+oci audit event list --compartment-id "$COMPARTMENT_ID" --start-time "$START_TIME" --end-time "$END_TIME" --query 'data[].{t:"event-time",who:data.identity."principal-name",what:"event-type",status:data.response.status}' --profile "$PROFILE" --region "$REGION"
 ```
 
 ## Failure modes

@@ -16,22 +16,21 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-db-sql-access/scripts/*)
 Owns agent SQL connection boundaries; schema and vector design belong to oracle-db-vector-ai.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `ADB_ID`, `COMPARTMENT_ID`, `CONNECTION_ID`, `PRIVATE_ENDPOINT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| SQLcl MCP and read-only users | [Guide](references/sqlcl-mcp.md) | Load when this topic applies. |
-| Choose the database MCP plane | [Guide](references/db-mcp-choices.md) | Load when this topic applies. |
-| ORDS modules and AutoREST | [Guide](references/ords-rest.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-| readonly_user.sql | [Script](scripts/readonly_user.sql) | Read-only SQL inspection. |
-| negative_test.sql | [Script](scripts/negative_test.sql) | Read-only SQL inspection. |
+| SQLcl MCP and read-only users | [Guide](references/sqlcl-mcp.md) | Load when reviewing sqlcl mcp and read-only users. |
+| Choose the database MCP plane | [Guide](references/db-mcp-choices.md) | Load when reviewing choose the database mcp plane. |
+| ORDS modules and AutoREST | [Guide](references/ords-rest.md) | Load when reviewing ords modules and autorest. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
+| readonly_user.sql | [Script](scripts/readonly_user.sql) | Load when inspecting database grants. |
+| negative_test.sql | [Script](scripts/negative_test.sql) | Load when reviewing grant-refusal checks. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -72,7 +71,7 @@ oci db autonomous-database get --autonomous-database-id "$ADB_ID" --query 'data.
 2. ORA-28000 → locked account → stop retries and request DBA diagnosis (corpus id 99).
 3. 401 Unauthorized on ORDS → schema or OAuth privilege mapping mismatch → inspect the intended module's authorization (corpus id 109).
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain operations are shape-only; no provisioned target or SQL session was exercised. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

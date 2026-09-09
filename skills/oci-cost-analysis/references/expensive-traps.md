@@ -69,3 +69,12 @@ Docs (HTTP 200, 2026-09-09):
 https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/bootvolumes.htm ·
 https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/To_delete_uncommitted_multipart_uploads.htm ·
 https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/budgetsoverview.htm
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| LimitExceeded | Tenancy-wide Oracle service limit hit | id 5 [unverified] |
+| TooManyRequests | Per-user/per-tenancy throttle | id 26 [unverified] |

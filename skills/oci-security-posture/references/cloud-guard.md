@@ -11,7 +11,7 @@ Cloud Guard is enabled **once per tenancy**, with a chosen reporting region, and
 
 ## Is it even on
 ```bash
-oci cloud-guard configuration get --compartment-id "$TENANCY_ID"
+oci cloud-guard configuration get --compartment-id "$TENANCY_ID" --query 'data'
 ```
 Three outcomes worth distinguishing:
 * JSON with `status: ENABLED` and a `reporting-region` — on. Read problems in that region.

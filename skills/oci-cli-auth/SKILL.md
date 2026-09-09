@@ -21,21 +21,21 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-cli-auth/scripts/*)
 Diagnoses signing, scope and projected results. IAM policy: `oci-iam-policy`.
 
 ## Scope check
-Set `OCI_CLI_PROFILE` explicitly. Run `scripts/whoami.sh` first: it reads the profile offline, then
-names identity and subscriptions. Pass `--compartment-id` explicitly; leaf defaults
-and `oci_cli_rc` can silently change scope. Precedence: flag > env > profile.
+Set `C`, `T`, `U` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| 401, 403, 404 | `../../references/error-triage.md` | load when classifying an error |
-| "which profile", instance principal | `../../references/auth-modes.md` | load when the principal is unclear |
-| "`--query` gave null" | `../../references/jmespath.md` | load when a projection is wrong |
-| "wrong tenancy", "not subscribed" | `../../references/realms-endpoints.md` | load when realm is suspect |
-| Windows, pwsh quoting | `../../references/windows-powershell.md` | load when not on bash |
-| capacity, AD names, flex shapes | `references/pitfalls.md` | load when it matches P1-P15 |
+| 401, 403, 404 | `../../references/error-triage.md` | Load when classifying API failures. |
+| "which profile", instance principal | `../../references/auth-modes.md` | Load when choosing a signer. |
+| "`--query` gave null" | `../../references/jmespath.md` | Load when fixing projections. |
+| "wrong tenancy", "not subscribed" | `../../references/realms-endpoints.md` | Load when checking realm availability. |
+| Windows, pwsh quoting | `../../references/windows-powershell.md` | Load when translating shell syntax. |
+| capacity, AD names, flex shapes | `references/pitfalls.md` | Load when distinguishing common failure causes. |
 | "list is short", waiter hangs | `references/pagination-waiters.md` | load when a list/waiter fails |
 | "who am I" | `scripts/whoami.sh --help` | load when identity needs one call |
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 `T`, `C`, `U` = the tenancy, compartment and profile-`user` OCIDs.
@@ -57,7 +57,7 @@ oci iam user get --user-id "$U" --query 'data.{name:name,mfa:"is-mfa-activated"}
 
 ```bash
 oci iam compartment list --compartment-id "$T" --compartment-id-in-subtree true \
-  --access-level ANY --all --query 'data[].{name:name,state:"lifecycle-state",id:id}'
+  --access-level ANY --query 'data[].{name:name,state:"lifecycle-state",id:id}' --limit 20
 ```
 
 Inventory across services; the envelope is `data.items`, query fields camelCase:
@@ -71,8 +71,8 @@ oci search resource structured-search --limit 50 \
 A stuck `--wait-for-state` is a work request — read the request, not the resource:
 
 ```bash
-oci work-requests work-request list --compartment-id "$C" --all \
-  --query 'data[].{op:"operation-type",status:status,pct:"percent-complete",id:id}'
+oci work-requests work-request list --compartment-id "$C" \
+  --query 'data[].{op:"operation-type",status:status,pct:"percent-complete",id:id}' --limit 20
 ```
 
 ## Failure modes

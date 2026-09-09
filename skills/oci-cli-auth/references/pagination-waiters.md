@@ -58,8 +58,8 @@ Rules:
   `oci ce work-request`) [verified live 2026-09-09, returned `LaunchInstance/ACCEPTED`]:
 
 ```bash
-oci work-requests work-request list --compartment-id "$C" --all \
-  --query 'data[].{op:"operation-type",status:status,pct:"percent-complete",id:id}'
+oci work-requests work-request list --compartment-id "$C" \
+  --query 'data[].{op:"operation-type",status:status,pct:"percent-complete",id:id}' --limit 20
 ```
 
 Then `work-request-error list --work-request-id "$WR" --all` for why it failed, and

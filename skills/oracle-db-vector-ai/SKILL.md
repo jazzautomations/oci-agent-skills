@@ -17,22 +17,21 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-db-vector-ai/scripts/*)
 Owns database vector search and Select AI; external inference belongs to oci-generative-ai.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `ADB_ID`, `COMPARTMENT_ID`, `MANAGED_DB_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Vector columns and feature probes | [Guide](references/vector-ddl.md) | Load when this topic applies. |
-| HNSW, IVF and query plans | [Guide](references/indexes.md) | Load when this topic applies. |
-| Hybrid retrieval and chunking | [Guide](references/hybrid-search.md) | Load when this topic applies. |
-| Select AI and NL2SQL | [Guide](references/select-ai.md) | Load when this topic applies. |
-| In-database ONNX embeddings | [Guide](references/onnx.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
+| Vector columns and feature probes | [Guide](references/vector-ddl.md) | Load when reviewing vector columns and feature probes. |
+| HNSW, IVF and query plans | [Guide](references/indexes.md) | Load when reviewing hnsw, ivf and query plans. |
+| Hybrid retrieval and chunking | [Guide](references/hybrid-search.md) | Load when reviewing hybrid retrieval and chunking. |
+| Select AI and NL2SQL | [Guide](references/select-ai.md) | Load when reviewing select ai and nl2sql. |
+| In-database ONNX embeddings | [Guide](references/onnx.md) | Load when reviewing in-database onnx embeddings. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 | vector_check.sql | [Script](scripts/vector_check.sql) | Read-only SQL inspection. |
 
 ## Commands
@@ -66,7 +65,7 @@ oci database-management managed-database get --managed-database-id "$MANAGED_DB_
 Database parameters (enrollment required)
 
 ```bash
-oci database-management managed-database list-database-parameters --managed-database-id "$MANAGED_DB_ID" --name vector --all --query 'data.items[].{name:name,value:value}' --profile "$PROFILE" --region "$REGION"
+oci database-management managed-database list-database-parameters --managed-database-id "$MANAGED_DB_ID" --name vector --query 'data.items[].{name:name,value:value}' --profile "$PROFILE" --region "$REGION"
 ```
 
 ## Failure modes
@@ -74,7 +73,7 @@ oci database-management managed-database list-database-parameters --managed-data
 2. NotAuthorizedOrNotFound → enrollment or regional visibility unknown → validate the Managed DB handle before querying parameters (corpus id 13).
 3. InvalidParameter → CLI or service request malformed → compare deployed-version flags; vector SQL errors require DB-specific diagnosis (corpus id 2).
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain operations are shape-only; no provisioned target or SQL session was exercised. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

@@ -16,9 +16,9 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-iam-policy/scripts/*)
 Owns policy statements and identity domains.
 
 ## Scope check
-Export `OCI_CLI_PROFILE` and `OCI_CLI_REGION` [verified live], never DEFAULT; set TENANCY_ID and
-COMPARTMENT_ID. IAM writes land only in the **home region** — resolve HOME_REGION and pass it.
-`oci iam domain list` says domains or legacy; its `url` is DOMAIN_URL for `--endpoint`.
+Set `COMPARTMENT_ID`, `DESC`, `DOMAIN_URL`, `ETAG`, `HOME_REGION`, `ID`, `NAME`, `NEW_ETAG`, `NEW_ID`, `POLICY_ID`, `TENANCY_ID`.
+Check IDs with scoped reads.
+Capture `NEW_ETAG` after the authorized update.
 
 ## Route
 | The user says… | Load | Why |
@@ -26,26 +26,27 @@ COMPARTMENT_ID. IAM writes land only in the **home region** — resolve HOME_REG
 | "Allow group …", Endorse | [Guide](references/policy-syntax.md) | Load when writing a statement |
 | least privilege, TBAC | [Guide](references/policy-cookbook.md) | Load when copying a pattern |
 | federação, SAML, SCIM | [Guide](references/identity-domains.md) | Load when it's the domain |
-| which variable, family → members | [Ref](../../references/iam-variables.md) · [Data](../../references/resource-type-families.json) | Keys, expansion |
-| 403, 404, 409 on IAM | [Ref](../../references/error-triage.md) | Symptom → action |
+| which variable, family → members | [Ref](../../references/iam-variables.md) · [Data](../../references/resource-type-families.json) | Load when reviewing IAM conditions. |
+| 403, 404, 409 on IAM | [Ref](../../references/error-triage.md) | Load when classifying API failures. |
 | lint statements | `scripts/policy_lint.sh --help` | Offline file or live policy review |
+| Read lookup | [Cards](../../references/service-command-cards.md) | Load when choosing a command. |
 
 ## Commands
-Domains, and the write-taking home region
+Domains and home region
 
 ```bash
 oci iam domain list --compartment-id "$TENANCY_ID" --limit 20 --query 'data[].{name:"display-name",url:url}'
-oci iam region-subscription list --tenancy-id "$TENANCY_ID" --all --query 'data[?"is-home-region"].{r:"region-name",k:"region-key"}'
+oci iam region-subscription list --tenancy-id "$TENANCY_ID" --query 'data[?"is-home-region"].{r:"region-name",k:"region-key"}'
 ```
 
-Statements, attachment, and the one to edit
+Policy statements
 
 ```bash
 oci iam policy list --compartment-id "$COMPARTMENT_ID" --limit 50 --query 'data[].{n:name,at:"compartment-id",st:statements}'
 oci iam policy get --policy-id "$POLICY_ID" --query 'data.statements'
 ```
 
-Dynamic groups: rule = membership
+Dynamic group membership
 
 ```bash
 oci iam dynamic-group list --compartment-id "$TENANCY_ID" --limit 50 --query 'data[].{n:name,rule:"matching-rule"}'
@@ -54,7 +55,7 @@ oci iam dynamic-group list --compartment-id "$TENANCY_ID" --limit 50 --query 'da
 In the domain: federation (`--limit` broken), groups
 
 ```bash
-oci identity-domains identity-providers list --endpoint "$DOMAIN_URL" --all --query 'data.resources[].{n:"partner-name",e:enabled}'
+oci identity-domains identity-providers list --endpoint "$DOMAIN_URL" --query 'data.resources[].{n:"partner-name",e:enabled}' --limit 20
 oci identity-domains groups list --endpoint "$DOMAIN_URL" --limit 50 --query 'data.resources[].{n:"display-name"}'
 ```
 

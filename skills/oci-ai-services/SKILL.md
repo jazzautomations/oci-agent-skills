@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "read-only"
   verified: "shape-only"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-ai-services/scripts/*)
 ---
 
 # OCI pretrained AI services
@@ -16,23 +15,22 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-ai-services/scripts/*)
 Owns service selection and existing AI job/model metadata. Inference and job creation require separate approval.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Vision and OCR | [Guide](references/vision.md) | Load when this topic applies. |
-| Language, translation and PII | [Guide](references/language.md) | Load when this topic applies. |
-| Speech transcription and TTS | [Guide](references/speech.md) | Load when this topic applies. |
-| Document Understanding | [Guide](references/document-understanding.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Vision and OCR | [Guide](references/vision.md) | Load when reviewing vision and ocr. |
+| Language, translation and PII | [Guide](references/language.md) | Load when reviewing language, translation and pii. |
+| Speech transcription and TTS | [Guide](references/speech.md) | Load when reviewing speech transcription and tts. |
+| Document Understanding | [Guide](references/document-understanding.md) | Load when reviewing document understanding. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -74,7 +72,7 @@ oci ai-document project list --compartment-id "$COMPARTMENT_ID" --limit 20 --que
 3. ID 18: inspect job/work-request state before fetching output; failed jobs are not empty results.
 4. ID 26: cap retries; inference and resubmitted jobs can be billable.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain operations are shape-only; no provisioned target or SQL session was exercised. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

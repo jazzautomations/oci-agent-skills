@@ -29,7 +29,7 @@ oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --prefix r
 ```
 
 ```bash
-oci os object get --namespace-name bling --bucket-name "$TENANCY_ID" --name "$OBJECT_NAME" --file ./cost.csv.gz --profile "$PROFILE" --region "$REGION"
+oci os object get --namespace-name bling --bucket-name "$TENANCY_ID" --name "$OBJECT_NAME" --file ./cost.csv.gz --profile "$PROFILE" --region "$REGION" --query 'data'
 ```
 
 Two top-level prefixes exist: `reports/` (the classic `cost-csv/` and `usage-csv/` files) and

@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "guarded-write"
   verified: "partial"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-dr-backup/scripts/*)
 ---
 
 # OCI disaster recovery and backups
@@ -16,25 +15,24 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-dr-backup/scripts/*)
 Owns recovery dependencies and evidence: backup inventory alone does not prove RPO or RTO.
 
 ## Scope check
-Select PROFILE and REGION explicitly; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"`; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set DR_GROUP_ID and FILE_SYSTEM_ID from scoped inventory; TENANCY_ID is the verified tenancy.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID`, `DR_GROUP_ID`, `FILE_SYSTEM_ID`, `TENANCY_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Full Stack DR | [Guide](references/full-stack-dr.md) | Load when relevant. |
-| Backup and replication matrix | [Guide](references/backup-matrix.md) | Load when relevant. |
-| AD and fault-domain spread | [Guide](references/ad-fd-spread.md) | Load when relevant. |
-| DR topology and proof | [Guide](references/dr-topologies.md) | Load when relevant. |
-| architecture-center | [Reference](../../references/architecture-center.md) | Load when needed. |
-| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when needed. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Full Stack DR | [Guide](references/full-stack-dr.md) | Load when investigating full stack dr. |
+| Backup and replication matrix | [Guide](references/backup-matrix.md) | Load when investigating backup and replication matrix. |
+| AD and fault-domain spread | [Guide](references/ad-fd-spread.md) | Load when investigating ad and fault-domain spread. |
+| DR topology and proof | [Guide](references/dr-topologies.md) | Load when investigating dr topology and proof. |
+| architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |
+| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -79,7 +77,7 @@ oci fs snapshot list --file-system-id "$FILE_SYSTEM_ID" --limit 20 --query 'data
 Availability domains
 
 ```bash
-oci iam availability-domain list --compartment-id "$TENANCY_ID" --all --query 'data[].name' --profile "$PROFILE" --region "$REGION"
+oci iam availability-domain list --compartment-id "$TENANCY_ID" --query 'data[].name' --profile "$PROFILE" --region "$REGION"
 ```
 
 Instance placement
@@ -94,7 +92,7 @@ oci compute instance list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 
 3. ID 20: `InvalidatedRetryToken` (HTTP 409) → token refers to a changed or deleted entity → inspect existing execution state first; a newly authorized, logically distinct operation needs a new token, never a blind failover retry.
 4. ID 2: `InvalidParameter` (HTTP 400) → invalid request value → missing dependency or wrong recovery direction invalidates the proposal.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Live AD discovery returned 3 ADs in us-chicago-1; DR and restore operations are shape-only. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

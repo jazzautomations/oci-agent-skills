@@ -57,3 +57,12 @@ Trust the suggestion list when the CLI prints one; when it does not, resolve the
 
 Docs (HTTP 200, 2026-09-08): https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm ·
 https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotFound | Wrong static path / wrong API version / typo'd service endpoint | id 14 [unverified] |
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |

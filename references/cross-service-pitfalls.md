@@ -50,10 +50,10 @@ Treat every `update` as destructive to the collection it names until proven othe
 - Before a launch that "should" work [verified]:
 
 ```bash
-oci limits value list --compartment-id "$TENANCY" --service-name compute --limit 10
+oci limits value list --compartment-id "$TENANCY" --service-name compute --limit 10 --query 'data'
 oci limits resource-availability get --service-name compute \
   --limit-name standard-a1-core-count \
-  --compartment-id "$TENANCY" --availability-domain "$AD"
+  --compartment-id "$TENANCY" --availability-domain "$AD" --query 'data'
 ```
 
 A limit above zero still is not capacity: out-of-host-capacity is a separate failure, triaged by the limits/capacity skill.

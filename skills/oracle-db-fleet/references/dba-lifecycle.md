@@ -9,3 +9,12 @@ Read db backup metadata and the automatic backup configuration separately. RMAN 
 Patch enumeration uses db patch list by-database / by-db-system or list-db-home / list-vm-cluster. PRECHECK, patch, upgrade and rollback still create service work; none runs here. RAC rolling eligibility depends on the exact patch and services. Route estate orchestration to oci-migration-patching.
 
 Data Guard association list/get uses both database and association identity. Planned switchover preserves a synchronized pair; emergency failover can lose data and needs reinstate/rebuild. Do not present either as an automatic fix. Document lag, fencing, app connection changes and rollback feasibility.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| ExternalServerIncorrectState | A customer-owned server (DB agent, on-prem host, Exadata) is unreachable/misbehaving | id 19 [unverified] |
+| `ORA-12541: TNS:no listener` | Wrong host/port, or the ADB is **STOPPED** | id 101 [unverified] |

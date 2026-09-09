@@ -9,3 +9,12 @@ Import runs application/supporting SQL and may replace an existing app. Review w
 Web Credential secrets are omitted from exports. Rebind them from a CI secret store after a reviewed import; do not commit secret restoration scripts with values. SQLcl 26.1 project export changes directory layout, so distinguish that mechanical move from functional drift.
 
 apex_drift.sql uses CHECKSUM-SH256, independent of app IDs, with an already selected workspace and numeric :app_id bind. Compare checksums across the same export options/version and preserve an unknown result if permissions fail. No export, import, SQL or UI operation was run here.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| `404 Not Found` on `/ords/<schema>/...` or `Request could not be processed` | App/workspace not deployed in *that* ADB, or the schema is not REST-enabled | id 106 [unverified] |
+| `503 Service Unavailable` from `/ords/` | ADB stopped/restarting, or ORDS pool exhausted | id 107 [unverified] |

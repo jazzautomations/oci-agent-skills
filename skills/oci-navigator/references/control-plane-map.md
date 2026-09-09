@@ -1,7 +1,9 @@
 Purpose: user intent -> Oracle product -> the control plane that actually owns it, including the products where the OCI CLI stops at the instance envelope and the ones with no OCI control plane at all.
 Source: research/09c §A1-A7, research/11 §15, research/16 §A; generated 2026-09-08; verified-on CLI 3.91.0
 
-Contents: 1 how to read · 2 databases · 3 OS, Java, runtimes · 4 app platform (envelope-only) ·
+## Contents
+
+1 how to read · 2 databases · 3 OS, Java, runtimes · 4 app platform (envelope-only) ·
 5 marketplace and distributed cloud · 6 AI and data · 7 SaaS and health · 8 fleet and long tail
 
 ## 1. How to read
@@ -95,3 +97,12 @@ dialog flows, pages and assets are **not** reachable from the CLI.
 `NotAuthorizedOrNotFound`; not service limits) · `oci bds` (managed Hadoop) · `oci batch` ·
 `oci ocvs` (VMware) · `oci media-services` · `oci iot` (domain-group, domain, digital-twin-*)
 · `oci desktops` · `oci mngdmac`. Routing entries only — these have no dedicated skill.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotFound | Wrong static path / wrong API version / typo'd service endpoint | id 14 [unverified] |
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |

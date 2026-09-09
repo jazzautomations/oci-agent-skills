@@ -100,3 +100,12 @@ Autonomous AI TP 2 ECPU +$490.56 (BYOL +$117.82) · Virtual Private Vault +$2,71
 200 GB egressed from Sao Paulo past 10 TB, ~3x.
 
 Docs (HTTP 200, 2026-09-09): https://www.oracle.com/cloud/price-list/
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| LimitExceeded | Tenancy-wide Oracle service limit hit | id 5 [unverified] |
+| TooManyRequests | Per-user/per-tenancy throttle | id 26 [unverified] |

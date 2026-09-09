@@ -42,9 +42,9 @@ def test_fences_validate_leaf_required_and_bounds(tmp_path):
     p.write_text("""```bash
 oci compute instance --help
 oci compute instance list
-oci compute instance list --compartment-id "$C"
+oci compute instance list --compartment-id "$C" --query data
 oci compute instance list --compartment-id "$C" \\
-  --limit 2
+  --limit 2 --query data
 oci compute instance terminate --help
 ```""")
     found = module("lint_fences").validate(p)

@@ -39,7 +39,7 @@ before writing it down.
 - List identity providers with `--all`, never `--limit` (pitfall 1):
 
 ```bash
-oci identity-domains identity-providers list --endpoint "$DOMAIN_URL" --all --query 'data.resources[].{name:"partner-name",enabled:enabled}' --profile "$PROFILE" --region "$REGION"
+oci identity-domains identity-providers list --endpoint "$DOMAIN_URL" --query 'data.resources[].{name:"partner-name",enabled:enabled}' --profile "$PROFILE" --region "$REGION" --limit 20
 ```
 
   On the reference tenancy this returned only the built-in local providers

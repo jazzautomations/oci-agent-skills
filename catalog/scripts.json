@@ -33,7 +33,7 @@
     },
     {
       "path": "scripts/ci/check_frontmatter.py",
-      "sha256": "76a2404d226aca8a0559dd13cd5f21e1d11856074b9f82c8aaf279594287496e",
+      "sha256": "a4a0eb120cd010a3c7779b9d5ed157ae0c27a55d6a519a4df14bd5037ecc9453",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -75,7 +75,7 @@
     },
     {
       "path": "scripts/ci/check_refs.py",
-      "sha256": "fe257b65f06deb1a665373baa05c62b913a7d90062fb3af51c1155b9e7bdb574",
+      "sha256": "be904e4c69bcbdc163b51893b926bcc717029f3349010ea2c8912289e145f5a0",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -111,7 +111,7 @@
     },
     {
       "path": "scripts/ci/lint_fences.py",
-      "sha256": "f7c10471c937e4385fb77f6e5c94f2e41e082eadd98f2c0460a7ca0841670b28",
+      "sha256": "5df510dd4cae2653c1abf080c17b90ad8c65345b1dfd2c3afcb7d6c3741aed0e",
       "mode": "read-only",
       "oci_calls": []
     },

@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "guarded-write"
   verified: "shape-only"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-data-platform/scripts/*)
 ---
 
 # OCI data platform
@@ -16,25 +15,24 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-data-platform/scripts/*)
 Owns data transport, processing and ML infrastructure; start with metadata and workload dependencies.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Streaming and Queue | [Guide](references/streaming-queue.md) | Load when this topic applies. |
-| Spark and Batch | [Guide](references/data-flow.md) | Load when this topic applies. |
-| Integration, Catalog and GoldenGate | [Guide](references/data-integration.md) | Load when this topic applies. |
-| Data Science | [Guide](references/data-science.md) | Load when this topic applies. |
-| BDS, OpenSearch and Redis | [Guide](references/bds.md) | Load when this topic applies. |
-| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when needed. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Streaming and Queue | [Guide](references/streaming-queue.md) | Load when reviewing streaming and queue. |
+| Spark and Batch | [Guide](references/data-flow.md) | Load when reviewing spark and batch. |
+| Integration, Catalog and GoldenGate | [Guide](references/data-integration.md) | Load when reviewing integration, catalog and goldengate. |
+| Data Science | [Guide](references/data-science.md) | Load when reviewing data science. |
+| BDS, OpenSearch and Redis | [Guide](references/bds.md) | Load when reviewing bds, opensearch and redis. |
+| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -94,7 +92,7 @@ oci data-catalog catalog list --compartment-id "$COMPARTMENT_ID" --limit 20 --qu
 3. ID 18: `IncorrectState` (HTTP 409) → resource transition conflicts with the requested operation → read failed work requests and per-task errors; ACTIVE is not workload success.
 4. ID 26: `TooManyRequests` (HTTP 429) → service throttling → cap retries and concurrency; replay can duplicate data and charges.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain Commands are shape-only. The permitted identity, scope, compute, network, namespace, vault and monitoring smoke reads were rerun; they do not validate this domain. No workload execution or provisioning was attempted. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

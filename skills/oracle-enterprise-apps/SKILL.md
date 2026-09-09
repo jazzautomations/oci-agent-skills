@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "read-only"
   verified: "shape-only"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-enterprise-apps/scripts/*)
 ---
 
 # Oracle enterprise application boundaries
@@ -16,24 +15,22 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-enterprise-apps/scripts/
 Inspect service envelopes; ODA also exposes content management. Application permissions remain separate.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set ODA_ID from the selected compartment's ODA inventory.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID`, `ODA_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Service envelope versus application | [Guide](references/envelope-only.md) | Load when relevant. |
-| Fusion and NetSuite health | [Guide](references/fusion-netsuite-health.md) | Load when relevant. |
-| Responsibility matrix | [Guide](references/responsibility-matrix.md) | Load when relevant. |
-| Digital Assistant content plane | [Guide](references/oda.md) | Load when relevant. |
-| WebLogic and self-managed runtimes | [Guide](references/weblogic.md) | Load when relevant. |
-| realms-endpoints | [Reference](../../references/realms-endpoints.md) | Load when needed. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Service envelope versus application | [Guide](references/envelope-only.md) | Load when investigating service envelope versus application. |
+| Fusion and NetSuite health | [Guide](references/fusion-netsuite-health.md) | Load when investigating fusion and netsuite health. |
+| Responsibility matrix | [Guide](references/responsibility-matrix.md) | Load when investigating responsibility matrix. |
+| Digital Assistant content plane | [Guide](references/oda.md) | Load when investigating digital assistant content plane. |
+| WebLogic and self-managed runtimes | [Guide](references/weblogic.md) | Load when investigating weblogic and self-managed runtimes. |
+| realms-endpoints | [Reference](../../references/realms-endpoints.md) | Load when checking realm availability. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
 
 ## Commands
@@ -94,7 +91,7 @@ oci wlms wls-domain list --compartment-id "$COMPARTMENT_ID" --limit 20 --query '
 3. ID 9: `NotAuthenticated` (HTTP 401) → OCI signature/key/clock failure → check the selected OCI signing credentials and clock; diagnose application authentication separately. Do not change IAM policy for a 401.
 4. ID 2: `InvalidParameter` (HTTP 400) → invalid request value → ODA content uses an instance ID and service-specific collection shapes.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain Commands are shape-only. The permitted identity, scope, compute, network, namespace, vault and monitoring smoke reads were rerun; they do not validate this domain. No workload execution or provisioning was attempted. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

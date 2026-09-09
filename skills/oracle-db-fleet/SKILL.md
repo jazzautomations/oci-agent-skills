@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "guarded-write"
   verified: "shape-only"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-db-fleet/scripts/*)
 ---
 
 # Oracle Database Fleet
@@ -16,25 +15,23 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-db-fleet/scripts/*)
 Owns non-Autonomous fleet diagnostics; ADB belongs to oracle-autonomous-db.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Use `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"`; require successful identity/subscription probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set MANAGED_DB_ID locally.
+Select `PROFILE`, `REGION` locally.
+Set `COMPARTMENT_ID`, `MANAGED_DB_ID`.
+Check IDs with scoped reads.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Database product noun sets | [Guide](references/noun-sets.md) | Load when needed. |
-| Database at Azure, AWS or Google | [Guide](references/multicloud-db.md) | Load when needed. |
-| Database Management and AWR | [Guide](references/dbmgmt-awr.md) | Load when needed. |
-| CDB/PDB, backup, patch and Data Guard | [Guide](references/dba-lifecycle.md) | Load when needed. |
-| Data Pump movement | [Guide](references/datapump.md) | Load when needed. |
-| Ops Insights enrollment and forecasts | [Guide](references/opsi.md) | Load when needed. |
-| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when needed. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Database product noun sets | [Guide](references/noun-sets.md) | Load when reviewing database product noun sets. |
+| Database at Azure, AWS or Google | [Guide](references/multicloud-db.md) | Load when reviewing database at azure, aws or google. |
+| Database Management and AWR | [Guide](references/dbmgmt-awr.md) | Load when reviewing database management and awr. |
+| CDB/PDB, backup, patch and Data Guard | [Guide](references/dba-lifecycle.md) | Load when reviewing cdb/pdb, backup, patch and data guard. |
+| Data Pump movement | [Guide](references/datapump.md) | Load when reviewing data pump movement. |
+| Ops Insights enrollment and forecasts | [Guide](references/opsi.md) | Load when reviewing ops insights enrollment and forecasts. |
+| cross-service-pitfalls | [Reference](../../references/cross-service-pitfalls.md) | Load when checking cross-service dependencies. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
 
 ## Commands
@@ -94,7 +91,7 @@ oci db pluggable-database list --compartment-id "$COMPARTMENT_ID" --limit 10 --q
 2. IncorrectState → resource transition → bounded read polling before any maintenance proposal (corpus id 18).
 3. ORA-12541 → missing listener/service → inspect the owning DB state and host routing (corpus id 101).
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain and SQL operations are shape-only. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

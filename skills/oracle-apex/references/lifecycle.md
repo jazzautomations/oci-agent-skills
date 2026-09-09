@@ -5,3 +5,12 @@ Establish hosting first: managed ADB, customer-managed APEX/ORDS, or the hosted 
 Read apex-details and connection-urls from the selected ADB; do not hardcode versions or construct URLs. For managed upgrades, an authorized instance administrator can inspect APEX_INSTANCE_ADMIN.GET_PARAMETER for UPGRADE_STATUS, UPGRADE_DEFERRED, UPGRADE_VERSION and UPGRADE_DATE. Do not deploy during RUNNING. Reading lifecycle AVAILABLE alone does not prove ORDS/APEX ready after a restart.
 
 Workspace creation uses APEX_INSTANCE_ADMIN.ADD_WORKSPACE and schema/user provisioning, not an OCI workspace command. APEX_UTIL.CREATE_USER does not create a DB login. All setup and upgrade changes are proposals only here. oracleapex.com is for evaluation/learning and restricts instance administration; do not promise the ADB admin workflow there. SQL and UI lifecycle remain [unverified].
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| `404 Not Found` on `/ords/<schema>/...` or `Request could not be processed` | App/workspace not deployed in *that* ADB, or the schema is not REST-enabled | id 106 [unverified] |
+| `503 Service Unavailable` from `/ords/` | ADB stopped/restarting, or ORDS pool exhausted | id 107 [unverified] |

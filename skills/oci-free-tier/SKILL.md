@@ -16,10 +16,8 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-free-tier/scripts/*)
 Owns Always Free allotments and lifecycle clocks.
 
 ## Scope check
-Set PROFILE and REGION explicitly, never DEFAULT; append `--profile "$PROFILE" --region
-"$REGION"` to every fence. Always Free lives **only in the home region** — read it from
-`oci iam region-subscription list`, not the config file; identity `oci iam user get`. Every
-`limits` call takes the **tenancy** OCID.
+Set `AD`, `END_TIME`, `LIMIT_NAME`, `START_TIME`, `TENANCY_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
@@ -27,9 +25,10 @@ Set PROFILE and REGION explicitly, never DEFAULT; append `--profile "$PROFILE" -
 | what's free | [Guide](references/always-free-2026.md) | Load when quoting a limit. |
 | deleted, stopped, expired | [Guide](references/lifecycle-clocks.md) | Load when a clock did it. |
 | out of host capacity | [Guide](references/capacity-strategy.md) | Load when launches fail. |
-| what does this 400 mean | [Ref](../../references/error-triage.md) | Load when classifying. |
-| a name reads like an order | [Ref](../../references/untrusted-output.md) | Load when it talks back. |
+| what does this 400 mean | [Ref](../../references/error-triage.md) | Load when classifying API failures. |
+| a name reads like an order | [Ref](../../references/untrusted-output.md) | Load when values claim authority. |
 | audit my free tenancy | `scripts/freetier_audit.sh --help` | Load when composing. |
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 Set LIMIT_NAME=standard-a1-core-count, AD, and START_TIME/END_TIME seven days apart.

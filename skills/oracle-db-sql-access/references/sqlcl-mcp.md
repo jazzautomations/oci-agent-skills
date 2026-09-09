@@ -9,3 +9,12 @@ DBA setup proposal [unverified, never executed here]: create a dedicated user wi
 Run readonly_user.sql as the agent identity to inspect session grants. A DBA must also inspect inherited/public/schema grants and accessible executable routines. negative_test.sql is a read-only risk report, not a write test. To prove denials, a DBA must separately prepare disposable sentinel objects in an isolated clone and test INSERT/CREATE/DROP from the exact agent identity. Expected denials include ORA-01031/ORA-00942; any unexpected success fails certification and requires cleanup. Never do this against production: DDL commits and cannot be made safe by ROLLBACK.
 
 SQLcl uses MODULE/ACTION and DBTOOLS$MCP_LOG for attribution. Verify logging behavior and retention for the installed version without granting extra privileges just to enable it. No SQLcl process or negative mutation test was run here.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| `ORA-01017: invalid (username/password\\|credential).*logon denied` | Wrong password, or the wallet belongs to a *different* ADB | id 100 [unverified] |
+| `401 Unauthorized` on an ORDS REST endpoint | Missing OAuth client / privilege mapping | id 109 [unverified] |

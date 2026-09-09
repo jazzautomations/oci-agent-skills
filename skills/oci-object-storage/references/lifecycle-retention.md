@@ -4,3 +4,12 @@ Lifecycle put replaces the entire rule array. Preserve the old policy, merge loc
 Versioned deletions can leave prior versions billing. Lifecycle rules for current objects, previous versions and multipart uploads have different targets; check the installed parameter schema and service documentation rather than copying a guessed ABORT action.
 Archive transitions can break readers until an authorized restore completes; do not promise a fixed restore duration.
 Retention locks can be irreversible and prevent deletion even when lifecycle rules request it. Record retention duration, legal constraints and lock state before discussing cleanup. Never propose a lock as a reversible experiment.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| BucketNotEmpty | Delete attempted with objects/versions/uploads still present | id 78 [unverified] |
+| ResourceLocked | A resource lock (full/delete) or a parent-tenancy quota lock | id 21 [unverified] |

@@ -50,3 +50,12 @@ legitimate way to frame "who is asking" before proposing a design.
   them; do not cite a `learn` page as a design.
 - `dcterms.modified` is not published on these pages — only `created`. Freshness is a floor,
   not a fact. Print the date beside the link so the user can discount it.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |
+| NoEtagMatch | Optimistic-concurrency `if-match` stale | id 23 [unverified] |

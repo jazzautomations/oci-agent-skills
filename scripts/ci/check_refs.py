@@ -29,6 +29,8 @@ def validate(path):
             if not (path.parent / link.path).exists():
                 result.append(finding(path, line, "missing_reference"))
     if "references" in path.parts:
+        if 'skills' in path.parts and '```' not in path.read_text() and not re.search(r'(?im)^\|[^\n]*(?:error|signal|symptom|failure|pitfall|404|NotAuthenticated|NotAuthorized)', text):
+            result.append(finding(path, 1, 'reference_without_diagnostic_evidence'))
         if len(path.read_text().splitlines()) > 100 and not re.search(r"(?im)^#{1,3} (contents|table of contents|toc)\b", text):
             result.append(finding(path, 1, "reference_missing_toc"))
         if re.search(r"\]\([^)]*\.md(?:#[^)]*)?\)", text):
@@ -38,6 +40,13 @@ def validate(path):
     if path.name == 'SKILL.md':
         route = re.search(r'(?ms)^## Route\s*\n(.*?)(?=^## |\Z)', path.read_text())
         route_text = route[1] if route else ''
+        reasons = []
+        for row in route_text.splitlines():
+            if row.startswith('|') and not row.startswith('|---'):
+                reason = row.rsplit('|',2)[-2].strip().lower()
+                if reason in {'load when needed.', 'load when relevant.', 'compose reads.'} or reason in reasons:
+                    result.append(finding(path, 1, 'route_without_discriminator'))
+                reasons.append(reason)
         for ref in sorted((path.parent / 'references').rglob('*.md')):
             if not any(ref.name in row and 'load when' in row.lower() for row in route_text.splitlines()):
                 result.append(finding(ref, 1, 'unnamed_reference'))

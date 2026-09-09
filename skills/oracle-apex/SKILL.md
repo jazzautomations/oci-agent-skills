@@ -17,22 +17,21 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-apex/scripts/*)
 Owns APEX application delivery and ORDS integration; ADB provisioning belongs to oracle-autonomous-db.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `ADB_ID`, `COMPARTMENT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Workspace, schema and upgrade lifecycle | [Guide](references/lifecycle.md) | Load when this topic applies. |
-| Export, import and drift | [Guide](references/export-import-ci.md) | Load when this topic applies. |
-| ORDS ownership and REST access | [Guide](references/ords.md) | Load when this topic applies. |
-| APEX Assistant and AI providers | [Guide](references/apex-ai.md) | Load when this topic applies. |
-| Pages, session state and authorization | [Guide](references/page-building.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
+| Workspace, schema and upgrade lifecycle | [Guide](references/lifecycle.md) | Load when reviewing workspace, schema and upgrade lifecycle. |
+| Export, import and drift | [Guide](references/export-import-ci.md) | Load when reviewing export, import and drift. |
+| ORDS ownership and REST access | [Guide](references/ords.md) | Load when reviewing ords ownership and rest access. |
+| APEX Assistant and AI providers | [Guide](references/apex-ai.md) | Load when reviewing apex assistant and ai providers. |
+| Pages, session state and authorization | [Guide](references/page-building.md) | Load when reviewing pages, session state and authorization. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 | apex_drift.sql | [Script](scripts/apex_drift.sql) | Read-only SQL inspection. |
 
 ## Commands
@@ -75,7 +74,7 @@ oci db autonomous-database get --autonomous-database-id "$ADB_ID" --query 'data.
 3. 401 Unauthorized → OAuth/schema mapping mismatch → inspect module privileges (corpus id 109).
 4. TooManyRequests / 429 → shared HTTP concurrency exhausted → serialize requests and use bounded backoff (corpus id 26).
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain operations are shape-only; no provisioned target or SQL session was exercised. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

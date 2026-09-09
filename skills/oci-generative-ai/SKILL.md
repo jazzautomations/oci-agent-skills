@@ -16,28 +16,28 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-generative-ai/scripts/*)
 Regional model discovery, inference and agents.
 
 ## Scope check
-Select PROFILE and REGION explicitly; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"`; require successful probes.
-Verify COMPARTMENT_ID with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set REQUEST_FILE and SERVING_FILE to reviewed local JSON.
+Select `PROFILE`, `REGION` locally.
+Set `COMPARTMENT_ID`, `REQUEST_FILE`, `SERVING_FILE`.
+Check IDs with scoped reads.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Model availability | [Guide](references/models.md) | Load when relevant. |
-| Chat and embeddings | [Guide](references/chat-shapes.md) | Load when relevant. |
-| Endpoint routing | [Guide](references/endpoints.md) | Load when relevant. |
-| Dedicated clusters | [Guide](references/dedicated-clusters.md) | Load when relevant. |
-| Managed agents and tools | [Guide](references/agents-service.md) | Load when relevant. |
-| Knowledge bases and ingestion | [Guide](references/knowledge-bases.md) | Load when relevant. |
-| OCI ADK | [Guide](references/adk.md) | Load when relevant. |
-| Agent identity and model IAM | [Guide](references/agent-identity.md) | Load when relevant. |
-| architecture-center | [Reference](../../references/architecture-center.md) | As needed. |
-| error-triage | [Reference](../../references/error-triage.md) | As needed. |
-| redaction | [Reference](../../references/redaction.md) | As needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | As needed. |
-| chat_min.py | [Script](scripts/chat_min.py) | Use --help before composing reads. |
-| list_models.sh | [Script](scripts/list_models.sh) | Use --help before composing reads. |
+| Model availability | [Guide](references/models.md) | Load when reviewing model availability. |
+| Chat and embeddings | [Guide](references/chat-shapes.md) | Load when reviewing chat and embeddings. |
+| Endpoint routing | [Guide](references/endpoints.md) | Load when reviewing endpoint routing. |
+| Dedicated clusters | [Guide](references/dedicated-clusters.md) | Load when reviewing dedicated clusters. |
+| Managed agents and tools | [Guide](references/agents-service.md) | Load when reviewing managed agents and tools. |
+| Knowledge bases and ingestion | [Guide](references/knowledge-bases.md) | Load when reviewing knowledge bases and ingestion. |
+| OCI ADK | [Guide](references/adk.md) | Load when reviewing oci adk. |
+| Agent identity and model IAM | [Guide](references/agent-identity.md) | Load when reviewing agent identity and model iam. |
+| architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
+| chat_min.py | [Script](scripts/chat_min.py) | Load when using chat_min.py. |
+| list_models.sh | [Script](scripts/list_models.sh) | Load when using list_models.sh. |
+| Read lookup | [Cards](../../references/service-command-cards.md) | Load when choosing a command. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set variables locally.
@@ -87,7 +87,7 @@ oci generative-ai-inference chat-result chat --compartment-id "$COMPARTMENT_ID" 
 3. ID 2: match GENERIC/COHERE and ON_DEMAND/DEDICATED discriminators.
 4. ID 26: cap retries and tokens.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Live model discovery: 20-row sample in us-chicago-1; inference unexecuted. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

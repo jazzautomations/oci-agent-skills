@@ -8,7 +8,6 @@ metadata:
   verified-on: "2026-09-09"
   mode: "guarded-write"
   verified: "shape-only"
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-migration-patching/scripts/*)
 ---
 
 # OCI migration and fleet patching
@@ -16,25 +15,24 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-migration-patching/scripts/
 Owns migration readiness and staged maintenance plans.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set resource IDs from the selected compartment locally; never copy identifiers into reports.
+Select `PROFILE`, `REGION` from the local profile.
+Set `COMPARTMENT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Migration paths | [Guide](references/migration-paths.md) | Load when this topic applies. |
-| OS Management Hub and Ksplice | [Guide](references/os-management-hub.md) | Load when this topic applies. |
-| Java estate and GraalVM | [Guide](references/java-estate.md) | Load when this topic applies. |
-| Fleet Application Management | [Guide](references/fleet-apps-management.md) | Load when this topic applies. |
-| Exadata Fleet Update | [Guide](references/exadata-fleet-update.md) | Load when this topic applies. |
-| Oracle Cloud VMware Solution | [Guide](references/ocvs.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-
+| Migration paths | [Guide](references/migration-paths.md) | Load when reviewing migration paths. |
+| OS Management Hub and Ksplice | [Guide](references/os-management-hub.md) | Load when reviewing os management hub and ksplice. |
+| Java estate and GraalVM | [Guide](references/java-estate.md) | Load when reviewing java estate and graalvm. |
+| Fleet Application Management | [Guide](references/fleet-apps-management.md) | Load when reviewing fleet application management. |
+| Exadata Fleet Update | [Guide](references/exadata-fleet-update.md) | Load when reviewing exadata fleet update. |
+| Oracle Cloud VMware Solution | [Guide](references/ocvs.md) | Load when reviewing oracle cloud vmware solution. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -94,7 +92,7 @@ oci ocvs sddc list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data.i
 3. ID 26: `TooManyRequests` (HTTP 429) → service throttling → use bounded polling; avoid duplicating work after timeouts.
 4. ID 2: `InvalidParameter` (HTTP 400) → invalid request value → validate supported versions, target type and maintenance parameters.
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain Commands are shape-only. The permitted identity, scope, compute, network, namespace, vault and monitoring smoke reads were rerun; they do not validate this domain. No workload execution or provisioning was attempted. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

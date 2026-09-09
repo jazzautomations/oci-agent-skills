@@ -14,7 +14,6 @@ metadata:
   mode: "read-only"
   verified: "partial"
 # --- Claude-Code-only keys below; check_portable.py must pass with these stripped ---
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/scripts/*)
 ---
 
 # Oracle and OCI control-plane navigator
@@ -22,23 +21,20 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/scripts/*)
 Selects the control plane, then hands off to its owner.
 
 ## Scope check
-Never assume `DEFAULT`. Profile: `OCI_CLI_PROFILE` or `--profile`. Realm and home region:
-`oci iam region-subscription list`. Compartment: from the user, never from a returned value.
-No skill-local script: routing composes `../../scripts/catalog.py` (offline leaf lookup) with
-`../../scripts/console_url.py`.
+Set `COMPARTMENT_ID`, `TENANCY_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
-
 | The user says… | Load | Why |
 |---|---|---|
-| CLI | `../../references/service-command-cards.md` | load when choosing a read |
+| CLI | `../../references/service-command-cards.md` | Load when choosing a read before catalog search. |
 | which CLI for Fusion, OIC, WebLogic | `references/control-plane-map.md` | load when a product is named |
 | "No such command", a renamed group | `references/name-traps.md` | load when a spelling failed |
 | "does OCI have X" | `references/service-index.md` | load when existence unproven |
 | send mail, SMTP, port 25, bounces | `references/email-delivery.md` | load when the ask is email |
-| "give me a Console link" | `../../references/console-links.md` | load before emitting a URL |
-| gov, sovereign, EU realm | `../../references/realms-endpoints.md` | load when realm may not be oc1 |
-| "reference architecture" | `../../references/architecture-center.md` | load when the ask is design |
+| "give me a Console link" | `../../references/console-links.md` | Load when opening the resource Console. |
+| gov, sovereign, EU realm | `../../references/realms-endpoints.md` | Load when checking realm availability. |
+| "reference architecture" | `../../references/architecture-center.md` | Load when choosing a topology. |
 
 ## Decision table
 | Request | Route to |
@@ -53,7 +49,7 @@ Read-only; live outcomes are below.
 
 ```bash
 # realm, home region, subscriptions
-oci iam region-subscription list --tenancy-id ${TENANCY_ID} --all --query "data[].\"region-name\"" --output json
+oci iam region-subscription list --tenancy-id ${TENANCY_ID} --query "data[].\"region-name\"" --output json
 ```
 
 ```bash

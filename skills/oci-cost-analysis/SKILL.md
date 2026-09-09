@@ -16,10 +16,8 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-cost-analysis/scripts/*)
 Explains spend and pre-discount list prices.
 
 ## Scope check
-Set PROFILE and REGION explicitly (`oci iam user get`, `oci iam region-subscription list`) and
-append `--profile "$PROFILE" --region "$REGION"` to every fence. Every call here takes the
-**tenancy** OCID: a child compartment narrows the answer instead of erroring, so "the bill is
-zero" is usually the wrong scope, not the truth.
+Set `FROM`, `TENANCY_ID`, `TO` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
@@ -32,6 +30,7 @@ zero" is usually the wrong scope, not the truth.
 | why so expensive | [Guide](references/expensive-traps.md) | Load when hunting waste. |
 | compare two months | `scripts/cost_delta.sh --help` | Load when composing reads. |
 | price one SKU | `scripts/price.sh --help` | Load when no tenancy. |
+| Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 
 ## Commands
 Set `FROM`/`TO` (`YYYY-MM-DD`, UTC). `--tenant-id`, both times and `--granularity` are

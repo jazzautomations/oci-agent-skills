@@ -4,3 +4,12 @@ Big Data Service provisions clusters with distinct network, storage and manageme
 OpenSearch control plane manages clusters, backups and pipelines; index mappings, shards, documents and queries use the cluster data plane. An ACTIVE cluster is not proof of green index health. Snapshot compatibility, shard sizing and restore tests matter more than a backup object count; no snapshot/restore or query execution was attempted.
 Redis/OCI Cache CLI retains redis groups while newer nouns use oci-cache. Cluster discovery is redis redis-cluster redis-cluster-summary list-redis-clusters, not a guessed plain list. Confirm supported engine/version and topology. Cluster administration does not grant application data access; never run flush or import keys as a diagnostic.
 For all three, migration plans must handle schema/protocol compatibility, application connection changes, consistency and rollback after new writes. Do not infer data durability from cache replicas or equate an index snapshot with a tested recovery.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| IncorrectState | Resource is mid-transition (`PROVISIONING`, `TERMINATING`, `UPDATING`) | id 18 [unverified] |
+| ExternalServerIncorrectState | A customer-owned server (DB agent, on-prem host, Exadata) is unreachable/misbehaving | id 19 [unverified] |

@@ -4,3 +4,12 @@ Follow both directions: VCN route to DRG, attachment's DRG route table, imported
 VPN connections have separate tunnel state and routing. Diagnose each tunnel's status, BGP/static routing and CPE configuration. Do not print shared-secret configurations.
 FastConnect virtual-circuit lifecycle and BGP session state describe different readiness layers; PENDING_PROVIDER requires partner coordination. Remote peering connects DRGs across regions; a region change requires an explicitly agreed second scope.
 Some effective-route operation names in the research were not confirmed individually. Resolve them through catalog help before use; do not invent a get-effective-routes leaf.
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| RequestException | Bad region, blocked egress, corporate proxy | id 121 [unverified] |
+| Conflict | Overlapping CIDR with a peered VCN | id 124 [unverified] |

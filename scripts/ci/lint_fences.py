@@ -59,10 +59,9 @@ def validate(path, live=False):
                         raise ValueError('mutation_rollback')
                 if set(row["required"]) - options.keys():
                     raise ValueError("missing_required_flags")
-                if (
-                    row["verb"].startswith("list")
-                    and not {"--all", "--limit"} & options.keys()
-                ):
+                if row["read_only"] and "--query" not in options:
+                    raise ValueError("missing_read_query")
+                if row["read_only"] and row["has_limit"] and "--limit" not in options:
                     raise ValueError("unbounded_list")
             if live:
                 # Never execute the example: construct a fresh leaf-only --help argv.
@@ -87,6 +86,7 @@ def validate(path, live=False):
                     "unknown_leaf",
                     "missing_required_flags",
                     "unbounded_list",
+                    "missing_read_query",
                     "live_help_failed",
                     "live_required_mismatch",
                 }

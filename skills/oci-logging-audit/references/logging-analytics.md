@@ -10,7 +10,7 @@ dashboards, or retention past the 14-day search window.
 
 ## Is it even on?
 ```text
-oci log-analytics namespace list --compartment-id <tenancy> --all
+oci log-analytics namespace list --compartment-id <tenancy> --all --query 'data'
   -> data.items[].{ns:"namespace-name", on:"is-onboarded"}
 ```
 `[verified live 2026-09-09, us-chicago-1]`: one namespace row, `is-onboarded: false`. A

@@ -60,3 +60,12 @@ Docs: https://docs.oracle.com/en-us/iaas/Content/General/organization/home.htm â
 cited `General/Concepts/organization_management_overview.htm` now **301s** here (checked
 2026-09-09); cite the destination, not the redirect Â·
 CAF: https://docs.oracle.com/en-us/iaas/Content/cloud-adoption-framework/home.htm
+
+## Diagnostic signals
+
+Source: research/14 error corpus, retained in `references/error-corpus.json`; match status and code before message text. The source verification label is preserved per row.
+
+| Error string / pattern | What to distinguish | Corpus evidence |
+|---|---|---|
+| NotAuthorizedOrNotFound | Deliberate ambiguity: missing resource OR missing policy OR wrong region OR wrong compartment | id 13 [unverified] |
+| NoEtagMatch | Optimistic-concurrency `if-match` stale | id 23 [unverified] |

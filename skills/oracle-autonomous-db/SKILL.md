@@ -16,22 +16,21 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oracle-autonomous-db/scripts/*)
 Owns ADB provisioning and connections; Base DB and Exadata belong to oracle-db-fleet.
 
 ## Scope check
-Select PROFILE and REGION explicitly from local configuration; never assume DEFAULT.
-Run `../oci-cli-auth/scripts/whoami.sh --profile "$PROFILE" --region "$REGION"` for identity and subscriptions; require successful probes.
-Set COMPARTMENT_ID locally; verify with `oci iam compartment get --compartment-id "$COMPARTMENT_ID" --profile "$PROFILE" --region "$REGION" --query 'data."lifecycle-state"'`.
-Set ADB_ID for an existing database, TENANCY_ID for limit reads, and DB_NAME/SECRET_ID for a proposal.
+Select `PROFILE`, `REGION` from the local profile.
+Set `ADB_ID`, `COMPARTMENT_ID` for the fences below.
+Validate IDs with the scoped list/get below.
 
 ## Route
 | The user says… | Load | Why |
 |---|---|---|
-| Provisioning and Always Free | [Guide](references/provision.md) | Load when this topic applies. |
-| TLS, wallets and ORA-12506 | [Guide](references/connect.md) | Load when this topic applies. |
-| Read-only database identity | [Guide](references/readonly-user.md) | Load when this topic applies. |
-| ADB and APEX application topology | [Guide](references/app-patterns.md) | Load when this topic applies. |
-| error-triage | [Reference](../../references/error-triage.md) | Load when needed. |
-| redaction | [Reference](../../references/redaction.md) | Load when needed. |
-| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when needed. |
-| adb_preflight.sh | [Script](scripts/adb_preflight.sh) | Use --help before composing reads. |
+| Provisioning and Always Free | [Guide](references/provision.md) | Load when reviewing provisioning and always free. |
+| TLS, wallets and ORA-12506 | [Guide](references/connect.md) | Load when reviewing tls, wallets and ora-12506. |
+| Read-only database identity | [Guide](references/readonly-user.md) | Load when reviewing read-only database identity. |
+| ADB and APEX application topology | [Guide](references/app-patterns.md) | Load when reviewing adb and apex application topology. |
+| error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
+| redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
+| untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
+| adb_preflight.sh | [Script](scripts/adb_preflight.sh) | Load when using adb_preflight.sh. |
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
@@ -64,7 +63,7 @@ oci db autonomous-database-backup list --autonomous-database-id "$ADB_ID" --limi
 Character set choices
 
 ```bash
-oci db autonomous-database-character-sets list --is-shared true --all --query 'data[].{name:name}' --profile "$PROFILE" --region "$REGION"
+oci db autonomous-database-character-sets list --is-shared true --query 'data[].{name:name}' --profile "$PROFILE" --region "$REGION"
 ```
 
 Proposed start of a stopped database
@@ -81,7 +80,7 @@ oci db autonomous-database start --autonomous-database-id "$ADB_ID" --query 'dat
 3. ORA-12541 → no listener → read lifecycle state and actual service descriptor before proposing start (corpus id 101).
 4. ORA-00018/ORA-00020 → sessions exhausted → reduce pool concurrency and select the intended service (corpus id 103).
 
-IDs: [error corpus](../../references/error-corpus.json). Evidence (2026-09-09): Domain operations are shape-only; no provisioned target or SQL session was exercised. See [status](CODEX-STATUS.md).
+IDs: [error corpus](../../references/error-corpus.json). Evidence: [CLI 3.91.0 checks, 2026-09-09](validation-evidence.json).
 
 ## Hard rules
 - MUST establish identity/region/compartment before reads with the scoped `scripts/whoami.sh` above.

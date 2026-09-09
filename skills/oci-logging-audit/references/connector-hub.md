@@ -9,7 +9,7 @@ here is the connector that would keep it from now on", not a wider search.
 
 ## Read what already exists
 ```text
-oci sch service-connector list --compartment-id <c> --limit 20
+oci sch service-connector list --compartment-id <c> --limit 20 --query 'data'
   -> data.items[].{n:"display-name", s:"lifecycle-state"}
 ```
 `[verified live 2026-09-09, us-chicago-1]`: the call succeeds and returns an empty list in a
