@@ -15,7 +15,7 @@
     },
     {
       "path": "scripts/check_examples.py",
-      "sha256": "e6b2618f251fea10bdfb2b9a60a4fe22cd0734b9545f6aad88e3110de24b05cd",
+      "sha256": "cdb600169dd86fc5f502ef1833168ad220bea7ef5fe0bc56578552e8153473cf",
       "mode": "read-only",
       "oci_calls": []
     },

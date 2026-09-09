@@ -1,0 +1,99 @@
+{
+  "transport": "stdio",
+  "live": true,
+  "checks": [
+    {
+      "name": "invalid_scope_rejected",
+      "ok": true
+    },
+    {
+      "name": "oci_whoami",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "name": "oci_price_lookup",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "name": "oci_regions",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "name": "oci_compartments",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_network_inventory",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_network_inventory",
+      "variant": "subnets",
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_buckets",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "name": "oci_resource_search",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_limit_services",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_limit_values",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "name": "oci_cost_summary",
+      "variant": null,
+      "ok": true,
+      "count": 1,
+      "truncated": true
+    }
+  ],
+  "tool_count": 15,
+  "schema_characters": 13820,
+  "schema_tokens_estimate": 3455,
+  "shape_only_tools": [
+    "oci_alarm_status",
+    "oci_audit_events",
+    "oci_instances",
+    "oci_metrics",
+    "oci_work_requests"
+  ],
+  "live_scope": "D7 only; skipped tools have offline/schema coverage",
+  "ok": true
+}

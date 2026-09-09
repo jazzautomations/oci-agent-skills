@@ -1,0 +1,98 @@
+[
+  {
+    "id": "d7-compartments",
+    "skill": "oci-tenancy-governance",
+    "argv": [
+      "iam",
+      "compartment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "1"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-availability-domains",
+    "skill": "oci-compute",
+    "argv": [
+      "iam",
+      "availability-domain",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-images",
+    "skill": "oci-compute",
+    "argv": [
+      "compute",
+      "image",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "1"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-vcn",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "vcn",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "1"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-subnets",
+    "skill": "oci-networking",
+    "argv": [
+      "network",
+      "subnet",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "1"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-namespace",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "ns",
+      "get",
+      "--compartment-id",
+      "${TENANCY_ID}"
+    ],
+    "live": true
+  },
+  {
+    "id": "d7-buckets",
+    "skill": "oci-object-storage",
+    "argv": [
+      "os",
+      "bucket",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--namespace-name",
+      "${NAMESPACE}",
+      "--limit",
+      "1"
+    ],
+    "live": true
+  }
+]

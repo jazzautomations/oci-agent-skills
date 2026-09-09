@@ -20,7 +20,7 @@ spec.loader.exec_module(checker)
 def cli():
     root = click.Group("oci")
     compute = click.Group("compute")
-    instance = click.Group("instance")
+    instance = click.Group("shape")
     root.add_command(compute)
     compute.add_command(instance)
     instance.add_command(
@@ -44,7 +44,7 @@ def example(*extra):
         "skill": "oci-compute",
         "argv": [
             "compute",
-            "instance",
+            "shape",
             "list",
             "--compartment-id",
             "${COMPARTMENT_ID}",
@@ -55,21 +55,21 @@ def example(*extra):
 
 def test_validates_help_without_executing_callback(cli):
     path, values, _ = checker.validate_example(example("--limit", "10"), cli)
-    assert path == "compute instance list"
+    assert path == "compute shape list"
     assert values["--limit"] == "10"
 
 
 @pytest.mark.parametrize(
     "argv",
     [
-        ["compute", "instance", "missing"],
-        ["compute", "instance", "list"],
-        ["compute", "instance", "list", "--compartment-id"],
-        ["compute", "instance", "list", "--compartment-id", "${SECRET}"],
-        ["compute", "instance", "list", "--compartment-id", "x", "--unknown", "y"],
+        ["compute", "shape", "missing"],
+        ["compute", "shape", "list"],
+        ["compute", "shape", "list", "--compartment-id"],
+        ["compute", "shape", "list", "--compartment-id", "${SECRET}"],
+        ["compute", "shape", "list", "--compartment-id", "x", "--unknown", "y"],
         [
             "compute",
-            "instance",
+            "shape",
             "list",
             "--compartment-id",
             "x",
@@ -109,7 +109,7 @@ def test_live_binds_scope_and_forces_single_page(cli):
 def test_live_rejects_non_allowlisted_path():
     with pytest.raises(ValueError):
         checker.live_argv(
-            {"argv": ["compute", "instance", "terminate"]},
+            {"argv": ["compute", "shape", "terminate"]},
             "compute instance terminate",
             {},
             {},
@@ -123,7 +123,7 @@ def test_live_error_output_is_suppressed(monkeypatch):
     )
     monkeypatch.setattr(checker.subprocess, "run", lambda *args, **kwargs: process)
     result = checker.run_live(
-        ["compute", "instance", "list"], "DEFAULT", "us-chicago-1"
+        ["compute", "shape", "list"], "DEFAULT", "us-chicago-1"
     )
     assert result == {"status": "failed", "exit_code": 1}
 
@@ -138,7 +138,7 @@ def test_live_timeout_no_shell_and_only_counts(monkeypatch):
         return SimpleNamespace(returncode=0, stdout='{"data":[{"name":"private"}]}')
 
     monkeypatch.setattr(checker.subprocess, "run", run)
-    assert checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1") == {
+    assert checker.run_live(["compute", "shape", "list"], "DEFAULT", "us-chicago-1") == {
         "status": "passed",
         "count": 1,
         "truncated": False,
@@ -150,13 +150,13 @@ def test_live_timeout_is_structured(monkeypatch):
         raise subprocess.TimeoutExpired("private", 30, output="secret")
 
     monkeypatch.setattr(checker.subprocess, "run", run)
-    assert checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1") == {"status": "timeout"}
+    assert checker.run_live(["compute", "shape", "list"], "DEFAULT", "us-chicago-1") == {"status": "timeout"}
 
 
 def test_cli_empty_list_render_is_success(monkeypatch):
     process = SimpleNamespace(returncode=0, stdout="", stderr="")
     monkeypatch.setattr(checker.subprocess, "run", lambda *args, **kwargs: process)
-    result = checker.run_live(["compute", "instance", "list"], "DEFAULT", "us-chicago-1")
+    result = checker.run_live(["compute", "shape", "list"], "DEFAULT", "us-chicago-1")
     assert result["status"] == "passed"
     assert result["count"] == 0
     assert result["output_kind"] == "empty_cli_response"
@@ -166,7 +166,7 @@ def test_global_options_are_validated_without_callbacks(cli):
     cli.params.append(click.Option(['--profile']))
     record = example('--profile', '${PROFILE}')
     path, values, _ = checker.validate_example(record, cli)
-    assert path == 'compute instance list'
+    assert path == 'compute shape list'
     assert values['--profile'] == '${PROFILE}'
     # Offline recognition grants no live authorization.
     with pytest.raises(ValueError):

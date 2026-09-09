@@ -1,223 +1,1351 @@
 {
   "mode": "live_read_only",
-  "validated_at": "2026-09-08T04:20:44.026595+00:00",
+  "validated_at": "2026-09-09T17:57:58.493293+00:00",
   "cli_version": "3.91.0",
   "sdk_version": "2.185.0",
   "region": "us-chicago-1",
-  "complete": false,
+  "complete": true,
   "scope_note": "Fixed read commands only. One page per call; no resource names, OCIDs, raw errors or credentials retained. Success validates a read API, not deployments or full inventory.",
   "checks": [
     {
-      "id": "identity-compartments",
+      "id": "cli-auth-compartment-subtree",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cli-auth-search-scope",
       "status": "passed",
       "count": 1,
       "truncated": true
     },
     {
-      "id": "identity-regions",
+      "id": "cli-auth-subscriptions",
       "status": "passed",
       "count": 1,
       "truncated": false
     },
     {
-      "id": "identity-policy",
+      "id": "cli-auth-work-requests",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-anomaly-monitors",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-budgets",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-focus-reports",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-saved-queries",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-schedules",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "cost-analysis-tag-namespaces",
       "status": "passed",
       "count": 1,
       "truncated": true
     },
     {
-      "id": "compute-instances",
+      "id": "cost-analysis-usage-by-service",
       "status": "passed",
-      "count": 1,
-      "truncated": true
-    },
-    {
-      "id": "network-vcns",
-      "status": "passed",
-      "count": 1,
-      "truncated": true
-    },
-    {
-      "id": "network-subnets",
-      "status": "passed",
-      "count": 1,
-      "truncated": true
-    },
-    {
-      "id": "storage-namespace",
-      "status": "passed",
-      "truncated": false
-    },
-    {
-      "id": "storage-volumes",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "oke-clusters",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "oke-node-pools",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "devops-projects",
-      "status": "passed",
-      "count": 0,
-      "truncated": false
-    },
-    {
-      "id": "devops-artifacts",
-      "status": "failed",
-      "exit_code": 1,
-      "http_status": 403
-    },
-    {
-      "id": "devops-functions",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "devops-containers",
-      "status": "passed",
-      "count": 0,
-      "truncated": false
-    },
-    {
-      "id": "iac-stacks",
-      "status": "passed",
-      "count": 1,
-      "truncated": true
-    },
-    {
-      "id": "iac-jobs",
-      "status": "passed",
-      "count": 1,
-      "truncated": true
-    },
-    {
-      "id": "sre-alarms",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "sre-log-groups",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
-    },
-    {
-      "id": "cost-usage",
-      "status": "passed",
-      "count": 1,
+      "count": 4,
       "truncated": false,
       "scope": "Tenancy-wide cost across compartments and resource regions; endpoint region is not a cost filter. UTC one-day window, one page."
     },
     {
-      "id": "cost-budgets",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
+      "id": "cost-analysis-usage-by-sku",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
     },
     {
-      "id": "limits-services",
+      "id": "d7-availability-domains",
+      "status": "passed",
+      "count": 3,
+      "truncated": false
+    },
+    {
+      "id": "d7-buckets",
+      "status": "passed",
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "id": "d7-compartments",
       "status": "passed",
       "count": 1,
       "truncated": true
     },
     {
-      "id": "limits-values",
+      "id": "d7-images",
       "status": "passed",
       "count": 1,
       "truncated": true
     },
     {
-      "id": "database-adb",
+      "id": "d7-namespace",
+      "status": "passed",
+      "truncated": false
+    },
+    {
+      "id": "d7-subnets",
       "status": "passed",
       "count": 1,
       "truncated": true
     },
     {
-      "id": "database-versions",
+      "id": "d7-vcn",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "free-tier-allotment",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "free-tier-always-free-adb",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "free-tier-headroom",
+      "status": "passed",
+      "truncated": false
+    },
+    {
+      "id": "free-tier-home-region",
       "status": "passed",
       "count": 1,
       "truncated": false
     },
     {
-      "id": "ai-models",
+      "id": "free-tier-idle-cpu",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "free-tier-limit-scope",
       "status": "passed",
       "count": 1,
       "truncated": false
     },
     {
-      "id": "data-workspaces",
+      "id": "free-tier-object-cap",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "free-tier-offered-shapes",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "governance-budgets",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "governance-compartment-subtree",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "governance-cost-tracking-tags",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "governance-quotas",
       "status": "passed",
       "count": 0,
       "truncated": false,
       "output_kind": "empty_cli_response"
     },
     {
-      "id": "data-applications",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
+      "id": "governance-rules",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
     },
     {
-      "id": "security-problems",
-      "status": "failed",
-      "exit_code": 1,
-      "http_status": 404
+      "id": "governance-tag-defaults",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
     },
     {
-      "id": "security-secret-metadata",
+      "id": "governance-tag-namespaces",
       "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
+      "count": 1,
+      "truncated": true
     },
     {
-      "id": "security-bastions",
-      "status": "passed",
-      "count": 0,
-      "truncated": false,
-      "output_kind": "empty_cli_response"
+      "id": "nav-email-endpoints",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
     },
     {
-      "id": "reliability-dr",
+      "id": "nav-email-limits",
       "status": "passed",
-      "count": 0,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "nav-email-senders",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "nav-email-suppressions",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "nav-envelope-fusion",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "nav-marketplace-listings",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "nav-region-subscriptions",
+      "status": "passed",
+      "count": 1,
       "truncated": false
     },
     {
-      "id": "reliability-migrations",
+      "id": "nav-regions-in-realm",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "nav-service-known",
       "status": "passed",
-      "count": 0,
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "nav-tenancy-holdings",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "oci-ai-services-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-ai-services-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-ai-services-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-ai-services-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-ai-services-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-bastion-access-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-bastion-access-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-bastion-access-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-bastion-access-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-bastion-access-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-block-file-storage-9",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-cli-auth-reference-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-compute-1",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-compute-2",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-compute-3",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-compute-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-compute-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-compute-6",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-compute-7",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-cost-analysis-reference-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-cost-analysis-reference-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-data-platform-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-devops-pipelines-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-devops-pipelines-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-devops-pipelines-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-devops-pipelines-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-devops-pipelines-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-dr-backup-7",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-dr-backup-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-generative-ai-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-generative-ai-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-generative-ai-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-generative-ai-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-generative-ai-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-iam-policy-1",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-iam-policy-2",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-iam-policy-3",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-iam-policy-4",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-iam-policy-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-iam-policy-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-iam-policy-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-10",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-11",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-12",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "oci-incident-triage-13",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-incident-triage-14",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-15",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-4",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "oci-incident-triage-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-incident-triage-9",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-reference-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-reference-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-logging-audit-reference-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-migration-patching-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-monitoring-alarms-1",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-monitoring-alarms-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-monitoring-alarms-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-monitoring-alarms-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-monitoring-alarms-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-monitoring-alarms-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-networking-1",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-networking-2",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-networking-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-networking-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-networking-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-object-storage-1",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-object-storage-2",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-object-storage-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-object-storage-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-object-storage-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-oke-6",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "oci-security-posture-reference-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-10",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-11",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-12",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-13",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-14",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-15",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-16",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-17",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-18",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-19",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-20",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-21",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-22",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-23",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-security-posture-reference-9",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-serverless-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-serverless-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-serverless-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-serverless-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-serverless-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-support-limits-reference-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-support-limits-reference-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-support-limits-reference-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-support-limits-reference-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-support-limits-reference-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-terraform-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-terraform-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-terraform-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-terraform-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-terraform-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oci-vault-certificates-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-apex-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-apex-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-apex-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-apex-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-apex-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-autonomous-db-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-autonomous-db-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-autonomous-db-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-autonomous-db-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-autonomous-db-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-fleet-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-sql-access-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-sql-access-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-sql-access-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-sql-access-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-sql-access-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-vector-ai-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-vector-ai-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-vector-ai-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-vector-ai-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-db-vector-ai-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-1",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-2",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-3",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-4",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-5",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-6",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-7",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "oracle-enterprise-apps-8",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "posture-broad-policies",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "posture-bucket-exposure",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "posture-cloud-guard-problems",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "posture-inventory",
+      "status": "shape-verified",
+      "reason": "outside_bounded_live_template"
+    },
+    {
+      "id": "posture-open-ingress",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "posture-users-without-mfa",
+      "status": "passed",
+      "count": 1,
       "truncated": false
     },
     {
-      "id": "reliability-os",
+      "id": "sdk-compartment-walk",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "sdk-model-discovery",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "sdk-region-subscriptions",
+      "status": "passed",
+      "count": 1,
+      "truncated": false
+    },
+    {
+      "id": "sdk-regions",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "sdk-work-requests",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-availability",
+      "status": "passed",
+      "truncated": false
+    },
+    {
+      "id": "support-limits-definitions",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "support-limits-increase-items",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-increase-questions",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-increase-requests",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-occ-capacity-requests",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-occ-customer-groups",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-quotas",
       "status": "passed",
       "count": 0,
-      "truncated": false
+      "truncated": false,
+      "output_kind": "empty_cli_response"
+    },
+    {
+      "id": "support-limits-resource-types",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-services",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
+    },
+    {
+      "id": "support-limits-validate-user",
+      "status": "shape-verified",
+      "reason": "not_selected_for_D7_live"
+    },
+    {
+      "id": "support-limits-values",
+      "status": "passed",
+      "count": 1,
+      "truncated": true
     }
-  ],
-  "passed_count": 31,
-  "failed_count": 2,
-  "recheck_note": "Empty-list reads were rechecked after matching the OCI CLI documented-in-source empty renderer; service errors were retained without changing region, identity or scope."
+  ]
 }

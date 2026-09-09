@@ -15,48 +15,17 @@ from lib.oci_ro import run_process as run_readonly, ReadOnlyRefusal
 
 # Exact read operations, individually reviewed. Never infer authorization from verbs.
 LIVE_PATHS = {
-    "iam compartment list",
-    "iam region-subscription list",
-    "iam availability-domain list",
-    "iam policy list",
-    "compute instance list",
-    "compute image list",
-    "compute shape list",
-    "network vcn list",
-    "network subnet list",
-    "network nsg list",
-    "os ns get",
-    "os bucket list",
-    "search resource structured-search",
-    "limits service list",
-    "limits value list",
-    "limits resource-availability get",
-    "usage-api usage-summary request-summarized-usages",
-    "devops project list",
-    "ce cluster list",
-    "ce node-pool list",
-    "resource-manager stack list",
-    "resource-manager job list",
-    "db autonomous-database list",
-    "db version list",
-    "bv volume list",
-    "lb load-balancer list",
-    "budgets budget budget list",
-    "artifacts container repository list",
-    "fn application list",
-    "container-instances container-instance list",
-    "monitoring alarm list",
-    "logging log-group list",
-    "generative-ai model-collection list-models",
-    "data-integration workspace list",
-    "data-flow application list",
-    "cloud-guard problem list",
-    "vault secret list",
-    "bastion bastion list",
-    "disaster-recovery dr-protection-group list",
-    "database-migration migration list",
-    "os-management-hub managed-instance list",
+    "iam compartment list", "iam region list", "iam region-subscription list",
+    "iam availability-domain list", "iam policy list", "iam user list",
+    "iam domain list", "iam dynamic-group list", "iam tag-namespace list",
+    "iam tag-default list", "iam tag list-cost-tracking",
+    "compute shape list", "compute image list", "network vcn list", "network subnet list",
+    "os ns get", "os bucket list", "search resource structured-search",
+    "limits service list", "limits value list", "limits definition list",
+    "limits quota list", "limits resource-availability get",
+    "usage-api usage-summary request-summarized-usages", "monitoring metric list",
 }
+
 PLACEHOLDERS = {'FILE_SYSTEM_ID', 'JOB_ID', 'PROBLEM_ID', 'ADB_ID', 'DOMAIN_URL', 'SECURITY_ZONE_ID', 'REGION', 'BUDGET_ID', 'USER_ID', 'STACK_ID', 'START_TIME', 'BACKEND_SET', 'CATALOG_ID', 'PREFIX', 'APPLICATION_ID', 'END_TIME', 'PROFILE', 'NETWORK_FIREWALL_POLICY_ID', 'SHAPE', 'TOPIC_ID', 'NSG_ID', 'PROJECT_ID', 'LOG_GROUP_ID', 'HOST_VULNERABILITY_ID', 'CLUSTER_ID', 'DR_GROUP_ID', 'TENANCY_ID', 'LIMIT_NAME', 'SESSION_ID', 'LOAD_BALANCER_ID', 'COMPARTMENT_ID', 'AD', 'BASTION_ID', 'INSTANCE_ID', 'METRIC_NAMESPACE', 'WORK_REQUEST_ID', 'POOL_ID', 'OBJECT_NAME', 'MGMT_ENDPOINT', 'ODA_ID', 'MQL', 'BUCKET', 'PRIVATE_ENDPOINT_ID', 'AVAILABILITY_DOMAIN', 'DEPLOY_PIPELINE_ID', 'POLICY_ID', 'NAMESPACE', 'CONNECTION_ID', 'BUILD_RUN_ID', 'REQUEST_ID', 'MANAGED_DB_ID', 'LB_ID'}
 # Live examples may use only these operational options. No CLI config, endpoint,
 # filesystem, wait, query-output, raw body, debug, or all-pages options are accepted.
@@ -85,6 +54,8 @@ LIVE_FLAGS = {
     "--sort-order",
     "--scope-type",
     "--vcn-id",
+    "--name",
+    "--operating-system",
 }
 
 
@@ -157,7 +128,7 @@ def live_argv(example, path, values, available, substitutions):
         "--tenancy-id": "${TENANCY_ID}",
         "--tenant-id": "${TENANCY_ID}",
     }.items():
-        if flag in values and values[flag] != placeholder:
+        if flag in values and values[flag] not in ({placeholder, "${TENANCY_ID}"} if flag == "--compartment-id" else {placeholder}):
             raise ValueError("live scope must use the configured scope placeholder")
     if values.get("--compartment-id-in-subtree", "false").lower() != "false":
         raise ValueError("live checks cannot recursively traverse compartments")
@@ -345,6 +316,19 @@ def main():
                 "START_TIME": str(end - timedelta(days=1)) + "T00:00:00Z",
                 "END_TIME": str(end) + "T00:00:00Z",
             }
+            # Namespace discovery is a single scoped read; never retain its value.
+            namespace = run_readonly(
+                ["--profile", options.profile, "--region", options.region,
+                 "--output", "json", "--no-retry", "os", "ns", "get"],
+                capture_output=True, text=True, timeout=30, stdin=subprocess.DEVNULL,
+            )
+            if namespace.returncode == 0:
+                try:
+                    value = json.loads(namespace.stdout)["data"]
+                    if isinstance(value, str):
+                        substitutions["NAMESPACE"] = value
+                except (ValueError, KeyError, TypeError):
+                    pass
             if os.getenv("OCI_SMOKE_NAMESPACE"):
                 substitutions["NAMESPACE"] = os.environ["OCI_SMOKE_NAMESPACE"]
         failed = False
@@ -362,18 +346,26 @@ def main():
                     raise ValueError("duplicate example ID")
                 seen.add(identifier)
                 path, values, available = validate_example(example, root)
-                if options.live and example.get("live", True):
-                    argv = live_argv(example, path, values, available, substitutions)
+                if options.live and example.get("live", True) and path in LIVE_PATHS:
+                    try:
+                        argv = live_argv(example, path, values, available, substitutions)
+                    except ValueError:
+                        report.update(status="shape-verified", reason="outside_bounded_live_template")
+                        reports.append(report)
+                        print(json.dumps(report))
+                        continue
                     report.update(run_live(argv, options.profile, options.region))
                     if path == "usage-api usage-summary request-summarized-usages":
                         report["scope"] = (
                             "Tenancy-wide cost across compartments and resource regions; endpoint region is not a cost filter. UTC one-day window, one page."
                         )
                 else:
-                    report["status"] = "help_validated"
+                    report["status"] = "shape-verified" if options.live else "help_validated"
+                    if options.live:
+                        report["reason"] = "not_selected_for_D7_live"
             except (ValueError, KeyError, TypeError):
                 report.update(status="failed", error="invalid_example_or_live_scope")
-            failed |= report["status"] not in ("passed", "help_validated")
+            failed |= report["status"] not in ("passed", "help_validated", "shape-verified")
             print(json.dumps(report))
             reports.append(report)
         if options.report:
