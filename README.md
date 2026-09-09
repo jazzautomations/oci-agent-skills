@@ -1,5 +1,7 @@
 # OCI Agent Skills
 
+![OCI Agent Skills — Oracle cloud engineering for coding agents](docs/assets/oci-agent-skills.svg)
+
 **Oracle cloud engineering, from the first diagnostic to a reviewed change plan.**
 
 33 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
