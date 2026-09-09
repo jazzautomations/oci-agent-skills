@@ -53,13 +53,14 @@ def test_host_config_starts_from_resolved_plugin_root(host, tmp_path):
     asyncio.run(check())
 
 
-def test_w08a_manifest_shape():
+def test_w08b_manifest_shape():
     plugin = json.loads((ROOT / '.claude-plugin/plugin.json').read_text())
     market = json.loads((ROOT / '.claude-plugin/marketplace.json').read_text())
     assert plugin['version'] == '0.2.1' and 'skills' not in plugin
     assert {entry['name'] for entry in market['plugins']} == {'oci-agent-skills', 'oci-agent-skills-db', 'oci-agent-skills-devops'}
     for entry in market['plugins']:
-        assert 'skills' not in entry
+        assert len(entry['skills']) == {'oci-agent-skills': 33, 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
+        assert all((ROOT / path / 'SKILL.md').is_file() for path in entry['skills'])
         assert entry['hooks'] == './hooks/hooks.json'
         assert (ROOT / entry['hooks']).is_file()
         assert 'not affiliated with' in entry['description']

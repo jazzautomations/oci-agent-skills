@@ -51,7 +51,7 @@
     },
     {
       "path": "scripts/ci/check_manifests.py",
-      "sha256": "7c1d0744d29bec0c672e4f0bd5af5469cefb69cab821d622d773cf0c4fe65e58",
+      "sha256": "244d5b82048d362439261f1981ddf9f03a114801a64d13be0f6973759d6d486c",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -81,7 +81,7 @@
     },
     {
       "path": "scripts/ci/check_template.py",
-      "sha256": "8cd578e282d7c20bd5f34214eed6423fc72715f9c9ca4f98b9a007415da6a64a",
+      "sha256": "79fc27e91160be47a184df280142f7a087c28bffd6867b8ae87c3d43e25dd902",
       "mode": "read-only",
       "oci_calls": []
     },

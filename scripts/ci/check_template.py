@@ -17,7 +17,7 @@ if __name__ == '__main__':
     parser.add_argument('--write', action='store_true')
     args = parser.parse_args()
     content = expected(args.plan.read_text())
-    target = ROOT / 'skills/_TEMPLATE/SKILL.md'
+    target = ROOT / 'skills/_TEMPLATE/SKILL.md.template'
     if args.write:
         target.write_text(content)
     elif target.read_bytes() != content.encode():

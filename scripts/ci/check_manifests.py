@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""W08a manifest shape, optionally installed Claude strict validation without the stencil."""
+"""W08b manifest shape, optionally installed Claude strict validation without the stencil."""
 import argparse
 import importlib.util
 import json
@@ -18,7 +18,9 @@ def validate():
     assert 'skills' not in plugin and 'hooks' not in codex
     assert len(marketplace['plugins']) == 3
     for entry in marketplace['plugins']:
-        assert 'skills' not in entry
+        assert len(entry['skills']) == {'oci-agent-skills': 33, 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
+        assert len(set(entry['skills'])) == len(entry['skills'])
+        assert all((ROOT / skill / 'SKILL.md').is_file() for skill in entry['skills'])
         assert entry['hooks'] == './hooks/hooks.json' and entry['source'] == './'
     assert codex['mcpServers']['oci-readonly']['cwd'] == '.'
     assert (ROOT / plugin['hooks']).is_file()
@@ -40,4 +42,4 @@ if __name__ == '__main__':
                 result = subprocess.run(['claude', 'plugin', 'validate', str(path), '--strict', '--json'], capture_output=True, text=True, check=True)
                 report = json.loads(result.stdout)
                 assert report['success']
-    print('W08a manifests valid' + ('; copied plugin passes Claude strict validation.' if args.host_validation else '.'))
+    print('W08b manifests valid' + ('; copied plugin passes Claude strict validation.' if args.host_validation else '.'))
