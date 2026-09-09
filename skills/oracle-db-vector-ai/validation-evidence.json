@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-09",
+  "cli": "3.91.0",
+  "validators": {
+    "check_frontmatter.py": {
+      "validator": "frontmatter",
+      "checked": 1,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_refs.py": {
+      "validator": "refs",
+      "checked": 7,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_portable.py": {
+      "validator": "portable",
+      "checked": 1,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "lint_fences.py": {
+      "validator": "fences",
+      "checked": 7,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_budget.py": {
+      "validator": "budget",
+      "checked": 7,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_no_secrets.py": {
+      "validator": "secrets",
+      "checked": 10,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    },
+    "check_scripts_readonly.py": {
+      "validator": "scripts_readonly",
+      "checked": 0,
+      "findings": [],
+      "baseline_matches": null,
+      "ok": true,
+      "exit_code": 0
+    }
+  },
+  "docs": [
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/create-tables-using-vector-data-type.html",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/create-tables-using-vector-data-type.html"
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/guidelines-using-vector-indexes.html",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/guidelines-using-vector-indexes.html"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-examples.html",
+      "status": 200,
+      "resolved": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-examples.html"
+    }
+  ],
+  "full_pytest": "2 failed, 199 passed, 1 warning in 30.17s",
+  "pytest": "199 passed, 2 deselected, 1 warning in 34.91s",
+  "tenancy_smoke": {
+    "date": "2026-09-09",
+    "cli": "3.91.0",
+    "profile_selection": "explicit existing API-key profile",
+    "region": "us-chicago-1",
+    "scope": "configured tenancy root; no recursive traversal",
+    "checks": [
+      {
+        "name": "identity",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "subscriptions",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "compartment",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "shapes",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "images",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "availability-domains",
+        "ok": true,
+        "error": null,
+        "count": 3
+      },
+      {
+        "name": "network",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "namespace",
+        "ok": true,
+        "error": null,
+        "count": 1
+      },
+      {
+        "name": "vaults",
+        "ok": true,
+        "error": null,
+        "count": 0
+      },
+      {
+        "name": "monitoring",
+        "ok": true,
+        "error": null,
+        "count": 1
+      }
+    ]
+  },
+  "domain_verification": "shape-only; no SQL or billable inference executed"
+}
