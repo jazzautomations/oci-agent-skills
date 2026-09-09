@@ -213,7 +213,7 @@
     },
     {
       "path": "scripts/lib/sanitize.py",
-      "sha256": "c041cd7f7efa37b46ae6ad3564905e9e999e531fe5b3f09df389a5882255a1ac",
+      "sha256": "5863beab1bb5f058c96901319decf9490d75d029380173cbf50db77fba6d9165",
       "mode": "read-only",
       "oci_calls": []
     },

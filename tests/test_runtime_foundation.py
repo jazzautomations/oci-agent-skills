@@ -136,7 +136,7 @@ def test_resource_names_are_bounded_untrusted_data():
     )
     assert len(result["items"][0]["display_name"]) == 256
     assert result["trust"] == "account-controlled"
-    assert "control-stripped" in result["flags"]
+    assert "control-separated" in result["flags"]
     assert result["source"] == "oci:compute:list_instances"
 
 
