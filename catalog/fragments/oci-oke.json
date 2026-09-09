@@ -1,6 +1,40 @@
 [
   {
-    "id": "oke-clusters",
+    "id": "oci-oke-1",
+    "skill": "oci-oke",
+    "argv": [
+      "ce",
+      "cluster-options",
+      "get",
+      "--cluster-option-id",
+      "all",
+      "--query",
+      "data.\"kubernetes-versions\"",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-oke-2",
+    "skill": "oci-oke",
+    "argv": [
+      "ce",
+      "node-pool-options",
+      "get",
+      "--node-pool-option-id",
+      "all",
+      "--query",
+      "data.{shapes:shapes,sources:sources}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-oke-3",
     "skill": "oci-oke",
     "argv": [
       "ce",
@@ -9,11 +43,17 @@
       "--compartment-id",
       "${COMPARTMENT_ID}",
       "--limit",
-      "10"
+      "20",
+      "--query",
+      "data[].{id:id,type:type,version:\"kubernetes-version\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
     ]
   },
   {
-    "id": "oke-node-pools",
+    "id": "oci-oke-4",
     "skill": "oci-oke",
     "argv": [
       "ce",
@@ -21,8 +61,57 @@
       "list",
       "--compartment-id",
       "${COMPARTMENT_ID}",
+      "--cluster-id",
+      "${CLUSTER_ID}",
       "--limit",
-      "10"
+      "20",
+      "--query",
+      "data[].{id:id,version:\"kubernetes-version\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-oke-5",
+    "skill": "oci-oke",
+    "argv": [
+      "ce",
+      "work-request-error",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--work-request-id",
+      "${WORK_REQUEST_ID}",
+      "--all",
+      "--query",
+      "data[].{code:code,message:message}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-oke-6",
+    "skill": "oci-oke",
+    "argv": [
+      "limits",
+      "value",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--service-name",
+      "container-engine",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{name:name,value:value}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
     ]
   }
 ]
