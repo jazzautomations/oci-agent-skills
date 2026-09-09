@@ -249,7 +249,7 @@
     },
     {
       "path": "scripts/review/brief_pdf.py",
-      "sha256": "12d41053c5b491568e0b7322d25f43ef0904064a74430e7a19cd2fb6737d7b49",
+      "sha256": "493b7d1064fcd8b4a0de0f02bc164cf12b2abc43e81506a2764d73cecc90cec1",
       "mode": "read-only",
       "oci_calls": []
     },

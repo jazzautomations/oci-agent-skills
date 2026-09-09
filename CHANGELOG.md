@@ -2,6 +2,11 @@
 
 ## Unreleased — presentation and documentation
 
+Expanded the Portuguese review PDF into a seven-page illustrated explanation:
+network troubleshooting scenario, component architecture, nine coverage areas,
+reproducible demo, scoped evidence and focused review questions. Added embedded
+fonts and explicit text-frame overflow checks to the presentation generator.
+
 Added a private technical review pack: Portuguese briefing PDF, five-minute
 offline component walkthrough, recorded input hashes, feedback template and
 an unsent introduction draft. The demo exercises catalog lookup, inert guard

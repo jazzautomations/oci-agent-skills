@@ -1,152 +1,273 @@
 #!/usr/bin/env python3
-"""Build the Portuguese review brief. Optional authoring dependency: reportlab==5.0.0."""
+"""Illustrated Portuguese brief. Optional authoring dependency: reportlab==5.0.0."""
 import json
 from pathlib import Path
-
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
+import reportlab
+from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen.canvas import Canvas
+from reportlab.platypus import Paragraph
 
 ROOT = Path(__file__).resolve().parents[2]
-INK = colors.HexColor("#222522")
-RED = colors.HexColor("#B63D2E")
-MUTED = colors.HexColor("#59615A")
-PAPER = colors.HexColor("#FAF8F2")
-RULE = colors.HexColor("#DEDCD4")
-STYLES = {
-    "eyebrow": ParagraphStyle("eyebrow", fontName="Helvetica-Bold", fontSize=9,
-                              leading=13, textColor=RED, spaceAfter=20),
-    "title": ParagraphStyle("title", fontName="Helvetica-Bold", fontSize=37,
-                            leading=40, textColor=INK, spaceAfter=18),
-    "subtitle": ParagraphStyle("subtitle", fontName="Helvetica", fontSize=16,
-                               leading=23, textColor=MUTED, spaceAfter=25),
-    "h2": ParagraphStyle("h2", fontName="Helvetica-Bold", fontSize=15,
-                         leading=20, textColor=INK, spaceBefore=17, spaceAfter=9),
-    "body": ParagraphStyle("body", fontName="Helvetica", fontSize=10.5,
-                           leading=16, textColor=INK, spaceAfter=10),
-    "small": ParagraphStyle("small", fontName="Helvetica", fontSize=8.5,
-                            leading=12, textColor=MUTED, spaceAfter=7),
-    "metric": ParagraphStyle("metric", fontName="Helvetica-Bold", fontSize=29,
-                             leading=34, textColor=RED, spaceAfter=6),
-}
+W, H = A4
+M, CW = 42, W - 84
+INK, RED, PAPER = '#202B29', '#B43C2D', '#F7F4EC'
+MUTED, LINE, WHITE = '#56655F', '#DADDD2', '#FFFFFF'
+PALE, GREEN = '#E7EDE4', '#29664E'
+URL = 'https://github.com/jazzautomations/oci-agent-skills'
+PAGES = 7
 
 
-def p(text, style="body"):
-    return Paragraph(text, STYLES[style])
+def fonts():
+    """Embed Lato when available; use ReportLab's bundled Vera otherwise."""
+    system = Path('/usr/share/fonts/truetype/lato')
+    bundled = Path(reportlab.__file__).parent / 'fonts'
+    for name, lato, vera in [('Body', 'Lato-Regular.ttf', 'Vera.ttf'),
+                            ('Bold', 'Lato-Bold.ttf', 'VeraBd.ttf'),
+                            ('Italic', 'Lato-Italic.ttf', 'VeraIt.ttf')]:
+        path = system / lato if (system / lato).exists() else bundled / vera
+        pdfmetrics.registerFont(TTFont(name, str(path)))
+    pdfmetrics.registerFontFamily('Body', normal='Body', bold='Bold', italic='Italic', boldItalic='Bold')
 
 
-def table(rows, widths):
-    content = [[p(cell, "small") for cell in row] for row in rows]
-    result = Table(content, colWidths=widths, hAlign="LEFT")
-    result.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 12),
-        ("TOPPADDING", (0, 0), (-1, -1), 10),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-        ("LINEBELOW", (0, 0), (-1, -1), .5, RULE),
-    ]))
-    return result
+class Brief:
+    def __init__(self, output, date):
+        self.c = Canvas(str(output), pagesize=A4, invariant=1)
+        self.c.setTitle('OCI Agent Skills | Do pedido ao fluxo de trabalho')
+        self.c.setAuthor('Felipe Salvego / Jazz Automations')
+        self.c.setSubject('Apresentação técnica privada — edição 02')
+        self.date, self.page = date, 0
 
+    def rect(self, x, y, w, h, color, radius=0):
+        self.c.setFillColor(HexColor(color))
+        if radius:
+            self.c.roundRect(x, H-y-h, w, h, radius, stroke=0, fill=1)
+        else:
+            self.c.rect(x, H-y-h, w, h, stroke=0, fill=1)
 
-def frame(canvas, doc):
-    width, height = A4
-    canvas.saveState()
-    canvas.setFillColor(PAPER)
-    canvas.rect(0, 0, width, height, fill=1, stroke=0)
-    canvas.setFillColor(RED)
-    canvas.rect(48, height - 40, 38, 4, fill=1, stroke=0)
-    canvas.setFont("Helvetica", 8)
-    canvas.setFillColor(MUTED)
-    canvas.drawString(48, 30, "OCI AGENT SKILLS  /  REVISÃO TÉCNICA PRIVADA  /  0.2.1")
-    canvas.drawRightString(width - 48, 30, f"{doc.page} / 3")
-    canvas.restoreState()
+    def line(self, x, y, x2, y2, color=LINE):
+        self.c.setStrokeColor(HexColor(color))
+        self.c.setLineWidth(1)
+        self.c.line(x, H-y, x2, H-y2)
+
+    def text(self, value, x, y, w=CW, size=11.5, color=INK, font='Body', leading=None, max_h=None):
+        style = ParagraphStyle('p', fontName=font, fontSize=size,
+                               leading=leading or size*1.36, textColor=HexColor(color))
+        para = Paragraph(value, style)
+        _, height = para.wrap(w, H)
+        if y+height > H-57 or (max_h is not None and height > max_h):
+            raise ValueError(f'Page {self.page}: text exceeds frame: {value[:70]} ({height:.1f}pt)')
+        para.drawOn(self.c, x, H-y-height)
+        return y+height
+
+    def start(self, section, dark=False):
+        if self.page:
+            self.c.showPage()
+        self.page += 1
+        self.rect(0, 0, W, H, INK if dark else PAPER)
+        self.rect(M, 32, 24, 4, '#EF8769' if dark else RED)
+        self.text('JAZZ / OCI AGENT SKILLS', M+35, 27, 270, 8.5, WHITE if dark else MUTED, 'Bold')
+        self.text(section, W-187, 27, 145, 8.5, '#C8D6CA' if dark else MUTED)
+        self.line(M, H-44, W-M, H-44, '#4A5750' if dark else LINE)
+        self.c.setFont('Body', 8)
+        self.c.setFillColor(HexColor('#C8D6CA' if dark else MUTED))
+        self.c.drawString(M, 28, f'REVISÃO PRIVADA  ·  0.2.1 PREVIEW  ·  {self.date}')
+        self.c.drawRightString(W-M, 28, f'{self.page:02} / {PAGES:02}')
+
+    def title(self, eyebrow, title, subtitle):
+        self.text(eyebrow, M, 78, size=9, color=RED, font='Bold')
+        end = self.text(title, M, 100, size=31, font='Bold', leading=35)
+        self.text(subtitle, M, end+14, size=12.5, color=MUTED, max_h=52)
+
+    def source(self, paths):
+        self.text('NO REPOSITÓRIO  /  '+paths, M, H-80, size=7.7, color=MUTED, max_h=25)
+
+    def number(self, value, x, y):
+        self.rect(x, y, 30, 30, PALE, 15)
+        self.text(value, x+8, y+6, 22, 11, GREEN, 'Bold')
+
+    def save(self):
+        if self.page != PAGES:
+            raise ValueError('Unexpected page count')
+        self.c.save()
 
 
 def main():
-    evidence = json.loads((ROOT / "docs/evidence/review-demo.json").read_text())
-    matrix = json.loads((ROOT / "docs/evidence/validation-matrix.json").read_text())
-    if not evidence["ok"] or not all(item["ok"] for item in evidence["checks"]):
-        raise ValueError("The brief requires a passing recorded component walkthrough")
-    passed = sum(row["result"] == "PASS" for row in matrix["rows"])
-    pending = len(matrix["rows"]) - passed
-    skills = len(list((ROOT / "skills").glob("*/SKILL.md")))
-    mcp = next(item for item in evidence["checks"] if item["name"] == "mcp_stdio")["result"]
-    date = evidence["validated_at"][:10]
-    width = A4[0] - 96
-    story = [
-        p("COMMUNITY PREVIEW  /  CONVITE À REVISÃO", "eyebrow"),
-        p("OCI Agent<br/>Skills", "title"),
-        p("Contexto operacional para agentes<br/>que trabalham com Oracle Cloud.", "subtitle"),
+    fonts()
+    evidence = json.loads((ROOT/'docs/evidence/review-demo.json').read_text())
+    matrix = json.loads((ROOT/'docs/evidence/validation-matrix.json').read_text())
+    if not evidence['ok'] or not all(item['ok'] for item in evidence['checks']):
+        raise ValueError('A passing recorded walkthrough is required')
+    tools = next(item['result']['tool_count'] for item in evidence['checks'] if item['name']=='mcp_stdio')
+    skills = len(list((ROOT/'skills').glob('*/SKILL.md')))
+    passed = sum(row['result']=='PASS' for row in matrix['rows'])
+    output = ROOT/'docs/review/brief-pt.pdf'
+    b = Brief(output, evidence['validated_at'][:10])
+
+    b.start('APRESENTAÇÃO / EDIÇÃO 02', dark=True)
+    b.text('OCI Agent<br/>Skills', M, 86, size=54, color=WHITE, font='Bold', leading=55)
+    b.text('Da pergunta sobre a nuvem<br/>a um fluxo de trabalho verificável.', M, 224,
+           size=23, color='#E5EEDC', leading=29)
+    b.text('Um pacote aberto à inspeção que dá ao agente instruções por domínio, referências sob demanda e ferramentas de leitura com escopo explícito.',
+           M, 305, 470, 13, '#C8D6CA', max_h=70)
+    b.rect(M, 412, CW, 152, '#2D3B35', 12)
+    for index, (title, body) in enumerate([
+        ('ENTENDER', 'Selecionar o domínio<br/>e delimitar a tarefa.'),
+        ('INVESTIGAR', 'Consultar comandos<br/>e leituras permitidas.'),
+        ('EXPLICAR', 'Organizar evidências<br/>e próximos passos.')]):
+        x=M+20+index*164
+        b.text(f'0{index+1}', x, 434, 100, 10, '#EF8769', 'Bold')
+        b.text(title, x, 463, 145, 12, WHITE, 'Bold')
+        b.text(body, x, 489, 145, 10.5, '#C8D6CA')
+        if index < 2:
+            b.line(x+137, 468, x+151, 468, '#EF8769')
+    b.text(f'<b>{skills} skills</b> por domínio   /   <b>{tools} ferramentas MCP</b> de leitura', M, 591, size=12, color=WHITE)
+    b.text('PARA QUEM', M, 641, size=9, color='#EF8769', font='Bold')
+    b.text('Engenharia de cloud, plataforma, operações e dados que trabalha com agentes de programação e quer revisar como eles usam OCI.', M, 660, 480, 12, '#C8D6CA')
+    b.text('Felipe Salvego · Jazz Automations<br/>Projeto independente da comunidade. Sem vínculo ou endosso da Oracle.', M, 723, size=9, color='#C8D6CA')
+
+    b.start('01 / UM CASO CONCRETO')
+    b.title('O QUE MUDA NO TRABALHO DO AGENTE', '“A porta está aberta.<br/>Por que o site não responde?”',
+            'Um exemplo de diagnóstico de rede ajuda a entender a proposta.')
+    b.rect(M, 246, CW, 64, '#EFE4D6', 8)
+    b.text('PEDIDO DO USUÁRIO', M+16, 258, size=8.5, color=RED, font='Bold')
+    b.text('“Liberei a porta 80 na security list, mas o acesso externo continua em timeout.”', M+16, 277, CW-32, 12, max_h=33)
+    steps = [
+        ('Definir onde investigar', 'Confirmar perfil, região, compartment e recurso afetado. A investigação precisa ter um alvo e um limite.'),
+        ('Carregar a skill de rede', 'A oci-networking orienta o diagnóstico de alcance: VCN, subnet, rotas, gateway e regras de acesso.'),
+        ('Escolher as leituras necessárias', 'O catálogo ajuda a verificar comandos e flags. Os helpers fazem leituras delimitadas; o MCP de rede oferece apenas resumos de VCN/subnet.'),
+        ('Organizar uma conclusão revisável', 'A saída esperada distingue o que foi observado, o que falta confirmar e qual mudança poderia ser proposta, com escopo e recuperação.'),
     ]
-    metrics = Table([[p(str(skills), "metric"), p(str(mcp["tool_count"]), "metric"), p("5 min", "metric")],
-                     [p("skills por domínio", "small"), p("ferramentas MCP fixas", "small"), p("demonstração offline", "small")]],
-                    colWidths=[width / 3] * 3)
-    metrics.setStyle(TableStyle([("LEFTPADDING", (0, 0), (-1, -1), 0)]))
-    story += [metrics, Spacer(1, 20), p("O problema", "h2"),
-        p("Encontrar um comando não basta. O agente precisa conhecer o compartment, a região, "
-          "os pré-requisitos, o formato da resposta e os limites da operação."),
-        p("O projeto reúne instruções específicas por domínio, catálogo da CLI instalada, "
-          "helpers com leitura delimitada e um servidor MCP com contratos explícitos."),
-        p("Por que mostrar agora", "h2"),
-        p("Antes de abrir o repositório, queremos que engenheiros da Oracle revisem tarefas "
-          "representativas, apontem pressupostos incorretos e ajudem a priorizar a próxima validação."),
-        Spacer(1, 12),
-        p("<b>Felipe Salvego · Jazz Automations</b><br/>Projeto independente da comunidade. "
-          "Sem vínculo, endosso ou certificação da Oracle. Pacote em preview; revisão técnica privada.", "small"),
-        PageBreak(),
-        p("01  /  COMO AS PEÇAS FUNCIONAM", "eyebrow"),
-        p("Escopo antes<br/>da operação.", "title"),
-        p("Cada camada tem um papel que o revisor consegue inspecionar.", "subtitle"),
-        table([
-            ("<b>Skill + referências</b>", "Selecionam o fluxo e carregam contexto por necessidade."),
-            ("<b>Catálogo da CLI</b>", "Expõe comandos e flags da versão instalada; inclui aliases."),
-            ("<b>Helpers de leitura</b>", "Usam wrapper comum, escopo explícito e saídas projetadas."),
-            ("<b>Guarda consultiva</b>", "Classifica comandos no hook Bash do Claude. Outros adaptadores não recebem esse hook."),
-            ("<b>MCP por stdio</b>", "Oferece ferramentas fixas de leitura, sem executor arbitrário de CLI, SQL ou SDK."),
-        ], [145, width - 145]),
-        p("Demonstração reproduzível", "h2"),
-        p("1. Consultar o escopo exigido pelo catálogo.<br/>"
-          "2. Classificar uma leitura e uma proposta de escrita como dados inertes.<br/>"
-          "3. Inicializar o servidor MCP real, descobrir 15 ferramentas e rejeitar escopo inválido."),
-        p(f"<b>Registro: {date} · 4 verificações passaram.</b> A demo não executa operações OCI "
-          "e não precisa de credenciais. Código, saída JSON e hashes dos insumos acompanham o pacote.", "small"),
-        p("IAM e permissões do host continuam sendo a fronteira de acesso. A demo de componentes "
-          "não mede sucesso de uma tarefa de agente nem aplicação de permissões pelo host.", "small"),
-        PageBreak(),
-        p("02  /  EVIDÊNCIA E PRÓXIMA VALIDAÇÃO", "eyebrow"),
-        p("Revisão com<br/>limites claros.", "title"),
-        p(f"{passed} gates passaram. {pending} permanecem abertos.", "subtitle"),
-        table([
-            ("<b>Já registrado</b>", "362 testes de regressão; 277 blocos OCI aceitos pelo lint de sintaxe. "
-             "A varredura de helpers registra 27 entradas aprovadas, sendo 6 offline."),
-            ("<b>Roteamento / agente</b>", "Proxy estático de descrição: 37,5%, abaixo de 90%. "
-             "Avaliação no host e comparação comportamental ainda incompletas."),
-            ("<b>Leituras / ambientes</b>", "Cloud Guard 404 e Support 403 na triagem delimitada; faltam fixtures e dados de métricas. "
-             "Outros principals, regiões e plataformas exigem validação."),
-            ("<b>Distribuição / publicação</b>", "Drift local validado; fluxo agendado e abertura de issue ainda não medidos. "
-             "Histórico contém ocorrências de e-mail em patches e precisa de revisão antes da publicação."),
-        ], [145, width - 145]),
-        p("O feedback que mais ajuda", "h2"),
-        p("Escolha um domínio. Aponte um pré-requisito ausente, uma hipótese incorreta sobre a API "
-          "ou uma tarefa importante que o agente deveria resolver. Inclua o arquivo, o comportamento "
-          "esperado e a menor forma de reproduzir com dados sanitizados."),
-        p("Abra o pacote", "h2"),
-        p('<link href="https://github.com/jazzautomations/oci-agent-skills" color="#B63D2E">'
-          'github.com/jazzautomations/oci-agent-skills</link><br/>'
-          'Acesso ao repositório privado deve ser concedido pelo proprietário. Alternativa: ZIP da árvore atual, sem histórico Git.', "small"),
-        p("No código: docs/review/README.md · docs/review/demo.md · docs/validation-matrix.md. "
-          "Evidências datadas não substituem uma nova execução no ambiente do revisor.", "small"),
+    for i,(title,body) in enumerate(steps):
+        y=334+i*87
+        if i<3:b.line(M+15,y+30,M+15,y+87)
+        b.number(str(i+1),M,y)
+        b.text(title,M+46,y,CW-46,13,font='Bold')
+        b.text(body,M+46,y+25,CW-46,10.8,max_h=48)
+    b.text('<b>Como ler este exemplo:</b> é o fluxo previsto nas instruções do pacote. Não é um incidente executado nem uma promessa de diagnóstico automático. O MCP de rede não retorna regras, rotas ou tráfego.', M, 697, size=9.5, color=MUTED,max_h=48)
+    b.source('skills/oci-networking/SKILL.md · docs/mcp-tools.md')
+
+    b.start('02 / COMO FUNCIONA')
+    b.title('INSTRUÇÕES, DESCOBERTA E EXECUÇÃO', 'Três peças que se<br/>complementam.',
+            'O pacote é usado dentro do agente. Cada peça resolve uma parte diferente da tarefa.')
+    for x,title,body in [
+        (M,'SKILL','Um guia de trabalho: quando usar, perguntas de escopo, rotas por sintoma, exemplos, referências e cuidados operacionais.'),
+        (M+264,'CATÁLOGO CLI','Um índice consultável da CLI instalada. Ajuda a descobrir comandos e flags obrigatórias sem carregar o inventário inteiro no prompt.')]:
+        b.rect(x,241,247,147,WHITE,8)
+        b.rect(x,241,247,4,RED)
+        b.text(title,x+16,259,215,10,color=RED,font='Bold')
+        b.text(body,x+16,284,215,11.4,max_h=88)
+    b.text('O agente usa esse contexto e escolhe um caminho de leitura:',M,414,size=12,font='Bold')
+    for x,title,body,bottom in [
+        (M,'HELPERS / SHELL','Scripts do pacote → wrapper comum → operações OCI permitidas.', 'No Claude, o hook Bash classifica propostas como permitir, pedir revisão ou negar.'),
+        (M+264,'MCP / STDIO','Cliente MCP → servidor do pacote → uma das 15 ferramentas fixas.', 'MCP é o protocolo que permite ao agente descobrir e chamar essas ferramentas.')]:
+        b.rect(x,450,247,173,PALE,8)
+        b.text(title,x+16,467,215,10,color=GREEN,font='Bold')
+        b.text(body,x+16,493,215,12,max_h=52)
+        b.text(bottom,x+16,554,215,10.2,color=MUTED,max_h=53)
+    b.rect(M,648,CW,75,INK,8)
+    b.text('A fronteira de acesso continua sendo IAM + permissões do host.',M+16,662,CW-32,12,WHITE,'Bold')
+    b.text('A guarda é consultiva e específica do hook fornecido ao Claude. O MCP não oferece executor genérico de CLI, SQL ou SDK.',M+16,689,CW-32,10,'#C8D6CA',max_h=29)
+    b.source('docs/foundation.md · runtime/README.md · scripts/lib/oci_ro.py')
+
+    b.start('03 / ONDE APLICAR')
+    b.title('COBERTURA DO PACOTE', f'{skills} skills. Nove frentes<br/>de trabalho.',
+            'Da identidade ao banco de dados: cada domínio tem instruções e referências próprias.')
+    domains = [
+        ('05','Identidade e governança','Navegação, autenticação, tenancy, políticas IAM e limites.'),
+        ('05','Infraestrutura','Compute, rede, object storage, block/file storage e bastion.'),
+        ('04','Entrega e IaC','OKE, pipelines, serverless e Terraform.'),
+        ('05','Operação e segurança','Métricas, logs, incidentes, postura de segurança e certificados.'),
+        ('02','Custos e Free Tier','Análise de custos e planejamento dentro dos limites da oferta.'),
+        ('05','Database e APEX','Autonomous, frotas, vetores/IA, acesso SQL e APEX.'),
+        ('03','IA e dados','Generative AI, serviços de IA e plataformas de dados.'),
+        ('02','Continuidade','Backup, recuperação, migração e atualização.'),
+        ('02','SDKs e aplicações','Padrões de SDK e navegação em aplicações empresariais Oracle.'),
     ]
-    output = ROOT / "docs/review/brief-pt.pdf"
-    SimpleDocTemplate(str(output), pagesize=A4, rightMargin=48, leftMargin=48,
-                      topMargin=65, bottomMargin=58, title="OCI Agent Skills — Revisão técnica",
-                      author="Felipe Salvego / Jazz Automations", invariant=1).build(
-                          story, onFirstPage=frame, onLaterPages=frame)
-    print(output.relative_to(ROOT))
+    if sum(int(n) for n,_,_ in domains) != skills:raise ValueError('Coverage counts need review')
+    for i,(count,title,body) in enumerate(domains):
+        y=237+i*51
+        b.text(count,M,y,38,20,color=RED,font='Bold')
+        b.text(title,M+53,y,CW-53,12,font='Bold')
+        b.text(body,M+53,y+20,CW-53,10.4,color=MUTED,max_h=29)
+        b.line(M,y+44,W-M,y+44)
+    b.text('A amplitude das skills é maior que a superfície das 15 ferramentas MCP. Uma skill também pode orientar CLI, SQL, revisão de código ou um plano de mudança. Cobertura de instruções não significa validação completa de todos os serviços.',M,710,size=10,color=MUTED,max_h=42)
+    b.source('docs/skills.md · docs/audit.md · docs/oracle-product-map.md')
+
+    b.start('04 / VEJA FUNCIONAR')
+    b.title('DEMONSTRAÇÃO OFFLINE', 'Uma demo de cinco minutos.<br/>Sem credenciais OCI.',
+            'Ela executa componentes reais do pacote e grava um relatório JSON com hashes dos insumos.')
+    b.rect(M,242,CW,133,INK,10)
+    b.text('TERMINAL / NA RAIZ DO REPOSITÓRIO',M+18,257,CW-36,8.5,'#EF8769','Bold')
+    b.text('uv sync --frozen --project runtime',M+18,284,CW-36,11,WHITE)
+    b.text('uv run --frozen --project runtime python scripts/review/demo.py<br/>--report /tmp/oci-review.json',M+18,316,CW-36,10.5,'#C8D6CA')
+    b.text('Una as duas linhas do segundo comando. Python 3.13+ e uv; a instalação inicial pode baixar dependências.',M,386,size=9.3,color=MUTED,max_h=29)
+    rows=[
+        ('CATÁLOGO','Escopo identificado','A consulta de requisitos para compute instance list retorna --compartment-id.'),
+        ('GUARDA','Leitura: allow','A proposta de listar instâncias é classificada como leitura permitida.'),
+        ('GUARDA','Escrita: ask','A proposta de criar uma instância pede revisão. Ela é tratada como texto; não é executada.'),
+        ('MCP','15 ferramentas + escopo inválido rejeitado','O servidor real inicializa por stdio e rejeita a entrada inválida sem config OCI válida.'),
+    ]
+    for i,(tag,title,body) in enumerate(rows):
+        y=432+i*63
+        b.text(tag,M,y,82,8.8,color=GREEN,font='Bold')
+        b.text(title,M+87,y,CW-87,11.5,font='Bold')
+        b.text(body,M+87,y+21,CW-87,10.2,max_h=29)
+        b.line(M,y+55,W-M,y+55)
+    b.text('<b>Resultado registrado:</b> 4 verificações passaram. A demo não mede execução de tarefas pelo modelo, aplicação do hook pelo host ou operações na tenancy. A saída completa está em docs/evidence/review-demo.json.',M,707,size=10,color=MUTED,max_h=42)
+    b.source('docs/review/demo.md · scripts/review/demo.py · docs/evidence/review-demo.json')
+
+    b.start('05 / O QUE ESTÁ COMPROVADO')
+    b.title('VALIDAÇÃO COM ESCOPO DECLARADO', 'Evidência para inspecionar.<br/>Critérios para evoluir.',
+            f'{passed} de {len(matrix["rows"])} critérios de liberação passaram. O pacote continua em preview.')
+    for i,(number,label,detail) in enumerate([
+        ('362','testes passaram','Regressão de código'),
+        ('277','blocos OCI válidos','Sintaxe dos exemplos'),
+        ('27','helpers aprovados','21 live_read + 6 offline')]):
+        x=M+i*174
+        b.rect(x,241,163,111,WHITE,8)
+        b.text(number,x+14,252,137,30,color=RED,font='Bold')
+        b.text(label,x+14,296,137,10.5,font='Bold')
+        b.text(detail,x+14,318,137,8.7,color=MUTED)
+    b.text('Essas medições verificam componentes e leituras selecionadas. Não comprovam deployments completos nem superioridade sobre outros agentes.',M,371,size=11,color=MUTED,max_h=33)
+    b.text('O que ainda precisa ser fechado',M,423,size=16,font='Bold')
+    pending_rows=[
+        ('V19','Seleção da skill','Proxy estático em 37,5%; meta de 90%. Não mede roteamento real do host.'),
+        ('V22','Histórico Git','Ocorrências de e-mail em patches antigos; preparar a limpeza antes de publicar.'),
+        ('V24','Manutenção hospedada','Verificar a execução agendada e a criação de issue do monitor de drift.'),
+        ('V25','Leituras restantes','Resolver pré-requisitos e dados ausentes; triagem com Cloud Guard 404 / Support 403.'),
+        ('V27','Avaliação no host','Acesso ao avaliador de tarefas do Claude indisponível no registro atual.'),
+        ('V28','Comparação comportamental','Executar tarefas com modelo sob os mesmos prompts e limites nas quatro variantes.'),
+    ]
+    for i,(gate,title,body) in enumerate(pending_rows):
+        y=461+i*43
+        b.text(gate,M,y,42,10,color=RED,font='Bold')
+        b.text(f'<b>{title}</b> · {body}',M+48,y,CW-48,10.3,max_h=32)
+        b.line(M,y+36,W-M,y+36)
+    b.source('docs/validation-matrix.md · docs/evals.md · docs/evidence/README.md')
+
+    b.start('06 / PRÓXIMO PASSO')
+    b.title('CONVITE À REVISÃO TÉCNICA', 'Escolha um domínio.<br/>Vamos validar um caso útil.',
+            'O objetivo desta apresentação é colher feedback de engenharia antes da abertura pública.')
+    for i,(title,body) in enumerate([
+        ('Revise uma skill que você conhece','A descrição seleciona a tarefa certa? As perguntas de escopo, os pré-requisitos e as referências correspondem à prática do serviço?'),
+        ('Inspecione uma ferramenta de leitura','O escopo é suficiente? Uma resposta parcial fica visível? O tratamento de paginação e erro evita conclusões indevidas?'),
+        ('Sugira uma tarefa representativa','Indique o resultado esperado e um ambiente mínimo. Isso ajuda a transformar a revisão em uma validação de ponta a ponta.')]):
+        y=245+i*105
+        b.number(str(i+1),M,y)
+        b.text(title,M+47,y,CW-47,13,font='Bold')
+        b.text(body,M+47,y+27,CW-47,11.2,max_h=49)
+    b.rect(M,579,CW,131,INK,10)
+    b.text('COMECE PELO REPOSITÓRIO',M+18,595,CW-36,9,'#EF8769','Bold')
+    b.text(f'<link href="{URL}" color="#FFFFFF">github.com/jazzautomations/oci-agent-skills</link>',M+18,623,CW-36,13,WHITE,'Bold')
+    b.text('docs/review/README.md: apresentação, roteiro e feedback.<br/>Acesso privado concedido pelo proprietário; o ZIP permite revisar a árvore sem histórico Git.',M+18,655,CW-36,10.5,'#C8D6CA',max_h=44)
+    b.text('<b>Felipe Salvego · Jazz Automations</b><br/>Projeto independente. Esta revisão não representa certificação ou endosso da Oracle.',M,730,size=10,color=MUTED,max_h=32)
+    b.save()
+    print(f'{output.relative_to(ROOT)} — {PAGES} pages')
 
 
-if __name__ == "__main__":
+if __name__=='__main__':
     main()

@@ -11,6 +11,12 @@ production certification.
 [Recorded component evidence](../evidence/review-demo.json) ·
 [Current release matrix](../validation-matrix.md)
 
+The seven-page Portuguese briefing explains the product through a networking
+scenario, separates skill guidance from execution, maps the nine coverage areas
+and walks through recorded component evidence. Illustrative workflows and
+measured outcomes are explicitly distinguished. Edition 02 uses embedded fonts
+and a layout designed for reading on screen or sharing as a document.
+
 ## The problem and approach
 
 An agent may find an OCI command while missing its compartment, region,
@@ -93,4 +99,6 @@ walkthrough and template check do not.
 Run the walkthrough with `--report docs/evidence/review-demo.json`, then generate
 the PDF with `uv run --with reportlab==5.0.0 python scripts/review/brief_pdf.py`.
 ReportLab is an optional authoring dependency, separate from the locked runtime.
+The generator embeds locally installed Lato fonts when available, or falls back
+to the Vera fonts bundled with ReportLab. Exact typography depends on that choice.
 Review the evidence and page layout before sharing an updated presentation.
