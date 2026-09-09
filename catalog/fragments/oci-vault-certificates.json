@@ -1,0 +1,129 @@
+[
+  {
+    "id": "oci-vault-certificates-1",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "kms",
+      "management",
+      "vault",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,management:\"management-endpoint\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-vault-certificates-2",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "kms",
+      "management",
+      "key",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--endpoint",
+      "${MGMT_ENDPOINT}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,mode:\"protection-mode\",state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-vault-certificates-3",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "vault",
+      "secret",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-vault-certificates-4",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "certs-mgmt",
+      "certificate",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--sort-by",
+      "EXPIRATIONDATE",
+      "--sort-order",
+      "ASC",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,expires:\"current-version-summary\".validity.\"time-of-validity-not-after\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-vault-certificates-5",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "certs-mgmt",
+      "certificate-authority",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20",
+      "--query",
+      "data.items[].{id:id,state:\"lifecycle-state\"}",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  },
+  {
+    "id": "oci-vault-certificates-6",
+    "skill": "oci-vault-certificates",
+    "argv": [
+      "certs-mgmt",
+      "certificate",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--sort-by",
+      "EXPIRATIONDATE",
+      "--sort-order",
+      "ASC",
+      "--limit",
+      "100",
+      "--query",
+      "data.items[].{expires:\"current-version-summary\".validity.\"time-of-validity-not-after\"}",
+      "--no-retry",
+      "--profile",
+      "${PROFILE}",
+      "--region",
+      "${REGION}"
+    ]
+  }
+]
