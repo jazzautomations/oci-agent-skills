@@ -10,7 +10,7 @@ from lib.oci_ro import run
 from lib.sanitize import emit
 
 def summarize(rows,now,days):
-    if not isinstance(rows,list) or len(rows)>=100:
+    if not isinstance(rows,list) or len(rows)>=20:
         raise ValueError('Unexpected or incomplete sample')
     result={'sampled':len(rows),'expired':0,'expiring':0,'unknown':0,
             'earliest_expiry':None,'complete':False,'window_days':days}
@@ -35,7 +35,7 @@ def main():
     if not all(os.environ.get(k) for k in ('PROFILE','REGION','COMPARTMENT_ID')):
         parser.error('Set PROFILE REGION COMPARTMENT_ID after scope verification')
     result=run(['certs-mgmt','certificate','list','--compartment-id',os.environ['COMPARTMENT_ID'],
-                '--sort-by','EXPIRATIONDATE','--sort-order','ASC','--limit','100',
+                '--sort-by','EXPIRATIONDATE','--sort-order','ASC','--limit','20',
                 '--query','data.items[].{expires:"current-version-summary".validity."time-of-validity-not-after"}',
                 '--no-retry'],profile=os.environ['PROFILE'],region=os.environ['REGION'],sanitize=False)
     try:

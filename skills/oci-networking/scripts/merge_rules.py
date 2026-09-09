@@ -5,7 +5,6 @@ import json
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / 'scripts'))
-from lib import oci_ro  # OCI calls, if added, must use this wrapper.
 
 def merge(current, additions):
     if not isinstance(current, list) or not isinstance(additions, list):

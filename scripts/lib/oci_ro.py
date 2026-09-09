@@ -76,6 +76,21 @@ def prepare(argv, *, profile=None, region=None, allow_all=False):
             argv.extend(['--output', 'json'])
         if row.get('has_limit') and not {'--limit', '--all'} & opts.keys() and '--help' not in opts:
             argv.extend(['--limit', '100'])
+        scope = os.environ.get('OCI_RO_SMOKE_SCOPE')
+        if scope:
+            _, bounded = parse_oci(argv)
+            if ('--all' in bounded or bounded.get('--compartment-id-in-subtree', 'false').lower() != 'false'
+                    or path == 'raw-request' or '--endpoint' in bounded):
+                raise ReadOnlyRefusal('flag')
+            for flag in ('--compartment-id', '--tenant-id', '--tenancy-id'):
+                if flag in bounded and bounded[flag] != scope:
+                    raise ReadOnlyRefusal('scope')
+            for flag, key in (('--profile','OCI_RO_SMOKE_PROFILE'), ('--region','OCI_RO_SMOKE_REGION')):
+                if bounded.get(flag) != os.environ.get(key):
+                    raise ReadOnlyRefusal('scope')
+            for flag, value in (('--no-retry', None), ('--connection-timeout','5'), ('--read-timeout','20')):
+                if flag not in bounded:
+                    argv.extend([flag] + ([value] if value else []))
         return ['--cli-rc-file', os.devnull, *argv]
     except (ValueError, OSError, KeyError, TypeError) as exc:
         raise ReadOnlyRefusal('verb|method|flag') from exc
@@ -124,7 +139,16 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
             return redact(value) if isinstance(value, str) else value
         data = visit(data)
         flags = data.get('flags', []) if isinstance(data, dict) else []
-        return {'ok': True, 'data': data, 'argv': safe_argv, 'truncated': 'truncated' in flags or bool(isinstance(payload, dict) and payload.get('opc-next-page'))}
+        _, options = parse_oci(prepared)
+        rows = payload
+        for key in ('data', 'items'):
+            if isinstance(rows, dict) and key in rows:
+                rows = rows[key]
+        limit = int(options['--limit']) if '--limit' in options else None
+        saturated = bool(limit and isinstance(rows, list) and len(rows) >= limit)
+        # Filtered projections can shrink a full page: preserve the CLI pagination warning too.
+        pagination_warning = 'not all resources were returned' in response.stderr.lower()
+        return {'ok': True, 'data': data, 'argv': safe_argv, 'truncated': saturated or pagination_warning or 'truncated' in flags or bool(isinstance(payload, dict) and payload.get('opc-next-page')), 'page_saturated': saturated}
     except ReadOnlyRefusal:
         return {'ok': False, 'error': {'kind': 'refused', 'reason': 'verb|method|flag'}, 'argv': [], 'truncated': False}
     except (OSError, subprocess.TimeoutExpired):

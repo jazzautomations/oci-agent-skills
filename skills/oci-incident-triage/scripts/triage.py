@@ -27,14 +27,14 @@ def tally(rows, key):
     return counts
 
 
-def step(number, name, argv, scope):
+def step(number, name, argv, scope, limit=None):
     result = run(argv, profile=scope['profile'], region=scope['region'], sanitize=False)
     if not result['ok']:
         return {'step': number, 'name': name, 'ok': False, 'error': result['error']}
     rows = result['data']
     rows = rows if isinstance(rows, list) else ([] if rows is None else [rows])
     return {'step': number, 'name': name, 'ok': True, 'rows': len(rows),
-            'truncated': result['truncated']}
+            'truncated': result['truncated'] or bool(limit and len(rows) >= limit)}
 
 
 def sweep(scope):
@@ -72,7 +72,8 @@ def sweep(scope):
     report = []
     for number, name, argv in sorted(steps):
         if number != 2:
-            report.append(step(number, name, argv, scope))
+            limit = int(argv[argv.index('--limit') + 1]) if '--limit' in argv else None
+            report.append(step(number, name, argv, scope, limit=limit))
             continue
         audit = run(['audit', 'event', 'list', '--compartment-id', compartment,
                      '--start-time', start, '--end-time', end, '--query',

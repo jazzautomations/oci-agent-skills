@@ -5,7 +5,6 @@ import json
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / 'scripts'))
-from lib.oci_ro import check  # Common read-only contract; this helper performs no OCI call.
 from lib.sanitize import field, emit
 from redact import redact
 

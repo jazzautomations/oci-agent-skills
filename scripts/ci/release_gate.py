@@ -123,6 +123,9 @@ def main():
     if args.live:
         row=execute('V25',[str(cli_python),'scripts/check_examples.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report','docs/validation-cli.json'],
                     'CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-cli.json',timeout=600,owner='OCI operator / CLI validation maintainers')
+        scripts_row=execute('V25-scripts',PYTHON+['scripts/check_skill_scripts.py','--live','--profile','DEFAULT','--region','us-chicago-1','--report','docs/validation-scripts.json'], 'python scripts/check_skill_scripts.py --live --profile DEFAULT --region us-chicago-1 --report docs/validation-scripts.json', timeout=1800,owner='OCI operator / skill maintainers')
+        row['detail'] += ' Skill entrypoint execution: '+scripts_row['result']+'; see docs/validation-scripts.json.'
+        if scripts_row['result'] != 'PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
         environment=dict(os.environ,OCI_CONFIG_PROFILE='DEFAULT',OCI_CLI_PROFILE='DEFAULT')
         result=subprocess.run(['uv','run','--frozen','--project','runtime','oci-readonly-smoke','--live','--region','us-chicago-1'],cwd=ROOT,env=environment,capture_output=True,text=True,timeout=240)

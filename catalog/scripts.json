@@ -20,6 +20,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/check_skill_scripts.py",
+      "sha256": "6ec808fedfc5da46d835551a6be09c2dde6afe5e83378455afd46a56d966b8ed",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_budget.py",
       "sha256": "33d0083dfeed852fdc2e65af7b33a1ecec516fc74788265fffd2ed1d9fb5668a",
       "mode": "read-only",
@@ -75,7 +81,7 @@
     },
     {
       "path": "scripts/ci/check_scripts_readonly.py",
-      "sha256": "213e6815aa2907fef45d1daf57fb96379389e35028443707ed1a5a79c25abc18",
+      "sha256": "2fd27ee20d814f50f2a936e284ec2bddf350665e23fbd277c2bd6b22682e36f4",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -117,7 +123,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "6167cb5297a29c7c160a569e5d253f83deb1358626a983b5bf2e3b541709d373",
+      "sha256": "cdb86268cb6ec93a6aac2fcd1bbb4c3723688a0c3440cfc8a6333167bf9bb54c",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -195,7 +201,7 @@
     },
     {
       "path": "scripts/lib/oci_ro.py",
-      "sha256": "0f75c88ab7c8791992d5245b889082e7ab11d968852b5b7150bdd2cd342637b7",
+      "sha256": "bff7ad9bf8edb76576a339ddfda24526929a714cf914bf900bfbfd0941cf7c2f",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -318,13 +324,13 @@
     },
     {
       "path": "skills/oci-iam-policy/scripts/policy_lint.sh",
-      "sha256": "cd34f3b0f32723840af1baa0f802826ec8a23d6bc83c7b07d181ca53298665d7",
+      "sha256": "33c6ca0253142b2f32b9e369f44ce8387db78bc7f0c2d0b86de760b2211d8e21",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-incident-triage/scripts/triage.py",
-      "sha256": "a003859a424cd071d4dd22f615d1fdeddf87991a63e7c5444e7ead52ebd1f74f",
+      "sha256": "e48cf2407dfa1c10cf1ae7a2ad9a2ab603f101f42978d8e246d5e0d1c9c0e53a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -342,7 +348,7 @@
     },
     {
       "path": "skills/oci-logging-audit/scripts/audit_window.sh",
-      "sha256": "9a8e73086102de65eefbd1ccb7c21a0e08971d7c9c42c0f358f459f70e81f1aa",
+      "sha256": "bb277a4c41a006fcb7edea5dea9bbfae3b7e8b79972155b758e1d2eff670aac6",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -354,13 +360,13 @@
     },
     {
       "path": "skills/oci-monitoring-alarms/scripts/validate_mql.sh",
-      "sha256": "6749d35b4b5c30c5fce6f01f7228dba3ff17dd8590e4a3803899fa8303719f3c",
+      "sha256": "5f5968e0fb088172311661a4fda1527617e8886bbce5b430bd2915f96e95533f",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-networking/scripts/merge_rules.py",
-      "sha256": "a714503444b027ce6028bb226ab087b2bd6bfa2f5a59b520808ab6a728af134d",
+      "sha256": "3f63f1796a87d380d9ec7cbdb662161933dc188e5d266cca4a156e8fb379a9eb",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -467,7 +473,7 @@
     },
     {
       "path": "skills/oci-security-posture/scripts/posture.sh",
-      "sha256": "db207a28e5008da2028a172661332d8199e9d238f0f4ded17cb4f32e02d125ab",
+      "sha256": "72732c139a750b1e9f80ccb59b0c38f52484e9f757f21f56109082325cc8952a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -541,25 +547,25 @@
     },
     {
       "path": "skills/oci-tenancy-governance/scripts/governance_audit.sh",
-      "sha256": "309a23f9595f2e62421486f26a3828f043656bfee727273bd59ead3fc3e199ce",
+      "sha256": "a912130b269d59959bcdb2c9b370452a143a3056827b37597acc3f23b215d9a0",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-terraform/scripts/plan_summary.py",
-      "sha256": "74e077f2b566a0944d0e97e746fede1c8fd93ee71a4b00e6ecf04181791b0ce0",
+      "sha256": "3a2611275dcb491ea5687fe8b314b5c856747dc3af2e7e01fd8e8b00bf8bc08d",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-vault-certificates/scripts/cert_expiry.py",
-      "sha256": "6954ebd1f8e1f96e762bb372bacac37a0cb219c3263e97b9959f15fab1c04940",
+      "sha256": "955fa8264707e496e710f4c10940bbbd6feb92f944a61bcab7b12592011f126e",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-vault-certificates/scripts/cert_expiry.sh",
-      "sha256": "9360164ded1b85ad8004dd3033b44810b48e993efedbe2c4b58b3f1c98c65af0",
+      "sha256": "5ef5fe33132fe133b14252ced6e70df1a9623e19041679c6dde8755e0c87606a",
       "mode": "read-only",
       "oci_calls": []
     },
