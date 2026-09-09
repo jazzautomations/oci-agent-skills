@@ -39,7 +39,7 @@
     },
     {
       "path": "scripts/ci/check_history.py",
-      "sha256": "01a189171b0fb4d9ef60fc5bcffae62995ec2563c03d12eefc9c4abb518dbcd2",
+      "sha256": "705155f7637dd01f7d142e5688189591a9df86b4227beca4dc919835b1c192a6",
       "mode": "read-only",
       "oci_calls": []
     },
