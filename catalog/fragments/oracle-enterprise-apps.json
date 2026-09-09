@@ -1,0 +1,158 @@
+{
+  "examples": [
+    {
+      "id": "oracle-enterprise-apps-1",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "fusion-apps",
+        "fusion-environment",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-2",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "integration",
+        "integration-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-3",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "analytics",
+        "analytics-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-4",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "visual-builder",
+        "vb-instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-5",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "instance",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-6",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "management",
+        "skill",
+        "list",
+        "--oda-instance-id",
+        "${ODA_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,version:version}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-7",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "oda",
+        "management",
+        "channel",
+        "list",
+        "--oda-instance-id",
+        "${ODA_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,type:type}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    },
+    {
+      "id": "oracle-enterprise-apps-8",
+      "skill": "oracle-enterprise-apps",
+      "argv": [
+        "wlms",
+        "wls-domain",
+        "list",
+        "--compartment-id",
+        "${COMPARTMENT_ID}",
+        "--limit",
+        "20",
+        "--query",
+        "data.items[].{id:id,state:\"lifecycle-state\"}",
+        "--profile",
+        "${PROFILE}",
+        "--region",
+        "${REGION}"
+      ]
+    }
+  ]
+}
