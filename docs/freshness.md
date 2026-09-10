@@ -10,6 +10,10 @@ Three repository schedules cover different failure modes:
 
 Schedules are configuration until GitHub Actions actually runs them. See the Actions tab
 for successful runs and artifacts; the repo does not claim unattended checks were observed.
+A [manual hosted run](https://github.com/jazzautomations/oci-agent-skills/actions/runs/34461758903)
+passed on 2026-09-10 with no changes or unavailable sources. Its downloaded report is
+recorded in [hosted evidence](evidence/cloud-freshness-hosted.json). This validates the
+workflow implementation, not future cron delivery.
 The freshness job downloads a fixed allowlist of public official sources. It compares
 structured price/version facts and reference text fingerprints with a reviewed baseline.
 Changes or unavailable sources fail the check and produce a report with direct review links.

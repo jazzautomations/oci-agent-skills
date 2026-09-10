@@ -14,7 +14,8 @@ account access. The cost-band correction was committed first, separately.
   SQLcl/driver setup and the database session remain pending. See [preflight](evidence/26ai-preflight.md).
 - Freshness: two reads of all 12 official sources succeeded; the second matched the
   reviewed baseline. Price caches expire after 24 hours; a failed refresh is unknown.
-  The daily workflow is configured; a scheduled hosted run has not yet been observed.
+  The daily workflow is configured; a manual hosted run passed. A scheduled invocation
+  has not yet been observed. See [hosted evidence](evidence/cloud-freshness-hosted.json).
 
 Validation: the full post-merge suite passed **450 tests**. Strict metadata, references, portability,
 budgets, licenses, current-tree secret scan, read-only script registry, stencil, manifests

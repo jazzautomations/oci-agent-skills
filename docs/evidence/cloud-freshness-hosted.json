@@ -1,0 +1,17 @@
+{
+  "workflow": "cloud-freshness.yml",
+  "event": "workflow_dispatch",
+  "url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34461758903",
+  "head_sha": "b2515bf8f9c6c5c92d26040933684a08b108fa6f",
+  "completed_at": "2026-09-10T09:38:56Z",
+  "conclusion": "success",
+  "report": {
+    "checked_at": "2026-09-10T09:38:52.555814+00:00",
+    "baseline_checked_at": "2026-09-10T04:21:18.931632+00:00",
+    "changes": [],
+    "unavailable": [],
+    "automatic_actions": "Read fixed public sources only; no cloud mutation, generated code execution, issue posting or automatic baseline acceptance.",
+    "scope": "Official cloud docs, price sentinel SKUs and package versions; resource-specific quota/model availability must be read in the target region at run time."
+  },
+  "scope": "Manual hosted execution passed. Daily cron configured; no scheduled invocation yet observed. Public reads only."
+}
