@@ -66,6 +66,7 @@ python3 scripts/inventory.py --scripts --examples --check
 uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check
 uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help
 uv run --frozen --project runtime python evals/run_routing.py --negatives
+uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json
 ```
 
 `--live-help` executes only CLI help, never a documented operation. Native plugin

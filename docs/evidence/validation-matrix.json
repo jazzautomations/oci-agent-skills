@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "450 tests passed in the full suite after the Classic scope repair. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks still require copies without symlinks.",
+      "detail": "453 tests passed in the full suite including case-level semantic diagnostics. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks still require copies without symlinks.",
       "owner": null
     },
     {
@@ -238,8 +238,8 @@
       "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
       "result": "UNAVAILABLE",
       "date": "2026-09-10",
-      "detail": "Early-access restriction reproduced on 2026-09-10 for T01 with no tool grants, absent OCI config, mocks and no publication. No qualifying host task score.",
-      "owner": "evaluation maintainers / installed host provider"
+      "detail": "Early-access restriction reproduced on 2026-09-10 for T01 with no tool grants, absent OCI config, mocks and no publication. No qualifying host task score. The accepted skill-creator task-evaluation alternative remains unmeasured; description triggering is insufficient.",
+      "owner": "evaluation maintainers; native access: installed host provider"
     },
     {
       "id": "V28",

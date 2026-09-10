@@ -6,7 +6,7 @@
 
 37 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-[![Regression tests: 450](https://img.shields.io/badge/regression_tests-450_passed-2D6A4F)](docs/validation-matrix.md)
+[![Regression tests: 453](https://img.shields.io/badge/regression_tests-453_passed-2D6A4F)](docs/validation-matrix.md)
 [![Skills: 37](https://img.shields.io/badge/skills-37-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
 [![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
@@ -136,14 +136,19 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 | Check | Recorded result | Scope |
 |---|---:|---|
-| Regression suite | 450 passed | Current full suite; recorded in the validation matrix |
+| Regression suite | 453 passed | Current full suite; recorded in the validation matrix |
 | Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
-| Semantic skill selection | 77/80 and 77/80 | Two recorded trials; all four overlap pairs in both |
+| Semantic skill selection | 77/80 and 77/80 | Four distinct disagreements; two fail both trials; [case audit](docs/evals.md#errors-behind-7780) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
 
 [Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
+
+The [routing reliability report](docs/routing-reliability.md) examines the actual
+errors, the disputed backup ownership label, calibrated uncertainty, and the
+task evaluation still needed. It also identifies the official `oracle/skills`
+repository as a prospective baseline; the archived comparison below is unchanged.
 
 The archived four-arm comparison below dates from September 9, before the scope repairs. It uses the same frozen prompts and static matcher for every arm. These figures measure authored material and inert guard replay, not agents completing tasks:
 

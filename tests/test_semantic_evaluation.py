@@ -119,6 +119,75 @@ def test_boundary_counterexample_preserves_enrolled_external_database():
     assert next(r for r in cases if r['id'] == 'B08')['expected_skill'] is None
 
 
+def diagnostics_module():
+    import sys
+    sys.path.insert(0, str(ROOT / 'scripts/eval'))
+    import routing_diagnostics
+    return routing_diagnostics
+
+
+def rewrite_predictions(data, replacements):
+    candidates, files, _ = semantic.inputs()
+    for run in data['runs']:
+        _, mapping = semantic.blind_payload(
+            candidates, files['routing.json'] + files['negatives.json'], run['seed'])
+        labels = run['trace']['result']['labels']
+        for label in labels:
+            key = (run['seed'], mapping[label['id']])
+            if key in replacements:
+                label['skill'] = replacements[key]
+        labels.reverse()  # Predictions need not arrive in request order.
+        run['score'] = semantic.score(semantic.parse_labels(
+            run['trace']['result'], mapping, candidates), files)
+    data['ok'] = all(r['score']['ok'] for r in data['runs'])
+
+
+def test_diagnostics_distinguish_passing_gate_from_repeated_errors(tmp_path, monkeypatch):
+    path, data = fake_evidence(tmp_path, monkeypatch)
+    _, files, _ = semantic.inputs()
+    first = files['routing.json'][0]['id']
+    merged = next(r for r in files['routing.json'] if r['expected_skill'] in files['remap.json'])
+    seeds = [r['seed'] for r in data['runs']]
+    rewrite_predictions(data, {(seeds[0], first): None, (seeds[1], first): None,
+                               (seeds[1], merged['id']): None})
+    path.write_text(json.dumps(data))
+    result = diagnostics_module().diagnose(report=path)
+    assert result['gates_pass'] and not result['perfect_routing']
+    assert result['routing_correct_in_every_trial'] == 78
+    assert result['routing_same_selection_in_every_trial'] == 79
+    errors = {r['id']: r for r in result['routing_errors']}
+    assert errors[first]['failing_seeds'] == seeds
+    assert errors[first]['same_selection_in_all_trials']
+    assert errors[merged['id']]['expected'] == files['remap.json'][merged['expected_skill']]
+    assert errors[merged['id']]['failing_seeds'] == [seeds[1]]
+
+
+def test_diagnostics_refuse_stale_or_missing_evidence(tmp_path, monkeypatch):
+    path, data = fake_evidence(tmp_path, monkeypatch)
+    data['inputs_sha256'] = 'stale'
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError):
+        diagnostics_module().diagnose(report=path)
+    path.unlink()
+    with pytest.raises(OSError):
+        diagnostics_module().diagnose(report=path)
+
+
+def test_diagnostics_keep_negative_failure_separate(tmp_path, monkeypatch):
+    path, data = fake_evidence(tmp_path, monkeypatch)
+    candidates, files, _ = semantic.inputs()
+    seed = data['runs'][0]['seed']
+    negative = files['negatives.json'][0]['id']
+    rewrite_predictions(data, {(seed, negative): candidates[0]['name']})
+    path.write_text(json.dumps(data))
+    result = diagnostics_module().diagnose(report=path)
+    assert result['evidence_valid'] and result['perfect_routing']
+    assert not result['gates_pass'] and result['routing_errors'] == []
+    assert result['negative_errors'][0]['id'] == negative
+    assert result['negative_errors'][0]['expected'] is None
+    assert result['negative_errors'][0]['failing_seeds'] == [seed]
+
+
 def test_missing_semantic_evidence_cannot_fall_back_to_lexical_pass(monkeypatch):
     import sys
     sys.path.insert(0, str(ROOT / 'scripts/eval'))

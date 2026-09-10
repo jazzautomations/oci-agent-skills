@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "mode": "verified-semantic-error-analysis",
+  "evidence_sha256": "a76a83da9c39c8552bd3ab8eefcc9b80c49bc44b8d6547b86a3731493084245b",
+  "semantic_inputs_sha256": "104c10af7631932ef5cd612d55f967a2d507a49637f2a7c1bee63b854a1bd4b4",
+  "generator_sha256": "fbddcea50b785769e7b06a68a8b9c66c44c071e0f383dbfb610aeacb3b665907",
+  "validated_at": "2026-09-10T10:00:29.723580+00:00",
+  "model": "claude-sonnet-5",
+  "minimum_accuracy": 0.9,
+  "evidence_valid": true,
+  "gates_pass": true,
+  "perfect_routing": false,
+  "routing_total": 80,
+  "negative_total": 40,
+  "routing_correct_in_every_trial": 76,
+  "routing_same_selection_in_every_trial": 78,
+  "trials": [
+    {
+      "seed": 17,
+      "correct": 77,
+      "total": 80,
+      "accuracy": 0.9625,
+      "negative_firings": 0,
+      "negative_total": 40,
+      "overlap_pairs_correct": 4
+    },
+    {
+      "seed": 29,
+      "correct": 77,
+      "total": 80,
+      "accuracy": 0.9625,
+      "negative_firings": 0,
+      "negative_total": 40,
+      "overlap_pairs_correct": 4
+    }
+  ],
+  "routing_errors": [
+    {
+      "id": "R01",
+      "prompt": "which oci cli group do I use for WebLogic running on OCI? `oci weblogic` says No such command",
+      "expected": "oci-navigator",
+      "selections": [
+        {
+          "seed": 17,
+          "selected": "oracle-enterprise-apps",
+          "correct": false
+        },
+        {
+          "seed": 29,
+          "selected": "oracle-enterprise-apps",
+          "correct": false
+        }
+      ],
+      "failing_seeds": [
+        17,
+        29
+      ],
+      "same_selection_in_all_trials": true
+    },
+    {
+      "id": "R60",
+      "prompt": "que identidade o agente da OCI usa pra chamar as ferramentas? não quero colocar chave de tenancy",
+      "expected": "oci-generative-ai",
+      "selections": [
+        {
+          "seed": 17,
+          "selected": "oci-iam-policy",
+          "correct": false
+        },
+        {
+          "seed": 29,
+          "selected": "oci-generative-ai",
+          "correct": true
+        }
+      ],
+      "failing_seeds": [
+        17
+      ],
+      "same_selection_in_all_trials": false
+    },
+    {
+      "id": "R68",
+      "prompt": "como removo a política de backup de um boot volume e o que acontece com os backups antigos",
+      "expected": "oci-dr-backup",
+      "selections": [
+        {
+          "seed": 17,
+          "selected": "oci-block-file-storage",
+          "correct": false
+        },
+        {
+          "seed": 29,
+          "selected": "oci-block-file-storage",
+          "correct": false
+        }
+      ],
+      "failing_seeds": [
+        17,
+        29
+      ],
+      "same_selection_in_all_trials": true
+    },
+    {
+      "id": "R71",
+      "prompt": "can I automate a Fusion ERP approval flow with the oci cli",
+      "expected": "oracle-enterprise-apps",
+      "selections": [
+        {
+          "seed": 17,
+          "selected": "oracle-enterprise-apps",
+          "correct": true
+        },
+        {
+          "seed": 29,
+          "selected": null,
+          "correct": false
+        }
+      ],
+      "failing_seeds": [
+        29
+      ],
+      "same_selection_in_all_trials": false
+    }
+  ],
+  "negative_errors": [],
+  "limitations": "Known development corpus; agreement is not correctness. This diagnostic does not adjudicate disputed labels, change gates, or measure native host task completion."
+}

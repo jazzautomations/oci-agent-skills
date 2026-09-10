@@ -38,7 +38,7 @@ class Brief:
         self.c = Canvas(str(output), pagesize=A4, invariant=1)
         self.c.setTitle('OCI Agent Skills | Do pedido ao fluxo de trabalho')
         self.c.setAuthor('Felipe Salvego / Jazz Automations')
-        self.c.setSubject('Apresentação técnica privada — edição 02')
+        self.c.setSubject('Apresentação técnica privada — edição 04')
         self.date, self.page = date, 0
 
     def rect(self, x, y, w, h, color, radius=0):
@@ -224,7 +224,7 @@ def main():
     b.title('VALIDAÇÃO COM ESCOPO DECLARADO', 'Evidência para inspecionar.<br/>Critérios para evoluir.',
             f'{passed} de {len(matrix["rows"])} critérios de liberação passaram. O pacote continua em preview.')
     for i,(number,label,detail) in enumerate([
-        ('450','testes passaram','Regressão de código'),
+        ('453','testes passaram','Regressão de código'),
         ('285','blocos OCI válidos','Sintaxe dos exemplos'),
         ('28','helpers aprovados','22 live_read + 6 offline')]):
         x=M+i*174
@@ -238,7 +238,7 @@ def main():
         ('V22','Histórico Git','Ocorrências de e-mail em patches antigos; preparar a limpeza antes de publicar.'),
         ('V24','Manutenção hospedada','Verificar a execução agendada e a criação de issue do monitor de drift.'),
         ('V25','Leituras restantes','Resolver pré-requisitos e dados ausentes; triagem com Cloud Guard 404 / Support 403.'),
-        ('V27','Avaliação no host','Acesso ao avaliador de tarefas do Claude indisponível no registro atual.'),
+        ('V27','Avaliação de tarefas','Avaliador nativo indisponível; alternativa com skill-creator ainda não medida.'),
         ('V28','Comparação comportamental','Executar tarefas com modelo sob os mesmos prompts e limites nas quatro variantes.'),
     ]
     for i,(gate,title,body) in enumerate(pending_rows):
@@ -246,7 +246,7 @@ def main():
         b.text(gate,M,y,42,10,color=RED,font='Bold')
         b.text(f'<b>{title}</b> · {body}',M+48,y,CW-48,10.3,max_h=32)
         b.line(M,y+36,W-M,y+36)
-    b.text('<b>Seleção semântica:</b> 77/80 e 77/80; zero ativações indevidas em 40 negativos por rodada. Evidência datada, sem medir tarefas completas no host.',M,699,size=10,color=GREEN,max_h=42)
+    b.text('<b>Seleção semântica:</b> 77/80 por rodada; 4 casos divergentes, 2 repetidos. Zero ativações em 40 negativos por rodada. Não mede tarefas completas.',M,699,size=10,color=GREEN,max_h=42)
     b.source('docs/validation-matrix.md · docs/evals.md · docs/evidence/README.md')
 
     b.start('06 / PRÓXIMO PASSO')

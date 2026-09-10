@@ -182,6 +182,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/routing_diagnostics.py",
+      "sha256": "fbddcea50b785769e7b06a68a8b9c66c44c071e0f383dbfb610aeacb3b665907",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/run.py",
       "sha256": "080bda363d66239e522c2150f8ef151aed88cc24af847cd7500382c12051e9e5",
       "mode": "read-only",
@@ -285,7 +291,7 @@
     },
     {
       "path": "scripts/review/brief_pdf.py",
-      "sha256": "8fa3ecedc5ce232fd1c386aa323e7c2f5e6c0a39e1ec04b88732a29261e74528",
+      "sha256": "aad125b3591ea14389dd4f098009801b6d1637ef3a202ea0b2e8e59c87f5f572",
       "mode": "read-only",
       "oci_calls": []
     },

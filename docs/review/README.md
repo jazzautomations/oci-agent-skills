@@ -14,7 +14,7 @@ production certification.
 The seven-page Portuguese briefing explains the product through a networking
 scenario, separates skill guidance from execution, maps the nine coverage areas
 and walks through recorded component evidence. Illustrative workflows and
-measured outcomes are explicitly distinguished. Edition 03 updates the catalog and measured results, using embedded fonts
+measured outcomes are explicitly distinguished. Edition 04 exposes routing errors and the unmeasured task-evaluation alternative, using embedded fonts
 and a layout designed for reading on screen or sharing as a document.
 
 ## The problem and approach
@@ -40,7 +40,7 @@ boundary. Other host adapters do not receive the Claude shell hook.
 
 ## What the evidence supports
 
-- The recorded full suite passes 450 tests; syntax lint accepts 285 authored OCI
+- The recorded full suite passes 453 tests; syntax lint accepts 285 authored OCI
   fences. Neither establishes end-to-end deployment success.
 - Classifier replay denies all 278 critical-labelled leaves and allows zero
   operations outside the strict read-only set. The severity snapshot and catalog

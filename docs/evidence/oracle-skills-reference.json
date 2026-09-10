@@ -1,0 +1,27 @@
+{
+  "repository": "oracle/skills",
+  "revision": "fcbc9430777e8990d6d4382caeb1abdd05b4868d",
+  "files": 1119,
+  "skill_entrypoints": [
+    "apex/SKILL.md",
+    "apex/apexlang/SKILL.md",
+    "db/SKILL.md",
+    "fusion/SKILL.md",
+    "graal/SKILL.md",
+    "oci/SKILL.md",
+    "oci/enterprise-ai/SKILL.md",
+    "oci/functions/oci-functions-deploy/SKILL.md",
+    "oci/functions/oci-functions-troubleshoot/SKILL.md",
+    "oci/iot-platform/SKILL.md",
+    "oci/oke/skills/oke-cluster-generator/SKILL.md",
+    "oci/oke/skills/oke-gva-deployer/SKILL.md",
+    "oci/oke/skills/oke-multihome-deployer/SKILL.md",
+    "oci/oke/skills/oke-troubleshooter/SKILL.md"
+  ],
+  "markdown_files": 977,
+  "oci_markdown_files": 61,
+  "inspected_at": "2026-09-10",
+  "source": "https://github.com/oracle/skills/tree/fcbc9430777e8990d6d4382caeb1abdd05b4868d",
+  "method": "GitHub recursive tree; blobs only; exact SKILL.md basenames and case-sensitive .md suffix; OCI paths begin oci/",
+  "limitations": "Reference metadata, not task evaluation, completeness or comparative quality. Archived four-arm evaluation unchanged."
+}
