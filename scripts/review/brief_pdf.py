@@ -224,7 +224,7 @@ def main():
     b.title('VALIDAÇÃO COM ESCOPO DECLARADO', 'Evidência para inspecionar.<br/>Critérios para evoluir.',
             f'{passed} de {len(matrix["rows"])} critérios de liberação passaram. O pacote continua em preview.')
     for i,(number,label,detail) in enumerate([
-        ('362','testes passaram','Regressão de código'),
+        ('378','testes passaram','Regressão de código'),
         ('277','blocos OCI válidos','Sintaxe dos exemplos'),
         ('27','helpers aprovados','21 live_read + 6 offline')]):
         x=M+i*174
@@ -235,7 +235,6 @@ def main():
     b.text('Essas medições verificam componentes e leituras selecionadas. Não comprovam deployments completos nem superioridade sobre outros agentes.',M,371,size=11,color=MUTED,max_h=33)
     b.text('O que ainda precisa ser fechado',M,423,size=16,font='Bold')
     pending_rows=[
-        ('V19','Seleção da skill','Proxy estático em 37,5%; meta de 90%. Não mede roteamento real do host.'),
         ('V22','Histórico Git','Ocorrências de e-mail em patches antigos; preparar a limpeza antes de publicar.'),
         ('V24','Manutenção hospedada','Verificar a execução agendada e a criação de issue do monitor de drift.'),
         ('V25','Leituras restantes','Resolver pré-requisitos e dados ausentes; triagem com Cloud Guard 404 / Support 403.'),
@@ -247,6 +246,7 @@ def main():
         b.text(gate,M,y,42,10,color=RED,font='Bold')
         b.text(f'<b>{title}</b> · {body}',M+48,y,CW-48,10.3,max_h=32)
         b.line(M,y+36,W-M,y+36)
+    b.text('<b>Seleção semântica:</b> 79/80 e 77/80; zero ativações indevidas em 40 negativos por rodada. Evidência datada, sem medir tarefas completas no host.',M,699,size=10,color=GREEN,max_h=42)
     b.source('docs/validation-matrix.md · docs/evals.md · docs/evidence/README.md')
 
     b.start('06 / PRÓXIMO PASSO')

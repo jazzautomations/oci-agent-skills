@@ -24,6 +24,11 @@ paths; those paths identify the original measurement rather than current links.
 | [Final audit findings](final-audit-findings.json) | Original findings; consult the current matrix for resolution |
 
 Evaluation result files remain under [evals/results](../../evals/results).
+The [semantic-selection trials](../../evals/results/semantic.json) and
+[scope regressions](../../evals/results/semantic-boundaries.json) contain current
+input-bound model evidence. [Development trials](../../evals/results/semantic-development.json)
+retain the failed iterations. The [investigation](../semantic-routing.md) explains
+why the lexical proxy was replaced and what these component tests cannot prove.
 Regenerate current release evidence outside the checkout with
 `uv run --frozen --project runtime python scripts/ci/release_gate.py`; review its
 diffs before replacing a report. Never convert failed or unavailable probes into

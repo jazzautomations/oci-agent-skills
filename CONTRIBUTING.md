@@ -74,9 +74,12 @@ validation additionally uses `claude plugin validate . --strict` and
 
 `uv run --frozen --project runtime python scripts/ci/release_gate.py` runs the
 full matrix and writes candidate reports outside the checkout. Review its diffs
-before updating evidence. Existing routing, live-coverage and host-evaluation
+before updating evidence. Existing live-coverage and host-evaluation
 gaps remain release blockers; a nonzero exit is expected until they are resolved.
-Public-link checks run separately from offline checks.
+Public-link checks run separately from offline checks. Semantic selection uses
+dated model evidence checked in CI; after changing descriptions, the corpus or
+the collector policy, recollect both semantic reports as described in
+[the evaluation guide](docs/evals.md). Missing or stale evidence fails the gate.
 
 Template checks use the committed `scripts/ci/template-source.json` fingerprint,
 so a clean clone needs no private research. To revise the authoring stencil from

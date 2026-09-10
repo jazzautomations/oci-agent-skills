@@ -47,8 +47,8 @@ before treating an older report as evidence for a changed tree.
 
 ## 3:30–5:00 — show the boundaries and ask for review
 
-Open the [validation matrix](../validation-matrix.md). Point out the 22 passing
-and six open gates, including routing, live prerequisites and host evaluation.
+Open the [validation matrix](../validation-matrix.md). Point out the 23 passing
+and five open gates, including live prerequisites and host evaluation.
 Ask the reviewer to choose one domain and identify a missing prerequisite,
 incorrect API assumption or representative task to validate next.
 

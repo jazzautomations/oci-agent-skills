@@ -1,6 +1,6 @@
 ---
 name: oracle-db-fleet
-description: "Operates non-Autonomous databases and fleet diagnostics: Base DB, Exadata, MySQL, PostgreSQL, multicloud and DBA lifecycle. Use when: DB system, Exadata, RAC, Data Guard, AWR, PDB, RMAN, patch a database, Ops Insights. Not for: Autonomous (`oracle-autonomous-db`)."
+description: "Operates OCI non-Autonomous database services and enrolled Database Management fleets. Use when: Base DB, Exadata noun sets, HeatWave, OCI PostgreSQL, multicloud DB, managed RAC/Data Guard/AWR/PDB/RMAN, Ops Insights. Not for: Autonomous (`oracle-autonomous-db`) or standalone engine troubleshooting without OCI management."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -12,12 +12,14 @@ metadata:
 
 # Oracle Database Fleet
 
-Owns non-Autonomous fleet diagnostics; ADB belongs to oracle-autonomous-db.
+Non-Autonomous fleet diagnostics; ADB: oracle-autonomous-db.
 
 ## Scope check
 Select `PROFILE`, `REGION` locally.
 Set `COMPARTMENT_ID`, `MANAGED_DB_ID`.
 Check IDs with scoped reads.
+Require an OCI database service or enrolled Database Management context, including
+on-premises databases. An engine name or Oracle error alone is insufficient.
 
 ## Route
 | The user says… | Load | Why |
@@ -32,7 +34,7 @@ Check IDs with scoped reads.
 | error-triage | [Reference](../../references/error-triage.md) | Load when classifying API failures. |
 | redaction | [Reference](../../references/redaction.md) | Load when sharing output. |
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
-No script: every read here is a single CLI call already covered by scripts/lib/oci_ro; nothing to compose.
+Reads use the shared scripts/lib/oci_ro wrapper.
 
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.

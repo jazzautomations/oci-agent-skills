@@ -6,13 +6,13 @@
 
 33 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-[![Regression tests: 362](https://img.shields.io/badge/regression_tests-362_passed-2D6A4F)](docs/validation-matrix.md)
+[![Regression tests: 378](https://img.shields.io/badge/regression_tests-378_passed-2D6A4F)](docs/validation-matrix.md)
 [![Skills: 33](https://img.shields.io/badge/skills-33-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
 [![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-555555)](LICENSE)
 
-**v2 skill set · package 0.2.1 (preview)** — [22 validation gates pass; 6 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
+**v2 skill set · package 0.2.1 (preview)** — [23 validation gates pass; 5 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
 
 [Get started](#get-started) · [Browse skills](docs/skills.md) · [MCP reference](docs/mcp-tools.md) · [Evidence](#evidence-you-can-inspect) · [Documentation](docs/README.md)
 
@@ -61,7 +61,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 <!-- skills:start -->
 | Domain | Skill | Purpose |
 |---|---|---|
-| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Routes an Oracle or OCI product request to the right control plane: which `oci` CLI group, which product-owned REST API, or a stop-and-hand-off. |
+| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Finds the current OCI control plane and service equivalents. |
 |  | [oci-cli-auth](skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. |
 |  | [oci-tenancy-governance](skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. |
 |  | [oci-iam-policy](skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. |
@@ -83,7 +83,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 | Cost & Free Tier | [oci-cost-analysis](skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. |
 |  | [oci-free-tier](skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. |
 | Oracle Database & APEX | [oracle-autonomous-db](skills/oracle-autonomous-db/SKILL.md) | Provisions and connects Oracle Autonomous Database. |
-|  | [oracle-db-fleet](skills/oracle-db-fleet/SKILL.md) | Operates non-Autonomous databases and fleet diagnostics: Base DB, Exadata, MySQL, PostgreSQL, multicloud and DBA lifecycle. |
+|  | [oracle-db-fleet](skills/oracle-db-fleet/SKILL.md) | Operates OCI non-Autonomous database services and enrolled Database Management fleets. |
 |  | [oracle-db-vector-ai](skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. |
 |  | [oracle-db-sql-access](skills/oracle-db-sql-access/SKILL.md) | Configures agent SQL access with database-enforced read privileges, SQLcl MCP, ORDS and Database Tools. |
 |  | [oracle-apex](skills/oracle-apex/SKILL.md) | Delivers Oracle APEX. |
@@ -93,7 +93,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 | Reliability & migration | [oci-dr-backup](skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. |
 |  | [oci-migration-patching](skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. |
 | SDKs & enterprise applications | [oci-sdk-patterns](skills/oci-sdk-patterns/SKILL.md) | Writes OCI SDK code that works. |
-|  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Sets the boundary for Oracle enterprise and SaaS products: Fusion, NetSuite, Oracle Integration, Analytics Cloud, Digital Assistant, Visual Builder, Content Management and WebLogic Management Service — the OCI CLI reaches the instance envelope, not the application. |
+|  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Distinguishes OCI service-instance operations from Oracle application APIs. |
 <!-- skills:end -->
 
 ## How it fits together
@@ -132,16 +132,16 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 | Check | Recorded result | Scope |
 |---|---:|---|
-| Regression suite | 362 passed | Current full suite; recorded in the validation matrix |
+| Regression suite | 378 passed | Current full suite; recorded in the validation matrix |
 | Authored OCI fences | 277/277 valid | CLI shape lint, not workload execution |
-| Negative routing prompts | 0/40 fired | Static description matcher |
-| Description-only model judge | 78/80 expected skills | Archived single-run labels; no independently verifiable run IDs |
+| Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
+| Semantic skill selection | 79/80 and 77/80 | Two recorded trials; all four overlap pairs in both |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
-| Full release matrix | 22 pass / 6 open | Open gates retain owners and reasons |
+| Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
 
-[Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Model-judge limitations](docs/routing-model-eval.md)
+[Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
 
-The four-arm offline comparison uses the same frozen prompts and static matcher. These figures measure authored material and inert guard replay, not agents completing tasks:
+The archived four-arm comparison below dates from September 9, before the scope repairs. It uses the same frozen prompts and static matcher for every arm. These figures measure authored material and inert guard replay, not agents completing tasks:
 
 | Arm | Routing proxy | Authored fence validity | Unconfirmed guard exposure |
 |---|---:|---:|---:|
@@ -161,16 +161,15 @@ uv run --frozen --project runtime python scripts/ci/release_gate.py
 
 The release gate writes evidence outside the checkout and prints diffs. It exits nonzero while any release gate is open. Default mode reuses dated cloud/link evidence. [Contributor checks →](CONTRIBUTING.md)
 
-**Context cost:** 6,386 tokens by characters/4 for descriptions plus MCP schemas, excluding host framing. One Claude Code measurement found a 5,517-token skills-only delta; adding the schema estimate yields 8,972 estimated tokens, not a measured MCP-on total. [Method and raw counts](docs/evidence/context-measurement.json).
+**Archived context cost (September 9):** 6,386 tokens by characters/4 for descriptions plus MCP schemas, excluding host framing. One Claude Code measurement found a 5,517-token skills-only delta; adding the schema estimate yields 8,972 estimated tokens, not a measured MCP-on total. [Method and raw counts](docs/evidence/context-measurement.json).
 
 ## Open work
 
-1. **Routing:** the static proxy scores 37.5%, below the required 90%; archived model-judge labels do not replace that gate.
-2. **History hygiene:** historical patch bodies retain email occurrences. The current tree scan passes; publication hygiene needs a separately reviewed history cleanup.
-3. **Scheduled drift:** local CLI drift checks pass; the hosted schedule and issue-creation path lack recorded verification.
-4. **Live workflows:** selected API-key reads in one region passed. Script prerequisites, database/cluster workloads, principal alternatives, PowerShell and cross-region behavior remain incomplete.
-5. **Host evaluation:** the installed plugin task evaluator returned an early-access restriction; no qualifying task-completion score is available.
-6. **Behavioral comparison:** the four-arm offline comparison is complete; model-backed task and injection outcomes remain unmeasured.
+1. **History hygiene:** historical patch bodies retain email occurrences. The current tree scan passes; publication hygiene needs a separately reviewed history cleanup.
+2. **Scheduled drift:** local CLI drift checks pass; the hosted schedule and issue-creation path lack recorded verification.
+3. **Live workflows:** selected API-key reads in one region passed. Script prerequisites, database/cluster workloads, principal alternatives, PowerShell and cross-region behavior remain incomplete.
+4. **Host evaluation:** the installed plugin task evaluator returned an early-access restriction; no qualifying task-completion score is available.
+5. **Behavioral comparison:** the four-arm offline comparison is complete; model-backed task and injection outcomes remain unmeasured.
 
 The [roadmap](docs/roadmap.md) separates implementation work, missing infrastructure and external access. Eleven niche CLI groups remain without dedicated skill ownership; the [coverage map](docs/audit.md#unowned-services) lists them explicitly.
 

@@ -1,4 +1,4 @@
-# Final validation matrix — 2026-09-09
+# Final validation matrix — 2026-09-10
 
 Branch: `main`. **Not release-ready.** No tenancy mutations.
 
@@ -19,13 +19,13 @@ Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py 
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-09 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-09 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-09 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-09 | 362 passed, 1 warning in 54.37s |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-10 | 378 passed, 1 warning. Full regression suite; see CI for the current commit. |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-09 | Command passed. Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check` | PASS | 2026-09-09 | Command passed. Subcheck V16-regeneration: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-09 | Command passed. |
 | V18 | `CLI_PYTHON scripts/check_examples.py --report docs/evidence/validation-examples-offline.json` | PASS | 2026-09-09 | Command passed. |
-| V19 | `uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json` | FAIL | 2026-09-09 | Description proxy 37.5%; required ≥90%; overlap pairs 4/4. Not host routing. Owner: evaluation/routing maintainers. |
-| V20 | `uv run --frozen --project runtime python evals/run_routing.py --negatives` | PASS | 2026-09-09 | Zero negative firings required; the matcher is a static proxy. |
+| V19 | `uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json` | PASS | 2026-09-10 | Recorded semantic selection: 79/80 and 77/80 (worst 96.25%, required ≥90%); overlap pairs 4/4 in each trial. Current input hashes verified. CI rechecks dated predictions; no fresh model call or native host task claim. |
+| V20 | `uv run --frozen --project runtime python evals/run_routing.py --negatives` | PASS | 2026-09-10 | Zero negative firings in each of two recorded semantic trials (40 negatives each); current evidence verified. Additional synthetic boundaries: 12/12. |
 | V21 | `uv run --frozen --project runtime python scripts/ci/check_budget.py` | PASS | 2026-09-09 | Command passed. |
 | V22 | `uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py` | FAIL | 2026-09-09 | Command passed. Subcheck V22-history: FAIL. Owner: repository history owner. |
 | V23 | `uv run --frozen --project runtime python scripts/ci/check_licenses.py` | PASS | 2026-09-09 | Command passed. |
@@ -35,4 +35,4 @@ Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py 
 | V27 | `claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1` | UNAVAILABLE | 2026-09-09 | `plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score. Owner: evaluation maintainers / installed host provider. |
 | V28 | `uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py` | PARTIAL | 2026-09-09 | All four offline arms complete, table and per-case retrieval deltas published. Original live/model-backed comparison and behavioral deltas unmeasured. Subcheck V28-offline: PASS. Owner: evaluation maintainers. |
 
-PASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 are deterministic description proxies. V24 is not a hosted schedule run. V27 and the original behavioral V28 remain unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.
+PASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 verify dated semantic classification evidence and recompute its exact-match scores; CI does not make fresh model calls. The old lexical matcher is diagnostic only. V24 is not a hosted schedule run. V27 and the original behavioral V28 remain unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.

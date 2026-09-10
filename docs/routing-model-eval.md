@@ -1,6 +1,9 @@
 # Model-backed routing evaluation — 2026-09-09
 
-V19 in docs/validation-matrix.md is red because the offline proxy is lexical. The description-only judge labels below are a separate measurement; they do not establish the host-routing or task gates in plan §2.8.
+This is an archived 2026-09-09 measurement with incomplete provenance. Current
+V19/V20 evidence uses the isolated, input-bound trials documented in
+[the semantic selection investigation](semantic-routing.md). The archived labels
+below do not establish native host activation or task-completion gates.
 
 Method: two independent judge agents (claude-sonnet-5) each received ONLY the skill names + descriptions of one arm and the 120 prompts of
 evals/corpus/eval-corpus.json (80 routing + 40 negatives) as id+text, with expected_skill and trap_class stripped, and labelled the single

@@ -29,7 +29,9 @@ def execute(identifier, command, display, *, timeout=240, owner='repository main
         detail = note or ('Command passed.' if ok else 'Command failed; inspect local output by rerunning the command.')
         if identifier == 'V19':
             report = json.loads(Path(command[-1]).read_text())
-            detail = f"Description proxy {report['metrics']['routing_accuracy']:.1%}; required ≥90%; overlap pairs {report['metrics']['overlap_pairs_correct']}/4. Not host routing."
+            accuracy = report['metrics']['routing_accuracy']
+            formatted = f'{accuracy:.1%}' if accuracy is not None else 'unavailable'
+            detail = f"Recorded semantic selection, worst trial {formatted}; required ≥90%; overlap pairs {report['metrics']['overlap_pairs_correct']}/4. Input-bound evidence, no fresh CI inference or host task execution."
         elif identifier == 'V22-history':
             counts = json.loads(result.stdout)['counts']
             detail = 'History scan counts: ' + json.dumps(counts, sort_keys=True) + '.'
@@ -152,7 +154,7 @@ def main():
     test('V17','tests/test_console_url.py')
     add('V18',[str(cli_python),'scripts/check_examples.py','--report',str(output/'docs/evidence/validation-examples-offline.json')],'CLI_PYTHON scripts/check_examples.py --report docs/evidence/validation-examples-offline.json')
     add('V19',PYTHON+['scripts/eval/run.py','--json',str(output/'evals/results/offline.json')],'uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json',owner='evaluation/routing maintainers')
-    add('V20',PYTHON+['evals/run_routing.py','--negatives'],'uv run --frozen --project runtime python evals/run_routing.py --negatives',note='Zero negative firings required; the matcher is a static proxy.')
+    add('V20',PYTHON+['evals/run_routing.py','--negatives'],'uv run --frozen --project runtime python evals/run_routing.py --negatives',note='Zero negative firings in every recorded semantic trial; input hashes and predictions are checked offline.')
     check('V21','check_budget');check('V22','check_no_secrets');check('V23','check_licenses')
     # Additional integrity subchecks attach to their parent gate, not new V numbers.
     add('V16-regeneration',[str(cli_python),'scripts/inventory.py','--format','jsonl','--index','--check'],'CLI_PYTHON scripts/inventory.py --format jsonl --index --check')
@@ -224,7 +226,7 @@ def main():
     for row in rows:
         detail=row['detail']+(' Owner: '+row['owner']+'.' if row.get('owner') else '')
         text+='| '+row['id']+' | `'+row['command'].replace('|','\\|')+'` | '+row['result']+' | '+row['date']+' | '+detail.replace('|','\\|')+' |\n'
-    text+='\nPASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 are deterministic description proxies. V24 is not a hosted schedule run. V27 and the original behavioral V28 remain unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.\n'
+    text+='\nPASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 verify dated semantic-description selections and their input hashes; CI does not rerun inference. V24 is not a hosted schedule run. V27 and the original behavioral V28 remain unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.\n'
     (output/'docs/validation-matrix.md').write_text(text)
     drift = diff_evidence(output)
     print(json.dumps({'ready':report['ready'],'output_dir':str(output),'drift':drift,'nonpassing':[r['id'] for r in rows if r['result']!='PASS']},indent=2))

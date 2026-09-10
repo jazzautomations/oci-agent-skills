@@ -6,12 +6,16 @@ version or increasing the skill count. All current evidence is scoped and dated.
 
 | Work | Acceptance evidence | Owner / prerequisite |
 |---|---|---|
-| V19 routing | Meet the existing ≥90% gate with a valid evaluation method; keep negatives at zero and selection independent of expected labels | Evaluation/routing maintainers |
 | V22 history hygiene | Reviewed cleanup of reachable historical patch content; current-file and full-history scans pass | Repository owner; published-history coordination |
 | V24 hosted drift | Capture a hosted scheduled run and exercise issue creation without duplicate issues | CI maintainers; GitHub Actions access |
 | V25 script coverage | Remaining triage reads return Cloud Guard 404 / Support 403; supply four missing prerequisites and resolve two no-data metric checks. Corrected helper defects have fresh passing evidence | Skill maintainers and OCI operator |
 | V27 host task evaluation | Run the qualifying host evaluation with recorded host/model versions, run IDs and ≥0.8 task score | Evaluation maintainers; supported evaluator access |
 | V28 behavioral comparison | Same prompts and budgets across four arms; publish task completion, generated-command validity and safety outcomes | Evaluation maintainers; controlled test environment |
+
+V19/V20 now pass on recorded semantic-description selections: 79/80 and 77/80,
+zero negative firings and all four overlap pairs in both trials. Source changes
+invalidate this evidence. The [investigation](semantic-routing.md) covers blind
+inputs, scope repairs, failed development trials and remaining generalization gaps.
 
 ## Environment-dependent validation
 

@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "branch": "main",
   "ready": false,
   "rows": [
@@ -123,9 +123,9 @@
       "id": "V14",
       "command": "uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "362 passed, 1 warning in 54.37s",
+      "detail": "378 passed, 1 warning. Full regression suite; see CI for the current commit.",
       "owner": null
     },
     {
@@ -167,19 +167,19 @@
     {
       "id": "V19",
       "command": "uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json",
-      "result": "FAIL",
-      "date": "2026-09-09",
-      "exit_code": 1,
-      "detail": "Description proxy 37.5%; required \u226590%; overlap pairs 4/4. Not host routing.",
-      "owner": "evaluation/routing maintainers"
+      "result": "PASS",
+      "date": "2026-09-10",
+      "exit_code": 0,
+      "detail": "Recorded semantic selection: 79/80 and 77/80 (worst 96.25%, required ≥90%); overlap pairs 4/4 in each trial. Current input hashes verified. CI rechecks dated predictions; no fresh model call or native host task claim.",
+      "owner": null
     },
     {
       "id": "V20",
       "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Zero negative firings required; the matcher is a static proxy.",
+      "detail": "Zero negative firings in each of two recorded semantic trials (40 negatives each); current evidence verified. Additional synthetic boundaries: 12/12.",
       "owner": null
     },
     {

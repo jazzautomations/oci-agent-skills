@@ -31,7 +31,7 @@ jobs:
       - run: python scripts/ci/check_manifests.py
       - run: python scripts/check_examples.py
       - run: uv run --frozen --project runtime python evals/run_routing.py --negatives
-      - name: Offline evaluation gates
+      - name: Component gates and recorded semantic evidence
         run: uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json
       - name: Preserve evaluation evidence
         if: always()

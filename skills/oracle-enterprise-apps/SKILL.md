@@ -1,6 +1,6 @@
 ---
 name: oracle-enterprise-apps
-description: "Sets the boundary for Oracle enterprise and SaaS products: Fusion, NetSuite, Oracle Integration, Analytics Cloud, Digital Assistant, Visual Builder, Content Management and WebLogic Management Service — the OCI CLI reaches the instance envelope, not the application. Use when: Fusion ERP/HCM/SCM, NetSuite, OIC, ODA, VB Studio, WebLogic on OCI, \"automate Fusion\". Not for: OCI core services."
+description: "Distinguishes OCI service-instance operations from Oracle application APIs. Use when: Fusion/NetSuite/OIC/OAC/ODA/Visual Builder/WebLogic service scope, environment inventory, which application objects the OCI CLI can reach. Not for: application UI authoring, business transactions, CLI spelling errors (`oci-navigator`) or core OCI operations."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -18,6 +18,9 @@ Inspect service envelopes; ODA also exposes content management. Application perm
 Select `PROFILE`, `REGION` from the local profile.
 Set `COMPARTMENT_ID`, `ODA_ID` for the fences below.
 Validate IDs with the scoped list/get below.
+Distinguish a request to explain the service/application boundary from a request
+to perform application UI authoring. This skill owns the former and scoped
+service inspection; it does not operate a visual designer or business workflow.
 
 ## Route
 | The user says… | Load | Why |

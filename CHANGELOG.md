@@ -2,6 +2,15 @@
 
 ## Unreleased — presentation and documentation
 
+Repaired semantic selection evaluation. The old lexical filter rejected 39 valid
+requests before matching; it is retained as a diagnostic, while V19/V20 now check
+dated, input-bound semantic trials with blind requests, pinned model and unchanged
+thresholds. Tightened navigator, database-fleet and enterprise-application scope.
+Two final trials score 79/80 and 77/80, with zero negative firings and 4/4 overlap
+pairs in each; 12 additional scope regressions pass. CI verifies evidence rather
+than making a new model call. Native host activation and task completion remain
+unmeasured; all earlier failed trials are retained.
+
 Expanded the Portuguese review PDF into a seven-page illustrated explanation:
 network troubleshooting scenario, component architecture, nine coverage areas,
 reproducible demo, scoped evidence and focused review questions. Added embedded

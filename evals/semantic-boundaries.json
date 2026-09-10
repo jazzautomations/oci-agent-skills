@@ -1,0 +1,17 @@
+{
+  "provenance": "Synthetic regression cases authored during the scope repair from declared product boundaries; not an independent unseen benchmark.",
+  "cases": [
+    {"id": "B01", "prompt": "Our datacenter Oracle database is already enrolled in OCI Database Management. Inspect its managed-database metrics through OCI.", "expected_skill": "oracle-db-fleet"},
+    {"id": "B02", "prompt": "Choose the OCI resource family for an Exadata cloud VM cluster versus a Base Database DB system.", "expected_skill": "oracle-db-fleet"},
+    {"id": "B03", "prompt": "Quero consultar o estado da instância Oracle Integration em um compartment, sem abrir ou editar seus fluxos.", "expected_skill": "oracle-enterprise-apps"},
+    {"id": "B04", "prompt": "Explain the boundary between OCI inventory of a Fusion environment and the Fusion API for employee records.", "expected_skill": "oracle-enterprise-apps"},
+    {"id": "B05", "prompt": "Estou vindo do Azure: qual conceito da OCI corresponde ao agrupamento de recursos de um projeto, antes de configurar qualquer coisa?", "expected_skill": "oci-navigator"},
+    {"id": "B06", "prompt": "I used a nonexistent top-level OCI CLI group for WebLogic and got No such command. Help locate the current group name.", "expected_skill": "oci-navigator"},
+    {"id": "B07", "prompt": "Tune WAL settings on a standalone PostgreSQL server in my home lab; no cloud management is involved.", "expected_skill": null},
+    {"id": "B08", "prompt": "Meu Oracle Database local está com um datafile corrompido; ele não tem integração nem cadastro de gerenciamento na OCI.", "expected_skill": null},
+    {"id": "B09", "prompt": "Use the Fusion HCM web designer to move a button and change its label on an employee form.", "expected_skill": null},
+    {"id": "B10", "prompt": "Explain an archived Compute Classic OCI-C deployment from 2014; I am not using the current OCI platform.", "expected_skill": null},
+    {"id": "B11", "prompt": "List all Amazon RDS MySQL instances in my AWS account using the AWS CLI.", "expected_skill": null},
+    {"id": "B12", "prompt": "Delete an obsolete lead in Salesforce CRM.", "expected_skill": null}
+  ]
+}

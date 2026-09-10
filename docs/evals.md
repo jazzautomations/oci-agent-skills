@@ -1,23 +1,82 @@
-# Evaluation evidence — 2026-09-09
+# Evaluation evidence — 2026-09-10
 
-Run `uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json`.
-The command intentionally exits 1 while V19 is red. `uv run --frozen --project runtime python evals/run_routing.py --negatives` isolates V20.
+The current selection gate uses **recorded semantic classification** of all 33
+skill descriptions. CI verifies the input fingerprints and recomputes scores;
+it does not call a model or claim native host task completion.
 
-| Measurement | Result | Gate |
+| Measurement | Result | Criterion |
 |---|---:|---|
-| Description routing | 37.5% over 80 | FAIL: ≥90% required |
-| Overlap pairs | 4/4 | PASS |
-| Negative skill firings | 0/40 | PASS: zero required |
-| Authored fenced commands | 100.0% of 277 | PASS: ≥95% required |
-| Guard auto-allow on mutation fixtures | 0/20 | PASS: zero required |
-| Sanitizer fixtures flagged, returned, idempotent | 10/10 | PASS |
+| Semantic selection, seed 17 | 79/80 (98.75%) | ≥90% in every trial |
+| Semantic selection, seed 29 | 77/80 (96.25%) | ≥90% in every trial |
+| Overlap pairs | 4/4 in each trial | All four in every trial |
+| Negative skill firings | 0/40 in each trial | Zero in every trial |
+| Additional synthetic boundaries | 12/12 | All correct; development regressions |
+| Authored fenced commands | 277/277 | ≥95% syntax validity |
+| Guard auto-allow on mutation fixtures | 0/20 | Zero; inert replay |
+| Sanitizer fixtures | 10/10 | Flagged, returned, idempotent |
 
-These are deterministic offline proxies. The selector uses the same scope filter and description matcher for every arm, never case IDs or expected labels. Its conservative context filter and lexical matching miss many implicit and Portuguese requests. **V19 remains a release blocker, owned by evaluation/routing maintainers.** Do not tune against expected labels or call this host routing accuracy. The source prompts and the plan's descriptions remain unchanged.
+The two classifier sessions used `claude-sonnet-5` with tools and MCP disabled.
+Positive and negative requests were shuffled together with opaque IDs. The model
+received names, descriptions and request text; expected labels and trap metadata
+were withheld. Scoring used the unchanged original 80 routing and 40 negative
+cases, with the existing skill-merge remap. Both predeclared trials must pass.
 
-The task records are imported unchanged into tasks.json, case.yaml, prompt.md and the skill-creator evals.json shape. remap.json records the four planned skill merges. Re-import with `uv run --frozen --project runtime python scripts/eval/import_corpus.py` from the frozen `evals/corpus/eval-corpus.json` snapshot. Tests compare every imported row to that shipped source in fresh clones as well as the build checkout. The snapshot retains the original pre-merge labels; `remap.json` applies the planned merges. The research command shapes are retained as evidence, not assumed correct.
+Inspect the [main traces](../evals/results/semantic.json),
+[boundary trace](../evals/results/semantic-boundaries.json),
+[failed development trials](../evals/results/semantic-development.json), and
+[research, scope repairs and remaining gaps](semantic-routing.md).
+These are development/regression results on known examples, not unseen holdout
+performance. CLI-reported session metadata is not independent provider attestation.
 
-`claude plugin eval . --threshold 0.8 --json evals/results/run.json` returned “plugin eval is currently in early access”. See evals/results/host.json. The YAML grader keys remain unverified. The skill-creator JSON format is supplied, but no model-backed skill-creator run was performed; the offline substitute cannot establish V27's ≥0.8 agent score.
+## Reproduce
 
-Commands are linted from authored skill fences and their directly referenced documents; task retrieval records show selected examples, not task completion. Safety replay inspects inert strings five times per T37–T40 and never executes them. Sanitizer evidence does not establish task completion, scope preservation, leakage, silent-drop, over-refusal or resistance to live injection. Those behavioral outcomes remain unmeasured. Actual tenancy mutations during this harness are zero by construction, not a behavioral safety score.
+Verify recorded evidence and deterministic component checks without model access:
 
-The [description-only judge evaluation](routing-model-eval.md) is a separate reported measurement. It does not replace V19 host routing or V27 task execution. Current host diagnostic and version: `evals/results/host.json`.
+```bash
+uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-evaluation.json
+uv run --frozen --project runtime python scripts/eval/semantic.py
+uv run --frozen --project runtime python scripts/eval/boundaries.py
+```
+
+Missing, stale or inconsistent evidence fails. Changes to skill descriptions,
+the corpus, remap, policy or collector require new collection. With an
+authenticated compatible Claude CLI, make the bounded paid calls explicitly:
+
+```bash
+uv run --frozen --project runtime python scripts/eval/semantic.py --collect
+uv run --frozen --project runtime python scripts/eval/boundaries.py --collect
+uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json
+```
+
+The policy caps each main trial at USD 0.75 and the boundary run at USD 0.25.
+Unavailable models and incomplete runs fail; there is no lexical fallback.
+
+The old lexical matcher remains available through `scripts/eval/run.py --legacy-routing`.
+Its archived September 9 result was 37.5%, mostly because a keyword scope filter
+rejected implicit requests. That diagnostic is not semantic accuracy and no
+longer determines V19. The [archived comparison](head-to-head.md) keeps the same
+lexical method for all four arms; semantic scores must not be mixed into that
+table. The [older single-run model labels](routing-model-eval.md) also remain
+archived, with their original provenance limits.
+
+## Corpus and scope of the claims
+
+The task records are imported unchanged into tasks.json, case.yaml, prompt.md
+and the skill-creator evals.json shape. Re-import with
+`uv run --frozen --project runtime python scripts/eval/import_corpus.py` from the
+frozen `evals/corpus/eval-corpus.json`. Tests compare every imported row to that
+source, including in fresh clones. `remap.json` applies the four planned skill
+merges. Research command shapes are retained as evidence, not assumed correct.
+
+`claude plugin eval` returned an early-access restriction in the dated
+[host diagnostic](../evals/results/host.json). The YAML grader keys remain
+unverified. Isolated selection does not establish V27's ≥0.8 agent task score or
+close V28's four-arm behavioral comparison.
+
+Authored fences and their directly referenced documents are syntax-checked;
+retrieved examples do not establish task completion. Safety replay examines
+inert strings and never executes mutation fixtures. Sanitizer fixtures do not
+establish live injection resistance, scope preservation or absence of leakage.
+Zero tenancy mutations in this harness follows from its construction, not from
+observed agent safety. A separate reviewed holdout and native host task runs
+remain necessary before broader quality claims.

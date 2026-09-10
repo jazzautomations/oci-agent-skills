@@ -40,7 +40,7 @@ boundary. Other host adapters do not receive the Claude shell hook.
 
 ## What the evidence supports
 
-- The recorded full suite passes 362 tests; syntax lint accepts 277 authored OCI
+- The recorded full suite passes 378 tests; syntax lint accepts 277 authored OCI
   fences. Neither establishes end-to-end deployment success.
 - Classifier replay denies all 278 critical-labelled leaves and allows zero
   operations outside the strict read-only set. The severity snapshot and catalog
@@ -60,13 +60,13 @@ uses frozen snapshots and is not a live superiority claim over upstream projects
 
 | Area | Current limit | Useful feedback |
 |---|---|---|
-| Routing and agent behavior | Static proxy 37.5%, below 90%; host task evaluation and behavioral comparison incomplete | Representative tasks and a reproducible host evaluation method |
+| Routing and agent behavior | Semantic selection passes both recorded trials; native host task evaluation and behavioral comparison incomplete | Representative tasks and a reproducible host evaluation method |
 | Live coverage | Cloud Guard 404 / Support 403 in scoped triage; missing fixtures and metric data | Correct prerequisites and representative test environments |
 | Auth and platforms | Other principals, second region, Windows and deployed workflows incomplete | Priority environments and service-specific pitfalls |
 | Distribution | Local checks pass; scheduled drift/issue path unmeasured | Packaging and maintenance expectations |
 | Public release | Historical patch email occurrences need owner-reviewed cleanup | Review current snapshot before public-history preparation |
 
-There are 22 passing and six open release gates. Review does not require closing
+There are 23 passing and five open release gates. Review does not require closing
 them in advance; a production-ready or complete Oracle coverage claim would.
 
 ## Requested review

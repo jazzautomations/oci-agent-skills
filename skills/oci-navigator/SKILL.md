@@ -1,11 +1,10 @@
 ---
 name: oci-navigator
 description: >-
-  Routes an Oracle or OCI product request to the right control plane: which `oci` CLI group,
-  which product-owned REST API, or a stop-and-hand-off. Use when: the product is not plainly
-  OCI core, "No such command", "does OCI have", which CLI for
-  Fusion/NetSuite/OIC/WebLogic/Marketplace/IoT/Email, qual CLI usar pra. Not for: core compute,
-  network, storage or IAM — go straight to those skills.
+  Finds the current OCI control plane and service equivalents. Use when: unknown
+  product/group, command-name errors, cross-cloud concept mapping, OCI service
+  discovery. Not for: historical OCI-C, established service operations, database
+  noun sets (`oracle-db-fleet`) or application API reach (`oracle-enterprise-apps`).
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -23,6 +22,9 @@ Selects the control plane, then hands off to its owner.
 ## Scope check
 Set `COMPARTMENT_ID`, `TENANCY_ID` for the fences below.
 Validate IDs with the scoped list/get below.
+Map cross-cloud concepts, then delegate configuration. Send database-family and
+application API questions to their domain owners. Historical Compute Classic/
+OCI-C runbooks are outside this current-OCI navigator.
 
 ## Route
 | The user says… | Load | Why |

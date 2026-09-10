@@ -25,6 +25,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 | [Audit and provenance](audit.md) | Sources, measured surface and unowned services |
 | [Validation matrix](validation-matrix.md) | All 28 release gates, outcomes, dates and owners |
 | [Evaluation method](evals.md) | Corpus, static metrics and behavioral limits |
+| [Semantic selection investigation](semantic-routing.md) | Root cause, research, scope repairs and reproducible semantic trials |
 | [Offline comparison](head-to-head.md) | Four arms, frozen snapshots and scoring rules |
 | [Model-judge routing](routing-model-eval.md) | Archived description labels and provenance limits |
 | [Evidence index](evidence/README.md) | Machine-readable reports and their scope |

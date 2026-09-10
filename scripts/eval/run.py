@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run deterministic description, negative, fence and guard proxies offline.
+"""Check components and current, recorded semantic-selection evidence offline.
 
 This is not an agent benchmark: no model completion, tool execution or live
 injection is measured. Exit nonzero if a requested numerical gate is missed.
@@ -16,6 +16,8 @@ import lint_fences
 from guard_lib import inspect_command
 from lib.sanitize import clean
 from graders import routing, negative, safety, select
+import semantic
+import boundaries
 
 
 def read(name):
@@ -52,7 +54,7 @@ def commands(choices):
     return output
 
 
-def run():
+def run_legacy():
     choices = candidates()
     route = routing(read('routing.json'), choices, read('remap.json'))
     negatives = negative(read('negatives.json'), choices)
@@ -91,12 +93,52 @@ def run():
             'commands': fences, 'tasks': tasks, 'safety': injected, 'guard_replay': replay}
 
 
+def run():
+    result = run_legacy()
+    legacy = {key: result.pop(key) for key in ['routing', 'negatives', 'tasks']}
+    legacy['metrics'] = {key: result['metrics'][key] for key in
+                         ['routing_accuracy', 'routing_count', 'overlap_pairs_correct',
+                          'negative_firings', 'negative_count']}
+    legacy['mode'] = 'lexical-diagnostic-only'
+    result['legacy'] = legacy
+    try:
+        evidence = semantic.verify(ROOT, ROOT / 'evals/results/semantic.json')
+    except (OSError, ValueError, KeyError, TypeError):
+        evidence = {'ok': False, 'runs': [], 'error': 'Missing, stale or invalid semantic evidence',
+                    'fresh_model_call': False}
+    result['semantic'] = evidence
+    try:
+        boundary_result = boundaries.verify()
+    except (OSError, ValueError, KeyError, TypeError):
+        boundary_result = {'ok': False, 'error': 'Missing, stale or invalid boundary evidence'}
+    result['semantic_boundaries'] = boundary_result
+    result['gates']['semantic_boundaries'] = boundary_result['ok']
+    trials = evidence['runs']
+    result['mode'] = 'offline-components-and-recorded-semantic-selection'
+    result['model'] = evidence.get('model')
+    result['runs'] = len(trials)
+    result['metrics'].update(
+        routing_accuracy=min(r['metrics']['accuracy'] for r in trials) if trials else None,
+        overlap_pairs_correct=min(r['metrics']['overlap_pairs_correct'] for r in trials) if trials else None,
+        negative_firings=max(r['metrics']['negative_firings'] for r in trials) if trials else None,
+    )
+    for gate in ['V19', 'V20']:
+        result['gates'][gate] = bool(trials) and all(r['gates'][gate] for r in trials)
+    result['ok'] = all(result['gates'].values())
+    result['limitations'] = ('V19/V20 recompute scores from dated, input-bound semantic selections; '
+        'CI makes no fresh model call. Metrics use the worst trial, not best-of-N. '
+        'The lexical matcher is retained only under legacy. Neither selector measures native '
+        'host activation or task completion. Fences and sanitizer/guard fixtures remain component checks.')
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--json', type=Path)
     parser.add_argument('--negatives', action='store_true')
+    parser.add_argument('--legacy-routing', action='store_true', help='Run the historical lexical proxy, not the semantic release gate')
     args = parser.parse_args()
-    result = run()
+    result = run_legacy() if args.legacy_routing else run()
     if args.json:
         args.json.parent.mkdir(parents=True, exist_ok=True)
         args.json.write_text(json.dumps(result, indent=2) + '\n')

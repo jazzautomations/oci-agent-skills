@@ -124,7 +124,7 @@ def run():
     choices = {'a':own.candidates(), 'b':b['candidates'], 'c':c['candidates'], 'd':[]}
     order = list(choices); random.Random(42).shuffle(order)
     report = {'mode':'offline-static-proxy', 'seed':42, 'run_order':order, 'model':None, 'temperature':None, 'runs':1, 'arms':{}}
-    own_report = own.run()
+    own_report = own.run_legacy()
     deny = [line for line in (ROOT / 'evals/arms/oracle-denylist.txt').read_text().splitlines() if line and not line.startswith('#')]
     for arm in order:
         routing = route_rows(own.read('routing.json'), choices[arm], arm)
@@ -162,7 +162,7 @@ def run():
 
 
 def markdown(report):
-    text = '''# Four-arm offline comparison — 2026-09-09
+    text = '''# Four-arm offline lexical comparison
 
 Reproduce: `uv run --frozen --project runtime python scripts/eval/head_to_head.py --json evals/results/head-to-head.json --markdown docs/head-to-head.md`.
 Refresh competitor snapshots from the named research checkouts with the same command plus `--refresh-snapshots`. The shipped snapshots carry the original MIT/UPL notices. No competitor server is launched.
@@ -181,7 +181,7 @@ All arms receive identical unedited prompts, the same description matcher, one d
     text += '''
 Guard exposure counts inert mutation fixtures that an available guard would allow or leave unprotected, five replays per case. Arm c measures only its CLI denylist; Terraform is outside its tool surface, and SDK invocation protection remains unmeasured. These are not executed mutations or agent confirmation behavior. The same authored-fence linter grades skill bodies and their directly referenced documents in both skill arms. The known forwarding wrapper spelling oci_cli is normalized to oci for syntax lint only; arbitrary wrapper chains are not interpreted. No authored output exists for c/d, so their command-validity metric is unmeasured, not fabricated as zero or perfect.
 
-The raw JSON contains every routing, negative, task-retrieval and guard-replay result, plus per-case a-minus-d retrieval deltas for routing and tasks. A nonpositive delta is an offline review candidate; it cannot justify deleting a skill without a model-backed baseline. Behavioral task scores, generated-command validity, leakage and live injection remain unmeasured. V19 is red; V27 and the original live V28 cannot be established by this offline comparison. Owners: evaluation/routing maintainers for V19 and V28; Claude early-access provider plus evaluation maintainers for V27. The requested four-arm offline comparison is complete.
+The raw JSON contains every routing, negative, task-retrieval and guard-replay result, plus per-case a-minus-d retrieval deltas for routing and tasks. A nonpositive delta is an offline review candidate; it cannot justify deleting a skill without a model-backed baseline. Behavioral task scores, generated-command validity, leakage and live injection remain unmeasured. This lexical comparison does not determine the current V19/V20 semantic gates; see [evaluation evidence](evals.md). V27 and the original behavioral V28 cannot be established here. Owners: evaluation maintainers for V28; Claude early-access provider plus evaluation maintainers for V27. The requested four-arm offline comparison is complete.
 '''
     return text
 
