@@ -1,6 +1,6 @@
 ---
 name: oci-iam-policy
-description: "Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. Use when: \"Allow group …\", least privilege, dynamic group, \"why can't the agent read\", federação, política IAM. Not for: auditing existing policy (`oci-security-posture`)."
+description: "Authors OCI IAM statements and identity domains. Use when: least privilege, dynamic groups, permission denial for an identified principal, SAML/OIDC, SCIM, MFA, Endorse/Admit/Define. Not for: first identifying an OCI AI agent's tool-execution principal (`oci-generative-ai`); auditing existing policy (`oci-security-posture`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -13,7 +13,7 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-iam-policy/scripts/*)
 
 # OCI IAM Policy and Identity Domains
 
-Owns policy statements and identity domains.
+Authors IAM after identifying the principal.
 
 ## Scope check
 Set `COMPARTMENT_ID`, `DESC`, `DOMAIN_URL`, `ETAG`, `HOME_REGION`, `ID`, `NAME`, `NEW_ETAG`, `NEW_ID`, `POLICY_ID`, `TENANCY_ID`.

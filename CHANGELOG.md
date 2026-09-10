@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — explicit routing ownership
+
+Separate CLI-name discovery, application API capability, agent tool identity,
+IAM authoring, backup recovery impact and service commands. Generic A1 capacity
+checks require no assumption of Free Tier; database-family selection and visual
+Integration editing are explicitly excluded from the wrong owners.
+
+Recorded semantic trials now score 79/80 in both runs, with zero negative firings,
+4/4 overlap pairs and 31/31 synthetic boundaries. Original prompts, labels and
+thresholds are unchanged. Earlier and rejected development traces are preserved;
+the remaining intermittent R01/R71 disagreements are visible in the diagnostic.
+The private briefing reads routing scores from that diagnostic. Task-completion
+evaluation remains separate; see [evaluation evidence](docs/evals.md).
+
 ## Unreleased — cloud assessments and prepared demos
 
 Added bounded FinOps waste assessment, three migration assessment/planning skills,
@@ -9,8 +23,9 @@ Public price lookup now integrates graduated bands and expires caches after 24 h
 A daily source monitor compares official documentation, package versions and price
 sentinels. Four new skills bring the main package to 37.
 
-Current semantic trials score 77/80 and 76/80 with 4/4 overlap pairs; one negative
-fires in the second trial, so V20 remains red. See docs/evals.md.
+The initial catalog-expansion trials scored 77/80 and 76/80 with 4/4 overlap
+pairs; one negative fired in the second trial. That rejected collection is
+archived; see [current and historical evidence](docs/evals.md).
 
 ## Earlier unreleased presentation and documentation
 

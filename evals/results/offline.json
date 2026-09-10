@@ -7,7 +7,7 @@
   "agent_task_score": null,
   "limitations": "V19/V20 recompute scores from dated, input-bound semantic selections; CI makes no fresh model call. Metrics use the worst trial, not best-of-N. The lexical matcher is retained only under legacy. Neither selector measures native host activation or task completion. Fences and sanitizer/guard fixtures remain component checks.",
   "metrics": {
-    "routing_accuracy": 0.9625,
+    "routing_accuracy": 0.9875,
     "routing_count": 80,
     "overlap_pairs_correct": 4,
     "negative_firings": 0,
@@ -17,7 +17,7 @@
     "guard_auto_allowed": 0,
     "guard_replays": 20,
     "safety_strings_passed": 10,
-    "description_characters": 12382
+    "description_characters": 12467
   },
   "gates": {
     "V19": true,
@@ -109,37 +109,37 @@
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 44,
+      "line": 48,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 50,
+      "line": 54,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 56,
+      "line": 60,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 62,
+      "line": 66,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 68,
+      "line": 72,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-block-file-storage/SKILL.md",
-      "line": 76,
+      "line": 80,
       "valid": true,
       "finding": null
     },
@@ -385,49 +385,49 @@
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 44,
+      "line": 49,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 50,
+      "line": 55,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 56,
+      "line": 61,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 62,
+      "line": 67,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 68,
+      "line": 73,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 74,
+      "line": 79,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 80,
+      "line": 85,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-dr-backup/SKILL.md",
-      "line": 86,
+      "line": 91,
       "valid": true,
       "finding": null
     },
@@ -823,6 +823,12 @@
     },
     {
       "source": "skills/oci-navigator/SKILL.md",
+      "line": 49,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-navigator/SKILL.md",
       "line": 54,
       "valid": true,
       "finding": null
@@ -842,12 +848,6 @@
     {
       "source": "skills/oci-navigator/SKILL.md",
       "line": 69,
-      "valid": true,
-      "finding": null
-    },
-    {
-      "source": "skills/oci-navigator/SKILL.md",
-      "line": 74,
       "valid": true,
       "finding": null
     },
@@ -1693,49 +1693,49 @@
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 46,
+      "line": 49,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 52,
+      "line": 55,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 58,
+      "line": 61,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 64,
+      "line": 67,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 70,
+      "line": 73,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 76,
+      "line": 79,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 82,
+      "line": 85,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-enterprise-apps/SKILL.md",
-      "line": 88,
+      "line": 91,
       "valid": true,
       "finding": null
     }
@@ -1918,15 +1918,15 @@
     "routing": [
       {
         "id": "R01",
-        "selected": "oracle-enterprise-apps",
+        "selected": "oci-navigator",
         "expected": "oci-navigator",
-        "correct": false
+        "correct": true
       },
       {
         "id": "R02",
-        "selected": "oci-iam-policy",
+        "selected": "oci-navigator",
         "expected": "oci-navigator",
-        "correct": false
+        "correct": true
       },
       {
         "id": "R03",
@@ -2248,7 +2248,7 @@
       },
       {
         "id": "R56",
-        "selected": "oracle-enterprise-apps",
+        "selected": "oci-object-storage",
         "expected": "oracle-apex",
         "correct": false
       },
@@ -2266,9 +2266,9 @@
       },
       {
         "id": "R59",
-        "selected": "oci-generative-ai",
+        "selected": "oci-object-storage",
         "expected": "oci-generative-ai",
-        "correct": true
+        "correct": false
       },
       {
         "id": "R60",
@@ -2338,9 +2338,9 @@
       },
       {
         "id": "R71",
-        "selected": "oracle-enterprise-apps",
+        "selected": "oci-cli-auth",
         "expected": "oracle-enterprise-apps",
-        "correct": true
+        "correct": false
       },
       {
         "id": "R72",
@@ -2350,9 +2350,9 @@
       },
       {
         "id": "R73",
-        "selected": "oci-iam-policy",
+        "selected": "oci-sdk-patterns",
         "expected": "oci-iam-policy",
-        "correct": true
+        "correct": false
       },
       {
         "id": "R74",
@@ -2578,8 +2578,8 @@
       },
       {
         "id": "T03",
-        "selected": "oci-tenancy-governance",
-        "fences_checked": 8,
+        "selected": "oci-iam-policy",
+        "fences_checked": 10,
         "command_validity": 1.0,
         "task_completion": null,
         "reason": "Static retrieval only; no agent transcript."
@@ -2794,8 +2794,8 @@
       },
       {
         "id": "T30",
-        "selected": "oci-iam-policy",
-        "fences_checked": 10,
+        "selected": "oci-terraform",
+        "fences_checked": 6,
         "command_validity": 1.0,
         "task_completion": null,
         "reason": "Static retrieval only; no agent transcript."
@@ -2882,9 +2882,9 @@
       }
     ],
     "metrics": {
-      "routing_accuracy": 0.3625,
+      "routing_accuracy": 0.35,
       "routing_count": 80,
-      "overlap_pairs_correct": 4,
+      "overlap_pairs_correct": 3,
       "negative_firings": 0,
       "negative_count": 40
     },
@@ -2892,14 +2892,14 @@
   },
   "semantic": {
     "mode": "recorded-semantic-evidence-check",
-    "validated_at": "2026-09-10T10:00:29.723580+00:00",
+    "validated_at": "2026-09-10T14:00:06.529784+00:00",
     "model": "claude-sonnet-5",
     "runs": [
       {
         "metrics": {
-          "correct": 77,
+          "correct": 79,
           "total": 80,
-          "accuracy": 0.9625,
+          "accuracy": 0.9875,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
@@ -2912,9 +2912,9 @@
       },
       {
         "metrics": {
-          "correct": 77,
+          "correct": 79,
           "total": 80,
-          "accuracy": 0.9625,
+          "accuracy": 0.9875,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
@@ -2931,8 +2931,8 @@
     "host_task_completion": null
   },
   "semantic_boundaries": {
-    "correct": 15,
-    "total": 15,
+    "correct": 31,
+    "total": 31,
     "errors": [],
     "ok": true
   }

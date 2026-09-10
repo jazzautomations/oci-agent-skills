@@ -2,6 +2,16 @@
 
 Use this matrix to locate evidence; route service-specific commands to the owning service skill.
 
+For a policy-removal question, distinguish the scheduling policy, its assignment
+to the asset, and already-created backups. Inspect each backup's expiration and
+any independent copies before describing retained recovery coverage. Oracle's
+[Block Volume backup policy documentation](https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/schedulingvolumebackups.htm)
+states that policy-based backups eventually expire; stopping a schedule does not
+justify promising indefinite retention. Manual backups are a separate retention
+case. Do not infer the exact effect of an assignment change from the word
+"delete": confirm the operation in the service reference and preserve evidence
+before delegating a scoped proposal. No removal is executed by this assessment.
+
 | Asset | Evidence | Recovery constraint |
 |---|---|---|
 | Block and boot volumes | Backup policy assignment, completed backup, destination copy | Crash consistency does not prove application consistency; a missing assignment does not rule out manual backups |

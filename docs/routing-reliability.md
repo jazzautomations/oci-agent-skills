@@ -1,5 +1,10 @@
 # Routing reliability and task evaluation
 
+This is the historical assessment of commit `4f97246`, before the ownership
+repair. Its scores and contract descriptions refer to that snapshot. See the
+[revised ownership decision](routing-contracts.md) and [current evaluation](evals.md)
+for subsequent changes; the evidence cited below remains archived.
+
 The repository's recorded classifier selects the expected skill for 77 of 80
 requests in each of two trials. This passes the declared 90% gate, but does not
 establish reliable task execution or comparative superiority. Four distinct
@@ -16,7 +21,7 @@ methods below have not been deployed or measured here.
 
 ## Recorded errors
 
-The [case-level diagnostic](../evals/results/routing-diagnostics.json) decodes
+The [case-level diagnostic](../evals/results/routing-diagnostics-before-ownership.json) decodes
 the opaque request IDs from both trials and verifies the underlying evidence
 before reporting disagreements. Expected labels include the existing mechanical
 skill-merge remap. They have not been changed to accommodate model predictions.
@@ -296,8 +301,8 @@ of the routing evidence and specifies the measurements still required.
 ## Sources
 
 All web sources were inspected on September 10, 2026. Local evidence is the
-[semantic trace](../evals/results/semantic.json),
-[diagnostic](../evals/results/routing-diagnostics.json),
+[semantic trace](../evals/results/semantic-before-ownership.json),
+[diagnostic](../evals/results/routing-diagnostics-before-ownership.json),
 [routing corpus](../evals/routing.json), skill descriptions and
 [evaluation guide](evals.md). Private design records are cited by title only and
 are not included in the distribution.

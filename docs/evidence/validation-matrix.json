@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "453 tests passed in the full suite including case-level semantic diagnostics. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks still require copies without symlinks.",
+      "detail": "453 tests passed in the full suite after ownership-contract and boundary updates. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks require copies without symlinks.",
       "owner": null
     },
     {
@@ -170,7 +170,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Recorded 37-skill semantic selection: 77/80 and 77/80, 4/4 overlap pairs in both trials. Current fingerprints verified; isolated description selection only.",
+      "detail": "Recorded 37-skill semantic selection after explicit ownership repair: 79/80 and 79/80; 4/4 overlap pairs in both trials. Current fingerprints verified; isolated description selection only.",
       "owner": null
     },
     {
@@ -179,7 +179,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Zero negative firings in both 40-case trials after the Classic comparison scope clarification; 15/15 synthetic boundaries pass. Previous failing catalog-expansion traces retained. Original corpus, labels, policy, model and seeds unchanged.",
+      "detail": "Zero negative firings in both 40-case trials; 31/31 synthetic boundaries pass. Original corpus, labels, policy, model and seeds unchanged. Pre-repair and development traces preserved.",
       "owner": null
     },
     {

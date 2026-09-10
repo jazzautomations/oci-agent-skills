@@ -1,6 +1,6 @@
 ---
 name: oci-generative-ai
-description: "Discovers OCI GenAI models and plans chat, embeddings, clusters and agents. Use when: OCI GenAI, Cohere command, Grok or llama on Oracle, model deprecated, 429 on chat, agent endpoint, knowledge base, RAG on OCI. Not for: in-database vectors (`oracle-db-vector-ai`)."
+description: "Plans OCI GenAI inference and agents. Use when: models (Cohere/Grok/llama), chat/embeddings, 429, clusters, RAG, agent endpoints, which identity or credentials an OCI AI agent uses for tools, managed-agent versus ADK execution. Not for: in-database vectors (`oracle-db-vector-ai`); policy statements for an identified principal (`oci-iam-policy`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -13,7 +13,7 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-generative-ai/scripts/*)
 
 # OCI Generative AI and Agents
 
-Regional model discovery, inference and agents.
+GenAI workflows; identify the tool executor before IAM.
 
 ## Scope check
 Select `PROFILE`, `REGION` locally.

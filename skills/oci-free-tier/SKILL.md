@@ -1,6 +1,6 @@
 ---
 name: oci-free-tier
-description: "Survives OCI Free Tier and trials. Use when: always free, free tier, trial expired, upgrade to PAYG, out of host capacity on A1/ARM, \"did Oracle delete my instance\", reclaimed after 7 idle days, the 2-VCN limit, port 25 blocked, $300 credits, conta gratuita. Not for: paid-tenancy bill analysis (`oci-cost-analysis`) or limit increases (`oci-support-limits`)."
+description: "Explains OCI Always Free allotments and trial lifecycle. Use when: explicit Free Tier/trial context, free eligibility, credits, expiry, upgrade to PAYG, idle-instance reclamation, free-account restrictions. An A1/ARM shape alone does not establish Free Tier. Not for: capacity or quota checks without free/trial context (`oci-support-limits`); paid bill analysis (`oci-cost-analysis`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -13,7 +13,7 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-free-tier/scripts/*)
 
 # OCI Free Tier
 
-Owns Always Free allotments and lifecycle clocks.
+Owns explicit free/trial cases; other capacity checks go to `oci-support-limits`.
 
 ## Scope check
 Set `AD`, `END_TIME`, `LIMIT_NAME`, `START_TIME`, `TENANCY_ID` for the fences below.

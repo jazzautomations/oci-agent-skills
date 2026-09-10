@@ -1,30 +1,30 @@
 {
   "mode": "synthetic-semantic-boundaries",
-  "validated_at": "2026-09-10T13:58:12.701242+00:00",
-  "inputs_sha256": "97155417ad2802459c772bf78119e9d191dd5368ebaaf2e1529b779710454e53",
-  "request_sha256": "4797a9408998d306aa6835ec25c2a77994b8886ab6d2f2909a27ab4e5fc8941c",
+  "validated_at": "2026-09-10T13:48:59.030964+00:00",
+  "inputs_sha256": "104c3cb6940742eeb2d447743de39c2359d753abe820feb793d844a7f804886a",
+  "request_sha256": "9b58454f31f5da8d23a835d3d2bbb1ee0acbbfacf027ea79e13073c1b9b8a929",
   "trace": {
     "model": "claude-sonnet-5",
-    "session_id": "8e5aa9b9-6963-4351-8183-45d79335438a",
+    "session_id": "e3163065-a312-490a-bc87-58946ee39fc5",
     "tools": [],
     "mcp_servers": [],
     "result": {
       "labels": [
         {
           "id": "item000",
-          "skill": "oracle-enterprise-apps"
+          "skill": "oci-block-file-storage"
         },
         {
           "id": "item001",
-          "skill": null
+          "skill": "oci-generative-ai"
         },
         {
           "id": "item002",
-          "skill": "oci-navigator"
+          "skill": null
         },
         {
           "id": "item003",
-          "skill": null
+          "skill": "oci-dr-backup"
         },
         {
           "id": "item004",
@@ -32,11 +32,11 @@
         },
         {
           "id": "item005",
-          "skill": "oracle-db-fleet"
+          "skill": "oci-navigator"
         },
         {
           "id": "item006",
-          "skill": "oci-generative-ai"
+          "skill": null
         },
         {
           "id": "item007",
@@ -44,107 +44,83 @@
         },
         {
           "id": "item008",
-          "skill": null
+          "skill": "oracle-db-fleet"
         },
         {
           "id": "item009",
-          "skill": "oci-navigator"
+          "skill": null
         },
         {
           "id": "item010",
-          "skill": "oci-dr-backup"
+          "skill": null
         },
         {
           "id": "item011",
-          "skill": "oci-dr-backup"
+          "skill": "oci-block-file-storage"
         },
         {
           "id": "item012",
-          "skill": null
+          "skill": "oci-dr-backup"
         },
         {
           "id": "item013",
-          "skill": null
+          "skill": "oci-navigator"
         },
         {
           "id": "item014",
-          "skill": null
+          "skill": "oci-navigator"
         },
         {
           "id": "item015",
-          "skill": "oci-navigator"
+          "skill": null
         },
         {
           "id": "item016",
-          "skill": "oci-navigator"
+          "skill": null
         },
         {
           "id": "item017",
-          "skill": "oci-block-file-storage"
+          "skill": "oracle-enterprise-apps"
         },
         {
           "id": "item018",
-          "skill": "oracle-enterprise-apps"
+          "skill": null
         },
         {
           "id": "item019",
-          "skill": "oci-block-file-storage"
-        },
-        {
-          "id": "item020",
-          "skill": "oracle-db-fleet"
-        },
-        {
-          "id": "item021",
-          "skill": null
-        },
-        {
-          "id": "item022",
-          "skill": null
-        },
-        {
-          "id": "item023",
-          "skill": "oci-support-limits"
-        },
-        {
-          "id": "item024",
-          "skill": "oci-free-tier"
-        },
-        {
-          "id": "item025",
           "skill": "oci-navigator"
         },
         {
-          "id": "item026",
+          "id": "item020",
           "skill": "oracle-enterprise-apps"
         },
         {
-          "id": "item027",
+          "id": "item021",
           "skill": "oci-iam-policy"
         },
         {
-          "id": "item028",
+          "id": "item022",
           "skill": "oracle-db-fleet"
         },
         {
-          "id": "item029",
+          "id": "item023",
           "skill": "oracle-enterprise-apps"
         },
         {
-          "id": "item030",
+          "id": "item024",
           "skill": null
         }
       ]
     },
-    "duration_ms": 25678,
-    "total_cost_usd": 0.069589,
+    "duration_ms": 16958,
+    "total_cost_usd": 0.062078,
     "usage": {
       "input_tokens": 2,
-      "cache_creation_input_tokens": 8371,
+      "cache_creation_input_tokens": 8031,
       "cache_read_input_tokens": 0,
-      "output_tokens": 3015,
+      "output_tokens": 2423,
       "output_tokens_details": {
-        "thinking_tokens": 2405
+        "thinking_tokens": 1936
       },
       "server_tool_use": {
         "web_search_requests": 0,
@@ -152,19 +128,19 @@
       },
       "service_tier": "standard",
       "cache_creation": {
-        "ephemeral_1h_input_tokens": 8371,
+        "ephemeral_1h_input_tokens": 8031,
         "ephemeral_5m_input_tokens": 0
       },
       "inference_geo": "not_available",
       "iterations": [
         {
           "input_tokens": 2,
-          "output_tokens": 3015,
+          "output_tokens": 2423,
           "cache_read_input_tokens": 0,
-          "cache_creation_input_tokens": 8371,
+          "cache_creation_input_tokens": 8031,
           "cache_creation": {
             "ephemeral_5m_input_tokens": 0,
-            "ephemeral_1h_input_tokens": 8371
+            "ephemeral_1h_input_tokens": 8031
           },
           "type": "message"
         }
@@ -173,12 +149,12 @@
     },
     "model_usage": {
       "claude-haiku-4-5-20251001": {
-        "inputTokens": 5876,
-        "outputTokens": 15,
+        "inputTokens": 5665,
+        "outputTokens": 11,
         "cacheReadInputTokens": 0,
         "cacheCreationInputTokens": 0,
         "webSearchRequests": 0,
-        "costUSD": 0.0059510000000000006,
+        "costUSD": 0.00572,
         "contextWindow": 200000,
         "maxOutputTokens": 32000,
         "thinkingTokens": 0,
@@ -188,14 +164,14 @@
       },
       "claude-sonnet-5": {
         "inputTokens": 2,
-        "outputTokens": 3015,
+        "outputTokens": 2423,
         "cacheReadInputTokens": 0,
-        "cacheCreationInputTokens": 8371,
+        "cacheCreationInputTokens": 8031,
         "webSearchRequests": 0,
-        "costUSD": 0.063638,
+        "costUSD": 0.056358,
         "contextWindow": 1000000,
         "maxOutputTokens": 64000,
-        "thinkingTokens": 2405,
+        "thinkingTokens": 1936,
         "canonicalModel": "claude-sonnet-5",
         "provider": "firstParty",
         "costBasis": "list"
@@ -205,8 +181,8 @@
   },
   "provenance": "Synthetic regression cases authored during the scope repair from declared product boundaries; not an independent unseen benchmark.",
   "score": {
-    "correct": 31,
-    "total": 31,
+    "correct": 25,
+    "total": 25,
     "errors": [],
     "ok": true
   }

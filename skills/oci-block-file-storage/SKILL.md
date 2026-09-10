@@ -1,6 +1,6 @@
 ---
 name: oci-block-file-storage
-description: "Operates OCI Block, boot and File Storage. Use when: block volume, boot volume, resize a disk, iSCSI vs paravirtualized attach, multi-attach, volume group, backup policy, clone vs backup, VPU performance tier, growfs, FSS, mount target, NFS export, disco cheio. Not for: object buckets and PARs (`oci-object-storage`)."
+description: "Operates OCI block, boot and File Storage. Use when: volumes, resize/attach, backup inventory or policy-assignment commands, clones, VPU, FSS, NFS, mount targets. Not for: effects of policy changes on retained backups or recoverability (`oci-dr-backup`, which delegates commands here); object buckets/PARs (`oci-object-storage`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -14,6 +14,10 @@ allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/skills/oci-block-file-storage/scripts/
 # OCI Block and File Storage
 
 Owns block, boot and NFS storage; buckets belong to oci-object-storage.
+Owns service-specific commands and inventory. Questions about the effect of a
+policy change on existing backups start in `oci-dr-backup`; provide volume and
+assignment details after that recovery assessment. Never equate deleting an
+assignment, a policy object and a completed backup.
 
 ## Scope check
 Select `PROFILE`, `REGION` from the local profile.

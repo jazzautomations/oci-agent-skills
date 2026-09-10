@@ -6,34 +6,46 @@ it does not call a model or claim native host task completion.
 
 | Measurement | Result | Criterion |
 |---|---:|---|
-| Semantic selection, seed 17 | 77/80 (96.25%) | ≥90% in every trial |
-| Semantic selection, seed 29 | 77/80 (96.25%) | ≥90% in every trial |
+| Semantic selection, seed 17 | 79/80 (98.75%) | ≥90% in every trial |
+| Semantic selection, seed 29 | 79/80 (98.75%) | ≥90% in every trial |
 | Overlap pairs | 4/4 in each trial | All four in every trial |
 | Negative skill firings | 0/40 in each trial | Zero in every trial |
-| Additional synthetic boundaries | 15/15 | All correct; development regressions |
+| Additional synthetic boundaries | 31/31 | All correct; development regressions |
 | Authored fenced commands | 285/285 | ≥95% syntax validity |
 | Guard auto-allow on mutation fixtures | 0/20 | Zero; inert replay |
 | Sanitizer fixtures | 10/10 | Flagged, returned, idempotent |
 
-### Errors behind 77/80
+### Current ownership repair
 
-There are **four distinct disagreements**, including two repeated in both trials.
-Only 76/80 requests are correct in both trials. The same selection appears in
-78/80, including the two persistent errors; agreement is not correctness.
+The revised [ownership contracts](routing-contracts.md) distinguish command-name
+errors from application capability, tool-executor identity from IAM statements,
+backup recovery impact from command mechanics, and generic A1 capacity from an
+explicit Free Tier request. The recorded results are **79/80 and 79/80**, with
+**2 distinct routing disagreements** (0 repeated in both trials).
+78/80 requests are correct in both trials.
+The [verified diagnostic](../evals/results/routing-diagnostics.json) lists every
+remaining error and independently distinguishes correctness from agreement.
 
-| Case | Expected | Observed disagreement | Failing seeds |
-|---|---|---|---|
-| R01: WebLogic CLI discovery | Navigator | Enterprise applications | 17, 29 |
-| R60: OCI agent tool identity | Generative AI | IAM policy | 17 |
-| R68: Boot-volume backup policy removal | DR / backup | Block / file storage | 17, 29 |
-| R71: Fusion approval capability question | Enterprise applications | No skill | 29 |
+The original 80 routing prompts, 40 negatives, expected labels, remap, model,
+policy, seeds and thresholds are unchanged. All original 15 synthetic cases are
+retained; sixteen new development cases exercise adjacent supported and excluded
+requests. These are known regression cases, not an unseen holdout.
 
-R68 conflicts with the current DR description's explicit delegation of
-single-service backup commands to service skills. This requires ownership
-adjudication; the diagnostic preserves the original label and counts the error.
-See the [verified per-case JSON](../evals/results/routing-diagnostics.json) and
-[research report](routing-reliability.md) for service evidence, mathematical
-options, the Oracle skills reference, and the missing task-evaluation protocol.
+### Historical errors behind 77/80
+
+Before the repair, R01 (CLI discovery) and R68 (backup retention) failed in both
+trials; R60 (agent identity) and R71 (application capability) failed once each.
+The [archived diagnostic](../evals/results/routing-diagnostics-before-ownership.json)
+and [historical study](routing-reliability.md) retain that four-case analysis.
+The first ownership candidate scored 79/80 twice with 25/25 boundaries; its
+remaining R01 and R13 disagreements motivated explicit CLI-error and Free Tier
+scope clarification. [Development traces](../evals/results/semantic-ownership-development.json)
+and [inputs](../evals/results/ownership-development-inputs.json) are retained.
+The next candidate reached 80/80 once but failed a negative case in the other
+trial; its [rejected traces](../evals/results/semantic-name-scope-development.json)
+are preserved. The final candidate explicitly excludes database-family selection
+from navigator and Integration visual editing from enterprise applications.
+No expected label was reassigned to accommodate a prediction.
 
 ### Collection scope
 
@@ -41,8 +53,8 @@ Both V19 and V20 pass after clarifying that `oci-navigator` excludes Compute
 Classic/OCI-C terminology and comparisons, including comparisons with current OCI.
 The previous 37-skill collection failed V20 and remains available in the
 [catalog-expansion trace](../evals/results/semantic-catalog-expansion.json).
-The original benchmark, labels, policy, seeds and model are unchanged. Three new
-synthetic development cases supplement the original twelve boundaries.
+The original benchmark, labels, policy, seeds and model are unchanged. The
+subsequent ownership repair is described above and retains the Classic exclusions.
 
 The two classifier sessions used `claude-sonnet-5` with tools and MCP disabled.
 Positive and negative requests were shuffled together with opaque IDs. The model

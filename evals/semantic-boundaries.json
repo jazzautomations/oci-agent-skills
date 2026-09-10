@@ -1,20 +1,160 @@
 {
   "provenance": "Synthetic regression cases authored during the scope repair from declared product boundaries; not an independent unseen benchmark.",
   "cases": [
-    {"id": "B01", "prompt": "Our datacenter Oracle database is already enrolled in OCI Database Management. Inspect its managed-database metrics through OCI.", "expected_skill": "oracle-db-fleet"},
-    {"id": "B02", "prompt": "Choose the OCI resource family for an Exadata cloud VM cluster versus a Base Database DB system.", "expected_skill": "oracle-db-fleet"},
-    {"id": "B03", "prompt": "Quero consultar o estado da instância Oracle Integration em um compartment, sem abrir ou editar seus fluxos.", "expected_skill": "oracle-enterprise-apps"},
-    {"id": "B04", "prompt": "Explain the boundary between OCI inventory of a Fusion environment and the Fusion API for employee records.", "expected_skill": "oracle-enterprise-apps"},
-    {"id": "B05", "prompt": "Estou vindo do Azure: qual conceito da OCI corresponde ao agrupamento de recursos de um projeto, antes de configurar qualquer coisa?", "expected_skill": "oci-navigator"},
-    {"id": "B06", "prompt": "I used a nonexistent top-level OCI CLI group for WebLogic and got No such command. Help locate the current group name.", "expected_skill": "oci-navigator"},
-    {"id": "B07", "prompt": "Tune WAL settings on a standalone PostgreSQL server in my home lab; no cloud management is involved.", "expected_skill": null},
-    {"id": "B08", "prompt": "Meu Oracle Database local está com um datafile corrompido; ele não tem integração nem cadastro de gerenciamento na OCI.", "expected_skill": null},
-    {"id": "B09", "prompt": "Use the Fusion HCM web designer to move a button and change its label on an employee form.", "expected_skill": null},
-    {"id": "B10", "prompt": "Explain an archived Compute Classic OCI-C deployment from 2014; I am not using the current OCI platform.", "expected_skill": null},
-    {"id": "B11", "prompt": "List all Amazon RDS MySQL instances in my AWS account using the AWS CLI.", "expected_skill": null},
-    {"id": "B12", "prompt": "Delete an obsolete lead in Salesforce CRM.", "expected_skill": null},
-    {"id": "B13", "prompt": "An architecture glossary mentions Compute Classic alongside modern Oracle Cloud Infrastructure. Explain how those platform names differ.", "expected_skill": null},
-    {"id": "B14", "prompt": "No glossário antigo aparecem OCI-C e a plataforma OCI atual. Quero só entender a diferença histórica dos nomes.", "expected_skill": null},
-    {"id": "B15", "prompt": "Our engineers know AWS VPC terminology. Which current OCI concept corresponds to a VPC, before we start configuring it?", "expected_skill": "oci-navigator"}
+    {
+      "id": "B01",
+      "prompt": "Our datacenter Oracle database is already enrolled in OCI Database Management. Inspect its managed-database metrics through OCI.",
+      "expected_skill": "oracle-db-fleet"
+    },
+    {
+      "id": "B02",
+      "prompt": "Choose the OCI resource family for an Exadata cloud VM cluster versus a Base Database DB system.",
+      "expected_skill": "oracle-db-fleet"
+    },
+    {
+      "id": "B03",
+      "prompt": "Quero consultar o estado da instância Oracle Integration em um compartment, sem abrir ou editar seus fluxos.",
+      "expected_skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "B04",
+      "prompt": "Explain the boundary between OCI inventory of a Fusion environment and the Fusion API for employee records.",
+      "expected_skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "B05",
+      "prompt": "Estou vindo do Azure: qual conceito da OCI corresponde ao agrupamento de recursos de um projeto, antes de configurar qualquer coisa?",
+      "expected_skill": "oci-navigator"
+    },
+    {
+      "id": "B06",
+      "prompt": "I used a nonexistent top-level OCI CLI group for WebLogic and got No such command. Help locate the current group name.",
+      "expected_skill": "oci-navigator"
+    },
+    {
+      "id": "B07",
+      "prompt": "Tune WAL settings on a standalone PostgreSQL server in my home lab; no cloud management is involved.",
+      "expected_skill": null
+    },
+    {
+      "id": "B08",
+      "prompt": "Meu Oracle Database local está com um datafile corrompido; ele não tem integração nem cadastro de gerenciamento na OCI.",
+      "expected_skill": null
+    },
+    {
+      "id": "B09",
+      "prompt": "Use the Fusion HCM web designer to move a button and change its label on an employee form.",
+      "expected_skill": null
+    },
+    {
+      "id": "B10",
+      "prompt": "Explain an archived Compute Classic OCI-C deployment from 2014; I am not using the current OCI platform.",
+      "expected_skill": null
+    },
+    {
+      "id": "B11",
+      "prompt": "List all Amazon RDS MySQL instances in my AWS account using the AWS CLI.",
+      "expected_skill": null
+    },
+    {
+      "id": "B12",
+      "prompt": "Delete an obsolete lead in Salesforce CRM.",
+      "expected_skill": null
+    },
+    {
+      "id": "B13",
+      "prompt": "An architecture glossary mentions Compute Classic alongside modern Oracle Cloud Infrastructure. Explain how those platform names differ.",
+      "expected_skill": null
+    },
+    {
+      "id": "B14",
+      "prompt": "No glossário antigo aparecem OCI-C e a plataforma OCI atual. Quero só entender a diferença histórica dos nomes.",
+      "expected_skill": null
+    },
+    {
+      "id": "B15",
+      "prompt": "Our engineers know AWS VPC terminology. Which current OCI concept corresponds to a VPC, before we start configuring it?",
+      "expected_skill": "oci-navigator"
+    },
+    {
+      "id": "B16",
+      "prompt": "We are retiring a scheduled boot-volume protection policy. Assess the remaining recovery points and their expiration before proposing any change.",
+      "expected_skill": "oci-dr-backup"
+    },
+    {
+      "id": "B17",
+      "prompt": "Show the OCI CLI command shape for removing a volume backup policy assignment. The retention assessment is already approved; do not execute anything.",
+      "expected_skill": "oci-block-file-storage"
+    },
+    {
+      "id": "B18",
+      "prompt": "Our OCI AI application runs ADK Python function tools in a host process. Explain whose credentials those downstream SDK calls use.",
+      "expected_skill": "oci-generative-ai"
+    },
+    {
+      "id": "B19",
+      "prompt": "The executing principal is already identified as a Functions dynamic group. Draft a least-privilege OCI policy permitting it to read one bucket.",
+      "expected_skill": "oci-iam-policy"
+    },
+    {
+      "id": "B20",
+      "prompt": "Antes de implementar: a CLI da OCI oferece ações para aprovar faturas no Fusion Financials, ou preciso da API da aplicação?",
+      "expected_skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "B21",
+      "prompt": "Sign in to Fusion Financials and approve the pending invoice on my behalf.",
+      "expected_skill": null
+    },
+    {
+      "id": "B22",
+      "prompt": "The installed OCI CLI rejects my Analytics top-level group name. Find the supported command spelling before inspecting any instance.",
+      "expected_skill": "oci-navigator"
+    },
+    {
+      "id": "B23",
+      "prompt": "Explain the boundary between WebLogic Management infrastructure operations and transactions handled by the deployed application.",
+      "expected_skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "B24",
+      "prompt": "Assess how changing backup retention across our OCI volumes and managed databases affects recoverable history; no command execution.",
+      "expected_skill": "oci-dr-backup"
+    },
+    {
+      "id": "B25",
+      "prompt": "List the existing boot-volume backups in the selected OCI compartment with bounded, projected CLI output.",
+      "expected_skill": "oci-block-file-storage"
+    },
+    {
+      "id": "B26",
+      "prompt": "Check whether another two Ampere A1 OCPUs can be provisioned in this OCI availability domain; distinguish quota headroom from hardware availability.",
+      "expected_skill": "oci-support-limits"
+    },
+    {
+      "id": "B27",
+      "prompt": "Minha conta é explicitamente Always Free: explique a franquia de A1 e as regras de elegibilidade gratuita, sem tentar criar instância.",
+      "expected_skill": "oci-free-tier"
+    },
+    {
+      "id": "B28",
+      "prompt": "OCI CLI printed No such command for the group I typed for Integration. Determine the installed group spelling.",
+      "expected_skill": "oci-navigator"
+    },
+    {
+      "id": "B29",
+      "prompt": "Does the OCI CLI expose Fusion ERP approval actions, or only manage the service environment? Explain the interface boundary.",
+      "expected_skill": "oracle-enterprise-apps"
+    },
+    {
+      "id": "B30",
+      "prompt": "Our Exadata deployment is not a Base Database DB system. Choose the correct OCI database resource family for inventory.",
+      "expected_skill": "oracle-db-fleet"
+    },
+    {
+      "id": "B31",
+      "prompt": "Abra o designer visual do Oracle Integration e altere o nome de uma etapa dentro do fluxo.",
+      "expected_skill": null
+    }
   ]
 }

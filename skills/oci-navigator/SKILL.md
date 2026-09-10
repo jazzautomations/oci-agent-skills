@@ -1,11 +1,6 @@
 ---
 name: oci-navigator
-description: >-
-  Locates services and CLI groups on the current OCI platform. Use when: unknown
-  OCI product/group, command-name errors, cross-cloud concept mapping to OCI.
-  Not for: Compute Classic/OCI-C terminology or comparisons (even with current
-  OCI), established service operations, database families (`oracle-db-fleet`),
-  application API reach (`oracle-enterprise-apps`).
+description: "Finds non-database CLI groups on current OCI. Use when: No such command, unknown group, wrong spelling, service discovery, cross-cloud concept mapping. Not for: Oracle Database/Base Database/Exadata family selection (`oracle-db-fleet`); Compute Classic/OCI-C terminology or comparisons; established service operations; application API scope (`oracle-enterprise-apps`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -18,7 +13,7 @@ metadata:
 
 # Oracle and OCI control-plane navigator
 
-Selects the control plane, then hands off to its owner.
+Resolves CLI name errors before handing off service operations.
 
 ## Scope check
 Set `COMPARTMENT_ID`, `TENANCY_ID` for the fences below.

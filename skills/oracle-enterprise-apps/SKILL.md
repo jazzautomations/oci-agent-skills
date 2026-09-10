@@ -1,6 +1,6 @@
 ---
 name: oracle-enterprise-apps
-description: "Distinguishes OCI service-instance operations from Oracle application APIs. Use when: Fusion/NetSuite/OIC/OAC/ODA/Visual Builder/WebLogic service scope, environment inventory, which application objects the OCI CLI can reach. Not for: application UI authoring, business transactions, CLI spelling errors (`oci-navigator`) or core OCI operations."
+description: "Explains Oracle application business APIs versus OCI environment APIs. Use when: Fusion/NetSuite/OIC/OAC/ODA/VB/WebLogic interface capability or environment inventory. Not for: editing Integration flows, visual-designer components or application UI; executing business transactions; CLI name discovery or No such command (`oci-navigator`); core OCI operations."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -21,6 +21,9 @@ Validate IDs with the scoped list/get below.
 Distinguish a request to explain the service/application boundary from a request
 to perform application UI authoring. This skill owns the former and scoped
 service inspection; it does not operate a visual designer or business workflow.
+Answer capability questions about approvals or application objects before any
+execution proposal. Identify the product-specific API and authorization boundary;
+do not infer that a documented read endpoint can execute the entire workflow.
 
 ## Route
 | The user says… | Load | Why |

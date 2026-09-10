@@ -38,7 +38,7 @@ class Brief:
         self.c = Canvas(str(output), pagesize=A4, invariant=1)
         self.c.setTitle('OCI Agent Skills | Do pedido ao fluxo de trabalho')
         self.c.setAuthor('Felipe Salvego / Jazz Automations')
-        self.c.setSubject('Apresentação técnica privada — edição 04')
+        self.c.setSubject('Apresentação técnica privada — edição 05')
         self.date, self.page = date, 0
 
     def rect(self, x, y, w, h, color, radius=0):
@@ -99,6 +99,7 @@ def main():
     fonts()
     evidence = json.loads((ROOT/'docs/evidence/review-demo.json').read_text())
     matrix = json.loads((ROOT/'docs/evidence/validation-matrix.json').read_text())
+    routing = json.loads((ROOT/'evals/results/routing-diagnostics.json').read_text())
     if not evidence['ok'] or not all(item['ok'] for item in evidence['checks']):
         raise ValueError('A passing recorded walkthrough is required')
     tools = next(item['result']['tool_count'] for item in evidence['checks'] if item['name']=='mcp_stdio')
@@ -107,7 +108,7 @@ def main():
     output = ROOT/'docs/review/brief-pt.pdf'
     b = Brief(output, evidence['validated_at'][:10])
 
-    b.start('APRESENTAÇÃO / EDIÇÃO 03', dark=True)
+    b.start('APRESENTAÇÃO / EDIÇÃO 05', dark=True)
     b.text('OCI Agent<br/>Skills', M, 86, size=54, color=WHITE, font='Bold', leading=55)
     b.text('Da pergunta sobre a nuvem<br/>a um fluxo de trabalho verificável.', M, 224,
            size=23, color='#E5EEDC', leading=29)
@@ -246,7 +247,9 @@ def main():
         b.text(gate,M,y,42,10,color=RED,font='Bold')
         b.text(f'<b>{title}</b> · {body}',M+48,y,CW-48,10.3,max_h=32)
         b.line(M,y+36,W-M,y+36)
-    b.text('<b>Seleção semântica:</b> 77/80 por rodada; 4 casos divergentes, 2 repetidos. Zero ativações em 40 negativos por rodada. Não mede tarefas completas.',M,699,size=10,color=GREEN,max_h=42)
+    scores = ' e '.join(f'{r["correct"]}/{r["total"]}' for r in routing['trials'])
+    negative_firings = max(r['negative_firings'] for r in routing['trials'])
+    b.text(f'<b>Seleção semântica:</b> {scores}; {len(routing["routing_errors"])} casos divergentes. Máximo de {negative_firings} ativações em {routing["negative_total"]} negativos por rodada. Não mede tarefas completas.',M,699,size=10,color=GREEN,max_h=42)
     b.source('docs/validation-matrix.md · docs/evals.md · docs/evidence/README.md')
 
     b.start('06 / PRÓXIMO PASSO')

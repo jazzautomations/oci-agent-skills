@@ -61,15 +61,15 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 <!-- skills:start -->
 | Domain | Skill | Purpose |
 |---|---|---|
-| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Locates services and CLI groups on the current OCI platform. |
+| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Finds non-database CLI groups on current OCI. |
 |  | [oci-cli-auth](skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. |
 |  | [oci-tenancy-governance](skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. |
-|  | [oci-iam-policy](skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. |
+|  | [oci-iam-policy](skills/oci-iam-policy/SKILL.md) | Authors OCI IAM statements and identity domains. |
 |  | [oci-support-limits](skills/oci-support-limits/SKILL.md) | Answers "can I actually create this" and files the request when the answer is no: service limits vs compartment quotas vs physical capacity, resource-availability per AD, limit-increase requests, and OCI support incidents. |
 | Compute, network & storage | [oci-compute](skills/oci-compute/SKILL.md) | Launches, resizes and triages OCI Compute. |
 |  | [oci-networking](skills/oci-networking/SKILL.md) | Builds and debugs OCI VCN networking. |
 |  | [oci-object-storage](skills/oci-object-storage/SKILL.md) | Operates OCI Object Storage. |
-|  | [oci-block-file-storage](skills/oci-block-file-storage/SKILL.md) | Operates OCI Block, boot and File Storage. |
+|  | [oci-block-file-storage](skills/oci-block-file-storage/SKILL.md) | Operates OCI block, boot and File Storage. |
 |  | [oci-bastion-access](skills/oci-bastion-access/SKILL.md) | Reaches a private OCI host or database through OCI Bastion. |
 | Delivery & infrastructure as code | [oci-oke](skills/oci-oke/SKILL.md) | Creates and operates OKE Kubernetes clusters. |
 |  | [oci-devops-pipelines](skills/oci-devops-pipelines/SKILL.md) | Builds OCI DevOps CI/CD. |
@@ -81,23 +81,23 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 |  | [oci-security-posture](skills/oci-security-posture/SKILL.md) | Audits OCI security posture against CIS. |
 |  | [oci-vault-certificates](skills/oci-vault-certificates/SKILL.md) | Handles OCI Vault, KMS keys, Secrets and Certificates. |
 | Cost & Free Tier | [oci-cost-analysis](skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. |
-|  | [oci-free-tier](skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. |
+|  | [oci-free-tier](skills/oci-free-tier/SKILL.md) | Explains OCI Always Free allotments and trial lifecycle. |
 |  | [oci-finops-waste](skills/oci-finops-waste/SKILL.md) | Finds unused OCI resources and prices potential waste. |
 | Oracle Database & APEX | [oracle-autonomous-db](skills/oracle-autonomous-db/SKILL.md) | Provisions and connects Oracle Autonomous Database. |
 |  | [oracle-db-fleet](skills/oracle-db-fleet/SKILL.md) | Operates OCI non-Autonomous database services and enrolled Database Management fleets. |
 |  | [oracle-db-vector-ai](skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. |
 |  | [oracle-db-sql-access](skills/oracle-db-sql-access/SKILL.md) | Configures agent SQL access with database-enforced read privileges, SQLcl MCP, ORDS and Database Tools. |
 |  | [oracle-apex](skills/oracle-apex/SKILL.md) | Delivers Oracle APEX. |
-| AI & data | [oci-generative-ai](skills/oci-generative-ai/SKILL.md) | Discovers OCI GenAI models and plans chat, embeddings, clusters and agents. |
+| AI & data | [oci-generative-ai](skills/oci-generative-ai/SKILL.md) | Plans OCI GenAI inference and agents. |
 |  | [oci-ai-services](skills/oci-ai-services/SKILL.md) | Uses OCI pretrained AI services: Vision, Language (nested `oci ai language`) sentiment/PII/translation, Speech transcription and TTS, Document Understanding. |
 |  | [oci-data-platform](skills/oci-data-platform/SKILL.md) | Moves and processes data on OCI: Streaming (Kafka-compatible) and Queue, Data Flow Spark, Data Integration, Data Catalog, GoldenGate CDC, Big Data Service, Batch, OpenSearch, Redis, and Data Science jobs and model deployments. |
-| Reliability & migration | [oci-dr-backup](skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. |
+| Reliability & migration | [oci-dr-backup](skills/oci-dr-backup/SKILL.md) | Assesses OCI recovery and backup retention. |
 |  | [oci-migration-patching](skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. |
 |  | [oci-migration-assess](skills/oci-migration-assess/SKILL.md) | Normalizes AWS, Azure and GCP inventory for OCI assessment. |
 |  | [oci-migration-map](skills/oci-migration-map/SKILL.md) | Maps cloud inventory to OCI targets and scoped price comparisons. |
 |  | [oci-migration-landing-zone](skills/oci-migration-landing-zone/SKILL.md) | Drafts OCI Core Landing Zone variables from assessed inventory. |
 | SDKs & enterprise applications | [oci-sdk-patterns](skills/oci-sdk-patterns/SKILL.md) | Writes OCI SDK code that works. |
-|  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Distinguishes OCI service-instance operations from Oracle application APIs. |
+|  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Explains Oracle application business APIs versus OCI environment APIs. |
 <!-- skills:end -->
 
 ## How it fits together
@@ -139,15 +139,15 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 | Regression suite | 453 passed | Current full suite; recorded in the validation matrix |
 | Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
-| Semantic skill selection | 77/80 and 77/80 | Four distinct disagreements; two fail both trials; [case audit](docs/evals.md#errors-behind-7780) |
+| Semantic skill selection | 79/80 and 79/80 | 2 distinct disagreements; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
 
 [Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
 
-The [routing reliability report](docs/routing-reliability.md) examines the actual
-errors, the disputed backup ownership label, calibrated uncertainty, and the
-task evaluation still needed. It also identifies the official `oracle/skills`
+The [ownership contracts](docs/routing-contracts.md) explain the implemented
+routing repair. The [historical reliability study](docs/routing-reliability.md)
+covers the original errors, calibrated uncertainty and task evaluation still needed. It also identifies the official `oracle/skills`
 repository as a prospective baseline; the archived comparison below is unchanged.
 
 The archived four-arm comparison below dates from September 9, before the scope repairs. It uses the same frozen prompts and static matcher for every arm. These figures measure authored material and inert guard replay, not agents completing tasks:

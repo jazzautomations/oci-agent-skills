@@ -2,16 +2,16 @@
   "version": 1,
   "complete": true,
   "mode": "isolated-description-classifier",
-  "validated_at": "2026-09-10T14:00:06.529784+00:00",
-  "inputs_sha256": "94ddf9191dc7a3c22a9d5364e030aa5e779e07c5878fb377fed68df01ea7bf98",
+  "validated_at": "2026-09-10T10:00:29.723580+00:00",
+  "inputs_sha256": "104c10af7631932ef5cd612d55f967a2d507a49637f2a7c1bee63b854a1bd4b4",
   "cli_version": "2.1.267 (Claude Code)",
   "runs": [
     {
       "seed": 17,
-      "input_sha256": "3c28769ba0a6bba18e3e177ee23a0daf30f129aac6afa7783f76e85e5bef704a",
+      "input_sha256": "bdbc7f11e7805b0eb4dee88dce979c53be79fc4837d8d7471289c7774f194bd0",
       "trace": {
         "model": "claude-sonnet-5",
-        "session_id": "a7b29322-2401-411d-b877-70eb416eb47f",
+        "session_id": "b4adf7d8-185a-4a66-8707-8d96304d570a",
         "tools": [],
         "mcp_servers": [],
         "result": {
@@ -126,7 +126,7 @@
             },
             {
               "id": "item027",
-              "skill": "oci-generative-ai"
+              "skill": "oci-iam-policy"
             },
             {
               "id": "item028",
@@ -366,7 +366,7 @@
             },
             {
               "id": "item087",
-              "skill": "oci-dr-backup"
+              "skill": "oci-block-file-storage"
             },
             {
               "id": "item088",
@@ -498,15 +498,15 @@
             }
           ]
         },
-        "duration_ms": 67314,
-        "total_cost_usd": 0.147088,
+        "duration_ms": 89294,
+        "total_cost_usd": 0.15840700000000002,
         "usage": {
           "input_tokens": 2,
-          "cache_creation_input_tokens": 11863,
+          "cache_creation_input_tokens": 11887,
           "cache_read_input_tokens": 0,
-          "output_tokens": 9126,
+          "output_tokens": 10246,
           "output_tokens_details": {
-            "thinking_tokens": 6832
+            "thinking_tokens": 7951
           },
           "server_tool_use": {
             "web_search_requests": 0,
@@ -514,19 +514,19 @@
           },
           "service_tier": "standard",
           "cache_creation": {
-            "ephemeral_1h_input_tokens": 11863,
+            "ephemeral_1h_input_tokens": 11887,
             "ephemeral_5m_input_tokens": 0
           },
           "inference_geo": "not_available",
           "iterations": [
             {
               "input_tokens": 2,
-              "output_tokens": 9126,
+              "output_tokens": 10246,
               "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11863,
+              "cache_creation_input_tokens": 11887,
               "cache_creation": {
                 "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11863
+                "ephemeral_1h_input_tokens": 11887
               },
               "type": "message"
             }
@@ -535,12 +535,12 @@
         },
         "model_usage": {
           "claude-haiku-4-5-20251001": {
-            "inputTokens": 8297,
-            "outputTokens": 15,
+            "inputTokens": 8325,
+            "outputTokens": 14,
             "cacheReadInputTokens": 0,
             "cacheCreationInputTokens": 0,
             "webSearchRequests": 0,
-            "costUSD": 0.008372000000000001,
+            "costUSD": 0.008395000000000001,
             "contextWindow": 200000,
             "maxOutputTokens": 32000,
             "thinkingTokens": 0,
@@ -550,14 +550,14 @@
           },
           "claude-sonnet-5": {
             "inputTokens": 2,
-            "outputTokens": 9126,
+            "outputTokens": 10246,
             "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11863,
+            "cacheCreationInputTokens": 11887,
             "webSearchRequests": 0,
-            "costUSD": 0.138716,
+            "costUSD": 0.150012,
             "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "thinkingTokens": 6832,
+            "thinkingTokens": 7951,
             "canonicalModel": "claude-sonnet-5",
             "provider": "firstParty",
             "costBasis": "list"
@@ -567,9 +567,9 @@
       },
       "score": {
         "metrics": {
-          "correct": 79,
+          "correct": 77,
           "total": 80,
-          "accuracy": 0.9875,
+          "accuracy": 0.9625,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
@@ -583,10 +583,10 @@
     },
     {
       "seed": 29,
-      "input_sha256": "5d61ec425d91b183269f52d5e47f7f624f4ac269c6c5978bcbdfef3b051475d8",
+      "input_sha256": "f9f3b33d9ee48317e0214046550e9327f653d1299b8d7435e41e6c4b4ef28b8e",
       "trace": {
         "model": "claude-sonnet-5",
-        "session_id": "4584d7d3-9e2d-4029-bd95-ed9832fc83cc",
+        "session_id": "46ccd512-736b-4d45-a55a-4e4ef9c3ea95",
         "tools": [],
         "mcp_servers": [],
         "result": {
@@ -657,7 +657,7 @@
             },
             {
               "id": "item016",
-              "skill": "oci-dr-backup"
+              "skill": "oci-block-file-storage"
             },
             {
               "id": "item017",
@@ -849,7 +849,7 @@
             },
             {
               "id": "item064",
-              "skill": "oci-navigator"
+              "skill": "oracle-enterprise-apps"
             },
             {
               "id": "item065",
@@ -1073,15 +1073,15 @@
             }
           ]
         },
-        "duration_ms": 72021,
-        "total_cost_usd": 0.142431,
+        "duration_ms": 73480,
+        "total_cost_usd": 0.155296,
         "usage": {
           "input_tokens": 2,
-          "cache_creation_input_tokens": 11865,
+          "cache_creation_input_tokens": 11888,
           "cache_read_input_tokens": 0,
-          "output_tokens": 8658,
+          "output_tokens": 9934,
           "output_tokens_details": {
-            "thinking_tokens": 6381
+            "thinking_tokens": 7530
           },
           "server_tool_use": {
             "web_search_requests": 0,
@@ -1089,19 +1089,19 @@
           },
           "service_tier": "standard",
           "cache_creation": {
-            "ephemeral_1h_input_tokens": 11865,
+            "ephemeral_1h_input_tokens": 11888,
             "ephemeral_5m_input_tokens": 0
           },
           "inference_geo": "not_available",
           "iterations": [
             {
               "input_tokens": 2,
-              "output_tokens": 8658,
+              "output_tokens": 9934,
               "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11865,
+              "cache_creation_input_tokens": 11888,
               "cache_creation": {
                 "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11865
+                "ephemeral_1h_input_tokens": 11888
               },
               "type": "message"
             }
@@ -1110,12 +1110,12 @@
         },
         "model_usage": {
           "claude-haiku-4-5-20251001": {
-            "inputTokens": 8297,
-            "outputTokens": 18,
+            "inputTokens": 8325,
+            "outputTokens": 15,
             "cacheReadInputTokens": 0,
             "cacheCreationInputTokens": 0,
             "webSearchRequests": 0,
-            "costUSD": 0.008387,
+            "costUSD": 0.008400000000000001,
             "contextWindow": 200000,
             "maxOutputTokens": 32000,
             "thinkingTokens": 0,
@@ -1125,14 +1125,14 @@
           },
           "claude-sonnet-5": {
             "inputTokens": 2,
-            "outputTokens": 8658,
+            "outputTokens": 9934,
             "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11865,
+            "cacheCreationInputTokens": 11888,
             "webSearchRequests": 0,
-            "costUSD": 0.134044,
+            "costUSD": 0.146896,
             "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "thinkingTokens": 6381,
+            "thinkingTokens": 7530,
             "canonicalModel": "claude-sonnet-5",
             "provider": "firstParty",
             "costBasis": "list"
@@ -1142,9 +1142,9 @@
       },
       "score": {
         "metrics": {
-          "correct": 79,
+          "correct": 77,
           "total": 80,
-          "accuracy": 0.9875,
+          "accuracy": 0.9625,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4

@@ -1,6 +1,6 @@
 ---
 name: oci-dr-backup
-description: "Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. Use when: disaster recovery, DR drill, failover, switchover, RPO, RTO, cross-region backup, fault domain, \"are we highly available\", plano de DR. Not for: one service's backup command — ask that service's skill."
+description: "Assesses OCI recovery and backup retention. Use when: effects of policy changes on existing backups or recoverability (even one service), RPO/RTO, DR drills/failover, cross-region replication, AD/fault-domain spread. Delegates service commands after the assessment. Not for: backup commands or inventory without a recovery-impact question; volume mechanics (`oci-block-file-storage`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -13,6 +13,11 @@ metadata:
 # OCI disaster recovery and backups
 
 Owns recovery dependencies and evidence: backup inventory alone does not prove RPO or RTO.
+Owns retention and recoverability questions even when only one service is named.
+When a request combines a change with its effect on existing backups, assess the
+effect here first and delegate the exact service command. A command-only request
+belongs directly to the service skill. This division is about the requested
+decision, not the number of services mentioned.
 
 ## Scope check
 Select `PROFILE`, `REGION` from the local profile.
@@ -23,7 +28,7 @@ Validate IDs with the scoped list/get below.
 | The user says… | Load | Why |
 |---|---|---|
 | Full Stack DR | [Guide](references/full-stack-dr.md) | Load when inspecting paired groups and execution steps. |
-| Backup and replication matrix | [Guide](references/backup-matrix.md) | Load when locating service-specific recovery evidence. |
+| Backup retention, policy removal or replication impact | [Guide](references/backup-matrix.md) | Load when assessing existing recovery points and locating service-specific evidence. |
 | AD and fault-domain spread | [Guide](references/ad-fd-spread.md) | Load when checking placement across failure domains. |
 | DR topology and proof | [Guide](references/dr-topologies.md) | Load when matching topology to RPO and RTO. |
 | architecture-center | [Reference](../../references/architecture-center.md) | Load when choosing a topology. |

@@ -14,10 +14,10 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
-| [oci-navigator](../skills/oci-navigator/SKILL.md) | Locates services and CLI groups on the current OCI platform. | read-only | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [console-links.md](../references/console-links.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-navigator](../skills/oci-navigator/SKILL.md) | Finds non-database CLI groups on current OCI. | read-only | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [console-links.md](../references/console-links.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-cli-auth](../skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. | read-only | partial | 2 | 2 | [auth-modes.md](../references/auth-modes.md), [error-triage.md](../references/error-triage.md), [jmespath.md](../references/jmespath.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md), [windows-powershell.md](../references/windows-powershell.md) |
 | [oci-tenancy-governance](../skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. | guarded-write | partial | 2 | 5 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [iam-variables.md](../references/iam-variables.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
-| [oci-iam-policy](../skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. | guarded-write | partial | 2 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [iam-variables.md](../references/iam-variables.md), [redaction.md](../references/redaction.md), [resource-type-families.json](../references/resource-type-families.json), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-iam-policy](../skills/oci-iam-policy/SKILL.md) | Authors OCI IAM statements and identity domains. | guarded-write | partial | 2 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [iam-variables.md](../references/iam-variables.md), [redaction.md](../references/redaction.md), [resource-type-families.json](../references/resource-type-families.json), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-support-limits](../skills/oci-support-limits/SKILL.md) | Answers "can I actually create this" and files the request when the answer is no: service limits vs compartment quotas vs physical capacity, resource-availability per AD, limit-increase requests, and OCI support incidents. | guarded-write | partial | 1 | 4 | [console-links.md](../references/console-links.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Compute, network & storage
@@ -27,7 +27,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 | [oci-compute](../skills/oci-compute/SKILL.md) | Launches, resizes and triages OCI Compute. | guarded-write | partial | 2 | 4 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [jmespath.md](../references/jmespath.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-networking](../skills/oci-networking/SKILL.md) | Builds and debugs OCI VCN networking. | guarded-write | partial | 1 | 7 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [jmespath.md](../references/jmespath.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-object-storage](../skills/oci-object-storage/SKILL.md) | Operates OCI Object Storage. | guarded-write | partial | 1 | 4 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
-| [oci-block-file-storage](../skills/oci-block-file-storage/SKILL.md) | Operates OCI Block, boot and File Storage. | guarded-write | shape-only | 1 | 3 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-block-file-storage](../skills/oci-block-file-storage/SKILL.md) | Operates OCI block, boot and File Storage. | guarded-write | shape-only | 1 | 3 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-bastion-access](../skills/oci-bastion-access/SKILL.md) | Reaches a private OCI host or database through OCI Bastion. | guarded-write | shape-only | 1 | 2 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [operator-contract.md](../references/operator-contract.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Delivery & infrastructure as code
@@ -54,7 +54,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
 | [oci-cost-analysis](../skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. | read-only | partial | 4 | 7 | [error-corpus.json](../references/error-corpus.json), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
-| [oci-free-tier](../skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. | read-only | partial | 1 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-free-tier](../skills/oci-free-tier/SKILL.md) | Explains OCI Always Free allotments and trial lifecycle. | read-only | partial | 1 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-finops-waste](../skills/oci-finops-waste/SKILL.md) | Finds unused OCI resources and prices potential waste. | read-only | partial | 2 | 2 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Oracle Database & APEX
@@ -71,7 +71,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
-| [oci-generative-ai](../skills/oci-generative-ai/SKILL.md) | Discovers OCI GenAI models and plans chat, embeddings, clusters and agents. | guarded-write | partial | 2 | 8 | [architecture-center.md](../references/architecture-center.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-generative-ai](../skills/oci-generative-ai/SKILL.md) | Plans OCI GenAI inference and agents. | guarded-write | partial | 2 | 8 | [architecture-center.md](../references/architecture-center.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-ai-services](../skills/oci-ai-services/SKILL.md) | Uses OCI pretrained AI services: Vision, Language (nested `oci ai language`) sentiment/PII/translation, Speech transcription and TTS, Document Understanding. | read-only | shape-only | 0 | 4 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-data-platform](../skills/oci-data-platform/SKILL.md) | Moves and processes data on OCI: Streaming (Kafka-compatible) and Queue, Data Flow Spark, Data Integration, Data Catalog, GoldenGate CDC, Big Data Service, Batch, OpenSearch, Redis, and Data Science jobs and model deployments. | guarded-write | shape-only | 0 | 5 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 
@@ -79,7 +79,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
-| [oci-dr-backup](../skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. | guarded-write | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-dr-backup](../skills/oci-dr-backup/SKILL.md) | Assesses OCI recovery and backup retention. | guarded-write | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-migration-patching](../skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. | guarded-write | shape-only | 0 | 6 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-migration-assess](../skills/oci-migration-assess/SKILL.md) | Normalizes AWS, Azure and GCP inventory for OCI assessment. | read-only | shape-only | 1 | 3 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-migration-map](../skills/oci-migration-map/SKILL.md) | Maps cloud inventory to OCI targets and scoped price comparisons. | read-only | shape-only | 1 | 3 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
@@ -90,7 +90,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
 | [oci-sdk-patterns](../skills/oci-sdk-patterns/SKILL.md) | Writes OCI SDK code that works. | guarded-write | partial | 2 | 5 | [auth-modes.md](../references/auth-modes.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md), [windows-powershell.md](../references/windows-powershell.md) |
-| [oracle-enterprise-apps](../skills/oracle-enterprise-apps/SKILL.md) | Distinguishes OCI service-instance operations from Oracle application APIs. | read-only | shape-only | 0 | 5 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oracle-enterprise-apps](../skills/oracle-enterprise-apps/SKILL.md) | Explains Oracle application business APIs versus OCI environment APIs. | read-only | shape-only | 0 | 5 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Choosing a skill
 
@@ -144,9 +144,9 @@ oci bastion session list --bastion-id "$BASTION_ID" --limit 20 --query 'data[].{
 
 [Open skill](../skills/oci-block-file-storage/SKILL.md)
 
-**Use when:** block volume, boot volume, resize a disk, iSCSI vs paravirtualized attach, multi-attach, volume group, backup policy, clone vs backup, VPU performance tier, growfs, FSS, mount target, NFS export, disco cheio.
+**Use when:** volumes, resize/attach, backup inventory or policy-assignment commands, clones, VPU, FSS, NFS, mount targets.
 
-**Not for:** object buckets and PARs (`oci-object-storage`).
+**Not for:** effects of policy changes on retained backups or recoverability (`oci-dr-backup`, which delegates commands here); object buckets/PARs (`oci-object-storage`).
 
 ```bash
 oci bv volume list --compartment-id "$COMPARTMENT_ID" --availability-domain "$AD" --limit 20 --query 'data[].{id:id,size:"size-in-gbs",vpu:"vpus-per-gb"}' --profile "$PROFILE" --region "$REGION"
@@ -278,9 +278,9 @@ oci devops build-run get --build-run-id "$BUILD_RUN_ID" --query 'data.{id:id,sta
 
 [Open skill](../skills/oci-dr-backup/SKILL.md)
 
-**Use when:** disaster recovery, DR drill, failover, switchover, RPO, RTO, cross-region backup, fault domain, "are we highly available", plano de DR.
+**Use when:** effects of policy changes on existing backups or recoverability (even one service), RPO/RTO, DR drills/failover, cross-region replication, AD/fault-domain spread. Delegates service commands after the assessment.
 
-**Not for:** one service's backup command — ask that service's skill.
+**Not for:** backup commands or inventory without a recovery-impact question; volume mechanics (`oci-block-file-storage`).
 
 ```bash
 oci disaster-recovery dr-protection-group list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data.items[].{id:id,role:role}' --profile "$PROFILE" --region "$REGION"
@@ -322,9 +322,9 @@ oci bv volume list --compartment-id "$COMPARTMENT_ID" --limit 100 --query 'data[
 
 [Open skill](../skills/oci-free-tier/SKILL.md)
 
-**Use when:** always free, free tier, trial expired, upgrade to PAYG, out of host capacity on A1/ARM, "did Oracle delete my instance", reclaimed after 7 idle days, the 2-VCN limit, port 25 blocked, $300 credits, conta gratuita.
+**Use when:** explicit Free Tier/trial context, free eligibility, credits, expiry, upgrade to PAYG, idle-instance reclamation, free-account restrictions. An A1/ARM shape alone does not establish Free Tier.
 
-**Not for:** paid-tenancy bill analysis (`oci-cost-analysis`) or limit increases (`oci-support-limits`).
+**Not for:** capacity or quota checks without free/trial context (`oci-support-limits`); paid bill analysis (`oci-cost-analysis`).
 
 ```bash
 oci limits value list --compartment-id "$TENANCY_ID" --service-name compute --name "$LIMIT_NAME" --limit 100 --query 'data[].{n:name,v:value,ad:"availability-domain"}'
@@ -344,9 +344,9 @@ oci limits resource-availability get --compartment-id "$TENANCY_ID" --service-na
 
 [Open skill](../skills/oci-generative-ai/SKILL.md)
 
-**Use when:** OCI GenAI, Cohere command, Grok or llama on Oracle, model deprecated, 429 on chat, agent endpoint, knowledge base, RAG on OCI.
+**Use when:** models (Cohere/Grok/llama), chat/embeddings, 429, clusters, RAG, agent endpoints, which identity or credentials an OCI AI agent uses for tools, managed-agent versus ADK execution.
 
-**Not for:** in-database vectors (`oracle-db-vector-ai`).
+**Not for:** in-database vectors (`oracle-db-vector-ai`); policy statements for an identified principal (`oci-iam-policy`).
 
 ```bash
 oci generative-ai model-collection list-models --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data.items[].{id:id,cap:capabilities,retired:"time-deprecated"}' --profile "$PROFILE" --region "$REGION"
@@ -366,9 +366,9 @@ oci generative-ai dedicated-ai-cluster-collection list-dedicated-ai-clusters --c
 
 [Open skill](../skills/oci-iam-policy/SKILL.md)
 
-**Use when:** "Allow group …", least privilege, dynamic group, "why can't the agent read", federação, política IAM.
+**Use when:** least privilege, dynamic groups, permission denial for an identified principal, SAML/OIDC, SCIM, MFA, Endorse/Admit/Define.
 
-**Not for:** auditing existing policy (`oci-security-posture`).
+**Not for:** first identifying an OCI AI agent's tool-execution principal (`oci-generative-ai`); auditing existing policy (`oci-security-posture`).
 
 ```bash
 oci iam domain list --compartment-id "$TENANCY_ID" --limit 20 --query 'data[].{name:"display-name",url:url}'
@@ -500,9 +500,9 @@ oci monitoring alarm list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 
 
 [Open skill](../skills/oci-navigator/SKILL.md)
 
-**Use when:** unknown OCI product/group, command-name errors, cross-cloud concept mapping to OCI.
+**Use when:** No such command, unknown group, wrong spelling, service discovery, cross-cloud concept mapping.
 
-**Not for:** Compute Classic/OCI-C terminology or comparisons (even with current OCI), established service operations, database families (`oracle-db-fleet`), application API reach (`oracle-enterprise-apps`).
+**Not for:** Oracle Database/Base Database/Exadata family selection (`oracle-db-fleet`); Compute Classic/OCI-C terminology or comparisons; established service operations; application API scope (`oracle-enterprise-apps`).
 
 ```bash
 # realm, home region, subscriptions
@@ -858,9 +858,9 @@ oci db autonomous-db-version list --compartment-id "$COMPARTMENT_ID" --limit 10 
 
 [Open skill](../skills/oracle-enterprise-apps/SKILL.md)
 
-**Use when:** Fusion/NetSuite/OIC/OAC/ODA/Visual Builder/WebLogic service scope, environment inventory, which application objects the OCI CLI can reach.
+**Use when:** Fusion/NetSuite/OIC/OAC/ODA/VB/WebLogic interface capability or environment inventory.
 
-**Not for:** application UI authoring, business transactions, CLI spelling errors (`oci-navigator`) or core OCI operations.
+**Not for:** editing Integration flows, visual-designer components or application UI; executing business transactions; CLI name discovery or No such command (`oci-navigator`); core OCI operations.
 
 ```bash
 oci fusion-apps fusion-environment list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data.items[].{id:id,state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
