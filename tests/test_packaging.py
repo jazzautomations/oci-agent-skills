@@ -62,7 +62,7 @@ def test_w08b_manifest_shape():
     assert plugin['version'] == '0.2.1' and 'skills' not in plugin
     assert {entry['name'] for entry in market['plugins']} == {'oci-agent-skills', 'oci-agent-skills-db', 'oci-agent-skills-devops'}
     for entry in market['plugins']:
-        assert len(entry['skills']) == {'oci-agent-skills': 33, 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
+        assert len(entry['skills']) == {'oci-agent-skills': len(list((ROOT / 'skills').glob('*/SKILL.md'))), 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
         assert all((ROOT / path / 'SKILL.md').is_file() for path in entry['skills'])
         assert entry['hooks'] == './hooks/hooks.json'
         assert (ROOT / entry['hooks']).is_file()

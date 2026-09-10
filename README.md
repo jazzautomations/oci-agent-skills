@@ -82,6 +82,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 |  | [oci-vault-certificates](skills/oci-vault-certificates/SKILL.md) | Handles OCI Vault, KMS keys, Secrets and Certificates. |
 | Cost & Free Tier | [oci-cost-analysis](skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. |
 |  | [oci-free-tier](skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. |
+|  | [oci-finops-waste](skills/oci-finops-waste/SKILL.md) | Finds unused OCI resources and prices potential waste. |
 | Oracle Database & APEX | [oracle-autonomous-db](skills/oracle-autonomous-db/SKILL.md) | Provisions and connects Oracle Autonomous Database. |
 |  | [oracle-db-fleet](skills/oracle-db-fleet/SKILL.md) | Operates OCI non-Autonomous database services and enrolled Database Management fleets. |
 |  | [oracle-db-vector-ai](skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. |
@@ -92,6 +93,9 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 |  | [oci-data-platform](skills/oci-data-platform/SKILL.md) | Moves and processes data on OCI: Streaming (Kafka-compatible) and Queue, Data Flow Spark, Data Integration, Data Catalog, GoldenGate CDC, Big Data Service, Batch, OpenSearch, Redis, and Data Science jobs and model deployments. |
 | Reliability & migration | [oci-dr-backup](skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. |
 |  | [oci-migration-patching](skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. |
+|  | [oci-migration-assess](skills/oci-migration-assess/SKILL.md) | Normalizes AWS, Azure and GCP inventory for OCI assessment. |
+|  | [oci-migration-map](skills/oci-migration-map/SKILL.md) | Maps cloud inventory to OCI targets and scoped price comparisons. |
+|  | [oci-migration-landing-zone](skills/oci-migration-landing-zone/SKILL.md) | Drafts OCI Core Landing Zone variables from assessed inventory. |
 | SDKs & enterprise applications | [oci-sdk-patterns](skills/oci-sdk-patterns/SKILL.md) | Writes OCI SDK code that works. |
 |  | [oracle-enterprise-apps](skills/oracle-enterprise-apps/SKILL.md) | Distinguishes OCI service-instance operations from Oracle application APIs. |
 <!-- skills:end -->
@@ -182,3 +186,10 @@ Contributions: [CONTRIBUTING.md](CONTRIBUTING.md). Security scope and reporting:
 Created by **Felipe Salvego / Jazz Automations**. Licensed under [Apache-2.0](LICENSE); retained upstream attribution is in [NOTICE](NOTICE).
 
 Oracle and its product names are trademarks of Oracle and/or its affiliates. This independent project is not affiliated with, endorsed by or supported by Oracle.
+
+## Engineering demonstrations
+
+- [FinOps waste assessment](docs/finops.md): bounded reads, evidence and conservative pricing.
+- [Migration Copilot](docs/migration.md): synthetic cross-cloud inventory, scoped price comparison and landing-zone draft.
+- [26ai retrieval kit](docs/26ai.md): prepared SQL/Python demo; live database run pending.
+- [Freshness checks](docs/freshness.md): scheduled source monitoring and expiring price caches.

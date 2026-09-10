@@ -34,7 +34,7 @@ def test_installed_copies_and_refs(installed):
     assert not list(installed.rglob(".handoff-*"))
     for folder in (".agents", ".gemini", ".cursor", ".opencode"):
         skills = list((installed / folder / "skills").glob("*/SKILL.md"))
-        assert len(skills) == 33
+        assert len(skills) == len(list((ROOT / 'skills').glob('*/SKILL.md')))
         import re
 
         for skill in skills:

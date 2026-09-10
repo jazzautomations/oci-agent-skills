@@ -1,0 +1,15 @@
+[
+  {
+    "id": "oci-migration-map-scope-read",
+    "skill": "oci-migration-map",
+    "argv": [
+      "compute",
+      "shape",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  }
+]

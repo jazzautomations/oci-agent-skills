@@ -32,6 +32,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_cloud_freshness.py",
+      "sha256": "b65005041b383ede1325a3e2a5a74ff7a08dad806112ca6b662088d33b758113",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_frontmatter.py",
       "sha256": "a4a0eb120cd010a3c7779b9d5ed157ae0c27a55d6a519a4df14bd5037ecc9453",
       "mode": "read-only",
@@ -57,7 +63,7 @@
     },
     {
       "path": "scripts/ci/check_manifests.py",
-      "sha256": "244d5b82048d362439261f1981ddf9f03a114801a64d13be0f6973759d6d486c",
+      "sha256": "8e85f6bc3d59d90d01765e381c394cbb13c34b17c0cad9f4b458983544afaee9",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -81,7 +87,7 @@
     },
     {
       "path": "scripts/ci/check_scripts_readonly.py",
-      "sha256": "1e04e9b0eddd2466b7b85f96184c17e0408e50f6e379976907a85d521b6c689b",
+      "sha256": "49e92cb43c12df4e51db9d022f8f727aa94b32af4780f0a259305d4849e8c535",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -123,7 +129,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "fbf6d00b3958df06b0ddc2a59c94541a65176ce391b1296028cb96e7fd2ca5c9",
+      "sha256": "59d593fbb7e693639c841cb02ca032b9a7cebab9732c927adf3ff80fb0fb1814",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -141,7 +147,7 @@
     },
     {
       "path": "scripts/doc-gen/catalogs.py",
-      "sha256": "19be41bbb62229900c1fe205736da26a6fc268bf3436d8b725e94a9a31ee901b",
+      "sha256": "9f065243a7417a0ca8b014a19591ce65e7a0daa99ac6853da3253b3028efb7c1",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -225,7 +231,7 @@
     },
     {
       "path": "scripts/lib/oci_ro.py",
-      "sha256": "384706d88271ed1db8b98c69b11149a91633684b2bc387830a534e7f410eca23",
+      "sha256": "e4a7614d6ee1c68b1d4278988f171fddff8eba716886b5f1e2fc67caa26aa573",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -237,7 +243,7 @@
     },
     {
       "path": "scripts/lib/pricing.py",
-      "sha256": "e42ad0d632f050fc2eb9ee75690d6d7b42f4c7c54c31375899fd216a12307a8c",
+      "sha256": "1b67201c776b9face40f24cd6576215fddfa73ccde1789a052b234b0ca5bd487",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -333,7 +339,7 @@
     },
     {
       "path": "skills/oci-cost-analysis/scripts/price.py",
-      "sha256": "968cf8cb7b091259a2f67a2fb7a3eaf68d278de37e01d5dcfa05782c62c67fc7",
+      "sha256": "c5124f84a0a51fded9c7a7f29638385a00f1155d779c1e59c804ba4e84307a2f",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -346,6 +352,67 @@
     {
       "path": "skills/oci-devops-pipelines/scripts/devops_preflight.sh",
       "sha256": "f7b2403b85046f414fb2e4075242fbfa79dd3965193073e5aaefbe0f27ad6a2a",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-finops-waste/scripts/waste_scan.py",
+      "sha256": "3e1b01f048a036b2ee684f35705903ec045f8371c0d395133a75edeb7490ea42",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "search",
+          "resource",
+          "structured-search",
+          "--query-text",
+          "--limit"
+        ],
+        [
+          "iam",
+          "availability-domain",
+          "list",
+          "--compartment-id"
+        ],
+        [
+          "os",
+          "ns",
+          "get"
+        ],
+        [
+          "iam",
+          "region-subscription",
+          "list",
+          "--tenancy-id"
+        ],
+        [
+          "os",
+          "bucket",
+          "get",
+          "--namespace-name",
+          "--bucket-name",
+          "--fields",
+          "approximateSize"
+        ],
+        [
+          "os",
+          "object-lifecycle-policy",
+          "get",
+          "--namespace-name",
+          "--bucket-name"
+        ],
+        [
+          "os",
+          "multipart",
+          "list",
+          "--namespace-name",
+          "--bucket-name",
+          "--limit"
+        ]
+      ]
+    },
+    {
+      "path": "skills/oci-finops-waste/scripts/waste_scan.sh",
+      "sha256": "1a22b3501e3098ac4f29b39c387a467635145fb633fbd78d8ca297c356959edb",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -409,6 +476,24 @@
     {
       "path": "skills/oci-logging-audit/scripts/audit_window.sh",
       "sha256": "bb277a4c41a006fcb7edea5dea9bbfae3b7e8b79972155b758e1d2eff670aac6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-migration-assess/scripts/inventory_normalize.py",
+      "sha256": "9cc31fe4bd6f6b0b61d3121ea519e41d935be6da1c016b5b8308ecd6ab2503c5",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-migration-landing-zone/scripts/emit_tfvars.py",
+      "sha256": "a0a06c99ed10b4d937f2d2dd9e60479b8d5c7940493cb4f7ec2088a251202184",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-migration-map/scripts/map_and_price.py",
+      "sha256": "e1941df767a60849fa1d4f5934c6b9c7f56d8e0b71aa3c8a36300661bdb03c2a",
       "mode": "read-only",
       "oci_calls": []
     },

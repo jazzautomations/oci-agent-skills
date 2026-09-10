@@ -1,6 +1,18 @@
 # Changelog
 
-## Unreleased — presentation and documentation
+## Unreleased — cloud assessments and prepared demos
+
+Added bounded FinOps waste assessment, three migration assessment/planning skills,
+and the 26ai retrieval preparation kit. OCI validation remains read-only; migration
+uses a synthetic source export and public prices; database execution is pending.
+Public price lookup now integrates graduated bands and expires caches after 24 hours.
+A daily source monitor compares official documentation, package versions and price
+sentinels. Four new skills bring the main package to 37.
+
+Current semantic trials score 77/80 and 76/80 with 4/4 overlap pairs; one negative
+fires in the second trial, so V20 remains red. See docs/evals.md.
+
+## Earlier unreleased presentation and documentation
 
 Repaired semantic selection evaluation. The old lexical filter rejected 39 valid
 requests before matching; it is retained as a diagnostic, while V19/V20 now check

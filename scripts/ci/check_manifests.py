@@ -18,7 +18,7 @@ def validate():
     assert 'skills' not in plugin and 'hooks' not in codex
     assert len(marketplace['plugins']) == 3
     for entry in marketplace['plugins']:
-        assert len(entry['skills']) == {'oci-agent-skills': 33, 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
+        assert len(entry['skills']) == {'oci-agent-skills': len(list((ROOT / 'skills').glob('*/SKILL.md'))), 'oci-agent-skills-db': 8, 'oci-agent-skills-devops': 9}[entry['name']]
         assert len(set(entry['skills'])) == len(entry['skills'])
         assert all((ROOT / skill / 'SKILL.md').is_file() for skill in entry['skills'])
         assert entry['hooks'] == './hooks/hooks.json' and entry['source'] == './'

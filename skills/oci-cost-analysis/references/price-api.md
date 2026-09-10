@@ -18,10 +18,12 @@ Rechecked against the live API 2026-09-10; snapshot 2026-09-09T16:34:38.537Z.
 Free allowances apply once per tenancy/month. Avoided cost is cost(total) minus
 cost(total - removed), **not** rate times removed and not a new free allowance per resource.
 B93030 does not price Network Load Balancers. Missing SKUs, currencies and ranges are unknown,
-never zero. Cache dates are always printed; an explicit cached snapshot is not refreshed silently.
+never zero. Cached prices refresh after 24 hours; failed refreshes report unavailable.
+Use `--offline` for an explicitly frozen snapshot. Publication and retrieval dates are printed.
 
 Use the metric's units: storage GB-month, compute OCPU-hour and memory GB-hour.
-Most x86 OCPUs have two vCPUs; Ampere OCPUs have one. State hours/month explicitly.
+Most x86 OCPUs have two vCPUs. Ampere A1 has one core per OCPU; A2 has two.
+Check the selected shape rather than applying a blanket Arm conversion. State hours/month explicitly.
 Block-volume performance is additive: capacity B91961 plus GB × VPU × B91962.
 
 Label every figure **list price, pre-discount**, with snapshot and currency. No Rate Card,

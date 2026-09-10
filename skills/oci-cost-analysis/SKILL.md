@@ -32,6 +32,8 @@ Validate IDs with the scoped list/get below.
 | Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
 | Cloud Advisor | `references/cloud-advisor.md` | Load when comparing native recommendations and waste signals. |
 
+| Historic SKU snapshot | `references/unit-prices-2026.md` | Load when reproducing a dated price example. |
+
 ## Commands
 Set `FROM`/`TO` to UTC month boundaries for MONTHLY. COST rows are in `data.items`.
 Keep echoed dates and currency; never `--debug`.

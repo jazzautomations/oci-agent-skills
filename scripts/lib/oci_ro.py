@@ -111,7 +111,7 @@ def run_process(argv, *, executable=None, **kwargs):
     return subprocess.run([*(executable or ['oci']), *prepared], env=environment, shell=False, **kwargs)
 
 
-def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all=False):
+def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all=False, retain_identifiers=False, attempts=3):
     """Read once; blank successful list/summarize output means an empty collection.
 
     sanitize=False exposes that collection as data=[]; the default retains the
@@ -119,16 +119,19 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
     for callers to reject, and failed reads never become empty successes.
     """
     from redact import redact
+    if (retain_identifiers and sanitize) or attempts not in (1,2,3):
+        return {'ok': False, 'error': {'kind': 'refused', 'reason': 'invalid internal read options'}, 'truncated': False}
+    # retain_identifiers is only for in-memory scoped joins; public output stays redacted by default.
     try:
         prepared = prepare(argv, profile=profile, region=region, allow_all=allow_all)
-        for attempt in range(3):
+        for attempt in range(attempts):
             response = run_process(argv, profile=profile, region=region, allow_all=allow_all,
                                    timeout=timeout, capture_output=True, text=True)
             try:
                 err = json.loads(response.stderr[response.stderr.index('{'):]) if response.returncode else {}
             except (ValueError, TypeError):
                 err = {}
-            if not response.returncode or err.get('status') != 429 or attempt == 2:
+            if not response.returncode or err.get('status') != 429 or attempt == attempts - 1:
                 break
             time.sleep(2 ** attempt)
         safe_argv = [redact(v) for v in prepared]
@@ -157,7 +160,7 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
             if isinstance(value, list):
                 return [visit(v) for v in value]
             return redact(value) if isinstance(value, str) else value
-        data = visit(data)
+        data = data if retain_identifiers else visit(data)
         flags = data.get('flags', []) if isinstance(data, dict) else []
         _, options = parse_oci(prepared)
         rows = payload

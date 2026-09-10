@@ -1,19 +1,24 @@
 # Evaluation evidence — 2026-09-10
 
-The current selection gate uses **recorded semantic classification** of all 33
+The current selection gate uses **recorded semantic classification** of all 37
 skill descriptions. CI verifies the input fingerprints and recomputes scores;
 it does not call a model or claim native host task completion.
 
 | Measurement | Result | Criterion |
 |---|---:|---|
-| Semantic selection, seed 17 | 79/80 (98.75%) | ≥90% in every trial |
-| Semantic selection, seed 29 | 77/80 (96.25%) | ≥90% in every trial |
+| Semantic selection, seed 17 | 77/80 (96.25%) | ≥90% in every trial |
+| Semantic selection, seed 29 | 76/80 (95.00%) | ≥90% in every trial |
 | Overlap pairs | 4/4 in each trial | All four in every trial |
-| Negative skill firings | 0/40 in each trial | Zero in every trial |
+| Negative skill firings | 0/40 seed 17; 1/40 seed 29 | Zero in every trial |
 | Additional synthetic boundaries | 12/12 | All correct; development regressions |
-| Authored fenced commands | 277/277 | ≥95% syntax validity |
+| Authored fenced commands | 285/285 | ≥95% syntax validity |
 | Guard auto-allow on mutation fixtures | 0/20 | Zero; inert replay |
 | Sanitizer fixtures | 10/10 | Flagged, returned, idempotent |
+
+The current **V20 gate fails**: seed 29 selected `oci-navigator` for historical OCI-C
+terminology despite its explicit exclusion. Owner: evaluation/routing maintainers.
+Both trials are retained; neither the benchmark nor the labels were changed to turn
+this into a pass. V19 and the additional boundary collection pass.
 
 The two classifier sessions used `claude-sonnet-5` with tools and MCP disabled.
 Positive and negative requests were shuffled together with opaque IDs. The model

@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 from common import ROOT, arguments, finding, finish
 
-OFFLINE = {'skills/oci-networking/scripts/merge_rules.py', 'skills/oci-terraform/scripts/plan_summary.py', 'skills/oci-generative-ai/scripts/chat_min.py'}
-PUBLIC_GET = {'skills/oci-sdk-patterns/scripts/fetch_spec.py', 'skills/oci-cost-analysis/scripts/price.sh', 'skills/oci-cost-analysis/scripts/price.py'}
+OFFLINE = {'skills/oci-migration-assess/scripts/inventory_normalize.py', 'skills/oci-migration-landing-zone/scripts/emit_tfvars.py', 'skills/oci-networking/scripts/merge_rules.py', 'skills/oci-terraform/scripts/plan_summary.py', 'skills/oci-generative-ai/scripts/chat_min.py'}
+PUBLIC_GET = {'skills/oci-migration-map/scripts/map_and_price.py', 'skills/oci-sdk-patterns/scripts/fetch_spec.py', 'skills/oci-cost-analysis/scripts/price.sh', 'skills/oci-cost-analysis/scripts/price.py'}
 
 
 def calls_wrapper(tree):

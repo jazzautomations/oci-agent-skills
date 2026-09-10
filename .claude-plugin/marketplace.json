@@ -45,7 +45,11 @@
         "./skills/oracle-db-fleet",
         "./skills/oracle-db-sql-access",
         "./skills/oracle-db-vector-ai",
-        "./skills/oracle-enterprise-apps"
+        "./skills/oracle-enterprise-apps",
+        "./skills/oci-finops-waste",
+        "./skills/oci-migration-assess",
+        "./skills/oci-migration-map",
+        "./skills/oci-migration-landing-zone"
       ]
     },
     {

@@ -4,7 +4,7 @@
 
 Generated from `skills/*/SKILL.md`; regenerate with `uv run --frozen --project runtime python scripts/doc-gen/catalogs.py`.
 
-**33 skills** · 9 read-only · 24 guarded-write. Verification labels: 0 live, 18 partial, 15 shape-only.
+**37 skills** · 12 read-only · 25 guarded-write. Verification labels: 0 live, 19 partial, 18 shape-only.
 
 `partial` means selected reads have recorded live evidence; `shape-only` means command syntax was checked. Neither label certifies a complete workflow. Guarded-write describes recipes requiring a change plan and authorization; all bundled helper scripts and MCP tools remain read-only.
 
@@ -55,6 +55,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 |---|---|---|---|---:|---:|---|
 | [oci-cost-analysis](../skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. | read-only | partial | 4 | 7 | [error-corpus.json](../references/error-corpus.json), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-free-tier](../skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. | read-only | partial | 1 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-finops-waste](../skills/oci-finops-waste/SKILL.md) | Finds unused OCI resources and prices potential waste. | read-only | partial | 2 | 2 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Oracle Database & APEX
 
@@ -62,7 +63,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 |---|---|---|---|---:|---:|---|
 | [oracle-autonomous-db](../skills/oracle-autonomous-db/SKILL.md) | Provisions and connects Oracle Autonomous Database. | guarded-write | shape-only | 1 | 4 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oracle-db-fleet](../skills/oracle-db-fleet/SKILL.md) | Operates OCI non-Autonomous database services and enrolled Database Management fleets. | guarded-write | shape-only | 0 | 6 | [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
-| [oracle-db-vector-ai](../skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. | guarded-write | shape-only | 0 | 5 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oracle-db-vector-ai](../skills/oracle-db-vector-ai/SKILL.md) | Builds vector search and Select AI inside Oracle Database 26ai/23ai. | guarded-write | shape-only | 0 | 6 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oracle-db-sql-access](../skills/oracle-db-sql-access/SKILL.md) | Configures agent SQL access with database-enforced read privileges, SQLcl MCP, ORDS and Database Tools. | guarded-write | shape-only | 0 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oracle-apex](../skills/oracle-apex/SKILL.md) | Delivers Oracle APEX. | guarded-write | shape-only | 0 | 5 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 
@@ -80,6 +81,9 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 |---|---|---|---|---:|---:|---|
 | [oci-dr-backup](../skills/oci-dr-backup/SKILL.md) | Plans OCI resilience and proves it: Full Stack DR protection groups and drills, cross-region backup and replication, AD and fault-domain spread, and RPO/RTO evidence. | guarded-write | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-migration-patching](../skills/oci-migration-patching/SKILL.md) | Migrates and patches OCI fleets: Cloud Migrations, Cloud Bridge, Database Migration and ZDM, Rover, OS Management Hub, Ksplice, Java Management Service, Fleet Application Management, Exadata Fleet Update, OCVS. | guarded-write | shape-only | 0 | 6 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-migration-assess](../skills/oci-migration-assess/SKILL.md) | Normalizes AWS, Azure and GCP inventory for OCI assessment. | read-only | shape-only | 1 | 3 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-migration-map](../skills/oci-migration-map/SKILL.md) | Maps cloud inventory to OCI targets and scoped price comparisons. | read-only | shape-only | 1 | 3 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-migration-landing-zone](../skills/oci-migration-landing-zone/SKILL.md) | Drafts OCI Core Landing Zone variables from assessed inventory. | guarded-write | shape-only | 1 | 1 | [redaction.md](../references/redaction.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## SDKs & enterprise applications
 
@@ -292,6 +296,28 @@ oci disaster-recovery dr-plan-execution list --dr-protection-group-id "$DR_GROUP
 
 </details>
 
+<details><summary><strong>oci-finops-waste</strong></summary>
+
+[Open skill](../skills/oci-finops-waste/SKILL.md)
+
+**Use when:** idle resources, orphan volumes, desperdício OCI.
+
+**Not for:** bill explanation (oci-cost-analysis) or migration assessment.
+
+```bash
+oci compute instance list --compartment-id "$COMPARTMENT_ID" --limit 100 --query 'data[].{id:id,state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
+```
+
+```bash
+oci compute boot-volume-attachment list --compartment-id "$COMPARTMENT_ID" --availability-domain "$AD" --limit 100 --query 'data[].{volume:"boot-volume-id",instance:"instance-id",state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
+```
+
+```bash
+oci bv volume list --compartment-id "$COMPARTMENT_ID" --limit 100 --query 'data[].{id:id,gb:"size-in-gbs",vpu:"vpus-per-gb"}' --profile "$PROFILE" --region "$REGION"
+```
+
+</details>
+
 <details><summary><strong>oci-free-tier</strong></summary>
 
 [Open skill](../skills/oci-free-tier/SKILL.md)
@@ -389,6 +415,40 @@ oci logging log list --log-group-id "$LOG_GROUP_ID" --limit 20 --query 'data[].{
 ```bash
 oci logging-search search-logs --search-query "search \"$COMPARTMENT_ID\" | sort by datetime desc" --time-start "$START_TIME" --time-end "$END_TIME" --limit 50 --query 'data.results[].data.{t:datetime,type:"logContent".type}' --profile "$PROFILE" --region "$REGION"
 ```
+
+</details>
+
+<details><summary><strong>oci-migration-assess</strong></summary>
+
+[Open skill](../skills/oci-migration-assess/SKILL.md)
+
+**Use when:** inventário para migrar nuvens.
+
+**Not for:** target pricing (oci-migration-map) or patching.
+
+</details>
+
+<details><summary><strong>oci-migration-landing-zone</strong></summary>
+
+[Open skill](../skills/oci-migration-landing-zone/SKILL.md)
+
+**Use when:** landing zone para migração OCI.
+
+**Not for:** applying Terraform (oci-terraform) or source inventory.
+
+```bash
+oci resource-manager stack list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data[].{name:"display-name",state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
+```
+
+</details>
+
+<details><summary><strong>oci-migration-map</strong></summary>
+
+[Open skill](../skills/oci-migration-map/SKILL.md)
+
+**Use when:** comparar migração AWS/GCP/Azure para OCI.
+
+**Not for:** inventory collection or current OCI bills.
 
 </details>
 

@@ -1,0 +1,177 @@
+{
+  "checked_at": "2026-09-10T04:21:18.931632+00:00",
+  "facts": {
+    "aws_instance_contract": {
+      "content_sha256": "6794961eb7c25273547b556c6f55005499217f460e7958b1734eb582162c26a8"
+    },
+    "azure_price_contract": {
+      "content_sha256": "6f1105a3948aafc596ee260e492ac448fa19905a7a03cf97fe894f9367846161"
+    },
+    "core_lz_variables": {
+      "content_sha256": "112eabbddf1e9f064a38a2243c791eee2277986c075422baa124f7287a7863c6"
+    },
+    "gcp_machine_contract": {
+      "content_sha256": "4411c8cd45e3ffe6f0961fb09b8c6107225a84c83e16e8655c3c2461c81ffb2a"
+    },
+    "oci_block_performance": {
+      "content_sha256": "5ef6f40dbf59071e440e0c4852e3e4e6f3de973b947be7f0c3270c6854f24c5f"
+    },
+    "oci_cli": {
+      "version": "3.92.1"
+    },
+    "oci_migration_support": {
+      "content_sha256": "a7a829521fafcfecc5b66591850c1237329a7060e99e8ccb357bde98fa5a2513"
+    },
+    "oci_prices": {
+      "B109529": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.014
+            }
+          ]
+        }
+      ],
+      "B109530": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.002
+            }
+          ]
+        }
+      ],
+      "B110316": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.0391
+            }
+          ]
+        }
+      ],
+      "B91628": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "rangeMax": 10,
+              "rangeMin": 0,
+              "value": 0
+            },
+            {
+              "model": "PAY_AS_YOU_GO",
+              "rangeMax": 999999999,
+              "rangeMin": 10,
+              "value": 0.0255
+            }
+          ]
+        }
+      ],
+      "B91961": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.0255
+            }
+          ]
+        }
+      ],
+      "B91962": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.0017
+            }
+          ]
+        }
+      ],
+      "B93030": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "rangeMax": 744,
+              "rangeMin": 0,
+              "value": 0
+            },
+            {
+              "model": "PAY_AS_YOU_GO",
+              "rangeMax": 999999999,
+              "rangeMin": 744,
+              "value": 0.0113
+            }
+          ]
+        }
+      ],
+      "B95702": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.336
+            }
+          ]
+        }
+      ],
+      "B95706": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.1953
+            }
+          ]
+        }
+      ],
+      "B97384": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.03
+            }
+          ]
+        }
+      ],
+      "B97385": [
+        {
+          "currencyCode": "USD",
+          "prices": [
+            {
+              "model": "PAY_AS_YOU_GO",
+              "value": 0.002
+            }
+          ]
+        }
+      ]
+    },
+    "oci_sdk": {
+      "version": "2.185.2"
+    },
+    "oci_shapes": {
+      "content_sha256": "0275e705e3f780faa286670700c199c40894ae50bba8917c01389a513ce03fe7"
+    },
+    "oracle_hybrid_search": {
+      "content_sha256": "8dc4b3875b19dc23040ea50d8aeaf9ea47e06a09a226eb86c498fb3641357c4e"
+    },
+    "oracledb": {
+      "version": "4.0.2"
+    }
+  }
+}

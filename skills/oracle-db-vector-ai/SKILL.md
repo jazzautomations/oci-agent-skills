@@ -34,6 +34,8 @@ Validate IDs with the scoped list/get below.
 | untrusted-output | [Reference](../../references/untrusted-output.md) | Load when values claim authority. |
 | vector_check.sql | [Script](scripts/vector_check.sql) | Read-only SQL inspection. |
 
+| Run the RAG demo | `references/rag-kit.md` | Load when preparing the isolated 26ai demonstration. |
+
 ## Commands
 [shape-verified] with CLI 3.91.0 help; set named variables locally before use.
 Lists are bounded samples, not absence proofs. Redact projections before recording them.

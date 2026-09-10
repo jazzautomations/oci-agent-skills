@@ -14,11 +14,12 @@ def main():
     p.add_argument('currency', nargs='?', default='USD')
     p.add_argument('--quantity', type=str)
     p.add_argument('--cache', type=Path)
+    p.add_argument('--offline', action='store_true', help='Use explicit snapshot for reproducibility; no freshness claim')
     args = p.parse_args()
     try:
-        book = load_prices(args.cache, args.currency)
+        book = load_prices(args.cache, args.currency, offline=args.offline)
         product = book.products[args.part_number]
-        result = dict(part_number=args.part_number, currency=book.currency, snapshot=book.snapshot,
+        result = dict(part_number=args.part_number, currency=book.currency, snapshot=book.snapshot, retrieved_at=book.retrieved_at, offline_snapshot=args.offline,
                       basis='list price, pre-discount; PAY_AS_YOU_GO', unit=product['metricName'],
                       bands=[dict(min=str(lo), max=str(hi), rate=str(rate)) for lo,hi,rate in book.bands(args.part_number)])
         if args.quantity is not None:

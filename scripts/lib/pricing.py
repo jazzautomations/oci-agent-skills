@@ -1,6 +1,7 @@
 """Public OCI price bands. Decimal math; tenancy-wide graduated allowances."""
 import json
 import re
+from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.request import build_opener, HTTPRedirectHandler
@@ -22,6 +23,7 @@ class PriceBook:
     def __init__(self, payload, currency='USD'):
         self.currency = currency
         self.snapshot = payload['lastUpdated']
+        self.retrieved_at = payload.get('_retrieved_at')
         self.products = {p['partNumber']: p for p in payload['items']}
 
     def bands(self, part):
@@ -54,13 +56,26 @@ class PriceBook:
         return self.cost(part, total) - self.cost(part, total - removed)
 
 
-def load_prices(cache=None, currency='USD'):
+def load_prices(cache=None, currency='USD', *, offline=False, max_age_hours=24):
     if not re.fullmatch('[A-Z]{3}', currency):
         raise ValueError('Currency must be three uppercase letters')
+    ttl = number(max_age_hours)
     if cache and Path(cache).exists():
         if Path(cache).stat().st_size > 4_000_000:
             raise ValueError('Price cache exceeds bound')
-        return PriceBook(json.loads(Path(cache).read_text()), currency)
+        payload = json.loads(Path(cache).read_text())
+        if offline:
+            return PriceBook(payload, currency)
+        try:
+            fetched = datetime.fromisoformat(payload['_retrieved_at'].replace('Z', '+00:00'))
+            age = (datetime.now(timezone.utc) - fetched).total_seconds()
+        except (KeyError, TypeError, ValueError):
+            age = -1
+        cached_currency = payload.get('_currency')
+        if cached_currency == currency and 0 <= age < float(ttl) * 3600:
+            return PriceBook(payload, currency)
+    if offline:
+        raise ValueError('Offline pricing requires an existing cache')
     class NoRedirect(HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
@@ -69,6 +84,8 @@ def load_prices(cache=None, currency='USD'):
         if len(raw) > 4_000_000:
             raise ValueError('Public price response exceeds bound')
         payload = json.loads(raw)
+    payload['_retrieved_at'] = datetime.now(timezone.utc).isoformat()
+    payload['_currency'] = currency
     book = PriceBook(payload, currency)
     if cache:
         path = Path(cache)

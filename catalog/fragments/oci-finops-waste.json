@@ -1,0 +1,57 @@
+[
+  {
+    "id": "finops-0",
+    "skill": "oci-finops-waste",
+    "argv": [
+      "bv",
+      "volume",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "finops-1",
+    "skill": "oci-finops-waste",
+    "argv": [
+      "compute",
+      "volume-attachment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "finops-2",
+    "skill": "oci-finops-waste",
+    "argv": [
+      "compute",
+      "boot-volume-attachment",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--availability-domain",
+      "${AD}",
+      "--limit",
+      "100"
+    ]
+  },
+  {
+    "id": "finops-3",
+    "skill": "oci-finops-waste",
+    "argv": [
+      "budgets",
+      "budget",
+      "budget",
+      "list",
+      "--compartment-id",
+      "${TENANCY_ID}",
+      "--limit",
+      "100"
+    ]
+  }
+]

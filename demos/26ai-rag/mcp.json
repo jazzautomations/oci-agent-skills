@@ -1,0 +1,1 @@
+{"mcpServers":{"rag-demo-sqlcl":{"command":"sql","args":["-R","4","-mcp"]}}}

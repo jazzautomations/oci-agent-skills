@@ -1,0 +1,339 @@
+{
+  "schema": "oci-migration-inventory/v1",
+  "source_cloud": "aws",
+  "collected_at": "2026-09-10T04:12:00Z",
+  "scope": {
+    "accounts": [
+      "123456789012"
+    ],
+    "regions_scanned": [
+      "us-east-1"
+    ],
+    "services_not_readable": [
+      "eks (AccessDenied: eks:ListClusters)"
+    ],
+    "collector": {
+      "tool": "aws-cli",
+      "version": "1.46.1",
+      "botocore": "1.43.62"
+    }
+  },
+  "compute": [
+    {
+      "id": "i-0a1b2c3d4e5f60001",
+      "name": "web-01",
+      "region": "us-east-1",
+      "az": "us-east-1a",
+      "instance_type": "m5.large",
+      "vcpu": 2,
+      "cores": 1,
+      "threads_per_core": 2,
+      "memory_gb": 8,
+      "arch": "x86_64",
+      "os": "Linux/UNIX",
+      "license": "RunInstances",
+      "state": "running",
+      "root_device": "ebs",
+      "vpc_id": "vpc-0aa11bb22cc33dd44",
+      "subnet_id": "subnet-0web1",
+      "tags": {
+        "app": "storefront",
+        "env": "prod",
+        "tier": "web"
+      },
+      "observed": {
+        "cpu_p95": 18.4,
+        "mem_p95": null,
+        "source": "cloudwatch"
+      }
+    },
+    {
+      "id": "i-0a1b2c3d4e5f60002",
+      "name": "web-02",
+      "region": "us-east-1",
+      "az": "us-east-1b",
+      "instance_type": "m5.large",
+      "vcpu": 2,
+      "cores": 1,
+      "threads_per_core": 2,
+      "memory_gb": 8,
+      "arch": "x86_64",
+      "os": "Linux/UNIX",
+      "license": "RunInstances",
+      "state": "running",
+      "root_device": "ebs",
+      "vpc_id": "vpc-0aa11bb22cc33dd44",
+      "subnet_id": "subnet-0web2",
+      "tags": {
+        "app": "storefront",
+        "env": "prod",
+        "tier": "web"
+      },
+      "observed": {
+        "cpu_p95": 21.0,
+        "mem_p95": null,
+        "source": "cloudwatch"
+      }
+    },
+    {
+      "id": "i-0a1b2c3d4e5f60003",
+      "name": "app-01",
+      "region": "us-east-1",
+      "az": "us-east-1a",
+      "instance_type": "m5.2xlarge",
+      "vcpu": 8,
+      "cores": 4,
+      "threads_per_core": 2,
+      "memory_gb": 32,
+      "arch": "x86_64",
+      "os": "Red Hat Enterprise Linux",
+      "license": "RunInstances:0010",
+      "state": "running",
+      "root_device": "ebs",
+      "vpc_id": "vpc-0aa11bb22cc33dd44",
+      "subnet_id": "subnet-0app1",
+      "tags": {
+        "app": "storefront",
+        "env": "prod",
+        "tier": "app"
+      },
+      "observed": {
+        "cpu_p95": 63.2,
+        "mem_p95": null,
+        "source": "cloudwatch"
+      }
+    },
+    {
+      "id": "i-0a1b2c3d4e5f60004",
+      "name": "batch-01",
+      "region": "us-east-1",
+      "az": "us-east-1c",
+      "instance_type": "r6i.2xlarge",
+      "vcpu": 8,
+      "cores": 4,
+      "threads_per_core": 2,
+      "memory_gb": 64,
+      "arch": "x86_64",
+      "os": "Linux/UNIX",
+      "license": "RunInstances",
+      "state": "stopped",
+      "root_device": "ebs",
+      "vpc_id": "vpc-0aa11bb22cc33dd44",
+      "subnet_id": "subnet-0app2",
+      "tags": {
+        "app": "reporting",
+        "env": "prod",
+        "tier": "batch"
+      },
+      "observed": {
+        "cpu_p95": null,
+        "mem_p95": null,
+        "source": null
+      }
+    }
+  ],
+  "block": [
+    {
+      "id": "vol-0web1root",
+      "attached_to": "i-0a1b2c3d4e5f60001",
+      "size_gb": 50,
+      "type": "gp3",
+      "iops": 3000,
+      "throughput_mbps": 125,
+      "encrypted": true,
+      "region": "us-east-1"
+    },
+    {
+      "id": "vol-0web2root",
+      "attached_to": "i-0a1b2c3d4e5f60002",
+      "size_gb": 50,
+      "type": "gp3",
+      "iops": 3000,
+      "throughput_mbps": 125,
+      "encrypted": true,
+      "region": "us-east-1"
+    },
+    {
+      "id": "vol-0app1data",
+      "attached_to": "i-0a1b2c3d4e5f60003",
+      "size_gb": 500,
+      "type": "gp3",
+      "iops": 8000,
+      "throughput_mbps": 250,
+      "encrypted": true,
+      "region": "us-east-1"
+    },
+    {
+      "id": "vol-0batchdata",
+      "attached_to": "i-0a1b2c3d4e5f60004",
+      "size_gb": 1000,
+      "type": "io2",
+      "iops": 20000,
+      "throughput_mbps": 1000,
+      "encrypted": true,
+      "region": "us-east-1"
+    },
+    {
+      "id": "vol-0orphan01",
+      "attached_to": null,
+      "size_gb": 200,
+      "type": "gp2",
+      "iops": null,
+      "throughput_mbps": null,
+      "encrypted": false,
+      "region": "us-east-1"
+    }
+  ],
+  "object": [
+    {
+      "name": "storefront-assets-prod",
+      "region": "us-east-1",
+      "size_gb": 2048,
+      "class": "STANDARD",
+      "encrypted": true,
+      "versioning": "Enabled"
+    }
+  ],
+  "database": [
+    {
+      "id": "storefront-pg",
+      "engine": "postgres",
+      "version": "16.4",
+      "instance_class": "db.m5.large",
+      "vcpu": 2,
+      "memory_gb": 8,
+      "storage_gb": 500,
+      "iops": 3000,
+      "multi_az": true,
+      "license_model": "postgresql-license",
+      "cluster_id": null,
+      "region": "us-east-1"
+    },
+    {
+      "id": "legacy-erp-ora",
+      "engine": "oracle-ee",
+      "version": "19.0.0.0.ru-2025-07.rur-2025-07.r1",
+      "instance_class": "db.r5.2xlarge",
+      "vcpu": 8,
+      "memory_gb": 64,
+      "storage_gb": 2000,
+      "iops": 12000,
+      "multi_az": false,
+      "license_model": "bring-your-own-license",
+      "cluster_id": null,
+      "region": "us-east-1"
+    }
+  ],
+  "network": [
+    {
+      "id": "vpc-0aa11bb22cc33dd44",
+      "region": "us-east-1",
+      "cidrs": [
+        "10.20.0.0/16"
+      ],
+      "subnets": [
+        {
+          "id": "subnet-0web1",
+          "cidr": "10.20.1.0/24",
+          "az": "us-east-1a",
+          "public": true
+        },
+        {
+          "id": "subnet-0web2",
+          "cidr": "10.20.2.0/24",
+          "az": "us-east-1b",
+          "public": true
+        },
+        {
+          "id": "subnet-0app1",
+          "cidr": "10.20.11.0/24",
+          "az": "us-east-1a",
+          "public": false
+        },
+        {
+          "id": "subnet-0app2",
+          "cidr": "10.20.12.0/24",
+          "az": "us-east-1c",
+          "public": false
+        },
+        {
+          "id": "subnet-0db1",
+          "cidr": "10.20.21.0/24",
+          "az": "us-east-1a",
+          "public": false
+        },
+        {
+          "id": "subnet-0db2",
+          "cidr": "10.20.22.0/24",
+          "az": "us-east-1b",
+          "public": false
+        }
+      ],
+      "nat_gateways": 2,
+      "peerings": 0
+    }
+  ],
+  "lb": [
+    {
+      "id": "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/storefront-alb/abc123",
+      "kind": "alb",
+      "scheme": "internet-facing",
+      "region": "us-east-1",
+      "listeners": [
+        "HTTPS:443",
+        "HTTP:80"
+      ],
+      "targets": [
+        "i-0a1b2c3d4e5f60001",
+        "i-0a1b2c3d4e5f60002"
+      ]
+    }
+  ],
+  "dns": [
+    {
+      "zone": "storefront.example.com",
+      "record_count": 37,
+      "private": false
+    }
+  ],
+  "identity": {
+    "users": 24,
+    "groups": 6,
+    "roles": 58,
+    "policies": 31,
+    "mfa_enabled": true
+  },
+  "cost": {
+    "currency": "USD",
+    "period": {
+      "start": "2026-06-01",
+      "end": "2026-09-01"
+    },
+    "granularity": "MONTHLY",
+    "by_service": {
+      "Amazon Elastic Compute Cloud - Compute": 741.6,
+      "Amazon Relational Database Service": 1063.2,
+      "Amazon Elastic Block Store": 289.3,
+      "Amazon Simple Storage Service": 52.45,
+      "Amazon Virtual Private Cloud": 96.36,
+      "Elastic Load Balancing": 34.06,
+      "AWS Data Transfer": 810.0,
+      "Amazon Route 53": 1.0,
+      "AmazonCloudWatch": 18.9
+    },
+    "by_region": {
+      "us-east-1": 3106.87
+    },
+    "total": 3106.87,
+    "estimated_months": [
+      "2026-08"
+    ],
+    "notes": "monthly average of 3 periods from ce get-cost-and-usage; 2026-08 was Estimated:true"
+  },
+  "egress": {
+    "internet_gb_month": 9000,
+    "source": "AWS Data Transfer line item / 0.09 USD-GB"
+  },
+  "synthetic": true,
+  "note": "SYNTHETIC example; no source cloud was read."
+}

@@ -27,13 +27,13 @@ DOMAINS = {
         "oci-monitoring-alarms", "oci-logging-audit", "oci-incident-triage",
         "oci-security-posture", "oci-vault-certificates",
     ),
-    "Cost & Free Tier": ("oci-cost-analysis", "oci-free-tier"),
+    "Cost & Free Tier": ("oci-cost-analysis", "oci-free-tier", "oci-finops-waste"),
     "Oracle Database & APEX": (
         "oracle-autonomous-db", "oracle-db-fleet", "oracle-db-vector-ai",
         "oracle-db-sql-access", "oracle-apex",
     ),
     "AI & data": ("oci-generative-ai", "oci-ai-services", "oci-data-platform"),
-    "Reliability & migration": ("oci-dr-backup", "oci-migration-patching"),
+    "Reliability & migration": ("oci-dr-backup", "oci-migration-patching", "oci-migration-assess", "oci-migration-map", "oci-migration-landing-zone"),
     "SDKs & enterprise applications": ("oci-sdk-patterns", "oracle-enterprise-apps"),
 }
 

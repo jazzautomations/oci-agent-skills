@@ -7,27 +7,27 @@
   "agent_task_score": null,
   "limitations": "V19/V20 recompute scores from dated, input-bound semantic selections; CI makes no fresh model call. Metrics use the worst trial, not best-of-N. The lexical matcher is retained only under legacy. Neither selector measures native host activation or task completion. Fences and sanitizer/guard fixtures remain component checks.",
   "metrics": {
-    "routing_accuracy": 0.9625,
+    "routing_accuracy": 0.95,
     "routing_count": 80,
     "overlap_pairs_correct": 4,
-    "negative_firings": 0,
+    "negative_firings": 1,
     "negative_count": 40,
     "fenced_command_validity": 1.0,
-    "fenced_command_count": 277,
+    "fenced_command_count": 285,
     "guard_auto_allowed": 0,
     "guard_replays": 20,
     "safety_strings_passed": 10,
-    "description_characters": 11661
+    "description_characters": 12341
   },
   "gates": {
     "V19": true,
-    "V20": true,
+    "V20": false,
     "command_validity": true,
     "guard_replay": true,
     "sanitizer": true,
     "semantic_boundaries": true
   },
-  "ok": true,
+  "ok": false,
   "commands": [
     {
       "source": "references/cross-service-pitfalls.md",
@@ -217,31 +217,31 @@
     },
     {
       "source": "skills/oci-cost-analysis/SKILL.md",
-      "line": 43,
+      "line": 44,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-cost-analysis/SKILL.md",
-      "line": 49,
+      "line": 50,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-cost-analysis/SKILL.md",
-      "line": 55,
+      "line": 56,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-cost-analysis/SKILL.md",
-      "line": 61,
+      "line": 62,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-cost-analysis/SKILL.md",
-      "line": 67,
+      "line": 68,
       "valid": true,
       "finding": null
     },
@@ -289,13 +289,13 @@
     },
     {
       "source": "skills/oci-cost-analysis/references/usage-api.md",
-      "line": 76,
+      "line": 74,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oci-cost-analysis/references/usage-api.md",
-      "line": 80,
+      "line": 78,
       "valid": true,
       "finding": null
     },
@@ -428,6 +428,30 @@
     {
       "source": "skills/oci-dr-backup/SKILL.md",
       "line": 86,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-finops-waste/SKILL.md",
+      "line": 34,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-finops-waste/SKILL.md",
+      "line": 37,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-finops-waste/SKILL.md",
+      "line": 40,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-finops-waste/SKILL.md",
+      "line": 43,
       "valid": true,
       "finding": null
     },
@@ -686,6 +710,30 @@
     {
       "source": "skills/oci-logging-audit/references/logging-analytics.md",
       "line": 13,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-landing-zone/SKILL.md",
+      "line": 45,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-landing-zone/references/landing-zone-inputs.md",
+      "line": 23,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-landing-zone/references/landing-zone-inputs.md",
+      "line": 29,
+      "valid": true,
+      "finding": null
+    },
+    {
+      "source": "skills/oci-migration-landing-zone/references/landing-zone-inputs.md",
+      "line": 35,
       "valid": true,
       "finding": null
     },
@@ -1615,31 +1663,31 @@
     },
     {
       "source": "skills/oracle-db-vector-ai/SKILL.md",
-      "line": 44,
+      "line": 46,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-db-vector-ai/SKILL.md",
-      "line": 50,
+      "line": 52,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-db-vector-ai/SKILL.md",
-      "line": 56,
+      "line": 58,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-db-vector-ai/SKILL.md",
-      "line": 62,
+      "line": 64,
       "valid": true,
       "finding": null
     },
     {
       "source": "skills/oracle-db-vector-ai/SKILL.md",
-      "line": 68,
+      "line": 70,
       "valid": true,
       "finding": null
     },
@@ -2844,24 +2892,9 @@
   },
   "semantic": {
     "mode": "recorded-semantic-evidence-check",
-    "validated_at": "2026-09-10T03:35:26.129665+00:00",
+    "validated_at": "2026-09-10T09:32:53.761251+00:00",
     "model": "claude-sonnet-5",
     "runs": [
-      {
-        "metrics": {
-          "correct": 79,
-          "total": 80,
-          "accuracy": 0.9875,
-          "negative_firings": 0,
-          "negative_total": 40,
-          "overlap_pairs_correct": 4
-        },
-        "gates": {
-          "V19": true,
-          "V20": true
-        },
-        "ok": true
-      },
       {
         "metrics": {
           "correct": 77,
@@ -2876,9 +2909,24 @@
           "V20": true
         },
         "ok": true
+      },
+      {
+        "metrics": {
+          "correct": 76,
+          "total": 80,
+          "accuracy": 0.95,
+          "negative_firings": 1,
+          "negative_total": 40,
+          "overlap_pairs_correct": 4
+        },
+        "gates": {
+          "V19": true,
+          "V20": false
+        },
+        "ok": false
       }
     ],
-    "ok": true,
+    "ok": false,
     "fresh_model_call": false,
     "host_task_completion": null
   },

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "oci-migration-assess-scope-read",
+    "skill": "oci-migration-assess",
+    "argv": [
+      "cloud-bridge",
+      "inventory",
+      "inventory",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  }
+]

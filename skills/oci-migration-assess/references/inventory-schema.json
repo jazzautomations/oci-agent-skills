@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema",
+    "source_cloud",
+    "scope"
+  ],
+  "properties": {
+    "schema": {
+      "const": "oci-migration-inventory/v1"
+    },
+    "source_cloud": {
+      "enum": [
+        "aws",
+        "gcp",
+        "azure"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "regions_scanned",
+        "services_not_readable"
+      ],
+      "properties": {
+        "regions_scanned": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "services_not_readable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "compute": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "block": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "object": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "database": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "network": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "lb": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "k8s": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "serverless": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "dns": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

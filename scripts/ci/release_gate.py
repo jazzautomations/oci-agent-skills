@@ -63,12 +63,12 @@ def distribution():
         subprocess.run(command,cwd=ROOT,check=True,capture_output=True)
         links=subprocess.check_output(['find','.', '-type','l'],cwd=target,text=True)
         assert not links.strip()
-        assert len(list((target/'skills').glob('*/SKILL.md'))) == 33
+        assert len(list((target/'skills').glob('*/SKILL.md'))) == len(list((ROOT/'skills').glob('*/SKILL.md')))
         assert all((target/p).is_file() for p in ('hooks/hooks.json','.mcp.json','NOTICE','LICENSE'))
         assert not list(target.rglob('.handoff-*'))
         assert not list(target.rglob('CODEX-STATUS.md'))
         assert not (target/'research').exists()
-    return 'Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty.'
+    return 'Fresh copied tree: all source skills, shared refs, hooks, MCP config and notices; find . -type l empty.'
 
 
 def diff_evidence(output, root=ROOT):

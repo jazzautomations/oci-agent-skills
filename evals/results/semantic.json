@@ -2,591 +2,16 @@
   "version": 1,
   "complete": true,
   "mode": "isolated-description-classifier",
-  "validated_at": "2026-09-10T03:35:26.129665+00:00",
-  "inputs_sha256": "122bcc6e7d550d6cc4763e24deffde75188f91cb18cf37e93cf450195476028c",
+  "validated_at": "2026-09-10T09:32:53.761251+00:00",
+  "inputs_sha256": "68f46b2127b30cb5b59cd71c29c804d366ed5469c6e4b1e87d09346e728cfb78",
   "cli_version": "2.1.267 (Claude Code)",
   "runs": [
     {
       "seed": 17,
-      "input_sha256": "a1731e040bf522a07ca28c0be02f25b916a25e1aafa4e3d74d5ace2bc9a9fd17",
+      "input_sha256": "7ef89e19f861a58f9d019cc1c65266097046da113f152da44bb21bb95e22632a",
       "trace": {
         "model": "claude-sonnet-5",
-        "session_id": "cbe71628-6c4f-41a3-946a-b5b7b5e39189",
-        "tools": [],
-        "mcp_servers": [],
-        "result": {
-          "labels": [
-            {
-              "id": "item000",
-              "skill": "oci-generative-ai"
-            },
-            {
-              "id": "item001",
-              "skill": null
-            },
-            {
-              "id": "item002",
-              "skill": "oracle-apex"
-            },
-            {
-              "id": "item003",
-              "skill": "oci-data-platform"
-            },
-            {
-              "id": "item004",
-              "skill": "oracle-db-fleet"
-            },
-            {
-              "id": "item005",
-              "skill": "oci-cost-analysis"
-            },
-            {
-              "id": "item006",
-              "skill": "oci-vault-certificates"
-            },
-            {
-              "id": "item007",
-              "skill": "oci-generative-ai"
-            },
-            {
-              "id": "item008",
-              "skill": null
-            },
-            {
-              "id": "item009",
-              "skill": null
-            },
-            {
-              "id": "item010",
-              "skill": "oci-devops-pipelines"
-            },
-            {
-              "id": "item011",
-              "skill": "oci-oke"
-            },
-            {
-              "id": "item012",
-              "skill": null
-            },
-            {
-              "id": "item013",
-              "skill": null
-            },
-            {
-              "id": "item014",
-              "skill": "oci-generative-ai"
-            },
-            {
-              "id": "item015",
-              "skill": "oci-object-storage"
-            },
-            {
-              "id": "item016",
-              "skill": null
-            },
-            {
-              "id": "item017",
-              "skill": "oracle-db-sql-access"
-            },
-            {
-              "id": "item018",
-              "skill": "oci-data-platform"
-            },
-            {
-              "id": "item019",
-              "skill": null
-            },
-            {
-              "id": "item020",
-              "skill": "oci-support-limits"
-            },
-            {
-              "id": "item021",
-              "skill": "oci-tenancy-governance"
-            },
-            {
-              "id": "item022",
-              "skill": "oci-terraform"
-            },
-            {
-              "id": "item023",
-              "skill": null
-            },
-            {
-              "id": "item024",
-              "skill": null
-            },
-            {
-              "id": "item025",
-              "skill": "oci-oke"
-            },
-            {
-              "id": "item026",
-              "skill": null
-            },
-            {
-              "id": "item027",
-              "skill": "oci-terraform"
-            },
-            {
-              "id": "item028",
-              "skill": "oci-migration-patching"
-            },
-            {
-              "id": "item029",
-              "skill": null
-            },
-            {
-              "id": "item030",
-              "skill": "oci-generative-ai"
-            },
-            {
-              "id": "item031",
-              "skill": null
-            },
-            {
-              "id": "item032",
-              "skill": "oci-compute"
-            },
-            {
-              "id": "item033",
-              "skill": null
-            },
-            {
-              "id": "item034",
-              "skill": "oracle-db-vector-ai"
-            },
-            {
-              "id": "item035",
-              "skill": "oci-networking"
-            },
-            {
-              "id": "item036",
-              "skill": null
-            },
-            {
-              "id": "item037",
-              "skill": "oci-security-posture"
-            },
-            {
-              "id": "item038",
-              "skill": null
-            },
-            {
-              "id": "item039",
-              "skill": "oci-serverless"
-            },
-            {
-              "id": "item040",
-              "skill": "oci-compute"
-            },
-            {
-              "id": "item041",
-              "skill": "oci-logging-audit"
-            },
-            {
-              "id": "item042",
-              "skill": "oci-security-posture"
-            },
-            {
-              "id": "item043",
-              "skill": null
-            },
-            {
-              "id": "item044",
-              "skill": "oci-generative-ai"
-            },
-            {
-              "id": "item045",
-              "skill": null
-            },
-            {
-              "id": "item046",
-              "skill": null
-            },
-            {
-              "id": "item047",
-              "skill": "oci-tenancy-governance"
-            },
-            {
-              "id": "item048",
-              "skill": "oci-iam-policy"
-            },
-            {
-              "id": "item049",
-              "skill": "oci-bastion-access"
-            },
-            {
-              "id": "item050",
-              "skill": "oci-sdk-patterns"
-            },
-            {
-              "id": "item051",
-              "skill": null
-            },
-            {
-              "id": "item052",
-              "skill": null
-            },
-            {
-              "id": "item053",
-              "skill": null
-            },
-            {
-              "id": "item054",
-              "skill": null
-            },
-            {
-              "id": "item055",
-              "skill": "oci-block-file-storage"
-            },
-            {
-              "id": "item056",
-              "skill": null
-            },
-            {
-              "id": "item057",
-              "skill": "oci-terraform"
-            },
-            {
-              "id": "item058",
-              "skill": "oci-navigator"
-            },
-            {
-              "id": "item059",
-              "skill": "oci-devops-pipelines"
-            },
-            {
-              "id": "item060",
-              "skill": "oracle-db-fleet"
-            },
-            {
-              "id": "item061",
-              "skill": "oci-cli-auth"
-            },
-            {
-              "id": "item062",
-              "skill": null
-            },
-            {
-              "id": "item063",
-              "skill": "oci-dr-backup"
-            },
-            {
-              "id": "item064",
-              "skill": "oracle-enterprise-apps"
-            },
-            {
-              "id": "item065",
-              "skill": "oci-support-limits"
-            },
-            {
-              "id": "item066",
-              "skill": "oci-cost-analysis"
-            },
-            {
-              "id": "item067",
-              "skill": "oci-oke"
-            },
-            {
-              "id": "item068",
-              "skill": "oci-cost-analysis"
-            },
-            {
-              "id": "item069",
-              "skill": "oci-free-tier"
-            },
-            {
-              "id": "item070",
-              "skill": null
-            },
-            {
-              "id": "item071",
-              "skill": "oci-logging-audit"
-            },
-            {
-              "id": "item072",
-              "skill": "oci-block-file-storage"
-            },
-            {
-              "id": "item073",
-              "skill": "oracle-enterprise-apps"
-            },
-            {
-              "id": "item074",
-              "skill": "oci-migration-patching"
-            },
-            {
-              "id": "item075",
-              "skill": null
-            },
-            {
-              "id": "item076",
-              "skill": "oci-serverless"
-            },
-            {
-              "id": "item077",
-              "skill": "oci-incident-triage"
-            },
-            {
-              "id": "item078",
-              "skill": null
-            },
-            {
-              "id": "item079",
-              "skill": "oci-incident-triage"
-            },
-            {
-              "id": "item080",
-              "skill": "oci-iam-policy"
-            },
-            {
-              "id": "item081",
-              "skill": "oracle-autonomous-db"
-            },
-            {
-              "id": "item082",
-              "skill": "oci-block-file-storage"
-            },
-            {
-              "id": "item083",
-              "skill": "oci-monitoring-alarms"
-            },
-            {
-              "id": "item084",
-              "skill": "oci-terraform"
-            },
-            {
-              "id": "item085",
-              "skill": "oracle-enterprise-apps"
-            },
-            {
-              "id": "item086",
-              "skill": "oci-object-storage"
-            },
-            {
-              "id": "item087",
-              "skill": "oci-monitoring-alarms"
-            },
-            {
-              "id": "item088",
-              "skill": "oracle-db-vector-ai"
-            },
-            {
-              "id": "item089",
-              "skill": "oci-navigator"
-            },
-            {
-              "id": "item090",
-              "skill": "oci-devops-pipelines"
-            },
-            {
-              "id": "item091",
-              "skill": null
-            },
-            {
-              "id": "item092",
-              "skill": "oci-ai-services"
-            },
-            {
-              "id": "item093",
-              "skill": null
-            },
-            {
-              "id": "item094",
-              "skill": "oci-free-tier"
-            },
-            {
-              "id": "item095",
-              "skill": null
-            },
-            {
-              "id": "item096",
-              "skill": null
-            },
-            {
-              "id": "item097",
-              "skill": "oci-iam-policy"
-            },
-            {
-              "id": "item098",
-              "skill": "oci-security-posture"
-            },
-            {
-              "id": "item099",
-              "skill": "oracle-autonomous-db"
-            },
-            {
-              "id": "item100",
-              "skill": "oracle-apex"
-            },
-            {
-              "id": "item101",
-              "skill": "oci-cli-auth"
-            },
-            {
-              "id": "item102",
-              "skill": "oci-cost-analysis"
-            },
-            {
-              "id": "item103",
-              "skill": null
-            },
-            {
-              "id": "item104",
-              "skill": null
-            },
-            {
-              "id": "item105",
-              "skill": null
-            },
-            {
-              "id": "item106",
-              "skill": null
-            },
-            {
-              "id": "item107",
-              "skill": "oci-bastion-access"
-            },
-            {
-              "id": "item108",
-              "skill": "oracle-db-vector-ai"
-            },
-            {
-              "id": "item109",
-              "skill": null
-            },
-            {
-              "id": "item110",
-              "skill": "oci-ai-services"
-            },
-            {
-              "id": "item111",
-              "skill": null
-            },
-            {
-              "id": "item112",
-              "skill": "oci-sdk-patterns"
-            },
-            {
-              "id": "item113",
-              "skill": "oci-networking"
-            },
-            {
-              "id": "item114",
-              "skill": "oracle-db-sql-access"
-            },
-            {
-              "id": "item115",
-              "skill": "oci-vault-certificates"
-            },
-            {
-              "id": "item116",
-              "skill": "oci-compute"
-            },
-            {
-              "id": "item117",
-              "skill": null
-            },
-            {
-              "id": "item118",
-              "skill": null
-            },
-            {
-              "id": "item119",
-              "skill": null
-            }
-          ]
-        },
-        "duration_ms": 103077,
-        "total_cost_usd": 0.175587,
-        "usage": {
-          "input_tokens": 2,
-          "cache_creation_input_tokens": 11529,
-          "cache_read_input_tokens": 0,
-          "output_tokens": 12131,
-          "output_tokens_details": {
-            "thinking_tokens": 9841
-          },
-          "server_tool_use": {
-            "web_search_requests": 0,
-            "web_fetch_requests": 0
-          },
-          "service_tier": "standard",
-          "cache_creation": {
-            "ephemeral_1h_input_tokens": 11529,
-            "ephemeral_5m_input_tokens": 0
-          },
-          "inference_geo": "not_available",
-          "iterations": [
-            {
-              "input_tokens": 2,
-              "output_tokens": 12131,
-              "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11529,
-              "cache_creation": {
-                "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11529
-              },
-              "type": "message"
-            }
-          ],
-          "speed": "standard"
-        },
-        "model_usage": {
-          "claude-haiku-4-5-20251001": {
-            "inputTokens": 8087,
-            "outputTokens": 14,
-            "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 0,
-            "webSearchRequests": 0,
-            "costUSD": 0.008157000000000001,
-            "contextWindow": 200000,
-            "maxOutputTokens": 32000,
-            "thinkingTokens": 0,
-            "canonicalModel": "claude-haiku-4-5",
-            "provider": "firstParty",
-            "costBasis": "list"
-          },
-          "claude-sonnet-5": {
-            "inputTokens": 2,
-            "outputTokens": 12131,
-            "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11529,
-            "webSearchRequests": 0,
-            "costUSD": 0.16743,
-            "contextWindow": 1000000,
-            "maxOutputTokens": 64000,
-            "thinkingTokens": 9841,
-            "canonicalModel": "claude-sonnet-5",
-            "provider": "firstParty",
-            "costBasis": "list"
-          }
-        },
-        "num_turns": 1
-      },
-      "score": {
-        "metrics": {
-          "correct": 79,
-          "total": 80,
-          "accuracy": 0.9875,
-          "negative_firings": 0,
-          "negative_total": 40,
-          "overlap_pairs_correct": 4
-        },
-        "gates": {
-          "V19": true,
-          "V20": true
-        },
-        "ok": true
-      }
-    },
-    {
-      "seed": 29,
-      "input_sha256": "0450821e3eb133d2c4df57c08299d9ebe9e9de7ab957ea95639d7b2393d38311",
-      "trace": {
-        "model": "claude-sonnet-5",
-        "session_id": "76b3728e-ceec-434e-b622-71f95667ca30",
+        "session_id": "49599fe8-be5c-4b64-82e8-95d28b1b2933",
         "tools": [],
         "mcp_servers": [],
         "result": {
@@ -597,19 +22,19 @@
             },
             {
               "id": "item001",
-              "skill": "oci-monitoring-alarms"
+              "skill": "oci-sdk-patterns"
             },
             {
               "id": "item002",
-              "skill": "oci-object-storage"
-            },
-            {
-              "id": "item003",
               "skill": "oci-terraform"
             },
             {
+              "id": "item003",
+              "skill": null
+            },
+            {
               "id": "item004",
-              "skill": "oci-oke"
+              "skill": null
             },
             {
               "id": "item005",
@@ -617,7 +42,7 @@
             },
             {
               "id": "item006",
-              "skill": "oci-cost-analysis"
+              "skill": "oci-vault-certificates"
             },
             {
               "id": "item007",
@@ -629,15 +54,15 @@
             },
             {
               "id": "item009",
-              "skill": "oracle-db-vector-ai"
+              "skill": "oci-cost-analysis"
             },
             {
               "id": "item010",
-              "skill": "oci-security-posture"
+              "skill": "oci-generative-ai"
             },
             {
               "id": "item011",
-              "skill": "oracle-db-fleet"
+              "skill": "oracle-enterprise-apps"
             },
             {
               "id": "item012",
@@ -645,31 +70,31 @@
             },
             {
               "id": "item013",
-              "skill": "oci-sdk-patterns"
+              "skill": "oci-oke"
             },
             {
               "id": "item014",
-              "skill": "oci-generative-ai"
+              "skill": "oci-oke"
             },
             {
               "id": "item015",
-              "skill": null
-            },
-            {
-              "id": "item016",
               "skill": "oci-compute"
             },
             {
+              "id": "item016",
+              "skill": null
+            },
+            {
               "id": "item017",
-              "skill": "oci-incident-triage"
+              "skill": "oci-devops-pipelines"
             },
             {
               "id": "item018",
-              "skill": "oci-serverless"
+              "skill": "oci-object-storage"
             },
             {
               "id": "item019",
-              "skill": "oci-data-platform"
+              "skill": "oci-generative-ai"
             },
             {
               "id": "item020",
@@ -677,35 +102,35 @@
             },
             {
               "id": "item021",
-              "skill": "oci-generative-ai"
+              "skill": null
             },
             {
               "id": "item022",
-              "skill": "oci-migration-patching"
+              "skill": "oci-data-platform"
             },
             {
               "id": "item023",
-              "skill": null
+              "skill": "oracle-db-vector-ai"
             },
             {
               "id": "item024",
-              "skill": "oci-generative-ai"
+              "skill": "oci-tenancy-governance"
             },
             {
               "id": "item025",
-              "skill": null
+              "skill": "oracle-db-fleet"
             },
             {
               "id": "item026",
-              "skill": "oci-block-file-storage"
+              "skill": "oci-data-platform"
             },
             {
               "id": "item027",
-              "skill": "oracle-enterprise-apps"
+              "skill": "oci-generative-ai"
             },
             {
               "id": "item028",
-              "skill": "oci-iam-policy"
+              "skill": null
             },
             {
               "id": "item029",
@@ -717,35 +142,35 @@
             },
             {
               "id": "item031",
-              "skill": "oci-support-limits"
+              "skill": "oracle-apex"
             },
             {
               "id": "item032",
-              "skill": null
+              "skill": "oci-generative-ai"
             },
             {
               "id": "item033",
-              "skill": "oracle-autonomous-db"
+              "skill": "oci-support-limits"
             },
             {
               "id": "item034",
-              "skill": "oci-serverless"
+              "skill": null
             },
             {
               "id": "item035",
-              "skill": "oci-migration-patching"
+              "skill": "oci-compute"
             },
             {
               "id": "item036",
-              "skill": "oci-networking"
+              "skill": "oracle-db-sql-access"
             },
             {
               "id": "item037",
-              "skill": "oci-data-platform"
+              "skill": null
             },
             {
               "id": "item038",
-              "skill": null
+              "skill": "oci-networking"
             },
             {
               "id": "item039",
@@ -753,15 +178,15 @@
             },
             {
               "id": "item040",
-              "skill": "oci-free-tier"
+              "skill": "oci-security-posture"
             },
             {
               "id": "item041",
-              "skill": "oci-monitoring-alarms"
+              "skill": "oracle-db-fleet"
             },
             {
               "id": "item042",
-              "skill": "oci-block-file-storage"
+              "skill": "oci-serverless"
             },
             {
               "id": "item043",
@@ -773,75 +198,75 @@
             },
             {
               "id": "item045",
-              "skill": "oci-tenancy-governance"
-            },
-            {
-              "id": "item046",
-              "skill": "oci-object-storage"
-            },
-            {
-              "id": "item047",
-              "skill": "oci-devops-pipelines"
-            },
-            {
-              "id": "item048",
-              "skill": null
-            },
-            {
-              "id": "item049",
-              "skill": "oci-free-tier"
-            },
-            {
-              "id": "item050",
-              "skill": "oci-networking"
-            },
-            {
-              "id": "item051",
-              "skill": "oci-compute"
-            },
-            {
-              "id": "item052",
-              "skill": "oci-ai-services"
-            },
-            {
-              "id": "item053",
-              "skill": "oracle-db-fleet"
-            },
-            {
-              "id": "item054",
               "skill": "oci-logging-audit"
             },
             {
+              "id": "item046",
+              "skill": "oci-security-posture"
+            },
+            {
+              "id": "item047",
+              "skill": null
+            },
+            {
+              "id": "item048",
+              "skill": "oci-dr-backup"
+            },
+            {
+              "id": "item049",
+              "skill": null
+            },
+            {
+              "id": "item050",
+              "skill": null
+            },
+            {
+              "id": "item051",
+              "skill": null
+            },
+            {
+              "id": "item052",
+              "skill": "oci-tenancy-governance"
+            },
+            {
+              "id": "item053",
+              "skill": null
+            },
+            {
+              "id": "item054",
+              "skill": "oci-bastion-access"
+            },
+            {
               "id": "item055",
-              "skill": "oci-devops-pipelines"
+              "skill": "oci-migration-patching"
             },
             {
               "id": "item056",
-              "skill": "oci-cli-auth"
+              "skill": null
             },
             {
               "id": "item057",
-              "skill": "oci-generative-ai"
+              "skill": "oci-cli-auth"
             },
             {
               "id": "item058",
-              "skill": null
+              "skill": "oci-iam-policy"
             },
             {
               "id": "item059",
-              "skill": "oci-cost-analysis"
-            },
-            {
-              "id": "item060",
               "skill": null
             },
             {
+              "id": "item060",
+              "skill": "oci-block-file-storage"
+            },
+            {
               "id": "item061",
-              "skill": "oracle-enterprise-apps"
+              "skill": null
             },
             {
               "id": "item062",
-              "skill": "oci-iam-policy"
+              "skill": "oci-terraform"
             },
             {
               "id": "item063",
@@ -849,19 +274,19 @@
             },
             {
               "id": "item064",
-              "skill": "oci-tenancy-governance"
-            },
-            {
-              "id": "item065",
-              "skill": "oci-iam-policy"
-            },
-            {
-              "id": "item066",
               "skill": null
             },
             {
+              "id": "item065",
+              "skill": null
+            },
+            {
+              "id": "item066",
+              "skill": "oci-navigator"
+            },
+            {
               "id": "item067",
-              "skill": "oci-security-posture"
+              "skill": null
             },
             {
               "id": "item068",
@@ -869,43 +294,43 @@
             },
             {
               "id": "item069",
-              "skill": "oracle-apex"
+              "skill": "oci-support-limits"
             },
             {
               "id": "item070",
-              "skill": null
+              "skill": "oci-cost-analysis"
             },
             {
               "id": "item071",
-              "skill": null
+              "skill": "oci-oke"
             },
             {
               "id": "item072",
-              "skill": null
+              "skill": "oci-cost-analysis"
             },
             {
               "id": "item073",
-              "skill": "oracle-db-vector-ai"
+              "skill": "oci-free-tier"
             },
             {
               "id": "item074",
-              "skill": "oci-cli-auth"
+              "skill": "oci-vault-certificates"
             },
             {
               "id": "item075",
-              "skill": "oci-navigator"
+              "skill": "oci-logging-audit"
             },
             {
               "id": "item076",
-              "skill": null
+              "skill": "oci-block-file-storage"
             },
             {
               "id": "item077",
-              "skill": "oci-terraform"
+              "skill": null
             },
             {
               "id": "item078",
-              "skill": "oci-cost-analysis"
+              "skill": "oci-migration-patching"
             },
             {
               "id": "item079",
@@ -913,87 +338,87 @@
             },
             {
               "id": "item080",
-              "skill": null
-            },
-            {
-              "id": "item081",
-              "skill": "oci-security-posture"
-            },
-            {
-              "id": "item082",
               "skill": "oci-generative-ai"
             },
             {
+              "id": "item081",
+              "skill": "oci-serverless"
+            },
+            {
+              "id": "item082",
+              "skill": "oci-incident-triage"
+            },
+            {
               "id": "item083",
-              "skill": "oracle-apex"
-            },
-            {
-              "id": "item084",
-              "skill": null
-            },
-            {
-              "id": "item085",
-              "skill": null
-            },
-            {
-              "id": "item086",
-              "skill": "oracle-db-sql-access"
-            },
-            {
-              "id": "item087",
-              "skill": "oci-oke"
-            },
-            {
-              "id": "item088",
-              "skill": null
-            },
-            {
-              "id": "item089",
-              "skill": "oracle-enterprise-apps"
-            },
-            {
-              "id": "item090",
               "skill": "oci-compute"
             },
             {
-              "id": "item091",
-              "skill": "oci-free-tier"
+              "id": "item084",
+              "skill": "oci-incident-triage"
             },
             {
-              "id": "item092",
-              "skill": null
+              "id": "item085",
+              "skill": "oci-iam-policy"
             },
             {
-              "id": "item093",
-              "skill": "oci-bastion-access"
-            },
-            {
-              "id": "item094",
-              "skill": "oci-logging-audit"
-            },
-            {
-              "id": "item095",
-              "skill": "oci-block-file-storage"
-            },
-            {
-              "id": "item096",
+              "id": "item086",
               "skill": "oracle-autonomous-db"
             },
             {
-              "id": "item097",
-              "skill": null
+              "id": "item087",
+              "skill": "oci-block-file-storage"
             },
             {
-              "id": "item098",
-              "skill": "oci-support-limits"
+              "id": "item088",
+              "skill": "oci-monitoring-alarms"
             },
             {
-              "id": "item099",
+              "id": "item089",
+              "skill": "oci-terraform"
+            },
+            {
+              "id": "item090",
               "skill": "oracle-enterprise-apps"
             },
             {
-              "id": "item100",
+              "id": "item091",
+              "skill": "oci-object-storage"
+            },
+            {
+              "id": "item092",
+              "skill": "oci-monitoring-alarms"
+            },
+            {
+              "id": "item093",
               "skill": "oracle-db-vector-ai"
+            },
+            {
+              "id": "item094",
+              "skill": "oracle-enterprise-apps"
+            },
+            {
+              "id": "item095",
+              "skill": "oci-devops-pipelines"
+            },
+            {
+              "id": "item096",
+              "skill": null
+            },
+            {
+              "id": "item097",
+              "skill": "oci-ai-services"
+            },
+            {
+              "id": "item098",
+              "skill": null
+            },
+            {
+              "id": "item099",
+              "skill": "oci-free-tier"
+            },
+            {
+              "id": "item100",
+              "skill": null
             },
             {
               "id": "item101",
@@ -1001,27 +426,27 @@
             },
             {
               "id": "item102",
-              "skill": null
+              "skill": "oci-iam-policy"
             },
             {
               "id": "item103",
-              "skill": null
+              "skill": "oci-security-posture"
             },
             {
               "id": "item104",
-              "skill": "oci-oke"
+              "skill": "oracle-autonomous-db"
             },
             {
               "id": "item105",
-              "skill": null
+              "skill": "oracle-apex"
             },
             {
               "id": "item106",
-              "skill": null
+              "skill": "oci-cli-auth"
             },
             {
               "id": "item107",
-              "skill": "oci-vault-certificates"
+              "skill": "oci-cost-analysis"
             },
             {
               "id": "item108",
@@ -1029,15 +454,15 @@
             },
             {
               "id": "item109",
-              "skill": "oci-bastion-access"
+              "skill": null
             },
             {
               "id": "item110",
-              "skill": "oci-dr-backup"
+              "skill": "oracle-db-sql-access"
             },
             {
               "id": "item111",
-              "skill": "oci-ai-services"
+              "skill": null
             },
             {
               "id": "item112",
@@ -1045,43 +470,43 @@
             },
             {
               "id": "item113",
-              "skill": "oracle-db-sql-access"
+              "skill": "oci-bastion-access"
             },
             {
               "id": "item114",
-              "skill": null
+              "skill": "oracle-db-vector-ai"
             },
             {
               "id": "item115",
-              "skill": "oci-terraform"
-            },
-            {
-              "id": "item116",
               "skill": null
             },
             {
+              "id": "item116",
+              "skill": "oci-ai-services"
+            },
+            {
               "id": "item117",
-              "skill": "oci-sdk-patterns"
+              "skill": null
             },
             {
               "id": "item118",
-              "skill": "oci-incident-triage"
+              "skill": "oci-sdk-patterns"
             },
             {
               "id": "item119",
-              "skill": "oci-vault-certificates"
+              "skill": "oci-networking"
             }
           ]
         },
-        "duration_ms": 95025,
-        "total_cost_usd": 0.163027,
+        "duration_ms": 65801,
+        "total_cost_usd": 0.14203,
         "usage": {
           "input_tokens": 2,
-          "cache_creation_input_tokens": 11529,
+          "cache_creation_input_tokens": 11871,
           "cache_read_input_tokens": 0,
-          "output_tokens": 10874,
+          "output_tokens": 8617,
           "output_tokens_details": {
-            "thinking_tokens": 8581
+            "thinking_tokens": 6334
           },
           "server_tool_use": {
             "web_search_requests": 0,
@@ -1089,19 +514,19 @@
           },
           "service_tier": "standard",
           "cache_creation": {
-            "ephemeral_1h_input_tokens": 11529,
+            "ephemeral_1h_input_tokens": 11871,
             "ephemeral_5m_input_tokens": 0
           },
           "inference_geo": "not_available",
           "iterations": [
             {
               "input_tokens": 2,
-              "output_tokens": 10874,
+              "output_tokens": 8617,
               "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11529,
+              "cache_creation_input_tokens": 11871,
               "cache_creation": {
                 "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11529
+                "ephemeral_1h_input_tokens": 11871
               },
               "type": "message"
             }
@@ -1110,12 +535,12 @@
         },
         "model_usage": {
           "claude-haiku-4-5-20251001": {
-            "inputTokens": 8087,
-            "outputTokens": 16,
+            "inputTokens": 8312,
+            "outputTokens": 12,
             "cacheReadInputTokens": 0,
             "cacheCreationInputTokens": 0,
             "webSearchRequests": 0,
-            "costUSD": 0.008167,
+            "costUSD": 0.008372,
             "contextWindow": 200000,
             "maxOutputTokens": 32000,
             "thinkingTokens": 0,
@@ -1125,14 +550,14 @@
           },
           "claude-sonnet-5": {
             "inputTokens": 2,
-            "outputTokens": 10874,
+            "outputTokens": 8617,
             "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11529,
+            "cacheCreationInputTokens": 11871,
             "webSearchRequests": 0,
-            "costUSD": 0.15486,
+            "costUSD": 0.133658,
             "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "thinkingTokens": 8581,
+            "thinkingTokens": 6334,
             "canonicalModel": "claude-sonnet-5",
             "provider": "firstParty",
             "costBasis": "list"
@@ -1155,8 +580,583 @@
         },
         "ok": true
       }
+    },
+    {
+      "seed": 29,
+      "input_sha256": "e450a44546eaedb672e458d6d69f7ac7c7fe6ecc8fc46ab3713350b5c8137654",
+      "trace": {
+        "model": "claude-sonnet-5",
+        "session_id": "242de9dd-6bdf-460a-bf51-cab2197ec23a",
+        "tools": [],
+        "mcp_servers": [],
+        "result": {
+          "labels": [
+            {
+              "id": "item000",
+              "skill": "oci-devops-pipelines"
+            },
+            {
+              "id": "item001",
+              "skill": "oracle-db-vector-ai"
+            },
+            {
+              "id": "item002",
+              "skill": null
+            },
+            {
+              "id": "item003",
+              "skill": "oci-terraform"
+            },
+            {
+              "id": "item004",
+              "skill": "oci-cost-analysis"
+            },
+            {
+              "id": "item005",
+              "skill": null
+            },
+            {
+              "id": "item006",
+              "skill": null
+            },
+            {
+              "id": "item007",
+              "skill": null
+            },
+            {
+              "id": "item008",
+              "skill": null
+            },
+            {
+              "id": "item009",
+              "skill": "oci-generative-ai"
+            },
+            {
+              "id": "item010",
+              "skill": "oracle-db-fleet"
+            },
+            {
+              "id": "item011",
+              "skill": "oci-data-platform"
+            },
+            {
+              "id": "item012",
+              "skill": null
+            },
+            {
+              "id": "item013",
+              "skill": "oci-monitoring-alarms"
+            },
+            {
+              "id": "item014",
+              "skill": "oci-migration-patching"
+            },
+            {
+              "id": "item015",
+              "skill": "oci-security-posture"
+            },
+            {
+              "id": "item016",
+              "skill": "oci-block-file-storage"
+            },
+            {
+              "id": "item017",
+              "skill": "oci-generative-ai"
+            },
+            {
+              "id": "item018",
+              "skill": "oci-terraform"
+            },
+            {
+              "id": "item019",
+              "skill": null
+            },
+            {
+              "id": "item020",
+              "skill": "oci-iam-policy"
+            },
+            {
+              "id": "item021",
+              "skill": null
+            },
+            {
+              "id": "item022",
+              "skill": null
+            },
+            {
+              "id": "item023",
+              "skill": "oci-cost-analysis"
+            },
+            {
+              "id": "item024",
+              "skill": null
+            },
+            {
+              "id": "item025",
+              "skill": "oci-free-tier"
+            },
+            {
+              "id": "item026",
+              "skill": null
+            },
+            {
+              "id": "item027",
+              "skill": "oci-devops-pipelines"
+            },
+            {
+              "id": "item028",
+              "skill": "oci-serverless"
+            },
+            {
+              "id": "item029",
+              "skill": "oci-cli-auth"
+            },
+            {
+              "id": "item030",
+              "skill": "oracle-enterprise-apps"
+            },
+            {
+              "id": "item031",
+              "skill": "oci-generative-ai"
+            },
+            {
+              "id": "item032",
+              "skill": null
+            },
+            {
+              "id": "item033",
+              "skill": "oci-oke"
+            },
+            {
+              "id": "item034",
+              "skill": "oci-sdk-patterns"
+            },
+            {
+              "id": "item035",
+              "skill": "oci-incident-triage"
+            },
+            {
+              "id": "item036",
+              "skill": "oci-support-limits"
+            },
+            {
+              "id": "item037",
+              "skill": null
+            },
+            {
+              "id": "item038",
+              "skill": null
+            },
+            {
+              "id": "item039",
+              "skill": "oci-serverless"
+            },
+            {
+              "id": "item040",
+              "skill": "oci-ai-services"
+            },
+            {
+              "id": "item041",
+              "skill": "oci-networking"
+            },
+            {
+              "id": "item042",
+              "skill": "oci-data-platform"
+            },
+            {
+              "id": "item043",
+              "skill": null
+            },
+            {
+              "id": "item044",
+              "skill": null
+            },
+            {
+              "id": "item045",
+              "skill": null
+            },
+            {
+              "id": "item046",
+              "skill": "oci-monitoring-alarms"
+            },
+            {
+              "id": "item047",
+              "skill": "oci-block-file-storage"
+            },
+            {
+              "id": "item048",
+              "skill": "oci-navigator"
+            },
+            {
+              "id": "item049",
+              "skill": "oracle-autonomous-db"
+            },
+            {
+              "id": "item050",
+              "skill": "oci-migration-patching"
+            },
+            {
+              "id": "item051",
+              "skill": "oci-tenancy-governance"
+            },
+            {
+              "id": "item052",
+              "skill": "oci-object-storage"
+            },
+            {
+              "id": "item053",
+              "skill": "oci-devops-pipelines"
+            },
+            {
+              "id": "item054",
+              "skill": "oci-terraform"
+            },
+            {
+              "id": "item055",
+              "skill": "oci-free-tier"
+            },
+            {
+              "id": "item056",
+              "skill": "oci-networking"
+            },
+            {
+              "id": "item057",
+              "skill": "oci-compute"
+            },
+            {
+              "id": "item058",
+              "skill": "oci-sdk-patterns"
+            },
+            {
+              "id": "item059",
+              "skill": "oracle-db-fleet"
+            },
+            {
+              "id": "item060",
+              "skill": "oci-logging-audit"
+            },
+            {
+              "id": "item061",
+              "skill": "oci-generative-ai"
+            },
+            {
+              "id": "item062",
+              "skill": null
+            },
+            {
+              "id": "item063",
+              "skill": "oci-iam-policy"
+            },
+            {
+              "id": "item064",
+              "skill": "oracle-enterprise-apps"
+            },
+            {
+              "id": "item065",
+              "skill": "oci-object-storage"
+            },
+            {
+              "id": "item066",
+              "skill": null
+            },
+            {
+              "id": "item067",
+              "skill": "oci-tenancy-governance"
+            },
+            {
+              "id": "item068",
+              "skill": "oci-iam-policy"
+            },
+            {
+              "id": "item069",
+              "skill": "oci-compute"
+            },
+            {
+              "id": "item070",
+              "skill": "oci-security-posture"
+            },
+            {
+              "id": "item071",
+              "skill": null
+            },
+            {
+              "id": "item072",
+              "skill": "oracle-apex"
+            },
+            {
+              "id": "item073",
+              "skill": null
+            },
+            {
+              "id": "item074",
+              "skill": null
+            },
+            {
+              "id": "item075",
+              "skill": null
+            },
+            {
+              "id": "item076",
+              "skill": "oracle-db-vector-ai"
+            },
+            {
+              "id": "item077",
+              "skill": "oci-cli-auth"
+            },
+            {
+              "id": "item078",
+              "skill": "oci-navigator"
+            },
+            {
+              "id": "item079",
+              "skill": "oci-incident-triage"
+            },
+            {
+              "id": "item080",
+              "skill": "oci-terraform"
+            },
+            {
+              "id": "item081",
+              "skill": null
+            },
+            {
+              "id": "item082",
+              "skill": "oci-cost-analysis"
+            },
+            {
+              "id": "item083",
+              "skill": null
+            },
+            {
+              "id": "item084",
+              "skill": null
+            },
+            {
+              "id": "item085",
+              "skill": "oci-security-posture"
+            },
+            {
+              "id": "item086",
+              "skill": "oci-iam-policy"
+            },
+            {
+              "id": "item087",
+              "skill": "oracle-apex"
+            },
+            {
+              "id": "item088",
+              "skill": null
+            },
+            {
+              "id": "item089",
+              "skill": null
+            },
+            {
+              "id": "item090",
+              "skill": "oracle-db-sql-access"
+            },
+            {
+              "id": "item091",
+              "skill": "oci-oke"
+            },
+            {
+              "id": "item092",
+              "skill": null
+            },
+            {
+              "id": "item093",
+              "skill": "oracle-enterprise-apps"
+            },
+            {
+              "id": "item094",
+              "skill": "oci-compute"
+            },
+            {
+              "id": "item095",
+              "skill": "oci-cost-analysis"
+            },
+            {
+              "id": "item096",
+              "skill": null
+            },
+            {
+              "id": "item097",
+              "skill": "oci-bastion-access"
+            },
+            {
+              "id": "item098",
+              "skill": "oci-logging-audit"
+            },
+            {
+              "id": "item099",
+              "skill": "oci-block-file-storage"
+            },
+            {
+              "id": "item100",
+              "skill": "oracle-autonomous-db"
+            },
+            {
+              "id": "item101",
+              "skill": null
+            },
+            {
+              "id": "item102",
+              "skill": "oci-free-tier"
+            },
+            {
+              "id": "item103",
+              "skill": null
+            },
+            {
+              "id": "item104",
+              "skill": "oracle-enterprise-apps"
+            },
+            {
+              "id": "item105",
+              "skill": "oracle-db-vector-ai"
+            },
+            {
+              "id": "item106",
+              "skill": null
+            },
+            {
+              "id": "item107",
+              "skill": null
+            },
+            {
+              "id": "item108",
+              "skill": null
+            },
+            {
+              "id": "item109",
+              "skill": "oci-oke"
+            },
+            {
+              "id": "item110",
+              "skill": "oci-vault-certificates"
+            },
+            {
+              "id": "item111",
+              "skill": null
+            },
+            {
+              "id": "item112",
+              "skill": "oci-vault-certificates"
+            },
+            {
+              "id": "item113",
+              "skill": null
+            },
+            {
+              "id": "item114",
+              "skill": "oci-bastion-access"
+            },
+            {
+              "id": "item115",
+              "skill": "oci-dr-backup"
+            },
+            {
+              "id": "item116",
+              "skill": "oci-ai-services"
+            },
+            {
+              "id": "item117",
+              "skill": null
+            },
+            {
+              "id": "item118",
+              "skill": "oracle-db-sql-access"
+            },
+            {
+              "id": "item119",
+              "skill": null
+            }
+          ]
+        },
+        "duration_ms": 80416,
+        "total_cost_usd": 0.15117599999999998,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 11870,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 9529,
+          "output_tokens_details": {
+            "thinking_tokens": 7228
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 11870,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 9529,
+              "cache_read_input_tokens": 0,
+              "cache_creation_input_tokens": 11870,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 11870
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "model_usage": {
+          "claude-haiku-4-5-20251001": {
+            "inputTokens": 8312,
+            "outputTokens": 18,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0,
+            "webSearchRequests": 0,
+            "costUSD": 0.008402,
+            "contextWindow": 200000,
+            "maxOutputTokens": 32000,
+            "thinkingTokens": 0,
+            "canonicalModel": "claude-haiku-4-5",
+            "provider": "firstParty",
+            "costBasis": "list"
+          },
+          "claude-sonnet-5": {
+            "inputTokens": 2,
+            "outputTokens": 9529,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 11870,
+            "webSearchRequests": 0,
+            "costUSD": 0.14277399999999998,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 64000,
+            "thinkingTokens": 7228,
+            "canonicalModel": "claude-sonnet-5",
+            "provider": "firstParty",
+            "costBasis": "list"
+          }
+        },
+        "num_turns": 1
+      },
+      "score": {
+        "metrics": {
+          "correct": 76,
+          "total": 80,
+          "accuracy": 0.95,
+          "negative_firings": 1,
+          "negative_total": 40,
+          "overlap_pairs_correct": 4
+        },
+        "gates": {
+          "V19": true,
+          "V20": false
+        },
+        "ok": false
+      }
     }
   ],
   "limitations": "Dated model description selection, not host skill activation or task completion. Original benchmark is already known to maintainers; not a new unseen holdout. CLI-reported provenance is not provider attestation. No OCI operations or model tools.",
-  "ok": true
+  "ok": false
 }

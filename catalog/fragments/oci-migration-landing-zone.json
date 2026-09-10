@@ -1,0 +1,15 @@
+[
+  {
+    "id": "oci-migration-landing-zone-scope-read",
+    "skill": "oci-migration-landing-zone",
+    "argv": [
+      "resource-manager",
+      "stack",
+      "list",
+      "--compartment-id",
+      "${COMPARTMENT_ID}",
+      "--limit",
+      "20"
+    ]
+  }
+]
