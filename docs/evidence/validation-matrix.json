@@ -125,16 +125,16 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "378 passed, 1 warning. Full regression suite; see CI for the current commit.",
+      "detail": "450 tests passed in the full post-merge suite; temporary runtime dependencies used UV_LINK_MODE=symlink under disk pressure. Distributed payload remains a copy without symlinks.",
       "owner": null
     },
     {
       "id": "V15",
       "command": "uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Command passed. Fresh copied tree: 33 skills, shared refs, hooks, MCP config and notices; find . -type l empty.",
+      "detail": "Copy installation inspected: 37 skills, shared references, no authoring-only files or symlinks before runtime setup.",
       "owner": null
     },
     {
@@ -170,17 +170,17 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Recorded semantic selection: 79/80 and 77/80 (worst 96.25%, required ≥90%); overlap pairs 4/4 in each trial. Current input hashes verified. CI rechecks dated predictions; no fresh model call or native host task claim.",
+      "detail": "Recorded 37-skill semantic selection: 77/80 and 76/80, 4/4 overlap pairs in both trials. Current fingerprints verified; isolated description selection only.",
       "owner": null
     },
     {
       "id": "V20",
       "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
-      "result": "PASS",
+      "result": "FAIL",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Zero negative firings in each of two recorded semantic trials (40 negatives each); current evidence verified. Additional synthetic boundaries: 12/12.",
-      "owner": null
+      "detail": "Seed 29 has 1/40 negative firings on excluded historical OCI-C; seed 17 has zero. Additional boundaries pass 12/12. Both trials retained without relabeling.",
+      "owner": "evaluation/routing maintainers"
     },
     {
       "id": "V21",
@@ -213,16 +213,16 @@
       "id": "V24",
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
-      "date": "2026-09-09",
-      "detail": "Local pinned required-flag renderer exercised; Tuesday schedule/hosted issue creation not executed locally. Subcheck V24-local: PASS.",
+      "date": "2026-09-10",
+      "detail": "Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json.",
       "owner": "repository CI maintainers"
     },
     {
       "id": "V25",
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
-      "date": "2026-09-09",
-      "detail": "Script sweep: 4 blocked_missing_prerequisite, 2 failed, 4 inert_not_executed, 27 passed, 2 ran, gap. Identity, governance, policy-input and profile-user defects corrected. Scoped triage still receives Cloud Guard 404 and Support 403; see docs/evidence/helper-diagnostics.json. Missing prerequisites and no-data coverage remain explicit.",
+      "date": "2026-09-10",
+      "detail": "Script sweep: multipart namespace/bucket discovery repaired; 28 passed entrypoints, three missing resource prerequisites, two triage failures and two no-data metric checks. See docs/evidence/validation-scripts.json and release-readiness.md. Scope remains selected tenancy root and region.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -237,8 +237,8 @@
       "id": "V27",
       "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
       "result": "UNAVAILABLE",
-      "date": "2026-09-09",
-      "detail": "`plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score.",
+      "date": "2026-09-10",
+      "detail": "Early-access restriction reproduced on 2026-09-10 for T01 with no tool grants, absent OCI config, mocks and no publication. No qualifying host task score.",
       "owner": "evaluation maintainers / installed host provider"
     },
     {

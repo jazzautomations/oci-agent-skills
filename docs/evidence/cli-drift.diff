@@ -1,0 +1,117 @@
+--- /tmp/pinned.tsv	2026-09-10 04:18:36.547440672 +0000
++++ /tmp/current.tsv	2026-09-10 04:19:27.193109362 +0000
+@@ -1266,6 +1266,20 @@
+ cloud-migrations work-request list	
+ cloud-migrations work-request-error list	--work-request-id
+ cloud-migrations work-request-log-entry list	--work-request-id
++cluster-health diagnosis-results request-diagnosis	--diagnosis-store-id --health-check-keys
++cluster-health diagnosis-store change-compartment	--compartment-id --diagnosis-store-id
++cluster-health diagnosis-store create	--compartment-id
++cluster-health diagnosis-store delete	--diagnosis-store-id
++cluster-health diagnosis-store get	--diagnosis-store-id
++cluster-health diagnosis-store list	
++cluster-health diagnosis-store update	--diagnosis-store-id
++cluster-health diagnosis-summary-collection query-diagnosis-summary	--diagnosis-store-id --instance-ids
++cluster-health recommendation-report query-diagnosis-by-health-check-key	--diagnosis-store-id --health-check-key
++cluster-health work-request cancel	--work-request-id
++cluster-health work-request get	--work-request-id
++cluster-health work-request list	
++cluster-health work-request-error list	--work-request-id
++cluster-health work-request-log-entry list-work-request-logs	--work-request-id
+ compute boot-volume-attachment attach	--boot-volume-id --instance-id
+ compute boot-volume-attachment detach	--boot-volume-attachment-id
+ compute boot-volume-attachment get	--boot-volume-attachment-id
+@@ -3136,6 +3150,7 @@
+ db autonomous-database import-transportable-tablespace	--autonomous-database-id --tts-bundle-url
+ db autonomous-database list	--compartment-id
+ db autonomous-database list-autonomous-database-peers	--autonomous-database-id
++db autonomous-database list-available-maintenance-windows	--autonomous-database-id
+ db autonomous-database list-clones	--autonomous-database-id --compartment-id
+ db autonomous-database list-elastic-pool-cost-savings	--autonomous-database-id --is-cpu-autoscale
+ db autonomous-database list-refreshable-clones	--autonomous-database-id
+@@ -3151,12 +3166,6 @@
+ db autonomous-database stop	--autonomous-database-id
+ db autonomous-database switchover	--autonomous-database-id
+ db autonomous-database update	--autonomous-database-id
+-db autonomous-database update-autonomous-database-aws-key-details	--autonomous-database-id --encryption-key-key-arn --encryption-key-service-endpoint-uri
+-db autonomous-database update-autonomous-database-azure-key-details	--autonomous-database-id --encryption-key-key-name --encryption-key-vault-uri
+-db autonomous-database update-autonomous-database-gcp-key-details	--autonomous-database-id --encryption-key-key-name --encryption-key-key-ring --encryption-key-location --encryption-key-project
+-db autonomous-database update-autonomous-database-oci-key-details	--autonomous-database-id --encryption-key-kms-key-id --encryption-key-vault-id
+-db autonomous-database update-autonomous-database-okv-key-details	--autonomous-database-id --encryption-key-certificate-directory-name --encryption-key-directory-name --encryption-key-okv-kms-key --encryption-key-okv-uri
+-db autonomous-database update-autonomous-database-oracle-managed-key-details	--autonomous-database-id
+ db autonomous-database-backup create	--autonomous-database-id
+ db autonomous-database-backup delete	--autonomous-database-backup-id
+ db autonomous-database-backup get	--autonomous-database-backup-id
+@@ -3456,6 +3465,11 @@
+ db external-pdb get	--external-pdb-id
+ db external-pdb update	--external-pdb-id
+ db flex-component list	--compartment-id
++db gi-home create	--db-system-id --gi-image-id
++db gi-home delete	--gi-home-id
++db gi-home get	--gi-home-id
++db gi-home list	--compartment-id
++db gi-home update	--gi-home-id
+ db gi-minor-version-summary list	--gi-version
+ db gi-version list	--compartment-id
+ db infrastructure-target-version get	--compartment-id
+@@ -3558,10 +3572,10 @@
+ db system get	--db-system-id
+ db system get-exadata-iorm-config	--db-system-id
+ db system launch	--admin-password --availability-domain --compartment-id --database-edition --db-name --db-version --hostname --shape --ssh-authorized-keys-file --subnet-id
+-db system launch-db-system-launch-standby-db-system-details	--availability-domain --compartment-id --db-home --hostname --primary-db-system-id --shape --ssh-public-keys --subnet-id
++db system launch-db-system-launch-standby-db-system-details	--availability-domain --compartment-id --db-home --hostname --primary-db-system-id --shape --subnet-id
+ db system launch-from-backup	--admin-password --availability-domain --backup-id --compartment-id --database-edition --hostname --shape --ssh-authorized-keys-file --subnet-id
+-db system launch-from-database	--availability-domain --compartment-id --database-edition --db-home --hostname --shape --ssh-public-keys --subnet-id
+-db system launch-from-db-system	--availability-domain --compartment-id --db-home --hostname --shape --source-db-system-id --ssh-public-keys --subnet-id
++db system launch-from-database	--availability-domain --compartment-id --database-edition --db-home --hostname --shape --subnet-id
++db system launch-from-db-system	--availability-domain --compartment-id --db-home --hostname --shape --source-db-system-id --subnet-id
+ db system list	--compartment-id
+ db system list-db-system-compute-performances	
+ db system list-db-system-storage-performances	--storage-management
+@@ -4716,6 +4730,7 @@
+ fn application list	--compartment-id
+ fn application update	--application-id
+ fn function create	--application-id --display-name --memory-in-mbs
++fn function create-function-pre-built-function-source-details	--application-id --display-name --memory-in-mbs --source-details-pbf-listing-id
+ fn function delete	--function-id
+ fn function get	--function-id
+ fn function invoke	--body --file --function-id
+@@ -5837,6 +5852,16 @@
+ iot domain-group get	--iot-domain-group-id
+ iot domain-group list	--compartment-id
+ iot domain-group update	--iot-domain-group-id
++iot flow-runtime activate	--iot-flow-runtime-id
++iot flow-runtime change-compartment	--compartment-id --iot-flow-runtime-id
++iot flow-runtime create	--compartment-id --iot-domain-id
++iot flow-runtime deactivate	--iot-flow-runtime-id
++iot flow-runtime delete	--iot-flow-runtime-id
++iot flow-runtime get	--iot-flow-runtime-id
++iot flow-runtime get-flows	--iot-flow-runtime-id
++iot flow-runtime list	--compartment-id
++iot flow-runtime update	--iot-flow-runtime-id
++iot flow-runtime update-flows	--flows-document --iot-flow-runtime-id
+ iot work-request get	--work-request-id
+ iot work-request list	--compartment-id
+ iot work-request list-errors	--work-request-id
+@@ -7312,6 +7337,7 @@
+ ocvs byol-allocation update	--byol-allocation-id
+ ocvs cluster create	--compute-availability-domain --esxi-hosts-count --network-configuration --sddc-id
+ ocvs cluster delete	--cluster-id
++ocvs cluster generate-host-distribution-report	--cluster-id
+ ocvs cluster get	--cluster-id
+ ocvs cluster list	
+ ocvs cluster update	--cluster-id
+@@ -8331,10 +8357,13 @@
+ redis redis-cluster node-summary list-redis-cluster-nodes	--redis-cluster-id
+ redis redis-cluster redis-cluster attach	--oci-cache-users --redis-cluster-id
+ redis redis-cluster redis-cluster change-compartment	--compartment-id --redis-cluster-id
++redis redis-cluster redis-cluster convert-to-secondary-cluster	--primary-cluster-id --redis-cluster-id
++redis redis-cluster redis-cluster convert-to-standalone-cluster	--redis-cluster-id
+ redis redis-cluster redis-cluster create	--compartment-id --display-name --node-count --node-memory-in-gbs --software-version --subnet-id
+ redis redis-cluster redis-cluster delete	--redis-cluster-id
+ redis redis-cluster redis-cluster detach	--oci-cache-users --redis-cluster-id
+ redis redis-cluster redis-cluster get	--redis-cluster-id
++redis redis-cluster redis-cluster switchover	--redis-cluster-id
+ redis redis-cluster redis-cluster update	--redis-cluster-id
+ redis redis-cluster redis-cluster-summary list-redis-clusters	
+ redis redis-cluster work-request cancel	--work-request-id

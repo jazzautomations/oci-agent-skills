@@ -83,3 +83,57 @@ def test_sweep_derives_scope_and_skips_only_confirmed_absence(
     assert {r['status'] for r in report['checks'] if 'triage' in r['script']} == {expected}
     assert ('triage.py' in executed) == (expected != 'skipped: no instance')
     assert 'synthetic-root' not in report_path.read_text()
+
+
+@pytest.mark.parametrize('namespace,bucket,bucket_code,resolved', [
+    ('"synthetic-namespace"', '"synthetic-bucket"', 0, True),
+    ('"synthetic-namespace"', 'null', 0, False),
+    ('"synthetic-namespace"', '"untrusted-on-error"', 1, False),
+    ('null', '"must-not-be-used"', 0, False),
+    ('malformed', '"must-not-be-used"', 0, False),
+])
+def test_multipart_prerequisite_is_discovered_without_inherited_scope(
+        tmp_path, monkeypatch, namespace, bucket, bucket_code, resolved):
+    from lib import oci_ro
+    config = tmp_path / 'config'
+    config.write_text('[DEFAULT]\ntenancy=synthetic-root\nregion=us-ashburn-1\n')
+    monkeypatch.setenv('OCI_CLI_CONFIG_FILE', str(config))
+    monkeypatch.setenv('NAMESPACE', 'inherited-other-namespace')
+    monkeypatch.setenv('BUCKET', 'inherited-other-bucket')
+    directory = tmp_path / 'skills/example/scripts'
+    directory.mkdir(parents=True)
+    (directory / 'multipart_audit.sh').touch()
+    monkeypatch.setattr(sweep, 'ROOT', tmp_path)
+    report_path = tmp_path / 'report.json'
+    monkeypatch.setattr(sys, 'argv', ['sweep', '--live', '--report', str(report_path)])
+    calls = []
+
+    def discover(argv, **kwargs):
+        calls.append(argv[:3])
+        assert argv[argv.index('--compartment-id') + 1] == 'synthetic-root'
+        if argv[:3] == ['os', 'ns', 'get']:
+            return SimpleNamespace(returncode=0, stdout=namespace)
+        if argv[:3] == ['os', 'bucket', 'list']:
+            assert argv[argv.index('--namespace-name') + 1] == 'synthetic-namespace'
+            assert argv[argv.index('--limit') + 1] == '1'
+            return SimpleNamespace(returncode=bucket_code, stdout=bucket)
+        return SimpleNamespace(returncode=0, stdout='null')
+
+    def execute(command, *, env, **kwargs):
+        assert env['COMPARTMENT_ID'] == 'synthetic-root'
+        assert ('BUCKET' in env) == resolved
+        if resolved:
+            assert env['BUCKET'] == 'synthetic-bucket'
+            assert env['NAMESPACE'] == 'synthetic-namespace'
+        return SimpleNamespace(returncode=0 if resolved else 2,
+                               stdout='{"ok":true}' if resolved else '',
+                               stderr='' if resolved else 'Set BUCKET')
+
+    monkeypatch.setattr(oci_ro, 'run_process', discover)
+    monkeypatch.setattr(sweep.subprocess, 'run', execute)
+    sweep.main()
+    data = json.loads(report_path.read_text())
+    assert data['checks'][0]['status'] == ('passed' if resolved else 'blocked_missing_prerequisite')
+    assert (['os', 'bucket', 'list'] in calls) == (namespace == '"synthetic-namespace"')
+    for value in ['synthetic-root', 'synthetic-namespace', 'synthetic-bucket', 'inherited-other']:
+        assert value not in report_path.read_text()

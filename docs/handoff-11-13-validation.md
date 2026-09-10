@@ -16,8 +16,7 @@ account access. The cost-band correction was committed first, separately.
   reviewed baseline. Price caches expire after 24 hours; a failed refresh is unknown.
   The daily workflow is configured; a scheduled hosted run has not yet been observed.
 
-Validation: the full suite passed 436 tests before the final attachment/state-file
-refinements; the affected tests were then rerun. Strict metadata, references, portability,
+Validation: the full post-merge suite passed **450 tests**. Strict metadata, references, portability,
 budgets, licenses, current-tree secret scan, read-only script registry, stencil, manifests
 and fence lint pass. Both Claude plugin validators pass. CLI example resolution and the
 9,145-command census match. New/changed skill fences were checked against CLI help.

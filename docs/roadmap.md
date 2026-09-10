@@ -8,7 +8,7 @@ version or increasing the skill count. All current evidence is scoped and dated.
 |---|---|---|
 | V22 history hygiene | Reviewed cleanup of reachable historical patch content; current-file and full-history scans pass | Repository owner; published-history coordination |
 | V24 hosted drift | Capture a hosted scheduled run and exercise issue creation without duplicate issues | CI maintainers; GitHub Actions access |
-| V25 script coverage | Remaining triage reads return Cloud Guard 404 / Support 403; supply four missing prerequisites and resolve two no-data metric checks. Corrected helper defects have fresh passing evidence | Skill maintainers and OCI operator |
+| V25 script coverage | Remaining triage reads return Cloud Guard 404 / Support 403; supply three missing resource prerequisites and resolve two no-data metric checks. Multipart discovery now finds a real bucket in the selected root; other corrected helpers have dated passing evidence | Skill maintainers and OCI operator |
 | V27 host task evaluation | Run the qualifying host evaluation with recorded host/model versions, run IDs and ≥0.8 task score | Evaluation maintainers; supported evaluator access |
 | V28 behavioral comparison | Same prompts and budgets across four arms; publish task completion, generated-command validity and safety outcomes | Evaluation maintainers; controlled test environment |
 

@@ -23,7 +23,7 @@ RECIPES={
  'D2':('oci bv boot-volume delete --boot-volume-id "${REVIEWED_BOOT_VOLUME_ID}"','Irreversible; verify a restorable backup before deletion'),
  'D4':('oci bv volume update --volume-id "${REVIEWED_VOLUME_ID}" --vpus-per-gb 10','Restore the recorded original VPU value; verify shape and latency first'),
  'D5':('oci compute instance update --instance-id "${REVIEWED_INSTANCE_ID}" --shape-config "${REVIEWED_SHAPE_CONFIG}"','Restore original shape configuration; schedule reboot and application checks'),
- 'D10':('oci os object-lifecycle-policy put --bucket-name "${REVIEWED_BUCKET}" --items "file://${REVIEWED_POLICY_JSON}"','Save original policy; irreversible deletions cannot be rolled back'),
+ 'D10':('oci os object-lifecycle-policy put --namespace-name "${REVIEWED_NAMESPACE}" --bucket-name "${REVIEWED_BUCKET}" --items "file://${REVIEWED_POLICY_JSON}"','Save original policy; irreversible deletions cannot be rolled back'),
 }
 
 

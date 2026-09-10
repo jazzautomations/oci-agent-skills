@@ -33,7 +33,8 @@ known stopped; VPU comparisons require a single attachment for disk attribution.
 | W15 | No budget | Complete empty tenancy budget listing | Governance, zero direct savings |
 | W18 | VCN without subnets | Complete empty subnet list | Other dependencies unassessed; no network charge |
 
-All metrics are conservative maxima of **daily P95 buckets**, not a pooled 14-day P95.
+Utilization uses conservative maxima of **daily P95 buckets**, not a pooled 14-day P95.
+Traffic and capacity checks use the stated daily sum, maximum or minimum instead.
 At least 90% of distinct days are required; absence, truncation, duplicate series and
 wrong identifiers do not count as new coverage. End is exclusive UTC midnight.
 Only the region/compartments supplied are assessed. Search corroborates service lists.

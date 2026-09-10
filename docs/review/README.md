@@ -40,13 +40,13 @@ boundary. Other host adapters do not receive the Claude shell hook.
 
 ## What the evidence supports
 
-- The recorded full suite passes 378 tests; syntax lint accepts 277 authored OCI
+- The recorded full suite passes 391 tests; syntax lint accepts 277 authored OCI
   fences. Neither establishes end-to-end deployment success.
 - Classifier replay denies all 278 critical-labelled leaves and allows zero
   operations outside the strict read-only set. The severity snapshot and catalog
   share a generator; non-OCI rules are outside that measured matrix.
 - Selected live reads use one API-key profile, region and commercial realm.
-  The helper sweep records 27 passed entrypoints, including six offline helpers.
+  The helper sweep records 28 passed entrypoints, including six offline helpers.
 - The component walkthrough starts the actual MCP stdio server without valid OCI
   config, discovers its surface and rejects invalid scope. It classifies proposed
   argv as inert data; it does not execute a launch or measure an agent.

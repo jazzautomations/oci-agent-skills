@@ -1,0 +1,114 @@
+{
+  "added_paths": [
+    "cluster-health diagnosis-results request-diagnosis",
+    "cluster-health diagnosis-store change-compartment",
+    "cluster-health diagnosis-store create",
+    "cluster-health diagnosis-store delete",
+    "cluster-health diagnosis-store get",
+    "cluster-health diagnosis-store list",
+    "cluster-health diagnosis-store update",
+    "cluster-health diagnosis-summary-collection query-diagnosis-summary",
+    "cluster-health recommendation-report query-diagnosis-by-health-check-key",
+    "cluster-health work-request cancel",
+    "cluster-health work-request get",
+    "cluster-health work-request list",
+    "cluster-health work-request-error list",
+    "cluster-health work-request-log-entry list-work-request-logs",
+    "db autonomous-database list-available-maintenance-windows",
+    "db gi-home create",
+    "db gi-home delete",
+    "db gi-home get",
+    "db gi-home list",
+    "db gi-home update",
+    "fn function create-function-pre-built-function-source-details",
+    "iot flow-runtime activate",
+    "iot flow-runtime change-compartment",
+    "iot flow-runtime create",
+    "iot flow-runtime deactivate",
+    "iot flow-runtime delete",
+    "iot flow-runtime get",
+    "iot flow-runtime get-flows",
+    "iot flow-runtime list",
+    "iot flow-runtime update",
+    "iot flow-runtime update-flows",
+    "ocvs cluster generate-host-distribution-report",
+    "redis redis-cluster redis-cluster convert-to-secondary-cluster",
+    "redis redis-cluster redis-cluster convert-to-standalone-cluster",
+    "redis redis-cluster redis-cluster switchover"
+  ],
+  "removed_paths": [
+    "db autonomous-database update-autonomous-database-aws-key-details",
+    "db autonomous-database update-autonomous-database-azure-key-details",
+    "db autonomous-database update-autonomous-database-gcp-key-details",
+    "db autonomous-database update-autonomous-database-oci-key-details",
+    "db autonomous-database update-autonomous-database-okv-key-details",
+    "db autonomous-database update-autonomous-database-oracle-managed-key-details"
+  ],
+  "required_flag_changes": {
+    "db system launch-from-db-system": {
+      "before": [
+        "--availability-domain",
+        "--compartment-id",
+        "--db-home",
+        "--hostname",
+        "--shape",
+        "--source-db-system-id",
+        "--ssh-public-keys",
+        "--subnet-id"
+      ],
+      "after": [
+        "--availability-domain",
+        "--compartment-id",
+        "--db-home",
+        "--hostname",
+        "--shape",
+        "--source-db-system-id",
+        "--subnet-id"
+      ]
+    },
+    "db system launch-from-database": {
+      "before": [
+        "--availability-domain",
+        "--compartment-id",
+        "--database-edition",
+        "--db-home",
+        "--hostname",
+        "--shape",
+        "--ssh-public-keys",
+        "--subnet-id"
+      ],
+      "after": [
+        "--availability-domain",
+        "--compartment-id",
+        "--database-edition",
+        "--db-home",
+        "--hostname",
+        "--shape",
+        "--subnet-id"
+      ]
+    },
+    "db system launch-db-system-launch-standby-db-system-details": {
+      "before": [
+        "--availability-domain",
+        "--compartment-id",
+        "--db-home",
+        "--hostname",
+        "--primary-db-system-id",
+        "--shape",
+        "--ssh-public-keys",
+        "--subnet-id"
+      ],
+      "after": [
+        "--availability-domain",
+        "--compartment-id",
+        "--db-home",
+        "--hostname",
+        "--primary-db-system-id",
+        "--shape",
+        "--subnet-id"
+      ]
+    }
+  },
+  "authored_fences_affected": [],
+  "scope": "Path and required-flag comparison only; optional flags, callback behavior and live outcomes unmeasured."
+}

@@ -224,9 +224,9 @@ def main():
     b.title('VALIDAÇÃO COM ESCOPO DECLARADO', 'Evidência para inspecionar.<br/>Critérios para evoluir.',
             f'{passed} de {len(matrix["rows"])} critérios de liberação passaram. O pacote continua em preview.')
     for i,(number,label,detail) in enumerate([
-        ('378','testes passaram','Regressão de código'),
+        ('391','testes passaram','Regressão de código'),
         ('277','blocos OCI válidos','Sintaxe dos exemplos'),
-        ('27','helpers aprovados','21 live_read + 6 offline')]):
+        ('28','helpers aprovados','22 live_read + 6 offline')]):
         x=M+i*174
         b.rect(x,241,163,111,WHITE,8)
         b.text(number,x+14,252,137,30,color=RED,font='Bold')

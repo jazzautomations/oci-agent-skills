@@ -1,0 +1,8 @@
+{
+  "exit_code": 1,
+  "early_access_restriction": true,
+  "result_written": false,
+  "scope": "T01 only, no tool grants, no scaffold, mocks, absent OCI config, no publication",
+  "host_version": "2.1.267",
+  "date": "2026-09-10"
+}
