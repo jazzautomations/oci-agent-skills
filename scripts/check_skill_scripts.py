@@ -109,6 +109,26 @@ def main():
             bootstrap.append({'field':name,'resolved':name in environment})
         except (OSError, ValueError, subprocess.TimeoutExpired):
             bootstrap.append({'field':name,'resolved':False})
+    # Multipart inspection needs a real bucket in the same selected compartment.
+    # Resolve its namespace and one bucket locally; never record their values or
+    # turn a failed/empty discovery into a fabricated prerequisite.
+    for name in ('NAMESPACE', 'BUCKET'):
+        if name == 'BUCKET' and not environment.get('NAMESPACE'):
+            bootstrap.append({'field': name, 'resolved': False})
+            continue
+        argv = (['os', 'ns', 'get', '--compartment-id', tenancy, '--query', 'data']
+                if name == 'NAMESPACE' else
+                ['os', 'bucket', 'list', '--namespace-name', environment['NAMESPACE'],
+                 '--compartment-id', tenancy, '--limit', '1', '--query', 'data[0].name'])
+        try:
+            response = run_process([*argv, '--profile', args.profile, '--region', args.region,
+                                    '--no-retry'], capture_output=True, text=True, timeout=30)
+            value = json.loads(response.stdout) if response.returncode == 0 and response.stdout.strip() else None
+            if isinstance(value, str) and value:
+                environment[name] = value
+        except (OSError, ValueError, subprocess.TimeoutExpired):
+            pass
+        bootstrap.append({'field': name, 'resolved': name in environment})
     rows = []
     with tempfile.TemporaryDirectory(prefix='oci-skill-smoke-') as directory:
         empty = Path(directory)/'empty.json'; empty.write_text('[]')
@@ -154,6 +174,7 @@ def main():
               'scope_inputs':{'profile':args.profile, 'region':'selected profile region',
                               'compartment':'tenancy root', 'instance':'first instance in root, if present',
                               'user':'selected profile user, if present',
+                              'bucket':'first bucket in selected root, if present; namespace from scoped discovery',
                               'metric_namespace':'oci_computeagent', 'mql':'CpuUtilization[1m].mean()',
                               'metric_window':'last hour'},
               'status_meanings':{'ran, gap':'Executed; explicit no-data result, not a script failure. Coverage remains incomplete.',

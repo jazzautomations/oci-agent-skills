@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/check_skill_scripts.py",
-      "sha256": "718b2ba661b67d52a9a9790573d37b41c157e9da527156dc228ff5fa18769d8e",
+      "sha256": "c8793d1059a35a9fe0e7a981567c8100fb6f7782257a8c3430a4444671106528",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -106,6 +106,12 @@
     {
       "path": "scripts/ci/common.py",
       "sha256": "47b7da600e8f272288389fb4fc8a61754610d87aa41944c0f14ad9a277ae55d3",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/ci/drift_issue.py",
+      "sha256": "ccd4d8a639d106a63af2f351e7087506599b8cb6f8d3f508efa883f795c579fe",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -261,7 +267,7 @@
     },
     {
       "path": "scripts/review/brief_pdf.py",
-      "sha256": "97b55f0b2d8dddcdc59669e7d1b6ecc707534105b8fb61437008fda803f6942e",
+      "sha256": "24306168c5f41b78666abe024ee39a7f485864627e77768a354e2c665d010c28",
       "mode": "read-only",
       "oci_calls": []
     },

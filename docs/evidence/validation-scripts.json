@@ -1,5 +1,5 @@
 {
-  "validated_at": "2026-09-09T20:59:13.277499+00:00",
+  "validated_at": "2026-09-10T04:06:33.307583+00:00",
   "mode": "scoped_script_execution",
   "scope": "Selected profile tenancy compartment and region; one bounded page per call. Captured stdout/stderr discarded.",
   "scope_inputs": {
@@ -7,10 +7,11 @@
     "region": "selected profile region",
     "compartment": "tenancy root",
     "instance": "first instance in root, if present",
+    "user": "selected profile user, if present",
+    "bucket": "first bucket in selected root, if present; namespace from scoped discovery",
     "metric_namespace": "oci_computeagent",
     "mql": "CpuUtilization[1m].mean()",
-    "metric_window": "last hour",
-    "user": "selected profile user, if present; posture checks revalidated with this input"
+    "metric_window": "last hour"
   },
   "status_meanings": {
     "ran, gap": "Executed; explicit no-data result, not a script failure. Coverage remains incomplete.",
@@ -27,6 +28,14 @@
     },
     {
       "field": "INSTANCE_ID",
+      "resolved": true
+    },
+    {
+      "field": "NAMESPACE",
+      "resolved": true
+    },
+    {
+      "field": "BUCKET",
       "resolved": true
     }
   ],
@@ -167,9 +176,8 @@
     {
       "script": "skills/oci-object-storage/scripts/multipart_audit.sh",
       "execution_mode": "live_read",
-      "status": "blocked_missing_prerequisite",
-      "exit_code": 1,
-      "owner": "OCI operator / skill maintainer"
+      "status": "passed",
+      "exit_code": 0
     },
     {
       "script": "skills/oci-oke/scripts/oke_preflight.sh",
@@ -193,15 +201,13 @@
       "script": "skills/oci-security-posture/scripts/posture.py",
       "execution_mode": "live_read",
       "status": "passed",
-      "exit_code": 0,
-      "revalidated_at": "2026-09-09T20:59:26.707100+00:00"
+      "exit_code": 0
     },
     {
       "script": "skills/oci-security-posture/scripts/posture.sh",
       "execution_mode": "live_read",
       "status": "passed",
-      "exit_code": 0,
-      "revalidated_at": "2026-09-09T20:59:26.707100+00:00"
+      "exit_code": 0
     },
     {
       "script": "skills/oci-serverless/scripts/fn_preflight.sh",
@@ -277,6 +283,5 @@
       "reason": "Non-executable example; no database session or mutation fixture is run."
     }
   ],
-  "supplemental_evidence": "helper-diagnostics.json",
-  "supplemental_validated_at": "2026-09-09T20:59:26.707100+00:00"
+  "runner_sha256": "c8793d1059a35a9fe0e7a981567c8100fb6f7782257a8c3430a4444671106528"
 }

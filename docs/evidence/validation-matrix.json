@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "378 passed, 1 warning. Full regression suite; see CI for the current commit.",
+      "detail": "391 passed, 1 warning. Full regression suite; see CI for the current commit.",
       "owner": null
     },
     {
@@ -221,8 +221,8 @@
       "id": "V25",
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
-      "date": "2026-09-09",
-      "detail": "Script sweep: 4 blocked_missing_prerequisite, 2 failed, 4 inert_not_executed, 27 passed, 2 ran, gap. Identity, governance, policy-input and profile-user defects corrected. Scoped triage still receives Cloud Guard 404 and Support 403; see docs/evidence/helper-diagnostics.json. Missing prerequisites and no-data coverage remain explicit.",
+      "date": "2026-09-10",
+      "detail": "Script sweep: multipart namespace/bucket discovery repaired; 28 passed entrypoints, three missing resource prerequisites, two triage failures and two no-data metric checks. See docs/evidence/validation-scripts.json and release-readiness.md. Scope remains selected tenancy root and region.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -237,8 +237,8 @@
       "id": "V27",
       "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
       "result": "UNAVAILABLE",
-      "date": "2026-09-09",
-      "detail": "`plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score.",
+      "date": "2026-09-10",
+      "detail": "Early-access restriction reproduced on 2026-09-10 for T01 with no tool grants, absent OCI config, mocks and no publication. No qualifying host task score.",
       "owner": "evaluation maintainers / installed host provider"
     },
     {

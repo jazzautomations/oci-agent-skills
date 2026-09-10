@@ -1,0 +1,62 @@
+{
+  "validated_at": "2026-09-10T03:56:17.406749+00:00",
+  "scope": "Selected profile tenancy root and region; bounded reads only; account/resource values discarded.",
+  "checks": [
+    {
+      "check": "cloud-guard-configuration",
+      "ok": false,
+      "error": {
+        "kind": "service",
+        "status": 404
+      }
+    },
+    {
+      "check": "bastion-prerequisite",
+      "ok": true,
+      "present": false,
+      "sample_count": 0
+    },
+    {
+      "check": "devops-prerequisite",
+      "ok": true,
+      "present": false,
+      "sample_count": 0
+    },
+    {
+      "check": "functions-prerequisite",
+      "ok": true,
+      "present": false,
+      "sample_count": 0
+    },
+    {
+      "check": "object-storage-namespace",
+      "ok": true,
+      "present": true
+    },
+    {
+      "check": "bucket-prerequisite",
+      "ok": true,
+      "present": true
+    },
+    {
+      "check": "multipart-sample",
+      "ok": true,
+      "present": false,
+      "sample_count": 0
+    },
+    {
+      "check": "compute-metric-presence",
+      "ok": true,
+      "present": false,
+      "sample_count": 0
+    },
+    {
+      "check": "support-technical-user-validity",
+      "ok": false,
+      "error": {
+        "kind": "refused",
+        "reason": "verb|method|flag"
+      }
+    }
+  ]
+}

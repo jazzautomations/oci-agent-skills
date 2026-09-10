@@ -2,6 +2,12 @@
 
 ## Unreleased — presentation and documentation
 
+- Discover a real Object Storage namespace and bucket before the scoped helper sweep;
+  empty or failed discovery stays blocked and inherited bucket values are discarded.
+- Add an explicit manual preview mode to CLI drift checks, serialized notification
+  handling, exact-title deduplication, bounded issue bodies and eight isolated tests.
+- Recheck remaining release prerequisites and the native host early-access restriction.
+
 Repaired semantic selection evaluation. The old lexical filter rejected 39 valid
 requests before matching; it is retained as a diagnostic, while V19/V20 now check
 dated, input-bound semantic trials with blind requests, pinned model and unchanged

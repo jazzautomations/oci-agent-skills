@@ -3,9 +3,17 @@ on:
   schedule:
     - cron: '17 6 * * 2'
   workflow_dispatch:
+    inputs:
+      publish_issue:
+        description: 'Publish a drift issue if needed (manual runs default to preview)'
+        type: boolean
+        default: false
 permissions:
   contents: read
   issues: write
+concurrency:
+  group: cli-drift-notification
+  cancel-in-progress: false
 jobs:
   drift:
     runs-on: ubuntu-latest
@@ -14,9 +22,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Test notification and duplicate handling without publication
+        run: python -m unittest discover -s tests -p test_cli_drift_issue.py
       - run: python -m pip install oci-cli==3.91.0
+      - run: oci --version > pinned-version.txt
       - run: python scripts/ci/cli_drift.py > /tmp/pinned.tsv
       - run: python -m pip install --upgrade oci-cli
+      - run: oci --version > current-version.txt
       - run: python scripts/ci/cli_drift.py > /tmp/current.tsv
       - name: Compare required flags
         run: diff -u /tmp/pinned.tsv /tmp/current.tsv > cli-drift.diff || test "$?" -eq 1
@@ -24,17 +36,25 @@ jobs:
         run: |
           curl -fLsS https://raw.githubusercontent.com/oracle/oci-cli/master/CHANGELOG.rst -o /tmp/oci-changelog.rst
           python scripts/ci/cli_breaking.py /tmp/oci-changelog.rst >> cli-drift.diff
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cli-drift
-          path: cli-drift.diff
-      - name: Open drift issue
+      - name: Prepare or publish drift notification
         env:
           GH_TOKEN: ${{ github.token }}
+          DRIFT_REPOSITORY: ${{ github.repository }}
+          DRIFT_EVIDENCE_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          DRIFT_PUBLISH: ${{ github.event_name == 'schedule' || inputs.publish_issue }}
         run: |
-          if test -s cli-drift.diff; then
-            gh issue list --search 'CLI required-flag drift in:title' --state open --json number > /tmp/issues.json
-            if test "$(python -c 'import json; print(len(json.load(open("/tmp/issues.json"))))')" = 0; then
-              gh issue create --title 'CLI required-flag drift' --body-file cli-drift.diff
-            fi
+          args=()
+          if test "$DRIFT_PUBLISH" = true; then
+            args+=(--publish)
           fi
+          python scripts/ci/drift_issue.py cli-drift.diff --repo "$DRIFT_REPOSITORY" \
+            --report drift-notification.json --evidence-url "$DRIFT_EVIDENCE_URL" "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cli-drift
+          path: |
+            cli-drift.diff
+            drift-notification.json
+            pinned-version.txt
+            current-version.txt
