@@ -31,7 +31,7 @@ def main():
         'independent_guard_matrix':json.loads((ROOT/'docs/evidence/guard-severity-matrix.json').read_text()),
         'raw_estimate_method':'ceil(description characters / 4) + ceil(serialized MCP schema characters / 4); excludes host framing',
         'resident_tokens_estimate':(desc+3)//4+(schemas+3)//4,
-        'published_planning_floor':'≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates)',
+        'published_planning_floor':f'{(desc+3)//4} description tokens + {(schemas+3)//4} MCP schema tokens; source-size estimates',
         'examples':len(json.loads((ROOT/'catalog/examples.json').read_text())['examples']),
         'cli_leaves':len(leaves),'cli_groups':len(services),
         'guard_matrix':{'/'.join(k):v for k,v in sorted(Counter((r['kind'],classify_leaf(r['path'])) for r in leaves).items())},

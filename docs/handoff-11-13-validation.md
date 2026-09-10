@@ -25,7 +25,9 @@ The copy installer produces 37 skills without authoring files or symlinks before
 setup. Disk pressure required UV_LINK_MODE=symlink for temporary dependency installation;
 the distributed package itself remains copied, with no symlinks.
 
-Current release gaps are explicit:
+Release gaps at the `2a6e9a9` handoff are recorded below. The subsequent
+Classic scope repair and current semantic results are in [the evaluation guide](evals.md);
+the historical V20 failure is retained here for provenance.
 
 | Gate / prerequisite | Evidence | Owner |
 |---|---|---|

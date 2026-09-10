@@ -279,13 +279,13 @@
     },
     {
       "path": "scripts/release_report.py",
-      "sha256": "8dd79a31ffe490d7111ca9c712e62d712f3d2915905fc454bd38b38d827844d6",
+      "sha256": "2f8846a78ae6eed349a430fe0b5874d4427f2556bf6d10c3d9b8924ef73125ef",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/review/brief_pdf.py",
-      "sha256": "24306168c5f41b78666abe024ee39a7f485864627e77768a354e2c665d010c28",
+      "sha256": "8fa3ecedc5ce232fd1c386aa323e7c2f5e6c0a39e1ec04b88732a29261e74528",
       "mode": "read-only",
       "oci_calls": []
     },

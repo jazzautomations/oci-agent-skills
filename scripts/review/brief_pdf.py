@@ -107,7 +107,7 @@ def main():
     output = ROOT/'docs/review/brief-pt.pdf'
     b = Brief(output, evidence['validated_at'][:10])
 
-    b.start('APRESENTAÇÃO / EDIÇÃO 02', dark=True)
+    b.start('APRESENTAÇÃO / EDIÇÃO 03', dark=True)
     b.text('OCI Agent<br/>Skills', M, 86, size=54, color=WHITE, font='Bold', leading=55)
     b.text('Da pergunta sobre a nuvem<br/>a um fluxo de trabalho verificável.', M, 224,
            size=23, color='#E5EEDC', leading=29)
@@ -181,10 +181,10 @@ def main():
         ('05','Infraestrutura','Compute, rede, object storage, block/file storage e bastion.'),
         ('04','Entrega e IaC','OKE, pipelines, serverless e Terraform.'),
         ('05','Operação e segurança','Métricas, logs, incidentes, postura de segurança e certificados.'),
-        ('02','Custos e Free Tier','Análise de custos e planejamento dentro dos limites da oferta.'),
+        ('03','Custos e Free Tier','Custos, desperdício potencial e planejamento dentro dos limites da oferta.'),
         ('05','Database e APEX','Autonomous, frotas, vetores/IA, acesso SQL e APEX.'),
         ('03','IA e dados','Generative AI, serviços de IA e plataformas de dados.'),
-        ('02','Continuidade','Backup, recuperação, migração e atualização.'),
+        ('05','Continuidade e migração','Backup, avaliação de inventário, mapeamento, landing zone e atualização.'),
         ('02','SDKs e aplicações','Padrões de SDK e navegação em aplicações empresariais Oracle.'),
     ]
     if sum(int(n) for n,_,_ in domains) != skills:raise ValueError('Coverage counts need review')
@@ -224,8 +224,8 @@ def main():
     b.title('VALIDAÇÃO COM ESCOPO DECLARADO', 'Evidência para inspecionar.<br/>Critérios para evoluir.',
             f'{passed} de {len(matrix["rows"])} critérios de liberação passaram. O pacote continua em preview.')
     for i,(number,label,detail) in enumerate([
-        ('391','testes passaram','Regressão de código'),
-        ('277','blocos OCI válidos','Sintaxe dos exemplos'),
+        ('450','testes passaram','Regressão de código'),
+        ('285','blocos OCI válidos','Sintaxe dos exemplos'),
         ('28','helpers aprovados','22 live_read + 6 offline')]):
         x=M+i*174
         b.rect(x,241,163,111,WHITE,8)
@@ -246,7 +246,7 @@ def main():
         b.text(gate,M,y,42,10,color=RED,font='Bold')
         b.text(f'<b>{title}</b> · {body}',M+48,y,CW-48,10.3,max_h=32)
         b.line(M,y+36,W-M,y+36)
-    b.text('<b>Seleção semântica:</b> 79/80 e 77/80; zero ativações indevidas em 40 negativos por rodada. Evidência datada, sem medir tarefas completas no host.',M,699,size=10,color=GREEN,max_h=42)
+    b.text('<b>Seleção semântica:</b> 77/80 e 77/80; zero ativações indevidas em 40 negativos por rodada. Evidência datada, sem medir tarefas completas no host.',M,699,size=10,color=GREEN,max_h=42)
     b.source('docs/validation-matrix.md · docs/evals.md · docs/evidence/README.md')
 
     b.start('06 / PRÓXIMO PASSO')

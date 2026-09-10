@@ -12,6 +12,9 @@
     {"id": "B09", "prompt": "Use the Fusion HCM web designer to move a button and change its label on an employee form.", "expected_skill": null},
     {"id": "B10", "prompt": "Explain an archived Compute Classic OCI-C deployment from 2014; I am not using the current OCI platform.", "expected_skill": null},
     {"id": "B11", "prompt": "List all Amazon RDS MySQL instances in my AWS account using the AWS CLI.", "expected_skill": null},
-    {"id": "B12", "prompt": "Delete an obsolete lead in Salesforce CRM.", "expected_skill": null}
+    {"id": "B12", "prompt": "Delete an obsolete lead in Salesforce CRM.", "expected_skill": null},
+    {"id": "B13", "prompt": "An architecture glossary mentions Compute Classic alongside modern Oracle Cloud Infrastructure. Explain how those platform names differ.", "expected_skill": null},
+    {"id": "B14", "prompt": "No glossário antigo aparecem OCI-C e a plataforma OCI atual. Quero só entender a diferença histórica dos nomes.", "expected_skill": null},
+    {"id": "B15", "prompt": "Our engineers know AWS VPC terminology. Which current OCI concept corresponds to a VPC, before we start configuring it?", "expected_skill": "oci-navigator"}
   ]
 }

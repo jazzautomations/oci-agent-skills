@@ -1,7 +1,7 @@
 {
-  "skills": 33,
-  "description_characters": 11722,
-  "description_tokens_estimate": 2931,
+  "skills": 37,
+  "description_characters": 12382,
+  "description_tokens_estimate": 3096,
   "mcp_tools": [
     "oci_regions",
     "oci_compartments",
@@ -19,7 +19,7 @@
     "oci_metrics",
     "oci_price_lookup"
   ],
-  "mcp_schema_tokens_estimate": 3455,
+  "mcp_schema_tokens_estimate": 3500,
   "host_context_measurement": {
     "date": "2026-09-09",
     "host": "2.1.266 (Claude Code)",
@@ -79,9 +79,9 @@
     "allowed_outside_strict_reads": 0
   },
   "raw_estimate_method": "ceil(description characters / 4) + ceil(serialized MCP schema characters / 4); excludes host framing",
-  "resident_tokens_estimate": 6386,
-  "published_planning_floor": "\u22486.3\u20136.5k tokens (\u22483,020 descriptions + \u22483,300\u20133,500 MCP schemas, estimates)",
-  "examples": 261,
+  "resident_tokens_estimate": 6596,
+  "published_planning_floor": "3096 description tokens + 3500 MCP schema tokens; source-size estimates",
+  "examples": 268,
   "cli_leaves": 9145,
   "cli_groups": 174,
   "guard_matrix": {

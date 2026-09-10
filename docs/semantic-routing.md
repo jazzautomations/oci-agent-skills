@@ -145,7 +145,7 @@ management must remain eligible. Collect those additional regressions with
 check the saved result with the same command without `--collect`. This additional
 call is capped at USD 0.25. CI rejects missing, stale or failing boundary evidence.
 
-## Recorded outcome — September 10
+## Earlier 33-skill outcome — September 10, 03:35 UTC
 
 | Configuration | Correct selections, seeds 17 / 29 | Negative firings, seeds 17 / 29 | Both trials pass? |
 |---|---:|---:|---|
@@ -153,12 +153,12 @@ call is capped at USD 0.25. CI rejects missing, stale or failing boundary eviden
 | Three scope repairs, policy 1 | 78/80 · 77/80 | 1/40 · 2/40 | No |
 | Three scope repairs, policy 2 | 79/80 · 77/80 | 0/40 · 0/40 | Yes |
 
-The final two trials each resolve all four overlap pairs. The additional twelve
+Those two trials each resolve all four overlap pairs. The additional twelve
 synthetic boundaries also pass under policy 2. The model is `claude-sonnet-5`;
 the final main collection completed at 03:35 UTC on September 10, 2026.
-The [current traces](../evals/results/semantic.json) and
-[boundary trace](../evals/results/semantic-boundaries.json) include the saved
-selections used by the verifier. The
+The traces are retained in the Git snapshot at `65e810c`; current
+[main](../evals/results/semantic.json) and
+[boundary](../evals/results/semantic-boundaries.json) reports now cover the expanded catalog. The
 [development history](../evals/results/semantic-development.json) preserves the
 failed iterations instead of presenting only the successful configuration.
 
@@ -166,3 +166,42 @@ The improvement combines better skill contracts with a better evaluation
 instrument. It does not isolate a causal gain in the native host or establish
 generalization beyond the inspected benchmark. Acceptance thresholds and the
 original prompts and expected labels were not changed.
+
+
+## Current 37-skill catalog: Classic comparison boundary
+
+After FinOps and migration skills expanded the catalog, the collection at
+`2a6e9a9` scored 77/80 and 76/80, but seed 29 selected `oci-navigator` for a
+historical OCI-C versus OCI terminology question. V20 correctly failed and made
+CI red. Both trials are preserved in the
+[catalog-expansion report](../evals/results/semantic-catalog-expansion.json).
+
+The navigator owns current OCI service and CLI discovery. Oracle documents
+Compute Classic under a separate `opc compute` CLI in its
+[Compute Classic CLI syntax reference](https://docs.oracle.com/en/cloud/iaas-classic/compute-iaas-cloud/stopc/general-syntax-cli-commands.html).
+This supports an explicit product boundary: the skill now excludes Classic
+terminology and comparisons even when current OCI is also mentioned. Its
+cross-cloud-to-current-OCI concept mapping remains eligible. This is a scope
+clarification, not a new mathematical routing algorithm.
+
+Only that skill's contract changed for the new main collection. The classifier
+policy, model, trial seeds, original 80 routing cases, 40 negative cases and
+acceptance thresholds stayed fixed. Two synthetic historical comparison cases
+(English and Portuguese) and an AWS VPC mapping counterexample extend the
+boundary set to fifteen; these are development cases, not a hidden holdout.
+
+| Current measurement | Seed 17 | Seed 29 |
+|---|---:|---:|
+| Correct selections | 77/80 (96.25%) | 77/80 (96.25%) |
+| Negative firings | 0/40 | 0/40 |
+| Overlap pairs | 4/4 | 4/4 |
+
+All 15 additional boundaries pass. Input-bound traces are saved in the current
+[main](../evals/results/semantic.json) and
+[boundary](../evals/results/semantic-boundaries.json) reports. Every completed trial is included. A
+[passing intermediate revision](../evals/results/semantic-classic-development.json)
+was also retained: its AWS/Azure-specific wording was broadened back to generic
+cross-cloud mapping to preserve the original scope before the final collection.
+No unchanged-input reroll was used to select a passing result. Catalog expansion can still shift model choices, so
+these results establish a dated component regression check, not native agent
+reliability or generalization to unseen requests.

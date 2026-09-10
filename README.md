@@ -4,10 +4,10 @@
 
 **Oracle cloud engineering, from the first diagnostic to a reviewed change plan.**
 
-33 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
+37 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-[![Regression tests: 391](https://img.shields.io/badge/regression_tests-391_passed-2D6A4F)](docs/validation-matrix.md)
-[![Skills: 33](https://img.shields.io/badge/skills-33-C74634)](docs/skills.md)
+[![Regression tests: 450](https://img.shields.io/badge/regression_tests-450_passed-2D6A4F)](docs/validation-matrix.md)
+[![Skills: 37](https://img.shields.io/badge/skills-37-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
 [![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-555555)](LICENSE)
@@ -61,7 +61,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 <!-- skills:start -->
 | Domain | Skill | Purpose |
 |---|---|---|
-| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Finds the current OCI control plane and service equivalents. |
+| Navigation, identity & governance | [oci-navigator](skills/oci-navigator/SKILL.md) | Locates services and CLI groups on the current OCI platform. |
 |  | [oci-cli-auth](skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. |
 |  | [oci-tenancy-governance](skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. |
 |  | [oci-iam-policy](skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. |
@@ -104,7 +104,7 @@ Each skill combines a scope check, symptom-based routing, command examples, focu
 
 ```mermaid
 flowchart LR
-    Request[User request] --> Skills[33 focused skills]
+    Request[User request] --> Skills[37 focused skills]
     Skills --> References[References loaded on demand]
     Skills --> Catalog[Searchable CLI catalog]
     Skills --> Helpers[Scoped read helpers]
@@ -136,10 +136,10 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 | Check | Recorded result | Scope |
 |---|---:|---|
-| Regression suite | 391 passed | Current full suite; recorded in the validation matrix |
-| Authored OCI fences | 277/277 valid | CLI shape lint, not workload execution |
+| Regression suite | 450 passed | Current full suite; recorded in the validation matrix |
+| Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
-| Semantic skill selection | 79/80 and 77/80 | Two recorded trials; all four overlap pairs in both |
+| Semantic skill selection | 77/80 and 77/80 | Two recorded trials; all four overlap pairs in both |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
 

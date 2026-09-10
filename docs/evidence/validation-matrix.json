@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "450 tests passed in the full post-merge suite; temporary runtime dependencies used UV_LINK_MODE=symlink under disk pressure. Distributed payload remains a copy without symlinks.",
+      "detail": "450 tests passed in the full suite after the Classic scope repair. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks still require copies without symlinks.",
       "owner": null
     },
     {
@@ -170,17 +170,17 @@
       "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Recorded 37-skill semantic selection: 77/80 and 76/80, 4/4 overlap pairs in both trials. Current fingerprints verified; isolated description selection only.",
+      "detail": "Recorded 37-skill semantic selection: 77/80 and 77/80, 4/4 overlap pairs in both trials. Current fingerprints verified; isolated description selection only.",
       "owner": null
     },
     {
       "id": "V20",
       "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
-      "result": "FAIL",
+      "result": "PASS",
       "date": "2026-09-10",
       "exit_code": 0,
-      "detail": "Seed 29 has 1/40 negative firings on excluded historical OCI-C; seed 17 has zero. Additional boundaries pass 12/12. Both trials retained without relabeling.",
-      "owner": "evaluation/routing maintainers"
+      "detail": "Zero negative firings in both 40-case trials after the Classic comparison scope clarification; 15/15 synthetic boundaries pass. Previous failing catalog-expansion traces retained. Original corpus, labels, policy, model and seeds unchanged.",
+      "owner": null
     },
     {
       "id": "V21",

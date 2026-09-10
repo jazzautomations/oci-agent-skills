@@ -14,7 +14,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
-| [oci-navigator](../skills/oci-navigator/SKILL.md) | Finds the current OCI control plane and service equivalents. | read-only | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [console-links.md](../references/console-links.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-navigator](../skills/oci-navigator/SKILL.md) | Locates services and CLI groups on the current OCI platform. | read-only | partial | 0 | 4 | [architecture-center.md](../references/architecture-center.md), [console-links.md](../references/console-links.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-cli-auth](../skills/oci-cli-auth/SKILL.md) | Fixes OCI CLI authentication, identity and query problems. | read-only | partial | 2 | 2 | [auth-modes.md](../references/auth-modes.md), [error-triage.md](../references/error-triage.md), [jmespath.md](../references/jmespath.md), [realms-endpoints.md](../references/realms-endpoints.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md), [windows-powershell.md](../references/windows-powershell.md) |
 | [oci-tenancy-governance](../skills/oci-tenancy-governance/SKILL.md) | Designs and audits OCI tenancy guardrails: compartment topology, tag namespaces, cost-tracking tags, quotas, budgets, landing zones, organizations and child tenancies. | guarded-write | partial | 2 | 5 | [architecture-center.md](../references/architecture-center.md), [cross-service-pitfalls.md](../references/cross-service-pitfalls.md), [error-corpus.json](../references/error-corpus.json), [iam-variables.md](../references/iam-variables.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-iam-policy](../skills/oci-iam-policy/SKILL.md) | Writes and reviews OCI IAM policy and identity-domain configuration: verbs, resource-type families, conditions, dynamic groups, federation (SAML/OIDC), SCIM, MFA and sign-on policies, cross-tenancy Endorse/Admit/Define. | guarded-write | partial | 2 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [iam-variables.md](../references/iam-variables.md), [redaction.md](../references/redaction.md), [resource-type-families.json](../references/resource-type-families.json), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
@@ -500,9 +500,9 @@ oci monitoring alarm list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 
 
 [Open skill](../skills/oci-navigator/SKILL.md)
 
-**Use when:** unknown product/group, command-name errors, cross-cloud concept mapping, OCI service discovery.
+**Use when:** unknown OCI product/group, command-name errors, cross-cloud concept mapping to OCI.
 
-**Not for:** historical OCI-C, established service operations, database noun sets (`oracle-db-fleet`) or application API reach (`oracle-enterprise-apps`).
+**Not for:** Compute Classic/OCI-C terminology or comparisons (even with current OCI), established service operations, database families (`oracle-db-fleet`), application API reach (`oracle-enterprise-apps`).
 
 ```bash
 # realm, home region, subscriptions

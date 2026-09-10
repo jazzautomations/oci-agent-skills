@@ -1,18 +1,18 @@
 {
   "mode": "synthetic-semantic-boundaries",
-  "validated_at": "2026-09-10T09:30:39.350510+00:00",
-  "inputs_sha256": "c5981440f637720ff5fa2d7b74da9f43506e652835e8971d4324436e633efa40",
-  "request_sha256": "e331baf9e9ef8a049f4d6fbf03d46a3e20b536e505590adbdd958aa7ae31c497",
+  "validated_at": "2026-09-10T09:57:58.143687+00:00",
+  "inputs_sha256": "a9e856fdc7e5bfc38fe5d5bc90dcabcaf8eb9caf1c397b723214d33d5958280c",
+  "request_sha256": "5429468e5ed14abd566f38e8400c7945a78282e801d3ffa05a84c6414eaeb5ff",
   "trace": {
     "model": "claude-sonnet-5",
-    "session_id": "448f95e8-75c0-4139-a6ba-c48b7ee0be0e",
+    "session_id": "8a746368-afb0-4e1e-b6a5-9d362aa38fc2",
     "tools": [],
     "mcp_servers": [],
     "result": {
       "labels": [
         {
           "id": "item000",
-          "skill": "oci-navigator"
+          "skill": null
         },
         {
           "id": "item001",
@@ -20,7 +20,7 @@
         },
         {
           "id": "item002",
-          "skill": null
+          "skill": "oci-navigator"
         },
         {
           "id": "item003",
@@ -32,7 +32,7 @@
         },
         {
           "id": "item005",
-          "skill": null
+          "skill": "oci-navigator"
         },
         {
           "id": "item006",
@@ -40,7 +40,7 @@
         },
         {
           "id": "item007",
-          "skill": "oracle-enterprise-apps"
+          "skill": null
         },
         {
           "id": "item008",
@@ -48,27 +48,39 @@
         },
         {
           "id": "item009",
-          "skill": "oracle-db-fleet"
+          "skill": "oracle-enterprise-apps"
         },
         {
           "id": "item010",
-          "skill": "oracle-db-fleet"
+          "skill": null
         },
         {
           "id": "item011",
           "skill": null
+        },
+        {
+          "id": "item012",
+          "skill": "oracle-db-fleet"
+        },
+        {
+          "id": "item013",
+          "skill": "oracle-db-fleet"
+        },
+        {
+          "id": "item014",
+          "skill": null
         }
       ]
     },
-    "duration_ms": 12912,
-    "total_cost_usd": 0.046182,
+    "duration_ms": 12450,
+    "total_cost_usd": 0.052336,
     "usage": {
       "input_tokens": 2,
-      "cache_creation_input_tokens": 7326,
+      "cache_creation_input_tokens": 7520,
       "cache_read_input_tokens": 0,
-      "output_tokens": 1158,
+      "output_tokens": 1683,
       "output_tokens_details": {
-        "thinking_tokens": 934
+        "thinking_tokens": 1413
       },
       "server_tool_use": {
         "web_search_requests": 0,
@@ -76,19 +88,19 @@
       },
       "service_tier": "standard",
       "cache_creation": {
-        "ephemeral_1h_input_tokens": 7326,
+        "ephemeral_1h_input_tokens": 7520,
         "ephemeral_5m_input_tokens": 0
       },
       "inference_geo": "not_available",
       "iterations": [
         {
           "input_tokens": 2,
-          "output_tokens": 1158,
+          "output_tokens": 1683,
           "cache_read_input_tokens": 0,
-          "cache_creation_input_tokens": 7326,
+          "cache_creation_input_tokens": 7520,
           "cache_creation": {
             "ephemeral_5m_input_tokens": 0,
-            "ephemeral_1h_input_tokens": 7326
+            "ephemeral_1h_input_tokens": 7520
           },
           "type": "message"
         }
@@ -97,12 +109,12 @@
     },
     "model_usage": {
       "claude-haiku-4-5-20251001": {
-        "inputTokens": 5219,
-        "outputTokens": 15,
+        "inputTokens": 5342,
+        "outputTokens": 16,
         "cacheReadInputTokens": 0,
         "cacheCreationInputTokens": 0,
         "webSearchRequests": 0,
-        "costUSD": 0.005294,
+        "costUSD": 0.005422000000000001,
         "contextWindow": 200000,
         "maxOutputTokens": 32000,
         "thinkingTokens": 0,
@@ -112,14 +124,14 @@
       },
       "claude-sonnet-5": {
         "inputTokens": 2,
-        "outputTokens": 1158,
+        "outputTokens": 1683,
         "cacheReadInputTokens": 0,
-        "cacheCreationInputTokens": 7326,
+        "cacheCreationInputTokens": 7520,
         "webSearchRequests": 0,
-        "costUSD": 0.040888,
+        "costUSD": 0.046914,
         "contextWindow": 1000000,
         "maxOutputTokens": 64000,
-        "thinkingTokens": 934,
+        "thinkingTokens": 1413,
         "canonicalModel": "claude-sonnet-5",
         "provider": "firstParty",
         "costBasis": "list"
@@ -129,8 +141,8 @@
   },
   "provenance": "Synthetic regression cases authored during the scope repair from declared product boundaries; not an independent unseen benchmark.",
   "score": {
-    "correct": 12,
-    "total": 12,
+    "correct": 15,
+    "total": 15,
     "errors": [],
     "ok": true
   }

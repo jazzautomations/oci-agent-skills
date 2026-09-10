@@ -3,7 +3,7 @@
 Texto preparado para envio pelo autor; nenhuma mensagem foi enviada.
 
 > Pessoal, preparei um projeto independente para agentes trabalharem com OCI:
-> são 33 skills de cloud engineering, Oracle Database, APEX, IA e DevOps, mais
+> são 37 skills de cloud engineering, Oracle Database, APEX, IA e DevOps, mais
 > 15 ferramentas MCP de leitura e um catálogo de comandos verificável.
 >
 > Queria mostrar para vocês e receber uma revisão técnica antes de abrir o repo.

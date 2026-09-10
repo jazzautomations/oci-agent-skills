@@ -1,10 +1,11 @@
 ---
 name: oci-navigator
 description: >-
-  Finds the current OCI control plane and service equivalents. Use when: unknown
-  product/group, command-name errors, cross-cloud concept mapping, OCI service
-  discovery. Not for: historical OCI-C, established service operations, database
-  noun sets (`oracle-db-fleet`) or application API reach (`oracle-enterprise-apps`).
+  Locates services and CLI groups on the current OCI platform. Use when: unknown
+  OCI product/group, command-name errors, cross-cloud concept mapping to OCI.
+  Not for: Compute Classic/OCI-C terminology or comparisons (even with current
+  OCI), established service operations, database families (`oracle-db-fleet`),
+  application API reach (`oracle-enterprise-apps`).
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:
@@ -22,9 +23,8 @@ Selects the control plane, then hands off to its owner.
 ## Scope check
 Set `COMPARTMENT_ID`, `TENANCY_ID` for the fences below.
 Validate IDs with the scoped list/get below.
-Map cross-cloud concepts, then delegate configuration. Send database-family and
-application API questions to their domain owners. Historical Compute Classic/
-OCI-C runbooks are outside this current-OCI navigator.
+Map cross-cloud concepts; delegate operations to their owners. Compute Classic/OCI-C
+terminology and comparisons, including with current OCI, are outside scope.
 
 ## Route
 | The user says… | Load | Why |

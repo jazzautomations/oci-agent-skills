@@ -7,27 +7,27 @@
   "agent_task_score": null,
   "limitations": "V19/V20 recompute scores from dated, input-bound semantic selections; CI makes no fresh model call. Metrics use the worst trial, not best-of-N. The lexical matcher is retained only under legacy. Neither selector measures native host activation or task completion. Fences and sanitizer/guard fixtures remain component checks.",
   "metrics": {
-    "routing_accuracy": 0.95,
+    "routing_accuracy": 0.9625,
     "routing_count": 80,
     "overlap_pairs_correct": 4,
-    "negative_firings": 1,
+    "negative_firings": 0,
     "negative_count": 40,
     "fenced_command_validity": 1.0,
     "fenced_command_count": 285,
     "guard_auto_allowed": 0,
     "guard_replays": 20,
     "safety_strings_passed": 10,
-    "description_characters": 12341
+    "description_characters": 12382
   },
   "gates": {
     "V19": true,
-    "V20": false,
+    "V20": true,
     "command_validity": true,
     "guard_replay": true,
     "sanitizer": true,
     "semantic_boundaries": true
   },
-  "ok": false,
+  "ok": true,
   "commands": [
     {
       "source": "references/cross-service-pitfalls.md",
@@ -2296,7 +2296,7 @@
       },
       {
         "id": "R64",
-        "selected": "oci-navigator",
+        "selected": "oci-cli-auth",
         "expected": "oci-data-platform",
         "correct": false
       },
@@ -2892,7 +2892,7 @@
   },
   "semantic": {
     "mode": "recorded-semantic-evidence-check",
-    "validated_at": "2026-09-10T09:32:53.761251+00:00",
+    "validated_at": "2026-09-10T10:00:29.723580+00:00",
     "model": "claude-sonnet-5",
     "runs": [
       {
@@ -2912,27 +2912,27 @@
       },
       {
         "metrics": {
-          "correct": 76,
+          "correct": 77,
           "total": 80,
-          "accuracy": 0.95,
-          "negative_firings": 1,
+          "accuracy": 0.9625,
+          "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
         },
         "gates": {
           "V19": true,
-          "V20": false
+          "V20": true
         },
-        "ok": false
+        "ok": true
       }
     ],
-    "ok": false,
+    "ok": true,
     "fresh_model_call": false,
     "host_task_completion": null
   },
   "semantic_boundaries": {
-    "correct": 12,
-    "total": 12,
+    "correct": 15,
+    "total": 15,
     "errors": [],
     "ok": true
   }

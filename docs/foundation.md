@@ -28,7 +28,7 @@ uv run --frozen --project runtime python scripts/inventory.py --scripts --exampl
 
 CLI inventory and offline example validation additionally need Python with pinned OCI CLI installed. The runtime environment intentionally does not include the CLI. CLI drift runs on the scheduled workflow; public documentation links are a nightly check. Creating hosted issues or running CI schedules was not part of local validation.
 
-Always-resident planning floor: ≈6.3–6.5k tokens (≈3,020 descriptions + ≈3,300–3,500 MCP schemas, estimates). This is a raw source-size estimate that excludes host framing. `release_report.py` prints it alongside `docs/evidence/context-measurement.json`, which measures the host framing separately. Readiness depends on the complete release matrix, not on this architecture description or a passing smoke test.
+The [current release metrics](evidence/release-metrics.json) estimate description and MCP schema tokens from source size; this excludes host framing. `release_report.py` prints it alongside `docs/evidence/context-measurement.json`, which measures the host framing separately. Readiness depends on the complete release matrix, not on this architecture description or a passing smoke test.
 
 ## Reader catalogs
 
