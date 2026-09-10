@@ -1,0 +1,18 @@
+{
+  "run_id": 34436615438,
+  "url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34436615438",
+  "event": "workflow_dispatch",
+  "source_revision": "8eb3d576329da00231dc4b6574003087fa805b62",
+  "conclusion": "success",
+  "pinned_cli": "3.91.0",
+  "compared_cli": "3.92.1",
+  "notification": {
+    "status": "would-create",
+    "published": false,
+    "body_characters": 8180,
+    "diff_truncated": false
+  },
+  "diff_sha256": "2015cec234bbd7672400ab504f0edfcac02cb5c2e0163b645b41a73eb066fd68",
+  "notification_unit_tests": 8,
+  "limitations": "Manual hosted preview. Real issue publication and scheduled cron firing are not measured; duplicate prevention and creation use a mock client in tests."
+}

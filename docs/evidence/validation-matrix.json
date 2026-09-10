@@ -213,8 +213,8 @@
       "id": "V24",
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
-      "date": "2026-09-09",
-      "detail": "Local pinned required-flag renderer exercised; Tuesday schedule/hosted issue creation not executed locally. Subcheck V24-local: PASS.",
+      "date": "2026-09-10",
+      "detail": "Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json.",
       "owner": "repository CI maintainers"
     },
     {

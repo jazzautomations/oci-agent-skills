@@ -31,6 +31,15 @@ See the [scoped sweep](evidence/validation-scripts.json),
 [prerequisite diagnostics](evidence/prerequisite-diagnostics.json) and
 [host recheck](evidence/host-recheck.json) for dated outcomes.
 
+The [hosted preview](evidence/hosted-drift.json) completed successfully on commit
+`8eb3d57`: OCI CLI 3.91.0 versus 3.92.1. The [captured diff](evidence/cli-drift.diff)
+and [path impact analysis](evidence/cli-drift-impact.json) identify 35 added paths,
+six removed paths and three relaxed required-flag sets. None of the removed or
+changed paths appears in the authored OCI fences under skills/shared references.
+This is not a full compatibility test of optional flags, callbacks or OCI services.
+The notification outcome was `would-create`, with `published: false`. The package
+continues to validate against its pinned CLI 3.91.0.
+
 ## Live prerequisites
 
 A bounded probe in the selected profile's tenancy-root compartment and region
