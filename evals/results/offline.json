@@ -7,7 +7,7 @@
   "agent_task_score": null,
   "limitations": "V19/V20 recompute scores from dated, input-bound semantic selections; CI makes no fresh model call. Metrics use the worst trial, not best-of-N. The lexical matcher is retained only under legacy. Neither selector measures native host activation or task completion. Fences and sanitizer/guard fixtures remain component checks.",
   "metrics": {
-    "routing_accuracy": 0.9875,
+    "routing_accuracy": 1.0,
     "routing_count": 80,
     "overlap_pairs_correct": 4,
     "negative_firings": 0,
@@ -17,7 +17,7 @@
     "guard_auto_allowed": 0,
     "guard_replays": 20,
     "safety_strings_passed": 10,
-    "description_characters": 12467
+    "description_characters": 12480
   },
   "gates": {
     "V19": true,
@@ -2338,9 +2338,9 @@
       },
       {
         "id": "R71",
-        "selected": "oci-cli-auth",
+        "selected": "oracle-enterprise-apps",
         "expected": "oracle-enterprise-apps",
-        "correct": false
+        "correct": true
       },
       {
         "id": "R72",
@@ -2882,7 +2882,7 @@
       }
     ],
     "metrics": {
-      "routing_accuracy": 0.35,
+      "routing_accuracy": 0.3625,
       "routing_count": 80,
       "overlap_pairs_correct": 3,
       "negative_firings": 0,
@@ -2892,14 +2892,14 @@
   },
   "semantic": {
     "mode": "recorded-semantic-evidence-check",
-    "validated_at": "2026-09-10T14:00:06.529784+00:00",
+    "validated_at": "2026-09-10T14:12:24.026293+00:00",
     "model": "claude-sonnet-5",
     "runs": [
       {
         "metrics": {
-          "correct": 79,
+          "correct": 80,
           "total": 80,
-          "accuracy": 0.9875,
+          "accuracy": 1.0,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
@@ -2912,9 +2912,9 @@
       },
       {
         "metrics": {
-          "correct": 79,
+          "correct": 80,
           "total": 80,
-          "accuracy": 0.9875,
+          "accuracy": 1.0,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4

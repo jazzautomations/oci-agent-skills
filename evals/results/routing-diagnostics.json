@@ -1,83 +1,40 @@
 {
   "version": 1,
   "mode": "verified-semantic-error-analysis",
-  "evidence_sha256": "6db7c1b4176271493eb5d9421051df395136a389b14179544c03f0b7815173d3",
-  "semantic_inputs_sha256": "94ddf9191dc7a3c22a9d5364e030aa5e779e07c5878fb377fed68df01ea7bf98",
+  "evidence_sha256": "f2ae6f88c82fb18a40fd2f1a7e488998ecab599d7214c9e7692d6d85bd108e89",
+  "semantic_inputs_sha256": "1e24cf911957acd104d626fc905fd023821106463a9e44011280fe4042993982",
   "generator_sha256": "fbddcea50b785769e7b06a68a8b9c66c44c071e0f383dbfb610aeacb3b665907",
-  "validated_at": "2026-09-10T14:00:06.529784+00:00",
+  "validated_at": "2026-09-10T14:12:24.026293+00:00",
   "model": "claude-sonnet-5",
   "minimum_accuracy": 0.9,
   "evidence_valid": true,
   "gates_pass": true,
-  "perfect_routing": false,
+  "perfect_routing": true,
   "routing_total": 80,
   "negative_total": 40,
-  "routing_correct_in_every_trial": 78,
-  "routing_same_selection_in_every_trial": 78,
+  "routing_correct_in_every_trial": 80,
+  "routing_same_selection_in_every_trial": 80,
   "trials": [
     {
       "seed": 17,
-      "correct": 79,
+      "correct": 80,
       "total": 80,
-      "accuracy": 0.9875,
+      "accuracy": 1.0,
       "negative_firings": 0,
       "negative_total": 40,
       "overlap_pairs_correct": 4
     },
     {
       "seed": 29,
-      "correct": 79,
+      "correct": 80,
       "total": 80,
-      "accuracy": 0.9875,
+      "accuracy": 1.0,
       "negative_firings": 0,
       "negative_total": 40,
       "overlap_pairs_correct": 4
     }
   ],
-  "routing_errors": [
-    {
-      "id": "R01",
-      "prompt": "which oci cli group do I use for WebLogic running on OCI? `oci weblogic` says No such command",
-      "expected": "oci-navigator",
-      "selections": [
-        {
-          "seed": 17,
-          "selected": "oracle-enterprise-apps",
-          "correct": false
-        },
-        {
-          "seed": 29,
-          "selected": "oci-navigator",
-          "correct": true
-        }
-      ],
-      "failing_seeds": [
-        17
-      ],
-      "same_selection_in_all_trials": false
-    },
-    {
-      "id": "R71",
-      "prompt": "can I automate a Fusion ERP approval flow with the oci cli",
-      "expected": "oracle-enterprise-apps",
-      "selections": [
-        {
-          "seed": 17,
-          "selected": "oracle-enterprise-apps",
-          "correct": true
-        },
-        {
-          "seed": 29,
-          "selected": null,
-          "correct": false
-        }
-      ],
-      "failing_seeds": [
-        29
-      ],
-      "same_selection_in_all_trials": false
-    }
-  ],
+  "routing_errors": [],
   "negative_errors": [],
   "limitations": "Known development corpus; agreement is not correctness. This diagnostic does not adjudicate disputed labels, change gates, or measure native host task completion."
 }

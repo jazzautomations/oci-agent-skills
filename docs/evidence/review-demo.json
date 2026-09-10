@@ -1,5 +1,5 @@
 {
-  "validated_at": "2026-09-10T13:54:09.833720+00:00",
+  "validated_at": "2026-09-10T15:27:28.238065+00:00",
   "mode": "offline_component_walkthrough",
   "ok": true,
   "scope": "Catalog lookup, inert argv classification and MCP stdio discovery/invalid-scope rejection. No agent task, OCI operation or host permission enforcement was measured.",
@@ -57,8 +57,8 @@
     "scripts/guard_oci.py": "167f36008edcd7a7d92de83c71bd3d0b32fa25da833d23b66a2c250ad2d0c069",
     "scripts/guard_lib.py": "2748986bbcfc4d15f14b3cc078ddb37559e1596f0fc7a775cdf5ef01ffc65c28",
     "catalog/cli.jsonl": "506bbfc7db8da3666bf704bc67d1117018b06106fd69a9530b5393e22d2ea546",
-    "catalog/guard.json": "74c65cc39cb0d68a1c416ed3f015aca3eb3ad9a2849eaae7173fbc2fc3fb7c1a",
-    "catalog/scripts.json": "261fb5693d7c2c7908b9e7d0179e4007ff29a4effa30d6d8eb312c74ea5922bc",
+    "catalog/guard.json": "ad99a5da044f479a8cbc97834d284515cc2e113c5f8ac1caae9e842f8465c49a",
+    "catalog/scripts.json": "7cc2268c8cc8f4b44b4c069ea4191deace3d83c1df2372e6b2e0d4a8410faed8",
     "runtime/oci_readonly/server.py": "bbc2692e48bc7cc864920f0e4f31918c9c29d23c149676126aa7175c7e9b356f",
     "runtime/oci_readonly/smoke.py": "5e2ca996ef2c916c48686bc6aaec4ab928414eaeebd42ab0eb3b43db1e86d4cf",
     "runtime/uv.lock": "635ca23bdd1f335d83d4725e9e03bfd48b23d48ea06204af9f68578e23c83151"

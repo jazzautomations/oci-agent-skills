@@ -1,6 +1,6 @@
 ---
 name: oracle-enterprise-apps
-description: "Explains Oracle application business APIs versus OCI environment APIs. Use when: Fusion/NetSuite/OIC/OAC/ODA/VB/WebLogic interface capability or environment inventory. Not for: editing Integration flows, visual-designer components or application UI; executing business transactions; CLI name discovery or No such command (`oci-navigator`); core OCI operations."
+description: "Explains Oracle application business APIs versus OCI environment APIs. Use when: whether CLI can automate Fusion approvals or reach application objects, Fusion/NetSuite/OIC/OAC/ODA/VB environment inventory and interface capability. Not for: visual-designer editing of Integration flows or UI; executing transactions; CLI name discovery or No such command (`oci-navigator`)."
 license: Apache-2.0
 compatibility: Requires OCI CLI 3.91+ with an authenticated profile
 metadata:

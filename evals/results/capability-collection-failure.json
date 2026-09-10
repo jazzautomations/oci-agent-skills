@@ -1,0 +1,8 @@
+{
+  "status": "invalid-model-result",
+  "recorded_at": "2026-09-10T14:10:18.587050+00:00",
+  "semantic_inputs_sha256": "1e24cf911957acd104d626fc905fd023821106463a9e44011280fe4042993982",
+  "recorded_trials": 0,
+  "error": "JSONDecodeError while parsing the first model result; no valid classification trial was recorded.",
+  "recovery": "One technical retry of the complete two-trial collection. This is not selection among valid scores. Existing published evidence remains at commit 219fa8c until the new candidate qualifies."
+}

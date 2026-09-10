@@ -80,6 +80,29 @@ navigator and visual Integration-flow editing from enterprise applications.
 Two added boundary cases exercise those exclusions. The 80/80 trial alone was
 not accepted as evidence that this candidate passed.
 
+## Capability questions and product-name overlap
+
+The published repair at commit `219fa8c` scored 79/80 in both trials, with zero
+negative firings and 31/31 boundaries. R01 and R71 remained intermittent; its
+[main traces](../evals/results/semantic-capability-development.json) and
+[boundary trace](../evals/results/semantic-boundaries-capability-development.json)
+are preserved, and the commit pins the corresponding description inputs.
+
+The subsequent change affects only the enterprise-apps entry description: it
+explicitly covers questions about whether CLI can automate application approvals,
+and avoids using WebLogic's product name as an incidental trigger. The WebLogic
+guide and operational scope remain in the skill. CLI-name errors and visual
+Integration editing remain excluded, while the existing WebLogic capability
+boundary case still has to pass. No routing override or hardcoded case label was
+introduced.
+
+The first collection attempt for this description returned invalid JSON before
+any valid trial was recorded. The [failure receipt](../evals/results/capability-collection-failure.json)
+records the single technical retry of the complete collection. That retry scored
+80/80 in each trial, zero negative firings, 4/4 overlap pairs, and 31/31 additional
+boundaries. Every completed development collection remains available; these are
+known regression results, not an untouched holdout or provider attestation.
+
 The [evaluation guide](evals.md) reports the collected outcome. The
 [research report](routing-reliability.md) remains the historical diagnosis that
 motivated these changes. Description selection measures entry ownership only;

@@ -858,9 +858,9 @@ oci db autonomous-db-version list --compartment-id "$COMPARTMENT_ID" --limit 10 
 
 [Open skill](../skills/oracle-enterprise-apps/SKILL.md)
 
-**Use when:** Fusion/NetSuite/OIC/OAC/ODA/VB/WebLogic interface capability or environment inventory.
+**Use when:** whether CLI can automate Fusion approvals or reach application objects, Fusion/NetSuite/OIC/OAC/ODA/VB environment inventory and interface capability.
 
-**Not for:** editing Integration flows, visual-designer components or application UI; executing business transactions; CLI name discovery or No such command (`oci-navigator`); core OCI operations.
+**Not for:** visual-designer editing of Integration flows or UI; executing transactions; CLI name discovery or No such command (`oci-navigator`).
 
 ```bash
 oci fusion-apps fusion-environment list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data.items[].{id:id,state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"

@@ -6,8 +6,8 @@ it does not call a model or claim native host task completion.
 
 | Measurement | Result | Criterion |
 |---|---:|---|
-| Semantic selection, seed 17 | 79/80 (98.75%) | ≥90% in every trial |
-| Semantic selection, seed 29 | 79/80 (98.75%) | ≥90% in every trial |
+| Semantic selection, seed 17 | 80/80 (100%) | ≥90% in every trial |
+| Semantic selection, seed 29 | 80/80 (100%) | ≥90% in every trial |
 | Overlap pairs | 4/4 in each trial | All four in every trial |
 | Negative skill firings | 0/40 in each trial | Zero in every trial |
 | Additional synthetic boundaries | 31/31 | All correct; development regressions |
@@ -20,9 +20,10 @@ it does not call a model or claim native host task completion.
 The revised [ownership contracts](routing-contracts.md) distinguish command-name
 errors from application capability, tool-executor identity from IAM statements,
 backup recovery impact from command mechanics, and generic A1 capacity from an
-explicit Free Tier request. The recorded results are **79/80 and 79/80**, with
-**2 distinct routing disagreements** (0 repeated in both trials).
-78/80 requests are correct in both trials.
+explicit Free Tier request. The enterprise-apps description explicitly covers
+application capability questions while excluding CLI-name errors and UI editing.
+The recorded results are **80/80 and 80/80**, with **zero routing disagreements**.
+All 80 requests are correct in both trials.
 The [verified diagnostic](../evals/results/routing-diagnostics.json) lists every
 remaining error and independently distinguishes correctness from agreement.
 
@@ -43,8 +44,12 @@ scope clarification. [Development traces](../evals/results/semantic-ownership-de
 and [inputs](../evals/results/ownership-development-inputs.json) are retained.
 The next candidate reached 80/80 once but failed a negative case in the other
 trial; its [rejected traces](../evals/results/semantic-name-scope-development.json)
-are preserved. The final candidate explicitly excludes database-family selection
-from navigator and Integration visual editing from enterprise applications.
+are preserved. The next published candidate scored 79/80 twice after excluding
+database-family selection and Integration visual editing from inappropriate owners.
+Its [traces](../evals/results/semantic-capability-development.json) retain the
+remaining R01/R71 errors. The final enterprise-description refinement is documented
+in [the ownership decision](routing-contracts.md#capability-questions-and-product-name-overlap),
+including an invalid-JSON collection attempt and one complete technical retry.
 No expected label was reassigned to accommodate a prediction.
 
 ### Collection scope

@@ -139,7 +139,7 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 | Regression suite | 453 passed | Current full suite; recorded in the validation matrix |
 | Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
-| Semantic skill selection | 79/80 and 79/80 | 2 distinct disagreements; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
+| Semantic skill selection | 80/80 and 80/80 | Zero disagreements in the recorded trials; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
 

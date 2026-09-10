@@ -1,7 +1,7 @@
 {
   "skills": 37,
-  "description_characters": 12467,
-  "description_tokens_estimate": 3117,
+  "description_characters": 12480,
+  "description_tokens_estimate": 3120,
   "mcp_tools": [
     "oci_regions",
     "oci_compartments",
@@ -79,8 +79,8 @@
     "allowed_outside_strict_reads": 0
   },
   "raw_estimate_method": "ceil(description characters / 4) + ceil(serialized MCP schema characters / 4); excludes host framing",
-  "resident_tokens_estimate": 6617,
-  "published_planning_floor": "3117 description tokens + 3500 MCP schema tokens; source-size estimates",
+  "resident_tokens_estimate": 6620,
+  "published_planning_floor": "3120 description tokens + 3500 MCP schema tokens; source-size estimates",
   "examples": 268,
   "cli_leaves": 9145,
   "cli_groups": 174,

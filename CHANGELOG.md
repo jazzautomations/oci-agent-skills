@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — application capability routing
+
+Clarify the enterprise-apps entry description around questions about application
+API capability, retaining WebLogic guidance and excluding CLI-name errors and
+visual editing. Recorded selection now passes 80/80 in both predefined trials,
+zero negative firings, 4/4 overlap pairs and 31/31 boundaries. The original
+prompts, labels, policy, model and seeds are unchanged. Previous 79/80 traces and
+one invalid-JSON collection attempt are retained. These are known development
+regressions; native task completion remains unmeasured.
+
 ## Unreleased — explicit routing ownership
 
 Separate CLI-name discovery, application API capability, agent tool identity,
@@ -7,10 +17,10 @@ IAM authoring, backup recovery impact and service commands. Generic A1 capacity
 checks require no assumption of Free Tier; database-family selection and visual
 Integration editing are explicitly excluded from the wrong owners.
 
-Recorded semantic trials now score 79/80 in both runs, with zero negative firings,
+The first published ownership repair scored 79/80 in both runs, with zero negative firings,
 4/4 overlap pairs and 31/31 synthetic boundaries. Original prompts, labels and
 thresholds are unchanged. Earlier and rejected development traces are preserved;
-the remaining intermittent R01/R71 disagreements are visible in the diagnostic.
+its intermittent R01/R71 disagreements are retained in the development traces.
 The private briefing reads routing scores from that diagnostic. Task-completion
 evaluation remains separate; see [evaluation evidence](docs/evals.md).
 

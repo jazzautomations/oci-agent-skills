@@ -38,7 +38,7 @@ class Brief:
         self.c = Canvas(str(output), pagesize=A4, invariant=1)
         self.c.setTitle('OCI Agent Skills | Do pedido ao fluxo de trabalho')
         self.c.setAuthor('Felipe Salvego / Jazz Automations')
-        self.c.setSubject('Apresentação técnica privada — edição 05')
+        self.c.setSubject('Apresentação técnica privada — edição 06')
         self.date, self.page = date, 0
 
     def rect(self, x, y, w, h, color, radius=0):
@@ -108,7 +108,7 @@ def main():
     output = ROOT/'docs/review/brief-pt.pdf'
     b = Brief(output, evidence['validated_at'][:10])
 
-    b.start('APRESENTAÇÃO / EDIÇÃO 05', dark=True)
+    b.start('APRESENTAÇÃO / EDIÇÃO 06', dark=True)
     b.text('OCI Agent<br/>Skills', M, 86, size=54, color=WHITE, font='Bold', leading=55)
     b.text('Da pergunta sobre a nuvem<br/>a um fluxo de trabalho verificável.', M, 224,
            size=23, color='#E5EEDC', leading=29)

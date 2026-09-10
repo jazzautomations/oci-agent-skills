@@ -2,16 +2,16 @@
   "version": 1,
   "complete": true,
   "mode": "isolated-description-classifier",
-  "validated_at": "2026-09-10T14:12:24.026293+00:00",
-  "inputs_sha256": "1e24cf911957acd104d626fc905fd023821106463a9e44011280fe4042993982",
+  "validated_at": "2026-09-10T14:00:06.529784+00:00",
+  "inputs_sha256": "94ddf9191dc7a3c22a9d5364e030aa5e779e07c5878fb377fed68df01ea7bf98",
   "cli_version": "2.1.267 (Claude Code)",
   "runs": [
     {
       "seed": 17,
-      "input_sha256": "a5631511960ca912f470a7a05e7753eac26925e7c88e3ee3a0bb6bc48c6c5a0b",
+      "input_sha256": "3c28769ba0a6bba18e3e177ee23a0daf30f129aac6afa7783f76e85e5bef704a",
       "trace": {
         "model": "claude-sonnet-5",
-        "session_id": "29425b7e-13b7-4f89-9243-e56e07ef65a4",
+        "session_id": "a7b29322-2401-411d-b877-70eb416eb47f",
         "tools": [],
         "mcp_servers": [],
         "result": {
@@ -394,7 +394,7 @@
             },
             {
               "id": "item094",
-              "skill": "oci-navigator"
+              "skill": "oracle-enterprise-apps"
             },
             {
               "id": "item095",
@@ -498,15 +498,15 @@
             }
           ]
         },
-        "duration_ms": 50094,
-        "total_cost_usd": 0.127942,
+        "duration_ms": 67314,
+        "total_cost_usd": 0.147088,
         "usage": {
           "input_tokens": 2,
-          "cache_creation_input_tokens": 11871,
+          "cache_creation_input_tokens": 11863,
           "cache_read_input_tokens": 0,
-          "output_tokens": 7209,
+          "output_tokens": 9126,
           "output_tokens_details": {
-            "thinking_tokens": 4920
+            "thinking_tokens": 6832
           },
           "server_tool_use": {
             "web_search_requests": 0,
@@ -514,19 +514,19 @@
           },
           "service_tier": "standard",
           "cache_creation": {
-            "ephemeral_1h_input_tokens": 11871,
+            "ephemeral_1h_input_tokens": 11863,
             "ephemeral_5m_input_tokens": 0
           },
           "inference_geo": "not_available",
           "iterations": [
             {
               "input_tokens": 2,
-              "output_tokens": 7209,
+              "output_tokens": 9126,
               "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11871,
+              "cache_creation_input_tokens": 11863,
               "cache_creation": {
                 "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11871
+                "ephemeral_1h_input_tokens": 11863
               },
               "type": "message"
             }
@@ -535,12 +535,12 @@
         },
         "model_usage": {
           "claude-haiku-4-5-20251001": {
-            "inputTokens": 8299,
-            "outputTokens": 13,
+            "inputTokens": 8297,
+            "outputTokens": 15,
             "cacheReadInputTokens": 0,
             "cacheCreationInputTokens": 0,
             "webSearchRequests": 0,
-            "costUSD": 0.008364000000000002,
+            "costUSD": 0.008372000000000001,
             "contextWindow": 200000,
             "maxOutputTokens": 32000,
             "thinkingTokens": 0,
@@ -550,14 +550,14 @@
           },
           "claude-sonnet-5": {
             "inputTokens": 2,
-            "outputTokens": 7209,
+            "outputTokens": 9126,
             "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11871,
+            "cacheCreationInputTokens": 11863,
             "webSearchRequests": 0,
-            "costUSD": 0.119578,
+            "costUSD": 0.138716,
             "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "thinkingTokens": 4920,
+            "thinkingTokens": 6832,
             "canonicalModel": "claude-sonnet-5",
             "provider": "firstParty",
             "costBasis": "list"
@@ -567,9 +567,9 @@
       },
       "score": {
         "metrics": {
-          "correct": 80,
+          "correct": 79,
           "total": 80,
-          "accuracy": 1.0,
+          "accuracy": 0.9875,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4
@@ -583,10 +583,10 @@
     },
     {
       "seed": 29,
-      "input_sha256": "8fde208ed7ae3476eb10337354bd3c9edde791c1aee4c7bc8a69579e6cae99ca",
+      "input_sha256": "5d61ec425d91b183269f52d5e47f7f624f4ac269c6c5978bcbdfef3b051475d8",
       "trace": {
         "model": "claude-sonnet-5",
-        "session_id": "1d957bb8-e559-4aea-8e63-e54522327ab9",
+        "session_id": "4584d7d3-9e2d-4029-bd95-ed9832fc83cc",
         "tools": [],
         "mcp_servers": [],
         "result": {
@@ -965,7 +965,7 @@
             },
             {
               "id": "item093",
-              "skill": "oracle-enterprise-apps"
+              "skill": null
             },
             {
               "id": "item094",
@@ -1073,15 +1073,15 @@
             }
           ]
         },
-        "duration_ms": 69542,
-        "total_cost_usd": 0.150294,
+        "duration_ms": 72021,
+        "total_cost_usd": 0.142431,
         "usage": {
           "input_tokens": 2,
-          "cache_creation_input_tokens": 11869,
+          "cache_creation_input_tokens": 11865,
           "cache_read_input_tokens": 0,
-          "output_tokens": 9442,
+          "output_tokens": 8658,
           "output_tokens_details": {
-            "thinking_tokens": 7153
+            "thinking_tokens": 6381
           },
           "server_tool_use": {
             "web_search_requests": 0,
@@ -1089,19 +1089,19 @@
           },
           "service_tier": "standard",
           "cache_creation": {
-            "ephemeral_1h_input_tokens": 11869,
+            "ephemeral_1h_input_tokens": 11865,
             "ephemeral_5m_input_tokens": 0
           },
           "inference_geo": "not_available",
           "iterations": [
             {
               "input_tokens": 2,
-              "output_tokens": 9442,
+              "output_tokens": 8658,
               "cache_read_input_tokens": 0,
-              "cache_creation_input_tokens": 11869,
+              "cache_creation_input_tokens": 11865,
               "cache_creation": {
                 "ephemeral_5m_input_tokens": 0,
-                "ephemeral_1h_input_tokens": 11869
+                "ephemeral_1h_input_tokens": 11865
               },
               "type": "message"
             }
@@ -1110,12 +1110,12 @@
         },
         "model_usage": {
           "claude-haiku-4-5-20251001": {
-            "inputTokens": 8299,
-            "outputTokens": 19,
+            "inputTokens": 8297,
+            "outputTokens": 18,
             "cacheReadInputTokens": 0,
             "cacheCreationInputTokens": 0,
             "webSearchRequests": 0,
-            "costUSD": 0.008394,
+            "costUSD": 0.008387,
             "contextWindow": 200000,
             "maxOutputTokens": 32000,
             "thinkingTokens": 0,
@@ -1125,14 +1125,14 @@
           },
           "claude-sonnet-5": {
             "inputTokens": 2,
-            "outputTokens": 9442,
+            "outputTokens": 8658,
             "cacheReadInputTokens": 0,
-            "cacheCreationInputTokens": 11869,
+            "cacheCreationInputTokens": 11865,
             "webSearchRequests": 0,
-            "costUSD": 0.1419,
+            "costUSD": 0.134044,
             "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "thinkingTokens": 7153,
+            "thinkingTokens": 6381,
             "canonicalModel": "claude-sonnet-5",
             "provider": "firstParty",
             "costBasis": "list"
@@ -1142,9 +1142,9 @@
       },
       "score": {
         "metrics": {
-          "correct": 80,
+          "correct": 79,
           "total": 80,
-          "accuracy": 1.0,
+          "accuracy": 0.9875,
           "negative_firings": 0,
           "negative_total": 40,
           "overlap_pairs_correct": 4

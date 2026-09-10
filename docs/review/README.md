@@ -14,7 +14,7 @@ production certification.
 The seven-page Portuguese briefing explains the product through a networking
 scenario, separates skill guidance from execution, maps the nine coverage areas
 and walks through recorded component evidence. Illustrative workflows and
-measured outcomes are explicitly distinguished. Edition 05 reports the ownership repair and the unmeasured task-evaluation alternative, using embedded fonts
+measured outcomes are explicitly distinguished. Edition 06 reports the ownership repair and the unmeasured task-evaluation alternative, using embedded fonts
 and a layout designed for reading on screen or sharing as a document.
 
 ## The problem and approach
