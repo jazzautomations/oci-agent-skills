@@ -81,7 +81,7 @@
     },
     {
       "path": "scripts/ci/check_scripts_readonly.py",
-      "sha256": "2fd27ee20d814f50f2a936e284ec2bddf350665e23fbd277c2bd6b22682e36f4",
+      "sha256": "1e04e9b0eddd2466b7b85f96184c17e0408e50f6e379976907a85d521b6c689b",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -218,14 +218,26 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/lib/costs.py",
+      "sha256": "5f6d777f9542d223660853ad8b2d6578cd96825f7ed64eed2b76ba894187bdd6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/lib/oci_ro.py",
-      "sha256": "8f5e76c56c408ae55eef0f8b4383df1b01931b0a85f5597624e7d2ed375bd550",
+      "sha256": "384706d88271ed1db8b98c69b11149a91633684b2bc387830a534e7f410eca23",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/lib/oci_ro.sh",
       "sha256": "6805a250d696c9ee8acca077ab8af7c377a5db1a620085381c217a5b60e25d71",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/lib/pricing.py",
+      "sha256": "e42ad0d632f050fc2eb9ee75690d6d7b42f4c7c54c31375899fd216a12307a8c",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -308,14 +320,26 @@
       "oci_calls": []
     },
     {
+      "path": "skills/oci-cost-analysis/scripts/cost_delta.py",
+      "sha256": "842aae1f3400607f9aa64c365478dfbee3aa9ed501f8a8521a43697eaf0e2bc5",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "skills/oci-cost-analysis/scripts/cost_delta.sh",
-      "sha256": "9c50fcb9949046091ba15e107f7c03f20e98d694368847edb2867df3d2389e4c",
+      "sha256": "923b054cd3ad1633308474511ec38b03a2bfbdb99d93857134e89227402c5a49",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "skills/oci-cost-analysis/scripts/price.py",
+      "sha256": "968cf8cb7b091259a2f67a2fb7a3eaf68d278de37e01d5dcfa05782c62c67fc7",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "skills/oci-cost-analysis/scripts/price.sh",
-      "sha256": "2c200d690656a0691c24d4586dd4ec9868e5686e900dccdb9828b74197c9472c",
+      "sha256": "38c7ece7ff223b0bc4967f81b8452e1584348dd01bd3f478e5aa2c588708b0ff",
       "mode": "read-only",
       "oci_calls": []
     },

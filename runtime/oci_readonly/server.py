@@ -104,6 +104,8 @@ FIELDS = {
     "limit_values": ("name", "value", "scope_type", "availability_domain"),
     "costs": (
         "service",
+        "sku_part_number",
+        "region",
         "currency",
         "compartment_id",
         "computed_amount",
@@ -547,8 +549,9 @@ def oci_cost_summary(
     compartment_depth: Annotated[int, Field(ge=1, le=6)] = 1,
     include_descendants: bool = False,
     all_regions: bool = False,
+    group_by: Annotated[list[Literal["service", "compartmentId", "skuPartNumber", "region"]], Field(min_length=1, max_length=4)] = ["service", "compartmentId"],
 ) -> dict:
-    """Reported costs, UTC dates, end exclusive, max 31 days. Explicit descendant and all-region switches; compartment_depth controls grouping, not authorization. IAM visibility can omit costs."""
+    """Costs by 1–4 dimensions; UTC end exclusive, ≤31 days. Descendant/region scope is explicit; depth only groups. IAM may omit rows; currencies remain separate."""
     context = check_scope(compartment_id, region)
     start = datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
     end = datetime.strptime(end_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
@@ -558,6 +561,8 @@ def oci_cost_summary(
         raise ScopeError("Authentication must resolve the tenancy")
     if not 1 <= compartment_depth <= 6:
         raise ValueError("Invalid compartment depth")
+    if not 1 <= len(group_by) <= 4 or len(set(group_by)) != len(group_by):
+        raise ValueError("Choose one to four distinct grouping dimensions")
     compartments = (
         descendant_ids(compartment_id, region) if include_descendants else [compartment_id]
     )
@@ -574,7 +579,7 @@ def oci_cost_summary(
         granularity="DAILY",
         query_type="COST",
         is_aggregate_by_time=True,
-        group_by=["service", "currency", "compartmentId"],
+        group_by=group_by,
         compartment_depth=compartment_depth,
         filter=models.Filter(
             operator="AND",
@@ -587,10 +592,30 @@ def oci_cost_summary(
             filters=[scope_filter] if include_descendants else None,
         ),
     )
-    response = client(oci.usage_api.UsageapiClient, region).request_summarized_usages(
-        details, limit=page_size, page=cursor
-    )
+    for attempt in range(3):
+        try:
+            response = client(oci.usage_api.UsageapiClient, region).request_summarized_usages(
+                details, limit=page_size, page=cursor
+            )
+            break
+        except oci.exceptions.ServiceError as exc:
+            if exc.status != 429 or attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
     result = page_result(response, "costs", page_size, collection=True)
+    kept = []
+    for row in result["items"]:
+        if row.get("computed_amount") in (None, 0):
+            continue
+        lo, hi = row.get("time_usage_started"), row.get("time_usage_ended")
+        if not lo or not hi or datetime.fromisoformat(lo.replace("Z", "+00:00")) < start or datetime.fromisoformat(hi.replace("Z", "+00:00")) > end:
+            raise ValueError("Service echoed a different cost window")
+        if not row.get("currency", "").strip() or row["currency"] == "NA":
+            raise ValueError("Nonzero cost has no usable currency")
+        kept.append(row)
+    result["items"] = sorted(kept, key=lambda row: row["time_usage_started"])
+    result["covered_window"] = {"start": start.isoformat(), "end": end.isoformat()}
+    result["currency_basis"] = "Returned billing currencies; no FX"
 
     result["excluded_scopes"] = ([] if include_descendants else ["descendant_compartments"]) + (
         [] if all_regions else ["other_regions"]
@@ -627,7 +652,7 @@ FIELDS.update(
             "allowlist_size",
             "version",
         ),
-        "prices": ("part_number", "display_name", "metric", "currency", "model", "value"),
+        "prices": ("part_number", "display_name", "metric", "currency", "model", "value", "range_min", "range_max"),
     }
 )
 ResourceId = Annotated[
@@ -926,12 +951,15 @@ def oci_price_lookup(
                         "currency": currency,
                         "model": price.get("model"),
                         "value": price.get("value"),
+                        "range_min": price.get("rangeMin", 0),
+                        "range_max": price.get("rangeMax"),
                     }
                 )
     result = synthetic_page(rows, "prices", 100)
     result["truncated"] = result["truncated"] or bool(response.get("hasMore"))
     result["source"] = PRICE_URL
     result["trust"] = "public-oracle-catalog"
+    result["price_snapshot"] = response.get("lastUpdated")
 
     return result
 

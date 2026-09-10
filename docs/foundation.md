@@ -37,3 +37,7 @@ Always-resident planning floor: ≈6.3–6.5k tokens (≈3,020 descriptions + �
 frontmatter and offline MCP schemas. `--check` detects drift without writing.
 No OCI credentials or service calls are used. Domain ownership is explicit; an
 unmapped or duplicate skill fails generation.
+
+Cost grouping accepts up to four dimensions (correcting the authoring plan’s former
+three-key cap). MONTHLY windows use calendar boundaries; actual deltas exclude the last
+48 hours. See the cost skill’s Usage API contract.

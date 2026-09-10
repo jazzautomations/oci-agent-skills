@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -120,8 +121,16 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
     from redact import redact
     try:
         prepared = prepare(argv, profile=profile, region=region, allow_all=allow_all)
-        response = run_process(argv, profile=profile, region=region, allow_all=allow_all,
-                               timeout=timeout, capture_output=True, text=True)
+        for attempt in range(3):
+            response = run_process(argv, profile=profile, region=region, allow_all=allow_all,
+                                   timeout=timeout, capture_output=True, text=True)
+            try:
+                err = json.loads(response.stderr[response.stderr.index('{'):]) if response.returncode else {}
+            except (ValueError, TypeError):
+                err = {}
+            if not response.returncode or err.get('status') != 429 or attempt == 2:
+                break
+            time.sleep(2 ** attempt)
         safe_argv = [redact(v) for v in prepared]
         if response.returncode:
             status = None
@@ -130,7 +139,7 @@ def run(argv, *, profile=None, region=None, timeout=60, sanitize=True, allow_all
                 status = error.get('status') if isinstance(error.get('status'), int) else None
             except (ValueError, TypeError, AttributeError):
                 pass
-            return {'ok': False, 'error': {'kind': 'service', 'status': status}, 'argv': safe_argv, 'truncated': False}
+            return {'ok': False, 'error': {'kind': 'service', 'status': status, **({'code': 'LifecyclePolicyNotFound'} if err.get('code') == 'LifecyclePolicyNotFound' else {})}, 'argv': safe_argv, 'truncated': False}
         try:
             path, _ = parse_oci(prepared)
             operation = path.rsplit(' ', 1)[-1]

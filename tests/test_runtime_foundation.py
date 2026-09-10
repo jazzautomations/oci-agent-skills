@@ -243,3 +243,19 @@ def test_event_loop_remains_responsive(monkeypatch):
         assert not task.done()
         assert (await task)['ok']
     asyncio.run(check())
+
+
+def test_cost_four_dimensions_and_zero_rows(monkeypatch):
+    monkeypatch.setattr(server, 'auth', lambda region: context())
+    usage = Mock()
+    usage.request_summarized_usages.return_value = response(SimpleNamespace(items=[
+        {'computed_amount': 0, 'currency': ' '},
+        {'computed_amount': 3, 'currency': 'BRL', 'time_usage_started': '2026-01-01T00:00:00Z', 'time_usage_ended': '2026-01-02T00:00:00Z'}]))
+    monkeypatch.setattr(server, 'client', lambda *args: usage)
+    groups=['service','compartmentId','skuPartNumber','region']
+    result=asyncio.run(server.oci_cost_summary(ROOT, REGION, '2026-01-01','2026-01-02', group_by=groups))
+    assert result['ok'] and len(result['items']) == 1
+    assert usage.request_summarized_usages.call_args.args[0].group_by == groups
+    assert result['items'][0]['currency'] == 'BRL'
+    refused=asyncio.run(server.oci_cost_summary(ROOT, REGION, '2026-01-01','2026-01-02', group_by=groups+['service']))
+    assert not refused['ok']

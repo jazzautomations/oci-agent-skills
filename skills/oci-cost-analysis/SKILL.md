@@ -26,16 +26,15 @@ Validate IDs with the scoped list/get below.
 | FOCUS, CSV export | [Guide](references/cost-reports.md) | Load when exporting rows. |
 | budget, alert me | [Guide](references/budgets.md) | Load when adding a cap. |
 | what would X cost | [Guide](references/price-api.md) | Load when pricing a shape. |
-| what is an OCPU | [Guide](references/unit-prices-2026.md) | Load when a number is due. |
 | why so expensive | [Guide](references/expensive-traps.md) | Load when hunting waste. |
 | compare two months | `scripts/cost_delta.sh --help` | Load when composing reads. |
 | price one SKU | `scripts/price.sh --help` | Load when no tenancy. |
 | Which CLI command | [Command cards](../../references/service-command-cards.md) | Load when choosing a read before catalog search. |
+| Cloud Advisor | `references/cloud-advisor.md` | Load when comparing native recommendations and waste signals. |
 
 ## Commands
-Set `FROM`/`TO` (`YYYY-MM-DD`, UTC). `--tenant-id`, both times and `--granularity` are
-`[required]`; `--query-type` defaults to `COST`; rows land under `data.items`, not `data`
-([projections](../../references/jmespath.md)). Never `--debug`.
+Set `FROM`/`TO` to UTC month boundaries for MONTHLY. COST rows are in `data.items`.
+Keep echoed dates and currency; never `--debug`.
 
 Where the money went
 
@@ -71,7 +70,7 @@ oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --prefix '
 1. `InvalidParameter` / `Unknown Granularity`, 400 -> `TOTAL` is marked unsupported by `--help` and
    refused by the service -> use `MONTHLY` and sum locally (id 2).
 2. `InvalidParameter` / `Forecasting invalid date range: ... precision` → forecast time-of-day
-   must be zero; use UTC midnight, not necessarily month-start (id 2).
+   must be zero; actual window end must also be the first of a month (id 2).
 3. `Authorization failed or requested resource not found.`, 404, from `usage-api` or
    `budgets cost-ad` -> no `read usage-report`/`usage-budgets`, or the feature is off -> fix
    tenancy policy; do **not** sweep child compartments (id 13).

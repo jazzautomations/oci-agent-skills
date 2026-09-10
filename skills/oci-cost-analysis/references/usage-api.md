@@ -14,7 +14,7 @@ Omit one and the CLI stops before any call with
   Sum locally instead.
 - `--query-type` `USAGE|COST|CREDIT|EXPIREDCREDIT|ALLCREDIT|USAGE_ONLY`, **defaults to `COST`**
   [verified, help]. `USAGE` returns quantities, not money.
-- `--group-by` is a JSON array of: `tagNamespace`, `tagKey`, `tagValue`, `service`, `skuName`,
+- `--group-by` accepts at most **4** dimensions. It is a JSON array of: `tagNamespace`, `tagKey`, `tagValue`, `service`, `skuName`,
   `skuPartNumber`, `unit`, `compartmentName`, `compartmentPath`, `compartmentId`, `platform`,
   `region`, `logicalAd`, `resourceId`, `tenantId`, `tenantName` [verified, help].
 - `--group-by-tag` is separate and **"Only supports one tag in the list"**: pass
@@ -37,14 +37,13 @@ time-of-day returned
 `InvalidParameter` / `Forecasting invalid date range: Passed UTC date does not have the right
 precision: hours, minutes, seconds, and second fractions must be 0`, status 400, for both
 `timeForecastEnded` alone and the `timeForecastStarted`+`timeForecastEnded` pair
-[verified, reproduced 2026-09-09]. Zero the time-of-day; mid-month midnight is valid for DAILY forecasts.
+[verified, reproduced 2026-09-09]. Zero the time-of-day and set timeUsageEnded to the first of the month; the forecast end may be mid-month.
 A date-only forecast value fails earlier, in the CLI, with `Unable to process JSON input`
 [verified].
 
 ## 3. Scope, policy and throttling
 
-`--tenant-id` is the **tenancy** OCID. A child compartment is legal and simply narrows the
-answer, so a zero total is far more often the wrong scope than a zero bill.
+`--tenant-id` is the **tenancy** OCID. Narrow compartments with a compartmentId filter; never substitute a child OCID for tenant-id.
 
 Policy: `Allow group <g> to read usage-report in tenancy`, plus `read usage-budgets` for budgets
 [verified, research/04b §19]. Without it, reads answer
@@ -53,8 +52,7 @@ ambiguous NAONF envelope, which leaves scope, access and resource existence unre
 cost-anomaly-monitor-collection list-monitors` returned exactly that in this tenancy
 [verified, executed 2026-09-09].
 
-[unverified] `HOURLY` over a long window is the usual way to earn `User-rate limit exceeded`, 429. Widen the
-granularity rather than retrying; the answer does not get finer by asking harder.
+[unverified] `HOURLY` over a long window is the usual way to earn `User-rate limit exceeded`, 429. Respect the HOURLY bounds; retry a 429 at most three times with exponential backoff.
 
 ## 4. Siblings under the same group
 
@@ -83,3 +81,17 @@ oci usage-api schedule list --compartment-id "$TENANCY_ID" --limit 20 --query 'd
 Docs (HTTP 200, 2026-09-09):
 https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/costanalysisoverview.htm ·
 https://docs.oracle.com/en-us/iaas/api/#/en/usage/20200107/
+
+## Settled windows and response checks
+
+Reject TOTAL before sending. HOURLY is bounded to 36 hours with its start within 31 days.
+Snap MONTHLY start and end down to UTC midnight on the first, print those effective dates,
+and reject an empty interval. Check echoed time-usage-started/time-usage-ended against
+that interval: a successful HTTP response can silently widen a mid-month request.
+MONTHLY forecasts also require a month boundary. Exclude the last 48 hours from deltas;
+sort by time-usage-started and drop null/zero amounts. Preserve negative credits and
+separate currencies; blank/NA currency on a nonzero row is a coverage error, not USD.
+The cost_delta helper applies these contracts and reports page truncation.
+
+On 429, retry only bounded reads with exponential backoff; stop after three attempts.
+Cloud Advisor rules and thresholds: `cloud-advisor.md`.

@@ -53,7 +53,7 @@ Script counts include both shell entrypoints and Python helpers. Reference count
 
 | Skill | Purpose | Mode | Evidence | Scripts | Local refs | Shared resources |
 |---|---|---|---|---:|---:|---|
-| [oci-cost-analysis](../skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. | read-only | partial | 2 | 6 | [error-corpus.json](../references/error-corpus.json), [jmespath.md](../references/jmespath.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
+| [oci-cost-analysis](../skills/oci-cost-analysis/SKILL.md) | Explains an OCI bill and estimates cost before provisioning: `usage-api` summarized usage, cost and FOCUS exports, budgets and alert rules, cost-tracking tags, and the credential-free Price List API. | read-only | partial | 4 | 7 | [error-corpus.json](../references/error-corpus.json), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 | [oci-free-tier](../skills/oci-free-tier/SKILL.md) | Survives OCI Free Tier and trials. | read-only | partial | 1 | 3 | [error-corpus.json](../references/error-corpus.json), [error-triage.md](../references/error-triage.md), [redaction.md](../references/redaction.md), [service-command-cards.md](../references/service-command-cards.md), [untrusted-output.md](../references/untrusted-output.md) |
 
 ## Oracle Database & APEX

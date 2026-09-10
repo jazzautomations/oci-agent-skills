@@ -8,7 +8,7 @@ from pathlib import Path
 from common import ROOT, arguments, finding, finish
 
 OFFLINE = {'skills/oci-networking/scripts/merge_rules.py', 'skills/oci-terraform/scripts/plan_summary.py', 'skills/oci-generative-ai/scripts/chat_min.py'}
-PUBLIC_GET = {'skills/oci-sdk-patterns/scripts/fetch_spec.py', 'skills/oci-cost-analysis/scripts/price.sh'}
+PUBLIC_GET = {'skills/oci-sdk-patterns/scripts/fetch_spec.py', 'skills/oci-cost-analysis/scripts/price.sh', 'skills/oci-cost-analysis/scripts/price.py'}
 
 
 def calls_wrapper(tree):

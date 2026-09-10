@@ -25,14 +25,14 @@ oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --delimite
 ```
 
 ```bash
-oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --prefix reports/cost-csv --limit 5 --query 'data[].[name,size]' --profile "$PROFILE" --region "$REGION"
+oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --prefix reports/cost-csv/ --limit 5 --query 'data[].[name,size]' --profile "$PROFILE" --region "$REGION"
 ```
 
 ```bash
 oci os object get --namespace-name bling --bucket-name "$TENANCY_ID" --name "$OBJECT_NAME" --file ./cost.csv.gz --profile "$PROFILE" --region "$REGION" --query 'data'
 ```
 
-Two top-level prefixes exist: `reports/` (the classic `cost-csv/` and `usage-csv/` files) and
+Use `reports/cost-csv/` and
 **`FOCUS Reports/`**, the FinOps Open Cost & Usage Specification export, partitioned
 `FOCUS Reports > YYYY > MM > DD` [verified, research/09c B6]. FOCUS is the better target for
 cross-cloud tooling; the proprietary CSVs carry more OCI-specific columns.
@@ -42,8 +42,7 @@ The previous empty-result claim came from an incorrect JMESPath projection.
 
 ## 3. What the rows contain
 
-- Cost CSVs carry `cost/*` columns, including `myCost` and `unitPrice`; usage CSVs carry
-  `usage/*` consumption quantities. Both carry `tags/<namespace>.<key>` columns, which is the
+- Cost CSVs carry `cost/*` columns, including `myCost` and `unitPrice`, and consumption quantities. They carry `tags/<namespace>.<key>` columns, which is the
   payoff for cost-tracking tags [verified, research/09c B6].
 - Generated **every 6 hours**, one row per resource per hour, **retained one year**, and data
   can lag **up to 24 hours** — a report is never a real-time answer [doc, research/04b §20].
@@ -76,3 +75,18 @@ needs only `read usage-report`. Do not report "no spend" from an empty bucket.
 Docs (HTTP 200, 2026-09-09):
 https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/usagereportsoverview.htm ·
 https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/costanalysisoverview.htm
+
+## FOCUS mapping
+
+| OCI cost CSV | FOCUS |
+|---|---|
+| cost/myCost | BilledCost |
+| cost/currencyCode | BillingCurrency |
+| product/service | ServiceName |
+| product/resourceId | ResourceId |
+| lineItem/intervalUsageStart, intervalUsageEnd | ChargePeriodStart, ChargePeriodEnd |
+| usage/billedQuantity | ConsumedQuantity (check the FOCUS version and unit) |
+
+Legacy usage-csv access ended July 2025. Process all split files; reconcile correction
+backReference/referenceNo before aggregation. Do not add the proprietary and FOCUS
+exports together: they represent the same spend. See the source documentation above.

@@ -14,7 +14,7 @@ See [runtime configuration](../runtime/README.md) for authentication, scope, tim
 | [oci_audit_events](#oci-audit-events) | Read at most one Audit page over a window of up to 24 hours; excludes payloads. | true | `compartment_id`, `region`, `start_time`, `end_time` |
 | [oci_buckets](#oci-buckets) | Read bucket metadata only; resolves namespace internally. Never lists or downloads objects. | true | `compartment_id`, `region` |
 | [oci_compartments](#oci-compartments) | Discover child compartments. Subtree reads require a permitted subtree scope. | true | `compartment_id`, `region` |
-| [oci_cost_summary](#oci-cost-summary) | Reported costs, UTC dates, end exclusive, max 31 days. Explicit descendant and all-region switches; compartment_depth controls grouping, not authorization. IAM visibility can omit costs. | true | `compartment_id`, `region`, `start_date`, `end_date` |
+| [oci_cost_summary](#oci-cost-summary) | Costs by 1–4 dimensions; UTC end exclusive, ≤31 days. Descendant/region scope is explicit; depth only groups. IAM may omit rows; currencies remain separate. | true | `compartment_id`, `region`, `start_date`, `end_date` |
 | [oci_instances](#oci-instances) | Read one page of compute instance summaries; excludes metadata, tags, addresses and user data. | true | `compartment_id`, `region` |
 | [oci_limit_services](#oci-limit-services) | List limit services for the authenticated tenancy. | true | `tenancy_id`, `region` |
 | [oci_limit_values](#oci-limit-values) | List configured limit values for one service; limits do not measure capacity. | true | `tenancy_id`, `region`, `service_name` |
@@ -78,7 +78,7 @@ See [runtime configuration](../runtime/README.md) for authentication, scope, tim
 
 ## oci-cost-summary
 
-`oci_cost_summary` — Reported costs, UTC dates, end exclusive, max 31 days. Explicit descendant and all-region switches; compartment_depth controls grouping, not authorization. IAM visibility can omit costs.
+`oci_cost_summary` — Costs by 1–4 dimensions; UTC end exclusive, ≤31 days. Descendant/region scope is explicit; depth only groups. IAM may omit rows; currencies remain separate.
 
 | Argument | Type | Required | Default |
 |---|---|---|---|
@@ -91,6 +91,7 @@ See [runtime configuration](../runtime/README.md) for authentication, scope, tim
 | `compartment_depth` | integer | no | 1 |
 | `include_descendants` | boolean | no | False |
 | `all_regions` | boolean | no | False |
+| `group_by` | array | no | ['service', 'compartmentId'] |
 
 ## oci-instances
 
