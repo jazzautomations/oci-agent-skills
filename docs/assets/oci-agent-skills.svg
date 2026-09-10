@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
   <title id="title">OCI Agent Skills</title>
-  <desc id="desc">Oracle cloud engineering for coding agents. 33 focused skills, 15 read-only MCP tools, and a searchable CLI catalog. Independent community project.</desc>
+  <desc id="desc">Oracle cloud engineering for coding agents. 37 focused skills, 15 read-only MCP tools, and a searchable CLI catalog. Independent community project.</desc>
   <defs>
     <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#DAD5CA" stroke-width="0.6"/>
@@ -14,7 +14,7 @@
     <text x="48" y="132" fill="#242A29" font-size="62" font-weight="700" letter-spacing="-2">OCI Agent Skills</text>
     <text x="52" y="179" fill="#4A5753" font-size="25">Oracle cloud engineering for coding agents.</text>
     <path d="M52 215 H700" stroke="#D4CFC4"/>
-    <text x="52" y="266" fill="#C74634" font-size="35" font-weight="700">33</text>
+    <text x="52" y="266" fill="#C74634" font-size="35" font-weight="700">37</text>
     <text x="108" y="265" fill="#4A5753" font-size="16">focused skills</text>
     <text x="282" y="266" fill="#C74634" font-size="35" font-weight="700">15</text>
     <text x="338" y="265" fill="#4A5753" font-size="16">read-only MCP tools</text>
