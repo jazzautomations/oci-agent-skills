@@ -38,6 +38,13 @@ Traffic and capacity checks use the stated daily sum, maximum or minimum instead
 At least 90% of distinct days are required; absence, truncation, duplicate series and
 wrong identifiers do not count as new coverage. End is exclusive UTC midnight.
 Only the region/compartments supplied are assessed. Search corroborates service lists.
+The JSON `scope_limitations` and Markdown scope section retain that boundary;
+unrequested regions are not a failed check inside the authorized region.
+`coverage_gaps` still blocks scoped validation for unreadable/truncated responses,
+missing criteria, fewer than eight observed cost days per service/currency, missing
+month/currency forecasts or no positive currency-qualified spend for tag analysis.
+`complete` remains false: successful scoped checks never certify the entire estate
+or establish aggregate savings. Empty billing/forecast data is not a clean finding.
 The call budget bounds fan-out and includes retries. 429 retries wait 1 then 2 seconds.
 Findings carry review proposals. Where the change is sufficiently specified, the JSON
 and Markdown include an inert command template and rollback. Other commands stay null

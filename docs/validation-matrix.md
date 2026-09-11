@@ -1,6 +1,10 @@
 # Final validation matrix — 2026-09-11
 
 Branch: `main`. **Not release-ready: 24 PASS, four nonpassing gates.**
+The [service follow-up](service-prerequisites-2026-09-11.md) fixes an unconditional
+FinOps regional-gap flag and reports missing billing evidence explicitly. Seven
+fresh scoped reads retain Cloud Guard DISABLED, Support 403 and empty settled
+costs; the full local suite passes 582 tests. This does not close V25.
 Standard validation is read-only. Separately authorized disposable labs are documented
 in the [first](live-validation-2026-09-11.md) and [second](second-validation-2026-09-11.md)
 reports; both have been torn down. The owner-authorized [history cleanup](history-migration-2026-09-11.md)
@@ -23,7 +27,7 @@ The [offline follow-up](offline-followup-2026-09-11.md) clarifies T04's name-onl
 output contract. Its behavior has not been remeasured: the five-case regression
 is now historical too, and its FAIL is retained. Fresh inference is paused.
 
-[Latest local checks](evidence/offline-followup-checks-2026-09-11.json) passed
+[Earlier offline checks](evidence/offline-followup-checks-2026-09-11.json) passed
 **577 tests, three warnings, 104.74 seconds**, and the full CLI-help fence check.
 The [raw matrix](evidence/offline-followup-release-gate-2026-09-11.json) retains
 24 PASS, two PARTIAL, one FAIL and one UNMEASURED. Cloud/link evidence keeps its
@@ -49,7 +53,7 @@ The command writes scratch evidence and exits nonzero while any gate is open.
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-11 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-11 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-11 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-11 | 577 passed, 3 warnings in 104.74s (0:01:44); see docs/evidence/offline-followup-release-gate-2026-09-11.json. |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-11 | 582 passed, 3 warnings in 44.03s; see docs/evidence/service-prerequisites-2026-09-11.json. |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-11 | Command passed. Fresh copied tree: all source skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check; CLI_PYTHON scripts/generate_read_contracts.py --check` | PASS | 2026-09-11 | Command passed. Subcheck V16-regeneration: PASS. Subcheck V16-read-contracts: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-11 | Command passed. |

@@ -261,7 +261,6 @@ class Scan:
     def governance(self):
         subscriptions=self.read(['iam','region-subscription','list','--tenancy-id',self.tenancy])
         home=next((x.get('region-name') for x in subscriptions or [] if x.get('is-home-region')),None)
-        self.gap('regional scope only: other regions require separate explicit scans')
         budgets=self.listing('budgets budget budget list',self.tenancy)
         if budgets==[]: self.add('W15',{'id':self.tenancy},'No budget in a complete bounded tenancy list',hygiene=True)
         if home:
@@ -282,6 +281,8 @@ class Scan:
             daily=defaultdict(lambda:defaultdict(float))
             for row in rows:
                 if not row.get('is-forecast'): daily[(row.get('service'),row['currency'])][row['time-usage-started']]+=float(row['computed-amount'])
+            if not daily or any(len(points)<8 for points in daily.values()):
+                self.gap('D15 anomaly needs at least eight settled cost days per observed service/currency')
             for (service,currency),points in daily.items():
                 values=[v for _,v in sorted(points.items())]
                 if len(values)>=8:
@@ -298,6 +299,8 @@ class Scan:
                 '--forecast',json.dumps({'forecastType':'BASIC','timeForecastStarted':stop.isoformat(),'timeForecastEnded':next_month.isoformat()}),
                 '--filter',json.dumps(filt),'--limit',str(self.limit)])
             predicted=[r for r in forecast or [] if r.get('is-forecast') and r.get('currency')==self.budget_currency and r.get('time-usage-started') and utc(r['time-usage-started'])==stop]
+            if not predicted:
+                self.gap('D16 forecast missing for the requested month and currency')
             if predicted and sum(float(r.get('computed-amount') or 0) for r in predicted)>self.budget_amount:
                 self.add('D16',{'id':'scoped-budget'},'Month-end forecast exceeds explicit scoped budget in '+self.budget_currency,hygiene=True)
         else: self.gap('D16 forecast needs explicit scoped budget amount and currency')
@@ -316,6 +319,8 @@ class Scan:
             for currency,total in totals.items():
                 if total>0 and missing[currency]/total>.2:
                     self.add('D17',{'id':'cost-tag'},'More than 20% of positive scoped spend untagged in '+currency,hygiene=True)
+            if not any(total>0 for total in totals.values()):
+                self.gap('D17 tag coverage needs positive scoped spend with a currency')
         else: self.gap('D17 untagged spend needs --cost-tag namespace.key')
 
     def report(self):
@@ -326,6 +331,7 @@ class Scan:
         return dict(schema='oci-waste.v1',region=self.region,compartments=[ref(c) for c in self.compartments],
                     window={'start':self.start.isoformat(),'end':self.end.isoformat()},calls=self.calls,
                     findings=self.findings,coverage_gaps=self.flags,complete=False,
+                    scope_limitations=['Only the supplied region and compartments were assessed; other scopes require separate authorization.'],
                     totals={'confirmed_savings':None,'reason':'shared free allowances, overlapping findings and billing eligibility unproven'})
 
 
@@ -337,6 +343,7 @@ def markdown(report):
         amount=f['monthly_estimate']['list_price_exposure']
         lines.append(f"| {f['pattern']} | {f['resource']} | {f['evidence'].replace('|','/')} | {amount if amount is not None else 'unknown'} |")
     lines+=['','## Coverage gaps','']+['- '+str(f) for f in report['coverage_gaps']]
+    lines+=['','## Scope limitations','']+['- '+str(f) for f in report.get('scope_limitations',[])]
     lines+=['','## Review proposals (never executed)','']
     for f in report['findings']:
         action=f['action'];lines.append('- '+f['resource']+': '+action['proposal'])

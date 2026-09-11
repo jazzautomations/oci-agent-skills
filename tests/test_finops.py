@@ -156,6 +156,55 @@ def test_governance_anomaly_forecast_tags_and_advisor():
     assert regions==['home-region','home-region']
     assert 'private-url' not in json.dumps(s.findings)
     assert all(f['action']['executed'] is False for f in s.findings)
+    assert s.flags == []
+
+
+def governance_reader(s, *, days=8, forecast=True, amount=10):
+    def read(argv, **kwargs):
+        if argv[:3]==['iam','region-subscription','list']:
+            return [{'region-name':s.region,'is-home-region':True}]
+        if argv[0]=='optimizer': return []
+        if '--forecast' in argv:
+            return ([{'is-forecast':True,'currency':'USD','computed-amount':amount,
+                      'time-usage-started':s.end.replace(day=1).isoformat()}] if forecast else [])
+        if '--group-by-tag' in argv:
+            return [{'currency':'USD','computed-amount':amount,'tags':[{'namespace':'Finance','key':'Owner','value':'team'}]}]
+        start=s.end-timedelta(days=32)
+        return [{'service':'Compute','currency':'USD','computed-amount':1,
+                 'time-usage-started':(start+timedelta(days=i)).isoformat(),
+                 'time-usage-ended':(start+timedelta(days=i+1)).isoformat()} for i in range(days)]
+    return read
+
+
+def governance_scan(**options):
+    s=scan();s.cost_tag='Finance.Owner';s.budget_amount=20;s.budget_currency='USD'
+    s.listing=lambda *a,**k:[]
+    s.assess_compartment=lambda c:None
+    s.reader=None
+    s.read=governance_reader(s,**options)
+    return s
+
+
+def test_regional_scope_boundary_is_not_an_unavoidable_coverage_failure():
+    s=governance_scan()
+    report=s.report()
+    assert report['coverage_gaps']==[]
+    assert report['scope_limitations'] and report['complete'] is False
+    assert report['totals']['confirmed_savings'] is None
+    assert 'Only the supplied region' in w.markdown(report)
+    sys.path.insert(0,str(R/'scripts'))
+    from check_skill_scripts import outcome
+    assert outcome(0,json.dumps(report),'')=='passed'
+    report['coverage_gaps'].append('unreadable: compute instance list')
+    assert outcome(0,json.dumps(report),'')=='ran, gap'
+
+
+@pytest.mark.parametrize('options,detector', [({'days':0},'D15'),({'days':7},'D15'),
+                                           ({'forecast':False},'D16'),({'amount':0},'D17')])
+def test_missing_finops_evidence_stays_a_coverage_gap(options,detector):
+    report=governance_scan(**options).report()
+    assert any(g.startswith(detector) for g in report['coverage_gaps'])
+    assert all(f['pattern']!=detector for f in report['findings'])
 
 
 def test_multiattached_volume_is_not_retired_with_one_stopped_vm():

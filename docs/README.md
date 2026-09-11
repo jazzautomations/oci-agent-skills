@@ -25,6 +25,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 | [Architecture](foundation.md) | Package structure, wrappers, guard and runtime contracts |
 | [Audit and provenance](audit.md) | Sources, measured surface and unowned services |
 | [Validation matrix](validation-matrix.md) | All 28 release gates, outcomes, dates and owners |
+| [Service prerequisites](service-prerequisites-2026-09-11.md) | Fresh selected reads and the FinOps regional coverage repair |
 | [Evaluation method](evals.md) | Semantic evidence, component checks and behavioral limits |
 | [Checked-command tasks](checked-task-validation-2026-09-11.md) | Paired opt-in workflow, retained failures, timings and costs |
 | [Task repairs](task-repair-validation-2026-09-11.md) | Five skill corrections, targeted regression and immutable historical replay |

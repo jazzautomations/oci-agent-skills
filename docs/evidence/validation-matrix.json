@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "577 passed, 3 warnings in 104.74s (0:01:44); see docs/evidence/offline-followup-release-gate-2026-09-11.json.",
+      "detail": "582 passed, 3 warnings in 44.03s; see docs/evidence/service-prerequisites-2026-09-11.json.",
       "owner": null
     },
     {

@@ -2,6 +2,12 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
+Newest service follow-up: separate FinOps scope boundaries from failed evidence
+checks, retaining incomplete-estate and savings limits. Mark empty/insufficient
+cost, forecast and tagged-spend evidence as gaps. Recheck seven bounded account
+prerequisites; preserve Cloud Guard DISABLED, Support 403 and empty settled costs.
+Correct unsupported Support status-to-cause claims. No account mutation or inference.
+
 Newest offline follow-up: clarify name-only findings and condition-specific policy
 filters without regrading T04. Preserve the five-case report at its immutable
 revision; distinguish host-reported model costs from OCI usage and invoices.

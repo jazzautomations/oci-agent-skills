@@ -1,0 +1,83 @@
+{
+  "checked_at": "2026-09-11T21:42:16.898359+00:00",
+  "scope": "Selected tenancy root and configured region; one bounded page; values discarded.",
+  "model_calls": 0,
+  "mutations": 0,
+  "checks": [
+    {
+      "check": "region-subscriptions",
+      "ok": true,
+      "truncated": false,
+      "home_matches_selected": true
+    },
+    {
+      "check": "cloud-guard-configuration",
+      "ok": true,
+      "truncated": false,
+      "state": "DISABLED"
+    },
+    {
+      "check": "support-incidents",
+      "ok": false,
+      "truncated": false,
+      "error": {
+        "kind": "service",
+        "status": 403
+      },
+      "user_and_home_supplied": true
+    },
+    {
+      "check": "budgets",
+      "ok": true,
+      "truncated": false,
+      "sample_count": 0
+    },
+    {
+      "check": "cost-tracking-tags",
+      "ok": true,
+      "truncated": false,
+      "sample_count": 1
+    },
+    {
+      "check": "settled-regional-cost",
+      "ok": true,
+      "truncated": false,
+      "sample_count": 0
+    },
+    {
+      "checked_at": "2026-09-11T21:44:38.203828+00:00",
+      "check": "selected-profile-user-context",
+      "ok": true,
+      "scope": "Selected profile user only; values discarded.",
+      "model_calls": 0,
+      "mutations": 0,
+      "email_present": true,
+      "email_verified": true,
+      "identity_domain_field_present": false
+    }
+  ],
+  "logical_reads": 7,
+  "scope_note": "Seven selected read operations, not a full workload sweep. No service errors or identifiers published.",
+  "full_suite": {
+    "passed": 582,
+    "warnings": 3,
+    "seconds": 44.03
+  },
+  "finops_component": {
+    "tests_passed": 22,
+    "scope": "Synthetic detector and scoped-coverage regressions; not fresh end-to-end live FinOps certification."
+  },
+  "offline_release_recheck": {
+    "pass": 24,
+    "partial": 2,
+    "fail": 1,
+    "unmeasured": 1,
+    "suite_passed": 582,
+    "suite_warnings": 3,
+    "suite_seconds": 101.83,
+    "exit_code": 1,
+    "fresh_host_inference": false,
+    "live_sweep_requested": false
+  },
+  "ready": false
+}

@@ -2,6 +2,12 @@
 
 ## September 11 follow-up
 
+Newest service follow-up: [seven scoped reads and the FinOps coverage repair](service-prerequisites-2026-09-11.md)
+retain Cloud Guard DISABLED, Support 403 and missing settled cost history. A
+regional boundary no longer creates an unavoidable failing coverage flag; empty
+cost/forecast/tag evidence now remains an explicit gap. All four release criteria
+remain open. Local suite: 582 tests, three warnings; no account mutation or inference.
+
 Latest: the [offline follow-up](offline-followup-2026-09-11.md) clarifies the T04
 output contract, preserves its FAIL and pauses fresh model inference. The default
 release gate now replays host evidence instead of attempting paid evaluation.

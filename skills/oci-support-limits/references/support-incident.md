@@ -15,8 +15,10 @@ Console **Help** menu. `https://support.oracle.com` and the `oci support` CLI ar
 tenancy 2026-09-09 [verified]: **403 `AUTHZ_FAILED`** ("Authorization failed for the request
 input") against `incidentmanagement.us-chicago-1...`; pinned to `us-phoenix-1` the same call
 returns **401 `NotAuthenticated`**. `incident-resource-type list` returns the same 403 [verified].
-Do not collapse the two: 403 in the **home** region = the tenancy or user is not entitled;
-401 in another region = the tenancy is not subscribed there, so the call cannot authenticate.
+These historical statuses do not establish the cause: 403 alone does not prove
+missing entitlement, and 401 alone does not prove an unsubscribed region.
+Verify the selected user, home region, identity domain, Support onboarding,
+user-group privileges and IAM policy. Keep the read failed until access succeeds.
 
 The call is `oci support validation-response validate-user --problem-type TECH --ocid "$USER_ID"
 --homeregion "$HOME_REGION"`, plus `--profile` and `--region`. It is not shown as a runnable
@@ -65,8 +67,9 @@ oci support incident list --compartment-id "$TENANCY_ID" --ocid "$USER_ID" --lim
 
 Both returned 403 on this tenancy 2026-09-09 [verified], with two different codes worth keeping
 apart: `incident-resource-type list` -> `AUTHZ_FAILED`, `incident list` -> `USER_POLICY_NOT_AUTHORIZED`
-("User policy is not authorized. HttpStatus 403"). Either way it is the §1 gate, not a malformed
-command. Note a support request is keyed by an **incident key**, not an OCID.
+("User policy is not authorized. HttpStatus 403"). Review the §1 eligibility and
+§2 identity/authorization checks; these codes alone do not determine the root cause.
+Note a support request is keyed by an **incident key**, not an OCID.
 
 ## 5. Writes (all `[shape-verified]`, none executed here)
 
@@ -90,3 +93,6 @@ prints request-signing detail into the bundle (research/12 A6).
 Docs (HTTP 200, 2026-09-09):
 https://docs.oracle.com/en-us/iaas/Content/GSG/support/getting-help.htm ·
 https://docs.oracle.com/en-us/iaas/Content/GSG/support/validate-user.htm
+
+Account prerequisites rechecked 2026-09-11:
+https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/usingsupport.htm

@@ -489,7 +489,7 @@
     },
     {
       "path": "skills/oci-finops-waste/scripts/waste_scan.py",
-      "sha256": "7e00be3ff063e48a94e29d9719c6c60af0f2c04c45ac5e74efbf56803a9567df",
+      "sha256": "77cae0af9d29c9bf608a9eb7df1c3e02248362e5213fc1aecdb61ed158cc95ab",
       "mode": "read-only",
       "oci_calls": [
         [
