@@ -8,6 +8,7 @@ paths; those paths identify the original measurement rather than current links.
 |---|---|
 | [Review demo](review-demo.json) | Offline catalog, inert command classification and actual MCP stdio checks; implementation input hashes |
 | [Release matrix](validation-matrix.json) | Structured V1–V28 outcomes and owners |
+| [Checked-task summary](checked-task-summary-2026-09-11.json) | Opt-in paired scores, actual tool counts, timings and cumulative known costs |
 | [Release metrics](release-metrics.json) | Counts, classifier replay and context estimates |
 | [CLI reads](validation-cli.json) | Selected live reads and syntax-only examples |
 | [Helper scripts](validation-scripts.json) | Live script probes, failures and missing prerequisites |

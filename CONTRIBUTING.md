@@ -48,6 +48,10 @@ uv run --frozen --project runtime python scripts/doc-gen/catalogs.py
 CLI census regeneration requires Python from the pinned OCI CLI environment:
 `python scripts/inventory.py --format jsonl --index --check`. It inspects installed
 command definitions; it does not call OCI services.
+The optional command checker also requires
+`python scripts/generate_read_contracts.py --check` in that environment. After a
+reviewed CLI-catalog update, regenerate its aliases and enums with the same
+command without `--check`; never hand-edit `catalog/read-contracts.json`.
 
 ## Validate
 

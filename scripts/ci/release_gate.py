@@ -166,6 +166,7 @@ def main():
     check('V21','check_budget');check('V22','check_no_secrets');check('V23','check_licenses')
     # Additional integrity subchecks attach to their parent gate, not new V numbers.
     add('V16-regeneration',[str(cli_python),'scripts/inventory.py','--format','jsonl','--index','--check'],'CLI_PYTHON scripts/inventory.py --format jsonl --index --check')
+    add('V16-read-contracts',[str(cli_python),'scripts/generate_read_contracts.py','--check'],'CLI_PYTHON scripts/generate_read_contracts.py --check')
     check('V22-history','check_history')
     add('V28-offline',PYTHON+['scripts/eval/head_to_head.py','--json',str(output/'evals/results/head-to-head.json'),'--markdown',str(output/'docs/head-to-head.md')],'uv run --frozen --project runtime python scripts/eval/head_to_head.py')
     add('V28-fixtures',PYTHON+['scripts/eval/verify_tool_task_benchmark.py','evals/results/tool-task-benchmark-structured-2026-09-11.json'],
@@ -174,6 +175,10 @@ def main():
     add('V24-local',[str(cli_python),'scripts/ci/cli_drift.py'],'CLI_PYTHON scripts/ci/cli_drift.py')
     add('V27-reference',PYTHON+['scripts/eval/verify_native_reference_benchmark.py','evals/results/native-reference-benchmark-2026-09-11.json'],
         'uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json')
+    add('V27-checked',PYTHON+['scripts/eval/verify_checked_task_benchmark.py','evals/results/checked-task-benchmark-2026-09-11.json'],
+        'uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json')
+    add('V27-checked-syntax',[str(cli_python),'scripts/eval/verify_native_command_audit.py','evals/results/checked-task-benchmark-2026-09-11.json','evals/results/checked-task-command-audit-2026-09-11.json'],
+        'CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json')
     add('V27-syntax',[str(cli_python),'scripts/eval/verify_native_command_audit.py','evals/results/native-reference-benchmark-2026-09-11.json','evals/results/native-reference-command-audit-2026-09-11.json'],
         'CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json')
     rows=[]
@@ -228,6 +233,16 @@ def main():
             detail=f"Native evaluator remains early-access restricted. Reference-enabled paired alternative: {arm['passed']}/{arm['attempts']} after pinned syntax adjudication; minimum 80%. Original-task semantics remain a separate requirement. See docs/native-reference-validation-2026-09-11.md.")
     except (OSError,ValueError,KeyError,TypeError):
         pass
+    # The opt-in checker is a different, explicitly labelled workflow. Preserve
+    # the earlier failure and require its integrity too; neither is full semantics.
+    try:
+        checked=json.loads((ROOT/'evals/results/checked-task-benchmark-2026-09-11.json').read_text())
+        arm=checked['arms']['native-plugin']
+        native=next(r for r in rows if r['id']=='V27')
+        native.update(result=reference_task_status(checked),owner='evaluation maintainers',
+            detail=f"Opt-in checked-command workflow: {arm['passed']}/{arm['attempts']}; minimum 80%. Earlier reference-only workflow remains 29/40. Fixture answers and observed offline command checks are measured, not complete query semantics or live execution. Native evaluator remains early-access restricted. See docs/checked-task-validation-2026-09-11.md.")
+    except (OSError,ValueError,KeyError,TypeError):
+        pass
     publication=ROOT/'docs/evidence/hosted-drift-publication-2026-09-11.json'
     if publication.exists():
         record=json.loads(publication.read_text())
@@ -235,7 +250,7 @@ def main():
             next(r for r in rows if r['id']=='V24')['detail']='Local drift check and recorded hosted issue publication passed; actual Tuesday scheduler event remains unobserved. See docs/evidence/hosted-drift-publication-2026-09-11.json.'
     extras={r['id']:r for r in rows if '-' in r['id']}
     rows=[r for r in rows if '-' not in r['id']]
-    for parent,sub in [('V16','V16-regeneration'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V28','V28-offline'),('V28','V28-fixtures')]:
+    for parent,sub in [('V16','V16-regeneration'),('V16','V16-read-contracts'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V27','V27-checked'),('V27','V27-checked-syntax'),('V28','V28-offline'),('V28','V28-fixtures')]:
         row=next(r for r in rows if r['id']==parent);part=extras[sub]
         row['command']+='; '+part['command']
         if part['result']=='FAIL': row.update(result='FAIL',owner=part['owner'])

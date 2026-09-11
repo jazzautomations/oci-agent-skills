@@ -1,0 +1,1069 @@
+{
+  "source_report_sha256": "bef19ab166ce1c39fbeecaa23c38dc2834d4447a7a9f16cd83e7034c957c6f22",
+  "auditor_sha256": "70dd1e8ea20eb00ed93e4813aa90481968302d0f8a230e24d67d6bd995157b8e",
+  "oci_cli": "3.91.0",
+  "results": [
+    {
+      "case": "T18",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bv boot-volume-backup list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T04",
+      "arm": "without-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam policy list"
+        }
+      ],
+      "recomputed_passed": false
+    },
+    {
+      "case": "T28",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "ce cluster list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T37",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T29",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "ce node-pool list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T24",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "monitoring alarm list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T31",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "db autonomous-database list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T05",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam dynamic-group list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T31",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "db autonomous-database list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T17",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bv volume list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T03",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam policy list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T19",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "fs file-system list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "fs mount-target list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T39",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T29",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "ce node-pool list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T12",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network nsg rules list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T23",
+      "arm": "native-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "monitoring metric-data summarize-metrics-data"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T07",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list-vnics"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T09",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits resource-availability get"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T08",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute shape list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T02",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam compartment list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T38",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T33",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "cloud-guard problem list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T13",
+      "arm": "without-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network route-table list"
+        }
+      ],
+      "recomputed_passed": false
+    },
+    {
+      "case": "T11",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network security-list list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T34",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bastion session list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T22",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging log-group list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging log list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T16",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os object list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T01",
+      "arm": "native-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam user get"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam region-subscription list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T38",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T10",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits value list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits resource-availability get"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute shape list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T35",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "resource-manager job list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T22",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging log-group list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging log list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T17",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bv volume list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute volume-attachment list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T14",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os bucket list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T05",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam dynamic-group list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T28",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "ce cluster list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T27",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "usage-api usage-summary request-summarized-usages"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T21",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging-search search-logs"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T40",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T24",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "monitoring alarm list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T30",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "search resource structured-search"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T11",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network security-list list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T32",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "kms management vault list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T39",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T19",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "fs file-system list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "fs mount-target list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T36",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "work-requests work-request list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T36",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "work-requests work-request list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T15",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os object-lifecycle-policy get"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T25",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "usage-api usage-summary request-summarized-usages"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T01",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam user list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T40",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T02",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam compartment list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T35",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "resource-manager job list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T15",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os object-lifecycle-policy get"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T34",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bastion session list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T08",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute shape list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits resource-availability get"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T33",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "cloud-guard problem list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T21",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "logging-search search-logs"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T26",
+      "arm": "native-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": false,
+          "reason": "invalid_option_or_query_syntax"
+        }
+      ],
+      "recomputed_passed": false
+    },
+    {
+      "case": "T16",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os object list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T07",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list-vnics"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T26",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "budgets budget budget list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T18",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "bv backup list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T20",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "audit event list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T23",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "monitoring metric-data summarize-metrics-data"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T10",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits value list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T27",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "usage-api usage-summary request-summarized-usages"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T37",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T06",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T20",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "audit event list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T12",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network nsg rules list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T13",
+      "arm": "native-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "network route-table list"
+        }
+      ],
+      "recomputed_passed": false
+    },
+    {
+      "case": "T14",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "os bucket list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T04",
+      "arm": "native-plugin",
+      "original_passed": false,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam policy list"
+        }
+      ],
+      "recomputed_passed": false
+    },
+    {
+      "case": "T03",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "iam policy list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T25",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "usage-api usage-summary request-summarized-usages"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T09",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits value list"
+        },
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "limits resource-availability get"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T06",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "compute instance list"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T30",
+      "arm": "native-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "search resource structured-search"
+        }
+      ],
+      "recomputed_passed": true
+    },
+    {
+      "case": "T32",
+      "arm": "without-plugin",
+      "original_passed": true,
+      "commands": [
+        {
+          "valid": true,
+          "reason": "syntax_only",
+          "leaf": "kms management vault list"
+        }
+      ],
+      "recomputed_passed": true
+    }
+  ],
+  "arms": {
+    "native-plugin": {
+      "passed": 37,
+      "attempts": 40
+    },
+    "without-plugin": {
+      "passed": 38,
+      "attempts": 40
+    }
+  },
+  "limitations": "Post-collection syntax adjudication, common to both arms: aliases from pinned Click options, no all/limit conflict, compiled JMESPath and literal enum choices using pinned Choice conversion (including case-insensitive OCI enums). Corrects the initial collector rejection of quoted logical operators and acceptance of conflicting flags. Commands and service callbacks are NEVER executed. Query meaning, service callback requirements and workload outcomes remain unmeasured. Original grades are retained, not overwritten."
+}

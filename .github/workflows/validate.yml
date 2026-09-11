@@ -24,6 +24,8 @@ jobs:
       - run: uv run --frozen --project runtime python scripts/ci/check_no_secrets.py
       - run: uv run --frozen --project runtime python scripts/ci/check_history.py
       - run: python scripts/inventory.py --format jsonl --index --check
+      - name: Verify offline read-option contracts against pinned CLI
+        run: python scripts/generate_read_contracts.py --check
       - run: uv run --frozen --project runtime oci-readonly-smoke
       - run: uv run --frozen --project runtime python scripts/ci/check_portable.py
       - run: uv run --frozen --project runtime python scripts/ci/check_budget.py
@@ -48,6 +50,10 @@ jobs:
         run: uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json
       - name: Recompute reference-enabled command audit (no commands executed)
         run: python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json
+      - name: Verify checked-task evidence (no model or OCI calls)
+        run: uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json
+      - name: Recompute checked-task syntax audit (not the workflow score)
+        run: python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json
       - name: Preserve evaluation evidence
         if: always()
         uses: actions/upload-artifact@v4

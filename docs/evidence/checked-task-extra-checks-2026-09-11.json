@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-11",
+  "scope": "Local supplemental strict checks, separate from the full release matrix. OCI help only; no cloud operations or model-command execution.",
+  "checks": [
+    {"command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help", "result": "PASS", "markdown_files_checked": 199, "findings": 0},
+    {"command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check", "result": "PASS"},
+    {"command": "python3 scripts/inventory.py --scripts --examples --check", "result": "PASS"},
+    {"command": "uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json", "result": "PASS", "scope": "Retained source-bound classification evidence, not fresh inference."},
+    {"command": "uv run --frozen --project runtime python scripts/ci/check_manifests.py", "result": "PASS"},
+    {"command": "uv run --frozen --project runtime python scripts/ci/check_template.py", "result": "PASS"},
+    {"command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py", "result": "PASS", "tracked_or_staged_files_checked": 845, "scope": "Before adding this supplemental report."},
+    {"command": "uv run --frozen --project runtime python scripts/ci/check_refs.py", "result": "PASS", "markdown_files_checked": 279}
+  ],
+  "release_ready": false,
+  "nonpassing_gates": ["V24", "V25", "V27", "V28"]
+}

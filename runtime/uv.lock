@@ -969,6 +969,7 @@ name = "oci-readonly-mcp"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "jmespath" },
     { name = "mcp" },
     { name = "oci" },
     { name = "oracle-mcp-common" },
@@ -976,13 +977,13 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "jmespath" },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "jmespath", specifier = "==1.0.1" },
     { name = "mcp", specifier = "==1.30.0" },
     { name = "oci", specifier = "==2.185.1" },
     { name = "oracle-mcp-common", specifier = "==0.1.3" },
@@ -990,7 +991,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "jmespath", specifier = "==1.0.1" },
     { name = "pytest", specifier = "==9.0.2" },
     { name = "ruff", specifier = "==0.15.5" },
 ]

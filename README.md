@@ -6,13 +6,13 @@
 
 37 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-[![Regression tests: 479](https://img.shields.io/badge/regression_tests-479_passed-2D6A4F)](docs/validation-matrix.md)
+[![CI](https://github.com/jazzautomations/oci-agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/jazzautomations/oci-agent-skills/actions/workflows/validate.yml)
 [![Skills: 37](https://img.shields.io/badge/skills-37-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
 [![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-555555)](LICENSE)
 
-**v2 skill set · package 0.2.1 (preview)** — [23 validation gates pass; 5 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
+**v2 skill set · package 0.2.1 (preview)** — [24 validation gates pass; 4 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
 
 [Get started](#get-started) · [Browse skills](docs/skills.md) · [MCP reference](docs/mcp-tools.md) · [Evidence](#evidence-you-can-inspect) · [Documentation](docs/README.md)
 
@@ -42,6 +42,10 @@ claude --plugin-dir .
 ```
 
 For a self-contained copy, project adapters and runtime configuration, follow the [installation guide](docs/install.md).
+
+Before executing a proposed read, the optional [offline command-contract helper](docs/command-contract.md)
+checks required flags, pagination and query syntax without accessing OCI. Its
+separate two-tool MCP server is opt-in; the default 15-tool server is unchanged.
 
 | Host | Entry point | Shell guard supplied by this pack |
 |---|---|---|
@@ -136,12 +140,13 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 | Check | Recorded result | Scope |
 |---|---:|---|
-| Regression suite | 479 passed | Current full suite; recorded in the validation matrix |
+| Regression suite | See latest full run | Test count, warnings and date in the [validation matrix](docs/validation-matrix.md) |
 | Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
 | Semantic skill selection | 80/80 and 80/80 | Zero disagreements in the recorded trials; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
-| Full release matrix | 23 pass / 5 open | Open gates retain owners and reasons |
+| Full release matrix | 24 pass / 4 open | Open gates retain owners and reasons |
+| Opt-in checked-command tasks | 35/40 native; 38/40 no-plugin | Same offline checker for both; synthetic observations, not live workload certification |
 
 [Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
 
@@ -174,11 +179,13 @@ The release gate writes evidence outside the checkout and prints diffs. It exits
 
 ## Open work
 
-1. **History hygiene:** historical patch bodies retain email occurrences. The current tree scan passes; publication hygiene needs a separately reviewed history cleanup.
-2. **Scheduled drift:** local CLI drift checks pass; the hosted schedule and issue-creation path lack recorded verification.
-3. **Live workflows:** selected API-key reads in one region passed. Script prerequisites, database/cluster workloads, principal alternatives, PowerShell and cross-region behavior remain incomplete.
-4. **Host evaluation:** the installed plugin task evaluator returned an early-access restriction; no qualifying task-completion score is available.
-5. **Behavioral comparison:** the four-arm offline comparison is complete; model-backed task and injection outcomes remain unmeasured.
+1. **Scheduled drift:** real hosted issue publication and deduplication passed; the actual Tuesday scheduler trigger remains unobserved.
+2. **Live workflows:** selected CLI/MCP and disposable database-lab probes passed, but Cloud Guard, Support and FinOps prerequisites retain failed or incomplete coverage. No full workload certification is claimed.
+3. **Host evaluation:** the optional [checked-command workflow](docs/checked-task-validation-2026-09-11.md) passed 35/40; the checker-enabled baseline scored 38/40. Full original-task semantics remain unverified, and the native evaluator is early-access restricted.
+4. **Behavioral comparison:** normalized model-backed synthetic comparisons are recorded; a native four-product deployment comparison and live injection resistance remain unmeasured.
+
+The separately authorized [published-history cleanup](docs/history-migration-2026-09-11.md)
+is complete; current and reachable historical patch-body scans pass.
 
 The [roadmap](docs/roadmap.md) separates implementation work, missing infrastructure and external access. Eleven niche CLI groups remain without dedicated skill ownership; the [coverage map](docs/audit.md#unowned-services) lists them explicitly.
 
@@ -202,5 +209,6 @@ Oracle and its product names are trademarks of Oracle and/or its affiliates. Thi
 - [26ai retrieval kit](docs/26ai.md): final fusion tested on 15 documents/632 chunks, 45/45 expected-source hits on development questions; median 1.69 s, not a held-out result.
 - [Four-arm tool-task benchmark](docs/tool-task-benchmark.md): 160 attempts, synthetic MCP reads, strict scores and costs; not native plugin deployment.
 - [Native-host follow-up](docs/native-validation-2026-09-11.md): installed skill/MCP price path and 80 paired synthetic attempts, with original and corrected syntax scores.
+- [Checked-command follow-up](docs/checked-task-validation-2026-09-11.md): shipped offline checker, 80 paired attempts, retained failures, timings and aggregate costs.
 - [Live tests and benchmarks](docs/live-validation-2026-09-11.md): MCP timings, infrastructure sweep, SQLcl reads, limitations and confirmed lab cleanup.
 - [Freshness checks](docs/freshness.md): scheduled source monitoring and expiring price caches.

@@ -135,13 +135,19 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "6c094cd126630d8c5ad1851e923848ea70998465a2a8b9fb637854e42ec3651b",
+      "sha256": "1593efab5ba50e59d1b7ad413992ad5310c21e0774ca6d2a364fe66039ff564c",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/ci/update_baseline.py",
       "sha256": "0ecc8a1f5f2f6dfa4781d9fa9eea27eb0763bcf4c09389830b6eb83090bf4394",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/command_contract_server.py",
+      "sha256": "76e0418dc6980a18f72bba0b0be1ef34f68ea4997a6e5a3637d4049716f3215f",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -172,6 +178,12 @@
     {
       "path": "scripts/eval/boundaries.py",
       "sha256": "38e53ec7e20667e9def078f6cc60f197495bf4fedc608041b944e5ea20f2b4fb",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/checked_task_benchmark.py",
+      "sha256": "50e3c2db833015ec31c2fa360bc73ac1453eeb71c45a4c6494bc17da68626e4e",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -254,6 +266,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/verify_checked_task_benchmark.py",
+      "sha256": "c5d07fd65d139112f30f5c97179593a4711c5862adfe5f9d546b94ba1bfff40f",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/verify_native_command_audit.py",
       "sha256": "a6c7e88004a35a2377161db491041d16d2af01927cf9cee70e1e910688cee3fd",
       "mode": "read-only",
@@ -286,6 +304,12 @@
     {
       "path": "scripts/foundation_report.py",
       "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/generate_read_contracts.py",
+      "sha256": "b85916ce7f4af6a447611a2db2c4a9ddb1cdaba475b45e84e491a48843324b71",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -352,6 +376,12 @@
     {
       "path": "scripts/measure_context.py",
       "sha256": "1c02f6ba9c1582838ef6c13f6cd3c95ac54b1ecbe55d89d889e33ae0f0600c61",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/read_contract.py",
+      "sha256": "05096fa06f7c6664fbc5bc4420466b475e5d4023ac58ca006b2339de76e9ca57",
       "mode": "read-only",
       "oci_calls": []
     },

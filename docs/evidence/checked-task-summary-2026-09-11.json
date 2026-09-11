@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-11",
+  "scope": "Paired opt-in offline command checking with synthetic observations; no OCI execution, no held-out or full semantic certification.",
+  "report_sha256": "bef19ab166ce1c39fbeecaa23c38dc2834d4447a7a9f16cd83e7034c957c6f22",
+  "syntax_audit_sha256": "67934b6c015884c3bb665ce0a3e0c8797b75295afcc2fd31fb9e1266e78401cd",
+  "arms": {
+    "native-plugin": {
+      "attempts": 40,
+      "completed": 40,
+      "checked_workflow_passed": 35,
+      "native_activations": 31,
+      "successful_reference_reads": 0,
+      "contract_check_calls": 51,
+      "contract_describe_calls": 4,
+      "median_host_ms": 7092,
+      "median_wall_seconds": 11.0495,
+      "reported_cost_usd": 2.8678536
+    },
+    "without-plugin": {
+      "attempts": 40,
+      "completed": 40,
+      "checked_workflow_passed": 38,
+      "native_activations": 0,
+      "successful_reference_reads": 0,
+      "contract_check_calls": 47,
+      "contract_describe_calls": 24,
+      "median_host_ms": 7151.5,
+      "median_wall_seconds": 11.8135,
+      "reported_cost_usd": 0.8220892
+    }
+  },
+  "preflight": {
+    "private_record_sha256": "9fd5d48d26a7f0b4ebe1ee2a9709a1c9169bc292c2bc4ef4ce0313e6a6df0fc1",
+    "attempts": 2,
+    "passed": 2,
+    "reported_cost_usd": 0.0956494,
+    "included_in_task_scores": false
+  },
+  "costs_usd": {
+    "collection": 3.6899428,
+    "followup_including_preflight": 3.7855922,
+    "prior_known_model_charges": 10.8378692,
+    "cumulative_known_model_charges": 14.6234614,
+    "earlier_compute_estimate_upper_approximation": 1.05,
+    "unchanged_aggregate_authorization": 20,
+    "final_invoice_reconciled": false,
+    "caveat": "Storage, taxes and possible uncaptured canceled calls are not fully reconciled. No new paid OCI resources in this follow-up."
+  },
+  "release_status": "PARTIAL, never PASS: limited opt-in score exceeds 80%; default/reference-only score remains 29/40 and full semantics are unverified."
+}

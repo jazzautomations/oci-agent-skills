@@ -2,7 +2,15 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
-Newest follow-up: validate native installed skill activation and its distributed
+Newest follow-up: ship an opt-in offline read-command checker and separate two-tool
+MCP transport, with pinned alias/enum metadata and no OCI execution. Record all 80
+paired checked-workflow attempts: 35/40 native and 38/40 checker-enabled baseline.
+Preserve the five native failures, previous reports and full semantic limitations;
+the plugin does not outperform the baseline. CI verifies source-bound evidence,
+metadata and protocol regressions. Default MCP configuration and IAM are unchanged.
+See [results, timing and cost](docs/checked-task-validation-2026-09-11.md).
+
+Earlier follow-up: validate native installed skill activation and its distributed
 public-price MCP path. Record 80 paired synthetic task attempts, retaining original
 scores (33/40 vs 28/40) and separately recomputable syntax adjudication (32/40 vs
 16/40). Add offline CI evidence checks; no command proposals execute. Fix Support

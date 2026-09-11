@@ -11,6 +11,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 | [Skills catalog](skills.md) | Every skill's purpose, triggers, verification and helpers |
 | [MCP tool reference](mcp-tools.md) | Generated tool schemas and required arguments |
 | [Runtime configuration](../runtime/README.md) | Authentication, scope, pagination and server behavior |
+| [Offline command contract](command-contract.md) | Optional metadata checker and two-tool MCP; no OCI calls |
 | [Operations](operations.md) | Operational patterns and diagnostic boundaries |
 | [Oracle product map](oracle-product-map.md) | Product families and their routing coverage |
 | [SDK and DevOps](sdk-and-devops.md) | SDK patterns and delivery workflow boundaries |
@@ -25,6 +26,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 | [Audit and provenance](audit.md) | Sources, measured surface and unowned services |
 | [Validation matrix](validation-matrix.md) | All 28 release gates, outcomes, dates and owners |
 | [Evaluation method](evals.md) | Semantic evidence, component checks and behavioral limits |
+| [Checked-command tasks](checked-task-validation-2026-09-11.md) | Paired opt-in workflow, retained failures, timings and costs |
 | [Release readiness](release-readiness.md) | Hosted maintenance, resource prerequisites and history preparation |
 | [Semantic selection investigation](semantic-routing.md) | Root cause, research, scope repairs and reproducible semantic trials |
 | [Offline comparison](head-to-head.md) | Four arms, frozen snapshots and scoring rules |
