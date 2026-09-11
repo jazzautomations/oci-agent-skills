@@ -146,7 +146,7 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 | Semantic skill selection | 80/80 and 80/80 | Zero disagreements in the recorded trials; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 24 pass / 4 open | Open gates retain owners and reasons |
-| Latest five-case repair regression | 4/5 native; 3/5 no-plugin | Known development failures only; the earlier 35/40 full score is historical after source changes |
+| Preserved five-case repair regression | 4/5 native; 3/5 no-plugin | Historical development evidence; [further guidance changes](docs/offline-followup-2026-09-11.md) have no fresh model measurement |
 
 [Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
 
@@ -173,7 +173,7 @@ uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check
 uv run --frozen --project runtime python scripts/ci/release_gate.py
 ```
 
-The release gate writes evidence outside the checkout and prints diffs. It exits nonzero while any release gate is open. Default mode reuses dated cloud/link evidence. [Contributor checks →](CONTRIBUTING.md)
+The release gate writes evidence outside the checkout and prints diffs. It exits nonzero while any release gate is open. Default mode reuses dated cloud/link/host evidence and makes no model calls. `--probe-host` requires a separately approved model-provider allocation, not OCI credits. [Contributor checks →](CONTRIBUTING.md)
 
 **Archived context cost (September 9):** 6,386 tokens by characters/4 for descriptions plus MCP schemas, excluding host framing. One Claude Code measurement found a 5,517-token skills-only delta; adding the schema estimate yields 8,972 estimated tokens, not a measured MCP-on total. [Method and raw counts](docs/evidence/context-measurement.json).
 

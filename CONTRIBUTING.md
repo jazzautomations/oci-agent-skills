@@ -81,6 +81,9 @@ validation additionally uses `claude plugin validate . --strict` and
 full matrix and writes candidate reports outside the checkout. Review its diffs
 before updating evidence. Existing live-coverage and host-evaluation
 gaps remain release blockers; a nonzero exit is expected until they are resolved.
+The default gate replays recorded host evidence without inference. `--probe-host`
+is a potentially paid opt-in, requiring separate model-provider budget approval;
+OCI credits and ordinary CI validation do not authorize it.
 Public-link checks run separately from offline checks. Semantic selection uses
 dated model evidence checked in CI; after changing descriptions, the corpus or
 the collector policy, recollect both semantic reports as described in
@@ -93,8 +96,8 @@ review both the template and provenance diff, then regenerate the script registr
 
 ## Preserve behavioral evidence during repairs
 
-Five older task reports are pinned in `evals/historical-evidence.json` and replayed
-with their original offline verifiers from a fixed local Git revision. Keep full
+Six older task reports are pinned in `evals/historical-evidence.json` and replayed
+with their original offline verifiers from fixed, allowlisted local Git revisions. Keep full
 history available. Report `current_sources: false` as historical evidence, never
 as validation of changed skills. Modified reports cannot use this replay path.
 Do not edit frozen collectors or overwrite reports to raise scores. A new

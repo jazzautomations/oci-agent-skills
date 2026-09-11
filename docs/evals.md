@@ -1,9 +1,16 @@
-# Evaluation evidence — 2026-09-10
+# Evaluation evidence
 
-Latest September 11: the [reference-enabled paired run](native-reference-validation-2026-09-11.md)
+Current September 11: the [offline follow-up](offline-followup-2026-09-11.md)
+clarifies structured findings and pauses fresh inference. Full current-task V27 is
+UNMEASURED. The previous 35/40 full and 4/5 targeted native scores are historical,
+not validation of the changed body. The default release gate never starts model
+inference; host probing requires explicit `--probe-host` and separate approval.
+Model-provider cost reports are not OCI usage or reconciled invoices.
+
+Historical September 11: the [reference-enabled paired run](native-reference-validation-2026-09-11.md)
 collected 80 attempts, with a native plugin and permitted reference reads versus
 no plugin. Common syntax-adjudicated scores are 29/40 and 13/40. The plugin is
-below the 80% minimum; V27 is FAIL. The official skill-creator-format review is
+below the 80% minimum; that revision's V27 was FAIL. The official skill-creator-format review is
 recorded, but does not certify the remaining original-task semantic criteria.
 No task used Read; a separate access preflight proved the permission path.
 
@@ -28,7 +35,7 @@ it does not call a model or claim native host task completion.
 | Overlap pairs | 4/4 in each trial | All four in every trial |
 | Negative skill firings | 0/40 in each trial | Zero in every trial |
 | Additional synthetic boundaries | 31/31 | All correct; development regressions |
-| Authored fenced commands | 285/285 | ≥95% syntax validity |
+| Authored fenced commands | 286/286 | ≥95% syntax validity |
 | Guard auto-allow on mutation fixtures | 0/20 | Zero; inert replay |
 | Sanitizer fixtures | 10/10 | Flagged, returned, idempotent |
 
@@ -104,7 +111,9 @@ uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --c
 
 Missing, stale or inconsistent evidence fails. Changes to skill descriptions,
 the corpus, remap, policy or collector require new collection. With an
-authenticated compatible Claude CLI, make the bounded paid calls explicitly:
+authenticated compatible Claude CLI and a separately approved model-provider
+allocation, make the bounded paid calls explicitly. OCI credits do not cover
+these host evaluations; normal verification does not authorize recollection:
 
 ```bash
 uv run --frozen --project runtime python scripts/eval/semantic.py --collect

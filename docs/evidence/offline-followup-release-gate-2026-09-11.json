@@ -125,7 +125,7 @@
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "577 passed, 3 warnings in 104.74s (0:01:44); see docs/evidence/offline-followup-release-gate-2026-09-11.json.",
+      "detail": "577 passed, 3 warnings in 104.74s (0:01:44)",
       "owner": null
     },
     {
@@ -161,7 +161,7 @@
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "269 examples passed offline after the shape-only VCN placeholder repair; see docs/evidence/task-repair-final-checks-2026-09-11.json. No new live authorization.",
+      "detail": "Command passed.",
       "owner": null
     },
     {
@@ -170,7 +170,7 @@
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Recorded semantic selection, worst trial 100.0%; required ≥90%; overlap pairs 4/4. Input-bound evidence, no fresh CI inference or host task execution.",
+      "detail": "Recorded semantic selection, worst trial 100.0%; required \u226590%; overlap pairs 4/4. Input-bound evidence, no fresh CI inference or host task execution.",
       "owner": null
     },
     {
@@ -197,7 +197,7 @@
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Authorized published-history replacement completed. Current-tree and all-ref patch-body scans are clean; an independent fresh remote mirror also has zero findings. Private backups retained. See docs/evidence/published-history-cleanup-2026-09-11.json. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence.",
+      "detail": "Command passed. Subcheck V22-history: PASS.",
       "owner": null
     },
     {
@@ -214,7 +214,7 @@
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
       "date": "2026-09-11",
-      "detail": "Hosted publication run 34632699299 passed and created issue #1. Manual preview and mocked duplicate-handling tests remain recorded. The actual Tuesday scheduled trigger is not yet observed. See docs/evidence/hosted-drift-publication-2026-09-11.json. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence. September 11 follow-up: GitHub returned zero scheduled runs; no new dispatch.",
+      "detail": "Local drift check and recorded hosted issue publication passed; actual Tuesday scheduler event remains unobserved. See docs/evidence/hosted-drift-publication-2026-09-11.json. Subcheck V24-local: PASS.",
       "owner": "repository CI maintainers"
     },
     {
@@ -222,7 +222,7 @@
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
       "date": "2026-09-11",
-      "detail": "36 CLI reads passed; 232 syntax-only examples. Paid-lab sweep: 38 passed, two triage failures (Cloud Guard 404/Support 403), two FinOps coverage gaps, four inert SQL files. See docs/live-validation-2026-09-11.md. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. The second separate setup attempt returned Cloud Guard HTTP 500 after policy propagation; the temporary policy was removed and disabled state independently confirmed. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence.",
+      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-cli.json. Skill execution: FAIL; see docs/evidence/validation-scripts.json.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -230,12 +230,12 @@
       "command": "OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1",
       "result": "PASS",
       "date": "2026-09-11",
-      "detail": "11 selected calls in three benchmark runs: 33/33 passed. Fifteen tools discovered. See docs/evidence/mcp-benchmark-2026-09-11.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence.",
+      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-mcp.json.",
       "owner": null
     },
     {
       "id": "V27",
-      "command": "Recorded evals/results/host.json (no inference); uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+      "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1; uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
       "result": "UNMEASURED",
       "date": "2026-09-11",
       "detail": "Skills and checker changed after the 35/40 measurement. The full report and five-case regression retain their historical scores, not current behavioral certification. New inference is paused; the default gate replays evidence only. See docs/offline-followup-2026-09-11.md. Subcheck V27-reference: PASS. Subcheck V27-syntax: PASS. Subcheck V27-checked: PASS. Subcheck V27-checked-syntax: PASS. Subcheck V27-repair: PASS.",
@@ -252,8 +252,8 @@
   ],
   "subchecks": [
     {
-      "id": "V16-read-contracts",
-      "command": "CLI_PYTHON scripts/generate_read_contracts.py --check",
+      "id": "V16-regeneration",
+      "command": "CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
@@ -261,8 +261,8 @@
       "owner": null
     },
     {
-      "id": "V16-regeneration",
-      "command": "CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
+      "id": "V16-read-contracts",
+      "command": "CLI_PYTHON scripts/generate_read_contracts.py --check",
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
@@ -276,6 +276,15 @@
       "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
+      "owner": null
+    },
+    {
+      "id": "V22-history",
+      "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+      "result": "PASS",
+      "date": "2026-09-11",
+      "exit_code": 0,
+      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 0, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
       "owner": null
     },
     {
@@ -297,13 +306,14 @@
       "owner": null
     },
     {
-      "id": "V22-history",
-      "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+      "id": "V27-checked",
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
       "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 0, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
-      "owner": null
+      "detail": "Historical scores recomputed with their immutable revision; not current behavioral validation.",
+      "owner": null,
+      "current_sources": false
     },
     {
       "id": "V27-repair",
@@ -313,16 +323,6 @@
       "exit_code": 0,
       "detail": "Integrity of the five-case paired development regression only; not a full task score.",
       "owner": null
-    },
-    {
-      "id": "V27-checked",
-      "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
-      "result": "PASS",
-      "date": "2026-09-11",
-      "exit_code": 0,
-      "detail": "Historical scores recomputed with their immutable revision; not current behavioral validation.",
-      "owner": null,
-      "current_sources": false
     },
     {
       "id": "V24-local",

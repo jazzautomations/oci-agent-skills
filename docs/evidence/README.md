@@ -8,7 +8,8 @@ paths; those paths identify the original measurement rather than current links.
 |---|---|
 | [Review demo](review-demo.json) | Offline catalog, inert command classification and actual MCP stdio checks; implementation input hashes |
 | [Release matrix](validation-matrix.json) | Structured V1–V28 outcomes and owners |
-| [Task repair final checks](task-repair-final-checks-2026-09-11.json) | Current regressions, offline examples and explicit generic-validator incompatibility |
+| [Offline follow-up](offline-followup-checks-2026-09-11.json) | 577 tests, inference-free default gate, historical regression and separate cost accounting |
+| [Task repair final checks](task-repair-final-checks-2026-09-11.json) | Earlier dated regressions, offline examples and explicit generic-validator incompatibility |
 | [Checked-task summary](checked-task-summary-2026-09-11.json) | Opt-in paired scores, actual tool counts, timings and cumulative known costs |
 | [Release metrics](release-metrics.json) | Counts, classifier replay and context estimates |
 | [CLI reads](validation-cli.json) | Selected live reads and syntax-only examples |

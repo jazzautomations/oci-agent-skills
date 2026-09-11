@@ -28,6 +28,7 @@ the [MCP tools](mcp-tools.md). The [root README](../README.md) gives the overvie
 | [Evaluation method](evals.md) | Semantic evidence, component checks and behavioral limits |
 | [Checked-command tasks](checked-task-validation-2026-09-11.md) | Paired opt-in workflow, retained failures, timings and costs |
 | [Task repairs](task-repair-validation-2026-09-11.md) | Five skill corrections, targeted regression and immutable historical replay |
+| [Offline follow-up](offline-followup-2026-09-11.md) | Name-only findings, inference-free default validation and separate cost accounting |
 | [Release readiness](release-readiness.md) | Hosted maintenance, resource prerequisites and history preparation |
 | [Semantic selection investigation](semantic-routing.md) | Root cause, research, scope repairs and reproducible semantic trials |
 | [Offline comparison](head-to-head.md) | Four arms, frozen snapshots and scoring rules |

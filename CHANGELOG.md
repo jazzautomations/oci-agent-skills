@@ -2,7 +2,13 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
-Newest repair: fix bounded auth guidance, policy/default-route projections and
+Newest offline follow-up: clarify name-only findings and condition-specific policy
+filters without regrading T04. Preserve the five-case report at its immutable
+revision; distinguish host-reported model costs from OCI usage and invoices.
+Make host evaluation an explicit opt-in so normal release validation never starts
+inference, including when recorded host evidence is absent or invalid.
+
+Earlier repair: fix bounded auth guidance, policy/default-route projections and
 final-command validation guidance in five skills. Invalid checker results now use
 the MCP error indicator. Test actual projections and recover four of five known
 native failures in a ten-attempt paired regression, retaining the fifth formatting

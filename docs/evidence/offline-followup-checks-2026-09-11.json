@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-11",
+  "scope": "Offline follow-up only; historical scores are not current behavioral certification.",
+  "source_sha256": {
+    "skills/oci-security-posture/SKILL.md": "f1f458b80f3a0e7ab8d1987957432ae8049b65beb3f174ef17af360194e700b1",
+    "scripts/ci/release_gate.py": "93296c27703ddb5826029204013e705a53318bb450e8f22a99363ed8872ab7c9",
+    "scripts/eval/historical_evidence.py": "4034c29fc45f7b1d487cdbdb41a8f26080e9b8c3fbe069be48cabfde553e76c0",
+    "scripts/eval/task_repair_regression.py": "569f42d27da1b882231d0277768afb8508bf69c2f7124bce988a837512b0298c"
+  },
+  "full_suite": {"passed": 577, "warnings": 3, "seconds": 104.74, "exit_code": 0},
+  "focused_tests": {"passed": 33, "seconds": 3.73, "exit_code": 0},
+  "offline_examples": {"checks": 269, "complete": true, "oci_cli": "3.91.0", "sdk": "2.185.0", "exit_code": 0},
+  "full_fence_live_help": {"passed": true, "scope": "Fresh leaf-only help for documented commands, never the example operations."},
+  "release_gate": {"pass": 24, "partial": 2, "fail": 1, "unmeasured": 1, "exit_code": 1, "ready": false},
+  "default_host_probe": {"evidence_mode": "recorded", "fresh_model_calls": 0},
+  "weekly_drift_scheduled_runs": {"checked_at": "2026-09-11T21:14:59Z", "event": "schedule", "returned_runs": 0, "dispatch_performed": false},
+  "generic_skill_creator_validator": {"passed": false, "reason": "Unsupported pre-existing compatibility field; repository format and size validators pass."},
+  "preserved_model_regression": {"native": "4/5", "baseline": "3/5", "current_sources": false, "t04": "FAIL"},
+  "new_evaluation_model_calls": 0,
+  "new_oci_calls": 0,
+  "new_paid_oci_resources": 0,
+  "costs": {
+    "cumulative_model_host_reported_usd": 15.12589,
+    "new_model_host_reported_usd": 0,
+    "oci_compute_prior_estimate_below_approximately_usd": 1.05,
+    "billing_reconciled": false,
+    "provider_billing_mode_verified": false,
+    "fresh_inference_paused": true,
+    "original_aggregate_ceiling_usd": 20,
+    "ceiling_renewed": false,
+    "scope": "Model host reports are not OCI credits or settled provider charges. Storage, taxes and uncaptured canceled calls remain unresolved."
+  },
+  "full_current_task_certification": false
+}

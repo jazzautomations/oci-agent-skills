@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Run and publish V1–V28; failures remain red and never authorize tenancy writes.
 
-Default reuses dated live/public-link evidence; outputs go to scratch and are diffed. --live repeats only D7 reads;
---links repeats public documentation GETs. The host eval probe grants no execution tools and disables publication.
+Default reuses dated live/public-link/host evidence; outputs go to scratch and are diffed.
+--live repeats only D7 reads; --links repeats public documentation GETs.
+--probe-host explicitly opts into a potentially paid host evaluation; never run it without model-provider budget approval.
 """
 import argparse
 import difflib
@@ -125,6 +126,24 @@ def probe_host(output):
     return record
 
 
+def host_evidence(output, *, probe=False):
+    """Ordinary validation never starts inference, even if early access changes."""
+    if probe:
+        return probe_host(output)
+    try:
+        record = json.loads((ROOT / 'evals/results/host.json').read_text())
+        if not isinstance(record, dict) or record.get('status') not in {'unavailable', 'unmeasured'}:
+            raise ValueError('A recorded access probe cannot certify task completion')
+        if not all(isinstance(record.get(k), str) and record[k] for k in ('date', 'reason')):
+            raise ValueError('Invalid recorded access evidence')
+        record = dict(record, evidence_mode='recorded', fresh_model_calls=0)
+    except (OSError, ValueError, TypeError):
+        record = {'status': 'unmeasured', 'date': DATE, 'evidence_mode': 'missing',
+                  'fresh_model_calls': 0, 'reason': 'No valid recorded host access evidence; no inference attempted.'}
+    (output / 'evals/results/host.json').write_text(json.dumps(record, indent=2) + '\n')
+    return record
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cli-python',type=Path)
@@ -132,6 +151,8 @@ def main():
     parser.add_argument('--live',action='store_true')
     parser.add_argument('--links',action='store_true')
     parser.add_argument('--live-help',action='store_true')
+    parser.add_argument('--probe-host', action='store_true',
+                        help='Opt into potentially paid host evaluation; requires separate model-provider budget approval')
     parser.add_argument('--distribution-only',action='store_true')
     args=parser.parse_args()
     if args.distribution_only:
@@ -224,7 +245,7 @@ def main():
         if scripts_row['result']!='PASS': row.update(result='FAIL',owner=scripts_row['owner'])
         rows.append(row)
     rows.append(archived('V26',(output if args.live else ROOT)/'docs/evidence/validation-mcp.json','OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1','ok',owner='OCI operator / MCP maintainers'))
-    host = probe_host(output)
+    host = host_evidence(output, probe=args.probe_host)
     # Hosted workflow issue creation remains outside the release check.
     rows.extend([
         {'id':'V24','command':'CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml', 'result':'PARTIAL','date':DATE,'detail':'Local pinned required-flag renderer exercised; Tuesday schedule/hosted issue creation not executed locally.','owner':'repository CI maintainers'},
@@ -260,7 +281,7 @@ def main():
     extras={r['id']:r for r in rows if '-' in r['id']}
     if extras['V27-checked'].get('current_sources') is False:
         next(r for r in rows if r['id']=='V27').update(result='UNMEASURED',
-            detail='Skills and checker changed after the 35/40 measurement. That immutable historical report still verifies, but is not current-task evidence. The five-case development regression is separate and cannot certify all 40 tasks. See docs/task-repair-validation-2026-09-11.md.')
+            detail='Skills and checker changed after the 35/40 measurement. The full report and five-case regression retain their historical scores, not current behavioral certification. New inference is paused; the default gate replays evidence only. See docs/offline-followup-2026-09-11.md.')
     rows=[r for r in rows if '-' not in r['id']]
     for parent,sub in [('V16','V16-regeneration'),('V16','V16-read-contracts'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V27','V27-checked'),('V27','V27-checked-syntax'),('V27','V27-repair'),('V28','V28-offline'),('V28','V28-fixtures')]:
         row=next(r for r in rows if r['id']==parent);part=extras[sub]

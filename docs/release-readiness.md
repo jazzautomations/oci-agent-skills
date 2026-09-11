@@ -2,7 +2,13 @@
 
 ## September 11 follow-up
 
-Latest repair: [five changed skills and the checker](task-repair-validation-2026-09-11.md)
+Latest: the [offline follow-up](offline-followup-2026-09-11.md) clarifies the T04
+output contract, preserves its FAIL and pauses fresh model inference. The default
+release gate now replays host evidence instead of attempting paid evaluation.
+Both full and five-case behavioral results are historical after the latest change.
+Model cost reports and OCI usage are separate, unreconciled quantities.
+
+Earlier repair: [five changed skills and the checker](task-repair-validation-2026-09-11.md)
 recover four of five previously failed native development cases. The fifth retains
 an exact-format failure. Ten paired attempts cost $0.5024286. The previous full
 35/40 score is now historical; V27 is UNMEASURED for current full-task behavior.

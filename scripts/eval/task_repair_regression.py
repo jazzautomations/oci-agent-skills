@@ -11,6 +11,7 @@ import tempfile
 
 import checked_task_benchmark as benchmark
 from verify_checked_task_benchmark import verify as verify_checked
+from historical_evidence import verify_historical
 
 CASES = ['T01', 'T04', 'T13', 'T23', 'T26']
 ROOT = benchmark.ROOT
@@ -21,6 +22,9 @@ def source_hash():
 
 
 def verify(report):
+    historical = verify_historical(report, Path(__file__).name, ROOT)
+    if historical is not None:
+        return historical
     if report.get('case_ids') != CASES or report.get('regression_collector_sha256') != source_hash():
         raise ValueError('Regression scope or collector changed')
     if report.get('full_task_certification') is not False or report['budget_usd'] > 1.25:

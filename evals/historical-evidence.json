@@ -5,6 +5,7 @@
     "c188e036b884bee9586f225e6d7459048cfea41348cd69353c59e18fb73f4ae9": {"path": "evals/results/native-reference-benchmark-2026-09-11.json", "verifier": "verify_native_reference_benchmark.py"},
     "b622087a6cc692058dffd96bed055a9a46f9c7dbc411e87e8fd775edc08443ae": {"path": "evals/results/checked-task-benchmark-2026-09-11.json", "verifier": "verify_checked_task_benchmark.py"},
     "31b32ac358c1dca99baaf368eafdac57badde492218b434acb5b8c37961afe80": {"path": "evals/results/tool-task-benchmark-structured-2026-09-11.json", "verifier": "verify_tool_task_benchmark.py"},
-    "10a9dc3cfae6d6c7cd054f3886f7180a2993a14863170f3301c0f6bde15b01ac": {"path": "evals/results/task-answer-pilot-2026-09-11.json", "verifier": "verify_task_answer_pilot.py"}
+    "10a9dc3cfae6d6c7cd054f3886f7180a2993a14863170f3301c0f6bde15b01ac": {"path": "evals/results/task-answer-pilot-2026-09-11.json", "verifier": "verify_task_answer_pilot.py"},
+    "e96e2430e58319efde67d40e80c5efdb3e6811643dd7c23c4b2f7c47ebfcc100": {"path": "evals/results/task-repair-regression-2026-09-11.json", "verifier": "task_repair_regression.py", "commit": "eafde851d370a165ce9ef2dcbd4f9c9126a5fbac"}
   }
 }

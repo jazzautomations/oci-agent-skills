@@ -12,20 +12,23 @@ installation/activation and the public-price MCP path, plus 80 restricted synthe
 task attempts. It does not close V27/V28. Support triage's corrected user context
 and response projection were tested; the service still returns 403, retaining V25.
 
-The latest [task repairs](task-repair-validation-2026-09-11.md) changed five skill
+The earlier [task repairs](task-repair-validation-2026-09-11.md) changed five skill
 bodies and the checker. A fresh paired regression recovered four of the five
 previously failed native cases; the baseline passed three. The fifth retains an
 exact-format failure. This is not a full 40-task measurement, so V27 is UNMEASURED
 for current full-task behavior. Historical 35/40 and 29/40 reports still replay
 with their original verifiers and retain their original grades.
 
-[Final checks](evidence/task-repair-final-checks-2026-09-11.json) passed **565 tests,
-three warnings, 49.99 seconds**, and 269 offline examples. The
-[full matrix recheck](evidence/task-repair-release-gate-2026-09-11.json) retains
-24 PASS, two PARTIAL, one FAIL and one UNMEASURED. It used snapshot fence lint;
-actual CLI help was additionally checked for the five changed skills. Live and
-public-link evidence retain their dates; no cloud calls or prerequisites were
-invented to close a gate.
+The [offline follow-up](offline-followup-2026-09-11.md) clarifies T04's name-only
+output contract. Its behavior has not been remeasured: the five-case regression
+is now historical too, and its FAIL is retained. Fresh inference is paused.
+
+[Latest local checks](evidence/offline-followup-checks-2026-09-11.json) passed
+**577 tests, three warnings, 104.74 seconds**, and the full CLI-help fence check.
+The [raw matrix](evidence/offline-followup-release-gate-2026-09-11.json) retains
+24 PASS, two PARTIAL, one FAIL and one UNMEASURED. Cloud/link evidence keeps its
+original dates. The default gate replays host access evidence without inference;
+`--probe-host` requires separate model-provider budget approval, not OCI credits.
 
 Reproduce: `uv run --frozen --project runtime python scripts/ci/release_gate.py`,
 with Python from the pinned OCI CLI installation supplied via `--cli-python`.
@@ -38,7 +41,7 @@ The command writes scratch evidence and exits nonzero while any gate is open.
 | V3 | `uv run --frozen --project runtime python scripts/ci/check_frontmatter.py` | PASS | 2026-09-11 | Command passed. |
 | V4 | `uv run --frozen --project runtime python scripts/ci/check_portable.py` | PASS | 2026-09-11 | Command passed. |
 | V5 | `uv run --frozen --project runtime python scripts/ci/check_refs.py` | PASS | 2026-09-11 | Command passed. |
-| V6 | `uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md` | PASS | 2026-09-11 | Command passed. |
+| V6 | `uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md --live-help` | PASS | 2026-09-11 | Command passed. |
 | V7 | `uv run --frozen --project runtime python scripts/ci/check_links.py` | PASS | 2026-09-09 | Recorded evidence from this handoff; see docs/evidence/validation-links.json. |
 | V8 | `uv run --frozen --project runtime pytest -q tests/test_guard.py` | PASS | 2026-09-11 | Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured. |
 | V9 | `uv run --frozen --project runtime pytest -q tests -k parse` | PASS | 2026-09-11 | Command passed. |
@@ -46,7 +49,7 @@ The command writes scratch evidence and exits nonzero while any gate is open.
 | V11 | `uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py` | PASS | 2026-09-11 | Command passed. |
 | V12 | `uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'` | PASS | 2026-09-11 | Command passed. |
 | V13 | `uv run --frozen --project runtime oci-readonly-smoke` | PASS | 2026-09-11 | Command passed. |
-| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-11 | 565 passed, 3 warnings in 49.99s; final rerun in docs/evidence/task-repair-final-checks-2026-09-11.json. |
+| V14 | `uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests` | PASS | 2026-09-11 | 577 passed, 3 warnings in 104.74s (0:01:44); see docs/evidence/offline-followup-release-gate-2026-09-11.json. |
 | V15 | `uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py` | PASS | 2026-09-11 | Command passed. Fresh copied tree: all source skills, shared refs, hooks, MCP config and notices; find . -type l empty. |
 | V16 | `uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check; CLI_PYTHON scripts/generate_read_contracts.py --check` | PASS | 2026-09-11 | Command passed. Subcheck V16-regeneration: PASS. Subcheck V16-read-contracts: PASS. |
 | V17 | `uv run --frozen --project runtime pytest -q tests/test_console_url.py` | PASS | 2026-09-11 | Command passed. |
@@ -59,7 +62,7 @@ The command writes scratch evidence and exits nonzero while any gate is open.
 | V24 | `CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py` | PARTIAL | 2026-09-11 | Hosted publication run 34632699299 passed and created issue #1. Manual preview and mocked duplicate-handling tests remain recorded. The actual Tuesday scheduled trigger is not yet observed. See docs/evidence/hosted-drift-publication-2026-09-11.json. Owner: repository CI maintainers. |
 | V25 | `CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json` | FAIL | 2026-09-11 | 36 CLI reads passed; 232 syntax-only examples. Paid-lab sweep: 38 passed, two triage failures (Cloud Guard 404/Support 403), two FinOps coverage gaps, four inert SQL files. See docs/live-validation-2026-09-11.md. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. The second separate setup attempt returned Cloud Guard HTTP 500 after policy propagation; the temporary policy was removed and disabled state independently confirmed. Owner: OCI operator / skill maintainers. |
 | V26 | `OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1` | PASS | 2026-09-11 | 11 selected calls in three benchmark runs: 33/33 passed. Fifteen tools discovered. See docs/evidence/mcp-benchmark-2026-09-11.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. |
-| V27 | `claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1; uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json` | UNMEASURED | 2026-09-11 | Skills and checker changed after the 35/40 measurement. That immutable historical report still verifies, but is not current-task evidence. The five-case development regression is separate and cannot certify all 40 tasks. See docs/task-repair-validation-2026-09-11.md. Subcheck V27-reference: PASS. Subcheck V27-syntax: PASS. Subcheck V27-checked: PASS. Subcheck V27-checked-syntax: PASS. Subcheck V27-repair: PASS. Owner: evaluation maintainers. |
+| V27 | `Recorded evals/results/host.json (no inference); uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json` | UNMEASURED | 2026-09-11 | Skills and checker changed after the 35/40 measurement. The full report and five-case regression retain their historical scores, not current behavioral certification. New inference is paused; the default gate replays evidence only. See docs/offline-followup-2026-09-11.md. Subcheck V27-reference: PASS. Subcheck V27-syntax: PASS. Subcheck V27-checked: PASS. Subcheck V27-checked-syntax: PASS. Subcheck V27-repair: PASS. Owner: evaluation maintainers. |
 | V28 | `uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json` | PARTIAL | 2026-09-11 | Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured. Subcheck V28-offline: PASS. Subcheck V28-fixtures: PASS. Owner: evaluation maintainers. |
 
 PASS refers only to the stated scope. V19/V20 verify dated semantic-classification

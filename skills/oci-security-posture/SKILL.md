@@ -54,8 +54,12 @@ Over-broad policy statements.
 oci iam policy list --compartment-id "$COMPARTMENT_ID" --query 'data[].{n:name,broad:statements[?contains(@,`"any-user"`) || contains(@,`"manage all-resources"`)]} | [?length(broad) > `0`]' --limit 20
 ```
 
-Report matching policy names and their observed statements; keep explanations
-separate from the findings list. Examples in this skill are not observations.
+Narrow the predicate to the requested condition: an `any-user`-only request does
+not include policies matching only `manage all-resources`. For name-only structured
+findings, return each observed name alone, without a statement, prefix or rationale.
+Put explanations in a separate field only if the caller's schema permits it;
+otherwise omit them. Narrative reports may quote the observed matching statements.
+Examples in this skill are not observations.
 An empty filtered sample means no match in that sample, not a compliant tenancy.
 
 Public access and CMK per bucket; the list summary has neither.

@@ -16,14 +16,24 @@ def report():
     return json.loads((ROOT / 'evals/results/task-repair-regression-2026-09-11.json').read_text())
 
 
-def test_recorded_regression_has_current_sources_and_explicit_limited_scope(report):
+def test_recorded_regression_retains_historical_scores_and_limited_scope(report):
     result = regression.verify(report)
-    assert result['verified'] and result['current_sources']
+    assert result['verified'] and result['historical_replay']
+    assert not result['current_sources']
+    assert result['arms'] == report['arms']
+    assert 'skills/oci-security-posture/SKILL.md' in result['changed_sources']
     assert not result['full_task_certification']
     assert set(result['case_ids']) == set(regression.CASES)
 
 
 def test_five_case_regression_cannot_pass_the_full_verifier(report):
+    with pytest.raises(ValueError, match='Historical provenance changed'):
+        verify_full(report)
+
+
+def test_unregistered_partial_report_still_cannot_pass_full_pair_count(report):
+    report = copy.deepcopy(report)
+    report['date'] = 'different unregistered measurement'
     with pytest.raises(ValueError, match='Missing/duplicate'):
         verify_full(report)
 

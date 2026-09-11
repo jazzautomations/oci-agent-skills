@@ -15,7 +15,7 @@ def test_original_verifier_recomputes_archived_scores(record):
     report = json.loads((ROOT / record['path']).read_text())
     result = history.verify_historical(report, record['verifier'])
     assert result['verified'] and result['historical_replay']
-    assert result['evidence_revision'] == history.COMMIT
+    assert result['evidence_revision'] == record.get('commit', history.COMMIT)
     assert not result['current_sources']
     assert result['model_calls'] == result['cloud_calls'] == 0
     assert result['arms'] == report['arms']
@@ -30,6 +30,22 @@ def test_modified_report_cannot_use_historical_replay():
 def test_verifier_is_not_chosen_by_untrusted_report():
     with pytest.raises(ValueError, match='allowlisted'):
         history.verify_historical({}, 'arbitrary.py')
+
+
+def test_unpinned_revision_is_rejected_before_git(monkeypatch):
+    def forbidden(*args, **kwargs):
+        pytest.fail('An unpinned revision must not reach git')
+    monkeypatch.setattr(history.subprocess, 'run', forbidden)
+    with pytest.raises(ValueError, match='allowlisted'):
+        history.snapshot(str(ROOT), 'HEAD')
+
+
+def test_replay_rejects_unknown_verifier_before_extraction(monkeypatch):
+    def forbidden(*args, **kwargs):
+        pytest.fail('An unpinned verifier must not reach extraction')
+    monkeypatch.setattr(history, 'snapshot', forbidden)
+    with pytest.raises(ValueError, match='allowlisted'):
+        history.replay(str(ROOT), 'evals/results/unused.json', 'arbitrary.py')
 
 
 def test_missing_historical_commit_fails_closed(tmp_path):

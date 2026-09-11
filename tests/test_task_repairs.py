@@ -36,6 +36,33 @@ def test_policy_projection_excludes_nonfindings_and_preserves_observed_statement
     assert jmespath.search(query, {'data': records['data'][:1]}) == []
 
 
+def test_name_only_findings_keep_exact_grade_and_require_evidence():
+    """Synthetic grader regression, not a fresh model answer or a T04 regrade."""
+    sys.path.insert(0, str(ROOT / 'scripts/eval'))
+    from checked_task_benchmark import score
+    command, query = proposal('oci-security-posture', 'oci iam policy list')
+    # Specialize the broad posture example to an any-user-only request.
+    command = command.replace(' || contains(@,`"manage all-resources"`)', '')
+    argv = shlex.split(command)
+    query = argv[argv.index('--query') + 1]
+    records = {'data': [
+        {'name': 'public-read', 'statements': ['Allow any-user to inspect instances in compartment dev']},
+        {'name': 'readers', 'statements': ['Allow group Readers to inspect instances in compartment dev']},
+        {'name': 'admins', 'statements': ['Allow group Admins to manage all-resources in tenancy']}]}
+    names = [row['n'] for row in jmespath.search(query, records)]
+    fixture = {'topic': 'policies', 'expected': {'findings': ['public-read'], 'changed': False}}
+    receipts = [{'topic': 'policies', 'ok': True}]
+    calls = [{'name': 'mcp__contract__check_read_command', 'input': {'command': command}, 'result_success': True}]
+    answer = {'answer': {'findings': names, 'changed': False}, 'commands': [command]}
+    assert score(fixture, answer, receipts, calls)['passed']
+    assert not score(fixture, answer, [], calls)['passed']
+    assert not score(fixture, answer, receipts, [])['passed']
+    answer['answer']['findings'] = ['public-read: grants any-user access']
+    assert not score(fixture, answer, receipts, calls)['answer_correct']
+    answer['answer']['findings'] = ['public-read', 'readers']
+    assert not score(fixture, answer, receipts, calls)['answer_correct']
+
+
 def test_default_route_projection_excludes_isolated_and_nondefault_routes():
     _, query = proposal('oci-networking', 'oci network route-table list')
     private = {'destination': '10.4.0.0/16', 'network-entity-id': 'private-target'}
