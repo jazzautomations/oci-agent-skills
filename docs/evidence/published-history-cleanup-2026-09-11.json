@@ -1,0 +1,45 @@
+{
+  "old_published_refs": {
+    "refs/heads/main": "b22f39873014d19a97c2066459b81024e3e979ca",
+    "refs/heads/v2-foundation": "0c52607b69f9305474c7b7ee1b15fe5180ebd136"
+  },
+  "new_refs": {
+    "refs/heads/main": "f0e920fd0ed1d42d77dff53d64beea7c330d60bb",
+    "refs/heads/v2-foundation": "625336afeb05044487d7e1c50079d98acdaedf08"
+  },
+  "local_snapshot": "8467291171c9d801677915b3fed482047292ff18",
+  "current_source_tree_unchanged": true,
+  "historical_branch_tip_trees_unchanged": true,
+  "candidate_counts": {
+    "real_ocid": 0,
+    "private_key": 0,
+    "jwt": 0,
+    "aws_key": 0,
+    "assigned_secret": 0,
+    "email": 0
+  },
+  "backup_sha256": "f219f8cf12c0cb6005ef724e6bda141306b970082b1da08a7120c6d2cee77bc0",
+  "published": true,
+  "local_reachable_history_counts": {
+    "real_ocid": 0,
+    "private_key": 0,
+    "jwt": 0,
+    "aws_key": 0,
+    "assigned_secret": 0,
+    "email": 0
+  },
+  "remote_matches": true,
+  "date": "2026-09-11",
+  "fresh_remote_mirror_scan": {
+    "ok": true,
+    "counts": {
+      "real_ocid": 0,
+      "private_key": 0,
+      "jwt": 0,
+      "aws_key": 0,
+      "assigned_secret": 0,
+      "email": 0
+    }
+  },
+  "scope": "Published branch-reachable textual patch bodies. Author/committer identities, message trailers, unreachable GitHub caches, old CI artifacts and private backups are not erased or certified by this scan."
+}

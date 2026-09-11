@@ -2,7 +2,14 @@
 
 ## September 11 follow-up
 
-Newest: [native-host follow-up](native-validation-2026-09-11.md) verifies installed
+Latest publication follow-up: the authorized [history cleanup](history-migration-2026-09-11.md)
+is complete on both published branches. Current-tree, reachable-history and fresh
+remote-mirror scans pass. The [hosted drift publication](evidence/hosted-drift-publication-2026-09-11.json)
+passed and created issue #1; Tuesday scheduler delivery remains unobserved.
+V22 is now PASS, leaving four nonpassing criteria. The dated paragraphs below
+retain the earlier experiments and must not be read as the latest history state.
+
+Earlier: [native-host follow-up](native-validation-2026-09-11.md) verifies installed
 skill activation, a distributed public-price MCP lookup and 80 paired synthetic
 task attempts. Original and corrected syntax scores remain separate; this is not
 full host/tenancy task validation. Support triage now sends explicit user context

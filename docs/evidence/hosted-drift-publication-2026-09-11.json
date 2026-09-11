@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-11",
+  "workflow_run": 34632699299,
+  "workflow_url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34632699299",
+  "event": "workflow_dispatch",
+  "head_sha": "f0e920fd0ed1d42d77dff53d64beea7c330d60bb",
+  "conclusion": "success",
+  "notification": {
+    "status": "created",
+    "published": true,
+    "body_characters": 8180,
+    "diff_truncated": false,
+    "issue": "https://github.com/jazzautomations/oci-agent-skills/issues/1"
+  },
+  "scheduled_trigger_observed": false,
+  "scope": "Real authorized issue publication through the hosted workflow, not a scheduled Tuesday run. The original preview and local mocked tests remain separate evidence."
+}

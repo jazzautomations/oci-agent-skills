@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -20,6 +22,7 @@ jobs:
       - run: uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check
       - run: uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help
       - run: uv run --frozen --project runtime python scripts/ci/check_no_secrets.py
+      - run: uv run --frozen --project runtime python scripts/ci/check_history.py
       - run: python scripts/inventory.py --format jsonl --index --check
       - run: uv run --frozen --project runtime oci-readonly-smoke
       - run: uv run --frozen --project runtime python scripts/ci/check_portable.py

@@ -1,9 +1,11 @@
 # Final validation matrix — 2026-09-11
 
-Branch: `main`. **Not release-ready: 23 PASS, five nonpassing gates.**
+Branch: `main`. **Not release-ready: 24 PASS, four nonpassing gates.**
 Standard validation is read-only. Separately authorized disposable labs are documented
 in the [first](live-validation-2026-09-11.md) and [second](second-validation-2026-09-11.md)
-reports; both have been torn down. No published history was rewritten.
+reports; both have been torn down. The owner-authorized [history cleanup](history-migration-2026-09-11.md)
+is published and independently verified. The [hosted drift publication](evidence/hosted-drift-publication-2026-09-11.json)
+created issue #1; the actual Tuesday scheduler trigger is still unobserved.
 
 Additional [native-host evidence](native-validation-2026-09-11.md) establishes
 installation/activation and the public-price MCP path, plus 80 restricted synthetic
@@ -44,17 +46,17 @@ gate remains red or unmeasured.
 | V19 | `uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json` | PASS | 2026-09-11 | Recorded semantic selection, worst trial 100.0%; required ≥90%; overlap pairs 4/4. Input-bound evidence, no fresh CI inference or host task execution. |
 | V20 | `uv run --frozen --project runtime python evals/run_routing.py --negatives` | PASS | 2026-09-11 | Zero negative firings in every recorded semantic trial; input hashes and predictions are checked offline. |
 | V21 | `uv run --frozen --project runtime python scripts/ci/check_budget.py` | PASS | 2026-09-11 | Command passed. |
-| V22 | `uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py` | FAIL | 2026-09-11 | Current-tree credential scan passed; published history still has email matches. History subcheck failed. Separate tracked-plus-untracked scan checked 802 files with zero credential findings; no published history rewrite performed. Owner: repository history owner. |
+| V22 | `uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py` | PASS | 2026-09-11 | Authorized published-history replacement completed. Current-tree and all-ref patch-body scans are clean; an independent fresh remote mirror also has zero findings. Private backups retained. See docs/evidence/published-history-cleanup-2026-09-11.json. |
 | V23 | `uv run --frozen --project runtime python scripts/ci/check_licenses.py` | PASS | 2026-09-11 | Command passed. |
-| V24 | `CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py` | PARTIAL | 2026-09-11 | Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. Owner: repository CI maintainers. |
+| V24 | `CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py` | PARTIAL | 2026-09-11 | Hosted publication run 34632699299 passed and created issue #1. Manual preview and mocked duplicate-handling tests remain recorded. The actual Tuesday scheduled trigger is not yet observed. See docs/evidence/hosted-drift-publication-2026-09-11.json. Owner: repository CI maintainers. |
 | V25 | `CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json` | FAIL | 2026-09-11 | 36 CLI reads passed; 232 syntax-only examples. Paid-lab sweep: 38 passed, two triage failures (Cloud Guard 404/Support 403), two FinOps coverage gaps, four inert SQL files. See docs/live-validation-2026-09-11.md. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. The second separate setup attempt returned Cloud Guard HTTP 500 after policy propagation; the temporary policy was removed and disabled state independently confirmed. Owner: OCI operator / skill maintainers. |
 | V26 | `OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1` | PASS | 2026-09-11 | 11 selected calls in three benchmark runs: 33/33 passed. Fifteen tools discovered. See docs/evidence/mcp-benchmark-2026-09-11.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. |
 | V27 | `claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1` | UNAVAILABLE | 2026-09-11 | `plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score. Owner: evaluation maintainers / installed host provider. |
 | V28 | `uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json` | PARTIAL | 2026-09-11 | Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured. Subcheck V28-offline: PASS. Subcheck V28-fixtures: PASS. Owner: evaluation maintainers. |
 
 PASS refers only to the stated scope. V19/V20 verify dated semantic-classification
-evidence, not fresh model execution. V24 is not an actual hosted cron/notification
-measurement. V25/V26 establish selected bounded reads, not complete workloads or
+evidence, not fresh model execution. V24 has real hosted notification evidence,
+but no actual Tuesday scheduler observation. V25/V26 establish selected bounded reads, not complete workloads or
 inventories. The [four-arm fixture-tool benchmark](tool-task-benchmark.md) includes
 actual model tool calls, but does not instantiate the native products required by
 V27/V28. The distributed tree is inspected before runtime-created environment links.

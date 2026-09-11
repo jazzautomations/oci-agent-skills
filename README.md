@@ -188,6 +188,9 @@ The build combined OCI documentation and CLI/SDK inventories, a research plan, i
 
 Contributions: [CONTRIBUTING.md](CONTRIBUTING.md). Security scope and reporting: [SECURITY.md](SECURITY.md).
 
+Existing clones: published history was cleaned with owner authorization on September 11.
+Preserve local work and follow the [history migration note](docs/history-migration-2026-09-11.md) before synchronizing.
+
 Created by **Felipe Salvego / Jazz Automations**. Licensed under [Apache-2.0](LICENSE); retained upstream attribution is in [NOTICE](NOTICE).
 
 Oracle and its product names are trademarks of Oracle and/or its affiliates. This independent project is not affiliated with, endorsed by or supported by Oracle.

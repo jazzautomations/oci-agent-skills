@@ -194,11 +194,11 @@
     {
       "id": "V22",
       "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py",
-      "result": "FAIL",
+      "result": "PASS",
       "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Current-tree credential scan passed; published history still has email matches. History subcheck failed. Separate tracked-plus-untracked scan checked 802 files with zero credential findings; no published history rewrite performed.",
-      "owner": "repository history owner"
+      "detail": "Authorized published-history replacement completed. Current-tree and all-ref patch-body scans are clean; an independent fresh remote mirror also has zero findings. Private backups retained. See docs/evidence/published-history-cleanup-2026-09-11.json.",
+      "owner": null
     },
     {
       "id": "V23",
@@ -214,7 +214,7 @@
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
       "date": "2026-09-11",
-      "detail": "Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment.",
+      "detail": "Hosted publication run 34632699299 passed and created issue #1. Manual preview and mocked duplicate-handling tests remain recorded. The actual Tuesday scheduled trigger is not yet observed. See docs/evidence/hosted-drift-publication-2026-09-11.json.",
       "owner": "repository CI maintainers"
     },
     {
@@ -254,11 +254,11 @@
     {
       "id": "V22-history",
       "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
-      "result": "FAIL",
+      "result": "PASS",
       "date": "2026-09-11",
-      "exit_code": 1,
-      "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 4, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
-      "owner": "repository history owner"
+      "exit_code": 0,
+      "detail": "Zero findings after authorized history replacement; fresh remote mirror independently verified. See docs/evidence/published-history-cleanup-2026-09-11.json.",
+      "owner": null
     },
     {
       "id": "V28-offline",
