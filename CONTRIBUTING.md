@@ -91,6 +91,17 @@ so a clean clone needs no private research. To revise the authoring stencil from
 a reviewed plan, use `python3 scripts/ci/check_template.py --plan PATH --write`;
 review both the template and provenance diff, then regenerate the script registry.
 
+## Preserve behavioral evidence during repairs
+
+Five older task reports are pinned in `evals/historical-evidence.json` and replayed
+with their original offline verifiers from a fixed local Git revision. Keep full
+history available. Report `current_sources: false` as historical evidence, never
+as validation of changed skills. Modified reports cannot use this replay path.
+Do not edit frozen collectors or overwrite reports to raise scores. A new
+measurement needs its own path and current source fingerprints; a targeted
+regression does not replace the full task matrix. See
+[the repair protocol](docs/task-repair-validation-2026-09-11.md).
+
 ## Inspect the installation
 
 ```bash

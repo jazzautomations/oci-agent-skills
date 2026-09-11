@@ -2,7 +2,14 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
-Newest follow-up: ship an opt-in offline read-command checker and separate two-tool
+Newest repair: fix bounded auth guidance, policy/default-route projections and
+final-command validation guidance in five skills. Invalid checker results now use
+the MCP error indicator. Test actual projections and recover four of five known
+native failures in a ten-attempt paired regression, retaining the fifth formatting
+failure. Replay immutable historical reports with their original verifiers; never
+reuse their scores as validation of changed sources. Full current V27 is unmeasured.
+
+Earlier follow-up: ship an opt-in offline read-command checker and separate two-tool
 MCP transport, with pinned alias/enum metadata and no OCI execution. Record all 80
 paired checked-workflow attempts: 35/40 native and 38/40 checker-enabled baseline.
 Preserve the five native failures, previous reports and full semantic limitations;

@@ -6,9 +6,13 @@ import math
 from pathlib import Path, PurePosixPath
 
 import native_reference_benchmark as benchmark
+from historical_evidence import verify_historical
 
 
 def verify(report):
+    historical = verify_historical(report, Path(__file__).name, benchmark.ROOT)
+    if historical is not None:
+        return historical
     tasks = {t['id']: t for t in json.loads((benchmark.ROOT / 'evals/tasks.json').read_text())}
     fixtures = {c['id']: c for c in json.loads((benchmark.ROOT / 'evals/tool-task-fixtures.json').read_text())['cases']}
     rows = report['results']

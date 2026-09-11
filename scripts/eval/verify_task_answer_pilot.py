@@ -5,9 +5,13 @@ import hashlib
 import json
 from pathlib import Path
 import task_answer_pilot as pilot
+from historical_evidence import verify_historical
 
 
 def verify(report):
+    historical = verify_historical(report, Path(__file__).name, pilot.ROOT)
+    if historical is not None:
+        return historical
     config = json.loads(pilot.FIXTURES.read_text())
     if report['fixture_sha256'] != pilot.digest(config):
         raise ValueError('Fixture changed')

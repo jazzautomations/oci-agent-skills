@@ -32,6 +32,10 @@ An additional, separate server exposes exactly two offline tools:
 - `describe_read_command`: inspect one read-command definition.
 - `check_read_command`: check one proposed string; never execute it.
 
+Rejected command proposals return MCP `isError: true` with fixed diagnostic
+codes and `valid: false`. A successful tool invocation is not a substitute for
+checking validity; the positive path returns `valid: true` and `isError: false`.
+
 It is **not automatically registered** and does not replace or expand the
 default 15-tool OCI server. Configure an MCP client to launch this fixed process,
 using the absolute path to the installed copy:

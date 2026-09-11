@@ -91,4 +91,6 @@ def test_optional_mcp_uses_real_stdio_without_credentials(tmp_path):
                     assert not result.isError and json.loads(result.content[0].text)['ok']
                     result = await session.call_tool('check_read_command', {'command': 'oci iam region list --query data'})
                     assert not result.isError and json.loads(result.content[0].text)['valid']
+                    result = await session.call_tool('check_read_command', {'command': 'oci budget budget list --limit 10'})
+                    assert result.isError and not json.loads(result.content[0].text)['valid']
     asyncio.run(run())

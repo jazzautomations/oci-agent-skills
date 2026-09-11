@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-11",
+  "scope": "Final local checks after the shape-only VCN placeholder repair. No cloud operations.",
+  "full_suite": {"passed": 565, "warnings": 3, "seconds": 49.99, "exit_code": 0},
+  "offline_examples": {"checks": 269, "complete": true, "oci_cli": "3.91.0", "sdk": "2.185.0", "exit_code": 0},
+  "changed_skill_live_help": {"skills": 5, "findings": 0, "exit_code": 0, "scope": "Fresh leaf-only help, never the example operation."},
+  "frontmatter": {"skills": 37, "findings": 0},
+  "portability": {"skills": 37, "findings": 0},
+  "body_and_schema_budgets": {"findings": 0},
+  "generated_catalogs": "PASS",
+  "script_registry": "PASS",
+  "manifests": "PASS",
+  "template": "PASS",
+  "generic_skill_creator_validator": {"passed": false, "reason": "Its schema rejects the repository's existing compatibility field. The field is preserved; repository frontmatter and portability checks pass."},
+  "targeted_regression": {"native": "4/5", "baseline": "3/5", "attempts": 10, "cost_usd": 0.5024286},
+  "cumulative_known_model_cost_usd": 15.12589,
+  "billing_reconciled": false,
+  "full_current_task_certification": false
+}

@@ -46,7 +46,7 @@ def test_duplicate_or_changed_pilot_answers_fail():
     path = ROOT/'evals/results/task-answer-pilot-2026-09-11.json'
     report = json.loads(path.read_text())
     report['results'][0]['trace']['answer'] = {'invented': True}
-    with pytest.raises(ValueError, match='Answer score'):
+    with pytest.raises(ValueError):
         verify(report)
     report = json.loads(path.read_text())
     report['results'][0] = report['results'][1]

@@ -94,5 +94,16 @@
       "--region",
       "${REGION}"
     ]
+  },
+  {
+    "id": "oci-networking-default-routes",
+    "skill": "oci-networking",
+    "live": false,
+    "argv": [
+      "network", "route-table", "list", "--compartment-id", "${COMPARTMENT_ID}",
+      "--vcn-id", "${VCN_ID}", "--limit", "20", "--query",
+      "data[].{name:\"display-name\",routes:\"route-rules\"[?contains(`[\"0.0.0.0/0\",\"::/0\"]`,destination)]} | [?length(routes) > `0`]",
+      "--profile", "${PROFILE}", "--region", "${REGION}"
+    ]
   }
 ]

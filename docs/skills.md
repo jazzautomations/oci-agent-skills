@@ -171,7 +171,7 @@ oci compute volume-attachment list --compartment-id "$COMPARTMENT_ID" --limit 20
 **Not for:** writing IAM policy (`oci-iam-policy`) or SDK code (`oci-sdk-patterns`).
 
 ```bash
-oci iam region-subscription list --tenancy-id "$T" --all \
+oci iam region-subscription list --tenancy-id "$T" \
   --query 'data[].{region:"region-name",key:"region-key",home:"is-home-region"}'
 ```
 
@@ -538,7 +538,7 @@ oci network subnet list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'd
 ```
 
 ```bash
-oci network nsg list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data[].{id:id,vcn:"vcn-id"}' --profile "$PROFILE" --region "$REGION"
+oci network route-table list --compartment-id "$COMPARTMENT_ID" --vcn-id "$VCN_ID" --limit 20 --query 'data[].{name:"display-name",routes:"route-rules"[?contains(`["0.0.0.0/0","::/0"]`,destination)]} | [?length(routes) > `0`]' --profile "$PROFILE" --region "$REGION"
 ```
 
 </details>
@@ -629,7 +629,7 @@ oci iam user list --compartment-id "$TENANCY_ID" --query 'data[?"is-mfa-activate
 ```
 
 ```bash
-oci iam policy list --compartment-id "$COMPARTMENT_ID" --query 'data[].{n:name,broad:statements[?contains(@,`any-user`)||contains(@,`manage all-resources`)]}' --limit 20
+oci iam policy list --compartment-id "$COMPARTMENT_ID" --query 'data[].{n:name,broad:statements[?contains(@,`"any-user"`) || contains(@,`"manage all-resources"`)]} | [?length(broad) > `0`]' --limit 20
 ```
 
 </details>

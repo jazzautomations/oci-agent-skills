@@ -15,7 +15,7 @@
     },
     {
       "path": "scripts/check_examples.py",
-      "sha256": "893c29efa5bb71469913c383319ab294cde3983a308bd00fed68809e03ba3dd0",
+      "sha256": "03a273a4c887f6289a018d8763d3d44f44b6e58b7d71c5cf114dab1268d205e2",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -135,7 +135,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "1593efab5ba50e59d1b7ad413992ad5310c21e0774ca6d2a364fe66039ff564c",
+      "sha256": "f37a966af2b5738e96d6b633ee2275ce26f40a9842011dc5e6e2fb724f8bf9fa",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -147,7 +147,7 @@
     },
     {
       "path": "scripts/command_contract_server.py",
-      "sha256": "76e0418dc6980a18f72bba0b0be1ef34f68ea4997a6e5a3637d4049716f3215f",
+      "sha256": "2d026682c47ba09b12ca44fb8864a4c691b99cc993d12cafa88911ade041d79e",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -206,6 +206,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/historical_evidence.py",
+      "sha256": "9a46e1dacd531e2b9daabcc6cb91688111752ad4db204c67065d12112be4f140",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/import_corpus.py",
       "sha256": "d387c1a2fdd47be0e6f2ce7001765e3e7868a754cc23649b35411164d62b2964",
       "mode": "read-only",
@@ -254,6 +260,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/task_repair_regression.py",
+      "sha256": "0d33ec78d738ae4b5ebf819edfe95de1ad077deccced837994aebf59751bf087",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/tool_fixture_server.py",
       "sha256": "23c6202ac103255b6823e1b4954129b75d97871423af1bbb7e59632f58ecf4a0",
       "mode": "read-only",
@@ -267,7 +279,7 @@
     },
     {
       "path": "scripts/eval/verify_checked_task_benchmark.py",
-      "sha256": "c5d07fd65d139112f30f5c97179593a4711c5862adfe5f9d546b94ba1bfff40f",
+      "sha256": "23c5937209352f43afeffd94560c1753d3512b266fd0339d2d9e3160d2417ff6",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -279,25 +291,25 @@
     },
     {
       "path": "scripts/eval/verify_native_reference_benchmark.py",
-      "sha256": "bd2690c0188dac06da0d8eeec4cb4c12c343ffe6cf27c138b248dbfd8a798c92",
+      "sha256": "dcc3792339cb4361f49889423e26512bd72f33a9b75b5a92487c1a4f0820822c",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/eval/verify_native_task_benchmark.py",
-      "sha256": "63dd6f0936e7c7c6e10cf38acabe6ff7156a16d4763cfec401fcef4b23dc93d7",
+      "sha256": "e5a8706b19639503d22b2771646808ebfabc270078ce55aea0246cf8dd9314aa",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/eval/verify_task_answer_pilot.py",
-      "sha256": "848799f9302e4bd23dee1f0fbfb610500996e127063c3ca8e06cf14eb185e26e",
+      "sha256": "cd497bde1021fcbb8dd6001607ac8846d54cd6f1d5e144e035acf36cb99b5299",
       "mode": "read-only",
       "oci_calls": []
     },
     {
       "path": "scripts/eval/verify_tool_task_benchmark.py",
-      "sha256": "62231c530105d62c89757cb61ab2c64f04012af350c9929d6fc501a2509a5165",
+      "sha256": "2df60903b1faf9ed14cfef5b14a7dd536d59b6119814051f19d09e02b633d197",
       "mode": "read-only",
       "oci_calls": []
     },

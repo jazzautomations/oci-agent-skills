@@ -40,8 +40,14 @@ def execute(identifier, command, display, *, timeout=240, owner='repository main
             import re
             summary = re.search(r'(\d+ passed[^\n]*)', result.stdout)
             if summary: detail = summary[1]
-        return {'id':identifier, 'command':display, 'result':'PASS' if ok else 'FAIL', 'date':DATE,
-                'exit_code':result.returncode, 'detail':detail, 'owner':None if ok else owner}
+        row = {'id':identifier, 'command':display, 'result':'PASS' if ok else 'FAIL', 'date':DATE,
+               'exit_code':result.returncode, 'detail':detail, 'owner':None if ok else owner}
+        if identifier == 'V27-checked' and ok:
+            evidence = json.loads(result.stdout)
+            row['current_sources'] = evidence.get('current_sources', True)
+            row['detail'] = ('Current source-bound evidence.' if row['current_sources'] else
+                             'Historical scores recomputed with their immutable revision; not current behavioral validation.')
+        return row
     except (OSError, subprocess.TimeoutExpired, ValueError):
         return {'id':identifier,'command':display,'result':'FAIL','date':DATE,'detail':'Unavailable command, timeout or invalid report; raw output suppressed.','owner':owner}
 
@@ -177,6 +183,9 @@ def main():
         'uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json')
     add('V27-checked',PYTHON+['scripts/eval/verify_checked_task_benchmark.py','evals/results/checked-task-benchmark-2026-09-11.json'],
         'uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json')
+    add('V27-repair',PYTHON+['scripts/eval/task_repair_regression.py','--report','evals/results/task-repair-regression-2026-09-11.json'],
+        'uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json',
+        note='Integrity of the five-case paired development regression only; not a full task score.')
     add('V27-checked-syntax',[str(cli_python),'scripts/eval/verify_native_command_audit.py','evals/results/checked-task-benchmark-2026-09-11.json','evals/results/checked-task-command-audit-2026-09-11.json'],
         'CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json')
     add('V27-syntax',[str(cli_python),'scripts/eval/verify_native_command_audit.py','evals/results/native-reference-benchmark-2026-09-11.json','evals/results/native-reference-command-audit-2026-09-11.json'],
@@ -249,8 +258,11 @@ def main():
         if record.get('conclusion')=='success' and record.get('notification',{}).get('published'):
             next(r for r in rows if r['id']=='V24')['detail']='Local drift check and recorded hosted issue publication passed; actual Tuesday scheduler event remains unobserved. See docs/evidence/hosted-drift-publication-2026-09-11.json.'
     extras={r['id']:r for r in rows if '-' in r['id']}
+    if extras['V27-checked'].get('current_sources') is False:
+        next(r for r in rows if r['id']=='V27').update(result='UNMEASURED',
+            detail='Skills and checker changed after the 35/40 measurement. That immutable historical report still verifies, but is not current-task evidence. The five-case development regression is separate and cannot certify all 40 tasks. See docs/task-repair-validation-2026-09-11.md.')
     rows=[r for r in rows if '-' not in r['id']]
-    for parent,sub in [('V16','V16-regeneration'),('V16','V16-read-contracts'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V27','V27-checked'),('V27','V27-checked-syntax'),('V28','V28-offline'),('V28','V28-fixtures')]:
+    for parent,sub in [('V16','V16-regeneration'),('V16','V16-read-contracts'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V27','V27-checked'),('V27','V27-checked-syntax'),('V27','V27-repair'),('V28','V28-offline'),('V28','V28-fixtures')]:
         row=next(r for r in rows if r['id']==parent);part=extras[sub]
         row['command']+='; '+part['command']
         if part['result']=='FAIL': row.update(result='FAIL',owner=part['owner'])

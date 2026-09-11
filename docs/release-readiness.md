@@ -2,7 +2,14 @@
 
 ## September 11 follow-up
 
-Latest evaluation: [80 reference-enabled paired attempts](native-reference-validation-2026-09-11.md)
+Latest repair: [five changed skills and the checker](task-repair-validation-2026-09-11.md)
+recover four of five previously failed native development cases. The fifth retains
+an exact-format failure. Ten paired attempts cost $0.5024286. The previous full
+35/40 score is now historical; V27 is UNMEASURED for current full-task behavior.
+Immutable old-source replay preserves all earlier scores without blocking skill
+maintenance or mislabeling old results as current. Four release criteria remain open.
+
+Earlier evaluation: [80 reference-enabled paired attempts](native-reference-validation-2026-09-11.md)
 are complete. The pinned syntax audit scores native 29/40 versus baseline 13/40;
 V27 now records FAIL against the 80% minimum, not just provider unavailability.
 Reference permission was proved separately, but no task actually used Read.

@@ -6,12 +6,21 @@ import math
 from pathlib import Path, PurePosixPath
 
 import checked_task_benchmark as benchmark
+from historical_evidence import verify_historical
 
 
-def verify(report):
+def verify(report, *, case_ids=None):
+    if case_ids is None:
+        historical = verify_historical(report, Path(__file__).name, benchmark.ROOT)
+        if historical is not None:
+            return historical
     if report.get('preflight') is not False or not report.get('collected_all') or report.get('stopped_reason'):
         raise ValueError('Not a complete paired measurement')
     tasks = {t['id']: t for t in json.loads((benchmark.ROOT / 'evals/tasks.json').read_text())}
+    if case_ids is not None:
+        if not case_ids or len(set(case_ids)) != len(case_ids) or not set(case_ids) <= tasks.keys():
+            raise ValueError('Invalid explicit regression scope')
+        tasks = {case: tasks[case] for case in case_ids}
     fixtures = {r['id']: r for r in json.loads((benchmark.ROOT / 'evals/tool-task-fixtures.json').read_text())['cases']}
     rows = report['results']
     if Counter((r['case'], r['arm']) for r in rows) != Counter((case, arm) for case in tasks for arm in benchmark.ARMS):

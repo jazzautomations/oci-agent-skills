@@ -141,12 +141,12 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 | Check | Recorded result | Scope |
 |---|---:|---|
 | Regression suite | See latest full run | Test count, warnings and date in the [validation matrix](docs/validation-matrix.md) |
-| Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
+| Authored OCI fences | 286/286 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
 | Semantic skill selection | 80/80 and 80/80 | Zero disagreements in the recorded trials; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
 | OCI CLI census | 9,145 leaves / 174 groups | Includes aliases; not complete product coverage |
 | Full release matrix | 24 pass / 4 open | Open gates retain owners and reasons |
-| Opt-in checked-command tasks | 35/40 native; 38/40 no-plugin | Same offline checker for both; synthetic observations, not live workload certification |
+| Latest five-case repair regression | 4/5 native; 3/5 no-plugin | Known development failures only; the earlier 35/40 full score is historical after source changes |
 
 [Validation matrix](docs/validation-matrix.md) · [Evaluation method](docs/evals.md) · [Semantic investigation and limits](docs/semantic-routing.md)
 
@@ -181,7 +181,7 @@ The release gate writes evidence outside the checkout and prints diffs. It exits
 
 1. **Scheduled drift:** real hosted issue publication and deduplication passed; the actual Tuesday scheduler trigger remains unobserved.
 2. **Live workflows:** selected CLI/MCP and disposable database-lab probes passed, but Cloud Guard, Support and FinOps prerequisites retain failed or incomplete coverage. No full workload certification is claimed.
-3. **Host evaluation:** the optional [checked-command workflow](docs/checked-task-validation-2026-09-11.md) passed 35/40; the checker-enabled baseline scored 38/40. Full original-task semantics remain unverified, and the native evaluator is early-access restricted.
+3. **Host evaluation:** [five skill repairs](docs/task-repair-validation-2026-09-11.md) recovered four of five native development failures. Full current-task behavior remains unmeasured; the earlier 35/40 score belongs to its immutable old revision. The native evaluator is early-access restricted.
 4. **Behavioral comparison:** normalized model-backed synthetic comparisons are recorded; a native four-product deployment comparison and live injection resistance remain unmeasured.
 
 The separately authorized [published-history cleanup](docs/history-migration-2026-09-11.md)
