@@ -1,5 +1,46 @@
 # Changelog
 
+## Unreleased — live integration and reproducible benchmarks
+
+Newest follow-up: validate native installed skill activation and its distributed
+public-price MCP path. Record 80 paired synthetic task attempts, retaining original
+scores (33/40 vs 28/40) and separately recomputable syntax adjudication (32/40 vs
+16/40). Add offline CI evidence checks; no command proposals execute. Fix Support
+triage's missing user context and list projection, preserving the real 403 as a
+failure. Full regression suite: 497 passed. Original V27/V28 criteria remain open;
+the restricted experiment does not certify full host workloads.
+
+Follow-up: default RAG retrieval combines document-vector and hybrid rankings with
+RRF, using 100-word chunks. The final implementation measured 45/45 expected-source
+hits on 15 development questions, with a latency tradeoff; prior failures remain.
+Validate repeat loading and object-specific unified audit of actual SQLcl reads and
+denied writes without agent privilege expansion. Attempt all 160 controlled tool
+tasks across four reference arms; retain strict grades, tool receipts, budget
+failures and costs, with offline CI verification. Full regression suite: 479 passed.
+No native-plugin, held-out relevance or universal-success claim is added.
+
+Validate the new account with bounded CLI/MCP reads and a separately authorized
+temporary infrastructure/26ai lab. Add per-call MCP timings and a fixed RAG benchmark
+with individual samples and corpus/source hashes. Preserve the 4/5 expected-source
+result and remaining service/evaluation gaps in dated evidence.
+
+Fix monthly cost windows, missing sweep arguments and scoped prerequisite discovery.
+Use SDK idempotency tokens for ADB creation and persist its ID before waiting.
+Recognize the 26ai product name, ignore comment-only SQL binds, resolve the Vector
+Chain package through its public synonym, grant model-download access, increase the
+bounded model quota, and use READ grants for the dedicated agent user.
+
+Diagnose Cloud Guard problem-list 404s with one scoped configuration read while
+preserving failed coverage. Confirm the new account has Cloud Guard disabled.
+Review the September 11 scheduled source-change report and refresh the observed
+baseline without upgrading the live-tested driver. Full regression suite: 463 passed.
+
+Add a frozen six-task paired answer pilot, retained model traces and independent
+offline score verification: 12/12 with references and 12/12 without; no superiority
+or live-tool claim. Recheck Cloud Guard/Support account access, roll back the newly
+created service policy after rejected activation, and inspect persistent local
+SQLcl logs without extra database grants. Full regression suite: 468 passed.
+
 ## Unreleased — application capability routing
 
 Clarify the enterprise-apps entry description around questions about application

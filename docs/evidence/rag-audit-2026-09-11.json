@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-11T17:22:43.992261+00:00",
+  "checks": [
+    {
+      "case": "read",
+      "ok": true,
+      "rows": 15
+    },
+    {
+      "case": "denied_insert",
+      "ok": false,
+      "code": 41900
+    }
+  ],
+  "session_privileges": [
+    "CREATE SESSION"
+  ],
+  "audit_records": [
+    {
+      "action": "INSERT",
+      "return_code": 2004,
+      "count": 1
+    },
+    {
+      "action": "SELECT",
+      "return_code": 0,
+      "count": 1
+    }
+  ],
+  "method": "Dedicated new ADB; ADMIN configured object-specific unified audit before agent login. No audit or DDL grants to RAGMCP.",
+  "ok": true
+}

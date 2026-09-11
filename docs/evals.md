@@ -1,5 +1,15 @@
 # Evaluation evidence — 2026-09-10
 
+Latest September 11 follow-up: [native activation and paired tasks](native-validation-2026-09-11.md)
+records the installed skill/MCP price path and 80 synthetic attempts. Original
+scores are 33/40 versus 28/40; separate syntax adjudication gives 32/40 versus
+16/40. File access and command execution are disabled, so V27/V28 remain open.
+
+September 11 addition: the [controlled four-arm tool-task benchmark](tool-task-benchmark.md)
+records 160 attempts using the original prompts and a synthetic MCP reader, with
+strict scores 39/40, 33/40, 38/40 and 38/40. This is separate from selection,
+native plugin activation and the original native deployment comparison.
+
 The current selection gate uses **recorded semantic classification** of all 37
 skill descriptions. CI verifies the input fingerprints and recomputes scores;
 it does not call a model or claim native host task completion.
@@ -123,6 +133,10 @@ close V28's four-arm behavioral comparison.
 
 The original design accepts a skill-creator **task evaluation** as a substitute
 for the unavailable native evaluator. That alternative remains unmeasured.
+The September 11 [paired fixture-answer pilot](task-answer-pilot.md) measured
+12/12 correct answers in both arms on six synthetic tasks. It is a small
+evidence-interpretation measurement, not native activation or tool execution,
+and does not close the original host-task gate.
 Its description-trigger evaluator is not sufficient: qualifying evidence needs
 matched with-skill and baseline task attempts with observable, independently
 graded outcomes. The provider restriction alone does not explain this open gate.

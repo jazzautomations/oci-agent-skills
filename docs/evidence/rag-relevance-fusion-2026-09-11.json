@@ -1,0 +1,688 @@
+{
+  "date": "2026-09-11T17:32:50.008445+00:00",
+  "mode": "fusion",
+  "fixture_sha256": "66799210c9075feb89c698cbf99aaa4ae3b360f208113a434815a1216145e574",
+  "implementation_sha256": {
+    "query.py": "9aa09f55d84ec8feee77d148808b3dbfbcb86a9c67ac6592f209a3ff24a0727c",
+    "load.py": "27e2f58a475496ed952d597bcef0c54cec58eae9dea90d09c8182853ba1588a9",
+    "relevance_benchmark.py": "d3cee6fe258fabbdf25f4c0c46078b651d89331a12a7b27a44b5883dffcaf5c7"
+  },
+  "results": [
+    {
+      "case": "redaction-original",
+      "set": "existing-demo",
+      "expected": "references/redaction.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "references/auth-modes.md",
+            "references/redaction.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 2711.243
+        },
+        {
+          "run": 2,
+          "documents": [
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "references/auth-modes.md",
+            "references/redaction.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1696.77
+        },
+        {
+          "run": 3,
+          "documents": [
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "references/auth-modes.md",
+            "references/redaction.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1686.936
+        }
+      ],
+      "median_ms": 1696.77
+    },
+    {
+      "case": "untrusted-original",
+      "set": "existing-demo",
+      "expected": "references/untrusted-output.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/redaction.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1681.178
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/redaction.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1700.489
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/redaction.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1712.646
+        }
+      ],
+      "median_ms": 1700.489
+    },
+    {
+      "case": "auth-original",
+      "set": "existing-demo",
+      "expected": "references/auth-modes.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/service-command-cards.md",
+            "references/jmespath.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1687.772
+        },
+        {
+          "run": 2,
+          "documents": [
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/service-command-cards.md",
+            "references/jmespath.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1690.096
+        },
+        {
+          "run": 3,
+          "documents": [
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/service-command-cards.md",
+            "references/jmespath.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1681.975
+        }
+      ],
+      "median_ms": 1687.772
+    },
+    {
+      "case": "realms-original",
+      "set": "existing-demo",
+      "expected": "references/realms-endpoints.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/auth-modes.md",
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1686.579
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/auth-modes.md",
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1690.235
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/auth-modes.md",
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/console-links.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1695.614
+        }
+      ],
+      "median_ms": 1690.235
+    },
+    {
+      "case": "shell-original",
+      "set": "existing-demo",
+      "expected": "references/windows-powershell.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/auth-modes.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1578.087
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/auth-modes.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1567.157
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/auth-modes.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1564.826
+        }
+      ],
+      "median_ms": 1567.157
+    },
+    {
+      "case": "pagination",
+      "set": "new-regression",
+      "expected": "references/jmespath.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/service-command-cards.md",
+            "references/cross-service-pitfalls.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1703.387
+        },
+        {
+          "run": 2,
+          "documents": [
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/service-command-cards.md",
+            "references/cross-service-pitfalls.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1704.84
+        },
+        {
+          "run": 3,
+          "documents": [
+            "docs/skills.md",
+            "references/jmespath.md",
+            "references/service-command-cards.md",
+            "references/cross-service-pitfalls.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1697.892
+        }
+      ],
+      "median_ms": 1703.387
+    },
+    {
+      "case": "console-host",
+      "set": "new-regression",
+      "expected": "references/console-links.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/console-links.md",
+            "references/realms-endpoints.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/architecture-center.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1691.125
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/console-links.md",
+            "references/realms-endpoints.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/architecture-center.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1692.488
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/console-links.md",
+            "references/realms-endpoints.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/architecture-center.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1687.537
+        }
+      ],
+      "median_ms": 1691.125
+    },
+    {
+      "case": "scope-after-error",
+      "set": "new-regression",
+      "expected": "references/operator-contract.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1685.658
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1699.705
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md",
+            "docs/skills.md",
+            "references/iam-variables.md",
+            "references/untrusted-output.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1699.404
+        }
+      ],
+      "median_ms": 1699.404
+    },
+    {
+      "case": "policy-variables",
+      "set": "new-regression",
+      "expected": "references/iam-variables.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1689.773
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1691.862
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/iam-variables.md",
+            "docs/skills.md",
+            "references/auth-modes.md",
+            "references/operator-contract.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1686.836
+        }
+      ],
+      "median_ms": 1689.773
+    },
+    {
+      "case": "error-404",
+      "set": "new-regression",
+      "expected": "references/error-triage.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/untrusted-output.md",
+            "references/error-triage.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1692.018
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/untrusted-output.md",
+            "references/error-triage.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1696.877
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/untrusted-output.md",
+            "references/error-triage.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1689.425
+        }
+      ],
+      "median_ms": 1692.018
+    },
+    {
+      "case": "architecture-code",
+      "set": "new-regression",
+      "expected": "references/architecture-center.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/architecture-center.md",
+            "references/oci-doc-urls.md",
+            "docs/skills.md",
+            "references/realms-endpoints.md",
+            "references/operator-contract.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1690.176
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/architecture-center.md",
+            "references/oci-doc-urls.md",
+            "docs/skills.md",
+            "references/realms-endpoints.md",
+            "references/operator-contract.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1688.385
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/architecture-center.md",
+            "references/oci-doc-urls.md",
+            "docs/skills.md",
+            "references/realms-endpoints.md",
+            "references/operator-contract.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1694.252
+        }
+      ],
+      "median_ms": 1690.176
+    },
+    {
+      "case": "credential-publication",
+      "set": "new-regression",
+      "expected": "references/redaction.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/redaction.md",
+            "references/oci-doc-urls.md",
+            "references/architecture-center.md",
+            "references/iam-variables.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1690.993
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/redaction.md",
+            "references/oci-doc-urls.md",
+            "references/architecture-center.md",
+            "references/iam-variables.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1690.767
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/cross-service-pitfalls.md",
+            "references/redaction.md",
+            "references/oci-doc-urls.md",
+            "references/architecture-center.md",
+            "references/iam-variables.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1691.837
+        }
+      ],
+      "median_ms": 1690.993
+    },
+    {
+      "case": "session-auth",
+      "set": "new-regression",
+      "expected": "references/auth-modes.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/redaction.md",
+            "references/realms-endpoints.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1706.081
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/redaction.md",
+            "references/realms-endpoints.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1694.353
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/auth-modes.md",
+            "docs/skills.md",
+            "references/redaction.md",
+            "references/realms-endpoints.md",
+            "references/cross-service-pitfalls.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1692.217
+        }
+      ],
+      "median_ms": 1694.353
+    },
+    {
+      "case": "response-key-case",
+      "set": "new-regression",
+      "expected": "references/jmespath.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/jmespath.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/service-command-cards.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1555.415
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/jmespath.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/service-command-cards.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1575.274
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/jmespath.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/cross-service-pitfalls.md",
+            "references/service-command-cards.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1591.821
+        }
+      ],
+      "median_ms": 1575.274
+    },
+    {
+      "case": "returned-instructions",
+      "set": "new-regression",
+      "expected": "references/untrusted-output.md",
+      "samples": [
+        {
+          "run": 1,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/operator-contract.md",
+            "references/iam-variables.md",
+            "references/auth-modes.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1691.261
+        },
+        {
+          "run": 2,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/operator-contract.md",
+            "references/iam-variables.md",
+            "references/auth-modes.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1685.53
+        },
+        {
+          "run": 3,
+          "documents": [
+            "references/untrusted-output.md",
+            "docs/skills.md",
+            "references/operator-contract.md",
+            "references/iam-variables.md",
+            "references/auth-modes.md"
+          ],
+          "expected_hit": true,
+          "elapsed_ms": 1686.055
+        }
+      ],
+      "median_ms": 1686.055
+    }
+  ],
+  "limitations": "Known development queries, including ten fixed before initial second-lab outcomes. Fusion was selected after observing development failures. Expected-source hit@5 is not answer correctness or generalization. Small corpus, sequential calls, no excluded warmup or p95 claim. Fusion uses an exact per-document vector ranking, not a proven HNSW execution plan.",
+  "documents": 15,
+  "chunks": 632,
+  "indexes": [
+    [
+      "DOC_CHUNKS_HNSW",
+      "VALID"
+    ],
+    [
+      "REFS_HYBRID_IDX",
+      "VALID"
+    ]
+  ],
+  "complete": true,
+  "expected_source_hits": 45,
+  "queries": 45
+}

@@ -1,5 +1,15 @@
 # Four-arm offline comparison — 2026-09-09
 
+New, separate measurement: [September 11 controlled tool tasks](tool-task-benchmark.md)
+contains model-backed outcomes and actual synthetic MCP read receipts for all four
+reference arms. It does not run the native Oracle executor or competitor plugins;
+the archived table below is not silently promoted into that result.
+
+For measured live MCP latency on the new account, see the
+[September 11 validation](live-validation-2026-09-11.md). That benchmark measures
+API access and client timing; it does not upgrade this offline comparison into
+a behavioral head-to-head result.
+
 This is the archived September 9 lexical baseline, before the three scope repairs. Current V19/V20 semantic evidence is documented in [the evaluation guide](evals.md). Re-running on a changed catalog produces a new diagnostic, not an exact reproduction of this historical table.
 
 Run: `uv run --frozen --project runtime python scripts/eval/head_to_head.py --json evals/results/head-to-head.json --markdown docs/head-to-head.md`.

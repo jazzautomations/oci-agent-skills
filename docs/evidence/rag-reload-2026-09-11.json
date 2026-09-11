@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-11T17:38:13.234901+00:00",
+  "before": {
+    "documents": 15,
+    "distinct_names": 15,
+    "chunks": 632
+  },
+  "after": {
+    "documents": 15,
+    "distinct_names": 15,
+    "chunks": 632
+  },
+  "counts_unchanged": true,
+  "indexes": [
+    [
+      "DOC_CHUNKS_HNSW",
+      "VALID"
+    ],
+    [
+      "REFS_HYBRID_IDX",
+      "VALID"
+    ]
+  ],
+  "redaction_hit_after_reload": true,
+  "method": "Re-execute published load.py on the owned synthetic corpus, explicitly sync hybrid index, then query published fusion."
+}

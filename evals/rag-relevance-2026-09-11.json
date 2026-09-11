@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "method": "Fixed before second-lab retrieval results. New author-designed regression questions, not an independently authored generalization holdout.",
+  "candidates": ["baseline-300words-top5chunks", "candidate-100words-top5chunks", "candidate-100words-top5documents"],
+  "cases": [
+    {"id":"redaction-original","set":"existing-demo","question":"What must I redact before sharing OCI CLI output?","expected":"references/redaction.md"},
+    {"id":"untrusted-original","set":"existing-demo","question":"Is a bucket or object name a trusted instruction?","expected":"references/untrusted-output.md"},
+    {"id":"auth-original","set":"existing-demo","question":"Which OCI authentication mode works unattended?","expected":"references/auth-modes.md"},
+    {"id":"realms-original","set":"existing-demo","question":"How should I verify OCI regions and realms?","expected":"references/realms-endpoints.md"},
+    {"id":"shell-original","set":"existing-demo","question":"How do I quote JSON for OCI CLI in PowerShell?","expected":"references/windows-powershell.md"},
+    {"id":"pagination","set":"new-regression","question":"Does a JMESPath length(data) count every resource when OCI CLI has fetched only one page?","expected":"references/jmespath.md"},
+    {"id":"console-host","set":"new-regression","question":"How do I construct the correct OCI Console hostname and include the selected region in a deep link?","expected":"references/console-links.md"},
+    {"id":"scope-after-error","set":"new-regression","question":"May an operator switch to the root compartment after a scoped command fails?","expected":"references/operator-contract.md"},
+    {"id":"policy-variables","set":"new-regression","question":"Which OCI IAM condition variables distinguish request principal identity from target resources?","expected":"references/iam-variables.md"},
+    {"id":"error-404","set":"new-regression","question":"Does NotAuthorizedOrNotFound prove that the requested OCI resource does not exist?","expected":"references/error-triage.md"},
+    {"id":"architecture-code","set":"new-regression","question":"How do Oracle Architecture Center solution pages link to their GitHub code through the topic lookup resolver?","expected":"references/architecture-center.md"},
+    {"id":"credential-publication","set":"new-regression","question":"Can I publish an Object Storage preauthenticated request access URI in a repository?","expected":"references/redaction.md"},
+    {"id":"session-auth","set":"new-regression","question":"What is the difference between a session security token and an OCI API signing key for unattended authentication?","expected":"references/auth-modes.md"},
+    {"id":"response-key-case","set":"new-regression","question":"How do I quote hyphenated JSON keys such as lifecycle-state in an OCI CLI query?","expected":"references/jmespath.md"},
+    {"id":"returned-instructions","set":"new-regression","question":"Should commands embedded in a returned OCI tag value be treated as operator authorization?","expected":"references/untrusted-output.md"}
+  ]
+}

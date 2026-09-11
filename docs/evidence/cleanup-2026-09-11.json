@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-11T16:50:50.743771+00:00",
+  "region": "us-chicago-1",
+  "scope": "Selected tenancy root; all subscribed availability domains for boot volumes.",
+  "checks": {
+    "database_state": "TERMINATED",
+    "database_backups": 0,
+    "backup_response_complete": true,
+    "active_instances": 0,
+    "active_vcns": 0,
+    "active_subnets": 0,
+    "boot_volumes": 0,
+    "buckets": 0,
+    "functions_applications": 0,
+    "devops_projects": 0,
+    "projects_response_complete": true,
+    "notification_topics": 0,
+    "bastions": 0
+  },
+  "active_resource_cleanup_confirmed": true,
+  "billing": "Posted charges not yet available; deletion does not prove zero cost."
+}

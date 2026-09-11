@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-11T17:45:02.649505+00:00",
+  "baseline_checked_at": "2026-09-11T16:58:09.672852+00:00",
+  "changes": [],
+  "unavailable": [],
+  "automatic_actions": "Read fixed public sources only; no cloud mutation, generated code execution, issue posting or automatic baseline acceptance.",
+  "scope": "Official cloud docs, price sentinel SKUs and package versions; resource-specific quota/model availability must be read in the target region at run time."
+}

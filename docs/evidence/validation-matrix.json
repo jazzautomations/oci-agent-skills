@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-10",
+  "date": "2026-09-11",
   "branch": "main",
   "ready": false,
   "rows": [
@@ -7,7 +7,7 @@
       "id": "V1",
       "command": "claude plugin validate . --strict",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -16,7 +16,7 @@
       "id": "V2",
       "command": "claude plugin validate ./skills --strict",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -25,7 +25,7 @@
       "id": "V3",
       "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -34,7 +34,7 @@
       "id": "V4",
       "command": "uv run --frozen --project runtime python scripts/ci/check_portable.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -43,16 +43,16 @@
       "id": "V5",
       "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
     },
     {
       "id": "V6",
-      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md",
+      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py skills docs references README.md --live-help",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -69,7 +69,7 @@
       "id": "V8",
       "command": "uv run --frozen --project runtime pytest -q tests/test_guard.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.",
       "owner": null
@@ -78,7 +78,7 @@
       "id": "V9",
       "command": "uv run --frozen --project runtime pytest -q tests -k parse",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -87,7 +87,7 @@
       "id": "V10",
       "command": "uv run --frozen --project runtime pytest -q tests -k plugin_script",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -96,7 +96,7 @@
       "id": "V11",
       "command": "uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -105,7 +105,7 @@
       "id": "V12",
       "command": "uv run --frozen --project runtime pytest -q tests -k 'redact or sanitize'",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -114,7 +114,7 @@
       "id": "V13",
       "command": "uv run --frozen --project runtime oci-readonly-smoke",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -123,25 +123,25 @@
       "id": "V14",
       "command": "uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests",
       "result": "PASS",
-      "date": "2026-09-10",
+      "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "453 tests passed in the full suite after the final application-capability clarification. Temporary runtime dependencies used UV_LINK_MODE=symlink; distributed payload checks require copies without symlinks.",
+      "detail": "497 passed, 3 warnings in 53.10s; docs/evidence/native-final-regression-2026-09-11.json",
       "owner": null
     },
     {
       "id": "V15",
       "command": "uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py",
       "result": "PASS",
-      "date": "2026-09-10",
+      "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Copy installation inspected: 37 skills, shared references, no authoring-only files or symlinks before runtime setup.",
+      "detail": "Command passed. Fresh copied tree: all source skills, shared refs, hooks, MCP config and notices; find . -type l empty.",
       "owner": null
     },
     {
       "id": "V16",
       "command": "uv run --frozen --project runtime pytest -q tests/test_catalog.py; CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed. Subcheck V16-regeneration: PASS.",
       "owner": null
@@ -150,7 +150,7 @@
       "id": "V17",
       "command": "uv run --frozen --project runtime pytest -q tests/test_console_url.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -159,7 +159,7 @@
       "id": "V18",
       "command": "CLI_PYTHON scripts/check_examples.py --report docs/evidence/validation-examples-offline.json",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -168,25 +168,25 @@
       "id": "V19",
       "command": "uv run --frozen --project runtime python scripts/eval/run.py --json evals/results/offline.json",
       "result": "PASS",
-      "date": "2026-09-10",
+      "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Recorded 37-skill semantic selection after ownership and application-capability repairs: 80/80 and 80/80; 4/4 overlap pairs in both trials. Original prompts, labels, policy, model and seeds unchanged. Input-bound description selection only; no host task completion claim.",
+      "detail": "Recorded semantic selection, worst trial 100.0%; required ≥90%; overlap pairs 4/4. Input-bound evidence, no fresh CI inference or host task execution.",
       "owner": null
     },
     {
       "id": "V20",
       "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
       "result": "PASS",
-      "date": "2026-09-10",
+      "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Zero negative firings in both 40-case trials; 31/31 synthetic boundaries pass. Original corpus, labels, policy, model and seeds unchanged. Pre-repair and development traces preserved.",
+      "detail": "Zero negative firings in every recorded semantic trial; input hashes and predictions are checked offline.",
       "owner": null
     },
     {
       "id": "V21",
       "command": "uv run --frozen --project runtime python scripts/ci/check_budget.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -195,16 +195,16 @@
       "id": "V22",
       "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py; uv run --frozen --project runtime python scripts/ci/check_history.py",
       "result": "FAIL",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
-      "detail": "Command passed. Subcheck V22-history: FAIL.",
+      "detail": "Current-tree credential scan passed; published history still has email matches. History subcheck failed. Separate tracked-plus-untracked scan checked 802 files with zero credential findings; no published history rewrite performed.",
       "owner": "repository history owner"
     },
     {
       "id": "V23",
       "command": "uv run --frozen --project runtime python scripts/ci/check_licenses.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -213,40 +213,40 @@
       "id": "V24",
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
-      "date": "2026-09-10",
-      "detail": "Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json.",
+      "date": "2026-09-11",
+      "detail": "Hosted manual preview passed: run 34436615438, CLI 3.91.0 versus 3.92.1, captured diff and would-create notification without publication. Eight mock-client tests cover creation/deduplication. Actual Tuesday cron firing and real issue publication remain unmeasured. See docs/evidence/hosted-drift.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment.",
       "owner": "repository CI maintainers"
     },
     {
       "id": "V25",
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
-      "date": "2026-09-10",
-      "detail": "Script sweep: multipart namespace/bucket discovery repaired; 28 passed entrypoints, three missing resource prerequisites, two triage failures and two no-data metric checks. See docs/evidence/validation-scripts.json and release-readiness.md. Scope remains selected tenancy root and region.",
+      "date": "2026-09-11",
+      "detail": "36 CLI reads passed; 232 syntax-only examples. Paid-lab sweep: 38 passed, two triage failures (Cloud Guard 404/Support 403), two FinOps coverage gaps, four inert SQL files. See docs/live-validation-2026-09-11.md. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. The second separate setup attempt returned Cloud Guard HTTP 500 after policy propagation; the temporary policy was removed and disabled state independently confirmed.",
       "owner": "OCI operator / skill maintainers"
     },
     {
       "id": "V26",
       "command": "OCI_CONFIG_PROFILE=DEFAULT OCI_CLI_PROFILE=DEFAULT uv run --frozen --project runtime oci-readonly-smoke --live --region us-chicago-1",
       "result": "PASS",
-      "date": "2026-09-09",
-      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-mcp.json.",
+      "date": "2026-09-11",
+      "detail": "11 selected calls in three benchmark runs: 33/33 passed. Fifteen tools discovered. See docs/evidence/mcp-benchmark-2026-09-11.json. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment.",
       "owner": null
     },
     {
       "id": "V27",
       "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1",
       "result": "UNAVAILABLE",
-      "date": "2026-09-10",
-      "detail": "Early-access restriction reproduced on 2026-09-10 for T01 with no tool grants, absent OCI config, mocks and no publication. No qualifying host task score. The accepted skill-creator task-evaluation alternative remains unmeasured; description triggering is insufficient.",
-      "owner": "evaluation maintainers; native access: installed host provider"
+      "date": "2026-09-11",
+      "detail": "`plugin eval` is currently in early access See evals/results/host.json. No qualifying host task score.",
+      "owner": "evaluation maintainers / installed host provider"
     },
     {
       "id": "V28",
-      "command": "uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py",
+      "command": "uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
       "result": "PARTIAL",
-      "date": "2026-09-09",
-      "detail": "All four offline arms complete, table and per-case retrieval deltas published. Original live/model-backed comparison and behavioral deltas unmeasured. Subcheck V28-offline: PASS.",
+      "date": "2026-09-11",
+      "detail": "Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured. Subcheck V28-offline: PASS. Subcheck V28-fixtures: PASS.",
       "owner": "evaluation maintainers"
     }
   ],
@@ -255,7 +255,7 @@
       "id": "V22-history",
       "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
       "result": "FAIL",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 1,
       "detail": "History scan counts: {\"assigned_secret\": 0, \"aws_key\": 0, \"email\": 4, \"jwt\": 0, \"private_key\": 0, \"real_ocid\": 0}.",
       "owner": "repository history owner"
@@ -264,16 +264,25 @@
       "id": "V28-offline",
       "command": "uv run --frozen --project runtime python scripts/eval/head_to_head.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
+      "owner": null
+    },
+    {
+      "id": "V28-fixtures",
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+      "result": "PASS",
+      "date": "2026-09-11",
+      "exit_code": 0,
+      "detail": "Input-bound verification of 160 normalized synthetic MCP task attempts; retained grades and budget failures. This is not native four-product deployment or universal success.",
       "owner": null
     },
     {
       "id": "V16-regeneration",
       "command": "CLI_PYTHON scripts/inventory.py --format jsonl --index --check",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null
@@ -282,7 +291,7 @@
       "id": "V24-local",
       "command": "CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PASS",
-      "date": "2026-09-09",
+      "date": "2026-09-11",
       "exit_code": 0,
       "detail": "Command passed.",
       "owner": null

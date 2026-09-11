@@ -31,28 +31,28 @@
       "name": "oci_compartments",
       "variant": null,
       "ok": true,
-      "count": 1,
-      "truncated": true
+      "count": 0,
+      "truncated": false
     },
     {
       "name": "oci_network_inventory",
       "variant": null,
       "ok": true,
-      "count": 1,
-      "truncated": true
+      "count": 0,
+      "truncated": false
     },
     {
       "name": "oci_network_inventory",
       "variant": "subnets",
       "ok": true,
-      "count": 1,
-      "truncated": true
+      "count": 0,
+      "truncated": false
     },
     {
       "name": "oci_buckets",
       "variant": null,
       "ok": true,
-      "count": 1,
+      "count": 0,
       "truncated": false
     },
     {
@@ -80,13 +80,13 @@
       "name": "oci_cost_summary",
       "variant": null,
       "ok": true,
-      "count": 1,
-      "truncated": true
+      "count": 0,
+      "truncated": false
     }
   ],
   "tool_count": 15,
-  "schema_characters": 13820,
-  "schema_tokens_estimate": 3455,
+  "schema_characters": 13997,
+  "schema_tokens_estimate": 3500,
   "shape_only_tools": [
     "oci_alarm_status",
     "oci_audit_events",
@@ -103,5 +103,5 @@
     "oci_work_requests": "No approved deployed-resource fixture in this smoke."
   },
   "ok": true,
-  "validated_at": "2026-09-09T19:37:15.610457+00:00"
+  "validated_at": "2026-09-11"
 }

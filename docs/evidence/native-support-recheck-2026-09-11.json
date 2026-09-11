@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-11",
+  "scope": "One bounded Support incident list through the repaired support_step helper; selected DEFAULT profile, explicit OCI user and home region; no ticket or registration writes.",
+  "user_context_supplied": true,
+  "home_region_supplied": true,
+  "limit": 20,
+  "query": "data[].{key:key}",
+  "result": {
+    "step": 10,
+    "name": "support",
+    "ok": false,
+    "error": {"kind": "service", "status": 403},
+    "diagnostic": {
+      "state": "access_denied",
+      "entitlement_established": false,
+      "action": "Verify Support registration, user-group privileges, IAM policy and identity-domain/home-region context. HTTP 403 alone does not prove Free Tier or lack of entitlement."
+    }
+  },
+  "identifiers_and_raw_service_errors_published": false
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-11T18:16:00.738439+00:00",
+  "command": "uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests",
+  "exit_code": 0,
+  "summary": "497 passed, 3 warnings in 53.10s",
+  "warning_categories": [
+    "AuthlibDeprecationWarning",
+    "PendingDeprecationWarning"
+  ],
+  "scope": "Full suite rerun after the enum-conversion auditor fix. No model or live OCI calls."
+}

@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-11",
+  "host": "claude 2.1.268",
+  "model": "claude-sonnet-5",
+  "scope": "Native installed OCI skill -> distributed read-only MCP -> public Oracle price response. Fresh copied plugin, absent OCI configuration, no Bash/Read or account writes. Other bounded MCP tools are discovered but not called. Does not validate all account-backed tools or full host task completion.",
+  "price": {
+    "exit_code": 0,
+    "subtype": "success",
+    "answer": {
+      "part_number": "B95702",
+      "currency": "USD",
+      "unit_prices": [
+        0.336
+      ],
+      "prices_are_public": true
+    },
+    "cost_usd": 0.09028859999999998,
+    "duration_ms": 6921,
+    "plugin_names": [
+      "oci-agent-skills"
+    ],
+    "mcp_servers": [
+      {
+        "name": "oci-readonly",
+        "status": "connected"
+      }
+    ],
+    "tools": [
+      "Skill",
+      "StructuredOutput",
+      "mcp__oci-readonly__oci_alarm_status",
+      "mcp__oci-readonly__oci_audit_events",
+      "mcp__oci-readonly__oci_buckets",
+      "mcp__oci-readonly__oci_compartments",
+      "mcp__oci-readonly__oci_cost_summary",
+      "mcp__oci-readonly__oci_instances",
+      "mcp__oci-readonly__oci_limit_services",
+      "mcp__oci-readonly__oci_limit_values",
+      "mcp__oci-readonly__oci_metrics",
+      "mcp__oci-readonly__oci_network_inventory",
+      "mcp__oci-readonly__oci_price_lookup",
+      "mcp__oci-readonly__oci_regions",
+      "mcp__oci-readonly__oci_resource_search",
+      "mcp__oci-readonly__oci_whoami",
+      "mcp__oci-readonly__oci_work_requests"
+    ],
+    "calls": [
+      {
+        "name": "Skill",
+        "input": {
+          "skill": "oci-agent-skills:oci-cost-analysis",
+          "args": "Look up public Oracle SKU B95702 in USD"
+        },
+        "result": {
+          "is_error": false
+        }
+      },
+      {
+        "name": "mcp__oci-readonly__oci_price_lookup",
+        "input": {
+          "part_number": "B95702",
+          "currency": "USD"
+        },
+        "result": {
+          "is_error": false,
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"complete\":true,\"count\":1,\"flags\":[],\"items\":[{\"currency\":\"USD\",\"display_name\":\"Oracle Autonomous AI Transaction Processing - ECPU\",\"metric\":\"ECPU Per Hour\",\"model\":\"PAY_AS_YOU_GO\",\"part_number\":\"B95702\",\"range_max\":null,\"range_min\":0,\"value\":0.336}],\"kind\":\"prices\",\"next_cursor\":null,\"ok\":true,\"pagination_error\":null,\"price_snapshot\":\"2026-09-09T16:34:38.537Z\",\"source\":\"https://apexapps.oracle.com/pls/apex/cetools/api/v1/products/\",\"truncated\":false,\"trust\":\"public-oracle-catalog\"}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "StructuredOutput",
+        "input": {
+          "part_number": "B95702",
+          "currency": "USD",
+          "unit_prices": [
+            0.336
+          ],
+          "prices_are_public": true
+        },
+        "result": {
+          "is_error": false
+        }
+      }
+    ]
+  }
+}

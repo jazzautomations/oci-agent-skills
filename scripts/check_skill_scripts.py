@@ -19,6 +19,14 @@ INSTANCE_SCRIPTS = {'triage.py', 'triage.sh'}
 GAP_KINDS = {'no_datapoints', 'no_data'}
 
 
+def settled_months(today):
+    end = (today - timedelta(days=2)).replace(day=1)
+    current = (end - timedelta(days=1)).replace(day=1)
+    prior = (current - timedelta(days=1)).replace(day=1)
+    return dict(PRIOR_START=str(prior), PRIOR_END=str(current),
+                CURRENT_START=str(current), CURRENT_END=str(end))
+
+
 def outcome(returncode, stdout, stderr):
     objects = []
     decoder = json.JSONDecoder()
@@ -35,6 +43,8 @@ def outcome(returncode, stdout, stderr):
             children = [issue for v in value.values() for issue in failures(v)]
             if value.get('error'):
                 return ['failed', *children]
+            if value.get('coverage_gaps'):
+                return ['gap', *children]
             if value.get('ok') is False and not children:
                 return ['gap' if value.get('kind') in GAP_KINDS else 'failed']
             return children
@@ -82,8 +92,7 @@ def main():
         moment = datetime.now(timezone.utc)
         environment.update(START_TIME=(moment-timedelta(hours=1)).isoformat(), END_TIME=moment.isoformat(),
                            METRIC_NAMESPACE='oci_computeagent', MQL='CpuUtilization[1m].mean()')
-        environment.update(PRIOR_START=str(end-timedelta(days=2)), PRIOR_END=str(end-timedelta(days=1)),
-                           CURRENT_START=str(end-timedelta(days=1)), CURRENT_END=str(end), WINDOW_HOURS='1')
+        environment.update(settled_months(end), WINDOW_HOURS='1')
     except (KeyError, ValueError, OSError):
         print(json.dumps({'ok':False,'error':'local_scope_configuration'}))
         return 1
@@ -94,6 +103,9 @@ def main():
         ('AD', ['iam','availability-domain','list','--compartment-id',tenancy,'--query','data[0].name']),
         ('LIMIT_NAME', ['limits','definition','list','--compartment-id',tenancy,'--service-name','compute','--limit','1','--query','data[0].name']),
         ('INSTANCE_ID', ['compute','instance','list','--compartment-id',tenancy,'--limit','1','--query','data[0].id']),
+        ('PROJECT_ID', ['devops','project','list','--compartment-id',tenancy,'--limit','1','--query','data.items[0].id']),
+        ('APPLICATION_ID', ['fn','application','list','--compartment-id',tenancy,'--limit','1','--query','data[0].id']),
+        ('BASTION_ID', ['bastion','bastion','list','--compartment-id',tenancy,'--limit','1','--query','data[0].id']),
     ]
     bootstrap = []
     no_instance = False
@@ -109,6 +121,17 @@ def main():
             bootstrap.append({'field':name,'resolved':name in environment})
         except (OSError, ValueError, subprocess.TimeoutExpired):
             bootstrap.append({'field':name,'resolved':False})
+    if environment.get('BASTION_ID'):
+        try:
+            response = run_process(['bastion','session','list','--bastion-id',environment['BASTION_ID'],
+                '--limit','1','--query','data[0].id','--profile',args.profile,'--region',args.region,'--no-retry'],
+                capture_output=True,text=True,timeout=30)
+            value = json.loads(response.stdout) if response.returncode == 0 and response.stdout.strip() else None
+            if isinstance(value, str) and value:
+                environment['SESSION_ID'] = value
+        except (OSError, ValueError, subprocess.TimeoutExpired):
+            pass
+    bootstrap.append({'field': 'SESSION_ID', 'resolved': 'SESSION_ID' in environment})
     # Multipart inspection needs a real bucket in the same selected compartment.
     # Resolve its namespace and one bucket locally; never record their values or
     # turn a failed/empty discovery into a fabricated prerequisite.
@@ -135,9 +158,16 @@ def main():
         policy = Path(directory)/'policy.json'
         policy.write_text(json.dumps(['Allow group ExampleReaders to read instances in compartment ExampleProject']))
         plan = Path(directory)/'plan.json'; plan.write_text('{"format_version":"1.2","resource_changes":[]}')
+        normalized = Path(directory)/'inventory.json'
         tails = {'chat_min.py':['--api-format','GENERIC'], 'merge_rules.py':[str(empty),str(empty)],
                  'plan_summary.py':[str(plan)], 'fetch_spec.py':['identity','--url'],
-                 'price.sh':['B88514','USD'], 'list_all.sh':['os ns get','--profile',args.profile,'--region',args.region,'--query','data'],
+                 'price.sh':['B88514','USD'], 'price.py':['B88514','USD'],
+                 'waste_scan.py':['--compartment',tenancy,'--max-resources','1','--max-calls','60','--format','json'],
+                 'waste_scan.sh':['--compartment',tenancy,'--max-resources','1','--max-calls','60','--format','json'],
+                 'inventory_normalize.py':[str(ROOT/'skills/oci-migration-assess/fixtures/aws-sample.json'),'--cloud','aws','--out',str(normalized)],
+                 'emit_tfvars.py':[str(normalized),'--region',args.region,'--service-label','smoke','--target-cidr','10.240.0.0/16','--out-dir',str(Path(directory)/'landing-zone')],
+                 'map_and_price.py':[str(normalized),'--format','json'],
+                 'list_all.sh':['os ns get','--profile',args.profile,'--region',args.region,'--query','data'],
                  'whoami.sh':['--profile',args.profile,'--region',args.region],
                  'policy_lint.py':['--file',str(policy)],
                  'policy_lint.sh':['--file',str(policy)],
@@ -147,7 +177,9 @@ def main():
                 continue
             row = {'script':path.relative_to(ROOT).as_posix()}
             row['execution_mode'] = ('offline' if path.name in {'chat_min.py', 'merge_rules.py',
-                'plan_summary.py', 'fetch_spec.py', 'policy_lint.py', 'policy_lint.sh'} else 'live_read')
+                'plan_summary.py', 'fetch_spec.py', 'policy_lint.py', 'policy_lint.sh',
+                'inventory_normalize.py', 'emit_tfvars.py'} else
+                'synthetic_inventory_public_prices' if path.name == 'map_and_price.py' else 'live_read')
             if path.suffix not in {'.py','.sh'}:
                 row.update(execution_mode='inert', status='inert_not_executed', reason='Non-executable example; no database session or mutation fixture is run.')
             elif path.name in INSTANCE_SCRIPTS and no_instance:

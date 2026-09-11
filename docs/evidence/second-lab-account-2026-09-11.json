@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-11T17:43:20.037681+00:00",
+  "scope": "Bounded complete tenancy-root lists in us-chicago-1; not all compartments or all OCI services.",
+  "active_autonomous_databases": 0,
+  "new_cloudguard_policy_absent": true,
+  "cloudguard_status": "DISABLED",
+  "cloudguard_reporting_region_set": false,
+  "posted_cost_rows": 0,
+  "billing_caveat": "Same-day usage is not settled. Zero rows is not zero cost; no posted total or remaining-credit claim."
+}

@@ -8,7 +8,16 @@ DBA setup proposal [unverified, never executed here]: create a dedicated user wi
 
 Run readonly_user.sql as the agent identity to inspect session grants. A DBA must also inspect inherited/public/schema grants and accessible executable routines. negative_test.sql is a read-only risk report, not a write test. To prove denials, a DBA must separately prepare disposable sentinel objects in an isolated clone and test INSERT/CREATE/DROP from the exact agent identity. Expected denials include ORA-01031/ORA-00942; any unexpected success fails certification and requires cleanup. Never do this against production: DDL commits and cannot be made safe by ROLLBACK.
 
-SQLcl uses MODULE/ACTION and DBTOOLS$MCP_LOG for attribution. Verify logging behavior and retention for the installed version without granting extra privileges just to enable it. No SQLcl process or negative mutation test was run here.
+SQLcl uses MODULE/ACTION and DBTOOLS$MCP_LOG for attribution. Verify logging behavior and retention without granting extra privileges just to enable it. In the September 11 isolated SQLcl 26.2.2 lab, reads succeeded and the restricted database identity's negative writes were denied, but DBTOOLS$MCP_LOG was absent. A local `<isolated-java-user-home>/.dbtools/mcp.log` persisted with query records. That does not establish complete, tamper-resistant database auditing. See [Oracle's monitoring guide](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/26.2/sqcug/monitoring-sqlcl-mcp-server.html).
+
+The second September 11 lab enabled an ADMIN-owned, object-specific unified audit
+policy before SQLcl connected. Both the marked SELECT and denied zero-row INSERT
+appeared in `UNIFIED_AUDIT_TRAIL`, attributed to SQLcl and that policy. RAGMCP still
+had only CREATE SESSION plus explicit READ grants. This is separate from
+DBTOOLS$MCP_LOG and does not prove retention, tamper resistance or coverage of every
+operation. Inspect SQL result content as well as MCP transport status: the denied
+INSERT contained ORA-41900 even though MCP `isError` was false; its audit return code
+was 2004. See [Oracle unified auditing](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/adb-audit.html).
 
 ## Diagnostic signals
 

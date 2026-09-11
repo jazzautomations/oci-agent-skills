@@ -1,0 +1,510 @@
+{
+  "date": "2026-09-11T16:19:53.643515+00:00",
+  "source_commit": "b22f39873014d19a97c2066459b81024e3e979ca",
+  "source_dirty": true,
+  "python": "3.13.15",
+  "versions": {
+    "oci": "2.185.1",
+    "mcp": "1.30.0",
+    "fastmcp": "3.4.7",
+    "oracle-mcp-common": "0.1.3"
+  },
+  "region": "us-chicago-1",
+  "runs": 3,
+  "method": "Sequential bounded smoke calls; fresh stdio server per run; no warmup excluded. Each tool is measured once per process. Earlier calls may warm authentication. Public price lookup includes external HTTP. Latency includes transport, client setup, authentication and service time; it is not isolated OCI service latency.",
+  "limitations": "Small sample; no p95 or throughput claim. One region and API-key profile. Empty successful reads validate API access, not deployed workloads. No competitor or model task-completion comparison.",
+  "ok": true,
+  "summary": {
+    "oci_whoami": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        1354.181,
+        1346.837,
+        1053.646
+      ],
+      "median_ms": 1346.837,
+      "min_ms": 1053.646,
+      "max_ms": 1354.181
+    },
+    "oci_price_lookup": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        687.971,
+        2104.753,
+        589.222
+      ],
+      "median_ms": 687.971,
+      "min_ms": 589.222,
+      "max_ms": 2104.753
+    },
+    "oci_regions": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        460.272,
+        484.437,
+        487.289
+      ],
+      "median_ms": 484.437,
+      "min_ms": 460.272,
+      "max_ms": 487.289
+    },
+    "oci_compartments": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        465.241,
+        448.857,
+        466.762
+      ],
+      "median_ms": 465.241,
+      "min_ms": 448.857,
+      "max_ms": 466.762
+    },
+    "oci_network_inventory": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        1049.487,
+        1138.666,
+        815.65
+      ],
+      "median_ms": 1049.487,
+      "min_ms": 815.65,
+      "max_ms": 1138.666
+    },
+    "oci_network_inventory:subnets": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        527.697,
+        458.877,
+        553.287
+      ],
+      "median_ms": 527.697,
+      "min_ms": 458.877,
+      "max_ms": 553.287
+    },
+    "oci_buckets": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        785.422,
+        746.555,
+        847.477
+      ],
+      "median_ms": 785.422,
+      "min_ms": 746.555,
+      "max_ms": 847.477
+    },
+    "oci_resource_search": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        653.45,
+        571.335,
+        549.607
+      ],
+      "median_ms": 571.335,
+      "min_ms": 549.607,
+      "max_ms": 653.45
+    },
+    "oci_limit_services": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        480.875,
+        469.269,
+        460.828
+      ],
+      "median_ms": 469.269,
+      "min_ms": 460.828,
+      "max_ms": 480.875
+    },
+    "oci_limit_values": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        524.567,
+        503.814,
+        511.401
+      ],
+      "median_ms": 511.401,
+      "min_ms": 503.814,
+      "max_ms": 524.567
+    },
+    "oci_cost_summary": {
+      "attempts": 3,
+      "successes": 3,
+      "successful_samples_ms": [
+        575.188,
+        644.066,
+        581.098
+      ],
+      "median_ms": 581.098,
+      "min_ms": 575.188,
+      "max_ms": 644.066
+    }
+  },
+  "records": [
+    {
+      "transport": "stdio",
+      "live": true,
+      "checks": [
+        {
+          "name": "invalid_scope_rejected",
+          "ok": true
+        },
+        {
+          "name": "oci_whoami",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 1354.181,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_price_lookup",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 687.971,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_regions",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 460.272,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_compartments",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 465.241,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 1049.487,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": "subnets",
+          "ok": true,
+          "elapsed_ms": 527.697,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_buckets",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 785.422,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_resource_search",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 653.45,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_services",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 480.875,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_values",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 524.567,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_cost_summary",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 575.188,
+          "count": 0,
+          "truncated": false
+        }
+      ],
+      "tool_count": 15,
+      "schema_characters": 13997,
+      "schema_tokens_estimate": 3500,
+      "startup_discovery_ms": 2854.406,
+      "shape_only_tools": [
+        "oci_alarm_status",
+        "oci_audit_events",
+        "oci_instances",
+        "oci_metrics",
+        "oci_work_requests"
+      ],
+      "live_scope": "D7 only; skipped tools have offline/schema coverage",
+      "shape_only_reasons": {
+        "oci_alarm_status": "No approved deployed-resource fixture in this smoke.",
+        "oci_audit_events": "No approved deployed-resource fixture in this smoke.",
+        "oci_instances": "No approved deployed-resource fixture in this smoke.",
+        "oci_metrics": "Tool summarizes metric datapoints; it does not expose D7 metric-metadata list.",
+        "oci_work_requests": "No approved deployed-resource fixture in this smoke."
+      },
+      "ok": true,
+      "elapsed_ms": 12042.721
+    },
+    {
+      "transport": "stdio",
+      "live": true,
+      "checks": [
+        {
+          "name": "invalid_scope_rejected",
+          "ok": true
+        },
+        {
+          "name": "oci_whoami",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 1346.837,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_price_lookup",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 2104.753,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_regions",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 484.437,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_compartments",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 448.857,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 1138.666,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": "subnets",
+          "ok": true,
+          "elapsed_ms": 458.877,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_buckets",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 746.555,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_resource_search",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 571.335,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_services",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 469.269,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_values",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 503.814,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_cost_summary",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 644.066,
+          "count": 0,
+          "truncated": false
+        }
+      ],
+      "tool_count": 15,
+      "schema_characters": 13997,
+      "schema_tokens_estimate": 3500,
+      "startup_discovery_ms": 3024.621,
+      "shape_only_tools": [
+        "oci_alarm_status",
+        "oci_audit_events",
+        "oci_instances",
+        "oci_metrics",
+        "oci_work_requests"
+      ],
+      "live_scope": "D7 only; skipped tools have offline/schema coverage",
+      "shape_only_reasons": {
+        "oci_alarm_status": "No approved deployed-resource fixture in this smoke.",
+        "oci_audit_events": "No approved deployed-resource fixture in this smoke.",
+        "oci_instances": "No approved deployed-resource fixture in this smoke.",
+        "oci_metrics": "Tool summarizes metric datapoints; it does not expose D7 metric-metadata list.",
+        "oci_work_requests": "No approved deployed-resource fixture in this smoke."
+      },
+      "ok": true,
+      "elapsed_ms": 12854.502
+    },
+    {
+      "transport": "stdio",
+      "live": true,
+      "checks": [
+        {
+          "name": "invalid_scope_rejected",
+          "ok": true
+        },
+        {
+          "name": "oci_whoami",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 1053.646,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_price_lookup",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 589.222,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_regions",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 487.289,
+          "count": 1,
+          "truncated": false
+        },
+        {
+          "name": "oci_compartments",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 466.762,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 815.65,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_network_inventory",
+          "variant": "subnets",
+          "ok": true,
+          "elapsed_ms": 553.287,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_buckets",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 847.477,
+          "count": 0,
+          "truncated": false
+        },
+        {
+          "name": "oci_resource_search",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 549.607,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_services",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 460.828,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_limit_values",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 511.401,
+          "count": 1,
+          "truncated": true
+        },
+        {
+          "name": "oci_cost_summary",
+          "variant": null,
+          "ok": true,
+          "elapsed_ms": 581.098,
+          "count": 0,
+          "truncated": false
+        }
+      ],
+      "tool_count": 15,
+      "schema_characters": 13997,
+      "schema_tokens_estimate": 3500,
+      "startup_discovery_ms": 2084.134,
+      "shape_only_tools": [
+        "oci_alarm_status",
+        "oci_audit_events",
+        "oci_instances",
+        "oci_metrics",
+        "oci_work_requests"
+      ],
+      "live_scope": "D7 only; skipped tools have offline/schema coverage",
+      "shape_only_reasons": {
+        "oci_alarm_status": "No approved deployed-resource fixture in this smoke.",
+        "oci_audit_events": "No approved deployed-resource fixture in this smoke.",
+        "oci_instances": "No approved deployed-resource fixture in this smoke.",
+        "oci_metrics": "Tool summarizes metric datapoints; it does not expose D7 metric-metadata list.",
+        "oci_work_requests": "No approved deployed-resource fixture in this smoke."
+      },
+      "ok": true,
+      "elapsed_ms": 10333.976
+    }
+  ]
+}

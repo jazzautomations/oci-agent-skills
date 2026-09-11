@@ -6,7 +6,7 @@
 
 37 focused skills, a searchable OCI command catalog and 15 bounded, read-only MCP tools for infrastructure, Oracle Database, APEX, AI and delivery workflows.
 
-[![Regression tests: 453](https://img.shields.io/badge/regression_tests-453_passed-2D6A4F)](docs/validation-matrix.md)
+[![Regression tests: 479](https://img.shields.io/badge/regression_tests-479_passed-2D6A4F)](docs/validation-matrix.md)
 [![Skills: 37](https://img.shields.io/badge/skills-37-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
 [![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
@@ -136,7 +136,7 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 | Check | Recorded result | Scope |
 |---|---:|---|
-| Regression suite | 453 passed | Current full suite; recorded in the validation matrix |
+| Regression suite | 479 passed | Current full suite; recorded in the validation matrix |
 | Authored OCI fences | 285/285 valid | CLI shape lint, not workload execution |
 | Negative routing prompts | 0/40 fired in each of two trials | Isolated semantic classifier; dated evidence |
 | Semantic skill selection | 80/80 and 80/80 | Zero disagreements in the recorded trials; [ownership repair and evidence](docs/evals.md#current-ownership-repair) |
@@ -196,5 +196,8 @@ Oracle and its product names are trademarks of Oracle and/or its affiliates. Thi
 
 - [FinOps waste assessment](docs/finops.md): bounded reads, evidence and conservative pricing.
 - [Migration Copilot](docs/migration.md): synthetic cross-cloud inventory, scoped price comparison and landing-zone draft.
-- [26ai retrieval kit](docs/26ai.md): prepared SQL/Python demo; live database run pending.
+- [26ai retrieval kit](docs/26ai.md): final fusion tested on 15 documents/632 chunks, 45/45 expected-source hits on development questions; median 1.69 s, not a held-out result.
+- [Four-arm tool-task benchmark](docs/tool-task-benchmark.md): 160 attempts, synthetic MCP reads, strict scores and costs; not native plugin deployment.
+- [Native-host follow-up](docs/native-validation-2026-09-11.md): installed skill/MCP price path and 80 paired synthetic attempts, with original and corrected syntax scores.
+- [Live tests and benchmarks](docs/live-validation-2026-09-11.md): MCP timings, infrastructure sweep, SQLcl reads, limitations and confirmed lab cleanup.
 - [Freshness checks](docs/freshness.md): scheduled source monitoring and expiring price caches.

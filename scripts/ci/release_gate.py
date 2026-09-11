@@ -160,6 +160,9 @@ def main():
     add('V16-regeneration',[str(cli_python),'scripts/inventory.py','--format','jsonl','--index','--check'],'CLI_PYTHON scripts/inventory.py --format jsonl --index --check')
     check('V22-history','check_history')
     add('V28-offline',PYTHON+['scripts/eval/head_to_head.py','--json',str(output/'evals/results/head-to-head.json'),'--markdown',str(output/'docs/head-to-head.md')],'uv run --frozen --project runtime python scripts/eval/head_to_head.py')
+    add('V28-fixtures',PYTHON+['scripts/eval/verify_tool_task_benchmark.py','evals/results/tool-task-benchmark-structured-2026-09-11.json'],
+        'uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json',
+        note='Input-bound verification of 160 normalized synthetic MCP task attempts; retained grades and budget failures. This is not native four-product deployment or universal success.')
     add('V24-local',[str(cli_python),'scripts/ci/cli_drift.py'],'CLI_PYTHON scripts/ci/cli_drift.py')
     rows=[]
     # Independent read-only validations; no mutation tests are executed against OCI.
@@ -200,11 +203,11 @@ def main():
     rows.extend([
         {'id':'V24','command':'CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml', 'result':'PARTIAL','date':DATE,'detail':'Local pinned required-flag renderer exercised; Tuesday schedule/hosted issue creation not executed locally.','owner':'repository CI maintainers'},
         {'id':'V27','command':host.get('command','claude plugin eval . --threshold 0.8'),'result':host['status'].upper(),'date':host['date'],'detail':host['reason']+' See evals/results/host.json. No qualifying host task score.','owner':'evaluation maintainers / installed host provider'},
-        {'id':'V28','command':'uv run --frozen --project runtime python scripts/eval/head_to_head.py','result':'PARTIAL','date':DATE,'detail':'All four offline arms complete, table and per-case retrieval deltas published. Original live/model-backed comparison and behavioral deltas unmeasured.','owner':'evaluation maintainers'},
+        {'id':'V28','command':'uv run --frozen --project runtime python scripts/eval/head_to_head.py','result':'PARTIAL','date':DATE,'detail':'Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured.','owner':'evaluation maintainers'},
     ])
     extras={r['id']:r for r in rows if '-' in r['id']}
     rows=[r for r in rows if '-' not in r['id']]
-    for parent,sub in [('V16','V16-regeneration'),('V22','V22-history'),('V24','V24-local'),('V28','V28-offline')]:
+    for parent,sub in [('V16','V16-regeneration'),('V22','V22-history'),('V24','V24-local'),('V28','V28-offline'),('V28','V28-fixtures')]:
         row=next(r for r in rows if r['id']==parent);part=extras[sub]
         row['command']+='; '+part['command']
         if part['result']=='FAIL': row.update(result='FAIL',owner=part['owner'])

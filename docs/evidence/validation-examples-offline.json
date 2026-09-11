@@ -1,6 +1,6 @@
 {
   "mode": "offline_help",
-  "validated_at": "2026-09-09T20:56:18.766507+00:00",
+  "validated_at": "2026-09-11T17:45:14.206713+00:00",
   "cli_version": "3.91.0",
   "sdk_version": "2.185.0",
   "region": null,
@@ -81,6 +81,22 @@
     },
     {
       "id": "d7-vcn",
+      "status": "help_validated"
+    },
+    {
+      "id": "finops-0",
+      "status": "help_validated"
+    },
+    {
+      "id": "finops-1",
+      "status": "help_validated"
+    },
+    {
+      "id": "finops-2",
+      "status": "help_validated"
+    },
+    {
+      "id": "finops-3",
       "status": "help_validated"
     },
     {
@@ -517,6 +533,18 @@
     },
     {
       "id": "oci-logging-audit-reference-3",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-assess-scope-read",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-landing-zone-scope-read",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-migration-map-scope-read",
       "status": "help_validated"
     },
     {

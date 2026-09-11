@@ -1,0 +1,93 @@
+{
+  "date": "2026-09-11T17:44:03.228089+00:00",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/ci/check_manifests.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.481,
+      "output": "W08b manifests valid."
+    },
+    {
+      "command": [
+        "runtime-python",
+        "scripts/ci/check_template.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.357,
+      "output": "Template matches the pinned plan-derived stencil (B3/N3 errata)."
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/inventory.py",
+        "--scripts",
+        "--examples",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.852,
+      "output": "Script/example artifacts verified."
+    },
+    {
+      "command": [
+        "runtime-python",
+        "scripts/doc-gen/catalogs.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 7.606,
+      "output": "Catalogs up to date\n\n<checkout>/runtime/.venv/lib/python3.13/site-packages/authlib/integrations/httpx_client/assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.\n  from ._compat import httpx2"
+    },
+    {
+      "command": [
+        "runtime-python",
+        "scripts/eval/routing_diagnostics.py",
+        "--check",
+        "evals/results/routing-diagnostics.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.341,
+      "output": "{\n  \"version\": 1,\n  \"mode\": \"verified-semantic-error-analysis\",\n  \"evidence_sha256\": \"f2ae6f88c82fb18a40fd2f1a7e488998ecab599d7214c9e7692d6d85bd108e89\",\n  \"semantic_inputs_sha256\": \"1e24cf911957acd104d626fc905fd023821106463a9e44011280fe4042993982\",\n  \"generator_sha256\": \"fbddcea50b785769e7b06a68a8b9c66c44c071e0f383dbfb610aeacb3b665907\",\n  \"validated_at\": \"2026-09-10T14:12:24.026293+00:00\",\n  \"model\": \"claude-sonnet-5\",\n  \"minimum_accuracy\": 0.9,\n  \"evidence_valid\": true,\n  \"gates_pass\": true,\n  \"perfect_routing\": true,\n  \"routing_total\": 80,\n  \"negative_total\": 40,\n  \"routing_correct_in_every_trial\": 80,\n  \"routing_same_selection_in_every_trial\": 80,\n  \"trials\": [\n    {\n      \"seed\": 17,\n      \"correct\": 80,\n      \"total\": 80,\n      \"accuracy\": 1.0,\n      \"negative_firings\": 0,\n      \"negative_total\": 40,\n      \"overlap_pairs_correct\": 4\n    },\n    {\n      \"seed\": 29,\n      \"correct\": 80,\n      \"total\": 80,\n      \"accuracy\": 1.0,\n      \"negative_firings\": 0,\n      \"negative_total\": 40,\n      \"overlap_pairs_correct\": 4\n    }\n  ],\n  \"routing_errors\": [],\n  \"negative_errors\": [],\n  \"limitations\": \"Known development corpus; agreement is not correctness. This diagnostic does not adjudicate disputed labels, change gates, or measure native host task completion.\"\n}"
+    },
+    {
+      "command": [
+        "runtime-python",
+        "scripts/eval/verify_task_answer_pilot.py",
+        "evals/results/task-answer-pilot-2026-09-11.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.162,
+      "output": "{\n  \"verified\": true,\n  \"complete\": true,\n  \"arms\": {\n    \"with-reference\": {\n      \"passed\": 12,\n      \"attempts\": 12\n    },\n    \"without-reference\": {\n      \"passed\": 12,\n      \"attempts\": 12\n    }\n  },\n  \"reported_cost_usd\": 0.25907,\n  \"scope\": \"Recorded fixture answers, not native host/tool execution.\"\n}"
+    },
+    {
+      "command": [
+        "runtime-python",
+        "scripts/ci/check_no_secrets.py",
+        "docs/evidence",
+        "evals/results",
+        "evals/tool-task-fixtures.json",
+        "evals/rag-relevance-2026-09-11.json",
+        "scripts/eval",
+        "demos/26ai-rag",
+        "tests/test_tool_task_benchmark.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.49,
+      "output": "{\n  \"validator\": \"secrets\",\n  \"checked\": 127,\n  \"findings\": [],\n  \"baseline_matches\": null,\n  \"ok\": true\n}"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.156,
+      "output": ""
+    }
+  ],
+  "ok": true
+}

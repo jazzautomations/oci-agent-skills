@@ -30,11 +30,53 @@ def tally(rows, key):
 def step(number, name, argv, scope, limit=None):
     result = run(argv, profile=scope['profile'], region=scope['region'], sanitize=False)
     if not result['ok']:
-        return {'step': number, 'name': name, 'ok': False, 'error': result['error']}
+        entry = {'step': number, 'name': name, 'ok': False, 'error': result['error']}
+        if name == 'cloud-guard' and result['error'].get('status') == 404:
+            entry['diagnostic'] = cloud_guard_configuration(scope)
+        return entry
     rows = result['data']
     rows = rows if isinstance(rows, list) else ([] if rows is None else [rows])
     return {'step': number, 'name': name, 'ok': True, 'rows': len(rows),
             'truncated': result['truncated'] or bool(limit and len(rows) >= limit)}
+
+
+def cloud_guard_configuration(scope):
+    """One scoped follow-up read; a failed problem list never becomes an empty pass."""
+    result = run(['cloud-guard', 'configuration', 'get', '--compartment-id', scope['tenancy']],
+                 profile=scope['profile'], region=scope['region'], sanitize=False, attempts=1)
+    if not result['ok']:
+        return {'state': 'unknown', 'error': result['error']}
+    data = result.get('data')
+    if isinstance(data, dict):
+        data = data.get('data', data)
+    if not isinstance(data, dict) or data.get('status') not in {'ENABLED', 'DISABLED'}:
+        return {'state': 'unknown'}
+    state = data['status']
+    reporting = data.get('reporting-region')
+    return {'state': state, 'reporting_region_matches':
+            reporting == scope['region'] if isinstance(reporting, str) and reporting else None,
+            'action': 'Account owner must enable Cloud Guard before problem coverage is available.'
+            if state == 'DISABLED' else 'Verify reporting region and permissions; problem coverage remains unknown.'}
+
+
+def support_step(scope):
+    """OCI Support needs an explicit user; do not guess entitlement from HTTP 403."""
+    if not scope.get('user'):
+        return {'step': 10, 'name': 'support', 'ok': False,
+                'error': {'kind': 'missing_user_context'},
+                'action': 'Set USER_ID from the selected CLI profile; non-default domains also require OCI_IDENTITY_DOMAIN_ID.'}
+    argv = ['support', 'incident', 'list', '--compartment-id', scope['tenancy'],
+            '--ocid', scope['user'], '--limit', '20', '--query', 'data[].{key:key}']
+    if scope.get('home_region'):
+        argv.extend(['--homeregion', scope['home_region']])
+    if scope.get('identity_domain'):
+        argv.extend(['--domainid', scope['identity_domain']])
+    result = step(10, 'support', argv, scope, limit=20)
+    if not result['ok'] and result['error'].get('status') == 403:
+        result['diagnostic'] = {
+            'state': 'access_denied', 'entitlement_established': False,
+            'action': 'Verify Support registration, user-group privileges, IAM policy and identity-domain/home-region context. HTTP 403 alone does not prove Free Tier or lack of entitlement.'}
+    return result
 
 
 def sweep(scope):
@@ -65,12 +107,14 @@ def sweep(scope):
         (9, 'limits', ['limits', 'value', 'list', '--compartment-id', scope['tenancy'],
                        '--service-name', 'compute', '--limit', '200',
                        '--query', 'data[?value==`0`].{name:name}']),
-        (10, 'support', ['support', 'incident', 'list', '--compartment-id', scope['tenancy'],
-                         '--limit', '20', '--query', 'data.items[].{s:status}']),
+        (10, 'support', []),
     ])
     steps.append((2, 'audit', []))
     report = []
     for number, name, argv in sorted(steps):
+        if number == 10:
+            report.append(support_step(scope))
+            continue
         if number != 2:
             limit = int(argv[argv.index('--limit') + 1]) if '--limit' in argv else None
             report.append(step(number, name, argv, scope, limit=limit))
@@ -103,7 +147,7 @@ def mutation_candidate(row):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__, epilog='Required env: PROFILE REGION COMPARTMENT_ID TENANCY_ID INSTANCE_ID; optional WINDOW_HOURS (1–24, default 3). Ten reads in order; JSON output is unconditional.')
+    parser = argparse.ArgumentParser(description=__doc__, epilog='Required env: PROFILE REGION COMPARTMENT_ID TENANCY_ID INSTANCE_ID; Support also requires USER_ID and, for non-default domains, OCI_IDENTITY_DOMAIN_ID. Optional OCI_HOME_REGION and WINDOW_HOURS (1–24, default 3). Ten ordered steps; a Cloud Guard 404 adds one configuration read. JSON output is unconditional.')
     parser.add_argument('--json', action='store_true', help='Emit JSON (default)')
     parser.parse_args()
     required = ('PROFILE', 'REGION', 'COMPARTMENT_ID', 'TENANCY_ID', 'INSTANCE_ID')
@@ -120,6 +164,8 @@ def main():
     scope = {'profile': os.environ['PROFILE'], 'region': os.environ['REGION'],
              'compartment': os.environ['COMPARTMENT_ID'],
              'tenancy': os.environ['TENANCY_ID'], 'instance': os.environ['INSTANCE_ID'],
+             'user': os.environ.get('USER_ID'), 'home_region': os.environ.get('OCI_HOME_REGION'),
+             'identity_domain': os.environ.get('OCI_IDENTITY_DOMAIN_ID'),
              'start': (end - timedelta(hours=hours)).strftime(STAMP),
              'end': end.strftime(STAMP)}
     report = sweep(scope)

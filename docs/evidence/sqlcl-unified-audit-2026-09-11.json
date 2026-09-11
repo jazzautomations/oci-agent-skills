@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-11T17:37:35.342707+00:00",
+  "checks": [
+    {
+      "tool": "connect",
+      "mcp_is_error": false,
+      "oracle_error_codes": []
+    },
+    {
+      "tool": "sql_run",
+      "mcp_is_error": false,
+      "oracle_error_codes": []
+    },
+    {
+      "tool": "sql_run",
+      "mcp_is_error": false,
+      "oracle_error_codes": [
+        "ORA-41900"
+      ]
+    },
+    {
+      "tool": "sql_run",
+      "mcp_is_error": false,
+      "oracle_error_codes": []
+    },
+    {
+      "tool": "disconnect",
+      "mcp_is_error": false,
+      "oracle_error_codes": []
+    }
+  ],
+  "unified_audit_records": [
+    {
+      "action": "SELECT",
+      "return_code": 0,
+      "sqlcl_client": false,
+      "read_marker": false,
+      "denial_marker": false,
+      "demo_policy": false
+    },
+    {
+      "action": "INSERT",
+      "return_code": 2004,
+      "sqlcl_client": false,
+      "read_marker": false,
+      "denial_marker": false,
+      "demo_policy": false
+    },
+    {
+      "action": "SELECT",
+      "return_code": 0,
+      "sqlcl_client": true,
+      "read_marker": true,
+      "denial_marker": false,
+      "demo_policy": true
+    },
+    {
+      "action": "INSERT",
+      "return_code": 2004,
+      "sqlcl_client": true,
+      "read_marker": false,
+      "denial_marker": true,
+      "demo_policy": true
+    },
+    {
+      "action": "INSERT",
+      "return_code": 2004,
+      "sqlcl_client": true,
+      "read_marker": false,
+      "denial_marker": true,
+      "demo_policy": true
+    }
+  ],
+  "read_logged": true,
+  "denial_logged": true,
+  "client_denied_write": true,
+  "limitations": "Object-specific ADMIN-enabled unified audit, not DBTOOLS$MCP_LOG. Duplicate audit rows are not distinct requests; retention and all-operation coverage not measured. MCP isError=false does not imply SQL success."
+}

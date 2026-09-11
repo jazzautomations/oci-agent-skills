@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-11",
+  "region": "us-chicago-1",
+  "scope": "Separately authorized account configuration; not repository read-only validation.",
+  "cloud_guard": {
+    "initial_setup_errors": "Two local SDK argument-order errors produced 400 before correction; no state change observed.",
+    "corrected_enable_status_without_service_policy": 404,
+    "enable_status_after_service_policy_creation": 404,
+    "service_code": "NotAuthorizedOrNotFound",
+    "required_service_policy_created": true,
+    "new_policy_removed_after_rejection": true,
+    "independent_complete_bounded_policy_list_confirmed_absent": true,
+    "targets_created": 0,
+    "responders_created": 0,
+    "final_status": "DISABLED",
+    "cause": "Unresolved: 404 is not an entitlement diagnosis. Policy propagation delay was not independently excluded."
+  },
+  "identity": {
+    "matching_group_manage_all_root_statements": 1,
+    "scope": "Bounded current-user memberships and root policies; not a full effective-authorization proof."
+  },
+  "support": {
+    "incident_list_status": 403,
+    "validate_user_status": 403,
+    "validate_user_code": "AUTHZ_FAILED",
+    "registration_or_entitlement_confirmed": false,
+    "tickets_created": 0
+  },
+  "host_eval": {
+    "version": "2.1.268",
+    "case": "T01",
+    "status": "early-access restriction",
+    "result_generated": false,
+    "scope": "No tool grants, absent OCI config, mock mode, no scaffold or publication."
+  },
+  "persistent_account_changes_remaining": false
+}

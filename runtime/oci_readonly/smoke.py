@@ -7,6 +7,7 @@ from pathlib import Path
 import json
 import os
 import sys
+from time import perf_counter
 from datetime import datetime, timedelta, timezone
 
 from mcp import ClientSession, StdioServerParameters
@@ -33,6 +34,7 @@ EXPECTED = {
 
 
 async def run(live: bool, region: str, timeout: float) -> dict:
+    started = perf_counter()
     parameters = StdioServerParameters(
         command=sys.executable, args=["-m", "oci_readonly.server"], env=dict(os.environ)
     )
@@ -55,6 +57,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                 )
                 report["schema_characters"] = len(schema)
                 report["schema_tokens_estimate"] = (len(schema) + 3) // 4
+                report["startup_discovery_ms"] = round((perf_counter() - started) * 1000, 3)
                 assert report["schema_tokens_estimate"] <= 3500, "Schema estimate exceeds the foundation budget"
                 # Invalid input must be rejected without any OCI credential access.
                 invalid = await session.call_tool(
@@ -97,6 +100,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                     report["live_scope"] = "D7 only; skipped tools have offline/schema coverage"
                     report["shape_only_reasons"] = {name:("Tool summarizes metric datapoints; it does not expose D7 metric-metadata list." if name == "oci_metrics" else "No approved deployed-resource fixture in this smoke.") for name in report["shape_only_tools"]}
                     for name, arguments in calls:
+                        call_started = perf_counter()
                         response = await session.call_tool(name, arguments)
                         payload = response.structuredContent
                         if payload is None:
@@ -105,6 +109,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                             "name": name,
                             "variant": arguments.get("resource"),
                             "ok": bool(payload.get("ok")) and not response.isError,
+                            "elapsed_ms": round((perf_counter() - call_started) * 1000, 3),
                         }
                         if check["ok"]:
                             check.update(count=payload["count"], truncated=payload["truncated"])
@@ -118,6 +123,7 @@ async def run(live: bool, region: str, timeout: float) -> dict:
                             check["status"] = payload.get("error", {}).get("status")
                         report["checks"].append(check)
     report["ok"] = all(check["ok"] for check in report["checks"])
+    report["elapsed_ms"] = round((perf_counter() - started) * 1000, 3)
     return report
 
 

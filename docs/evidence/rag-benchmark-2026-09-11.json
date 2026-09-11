@@ -1,0 +1,496 @@
+{
+  "date": "2026-09-11T16:34:30.895372+00:00",
+  "oracledb": "4.0.2",
+  "source_commit": "b22f39873014d19a97c2066459b81024e3e979ca",
+  "database_version": "23.26.3.2.0",
+  "model": "ALL_MINILM_L12_V2",
+  "corpus_manifest": [
+    {
+      "path": "references/architecture-center.md",
+      "sha256": "f553ffec320dfdd078fb57c7e96f468805d47f5059593230cc99096e6329b1a7"
+    },
+    {
+      "path": "references/auth-modes.md",
+      "sha256": "d10e4aade27e50022db9ef5388d8c660aac165ac02b2b0cd9837eb49e3bd003a"
+    },
+    {
+      "path": "references/console-links.md",
+      "sha256": "d45a8c195a046293c3f9f861cb228280ddb0791682c79768581e850761501606"
+    },
+    {
+      "path": "references/cross-service-pitfalls.md",
+      "sha256": "c2d51c4c1317ab2f1b7dacbe5e5aa8a40bee77eee217fc9bfd0a37d7fe558cc2"
+    },
+    {
+      "path": "references/error-triage.md",
+      "sha256": "7d797730e5bbde2d62ad1d2106dd6547f5cf5f965f30bbb8097f125d0c2df368"
+    },
+    {
+      "path": "references/iam-variables.md",
+      "sha256": "d9172784e1c0ba145085717cce82528e9f35bab67c5da6a1a15b94de3cc42809"
+    },
+    {
+      "path": "references/jmespath.md",
+      "sha256": "4bd47f74176818287fa5911c1647a3928bf91c91166dce19d8b1a1aa9a406399"
+    },
+    {
+      "path": "references/oci-doc-urls.md",
+      "sha256": "fb2368c8d213a84d8b5cb1123262ce4a574c8b79079c2cac9a7d35d612c6ed0c"
+    },
+    {
+      "path": "references/operator-contract.md",
+      "sha256": "55c836ff87b16781b0bb0ff27e01417004bbd5beb6f2a213e91e7e9e58e656ab"
+    },
+    {
+      "path": "references/realms-endpoints.md",
+      "sha256": "7cdcbfa6523f41eb5759426c206f6d542a3af16aebb00ed5b6933a882abd200a"
+    },
+    {
+      "path": "references/redaction.md",
+      "sha256": "4a3cff3a6f6823b9986dcb60ac5d9b21660b6d2add682d4e73ae04371bebd35f"
+    },
+    {
+      "path": "references/service-command-cards.md",
+      "sha256": "d9058147be4b467ed050d49105c8746d42bdd5f197efb213b65e6c061166c61e"
+    },
+    {
+      "path": "references/untrusted-output.md",
+      "sha256": "77953b2c2311a31cee714a44d7bb0ea72d2d7ccbae9876fc8a520fd0380d012a"
+    },
+    {
+      "path": "references/windows-powershell.md",
+      "sha256": "cd96d4679f3f881f6e65a853173ce70cfc7950efbbe7db9597af57632cb43c91"
+    },
+    {
+      "path": "docs/skills.md",
+      "sha256": "378cbbccf30eeb40b04f8379c0fde63c6e446783c104720315d7a1aec5e6a955"
+    }
+  ],
+  "implementation_sha256": {
+    "benchmark.py": "378deb4802753edb9e72feb80c986bd58f1c71326e4a6d1360372e25476f209e",
+    "query.py": "531b2cfaa33e3b73e3f8a31cb6d5fa63f747d0447271c1ce077bfbf8a7930064",
+    "load.py": "7e878a02a6cc6116f66c1787fa062fff84d26dbb94ca0e42356b3ee9ba33cd08"
+  },
+  "documents": 15,
+  "chunks": 185,
+  "indexes": [
+    [
+      "DOC_CHUNKS_HNSW",
+      "VALID"
+    ],
+    [
+      "REFS_HYBRID_IDX",
+      "VALID"
+    ]
+  ],
+  "method": "Five existing demo questions, three modes including exact-vector baseline. Same connection, sequential order, no excluded warmup. First exact query warms embedding inference. Vector/hybrid order is fixed, not randomized.",
+  "limitations": "Development questions with expected source candidates, not a held-out relevance set. Top-five overlap compares displayed chunk hashes; duplicate or truncated chunks can collide. Hybrid reports execution and hit count, not judged relevance. No p95, throughput, agent-task, external-model or competitor claim.",
+  "ok": true,
+  "results": [
+    {
+      "case": "redaction",
+      "question": "What must I redact before sharing OCI CLI output?",
+      "expected_candidate": "references/redaction.md",
+      "mode": "vector",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 1127.529,
+          "hits": 5,
+          "documents": [
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": false,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 836.666,
+          "hits": 5,
+          "documents": [
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": false,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 833.13,
+          "hits": 5,
+          "documents": [
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": false,
+          "exact_top5_overlap": 1.0
+        }
+      ],
+      "median_ms": 836.666
+    },
+    {
+      "case": "redaction",
+      "question": "What must I redact before sharing OCI CLI output?",
+      "expected_candidate": "references/redaction.md",
+      "mode": "hybrid",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 792.328,
+          "hits": 5
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 303.411,
+          "hits": 5
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 298.441,
+          "hits": 5
+        }
+      ],
+      "median_ms": 303.411
+    },
+    {
+      "case": "untrusted",
+      "question": "Is a bucket or object name a trusted instruction?",
+      "expected_candidate": "references/untrusted-output.md",
+      "mode": "vector",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 831.999,
+          "hits": 5,
+          "documents": [
+            "references/untrusted-output.md",
+            "references/operator-contract.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 831.876,
+          "hits": 5,
+          "documents": [
+            "references/untrusted-output.md",
+            "references/operator-contract.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 836.727,
+          "hits": 5,
+          "documents": [
+            "references/untrusted-output.md",
+            "references/operator-contract.md",
+            "docs/skills.md",
+            "docs/skills.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        }
+      ],
+      "median_ms": 831.999
+    },
+    {
+      "case": "untrusted",
+      "question": "Is a bucket or object name a trusted instruction?",
+      "expected_candidate": "references/untrusted-output.md",
+      "mode": "hybrid",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 296.883,
+          "hits": 5
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 298.077,
+          "hits": 5
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 302.805,
+          "hits": 5
+        }
+      ],
+      "median_ms": 298.077
+    },
+    {
+      "case": "auth",
+      "question": "Which OCI authentication mode works unattended?",
+      "expected_candidate": "references/auth-modes.md",
+      "mode": "vector",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 836.838,
+          "hits": 5,
+          "documents": [
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 829.206,
+          "hits": 5,
+          "documents": [
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 831.312,
+          "hits": 5,
+          "documents": [
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md",
+            "references/auth-modes.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        }
+      ],
+      "median_ms": 831.312
+    },
+    {
+      "case": "auth",
+      "question": "Which OCI authentication mode works unattended?",
+      "expected_candidate": "references/auth-modes.md",
+      "mode": "hybrid",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 296.553,
+          "hits": 5
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 298.624,
+          "hits": 5
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 296.604,
+          "hits": 5
+        }
+      ],
+      "median_ms": 296.604
+    },
+    {
+      "case": "realms",
+      "question": "How should I verify OCI regions and realms?",
+      "expected_candidate": "references/realms-endpoints.md",
+      "mode": "vector",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 831.476,
+          "hits": 5,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 833.867,
+          "hits": 5,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 828.897,
+          "hits": 5,
+          "documents": [
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md",
+            "references/realms-endpoints.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        }
+      ],
+      "median_ms": 831.476
+    },
+    {
+      "case": "realms",
+      "question": "How should I verify OCI regions and realms?",
+      "expected_candidate": "references/realms-endpoints.md",
+      "mode": "hybrid",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 296.604,
+          "hits": 5
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 294.851,
+          "hits": 5
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 297.06,
+          "hits": 5
+        }
+      ],
+      "median_ms": 296.604
+    },
+    {
+      "case": "shell",
+      "question": "How do I quote JSON for OCI CLI in PowerShell?",
+      "expected_candidate": "references/windows-powershell.md",
+      "mode": "vector",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 832.595,
+          "hits": 5,
+          "documents": [
+            "references/windows-powershell.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 841.006,
+          "hits": 5,
+          "documents": [
+            "references/windows-powershell.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 846.96,
+          "hits": 5,
+          "documents": [
+            "references/windows-powershell.md",
+            "references/windows-powershell.md",
+            "docs/skills.md",
+            "references/windows-powershell.md",
+            "docs/skills.md"
+          ],
+          "expected_document_hit": true,
+          "exact_top5_overlap": 1.0
+        }
+      ],
+      "median_ms": 841.006
+    },
+    {
+      "case": "shell",
+      "question": "How do I quote JSON for OCI CLI in PowerShell?",
+      "expected_candidate": "references/windows-powershell.md",
+      "mode": "hybrid",
+      "samples": [
+        {
+          "run": 1,
+          "ok": true,
+          "elapsed_ms": 299.212,
+          "hits": 5
+        },
+        {
+          "run": 2,
+          "ok": true,
+          "elapsed_ms": 299.187,
+          "hits": 5
+        },
+        {
+          "run": 3,
+          "ok": true,
+          "elapsed_ms": 434.439,
+          "hits": 5
+        }
+      ],
+      "median_ms": 299.212
+    }
+  ]
+}

@@ -1,0 +1,2307 @@
+{
+  "date": "2026-09-11T17:28:14.166026+00:00",
+  "model": "claude-sonnet-5",
+  "order_seed": 71,
+  "runs_per_arm_task": 1,
+  "source_sha256": {
+    "scripts/eval/tool_task_benchmark.py": "8d78340ef06aca182e52f76781db7db987a2268e3067bbdd3fd028f15494fe23",
+    "scripts/eval/tool_fixture_server.py": "23c6202ac103255b6823e1b4954129b75d97871423af1bbb7e59632f58ecf4a0",
+    "evals/tasks.json": "49eb5df374020ea0de659ccd6e3052fe18487d7054788abe2901a7601a98ad33",
+    "evals/tool-task-fixtures.json": "0431bb4c226f3998dfd1a991c3b88d354117f199503bd00039d05368d5a99642",
+    "evals/arms/b.json": "3794adbe8a222653222a42a7d56fef7576ea8011bd329abfca91061cef03f129",
+    "evals/arms/c.json": "143d6445d65d329959fd82bd9f3beff578cf5851b0c8a48820650acf6dd216c7"
+  },
+  "requested_budget_ceiling_usd": 9.6,
+  "results": [
+    {
+      "case": "T35",
+      "arm": "adibirzu-reference",
+      "input_sha256": "ccb56a5de6d1cc3c2741e9817d1ec6dea1d06074076d4d961840bedccb0bb43d",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.0350512,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 6961,
+        "cache_read_input_tokens": 6631,
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 6961,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 50,
+            "cache_read_input_tokens": 6631,
+            "cache_creation_input_tokens": 330,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 330
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3901,
+      "receipts": [
+        {
+          "topic": "stack_jobs",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T36",
+      "arm": "pack",
+      "input_sha256": "80e6c426a8f992985b952697f0f89bead9f826f78273e2a07dea29a98edeb976",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.025123600000000003,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4916,
+        "cache_read_input_tokens": 4623,
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4916,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 41,
+            "cache_read_input_tokens": 4623,
+            "cache_creation_input_tokens": 293,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 293
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2620,
+      "receipts": [
+        {
+          "topic": "work_requests",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T38",
+      "arm": "pack",
+      "input_sha256": "b378b73ba713ed85901241ba0f08d43b2bb6e7e57d863f5aac4e1872c96c4fd0",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.020232,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 4276,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 17,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4276,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 17,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 4276,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 4276
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 1268,
+      "receipts": [],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "executed": false,
+        "needs_review": true
+      },
+      "tool_calls": [],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T36",
+      "arm": "bare",
+      "input_sha256": "322a272787ff8ae6b8410475e064b9ba4d8c647829c9f03ef23d3f3646b7ec2e",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.009936200000000001,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1882,
+        "cache_read_input_tokens": 1591,
+        "output_tokens": 100,
+        "output_tokens_details": {
+          "thinking_tokens": 11
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1882,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 28,
+            "cache_read_input_tokens": 1591,
+            "cache_creation_input_tokens": 291,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 291
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2652,
+      "receipts": [
+        {
+          "topic": "work_requests",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "open_requests": [
+          {
+            "name": "request-a",
+            "percent": 40
+          }
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "work_requests"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T26",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "085df59089a44feb80bab24891b406c8e1cce2b94501cb647f9a5d3614876c26",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.022915599999999998,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4421,
+        "cache_read_input_tokens": 4153,
+        "output_tokens": 143,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4421,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 70,
+            "cache_read_input_tokens": 4153,
+            "cache_creation_input_tokens": 268,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 268
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3003,
+      "receipts": [
+        {
+          "topic": "budgets",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T23",
+      "arm": "pack",
+      "input_sha256": "b1d864e384b13a7205224f1c48c6dc215d1953473738c956ce91d8eae34ee242",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.024424400000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4811,
+        "cache_read_input_tokens": 4537,
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "thinking_tokens": 18
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4811,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 32,
+            "cache_read_input_tokens": 4537,
+            "cache_creation_input_tokens": 274,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 274
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2656,
+      "receipts": [
+        {
+          "topic": "cpu_metrics",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "mean_cpu_percent": 20,
+        "maximum_cpu_percent": 30
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "cpu_metrics"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T37",
+      "arm": "bare",
+      "input_sha256": "f5c00165017bccbf7778aab72c930249ab0c8e854f29ee8b7c7ba9b34c5ad987",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.00746,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 1562,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 17,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1562,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 17,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 1562,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 1562
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 1253,
+      "receipts": [],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "executed": false,
+        "needs_review": true
+      },
+      "tool_calls": [],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T07",
+      "arm": "adibirzu-reference",
+      "input_sha256": "df1cd18a8b76de05eb31bf1f320cfaeddbee97f7529e8819d2bc38a33650cd4f",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.024978800000000002,
+      "usage": {
+        "input_tokens": 6,
+        "cache_creation_input_tokens": 4241,
+        "cache_read_input_tokens": 6969,
+        "output_tokens": 437,
+        "output_tokens_details": {
+          "thinking_tokens": 179
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4241,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 72,
+            "cache_read_input_tokens": 3812,
+            "cache_creation_input_tokens": 429,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 429
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5868,
+      "receipts": [
+        {
+          "topic": "compute_instances",
+          "ok": true
+        },
+        {
+          "topic": "instance_vnics",
+          "ok": true
+        },
+        {
+          "topic": "resource_inventory",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "running_instances": [
+          {
+            "name": "private",
+            "public_ip": null
+          },
+          {
+            "name": "web",
+            "public_ip": "192.0.2.10"
+          }
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "compute_instances"
+          }
+        },
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "instance_vnics"
+          }
+        },
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "resource_inventory"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T11",
+      "arm": "bare",
+      "input_sha256": "5a41cff543c47bcc7cbca0e066cf9bb9aa6ad00a62e3eb76788ba07c94ba3684",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.009808599999999999,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1903,
+        "cache_read_input_tokens": 1553,
+        "output_tokens": 83,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1903,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 23,
+            "cache_read_input_tokens": 1553,
+            "cache_creation_input_tokens": 350,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 350
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2293,
+      "receipts": [
+        {
+          "topic": "security_lists",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "public_ssh_lists": [
+          "open-ssh"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "security_lists"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T23",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "4bc99453e3b47f3ea6ce429d8057af746f64105fa63841cadddfea79b06afd79",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.022320200000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4372,
+        "cache_read_input_tokens": 4106,
+        "output_tokens": 110,
+        "output_tokens_details": {
+          "thinking_tokens": 14
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4372,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 32,
+            "cache_read_input_tokens": 4106,
+            "cache_creation_input_tokens": 266,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 266
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2610,
+      "receipts": [
+        {
+          "topic": "cpu_metrics",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "mean_cpu_percent": 20,
+        "maximum_cpu_percent": 30
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "cpu_metrics"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T27",
+      "arm": "pack",
+      "input_sha256": "fb2f4a82f4e2fe429438ec3fd947cee7b939aaadb46e10d3f92453d75edf5fa4",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0254812,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 5011,
+        "cache_read_input_tokens": 4586,
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "thinking_tokens": 14
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 5011,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 46,
+            "cache_read_input_tokens": 4586,
+            "cache_creation_input_tokens": 425,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 425
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2871,
+      "receipts": [
+        {
+          "topic": "daily_cost",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "largest_settled_day": "2026-09-08",
+        "amount": 15,
+        "currency": "USD",
+        "unsettled_days": 2
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "daily_cost"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T17",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "9e61a446cb72b307a0c23ef372d3bb14995d677da81b527708ee3b79eb686e1d",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.026765,
+      "usage": {
+        "input_tokens": 6,
+        "cache_creation_input_tokens": 4774,
+        "cache_read_input_tokens": 8510,
+        "output_tokens": 305,
+        "output_tokens_details": {
+          "thinking_tokens": 146
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4774,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 35,
+            "cache_read_input_tokens": 4412,
+            "cache_creation_input_tokens": 362,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 362
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5384,
+      "receipts": [
+        {
+          "topic": "detached_volumes",
+          "ok": true
+        },
+        {
+          "topic": "block_limits",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "detached_candidates": [
+          "volume-b"
+        ],
+        "billing_confirmed": false
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "detached_volumes"
+          }
+        },
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "block_limits"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T27",
+      "arm": "adibirzu-reference",
+      "input_sha256": "59336047c4cc351f7510f77a6f7089814d6021969fbcbd90d158b72a0c824a74",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.024752200000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4877,
+        "cache_read_input_tokens": 4471,
+        "output_tokens": 107,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4877,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 46,
+            "cache_read_input_tokens": 4471,
+            "cache_creation_input_tokens": 406,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 406
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2550,
+      "receipts": [
+        {
+          "topic": "daily_cost",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "largest_settled_day": "2026-09-08",
+        "amount": 15,
+        "currency": "USD",
+        "unsettled_days": 2
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "daily_cost"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T31",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "bcde2d633f079e49ae577eff39a8ba93e70446eeee2b7e7aa2c795887d7fb148",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0221902,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4359,
+        "cache_read_input_tokens": 4071,
+        "output_tokens": 105,
+        "output_tokens_details": {
+          "thinking_tokens": 21
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4359,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 20,
+            "cache_read_input_tokens": 4071,
+            "cache_creation_input_tokens": 288,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 288
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2578,
+      "receipts": [
+        {
+          "topic": "autonomous_databases",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "stopped_databases": [
+          "sandbox"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "autonomous_databases"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T39",
+      "arm": "adibirzu-reference",
+      "input_sha256": "c35c73e94dbd630f5c6d37fb6a5e14941f6f79e2a5ac0c32f84b0bbbcd1d6f43",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.040037800000000005,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 7709,
+        "cache_read_input_tokens": 7394,
+        "output_tokens": 245,
+        "output_tokens_details": {
+          "thinking_tokens": 39
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 7709,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 142,
+            "cache_read_input_tokens": 7394,
+            "cache_creation_input_tokens": 315,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 315
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5512,
+      "receipts": [
+        {
+          "topic": "resource_inventory",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T16",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "3a6405f6ce303b7fe72e2e7ff21c613b90c3d8efe519e4cdf1e7be4012536202",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.022201600000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4362,
+        "cache_read_input_tokens": 4058,
+        "output_tokens": 103,
+        "output_tokens_details": {
+          "thinking_tokens": 28
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4362,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 11,
+            "cache_read_input_tokens": 4058,
+            "cache_creation_input_tokens": 304,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 304
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5370,
+      "receipts": [
+        {
+          "topic": "prefix_objects",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "object_count": 3
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "prefix_objects"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T22",
+      "arm": "adibirzu-reference",
+      "input_sha256": "d086a123a7abf9d2e95fdf93991625457b823c765c788a119c5291e78db3963b",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.024937400000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4843,
+        "cache_read_input_tokens": 4582,
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "thinking_tokens": 14
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4843,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 56,
+            "cache_read_input_tokens": 4582,
+            "cache_creation_input_tokens": 261,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 261
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3989,
+      "receipts": [
+        {
+          "topic": "log_inventory",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T35",
+      "arm": "bare",
+      "input_sha256": "c8d9cf145e052912d1d615637f74e6efb0861f1ee031eace9d67300cbc62a1bd",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.010251,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1905,
+        "cache_read_input_tokens": 1575,
+        "output_tokens": 126,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1905,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 50,
+            "cache_read_input_tokens": 1575,
+            "cache_creation_input_tokens": 330,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 330
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2632,
+      "receipts": [
+        {
+          "topic": "stack_jobs",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T01",
+      "arm": "adibirzu-reference",
+      "input_sha256": "ffd3cb7c13da725a8a12ed3569377869a84afe895f8c46c36e7de605aa0843dc",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.081517,
+      "usage": {
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "duration_ms": 1678,
+      "receipts": [
+        {
+          "topic": "identity",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T38",
+      "arm": "bare",
+      "input_sha256": "4fe9e51563450f7ff9b0c0410bc1148b2016e4564ff01bbfddc62e4acfe49b52",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.007468,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 1553,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 22,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1553,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 22,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 1553,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 1553
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2066,
+      "receipts": [],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T06",
+      "arm": "bare",
+      "input_sha256": "9b4dd4614cf37e4f20d5faf1eac759f3b410208e2d575ba9b273ac96dcb59ec3",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0099488,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1877,
+        "cache_read_input_tokens": 1554,
+        "output_tokens": 108,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1877,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 47,
+            "cache_read_input_tokens": 1554,
+            "cache_creation_input_tokens": 323,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 323
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2743,
+      "receipts": [
+        {
+          "topic": "compute_instances",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "running": 2,
+        "shapes": [
+          "VM.Standard.A1.Flex",
+          "VM.Standard.E5.Flex"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "compute_instances"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T30",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "c678ac68296eaa3778236f23ea155a499761f53c9a11a6da437765ca850e9fb8",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.023062600000000003,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4459,
+        "cache_read_input_tokens": 4163,
+        "output_tokens": 143,
+        "output_tokens_details": {
+          "thinking_tokens": 20
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4459,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 60,
+            "cache_read_input_tokens": 4163,
+            "cache_creation_input_tokens": 296,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 296
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 4260,
+      "receipts": [
+        {
+          "topic": "resource_inventory",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T20",
+      "arm": "adibirzu-reference",
+      "input_sha256": "b55e155b8d8f8f59394ca2d1f8bb649aeb81f2c49ba6baddb9b783cbf48b4aed",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.024996400000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4907,
+        "cache_read_input_tokens": 4577,
+        "output_tokens": 112,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4907,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 36,
+            "cache_read_input_tokens": 4577,
+            "cache_creation_input_tokens": 330,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 330
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3019,
+      "receipts": [
+        {
+          "topic": "audit_deletions",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "successful_delete_actors": [
+          "alice"
+        ],
+        "failed_delete_actors": [
+          "bob"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "audit_deletions"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T24",
+      "arm": "bare",
+      "input_sha256": "1514e3b45fd98491a6a4baba2150f9287cf12e585b262a25ca0ddb26470a0514",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.00948,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1805,
+        "cache_read_input_tokens": 1540,
+        "output_tokens": 92,
+        "output_tokens_details": {
+          "thinking_tokens": 11
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1805,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 21,
+            "cache_read_input_tokens": 1540,
+            "cache_creation_input_tokens": 265,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 265
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2473,
+      "receipts": [
+        {
+          "topic": "alarms",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "disabled_alarms": [
+          "disk-high"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "alarms"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T06",
+      "arm": "adibirzu-reference",
+      "input_sha256": "19a557dd165ed22bac337be191c4552cd52ce689538e9fdb99e8ffbc35acc415",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0176322,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 3430,
+        "cache_read_input_tokens": 3111,
+        "output_tokens": 108,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3430,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 47,
+            "cache_read_input_tokens": 3111,
+            "cache_creation_input_tokens": 319,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 319
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2464,
+      "receipts": [
+        {
+          "topic": "compute_instances",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "running": 2,
+        "shapes": [
+          "VM.Standard.A1.Flex",
+          "VM.Standard.E5.Flex"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "compute_instances"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T38",
+      "arm": "adibirzu-reference",
+      "input_sha256": "51504716502295d70516764535c9e49f84190590d3f44173609a69a887f3943b",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.024412200000000002,
+      "usage": {
+        "input_tokens": 6,
+        "cache_creation_input_tokens": 4086,
+        "cache_read_input_tokens": 7306,
+        "output_tokens": 416,
+        "output_tokens_details": {
+          "thinking_tokens": 45
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4086,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 183,
+            "cache_read_input_tokens": 3818,
+            "cache_creation_input_tokens": 268,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 268
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 6800,
+      "receipts": [
+        {
+          "topic": "buckets",
+          "ok": true
+        },
+        {
+          "topic": "bucket_lifecycle",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T34",
+      "arm": "adibirzu-reference",
+      "input_sha256": "a1a69897a23ccf446bb06c0ebf6563721a61bb8b4034c5b137e07ce19d1befa3",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0195228,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 3834,
+        "cache_read_input_tokens": 3549,
+        "output_tokens": 99,
+        "output_tokens_details": {
+          "thinking_tokens": 16
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3834,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 18,
+            "cache_read_input_tokens": 3549,
+            "cache_creation_input_tokens": 285,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 285
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2935,
+      "receipts": [
+        {
+          "topic": "bastion_sessions",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "active_sessions": [
+          "active-a"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "bastion_sessions"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T39",
+      "arm": "pack",
+      "input_sha256": "6e1f22503498a4dcdf421b8589862faadb60818f388b5833bcb97fff1b8dd809",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.021764,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 4568,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 17,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4568,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 17,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 4568,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 4568
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2115,
+      "receipts": [],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "executed": false,
+        "needs_review": true
+      },
+      "tool_calls": [],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T29",
+      "arm": "bare",
+      "input_sha256": "438a2f08f52a9d78b66ffb2737aeead449f9c6c4a9b75909745d3b33b076f748",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.0098986,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 1827,
+        "cache_read_input_tokens": 1588,
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1827,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 45,
+            "cache_read_input_tokens": 1588,
+            "cache_creation_input_tokens": 239,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 239
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3021,
+      "receipts": [
+        {
+          "topic": "node_pools",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T26",
+      "arm": "pack",
+      "input_sha256": "5d7fd652d9e1149bb94b8f07b715bb1122f1eb726fe2b998ac0ebd5ba76164a3",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.025143,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4870,
+        "cache_read_input_tokens": 4610,
+        "output_tokens": 143,
+        "output_tokens_details": {
+          "thinking_tokens": 13
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4870,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 70,
+            "cache_read_input_tokens": 4610,
+            "cache_creation_input_tokens": 260,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 260
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3472,
+      "receipts": [
+        {
+          "topic": "budgets",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T03",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "312f5330aa282da47a5366f48d2f4de70880350025d598abebd84b73731cdd1e",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.0218934,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4316,
+        "cache_read_input_tokens": 4062,
+        "output_tokens": 93,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4316,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 33,
+            "cache_read_input_tokens": 4062,
+            "cache_creation_input_tokens": 254,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 254
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5281,
+      "receipts": [
+        {
+          "topic": "root_policies",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "statements": [
+          "Allow group LabReaders to inspect instances in compartment dev"
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "root_policies"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T04",
+      "arm": "bare",
+      "input_sha256": "df4e5e11ad64afb758d33e06b332e28f1e2f5f94b0e30356e460a90c81e6a37e",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.011898000000000002,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 2119,
+        "cache_read_input_tokens": 1555,
+        "output_tokens": 205,
+        "output_tokens_details": {
+          "thinking_tokens": 19
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2119,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 66,
+            "cache_read_input_tokens": 1555,
+            "cache_creation_input_tokens": 564,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 564
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3391,
+      "receipts": [
+        {
+          "topic": "root_policies",
+          "ok": true
+        },
+        {
+          "topic": "policy_findings",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T29",
+      "arm": "adibirzu-reference",
+      "input_sha256": "efec56a32b9c452438b12fa26fd4ff1ef4ef7c4f4ad79486c1d1a1eed291178d",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.031361400000000005,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 6235,
+        "cache_read_input_tokens": 5987,
+        "output_tokens": 102,
+        "output_tokens_details": {
+          "thinking_tokens": 14
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 6235,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 26,
+            "cache_read_input_tokens": 5987,
+            "cache_creation_input_tokens": 248,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 248
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 3947,
+      "receipts": [
+        {
+          "topic": "node_pools",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "node_pools": [
+          {
+            "name": "workers",
+            "size": 3
+          }
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "node_pools"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T21",
+      "arm": "pack",
+      "input_sha256": "98ee3b8346d2dffc12787ff35b2b831facc627773352b8371456b649ec49269b",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.024684,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4799,
+        "cache_read_input_tokens": 4505,
+        "output_tokens": 130,
+        "output_tokens_details": {
+          "thinking_tokens": 37
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4799,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 27,
+            "cache_read_input_tokens": 4505,
+            "cache_creation_input_tokens": 294,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 294
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2716,
+      "receipts": [
+        {
+          "topic": "load_balancer_logs",
+          "ok": true
+        }
+      ],
+      "initialized_tools": [
+        "mcp__fixture__read_observation"
+      ],
+      "initialized_mcp_servers": [
+        {
+          "name": "fixture",
+          "status": "connected"
+        }
+      ],
+      "answer": {
+        "http_5xx_count": 2,
+        "statuses": [
+          502,
+          503
+        ]
+      },
+      "tool_calls": [
+        {
+          "name": "mcp__fixture__read_observation",
+          "input": {
+            "topic": "load_balancer_logs"
+          }
+        }
+      ],
+      "answer_correct": true,
+      "required_evidence_read": true
+    }
+  ],
+  "limitations": "Synthetic normalized read tool, not native plugin activation or Oracle executor integration. Entrypoints preselected by fixed existing crosswalk, not model routing. Original prompts retained; output schemas added identically across arms. One run per arm/task, no held-out/generalization claim. Four destructive requests cannot execute by harness construction; not a live guard measurement. Cost/model metadata are CLI-reported.",
+  "arms": {
+    "pack": {
+      "passed": 5,
+      "attempts": 7
+    },
+    "adibirzu-reference": {
+      "passed": 6,
+      "attempts": 11
+    },
+    "oracle-tool-reference": {
+      "passed": 5,
+      "attempts": 7
+    },
+    "bare": {
+      "passed": 5,
+      "attempts": 9
+    }
+  },
+  "complete": false,
+  "reported_cost_usd": 0.7635494
+}

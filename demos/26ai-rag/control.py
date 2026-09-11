@@ -33,6 +33,33 @@ def create_payload(mode,compartment,name,acl):
     return data
 
 
+def provision_database(payload, profile, region, token, state, state_path):
+    import oci
+    config_path = os.environ.get('OCI_CONFIG_FILE') or os.environ.get('OCI_CLI_CONFIG_FILE') or '~/.oci/config'
+    config = oci.config.from_file(str(Path(config_path).expanduser()), profile)
+    config['region'] = region
+    client = oci.database.DatabaseClient(config)
+    model = oci.database.models.CreateAutonomousDatabaseDetails()
+    fields = {wire: field for field, wire in model.attribute_map.items()}
+    if set(payload) - set(fields):
+        raise ValueError('Unsupported database payload fields')
+    for wire, value in payload.items():
+        setattr(model, fields[wire], value)
+    try:
+        response = client.create_autonomous_database(model, opc_retry_token=token)
+        # Persist ownership before waiting: a timeout must not lose the resource ID.
+        state['adb_id'] = response.data.id
+        save(state_path, state)
+        oci.wait_until(client, client.get_autonomous_database(response.data.id),
+                       'lifecycle_state', 'AVAILABLE', max_wait_seconds=2400,
+                       max_interval_seconds=30)
+    except (oci.exceptions.ServiceError, oci.exceptions.MaximumWaitTimeExceeded) as error:
+        print(json.dumps({'ok': False, 'kind': type(error).__name__,
+                          'status': getattr(error, 'status', None),
+                          'code': getattr(error, 'code', None)}))
+        raise ValueError('Database creation or readiness was not confirmed') from None
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['provision','teardown'])
     p.add_argument('--mode',choices=['free','developer','paid'],default='free');p.add_argument('--profile',default=os.environ.get('PROFILE'))
@@ -51,24 +78,18 @@ def main():
             if state and state.get('deleted'):raise ValueError('Use a fresh state path for a new demo; retained state proves prior teardown')
             if state and state.get('adb_id'):
                 print('This request already has a recorded database. Run preflight/get; no create repeated.');return
-            private=a.state.with_name('create.private.json')
             token=state.get('retry_token') if state else str(uuid.uuid4())
-            argv=['oci','db','autonomous-database','create','--from-json','file://'+str(private.resolve()),'--opc-retry-token',token,
-              '--wait-for-state','AVAILABLE','--max-wait-seconds','2400','--wait-interval-seconds','30','--profile',a.profile,'--region',a.region]
             confirmation='CREATE:'+a.name
             if not a.execute or a.dry_run:
-                print('# MUTATING — not run; exact command after writing private create JSON from explicit inputs')
-                print(shlex.join(argv));print('Mode:',a.mode,'; db-version: 26ai; paid = 2 ECPU; rollback: teardown using recorded state')
+                print('# MUTATING — not run; SDK create_autonomous_database with persisted opc_retry_token')
+                print('Mode:',a.mode,'; db-version: 26ai; paid = 2 ECPU; rollback: teardown using recorded state')
                 return
             if a.confirm!=confirmation:raise ValueError('Execution requires --confirm '+confirmation)
             pw=os.environ.get('RAG_ADMIN_PASSWORD','')
             if not 12<=len(pw)<=30 or '"' in pw or 'admin' in pw.lower() or not all(re.search(r,pw) for r in ['[a-z]','[A-Z]','[0-9]']):raise ValueError('Set a valid RAG_ADMIN_PASSWORD privately')
             state=state or dict(request_hash=desired,retry_token=token,profile=a.profile,region=a.region,owned_demo=True)
-            save(a.state,state);payload['adminPassword']=pw;save(private,payload)
-            try:result=subprocess.run(argv,capture_output=True,text=True,timeout=2500)
-            finally:private.unlink(missing_ok=True)
-            if result.returncode:raise ValueError('Creation did not finish; keep state and retry token for recovery. Inspect privately; do not create under a new name.')
-            data=json.loads(result.stdout)['data'];state['adb_id']=data['id'];save(a.state,state)
+            save(a.state,state);payload['adminPassword']=pw
+            provision_database(payload,a.profile,a.region,token,state,a.state)
             print('Database recorded privately. Run preflight/version check before SQL setup.')
         else:
             if not state or not state.get('owned_demo') or not state.get('adb_id'):raise ValueError('Teardown requires this kit\'s recorded database; no arbitrary ID accepted')

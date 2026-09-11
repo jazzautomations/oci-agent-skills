@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/check_skill_scripts.py",
-      "sha256": "c8793d1059a35a9fe0e7a981567c8100fb6f7782257a8c3430a4444671106528",
+      "sha256": "d37ad008a722c2e2ff9e0943aec463e1b325dbdb7b729ddab4671577eff4b67a",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -135,7 +135,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "59d593fbb7e693639c841cb02ca032b9a7cebab9732c927adf3ff80fb0fb1814",
+      "sha256": "f89d1dc0c0c7c99d4b6e9217463d2c276bb42a421602047662e51238f98947a4",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -154,6 +154,18 @@
     {
       "path": "scripts/doc-gen/catalogs.py",
       "sha256": "9f065243a7417a0ca8b014a19591ce65e7a0daa99ac6853da3253b3028efb7c1",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/audit_native_commands.py",
+      "sha256": "70dd1e8ea20eb00ed93e4813aa90481968302d0f8a230e24d67d6bd995157b8e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/benchmark_mcp.py",
+      "sha256": "e9cd38a8995cd9d2e3edf4f836c5f704464b12ad73e2ec829cbf50c5ab1643cb",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -182,6 +194,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/native_task_benchmark.py",
+      "sha256": "5a620634bc27e526d5ca589feb9eb59a62cebce422a299234417151998c18568",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/routing_diagnostics.py",
       "sha256": "fbddcea50b785769e7b06a68a8b9c66c44c071e0f383dbfb610aeacb3b665907",
       "mode": "read-only",
@@ -202,6 +220,48 @@
     {
       "path": "scripts/eval/semantic.py",
       "sha256": "0ba51ed3a303e18839fbe0a3c119ae5dd37870063b8b6c94fc76492d248d1cb7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/task_answer_pilot.py",
+      "sha256": "e407e0b88824f530917d87d421d49e6e9b376a605aa16ac383281a474eeb9c36",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/tool_fixture_server.py",
+      "sha256": "23c6202ac103255b6823e1b4954129b75d97871423af1bbb7e59632f58ecf4a0",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/tool_task_benchmark.py",
+      "sha256": "6c697d5acf64d24ee2cab547188f3cf5fe7b0b68a89060c6840250f4b3cc2a80",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/verify_native_command_audit.py",
+      "sha256": "a6c7e88004a35a2377161db491041d16d2af01927cf9cee70e1e910688cee3fd",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/verify_native_task_benchmark.py",
+      "sha256": "63dd6f0936e7c7c6e10cf38acabe6ff7156a16d4763cfec401fcef4b23dc93d7",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/verify_task_answer_pilot.py",
+      "sha256": "848799f9302e4bd23dee1f0fbfb610500996e127063c3ca8e06cf14eb185e26e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/verify_tool_task_benchmark.py",
+      "sha256": "62231c530105d62c89757cb61ab2c64f04012af350c9929d6fc501a2509a5165",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -469,7 +529,7 @@
     },
     {
       "path": "skills/oci-incident-triage/scripts/triage.py",
-      "sha256": "e48cf2407dfa1c10cf1ae7a2ad9a2ab603f101f42978d8e246d5e0d1c9c0e53a",
+      "sha256": "d2fc3c36b207fc0f4bd9b74400c2d60ae9df85e77a040ad5c498bbb39b2d408c",
       "mode": "read-only",
       "oci_calls": []
     },

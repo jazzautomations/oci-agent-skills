@@ -1,0 +1,48 @@
+{
+  "tool_count": 9,
+  "restriction_level": 4,
+  "checks": [
+    {
+      "tool": "connections_list",
+      "is_error": false,
+      "error_codes": [],
+      "result": "ragmcp"
+    },
+    {
+      "tool": "connect",
+      "is_error": false,
+      "error_codes": [],
+      "mentioned_guidance_codes": [
+        "ORA-17274"
+      ],
+      "note": "ORA-17274 occurs in generic AUTOCOMMIT guidance in the tool's context text, not as a reported SQL error."
+    },
+    {
+      "tool": "sql_run",
+      "is_error": false,
+      "error_codes": [],
+      "result": "\"DOCUMENT_COUNT\"\n15\n\n"
+    },
+    {
+      "tool": "sql_run",
+      "is_error": false,
+      "error_codes": [],
+      "result": "\"PRIVILEGE\"\n\"CREATE SESSION\"\n\n"
+    },
+    {
+      "tool": "sql_run",
+      "is_error": false,
+      "error_codes": [],
+      "result": "\"OWNER\",\"TABLE_NAME\",\"PRIVILEGE\"\n\"RAGAPP\",\"DOC_CHUNKS\",\"READ\"\n\"RAGAPP\",\"DOC_TAB\",\"READ\"\n\n"
+    },
+    {
+      "tool": "disconnect",
+      "is_error": false,
+      "error_codes": []
+    }
+  ],
+  "date": "2026-09-11",
+  "sqlcl_version": "26.2.2.233.1901",
+  "connection_store": "isolated Java user.home; only dedicated ragmcp connection",
+  "limitations": "Selected reads only; no durable DBTOOLS$MCP_LOG table, comprehensive privilege audit, host command or script execution tested."
+}

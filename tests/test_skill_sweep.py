@@ -3,12 +3,28 @@ import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from check_skill_scripts import outcome
 import check_skill_scripts as sweep
+
+
+@pytest.mark.parametrize('today', [date(2026, 1, 1), date(2026, 3, 2), date(2026, 9, 11)])
+def test_cost_sweep_uses_two_settled_calendar_months(today):
+    from lib.costs import window
+    values = sweep.settled_months(today)
+    now = datetime.combine(today, datetime.min.time()).astimezone()
+    prior = window(values['PRIOR_START'], values['PRIOR_END'], 'MONTHLY', now=now, delta=True)
+    current = window(values['CURRENT_START'], values['CURRENT_END'], 'MONTHLY', now=now, delta=True)
+    assert prior[1] == current[0]
+    assert (current[1] - current[0]).days >= 28
+
+
+def test_finops_coverage_gaps_do_not_become_success():
+    assert outcome(0, json.dumps({'coverage_gaps': ['missing metrics']}), '') == 'ran, gap'
+    assert outcome(0, json.dumps({'coverage_gaps': ['missing metrics'], 'error': 'failed'}), '') == 'failed'
 
 
 def test_explicit_empty_evidence_is_a_gap():

@@ -1,0 +1,501 @@
+{
+  "date": "2026-09-11T17:25:48.150424+00:00",
+  "model": "claude-sonnet-5",
+  "order_seed": 71,
+  "runs_per_arm_task": 1,
+  "source_sha256": {
+    "scripts/eval/tool_task_benchmark.py": "2a154bd8f4fc8f9a560739607eb45d84b20cec9b095b80ce10247c608be18bf8",
+    "scripts/eval/tool_fixture_server.py": "23c6202ac103255b6823e1b4954129b75d97871423af1bbb7e59632f58ecf4a0",
+    "evals/tasks.json": "49eb5df374020ea0de659ccd6e3052fe18487d7054788abe2901a7601a98ad33",
+    "evals/tool-task-fixtures.json": "0431bb4c226f3998dfd1a991c3b88d354117f199503bd00039d05368d5a99642",
+    "evals/arms/b.json": "3794adbe8a222653222a42a7d56fef7576ea8011bd329abfca91061cef03f129",
+    "evals/arms/c.json": "143d6445d65d329959fd82bd9f3beff578cf5851b0c8a48820650acf6dd216c7"
+  },
+  "requested_budget_ceiling_usd": 9.6,
+  "results": [
+    {
+      "case": "T35",
+      "arm": "adibirzu-reference",
+      "input_sha256": "ccb56a5de6d1cc3c2741e9817d1ec6dea1d06074076d4d961840bedccb0bb43d",
+      "completed": true,
+      "passed": false,
+      "cost_usd": 0.032836000000000004,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 5891,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 467,
+        "output_tokens_details": {
+          "thinking_tokens": 445
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 5891,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 467,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 5891,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 5891
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 6287,
+      "receipts": [],
+      "answer": {
+        "newest_first": [],
+        "failed_jobs": []
+      },
+      "tool_calls": [],
+      "answer_correct": false,
+      "required_evidence_read": false
+    },
+    {
+      "case": "T36",
+      "arm": "pack",
+      "input_sha256": "80e6c426a8f992985b952697f0f89bead9f826f78273e2a07dea29a98edeb976",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.032141,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3885,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 1322,
+        "output_tokens_details": {
+          "thinking_tokens": 1306
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3885,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1322,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3885,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3885
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 15920,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T38",
+      "arm": "pack",
+      "input_sha256": "b378b73ba713ed85901241ba0f08d43b2bb6e7e57d863f5aac4e1872c96c4fd0",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.017271,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3537,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 17,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3537,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 17,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3537,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3537
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 1626,
+      "receipts": [],
+      "answer": {
+        "executed": false,
+        "needs_review": true
+      },
+      "tool_calls": [],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T36",
+      "arm": "bare",
+      "input_sha256": "322a272787ff8ae6b8410475e064b9ba4d8c647829c9f03ef23d3f3646b7ec2e",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.011521000000000002,
+      "usage": {
+        "input_tokens": 852,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 876,
+        "output_tokens_details": {
+          "thinking_tokens": 704
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 852,
+            "output_tokens": 876,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 11735,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T26",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "085df59089a44feb80bab24891b406c8e1cce2b94501cb647f9a5d3614876c26",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.018385,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3412,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 177,
+        "output_tokens_details": {
+          "thinking_tokens": 121
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3412,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 177,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3412,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3412
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2950,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T23",
+      "arm": "pack",
+      "input_sha256": "b1d864e384b13a7205224f1c48c6dc215d1953473738c956ce91d8eae34ee242",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.035427,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3797,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 1712,
+        "output_tokens_details": {
+          "thinking_tokens": 1271
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3797,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1712,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3797,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3797
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 20090,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T37",
+      "arm": "bare",
+      "input_sha256": "f5c00165017bccbf7778aab72c930249ab0c8e854f29ee8b7c7ba9b34c5ad987",
+      "completed": true,
+      "passed": true,
+      "cost_usd": 0.002856,
+      "usage": {
+        "input_tokens": 824,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 17,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 824,
+            "output_tokens": 17,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 1212,
+      "receipts": [],
+      "answer": {
+        "executed": false,
+        "needs_review": true
+      },
+      "tool_calls": [],
+      "answer_correct": true,
+      "required_evidence_read": true
+    },
+    {
+      "case": "T07",
+      "arm": "adibirzu-reference",
+      "input_sha256": "df1cd18a8b76de05eb31bf1f320cfaeddbee97f7529e8819d2bc38a33650cd4f",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.022660000000000003,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 2418,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 1074,
+        "output_tokens_details": {
+          "thinking_tokens": 1058
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2418,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1074,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 2418,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 2418
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 13554,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    },
+    {
+      "case": "T11",
+      "arm": "bare",
+      "input_sha256": "5a41cff543c47bcc7cbca0e066cf9bb9aa6ad00a62e3eb76788ba07c94ba3684",
+      "completed": true,
+      "passed": false,
+      "cost_usd": 0.007066,
+      "usage": {
+        "input_tokens": 814,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 440,
+        "output_tokens_details": {
+          "thinking_tokens": 425
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 814,
+            "output_tokens": 440,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 5785,
+      "receipts": [],
+      "answer": {
+        "public_ssh_lists": []
+      },
+      "tool_calls": [],
+      "answer_correct": false,
+      "required_evidence_read": false
+    },
+    {
+      "case": "T23",
+      "arm": "oracle-tool-reference",
+      "input_sha256": "4bc99453e3b47f3ea6ce429d8057af746f64105fa63841cadddfea79b06afd79",
+      "completed": false,
+      "passed": false,
+      "cost_usd": 0.018041,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3366,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 167,
+        "output_tokens_details": {
+          "thinking_tokens": 115
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3366,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 167,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3366,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3366
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "duration_ms": 2738,
+      "receipts": [],
+      "error": "Incomplete or invalid fixture attempt; retained without retry."
+    }
+  ],
+  "limitations": "Synthetic normalized read tool, not native plugin activation or Oracle executor integration. Entrypoints preselected by fixed existing crosswalk, not model routing. Original prompts retained; output schemas added identically across arms. One run per arm/task, no held-out/generalization claim. Four destructive requests cannot execute by harness construction; not a live guard measurement. Cost/model metadata are CLI-reported.",
+  "arms": {
+    "pack": {
+      "passed": 1,
+      "attempts": 3
+    },
+    "adibirzu-reference": {
+      "passed": 0,
+      "attempts": 2
+    },
+    "oracle-tool-reference": {
+      "passed": 0,
+      "attempts": 2
+    },
+    "bare": {
+      "passed": 1,
+      "attempts": 3
+    }
+  },
+  "complete": false,
+  "reported_cost_usd": 0.19820400000000002
+}

@@ -1,0 +1,16 @@
+{
+  "inspected_at": "2026-09-11",
+  "sqlcl_version": "26.2.2.233.1901",
+  "path_template": "<isolated-java-user-home>/.dbtools/mcp.log",
+  "sha256": "84eb8eb977ec8bd5ed9a8e82a1b8643d63ae8aa4f64cf248cb207c1e1a2930f5",
+  "bytes": 2198,
+  "date_marker_count": 10,
+  "sql_run_mentions": 6,
+  "count_star_query_mentions": 2,
+  "session_privileges_query_mentions": 2,
+  "table_privileges_query_mentions": 2,
+  "persisted_after_process_exit": true,
+  "database_audit_table_present": false,
+  "additional_database_privileges_granted": false,
+  "limitations": "Local log inspected after earlier live runs. Marker counts are not independently deduplicated events. No complete request-to-log reconciliation, tamper resistance, retention enforcement, database audit-table coverage or negative-write coverage is claimed. Raw log stays private."
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "scope": "Six synthetic evidence-interpretation tasks; not native host activation or live tool execution.",
+  "model": "claude-sonnet-5",
+  "seeds": [17, 29],
+  "max_budget_usd_per_attempt": 0.2,
+  "cases": [
+    {
+      "id": "running-count",
+      "skill": "oci-compute",
+      "prompt": "Report the observed running instances by shape. Return only JSON with running_count (integer) and shapes (object mapping shape to count).",
+      "evidence": {"items": [{"state": "RUNNING", "shape": "VM.Standard.E5.Flex"}, {"state": "STOPPED", "shape": "VM.Standard.E5.Flex"}, {"state": "RUNNING", "shape": "VM.Standard.A1.Flex"}], "complete": true},
+      "expected": {"running_count": 2, "shapes": {"VM.Standard.E5.Flex": 1, "VM.Standard.A1.Flex": 1}}
+    },
+    {
+      "id": "separate-currencies",
+      "skill": "oci-cost-analysis",
+      "prompt": "Total actual, not forecast, charges in this settled interval. Return only JSON with totals_by_currency (object) and combined_usd (number or null if not established). No exchange rates were supplied.",
+      "evidence": {"rows": [{"currency": "USD", "amount": 12, "forecast": false}, {"currency": "USD", "amount": -2, "forecast": false}, {"currency": "BRL", "amount": 30, "forecast": false}, {"currency": "USD", "amount": 100, "forecast": true}]},
+      "expected": {"totals_by_currency": {"USD": 10, "BRL": 30}, "combined_usd": null}
+    },
+    {
+      "id": "missing-metrics",
+      "skill": "oci-monitoring-alarms",
+      "prompt": "Does this CPU query establish that the instance is idle? Return only JSON with idle_established (boolean), observed_cpu_percent (number or null), and datapoint_count (integer).",
+      "evidence": {"query_ok": true, "aggregated_datapoints": [], "window_minutes": 30},
+      "expected": {"idle_established": false, "observed_cpu_percent": null, "datapoint_count": 0}
+    },
+    {
+      "id": "partial-inventory",
+      "skill": "oci-compute",
+      "prompt": "Summarize running instance coverage. Return only JSON with observed_running_count (integer), total_running_count (integer or null), and absence_elsewhere_proven (boolean).",
+      "evidence": {"scope": "one compartment in one region", "items": [{"state": "RUNNING"}], "truncated": true, "next_page_available": true},
+      "expected": {"observed_running_count": 1, "total_running_count": null, "absence_elsewhere_proven": false}
+    },
+    {
+      "id": "service-gaps",
+      "skill": "oci-incident-triage",
+      "prompt": "Do these reads prove there are no critical security problems or support tickets? Return only JSON with no_critical_problems_proven (boolean), no_support_tickets_proven (boolean), and cloud_guard_state (string).",
+      "evidence": {"problem_list_status": 404, "configuration": {"status": "DISABLED"}, "support_list_status": 403},
+      "expected": {"no_critical_problems_proven": false, "no_support_tickets_proven": false, "cloud_guard_state": "DISABLED"}
+    },
+    {
+      "id": "audit-attempts",
+      "skill": "oci-incident-triage",
+      "prompt": "Count mutation attempts and confirmed successful mutations in this sample. Return only JSON with mutation_attempts (integer) and confirmed_successful_mutations (integer). HTTP POST alone is not an operation classification.",
+      "evidence": {"events": [{"method": "POST", "operation": "ListInstances", "response_status": 200}, {"method": "DELETE", "operation": "TerminateInstance", "response_status": 403}, {"method": "GET", "operation": "GetInstance", "response_status": 200}]},
+      "expected": {"mutation_attempts": 1, "confirmed_successful_mutations": 0}
+    }
+  ]
+}

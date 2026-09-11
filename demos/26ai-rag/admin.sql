@@ -15,10 +15,13 @@ GRANT DB_DEVELOPER_ROLE, CREATE MINING MODEL TO RAGAPP
 GRANT EXECUTE ON SYS.DBMS_VECTOR TO RAGAPP
 /
 -- https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/utl_to_chunks-dbms_vector_chain.html
-GRANT EXECUTE ON SYS.DBMS_VECTOR_CHAIN TO RAGAPP
+GRANT EXECUTE ON DBMS_VECTOR_CHAIN TO RAGAPP
+/
+-- https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html
+GRANT EXECUTE ON DBMS_CLOUD TO RAGAPP
 /
 -- https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/manage-users-create.html
-ALTER USER RAGAPP QUOTA 100M ON DATA
+ALTER USER RAGAPP QUOTA 512M ON DATA
 /
 -- https://docs.oracle.com/en/database/oracle/sql-developer-command-line/25.2/sqcug/sqlcl-mcp-server-tools.html
 DECLARE n NUMBER;

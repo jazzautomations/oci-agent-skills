@@ -1,4 +1,78 @@
-# Release readiness — September 10, 2026
+# Release readiness — September 11, 2026
+
+## September 11 follow-up
+
+Newest: [native-host follow-up](native-validation-2026-09-11.md) verifies installed
+skill activation, a distributed public-price MCP lookup and 80 paired synthetic
+task attempts. Original and corrected syntax scores remain separate; this is not
+full host/tenancy task validation. Support triage now sends explicit user context
+and projects the correct list shape; the real read still returns 403. No account
+mutation occurred in this follow-up. The five nonpassing release gates remain.
+
+Latest: the [second lab](second-validation-2026-09-11.md) closes the specific
+SQLcl object-audit experiment and measures final RAG fusion at 45/45 expected-source
+hits, with explicit latency/development limitations. The [four-arm tool measurement](tool-task-benchmark.md)
+records all 160 attempts, strict scores and failures; it does not replace native
+V27/V28. The paragraphs below preserve earlier states, not an assertion that those
+later experiments never happened. Both labs have been torn down.
+
+The [paid lab report](live-validation-2026-09-11.md) supersedes the older live
+prerequisite observations below: fixture-dependent reads and database integration
+were exercised, then all lab resources were removed. The subsequent configuration
+read in the new account's home region, us-chicago-1, succeeded and returned
+Cloud Guard `DISABLED`, with no reporting region. This establishes disabled state
+for this account; it does not retroactively explain the old account's 404.
+Support incident listing still returns 403. Enabling Cloud Guard and completing
+Support registration/authorization are account changes, not test-result repairs.
+
+Triage now follows a Cloud Guard problem-list 404 with one tenancy-root
+configuration read. It retains the failed step, reports disabled/enabled/unknown
+state, and never treats disabled protection as an empty successful result.
+The full suite passed 463 tests in 45.11 seconds, with one dependency deprecation
+warning. Frontmatter, references, portability, budgets, licenses, current-tree
+secret scanning, read-only script policy, template and manifest checks passed.
+FinOps retains its bounded/incomplete contract: optional budget and cost-tag
+criteria cannot be invented on behalf of the owner, nor can a new account supply
+settled historical spend on demand.
+
+The source-freshness and documentation-link schedules actually ran September 11;
+see [the source review](freshness.md). This does not close the distinct Tuesday
+CLI drift notification gate. Native task evaluation, four-arm behavioral
+comparison, held-out retrieval quality and durable SQLcl auditing remain open.
+Published-history replacement still requires the history owner's approval.
+
+## Further validation and rollback (September 11)
+
+The [account setup record](evidence/account-setup-2026-09-11.json) records corrected
+Cloud Guard enable requests returning 404 before and immediately after creation
+of the documented service policy. The new policy was removed after rejection;
+an independent complete bounded policy list confirmed absence. No targets or
+responders were created. Cloud Guard remains disabled. This does not establish a
+Free Tier restriction: entitlement, propagation and other authorization causes
+have not been independently distinguished. Support user validation returned 403
+(`AUTHZ_FAILED`); registration and eligibility remain unconfirmed.
+
+Cloud Guard configuration is reversible, but disabling it deletes problem history
+and customizations. Detectors observe resources; responders can change them. The
+prerequisites include service reads, managed event-rule management and NSG use.
+See [Oracle's enablement guide](https://docs.oracle.com/en-us/iaas/Content/cloud-guard/using/part-start.htm).
+No persistent account change from this setup attempt remains.
+
+The [paired fixture-answer pilot](task-answer-pilot.md) completed 24/24 attempts:
+12/12 correct with references and 12/12 without. No score gain was measured, and
+V27/V28 remain open. Native evaluation is still early-access-restricted in 2.1.268.
+
+The earlier SQLcl session left a persistent local `.dbtools/mcp.log`. Its
+[sanitized evidence](evidence/sqlcl-local-log-2026-09-11.json) confirms a local file
+survived process exit, not complete database auditing. The database table was
+absent and no additional privileges were granted to create it.
+
+The isolated history candidate for committed revision `b22f398` was rechecked:
+zero scanner findings, unchanged branch-tip source tree and valid Git connectivity.
+The remote is unchanged; the candidate excludes uncommitted work and must be
+refreshed if a future history replacement is approved.
+
+## Earlier observations (September 10)
 
 The current semantic-selection and component CI passes. Public-release readiness
 also needs evidence about maintenance, live prerequisites, host task completion

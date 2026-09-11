@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-11T18:12:35.075300+00:00",
+  "all_passed": true,
+  "checks": [
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_template.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_manifests.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/inventory.py --scripts --examples --check",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+      "exit_code": 0
+    }
+  ],
+  "note": "Post-edit strict checks; stdout omitted. Both recorded benchmark verifiers ran without new model/cloud calls."
+}

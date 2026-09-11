@@ -8,7 +8,7 @@ CHUNK_SQL="""INSERT INTO doc_chunks(doc_id,chunk_offset,chunk_text,embedding)
 SELECT d.id, e.embed_id, e.embed_data, TO_VECTOR(e.embed_vector)
 FROM doc_tab d,
   DBMS_VECTOR_CHAIN.UTL_TO_EMBEDDINGS(
-    DBMS_VECTOR_CHAIN.UTL_TO_CHUNKS(d.text, JSON('{"by":"words","max":300,"overlap":40,"split":"recursively","normalize":"all","language":"american"}')),
+    DBMS_VECTOR_CHAIN.UTL_TO_CHUNKS(d.text, JSON('{"by":"words","max":100,"overlap":20,"split":"recursively","normalize":"all","language":"american"}')),
     JSON('{"provider":"database","model":"ALL_MINILM_L12_V2"}')) t,
   JSON_TABLE(t.column_value, '$[*]' COLUMNS(embed_id NUMBER PATH '$.embed_id',
     embed_data VARCHAR2(4000) PATH '$.embed_data', embed_vector CLOB PATH '$.embed_vector')) e
@@ -49,7 +49,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[2])
     p.add_argument('--execute',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args()
     docs=corpus(a.repo)
-    if not a.execute or a.dry_run:print(f'Plan: {len(docs)} public documents, {sum(len(t.encode()) for _,t in docs)} bytes; ONNX 384 dimensions, 300-word chunks. No database connection.');return
+    if not a.execute or a.dry_run:print(f'Plan: {len(docs)} public documents, {sum(len(t.encode()) for _,t in docs)} bytes; ONNX 384 dimensions, 100-word chunks. No database connection.');return
     with connect() as conn:load(conn,docs)
     print('Corpus load committed. Create/synchronize indexes and measure retrieval separately.')
 
