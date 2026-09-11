@@ -1,5 +1,10 @@
 # Native-host follow-up — September 11, 2026
 
+Later evidence: [reference-enabled task measurement](native-reference-validation-2026-09-11.md)
+preserves this report and adds a new paired run. [Published history cleanup](history-migration-2026-09-11.md)
+has since closed V22. The dated counts below describe this earlier experiment;
+consult the current [matrix](validation-matrix.md) for release status.
+
 This follow-up establishes native plugin loading and a distributed MCP price
 lookup, then measures 40 paired synthetic tasks. It does **not** make the
 repository 100% release-validated. V22/V24/V25/V27/V28 retain their nonpassing

@@ -2,6 +2,13 @@
 
 ## September 11 follow-up
 
+Latest evaluation: [80 reference-enabled paired attempts](native-reference-validation-2026-09-11.md)
+are complete. The pinned syntax audit scores native 29/40 versus baseline 13/40;
+V27 now records FAIL against the 80% minimum, not just provider unavailability.
+Reference permission was proved separately, but no task actually used Read.
+Original reports remain preserved, and the complete semantic/native-product
+requirements remain open. The matrix still has four nonpassing criteria.
+
 Latest publication follow-up: the authorized [history cleanup](history-migration-2026-09-11.md)
 is complete on both published branches. Current-tree, reachable-history and fresh
 remote-mirror scans pass. The [hosted drift publication](evidence/hosted-drift-publication-2026-09-11.json)

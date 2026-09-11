@@ -1,6 +1,13 @@
 # Evaluation evidence — 2026-09-10
 
-Latest September 11 follow-up: [native activation and paired tasks](native-validation-2026-09-11.md)
+Latest September 11: the [reference-enabled paired run](native-reference-validation-2026-09-11.md)
+collected 80 attempts, with a native plugin and permitted reference reads versus
+no plugin. Common syntax-adjudicated scores are 29/40 and 13/40. The plugin is
+below the 80% minimum; V27 is FAIL. The official skill-creator-format review is
+recorded, but does not certify the remaining original-task semantic criteria.
+No task used Read; a separate access preflight proved the permission path.
+
+Earlier September 11 follow-up: [native activation and paired tasks](native-validation-2026-09-11.md)
 records the installed skill/MCP price path and 80 synthetic attempts. Original
 scores are 33/40 versus 28/40; separate syntax adjudication gives 32/40 versus
 16/40. File access and command execution are disabled, so V27/V28 remain open.
@@ -132,7 +139,9 @@ unverified. Isolated selection does not establish V27's ≥0.8 agent task score 
 close V28's four-arm behavioral comparison.
 
 The original design accepts a skill-creator **task evaluation** as a substitute
-for the unavailable native evaluator. That alternative remains unmeasured.
+for the unavailable native evaluator. The latest reference-enabled run now
+records matched tasks and a skill-creator-format review; its limited native
+score is below threshold, and the complete original semantic rubric is not certified.
 The September 11 [paired fixture-answer pilot](task-answer-pilot.md) measured
 12/12 correct answers in both arms on six synthetic tasks. It is a small
 evidence-interpretation measurement, not native activation or tool execution,

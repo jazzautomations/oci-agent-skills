@@ -135,7 +135,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "f89d1dc0c0c7c99d4b6e9217463d2c276bb42a421602047662e51238f98947a4",
+      "sha256": "6c094cd126630d8c5ad1851e923848ea70998465a2a8b9fb637854e42ec3651b",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -176,6 +176,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/export_skill_creator_review.py",
+      "sha256": "d33aef47a441cf83faff2f50d9f0da8ee6370b2f320147c68be4a146fdfa98f6",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/graders.py",
       "sha256": "2e396f3b627419fa80cd06efe71328ff83d12ac0e3538ddf5029e936f9261e9f",
       "mode": "read-only",
@@ -190,6 +196,12 @@
     {
       "path": "scripts/eval/import_corpus.py",
       "sha256": "d387c1a2fdd47be0e6f2ce7001765e3e7868a754cc23649b35411164d62b2964",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/native_reference_benchmark.py",
+      "sha256": "da8622b7b6a97a12cff4cb195917c5c8919b591b86ce905d879a6d81029f85fc",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -244,6 +256,12 @@
     {
       "path": "scripts/eval/verify_native_command_audit.py",
       "sha256": "a6c7e88004a35a2377161db491041d16d2af01927cf9cee70e1e910688cee3fd",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/verify_native_reference_benchmark.py",
+      "sha256": "bd2690c0188dac06da0d8eeec4cb4c12c343ffe6cf27c138b248dbfd8a798c92",
       "mode": "read-only",
       "oci_calls": []
     },

@@ -1,0 +1,119 @@
+{
+  "scope": "Access preflights only, excluded from paired task scores. First skipped Read and failed access check; second read permitted reference and received host denial for harmless evals canary. All charges retained.",
+  "probes": [
+    {
+      "name": "preflight.json",
+      "date": "2026-09-11T18:42:49.054049+00:00",
+      "collector_sha256": "56e5008908952d544dab79853bd13280fb6010760d4238b86c5ff4d1317a3e6f",
+      "results": [
+        {
+          "case": "T01",
+          "arm": "native-plugin",
+          "completed": true,
+          "access_probe_passed": false,
+          "successful_reference_reads": 0,
+          "out_of_scope_read_succeeded": false,
+          "calls": [
+            {
+              "name": "Skill",
+              "input": {
+                "skill": "oci-agent-skills:oci-cli-auth",
+                "args": "Which OCI identity and tenancy is my CLI authenticated as right now?"
+              },
+              "result_success": true
+            },
+            {
+              "name": "mcp__fixture__read_observation",
+              "input": {
+                "topic": "identity"
+              },
+              "result_success": true
+            },
+            {
+              "name": "StructuredOutput",
+              "input": {
+                "answer": {
+                  "profile": "LAB",
+                  "user": "lab-user",
+                  "tenancy": "lab-tenancy"
+                },
+                "commands": [
+                  "oci iam region-subscription list --tenancy-id \"$T\" --all --query 'data[].{region:\"region-name\",key:\"region-key\",home:\"is-home-region\"}'",
+                  "oci iam user get --user-id \"$U\" --query 'data.{name:name,mfa:\"is-mfa-activated\"}'"
+                ]
+              },
+              "result_success": true
+            }
+          ],
+          "cost_usd": 0.0693536,
+          "transcript_sha256": "1dd309f8340ae0014b77b057820a181810088ccad48ae9ae74115ab7fe754dc0"
+        }
+      ]
+    },
+    {
+      "name": "preflight-v2.json",
+      "date": "2026-09-11T18:43:29.627644+00:00",
+      "collector_sha256": "da8622b7b6a97a12cff4cb195917c5c8919b591b86ce905d879a6d81029f85fc",
+      "results": [
+        {
+          "case": "T01",
+          "arm": "native-plugin",
+          "completed": true,
+          "access_probe_passed": true,
+          "successful_reference_reads": 1,
+          "out_of_scope_read_succeeded": false,
+          "calls": [
+            {
+              "name": "Skill",
+              "input": {
+                "skill": "oci-agent-skills:oci-cli-auth"
+              },
+              "result_success": true
+            },
+            {
+              "name": "Read",
+              "input": {
+                "file_path": "$PLUGIN/references/service-command-cards.md"
+              },
+              "result_success": true,
+              "within_reference_scope": true
+            },
+            {
+              "name": "Read",
+              "input": {
+                "file_path": "$PLUGIN/evals/ACCESS-CANARY.txt"
+              },
+              "result_success": false,
+              "within_reference_scope": false
+            },
+            {
+              "name": "mcp__fixture__read_observation",
+              "input": {
+                "topic": "identity"
+              },
+              "result_success": true
+            },
+            {
+              "name": "StructuredOutput",
+              "input": {
+                "answer": {
+                  "profile": "LAB",
+                  "user": "lab-user",
+                  "tenancy": "lab-tenancy"
+                },
+                "commands": [
+                  "oci iam region-subscription list --tenancy-id \"$T\" --all --query 'data[].{region:\"region-name\",key:\"region-key\",home:\"is-home-region\"}'",
+                  "oci iam user get --user-id \"$U\" --query 'data.{name:name,mfa:\"is-mfa-activated\"}'"
+                ]
+              },
+              "result_success": true
+            }
+          ],
+          "cost_usd": 0.08199880000000001,
+          "transcript_sha256": "0c911b2afe1ac5d32d13b39b60d328199d72852c932b133076c5589d000d7b20"
+        }
+      ]
+    }
+  ],
+  "reported_cost_usd": 0.1513524
+}

@@ -1,0 +1,2191 @@
+{
+  "metadata": {
+    "skill_name": "oci-agent-skills",
+    "skill_path": "skills/",
+    "executor_model": "claude-sonnet-5",
+    "analyzer_model": "deterministic-recorded-evidence",
+    "timestamp": "2026-09-11T18:43:48.423978+00:00",
+    "evals_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ],
+    "runs_per_configuration": 1,
+    "upstream_commit": "34040c9c568585f6929bedeaad110ad08f079624",
+    "source_report_sha256": "ba40f1e078e48d88770135a2e3d6e711b8b27a71a536a3f6a4c240d4726419b4",
+    "audit_sha256": "45743b5fda6579f60b5273fbaf43e235718eb3bd330ef4633cdf7253f40f1cdd"
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.716,
+        "tokens": 40946,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"iam region-subscription list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"iam user get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.483,
+        "tokens": 23948,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_required_option\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 7.091,
+        "tokens": 24162,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 8.438,
+        "tokens": 41526,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [{\"leaf\": \"iam policy list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.625,
+        "tokens": 26693,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"iam dynamic-group list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.929,
+        "tokens": 40927,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"compute instance list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 6.532,
+        "tokens": 27391,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"compute instance list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"reason\": \"missing_explicit_limit\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 8,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 8.012,
+        "tokens": 41737,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"compute shape list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"limits value list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"limits resource-availability get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 9,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.584,
+        "tokens": 23731,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"limits value list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 10,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.782,
+        "tokens": 26983,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"limits value list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"limits resource-availability get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 11,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.619,
+        "tokens": 26517,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"network security-list list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 12,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 8.119,
+        "tokens": 41632,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"network nsg rules list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"network nsg list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"network route-table list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 13,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 7.941,
+        "tokens": 41010,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [{\"leaf\": \"network route-table list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"network route-table get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 14,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 6.514,
+        "tokens": 26492,
+        "tool_calls": 3,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [], \"completed\": false, \"original_passed\": false, \"required_evidence_read\": false}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 15,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.16,
+        "tokens": 40227,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"os object-lifecycle-policy get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 16,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.762,
+        "tokens": 40293,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"os object list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 17,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 6.964,
+        "tokens": 40137,
+        "tool_calls": 3,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [], \"completed\": false, \"original_passed\": false, \"required_evidence_read\": false}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 18,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.027,
+        "tokens": 23819,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"bv boot-volume-backup list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 19,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.34,
+        "tokens": 40696,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"fs file-system list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"fs mount-target list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 20,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.307,
+        "tokens": 41180,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 21,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 8.344,
+        "tokens": 41222,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"logging log-group list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"logging-search search-logs\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 22,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.113,
+        "tokens": 41174,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"logging log-group list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"logging log list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 23,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 8.113,
+        "tokens": 41016,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"monitoring metric-data summarize-metrics-data\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 24,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.146,
+        "tokens": 26495,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"monitoring alarm list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 25,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.134,
+        "tokens": 40959,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"usage-api usage-summary request-summarized-usages\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 26,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.278,
+        "tokens": 24173,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}, {\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 27,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.327,
+        "tokens": 41371,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"usage-api usage-summary request-summarized-usages\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 28,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.052,
+        "tokens": 26623,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"ce cluster list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 29,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.943,
+        "tokens": 26613,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"ce node-pool list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 30,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.418,
+        "tokens": 24152,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 31,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.451,
+        "tokens": 26498,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"db autonomous-database list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"db autonomous-database get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 32,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.298,
+        "tokens": 40601,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"kms management vault list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 33,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.567,
+        "tokens": 41115,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"cloud-guard problem list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 34,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.605,
+        "tokens": 26176,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"bastion session list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 35,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.14,
+        "tokens": 40814,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"resource-manager job list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 36,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.915,
+        "tokens": 23982,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_explicit_limit\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 37,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 2.195,
+        "tokens": 11785,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 38,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 2.719,
+        "tokens": 11789,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 39,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 7.138,
+        "tokens": 12205,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 40,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.584,
+        "tokens": 23852,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.484,
+        "tokens": 4527,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"iam user get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.771,
+        "tokens": 4559,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_required_option\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.67,
+        "tokens": 4453,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"iam policy list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.766,
+        "tokens": 5018,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.945,
+        "tokens": 4687,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.68,
+        "tokens": 4658,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.669,
+        "tokens": 5287,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}, {\"leaf\": \"compute instance list-vnics\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 8,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.018,
+        "tokens": 4908,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}, {\"leaf\": \"compute capacity-reservation list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 9,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.399,
+        "tokens": 4461,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 10,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.71,
+        "tokens": 4672,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_explicit_limit\", \"valid\": false}, {\"leaf\": \"compute shape list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 11,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.866,
+        "tokens": 4639,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 12,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.993,
+        "tokens": 5011,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 13,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.398,
+        "tokens": 4751,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": false, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 14,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.728,
+        "tokens": 4636,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_required_option\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 15,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.971,
+        "tokens": 4399,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"os object-lifecycle-policy get\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 16,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.692,
+        "tokens": 4466,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_required_option\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 17,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.098,
+        "tokens": 5135,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"bv volume list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 18,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 5.078,
+        "tokens": 4605,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"bv boot-volume-backup list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 19,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.24,
+        "tokens": 4688,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"fs file-system list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"fs mount-target list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 20,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.852,
+        "tokens": 4794,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 21,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.954,
+        "tokens": 4612,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_required_option\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 22,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.37,
+        "tokens": 4697,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 23,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.032,
+        "tokens": 4671,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"monitoring metric-data summarize-metrics-data\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 24,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.448,
+        "tokens": 4501,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 25,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.035,
+        "tokens": 4632,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"usage-api usage-summary request-summarized-usages\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 26,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.449,
+        "tokens": 4843,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 27,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 6.051,
+        "tokens": 5019,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"usage-api usage-summary request-summarized-usages\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 28,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.649,
+        "tokens": 4671,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"missing_explicit_limit\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 29,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 5.199,
+        "tokens": 4700,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 30,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 6.244,
+        "tokens": 5023,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}, {\"leaf\": \"compute instance list\", \"reason\": \"syntax_only\", \"valid\": true}, {\"leaf\": \"network vcn list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 31,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.499,
+        "tokens": 4516,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 32,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.728,
+        "tokens": 4472,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 33,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 4.257,
+        "tokens": 4591,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_enum_option\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 34,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.49,
+        "tokens": 4503,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"invalid_option_or_query_syntax\", \"valid\": false}], \"completed\": true, \"original_passed\": false, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 35,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 6.474,
+        "tokens": 8009,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"leaf\": \"resource-manager job list\", \"reason\": \"syntax_only\", \"valid\": true}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 36,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0,
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "time_seconds": 3.501,
+        "tokens": 4707,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": false,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [{\"reason\": \"all_and_limit_conflict\", \"valid\": false}], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 37,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 3.922,
+        "tokens": 2279,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 38,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 2.496,
+        "tokens": 2167,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 39,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 4.201,
+        "tokens": 2346,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    },
+    {
+      "eval_id": 40,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "time_seconds": 2.134,
+        "tokens": 2173,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Original fixture answer, required observation receipt and pinned CLI syntax all pass.",
+          "passed": true,
+          "evidence": "{\"answer_correct\": true, \"command_checks\": [], \"completed\": true, \"original_passed\": true, \"required_evidence_read\": true}"
+        }
+      ],
+      "notes": [
+        "Query meaning and service callbacks are not proven by syntax.",
+        "One development-corpus repetition; no held-out or native competitor claim."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.725,
+        "stddev": 0.4522,
+        "min": 0,
+        "max": 1
+      },
+      "time_seconds": {
+        "mean": 5.7356,
+        "stddev": 1.6677,
+        "min": 2.195,
+        "max": 8.438
+      },
+      "tokens": {
+        "mean": 31816.55,
+        "stddev": 9534.3554,
+        "min": 11785,
+        "max": 41737
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.325,
+        "stddev": 0.4743,
+        "min": 0,
+        "max": 1
+      },
+      "time_seconds": {
+        "mean": 4.354,
+        "stddev": 0.9976,
+        "min": 2.134,
+        "max": 6.474
+      },
+      "tokens": {
+        "mean": 4537.15,
+        "stddev": 955.8077,
+        "min": 2167,
+        "max": 8009
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.40",
+      "time_seconds": "+1.4",
+      "tokens": "+27279"
+    }
+  },
+  "notes": [
+    "Fresh native Skill plus restricted Read of shipped skills/references, versus no-plugin sessions; fixed synthetic MCP observations. Exact original answer/receipt/proposed-command grades retained. No model commands, OCI operations, live mutation defense or native competitor servers are executed. Preflight is excluded from task scores; one repetition cannot estimate run variance.",
+    "Pass-rate dispersion is across different tasks, not repeated-run uncertainty or statistical significance.",
+    "The paired comparison changes the plugin bundle and Read availability together; it does not isolate the causal effect of references.",
+    "Exact schema/fixture grading can reject semantically reasonable text; original results and failures remain unchanged.",
+    "Official aggregation/viewer format alone does not establish V27, V28 or a 100% release claim."
+  ]
+}

@@ -44,6 +44,10 @@ jobs:
         run: uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json
       - name: Recompute recorded command syntax audit (no commands executed)
         run: python scripts/eval/verify_native_command_audit.py evals/results/native-task-benchmark-2026-09-11.json evals/results/native-command-audit-2026-09-11.json
+      - name: Verify reference-enabled paired evidence (no model calls)
+        run: uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json
+      - name: Recompute reference-enabled command audit (no commands executed)
+        run: python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json
       - name: Preserve evaluation evidence
         if: always()
         uses: actions/upload-artifact@v4

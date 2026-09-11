@@ -56,6 +56,14 @@ def archived(identifier, path, command, key, *, owner):
         return {'id':identifier,'command':command,'result':'UNMEASURED','date':DATE,'detail':'No valid recorded evidence.','owner':owner}
 
 
+def reference_task_status(audit):
+    """A limited fixture score can fail the threshold, never certify full semantics."""
+    arm = audit['arms']['native-plugin']
+    if arm['attempts'] != 40 or not 0 <= arm['passed'] <= 40:
+        raise ValueError('Invalid paired task count')
+    return 'FAIL' if arm['passed'] / arm['attempts'] < 0.8 else 'PARTIAL'
+
+
 def distribution():
     with tempfile.TemporaryDirectory(prefix='oci-release-copy-') as directory:
         target=Path(directory)/'plugin'
@@ -164,6 +172,10 @@ def main():
         'uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json',
         note='Input-bound verification of 160 normalized synthetic MCP task attempts; retained grades and budget failures. This is not native four-product deployment or universal success.')
     add('V24-local',[str(cli_python),'scripts/ci/cli_drift.py'],'CLI_PYTHON scripts/ci/cli_drift.py')
+    add('V27-reference',PYTHON+['scripts/eval/verify_native_reference_benchmark.py','evals/results/native-reference-benchmark-2026-09-11.json'],
+        'uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json')
+    add('V27-syntax',[str(cli_python),'scripts/eval/verify_native_command_audit.py','evals/results/native-reference-benchmark-2026-09-11.json','evals/results/native-reference-command-audit-2026-09-11.json'],
+        'CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json')
     rows=[]
     # Independent read-only validations; no mutation tests are executed against OCI.
     with ThreadPoolExecutor(max_workers=3) as pool:
@@ -205,9 +217,25 @@ def main():
         {'id':'V27','command':host.get('command','claude plugin eval . --threshold 0.8'),'result':host['status'].upper(),'date':host['date'],'detail':host['reason']+' See evals/results/host.json. No qualifying host task score.','owner':'evaluation maintainers / installed host provider'},
         {'id':'V28','command':'uv run --frozen --project runtime python scripts/eval/head_to_head.py','result':'PARTIAL','date':DATE,'detail':'Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured.','owner':'evaluation maintainers'},
     ])
+    # An unavailable provider is no longer the only explanation: the paired
+    # alternative was executed and independently syntax-adjudicated. Its
+    # limited score cannot become PASS without the original semantic rubric.
+    try:
+        audit=json.loads((ROOT/'evals/results/native-reference-command-audit-2026-09-11.json').read_text())
+        arm=audit['arms']['native-plugin']
+        native=next(r for r in rows if r['id']=='V27')
+        native.update(result=reference_task_status(audit),owner='evaluation maintainers',
+            detail=f"Native evaluator remains early-access restricted. Reference-enabled paired alternative: {arm['passed']}/{arm['attempts']} after pinned syntax adjudication; minimum 80%. Original-task semantics remain a separate requirement. See docs/native-reference-validation-2026-09-11.md.")
+    except (OSError,ValueError,KeyError,TypeError):
+        pass
+    publication=ROOT/'docs/evidence/hosted-drift-publication-2026-09-11.json'
+    if publication.exists():
+        record=json.loads(publication.read_text())
+        if record.get('conclusion')=='success' and record.get('notification',{}).get('published'):
+            next(r for r in rows if r['id']=='V24')['detail']='Local drift check and recorded hosted issue publication passed; actual Tuesday scheduler event remains unobserved. See docs/evidence/hosted-drift-publication-2026-09-11.json.'
     extras={r['id']:r for r in rows if '-' in r['id']}
     rows=[r for r in rows if '-' not in r['id']]
-    for parent,sub in [('V16','V16-regeneration'),('V22','V22-history'),('V24','V24-local'),('V28','V28-offline'),('V28','V28-fixtures')]:
+    for parent,sub in [('V16','V16-regeneration'),('V22','V22-history'),('V24','V24-local'),('V27','V27-reference'),('V27','V27-syntax'),('V28','V28-offline'),('V28','V28-fixtures')]:
         row=next(r for r in rows if r['id']==parent);part=extras[sub]
         row['command']+='; '+part['command']
         if part['result']=='FAIL': row.update(result='FAIL',owner=part['owner'])
@@ -229,7 +257,7 @@ def main():
     for row in rows:
         detail=row['detail']+(' Owner: '+row['owner']+'.' if row.get('owner') else '')
         text+='| '+row['id']+' | `'+row['command'].replace('|','\\|')+'` | '+row['result']+' | '+row['date']+' | '+detail.replace('|','\\|')+' |\n'
-    text+='\nPASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 verify dated semantic-description selections and their input hashes; CI does not rerun inference. V24 is not a hosted schedule run. V27 and the original behavioral V28 remain unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.\n'
+    text+='\nPASS refers to the stated scope. V8 is the current measured OCI-leaf matrix; it does not measure non-OCI rules. V19/V20 verify dated semantic-description selections and their input hashes; CI does not rerun inference. V24 is not a hosted schedule run. V27 has a limited paired alternative measurement, not full original-task certification; native behavioral V28 remains unmeasured. V25/V26 verify bounded selected reads, not deployed workloads or complete inventories. The distributed tree is checked before any uv-created environment symlinks.\n'
     (output/'docs/validation-matrix.md').write_text(text)
     drift = diff_evidence(output)
     print(json.dumps({'ready':report['ready'],'output_dir':str(output),'drift':drift,'nonpassing':[r['id'] for r in rows if r['result']!='PASS']},indent=2))

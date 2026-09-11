@@ -5,7 +5,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts/ci'))
 from check_history import scan
-from release_gate import diff_evidence
+from release_gate import diff_evidence, reference_task_status
 
 
 def history_patch(body, *, old='a'*40, new='b'*40):
@@ -109,3 +109,8 @@ def test_saved_judge_scores_apply_explicit_merges():
     spec=importlib.util.spec_from_file_location('judge_score',ROOT/'scripts/eval/score_routing_model.py')
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     assert module.score(ROOT/'evals/results/routing-model-this-pack.json')[2] == 78
+
+
+def test_reference_score_below_threshold_fails_but_high_score_is_not_full_certificate():
+    assert reference_task_status({'arms': {'native-plugin': {'attempts': 40, 'passed': 29}}}) == 'FAIL'
+    assert reference_task_status({'arms': {'native-plugin': {'attempts': 40, 'passed': 40}}}) == 'PARTIAL'
