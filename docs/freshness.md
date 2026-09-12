@@ -55,3 +55,22 @@ capacity evidence. Recheck source cloud contracts and discounts with the custome
 Review workflow: read the report → inspect official source → assess affected skills and
 fixtures → validate → run `python scripts/ci/check_cloud_freshness.py --write-baseline`
 after review. Keep the resulting diff with the associated code/documentation changes.
+
+## September 12 source review
+
+The September 12 scheduled run failed because the AWS reference banner moved to
+CLI 2.36.44. Replacing only that banner version with 2.36.43 reproduces the main
+repository's previous full-text SHA-256; replacing it with 2.36.42 reproduces the
+community baseline. Thus both AWS alerts came entirely from the repeated Sphinx
+patch-version label, not a change to the command text.
+
+The checker now normalizes only the patch component in `AWS CLI 2.36.x Command
+Reference`. Major/minor banner changes, command fields, limits, examples and
+version requirements still affect the fingerprint. Other sources retain their
+existing comparison. Regression tests cover those boundaries; unavailable sources
+still fail. The [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html)
+retains the CPU/core/thread and memory fields used by the inventory normalizer;
+local `aws ec2 describe-instance-types help` also passed without account access.
+
+The refreshed baseline records reviewed observations, not dependency upgrades or
+new live-cloud validation. Real source changes still require review.

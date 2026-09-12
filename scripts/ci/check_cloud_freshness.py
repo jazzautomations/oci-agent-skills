@@ -46,6 +46,12 @@ def summarize(name,body):
     parser=PageText();parser.feed(body)
     text=re.sub(r'\s+',' ',' '.join(parser.parts)).strip()
     if len(text)<100:raise ValueError('Empty reference response')
+    if name=='aws_instance_contract':
+        # Sphinx repeats the CLI patch release in its title/navigation even when
+        # this command's documentation is unchanged. Keep major/minor changes
+        # and every version/value in the actual command contract visible.
+        text=re.sub(r'\bAWS CLI ([0-9]+\.[0-9]+)\.[0-9]+ Command Reference\b',
+                    r'AWS CLI \1.x Command Reference',text)
     return {'content_sha256':hashlib.sha256(text.encode()).hexdigest()}
 
 

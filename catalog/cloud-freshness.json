@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-09-11T16:58:09.672852+00:00",
+  "checked_at": "2026-09-12T11:48:29.668602+00:00",
   "facts": {
     "aws_instance_contract": {
-      "content_sha256": "fd46a7ba2e02df27c53ed852fc5df7a530448e8accb70e6c23af0bc8b3c26d5a"
+      "content_sha256": "439aedf2fd703eb02883db420cfa75d40c1ab9d0d7e18a9114c74e54692a31a7"
     },
     "azure_price_contract": {
       "content_sha256": "6f1105a3948aafc596ee260e492ac448fa19905a7a03cf97fe894f9367846161"

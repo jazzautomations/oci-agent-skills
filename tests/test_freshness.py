@@ -71,3 +71,34 @@ def test_source_failure_cannot_be_reported_as_unchanged(monkeypatch):
 def test_document_watch_ignores_script_and_whitespace():
     text = '<main>'+'Cloud contract. '*20+'</main>'
     assert freshness.summarize('oci_shapes',text)==freshness.summarize('oci_shapes',text+'<script>random()</script>\n')
+
+
+def aws_reference(version='2.36.43'):
+    banner = f'AWS CLI {version} Command Reference'
+    return (f'<title>{banner}</title><nav>{banner}</nav><main>'
+            'describe-instance-types --max-items 200 '
+            'VCpuInfo DefaultVCpus DefaultCores DefaultThreadsPerCore '
+            'MemoryInfo SizeInMiB 1024. Requires AWS CLI 2.36.43.'
+            f'</main><footer>{banner}</footer>')
+
+
+def test_aws_reference_ignores_only_banner_patch_release():
+    old = aws_reference()
+    new = aws_reference('2.36.44')
+    assert freshness.summarize('aws_instance_contract',old)==freshness.summarize('aws_instance_contract',new)
+    # This exception must not suppress versions in any other watched source.
+    assert freshness.summarize('oci_shapes',old)!=freshness.summarize('oci_shapes',new)
+
+
+@pytest.mark.parametrize('before,after', [
+    ('DefaultVCpus','MaximumVCpus'), ('1024','2048'),
+    ('--max-items 200','--max-items 100'),
+    ('Requires AWS CLI 2.36.43','Requires AWS CLI 2.36.44'),
+    ('AWS CLI 2.36.43 Command Reference','AWS CLI 2.37.0 Command Reference'),
+    ('AWS CLI 2.36.43 Command Reference','AWS CLI 3.0.0 Command Reference'),
+])
+def test_aws_reference_still_detects_contract_changes(before,after):
+    old = aws_reference()
+    previous = {'aws_instance_contract':freshness.summarize('aws_instance_contract',old)}
+    current = {'aws_instance_contract':freshness.summarize('aws_instance_contract',old.replace(before,after))}
+    assert freshness.compare(previous,current)[0]['source']=='aws_instance_contract'
