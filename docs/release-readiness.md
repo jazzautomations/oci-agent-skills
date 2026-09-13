@@ -1,6 +1,14 @@
 # Release readiness — September 13, 2026
 
-## September 13 follow-up
+## September 13 alternative-host follow-up
+
+The [alternative-host record](alternative-host-validation-2026-09-13.md) preserves
+the Devin attempts, its exhausted Free allowance and the separately authorized
+Cloud Guard setup refusal. Those actions followed the read-only phase below.
+No release criterion is waived, and repository visibility and licensing remain
+unchanged.
+
+## September 13 initial read-only follow-up
 
 The [current follow-up](validation-closeout-2026-09-13.md) records 589 passing
 standalone tests and 20 passing installation/adapter tests. Seven fresh scoped

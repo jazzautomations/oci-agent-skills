@@ -5,6 +5,10 @@ This follow-up rechecks its release criteria without changing their thresholds.
 The separate community repository has not received all subsequent development
 repairs. Repository visibility and licensing remain unchanged.
 
+The later [alternative-host follow-up](alternative-host-validation-2026-09-13.md)
+records the subsequent Devin/OpenCode experiments and separate account setup.
+The no-inference/no-mutation scope below describes this initial read-only phase.
+
 ## Fresh service and maintenance evidence
 
 The [sanitized record](evidence/validation-closeout-2026-09-13.json) includes seven

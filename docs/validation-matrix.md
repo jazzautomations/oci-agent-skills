@@ -5,6 +5,8 @@ The [September 13 follow-up](validation-closeout-2026-09-13.md) rechecks service
 prerequisites and the actual weekly schedule. Its standalone suite passes 589
 tests; the installation/adapter suite passes 20. Cloud Guard remains disabled,
 Support returns 403, and the selected settled cost window remains empty.
+The subsequent [alternative-host record](alternative-host-validation-2026-09-13.md)
+records Devin/OpenCode attempts and a separate Cloud Guard setup refusal.
 The paragraphs below preserve the earlier development measurements and their dates.
 
 The [service follow-up](service-prerequisites-2026-09-11.md) fixes an unconditional
@@ -30,8 +32,8 @@ for current full-task behavior. Historical 35/40 and 29/40 reports still replay
 with their original verifiers and retain their original grades.
 
 The [offline follow-up](offline-followup-2026-09-11.md) clarifies T04's name-only
-output contract. Its behavior has not been remeasured: the five-case regression
-is now historical too, and its FAIL is retained. Fresh inference is paused.
+output contract. At that date, its behavior had not been remeasured: the five-case regression
+became historical too, its FAIL was retained, and fresh inference was paused.
 
 [Earlier offline checks](evidence/offline-followup-checks-2026-09-11.json) passed
 **577 tests, three warnings, 104.74 seconds**, and the full CLI-help fence check.

@@ -1,0 +1,407 @@
+{
+  "recorded_at": "2026-09-13T05:05:45.717474+00:00",
+  "source_commit": "682c9f6afcc920ea0ec5adcf05a58e951f27c59d",
+  "scope": "Sanitized record of partial alternative-host attempts and separate authorized account setup; not full release certification. Raw host logs and private account data are excluded.",
+  "devin": {
+    "version": "3000.10.21",
+    "model": "swe-1-6-slow",
+    "plan": "Free",
+    "planned_pairs": 80,
+    "attempted_pairs": 24,
+    "unattempted_pairs": 56,
+    "phases": [
+      {
+        "protocol": "devin-native-skills-v1",
+        "report_sha256": "bb6361b6993f5479380b66f71db1895f063f748f2f924afb99737ab506927e66",
+        "arms": {
+          "native-skills": {
+            "attempts": 8,
+            "completed": 2,
+            "passed": 2
+          },
+          "without-skills": {
+            "attempts": 11,
+            "completed": 4,
+            "passed": 4
+          }
+        },
+        "source_fingerprints_unchanged": true,
+        "rows": [
+          {
+            "case": "T18",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "3e65d61fa5fc59033090edad3cb51f66a32ae312440fb0b2043f82906a2bb8ab"
+          },
+          {
+            "case": "T04",
+            "arm": "without-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "e71349eeb9b51b23f870f158594ebb3c1f3137d4411baa47620c9b287b8a77a2"
+          },
+          {
+            "case": "T37",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "54ca2190237373438e1d81e559329d5fa6923a06213f9ce80cdb832ab9fb735f"
+          },
+          {
+            "case": "T28",
+            "arm": "native-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "d03beb1204fde1cd9f581b88c4185437d87f00759982aabe286948ac0562c97a"
+          },
+          {
+            "case": "T24",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "2d6227967d05d990dd34c66dc200af34956b69d047d37503b255bd67b984f9ce"
+          },
+          {
+            "case": "T29",
+            "arm": "native-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "4ec4eec17b536204d0aaeb5d278fd01a97cb9e7aa4054dae38284605b748fbfe"
+          },
+          {
+            "case": "T31",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "7505fa27e9f4a3f49e15bc6348ad9fc9fff28ddfac156ab92f11100120684d6a"
+          },
+          {
+            "case": "T05",
+            "arm": "without-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "3e1ac267ee5003e9eda8a457ae39deb59540f2bdd9658b6eefd953c89b861605"
+          },
+          {
+            "case": "T31",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "7505fa27e9f4a3f49e15bc6348ad9fc9fff28ddfac156ab92f11100120684d6a"
+          },
+          {
+            "case": "T03",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "21969e3e8d795d2d4afd0f8099b72f8a3e53fb5769a9be7e2f69573c7927dc79"
+          },
+          {
+            "case": "T17",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "e8db991ffa2e9faa6107b58e098774917a8cce86daefd741fcc3bc841165ca13"
+          },
+          {
+            "case": "T19",
+            "arm": "without-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "4d3ac91906ef75a4ec31c47658e48c0440cf40f88ece23158e33ddc5b4a7c93f"
+          },
+          {
+            "case": "T39",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "ab9ac595c0549b3069b87e822043eaf3f9017e4f21e6ddcdbcab42a1694af2d0"
+          },
+          {
+            "case": "T29",
+            "arm": "without-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "4ec4eec17b536204d0aaeb5d278fd01a97cb9e7aa4054dae38284605b748fbfe"
+          },
+          {
+            "case": "T23",
+            "arm": "native-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "b0b0e3e5a5886c19dc5374b16ce5d70372a38a9c737703fd19102eda088584ae"
+          },
+          {
+            "case": "T12",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "1f89e4c18b106ae2c3b5fe8b27c22a014a53c200f4c3c3b51ec8cee4e3947c72"
+          },
+          {
+            "case": "T09",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "212ee66fd75e513cb3134b52049a2b482bd264cf483ec2551f7a7d74b3a56ce7"
+          },
+          {
+            "case": "T08",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "37a9bc91aaaa6f26785dd439819c65963c09f523c267b94e58f7ec75593d8537"
+          },
+          {
+            "case": "T07",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "4534f34d4cd44b8cf516b59da750ad21031ee9d1839e0170bdf5a68208df06f9"
+          }
+        ]
+      },
+      {
+        "protocol": "devin-native-skills-free-continuation-v1",
+        "report_sha256": "445c0035c1d0185e1cbe0b802061a4fd9af8aebe5ee31cbeec9b6185a45dc90f",
+        "arms": {
+          "native-skills": {
+            "attempts": 0,
+            "completed": 0,
+            "passed": 0
+          },
+          "without-skills": {
+            "attempts": 5,
+            "completed": 1,
+            "passed": 1
+          }
+        },
+        "source_fingerprints_unchanged": true,
+        "rows": [
+          {
+            "case": "T38",
+            "arm": "without-skills",
+            "completed": true,
+            "passed": true,
+            "input_sha256": "6265f7c37a91c90be6d3487bed4c5f51cc992dcd59c911eef63dec6f5320b2f4"
+          },
+          {
+            "case": "T33",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "7c0d9c6dc6c18faec58012942d44d17c71d366b9157108fa98314eed132e4718"
+          },
+          {
+            "case": "T02",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "22bae98efdc327269fc81bc71ca89dabf75e16db772819fb54f4e7c7f37ee42c"
+          },
+          {
+            "case": "T13",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "4236d13dfb158d675cfcc8bc34697dd0d096bbb8ab4c446081b72d721be21ed7"
+          },
+          {
+            "case": "T11",
+            "arm": "without-skills",
+            "completed": false,
+            "passed": false,
+            "input_sha256": "0de04bfee3809e2f94b7d1214d8af8262ce47a1a68ff04efe5a7b47afdc98daf"
+          }
+        ]
+      }
+    ],
+    "stop": "Existing weekly allowance exhausted; two final attempts refused. No paid upgrade, credits or fallback purchased.",
+    "billing_note": "Token list-price estimates are not actual or reconciled bills.",
+    "strict_score_replay": {
+      "devin-task-benchmark.json": {
+        "report_sha256": "bb6361b6993f5479380b66f71db1895f063f748f2f924afb99737ab506927e66",
+        "verified_original_inputs_and_scores": true
+      },
+      "devin-task-continuation.json": {
+        "report_sha256": "445c0035c1d0185e1cbe0b802061a4fd9af8aebe5ee31cbeec9b6185a45dc90f",
+        "verified_original_inputs_and_scores": true
+      }
+    },
+    "posthoc_format_diagnostic": "Removing only a surrounding Markdown fence recovers five native outputs; a sixth retains an invalid unchecked command. Original collection scores remain unchanged."
+  },
+  "cloud_guard": {
+    "date": "2026-09-13T04:43:36.569864+00:00",
+    "region": "us-chicago-1",
+    "scope": "Separately authorized basic Cloud Guard account setup; not repository validation.",
+    "self_manage_resources": false,
+    "update_attempted": true,
+    "agent_created_policies": 0,
+    "agent_created_targets": 0,
+    "agent_created_responders": 0,
+    "paid_features_requested": false,
+    "before_status": "DISABLED",
+    "update_error": {
+      "status": 404,
+      "code": "NotAuthorizedOrNotFound"
+    },
+    "after_status": "DISABLED",
+    "after_reporting_region": null
+  },
+  "local_validation": {
+    "tests_passed": 589,
+    "pytest_log_sha256": "206cdc7ef230a4b0997e4b5878efad113d81a5674bb2c3fa1c64bb34d3829689",
+    "strict_checks": [
+      {
+        "command": "python scripts/generate_read_contracts.py --check",
+        "returncode": 0,
+        "seconds": 18.97
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json",
+        "returncode": 0,
+        "seconds": 0.51
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json",
+        "returncode": 0,
+        "seconds": 0.1
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.03
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 0.99
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-task-benchmark-2026-09-11.json evals/results/native-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 13.91
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 0.9
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 12.96
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.34
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 0.99
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 14.54
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
+        "returncode": 0,
+        "seconds": 0.12
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
+        "returncode": 0,
+        "seconds": 0.35
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check",
+        "returncode": 0,
+        "seconds": 2.22
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help",
+        "returncode": 0,
+        "seconds": 237.43
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py",
+        "returncode": 0,
+        "seconds": 1.87
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+        "returncode": 0,
+        "seconds": 9.97
+      },
+      {
+        "command": "python scripts/inventory.py --format jsonl --index --check",
+        "returncode": 0,
+        "seconds": 14.46
+      },
+      {
+        "command": "uv run --frozen --project runtime oci-readonly-smoke",
+        "returncode": 0,
+        "seconds": 3.1
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_portable.py",
+        "returncode": 0,
+        "seconds": 0.13
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_budget.py",
+        "returncode": 0,
+        "seconds": 1.54
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_licenses.py",
+        "returncode": 0,
+        "seconds": 0.04
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py",
+        "returncode": 0,
+        "seconds": 0.58
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_template.py",
+        "returncode": 0,
+        "seconds": 0.04
+      },
+      {
+        "command": "python scripts/inventory.py --scripts --examples --check",
+        "returncode": 0,
+        "seconds": 0.42
+      },
+      {
+        "command": "python scripts/ci/check_manifests.py",
+        "returncode": 0,
+        "seconds": 0.07
+      },
+      {
+        "command": "python scripts/check_examples.py",
+        "returncode": 0,
+        "seconds": 12.29
+      },
+      {
+        "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
+        "returncode": 0,
+        "seconds": 0.52
+      }
+    ],
+    "all_strict_checks_passed": true
+  },
+  "open_release_gates": [
+    "V24",
+    "V25",
+    "V27",
+    "V28"
+  ],
+  "visibility_change": false,
+  "license_change": false
+}
