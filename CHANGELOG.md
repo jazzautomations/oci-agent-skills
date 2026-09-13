@@ -2,6 +2,13 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
+Correct OpenCode MCP configuration to map server names directly under `mcp`.
+Validate the generated configuration against the native 1.18.30 schema, including
+a regression rejecting the old nesting. A local deterministic host test activated
+skills and read references from both OCI packages without external inference.
+The [native comparison protocol](docs/native-package-comparison-2026-09-13.md)
+records fixed criteria and the outstanding external-data authorization.
+
 September 13 scope repair: query capacity headroom in the explicit target
 compartment, derive AD handling from exact limit metadata, and distinguish quota
 headroom from hardware capacity. Correct nonexistent helper references in eleven

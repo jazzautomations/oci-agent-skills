@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "MCP subtree exported by OpenCode 1.18.30 GET /doc on 2026-09-13; documentation: https://opencode.ai/docs/mcp-servers/. Full native OpenAPI SHA256: 1581ad5c795d7225e1086ab5e063fc73ef3d86147c4ec8591c8eb804116a6251",
+  "type": "object",
+  "additionalProperties": {
+    "anyOf": [
+      {
+        "$ref": "#/components/schemas/McpLocalConfig"
+      },
+      {
+        "$ref": "#/components/schemas/McpRemoteConfig"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "components": {
+    "schemas": {
+      "McpLocalConfig": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "local"
+            ],
+            "description": "Type of MCP server connection"
+          },
+          "command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Command and arguments to run the MCP server"
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "type",
+          "command"
+        ],
+        "additionalProperties": false
+      },
+      "McpRemoteConfig": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "remote"
+            ],
+            "description": "Type of MCP server connection"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL of the remote MCP server"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "oauth": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpOAuthConfig"
+              },
+              {
+                "type": "boolean",
+                "enum": [
+                  false
+                ]
+              }
+            ],
+            "description": "OAuth authentication configuration for the MCP server. Set to false to disable OAuth auto-detection."
+          },
+          "timeout": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "McpOAuthConfig": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "clientSecret": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "callbackPort": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "redirectUri": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -94,7 +94,7 @@ def test_installed_host_launcher(installed, host, tmp_path):
         file = ".gemini/settings.json" if host == "gemini" else ".cursor/mcp.json"
         spec = json.loads((installed / file).read_text())["mcpServers"]["oci-readonly"]
     else:
-        argv = json.loads((installed / "opencode.json").read_text())["mcp"]["servers"][
+        argv = json.loads((installed / "opencode.json").read_text())["mcp"][
             "oci-readonly"
         ]["command"]
         spec = {"command": argv[0], "args": argv[1:]}
@@ -116,6 +116,18 @@ def test_installed_host_launcher(installed, host, tmp_path):
                     )
 
     asyncio.run(check())
+
+
+def test_opencode_configuration_matches_native_schema(installed):
+    import jsonschema
+
+    schema = json.loads((ROOT / 'tests/fixtures/opencode-mcp-schema-1.18.30.json').read_text())
+    config = json.loads((installed / 'opencode.json').read_text())
+    validator = jsonschema.Draft202012Validator(schema)
+    validator.validate(config['mcp'])
+    # Starting the command directly would miss this host-level regression.
+    with pytest.raises(jsonschema.ValidationError):
+        validator.validate({'servers': config['mcp']})
 
 
 def test_installer_preserves_existing_target(tmp_path):

@@ -154,17 +154,15 @@ def host_configs(staging, final, selected):
                 json.dumps({"mcpServers": {"oci-readonly": spec}}, indent=2) + "\n"
             )
         else:
-            # OpenCode v2 schema. v1 requires a different mcp nesting.
+            # OpenCode maps server names directly under mcp.
             (staging / "opencode.json").write_text(
                 json.dumps(
                     {
                         "$schema": "https://opencode.ai/config.json",
                         "mcp": {
-                            "servers": {
-                                "oci-readonly": {
-                                    "type": "local",
-                                    "command": ["uv", *args],
-                                }
+                            "oci-readonly": {
+                                "type": "local",
+                                "command": ["uv", *args],
                             }
                         },
                     },

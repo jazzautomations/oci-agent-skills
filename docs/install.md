@@ -10,7 +10,7 @@ are needed only when calling credentialed tools. The bundled MCP exposes
 | Codex | Plugin manifest or copied `.agents/skills` | **UNGUARDED**; no automatic PreToolUse equivalent in this adapter |
 | Gemini CLI | Copied `.gemini/skills` | **UNGUARDED** |
 | Cursor | Copied `.cursor/skills` | **UNGUARDED** |
-| OpenCode v2 | Copied `.opencode/skills` | **UNGUARDED** |
+| OpenCode (configuration checked with 1.18.30) | Copied `.opencode/skills` | **UNGUARDED** |
 | Generic MCP client | Explicit stdio server configuration | Fixed read-only tools; host shell protection is separate |
 
 Run from this repository, choosing an absent or empty target outside it:
@@ -81,7 +81,7 @@ bash installers/install.sh --target /tmp/oci-cursor --host cursor --copy-shared 
 bash installers/install.sh --target /tmp/oci-opencode --host opencode --copy-shared --i-accept-unguarded
 ```
 
-Open the installed directory as the host project. These commands produce local configuration; they do not register marketplaces or modify global host settings. Interactive discovery remains host/version dependent. Codex's plugin manifest carries an inline MCP map and anchors the runtime working directory to the plugin root; its copied adapter uses .agents/skills and .codex/config.toml. Gemini and Cursor use .gemini/settings.json and .cursor/mcp.json. The opencode adapter targets the tested v2 schema; no v1 compatibility claim is made.
+Open the installed directory as the host project. These commands produce local configuration; they do not register marketplaces or modify global host settings. Interactive discovery remains host/version dependent. Codex's plugin manifest carries an inline MCP map and anchors the runtime working directory to the plugin root; its copied adapter uses .agents/skills and .codex/config.toml. Gemini and Cursor use .gemini/settings.json and .cursor/mcp.json. OpenCode maps server names directly under `mcp`, as specified in its [MCP configuration documentation](https://opencode.ai/docs/mcp-servers/); the generated map is checked against the native 1.18.30 schema. Keep the entire installed tree: copied host skill links also target the canonical `skills/` tree.
 
 To remove a copy, first move any user work out of its installation directory, then remove that directory yourself. The installer never overwrites a nonempty target and does not remove other installations.
 

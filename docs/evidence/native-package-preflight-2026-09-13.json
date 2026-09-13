@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "external_model_calls": 0,
+  "cloud_calls": 0,
+  "scope": "Local deterministic host transport only, excluded from model scores",
+  "results": [
+    {
+      "arm": "pack",
+      "registered": 37,
+      "loaded": [
+        "oci-compute"
+      ],
+      "linked_reference_read": true,
+      "source_unchanged": true
+    },
+    {
+      "arm": "adibirzu",
+      "registered": 27,
+      "loaded": [
+        "oci-networking-compute"
+      ],
+      "linked_reference_read": true,
+      "source_unchanged": true
+    }
+  ],
+  "host_version": "1.18.30",
+  "upstream_revision": "a4fbf70fd26d1a1c820261a7d4761ebb55457c84",
+  "original_log_sha256": "0f63b65925549458b2513c1716cc6bddeae87d9acb0992c954ad329fe666f693"
+}
