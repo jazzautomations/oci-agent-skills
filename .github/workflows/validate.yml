@@ -26,6 +26,10 @@ jobs:
       - run: python scripts/inventory.py --format jsonl --index --check
       - name: Verify offline read-option contracts against pinned CLI
         run: python scripts/generate_read_contracts.py --check
+      - name: Verify query response contracts against pinned CLI and SDK
+        run: python scripts/generate_query_response_contracts.py --check
+      - name: Check known response fields in authored command queries
+        run: uv run --frozen --project runtime python scripts/ci/check_query_fields.py
       - run: uv run --frozen --project runtime oci-readonly-smoke
       - run: uv run --frozen --project runtime python scripts/ci/check_portable.py
       - run: uv run --frozen --project runtime python scripts/ci/check_budget.py

@@ -1,0 +1,5025 @@
+{
+  "cli_source_sha256": {
+    "objectstorage_cli_extended.py": "dbfdd71df755be78424e87b8eae0036f37cca18583e04d545e159cc9e4641b03",
+    "oci_cli.cli_util": "66cfac179d1b28dffad9c0296b824f37a2722ad616ea8dbb21d27268c3a069fe"
+  },
+  "cli_version": "3.91.0",
+  "contracts": {
+    "audit event list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "cloud-events-version": {
+                  "type": "string"
+                },
+                "content-type": {
+                  "type": "string"
+                },
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "additional-details": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "availability-domain": {
+                      "type": "string"
+                    },
+                    "compartment-id": {
+                      "type": "string"
+                    },
+                    "compartment-name": {
+                      "type": "string"
+                    },
+                    "defined-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "event-grouping-id": {
+                      "type": "string"
+                    },
+                    "event-name": {
+                      "type": "string"
+                    },
+                    "freeform-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "identity": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "auth-type": {
+                          "type": "string"
+                        },
+                        "caller-id": {
+                          "type": "string"
+                        },
+                        "caller-name": {
+                          "type": "string"
+                        },
+                        "console-session-id": {
+                          "type": "string"
+                        },
+                        "credentials": {
+                          "type": "string"
+                        },
+                        "ip-address": {
+                          "type": "string"
+                        },
+                        "principal-id": {
+                          "type": "string"
+                        },
+                        "principal-name": {
+                          "type": "string"
+                        },
+                        "tenant-id": {
+                          "type": "string"
+                        },
+                        "user-agent": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "request": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "action": {
+                          "type": "string"
+                        },
+                        "headers": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "parameters": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "path": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "resource-id": {
+                      "type": "string"
+                    },
+                    "resource-name": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "headers": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "response-time": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "state-change": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "current": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "previous": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "event-id": {
+                  "type": "string"
+                },
+                "event-time": {
+                  "type": "string"
+                },
+                "event-type": {
+                  "type": "string"
+                },
+                "event-type-version": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.audit.AuditClient.list_events",
+      "sdk_return": "list of oci.audit.models.AuditEvent"
+    },
+    "bastion session list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "bastion-id": {
+                  "type": "string"
+                },
+                "bastion-name": {
+                  "type": "string"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lifecycle-details": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "session-ttl-in-seconds": {
+                  "type": "number"
+                },
+                "target-resource-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "session-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-updated": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.bastion.BastionClient.list_sessions",
+      "sdk_return": "list of oci.bastion.models.SessionSummary"
+    },
+    "budgets budget budget list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "actual-spend": {
+                  "type": "number"
+                },
+                "alert-rule-count": {
+                  "type": "number"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "budget-processing-period-start-offset": {
+                  "type": "number"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "end-date": {
+                  "type": "string"
+                },
+                "forecasted-spend": {
+                  "type": "number"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "processing-period-type": {
+                  "type": "string"
+                },
+                "reset-period": {
+                  "type": "string"
+                },
+                "start-date": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "target-compartment-id": {
+                  "type": "string"
+                },
+                "target-type": {
+                  "type": "string"
+                },
+                "targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-spend-computed": {
+                  "type": "string"
+                },
+                "time-updated": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.budget.BudgetClient.list_budgets",
+      "sdk_return": "list of oci.budget.models.BudgetSummary"
+    },
+    "bv boot-volume-backup list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "boot-volume-id": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "expiration-time": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "image-id": {
+                  "type": "string"
+                },
+                "is-indefinite-retention-enabled": {
+                  "type": "boolean"
+                },
+                "is-prevent-deletion-enabled": {
+                  "type": "boolean"
+                },
+                "is-retention-lock-enabled": {
+                  "type": "boolean"
+                },
+                "kms-key-id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "retention-period": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "retention-time-amount": {
+                      "type": "number"
+                    },
+                    "retention-time-unit": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "size-in-gbs": {
+                  "type": "number"
+                },
+                "source-boot-volume-backup-id": {
+                  "type": "string"
+                },
+                "source-type": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-request-received": {
+                  "type": "string"
+                },
+                "time-retention-expires-at": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "unique-size-in-gbs": {
+                  "type": "number"
+                },
+                "volume-group-backup-id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.BlockstorageClient.list_boot_volume_backups",
+      "sdk_return": "list of oci.core.models.BootVolumeBackup"
+    },
+    "bv volume list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "auto-tuned-vpus-per-gb": {
+                  "type": "number"
+                },
+                "autotune-policies": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "autotune-type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "availability-domain": {
+                  "type": "string"
+                },
+                "block-volume-replicas": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "availability-domain": {
+                        "type": "string"
+                      },
+                      "block-volume-replica-id": {
+                        "type": "string"
+                      },
+                      "display-name": {
+                        "type": "string"
+                      },
+                      "kms-key-id": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "cluster-placement-group-id": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "is-auto-tune-enabled": {
+                  "type": "boolean"
+                },
+                "is-hydrated": {
+                  "type": "boolean"
+                },
+                "is-reservations-enabled": {
+                  "type": "boolean"
+                },
+                "kms-key-id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "size-in-gbs": {
+                  "type": "number"
+                },
+                "size-in-mbs": {
+                  "type": "number"
+                },
+                "source-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "volume-group-id": {
+                  "type": "string"
+                },
+                "vpus-per-gb": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.BlockstorageClient.list_volumes",
+      "sdk_return": "list of oci.core.models.Volume"
+    },
+    "ce cluster list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "available-kubernetes-upgrades": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "cluster-pod-network-options": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "cni-type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "endpoint-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-public-ip-enabled": {
+                      "type": "boolean"
+                    },
+                    "nsg-ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "security-attributes": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "subnet-id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "endpoints": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "ipv6-endpoint": {
+                      "type": "string"
+                    },
+                    "kubernetes": {
+                      "type": "string"
+                    },
+                    "private-endpoint": {
+                      "type": "string"
+                    },
+                    "public-endpoint": {
+                      "type": "string"
+                    },
+                    "vcn-hostname-endpoint": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "image-policy-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-policy-enabled": {
+                      "type": "boolean"
+                    },
+                    "key-details": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "kms-key-id": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "kubernetes-version": {
+                  "type": "string"
+                },
+                "lifecycle-details": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "metadata": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "created-by-user-id": {
+                      "type": "string"
+                    },
+                    "created-by-work-request-id": {
+                      "type": "string"
+                    },
+                    "deleted-by-user-id": {
+                      "type": "string"
+                    },
+                    "deleted-by-work-request-id": {
+                      "type": "string"
+                    },
+                    "time-created": {
+                      "type": "string"
+                    },
+                    "time-credential-expiration": {
+                      "type": "string"
+                    },
+                    "time-deleted": {
+                      "type": "string"
+                    },
+                    "time-updated": {
+                      "type": "string"
+                    },
+                    "updated-by-user-id": {
+                      "type": "string"
+                    },
+                    "updated-by-work-request-id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "add-ons": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "is-kubernetes-dashboard-enabled": {
+                          "type": "boolean"
+                        },
+                        "is-tiller-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "admission-controller-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "is-pod-security-policy-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "ip-families": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "kubernetes-network-config": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "pods-cidr": {
+                          "type": "string"
+                        },
+                        "services-cidr": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "open-id-connect-discovery": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "is-open-id-connect-discovery-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "open-id-connect-token-authentication-config": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "ca-certificate": {
+                          "type": "string"
+                        },
+                        "client-id": {
+                          "type": "string"
+                        },
+                        "configuration-file": {
+                          "type": "string"
+                        },
+                        "groups-claim": {
+                          "type": "string"
+                        },
+                        "groups-prefix": {
+                          "type": "string"
+                        },
+                        "is-open-id-connect-auth-enabled": {
+                          "type": "boolean"
+                        },
+                        "issuer-url": {
+                          "type": "string"
+                        },
+                        "required-claims": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "signing-algorithms": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "username-claim": {
+                          "type": "string"
+                        },
+                        "username-prefix": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "persistent-volume-config": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "defined-tags": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "freeform-tags": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "service-lb-config": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "backend-nsg-ids": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "defined-tags": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "freeform-tags": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "service-lb-subnet-ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "vcn-id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.container_engine.ContainerEngineClient.list_clusters",
+      "sdk_return": "list of oci.container_engine.models.ClusterSummary"
+    },
+    "ce node-pool list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "cluster-id": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "initial-node-labels": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "kubernetes-version": {
+                  "type": "string"
+                },
+                "lifecycle-details": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "network-launch-type": {
+                  "type": "string"
+                },
+                "node-config-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "compute-cluster-id": {
+                      "type": "string"
+                    },
+                    "defined-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "freeform-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "is-pv-encryption-in-transit-enabled": {
+                      "type": "boolean"
+                    },
+                    "kms-key-id": {
+                      "type": "string"
+                    },
+                    "node-pool-pod-network-option-details": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "cni-type": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "nsg-ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "placement-configs": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "availability-domain": {
+                            "type": "string"
+                          },
+                          "capacity-reservation-id": {
+                            "type": "string"
+                          },
+                          "fault-domains": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "host-group-id": {
+                            "type": "string"
+                          },
+                          "preemptible-node-config": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "preemption-action": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "type": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "subnet-id": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "size": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "node-eviction-node-pool-settings": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "eviction-grace-duration": {
+                      "type": "string"
+                    },
+                    "is-force-action-after-grace-duration": {
+                      "type": "boolean"
+                    },
+                    "is-force-delete-after-grace-duration": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                },
+                "node-image-id": {
+                  "type": "string"
+                },
+                "node-image-name": {
+                  "type": "string"
+                },
+                "node-pool-cycling-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "cycle-modes": {
+                      "items": {},
+                      "type": "array"
+                    },
+                    "is-node-cycling-enabled": {
+                      "type": "boolean"
+                    },
+                    "maximum-surge": {
+                      "type": "string"
+                    },
+                    "maximum-unavailable": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "node-shape": {
+                  "type": "string"
+                },
+                "node-shape-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "memory-in-gbs": {
+                      "type": "number"
+                    },
+                    "ocpus": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "node-source": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "source-name": {
+                      "type": "string"
+                    },
+                    "source-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "node-source-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "source-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "primary-vnic": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "security-attributes": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "quantity-per-subnet": {
+                  "type": "number"
+                },
+                "secondary-vnics": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "create-vnic-details": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "application-resources": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "assign-ipv6-ip": {
+                            "type": "boolean"
+                          },
+                          "assign-public-ip": {
+                            "type": "boolean"
+                          },
+                          "defined-tags": {
+                            "additionalProperties": {},
+                            "properties": {},
+                            "type": "object"
+                          },
+                          "display-name": {
+                            "type": "string"
+                          },
+                          "freeform-tags": {
+                            "additionalProperties": {},
+                            "properties": {},
+                            "type": "object"
+                          },
+                          "ip-count": {
+                            "type": "number"
+                          },
+                          "ipv6-address-ipv6-subnet-cidr-pair-details": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "ipv6-address": {
+                                  "type": "string"
+                                },
+                                "ipv6-subnet-cidr": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "nsg-ids": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "security-attributes": {
+                            "additionalProperties": {},
+                            "properties": {},
+                            "type": "object"
+                          },
+                          "skip-source-dest-check": {
+                            "type": "boolean"
+                          },
+                          "subnet-id": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "display-name": {
+                        "type": "string"
+                      },
+                      "nic-index": {
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "ssh-public-key": {
+                  "type": "string"
+                },
+                "subnet-ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.container_engine.ContainerEngineClient.list_node_pools",
+      "sdk_return": "list of oci.container_engine.models.NodePoolSummary"
+    },
+    "cloud-guard problem list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "compartment-id": {
+                      "type": "string"
+                    },
+                    "detector-id": {
+                      "type": "string"
+                    },
+                    "detector-rule-id": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "labels": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "lifecycle-detail": {
+                      "type": "string"
+                    },
+                    "lifecycle-state": {
+                      "type": "string"
+                    },
+                    "locks": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          },
+                          "related-resource-id": {
+                            "type": "string"
+                          },
+                          "time-created": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "region": {
+                      "type": "string"
+                    },
+                    "regions": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "resource-id": {
+                      "type": "string"
+                    },
+                    "resource-name": {
+                      "type": "string"
+                    },
+                    "resource-type": {
+                      "type": "string"
+                    },
+                    "risk-level": {
+                      "type": "string"
+                    },
+                    "risk-score": {
+                      "type": "number"
+                    },
+                    "target-id": {
+                      "type": "string"
+                    },
+                    "time-first-detected": {
+                      "type": "string"
+                    },
+                    "time-last-detected": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "locks": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "related-resource-id": {
+                      "type": "string"
+                    },
+                    "time-created": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.cloud_guard.CloudGuardClient.list_problems",
+      "sdk_return": "oci.cloud_guard.models.ProblemCollection"
+    },
+    "compute instance list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "agent-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "are-all-plugins-disabled": {
+                      "type": "boolean"
+                    },
+                    "is-management-disabled": {
+                      "type": "boolean"
+                    },
+                    "is-monitoring-disabled": {
+                      "type": "boolean"
+                    },
+                    "plugins-config": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "desired-state": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "availability-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-live-migration-preferred": {
+                      "type": "boolean"
+                    },
+                    "recovery-action": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "availability-domain": {
+                  "type": "string"
+                },
+                "capacity-reservation-id": {
+                  "type": "string"
+                },
+                "cluster-placement-group-id": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "dedicated-vm-host-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "extended-metadata": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "fault-domain": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "image-id": {
+                  "type": "string"
+                },
+                "instance-configuration-id": {
+                  "type": "string"
+                },
+                "instance-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "are-legacy-imds-endpoints-disabled": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                },
+                "ipxe-script": {
+                  "type": "string"
+                },
+                "is-ai-enterprise-enabled": {
+                  "type": "boolean"
+                },
+                "is-cross-numa-node": {
+                  "type": "boolean"
+                },
+                "launch-mode": {
+                  "type": "string"
+                },
+                "launch-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "boot-volume-type": {
+                      "type": "string"
+                    },
+                    "firmware": {
+                      "type": "string"
+                    },
+                    "is-consistent-volume-naming-enabled": {
+                      "type": "boolean"
+                    },
+                    "is-pv-encryption-in-transit-enabled": {
+                      "type": "boolean"
+                    },
+                    "network-type": {
+                      "type": "string"
+                    },
+                    "remote-data-volume-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "licensing-configs": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "license-type": {
+                        "type": "string"
+                      },
+                      "os-version": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "metadata": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "placement-constraint-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "platform-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-measured-boot-enabled": {
+                      "type": "boolean"
+                    },
+                    "is-memory-encryption-enabled": {
+                      "type": "boolean"
+                    },
+                    "is-secure-boot-enabled": {
+                      "type": "boolean"
+                    },
+                    "is-trusted-platform-module-enabled": {
+                      "type": "boolean"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "preemptible-instance-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "preemption-action": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "security-attributes": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "security-attributes-state": {
+                  "type": "string"
+                },
+                "shape": {
+                  "type": "string"
+                },
+                "shape-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "baseline-ocpu-utilization": {
+                      "type": "string"
+                    },
+                    "gpu-description": {
+                      "type": "string"
+                    },
+                    "gpus": {
+                      "type": "number"
+                    },
+                    "local-disk-description": {
+                      "type": "string"
+                    },
+                    "local-disks": {
+                      "type": "number"
+                    },
+                    "local-disks-total-size-in-gbs": {
+                      "type": "number"
+                    },
+                    "local-volume-size-in-gbs": {
+                      "type": "number"
+                    },
+                    "max-vnic-attachments": {
+                      "type": "number"
+                    },
+                    "memory-in-gbs": {
+                      "type": "number"
+                    },
+                    "networking-bandwidth-in-gbps": {
+                      "type": "number"
+                    },
+                    "ocpus": {
+                      "type": "number"
+                    },
+                    "processor-description": {
+                      "type": "string"
+                    },
+                    "resource-management": {
+                      "type": "string"
+                    },
+                    "vcpus": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "source-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "source-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-maintenance-reboot-due": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.ComputeClient.list_instances",
+      "sdk_return": "list of oci.core.models.Instance"
+    },
+    "compute instance list-vnics": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "availability-domain": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "hostname-label": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "ipv6-addresses": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "is-primary": {
+                  "type": "boolean"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "mac-address": {
+                  "type": "string"
+                },
+                "nsg-ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "private-ip": {
+                  "type": "string"
+                },
+                "public-ip": {
+                  "type": "string"
+                },
+                "route-table-id": {
+                  "type": "string"
+                },
+                "security-attributes": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "skip-source-dest-check": {
+                  "type": "boolean"
+                },
+                "subnet-id": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "vlan-id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "Composite CLI read; Vnic result objects",
+      "sdk_return": "list of oci.core.models.Vnic"
+    },
+    "compute shape list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "baseline-ocpu-utilizations": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "billing-type": {
+                  "type": "string"
+                },
+                "gpu-description": {
+                  "type": "string"
+                },
+                "gpus": {
+                  "type": "number"
+                },
+                "is-billed-for-stopped-instance": {
+                  "type": "boolean"
+                },
+                "is-flexible": {
+                  "type": "boolean"
+                },
+                "is-live-migration-supported": {
+                  "type": "boolean"
+                },
+                "is-subcore": {
+                  "type": "boolean"
+                },
+                "local-disk-description": {
+                  "type": "string"
+                },
+                "local-disks": {
+                  "type": "number"
+                },
+                "local-disks-total-size-in-gbs": {
+                  "type": "number"
+                },
+                "max-vnic-attachment-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "default-per-ocpu": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "min": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "max-vnic-attachments": {
+                  "type": "number"
+                },
+                "memory-in-gbs": {
+                  "type": "number"
+                },
+                "memory-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "default-per-ocpu-in-g-bs": {
+                      "type": "number"
+                    },
+                    "max-in-g-bs": {
+                      "type": "number"
+                    },
+                    "max-per-numa-node-in-gbs": {
+                      "type": "number"
+                    },
+                    "max-per-ocpu-in-gbs": {
+                      "type": "number"
+                    },
+                    "min-in-g-bs": {
+                      "type": "number"
+                    },
+                    "min-per-ocpu-in-gbs": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "min-total-baseline-ocpus-required": {
+                  "type": "number"
+                },
+                "network-ports": {
+                  "type": "number"
+                },
+                "networking-bandwidth-in-gbps": {
+                  "type": "number"
+                },
+                "networking-bandwidth-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "default-per-ocpu-in-gbps": {
+                      "type": "number"
+                    },
+                    "max-in-gbps": {
+                      "type": "number"
+                    },
+                    "min-in-gbps": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "ocpu-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "max": {
+                      "type": "number"
+                    },
+                    "max-per-numa-node": {
+                      "type": "number"
+                    },
+                    "min": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "ocpus": {
+                  "type": "number"
+                },
+                "platform-config-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "access-control-service-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "input-output-memory-management-unit-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "measured-boot-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "memory-encryption-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "numa-nodes-per-socket-platform-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "default-value": {
+                          "type": "string"
+                        },
+                        "service-allowed-values": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "percentage-of-cores-enabled-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "default-value": {
+                          "type": "number"
+                        },
+                        "max": {
+                          "type": "number"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "secure-boot-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "symmetric-multi-threading-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "trusted-platform-module-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "virtual-instructions-options": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allowed-values": {
+                          "items": {
+                            "type": "boolean"
+                          },
+                          "type": "array"
+                        },
+                        "is-default-enabled": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "platform-names": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "processor-description": {
+                  "type": "string"
+                },
+                "quota-names": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "rdma-bandwidth-in-gbps": {
+                  "type": "number"
+                },
+                "rdma-ports": {
+                  "type": "number"
+                },
+                "recommended-alternatives": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "shape-name": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "resize-compatible-shapes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "shape": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.ComputeClient.list_shapes",
+      "sdk_return": "list of oci.core.models.Shape"
+    },
+    "db autonomous-database list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "access-types": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "actual-used-data-storage-size-in-tbs": {
+                  "type": "number"
+                },
+                "ad-scheduled-for-update": {
+                  "type": "string"
+                },
+                "additional-attributes": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "allocated-storage-size-in-tbs": {
+                  "type": "number"
+                },
+                "apex-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "apex-version": {
+                      "type": "string"
+                    },
+                    "ords-version": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "are-primary-whitelisted-ips-used": {
+                  "type": "boolean"
+                },
+                "auto-refresh-frequency-in-seconds": {
+                  "type": "number"
+                },
+                "auto-refresh-point-lag-in-seconds": {
+                  "type": "number"
+                },
+                "autonomous-container-database-id": {
+                  "type": "string"
+                },
+                "autonomous-database-maintenance-window": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "day-of-week": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "maintenance-end-time": {
+                      "type": "string"
+                    },
+                    "maintenance-start-time": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "autonomous-maintenance-schedule-type": {
+                  "type": "string"
+                },
+                "availability-domain": {
+                  "type": "string"
+                },
+                "available-upgrade-versions": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "backup-config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "manual-backup-bucket-name": {
+                      "type": "string"
+                    },
+                    "manual-backup-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "backup-retention-period-in-days": {
+                  "type": "number"
+                },
+                "byol-compute-count-limit": {
+                  "type": "number"
+                },
+                "character-set": {
+                  "type": "string"
+                },
+                "clone-table-space-list": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                "clone-type": {
+                  "type": "string"
+                },
+                "cluster-placement-group-id": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "compute-count": {
+                  "type": "number"
+                },
+                "compute-model": {
+                  "type": "string"
+                },
+                "connection-strings": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "all-connection-strings": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "dedicated": {
+                      "type": "string"
+                    },
+                    "high": {
+                      "type": "string"
+                    },
+                    "low": {
+                      "type": "string"
+                    },
+                    "medium": {
+                      "type": "string"
+                    },
+                    "profiles": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "consumer-group": {
+                            "type": "string"
+                          },
+                          "display-name": {
+                            "type": "string"
+                          },
+                          "host-format": {
+                            "type": "string"
+                          },
+                          "is-regional": {
+                            "type": "boolean"
+                          },
+                          "protocol": {
+                            "type": "string"
+                          },
+                          "session-mode": {
+                            "type": "string"
+                          },
+                          "syntax-format": {
+                            "type": "string"
+                          },
+                          "tls-authentication": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "connection-urls": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "apex-url": {
+                      "type": "string"
+                    },
+                    "database-transforms-url": {
+                      "type": "string"
+                    },
+                    "graph-studio-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-notebook-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-user-management-url": {
+                      "type": "string"
+                    },
+                    "mongo-db-url": {
+                      "type": "string"
+                    },
+                    "ords-url": {
+                      "type": "string"
+                    },
+                    "spatial-studio-url": {
+                      "type": "string"
+                    },
+                    "sql-dev-web-url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "cpu-core-count": {
+                  "type": "number"
+                },
+                "customer-contacts": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "data-safe-status": {
+                  "type": "string"
+                },
+                "data-storage-size-in-gbs": {
+                  "type": "number"
+                },
+                "data-storage-size-in-tbs": {
+                  "type": "number"
+                },
+                "database-edition": {
+                  "type": "string"
+                },
+                "database-management-status": {
+                  "type": "string"
+                },
+                "dataguard-region-type": {
+                  "type": "string"
+                },
+                "db-name": {
+                  "type": "string"
+                },
+                "db-tools-details": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "compute-count": {
+                        "type": "number"
+                      },
+                      "is-enabled": {
+                        "type": "boolean"
+                      },
+                      "max-idle-time-in-minutes": {
+                        "type": "number"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "db-version": {
+                  "type": "string"
+                },
+                "db-workload": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "disaster-recovery-region-type": {
+                  "type": "string"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "encryption-key": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "provider": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "encryption-key-history-entry": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "encryption-key": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provider": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "time-activated": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "encryption-key-location-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "provider-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "failed-data-recovery-in-seconds": {
+                  "type": "number"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "in-memory-area-in-gbs": {
+                  "type": "number"
+                },
+                "in-memory-percentage": {
+                  "type": "number"
+                },
+                "infrastructure-type": {
+                  "type": "string"
+                },
+                "is-access-control-enabled": {
+                  "type": "boolean"
+                },
+                "is-auto-scaling-enabled": {
+                  "type": "boolean"
+                },
+                "is-auto-scaling-for-storage-enabled": {
+                  "type": "boolean"
+                },
+                "is-backup-retention-locked": {
+                  "type": "boolean"
+                },
+                "is-data-guard-enabled": {
+                  "type": "boolean"
+                },
+                "is-dedicated": {
+                  "type": "boolean"
+                },
+                "is-dev-tier": {
+                  "type": "boolean"
+                },
+                "is-free-tier": {
+                  "type": "boolean"
+                },
+                "is-local-data-guard-enabled": {
+                  "type": "boolean"
+                },
+                "is-mtls-connection-required": {
+                  "type": "boolean"
+                },
+                "is-preview": {
+                  "type": "boolean"
+                },
+                "is-reconnect-clone-enabled": {
+                  "type": "boolean"
+                },
+                "is-refreshable-clone": {
+                  "type": "boolean"
+                },
+                "is-remote-data-guard-enabled": {
+                  "type": "boolean"
+                },
+                "key-history-entry": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "kms-key-version-id": {
+                        "type": "string"
+                      },
+                      "time-activated": {
+                        "type": "string"
+                      },
+                      "vault-id": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "key-store-id": {
+                  "type": "string"
+                },
+                "key-store-wallet-name": {
+                  "type": "string"
+                },
+                "kms-key-id": {
+                  "type": "string"
+                },
+                "kms-key-lifecycle-details": {
+                  "type": "string"
+                },
+                "kms-key-version-id": {
+                  "type": "string"
+                },
+                "license-model": {
+                  "type": "string"
+                },
+                "lifecycle-details": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "local-adg-auto-failover-max-data-loss-limit": {
+                  "type": "number"
+                },
+                "local-adg-resource-pool-leader-id": {
+                  "type": "string"
+                },
+                "local-disaster-recovery-type": {
+                  "type": "string"
+                },
+                "local-standby-db": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "availability-domain": {
+                      "type": "string"
+                    },
+                    "external-location-zone": {
+                      "type": "string"
+                    },
+                    "lag-time-in-seconds": {
+                      "type": "number"
+                    },
+                    "lifecycle-details": {
+                      "type": "string"
+                    },
+                    "lifecycle-state": {
+                      "type": "string"
+                    },
+                    "maintenance-target-component": {
+                      "type": "string"
+                    },
+                    "time-data-guard-role-changed": {
+                      "type": "string"
+                    },
+                    "time-disaster-recovery-role-changed": {
+                      "type": "string"
+                    },
+                    "time-maintenance-begin": {
+                      "type": "string"
+                    },
+                    "time-maintenance-end": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "long-term-backup-schedule": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-disabled": {
+                      "type": "boolean"
+                    },
+                    "repeat-cadence": {
+                      "type": "string"
+                    },
+                    "retention-period-in-days": {
+                      "type": "number"
+                    },
+                    "time-of-backup": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "maintenance-target-component": {
+                  "type": "string"
+                },
+                "memory-per-compute-unit-in-gbs": {
+                  "type": "number"
+                },
+                "memory-per-oracle-compute-unit-in-gbs": {
+                  "type": "number"
+                },
+                "ncharacter-set": {
+                  "type": "string"
+                },
+                "net-services-architecture": {
+                  "type": "string"
+                },
+                "next-long-term-backup-time-stamp": {
+                  "type": "string"
+                },
+                "nsg-ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "ocpu-count": {
+                  "type": "number"
+                },
+                "open-mode": {
+                  "type": "string"
+                },
+                "operations-insights-status": {
+                  "type": "string"
+                },
+                "peer-db-ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "permission-level": {
+                  "type": "string"
+                },
+                "private-endpoint": {
+                  "type": "string"
+                },
+                "private-endpoint-ip": {
+                  "type": "string"
+                },
+                "private-endpoint-label": {
+                  "type": "string"
+                },
+                "provisionable-cpus": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                "public-connection-urls": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "apex-url": {
+                      "type": "string"
+                    },
+                    "database-transforms-url": {
+                      "type": "string"
+                    },
+                    "graph-studio-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-notebook-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-user-management-url": {
+                      "type": "string"
+                    },
+                    "mongo-db-url": {
+                      "type": "string"
+                    },
+                    "ords-url": {
+                      "type": "string"
+                    },
+                    "spatial-studio-url": {
+                      "type": "string"
+                    },
+                    "sql-dev-web-url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "public-endpoint": {
+                  "type": "string"
+                },
+                "refreshable-mode": {
+                  "type": "string"
+                },
+                "refreshable-status": {
+                  "type": "string"
+                },
+                "remote-disaster-recovery-configuration": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "disaster-recovery-type": {
+                      "type": "string"
+                    },
+                    "is-replicate-automatic-backups": {
+                      "type": "boolean"
+                    },
+                    "is-snapshot-standby": {
+                      "type": "boolean"
+                    },
+                    "time-snapshot-standby-enabled-till": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "resource-pool-leader-id": {
+                  "type": "string"
+                },
+                "resource-pool-summary": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "available-compute-capacity": {
+                      "type": "number"
+                    },
+                    "available-storage-capacity-in-tbs": {
+                      "type": "number"
+                    },
+                    "is-disabled": {
+                      "type": "boolean"
+                    },
+                    "pool-size": {
+                      "type": "number"
+                    },
+                    "pool-storage-size-in-tbs": {
+                      "type": "number"
+                    },
+                    "total-compute-capacity": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "scheduled-operations": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "day-of-week": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "scheduled-start-time": {
+                        "type": "string"
+                      },
+                      "scheduled-stop-time": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "security-attributes": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "service-console-url": {
+                  "type": "string"
+                },
+                "source-id": {
+                  "type": "string"
+                },
+                "standby-db": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "availability-domain": {
+                      "type": "string"
+                    },
+                    "external-location-zone": {
+                      "type": "string"
+                    },
+                    "lag-time-in-seconds": {
+                      "type": "number"
+                    },
+                    "lifecycle-details": {
+                      "type": "string"
+                    },
+                    "lifecycle-state": {
+                      "type": "string"
+                    },
+                    "maintenance-target-component": {
+                      "type": "string"
+                    },
+                    "time-data-guard-role-changed": {
+                      "type": "string"
+                    },
+                    "time-disaster-recovery-role-changed": {
+                      "type": "string"
+                    },
+                    "time-maintenance-begin": {
+                      "type": "string"
+                    },
+                    "time-maintenance-end": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "standby-whitelisted-ips": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "subnet-id": {
+                  "type": "string"
+                },
+                "subscription-id": {
+                  "type": "string"
+                },
+                "supported-regions-to-clone-to": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-data-guard-role-changed": {
+                  "type": "string"
+                },
+                "time-deletion-of-free-autonomous-database": {
+                  "type": "string"
+                },
+                "time-disaster-recovery-role-changed": {
+                  "type": "string"
+                },
+                "time-earliest-available-ad-update": {
+                  "type": "string"
+                },
+                "time-earliest-available-db-version-upgrade": {
+                  "type": "string"
+                },
+                "time-latest-available-ad-update": {
+                  "type": "string"
+                },
+                "time-latest-available-db-version-upgrade": {
+                  "type": "string"
+                },
+                "time-local-data-guard-enabled": {
+                  "type": "string"
+                },
+                "time-maintenance-begin": {
+                  "type": "string"
+                },
+                "time-maintenance-end": {
+                  "type": "string"
+                },
+                "time-maintenance-pause-until": {
+                  "type": "string"
+                },
+                "time-of-auto-refresh-start": {
+                  "type": "string"
+                },
+                "time-of-joining-resource-pool": {
+                  "type": "string"
+                },
+                "time-of-last-failover": {
+                  "type": "string"
+                },
+                "time-of-last-refresh": {
+                  "type": "string"
+                },
+                "time-of-last-refresh-point": {
+                  "type": "string"
+                },
+                "time-of-last-switchover": {
+                  "type": "string"
+                },
+                "time-of-next-refresh": {
+                  "type": "string"
+                },
+                "time-reclamation-of-free-autonomous-database": {
+                  "type": "string"
+                },
+                "time-scheduled-ad-update": {
+                  "type": "string"
+                },
+                "time-scheduled-db-version-upgrade": {
+                  "type": "string"
+                },
+                "time-undeleted": {
+                  "type": "string"
+                },
+                "time-until-reconnect-clone-enabled": {
+                  "type": "string"
+                },
+                "total-backup-storage-size-in-gbs": {
+                  "type": "number"
+                },
+                "used-data-storage-size-in-gbs": {
+                  "type": "number"
+                },
+                "used-data-storage-size-in-tbs": {
+                  "type": "number"
+                },
+                "vanity-connection-urls": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "apex-url": {
+                      "type": "string"
+                    },
+                    "database-transforms-url": {
+                      "type": "string"
+                    },
+                    "graph-studio-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-notebook-url": {
+                      "type": "string"
+                    },
+                    "machine-learning-user-management-url": {
+                      "type": "string"
+                    },
+                    "mongo-db-url": {
+                      "type": "string"
+                    },
+                    "ords-url": {
+                      "type": "string"
+                    },
+                    "spatial-studio-url": {
+                      "type": "string"
+                    },
+                    "sql-dev-web-url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "vanity-url-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "api-gateway-id": {
+                      "type": "string"
+                    },
+                    "is-disabled": {
+                      "type": "boolean"
+                    },
+                    "vanity-url-host-name": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "vault-id": {
+                  "type": "string"
+                },
+                "whitelisted-ips": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.database.DatabaseClient.list_autonomous_databases",
+      "sdk_return": "list of oci.database.models.AutonomousDatabaseSummary"
+    },
+    "fs file-system list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "availability-domain": {
+                  "type": "string"
+                },
+                "clone-attach-status": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "compartment-quota-enforcement-state": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "is-clone-parent": {
+                  "type": "boolean"
+                },
+                "is-hydrated": {
+                  "type": "boolean"
+                },
+                "kms-key-id": {
+                  "type": "string"
+                },
+                "lifecycle-details": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "locks": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "message": {
+                        "type": "string"
+                      },
+                      "related-resource-id": {
+                        "type": "string"
+                      },
+                      "time-created": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "metered-bytes": {
+                  "type": "number"
+                },
+                "quota-enforcement-state": {
+                  "type": "string"
+                },
+                "replication-source-count": {
+                  "type": "number"
+                },
+                "source-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "parent-file-system-id": {
+                      "type": "string"
+                    },
+                    "source-snapshot-id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.file_storage.FileStorageClient.list_file_systems",
+      "sdk_return": "list of oci.file_storage.models.FileSystemSummary"
+    },
+    "iam compartment list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "inactive-status": {
+                  "type": "number"
+                },
+                "is-accessible": {
+                  "type": "boolean"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "time-created": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.identity.IdentityClient.list_compartments",
+      "sdk_return": "list of oci.identity.models.Compartment"
+    },
+    "iam dynamic-group list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "inactive-status": {
+                  "type": "number"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "matching-rule": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "time-created": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.identity.IdentityClient.list_dynamic_groups",
+      "sdk_return": "list of oci.identity.models.DynamicGroup"
+    },
+    "iam policy list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "inactive-status": {
+                  "type": "number"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "statements": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "version-date": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.identity.IdentityClient.list_policies",
+      "sdk_return": "list of oci.identity.models.Policy"
+    },
+    "iam user get": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "capabilities": {
+                "additionalProperties": false,
+                "properties": {
+                  "can-use-api-keys": {
+                    "type": "boolean"
+                  },
+                  "can-use-auth-tokens": {
+                    "type": "boolean"
+                  },
+                  "can-use-console-password": {
+                    "type": "boolean"
+                  },
+                  "can-use-customer-secret-keys": {
+                    "type": "boolean"
+                  },
+                  "can-use-db-credentials": {
+                    "type": "boolean"
+                  },
+                  "can-use-o-auth2-client-credentials": {
+                    "type": "boolean"
+                  },
+                  "can-use-smtp-credentials": {
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "compartment-id": {
+                "type": "string"
+              },
+              "db-user-name": {
+                "type": "string"
+              },
+              "defined-tags": {
+                "additionalProperties": {},
+                "properties": {},
+                "type": "object"
+              },
+              "description": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "email-verified": {
+                "type": "boolean"
+              },
+              "external-identifier": {
+                "type": "string"
+              },
+              "freeform-tags": {
+                "additionalProperties": {},
+                "properties": {},
+                "type": "object"
+              },
+              "id": {
+                "type": "string"
+              },
+              "identity-provider-id": {
+                "type": "string"
+              },
+              "inactive-status": {
+                "type": "number"
+              },
+              "is-mfa-activated": {
+                "type": "boolean"
+              },
+              "last-successful-login-time": {
+                "type": "string"
+              },
+              "lifecycle-state": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "previous-successful-login-time": {
+                "type": "string"
+              },
+              "time-created": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.identity.IdentityClient.get_user",
+      "sdk_return": "oci.identity.models.User"
+    },
+    "kms management vault list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "crypto-endpoint": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "external-key-manager-metadata-summary": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "external-vault-endpoint-url": {
+                      "type": "string"
+                    },
+                    "oauth-metadata-summary": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "client-app-id": {
+                          "type": "string"
+                        },
+                        "idcs-account-name-url": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "private-endpoint-id": {
+                      "type": "string"
+                    },
+                    "vendor": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "management-endpoint": {
+                  "type": "string"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "vault-type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.key_management.KmsVaultClient.list_vaults",
+      "sdk_return": "list of oci.key_management.models.VaultSummary"
+    },
+    "limits resource-availability get": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "available": {
+                "type": "number"
+              },
+              "effective-quota-value": {
+                "type": "number"
+              },
+              "fractional-availability": {
+                "type": "number"
+              },
+              "fractional-usage": {
+                "type": "number"
+              },
+              "used": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.limits.LimitsClient.get_resource_availability",
+      "sdk_return": "oci.limits.models.ResourceAvailability"
+    },
+    "limits value list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "availability-domain": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "scope-type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.limits.LimitsClient.list_limit_values",
+      "sdk_return": "list of oci.limits.models.LimitValueSummary"
+    },
+    "logging log-group list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-last-modified": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.logging.LoggingManagementClient.list_log_groups",
+      "sdk_return": "list of oci.logging.models.LogGroupSummary"
+    },
+    "logging-search search-logs": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "fields": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "field-name": {
+                      "type": "string"
+                    },
+                    "field-type": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "results": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {}
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "summary": {
+                "additionalProperties": false,
+                "properties": {
+                  "field-count": {
+                    "type": "number"
+                  },
+                  "result-count": {
+                    "type": "number"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.loggingsearch.LogSearchClient.search_logs",
+      "sdk_return": "oci.loggingsearch.models.SearchResponse"
+    },
+    "monitoring alarm list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "alarm-summary": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "destinations": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "evaluation-slack-duration": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "is-enabled": {
+                  "type": "boolean"
+                },
+                "is-notifications-per-metric-dimension-enabled": {
+                  "type": "boolean"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "metric-compartment-id": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "notification-title": {
+                  "type": "string"
+                },
+                "notification-version": {
+                  "type": "string"
+                },
+                "overrides": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "body": {
+                        "type": "string"
+                      },
+                      "pending-duration": {
+                        "type": "string"
+                      },
+                      "query": {
+                        "type": "string"
+                      },
+                      "rule-name": {
+                        "type": "string"
+                      },
+                      "severity": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "query": {
+                  "type": "string"
+                },
+                "resource-group": {
+                  "type": "string"
+                },
+                "rule-name": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string"
+                },
+                "suppression": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "time-suppress-from": {
+                      "type": "string"
+                    },
+                    "time-suppress-until": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.monitoring.MonitoringClient.list_alarms",
+      "sdk_return": "list of oci.monitoring.models.AlarmSummary"
+    },
+    "monitoring metric-data summarize-metrics-data": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "aggregated-datapoints": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "timestamp": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "metadata": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string"
+                },
+                "resource-group": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.monitoring.MonitoringClient.summarize_metrics_data",
+      "sdk_return": "list of oci.monitoring.models.MetricData"
+    },
+    "network nsg rules list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "destination-type": {
+                  "type": "string"
+                },
+                "direction": {
+                  "type": "string"
+                },
+                "icmp-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "type": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "is-stateless": {
+                  "type": "boolean"
+                },
+                "is-valid": {
+                  "type": "boolean"
+                },
+                "protocol": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "source-type": {
+                  "type": "string"
+                },
+                "tcp-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "destination-port-range": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "max": {
+                          "type": "number"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "source-port-range": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "max": {
+                          "type": "number"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "udp-options": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "destination-port-range": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "max": {
+                          "type": "number"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "source-port-range": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "max": {
+                          "type": "number"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.VirtualNetworkClient.list_network_security_group_security_rules",
+      "sdk_return": "list of oci.core.models.SecurityRule"
+    },
+    "network route-table list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "route-rules": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "cidr-block": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "destination": {
+                        "type": "string"
+                      },
+                      "destination-type": {
+                        "type": "string"
+                      },
+                      "network-entity-id": {
+                        "type": "string"
+                      },
+                      "route-type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "vcn-id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.VirtualNetworkClient.list_route_tables",
+      "sdk_return": "list of oci.core.models.RouteTable"
+    },
+    "network security-list list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "egress-security-rules": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "destination": {
+                        "type": "string"
+                      },
+                      "destination-type": {
+                        "type": "string"
+                      },
+                      "icmp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "number"
+                          },
+                          "type": {
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "is-stateless": {
+                        "type": "boolean"
+                      },
+                      "protocol": {
+                        "type": "string"
+                      },
+                      "tcp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "source-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "udp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "source-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "ingress-security-rules": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "icmp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "number"
+                          },
+                          "type": {
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "is-stateless": {
+                        "type": "boolean"
+                      },
+                      "protocol": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "source-type": {
+                        "type": "string"
+                      },
+                      "tcp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "source-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "udp-options": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "source-port-range": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "max": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "vcn-id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.core.VirtualNetworkClient.list_security_lists",
+      "sdk_return": "list of oci.core.models.SecurityList"
+    },
+    "os bucket get": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "approximate-count": {
+                "type": "number"
+              },
+              "approximate-size": {
+                "type": "number"
+              },
+              "auto-tiering": {
+                "type": "string"
+              },
+              "bucket-scope": {
+                "type": "string"
+              },
+              "compartment-id": {
+                "type": "string"
+              },
+              "created-by": {
+                "type": "string"
+              },
+              "defined-tags": {
+                "additionalProperties": {},
+                "properties": {},
+                "type": "object"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "freeform-tags": {
+                "additionalProperties": {},
+                "properties": {},
+                "type": "object"
+              },
+              "id": {
+                "type": "string"
+              },
+              "is-bucket-key-enabled": {
+                "type": "boolean"
+              },
+              "is-read-only": {
+                "type": "boolean"
+              },
+              "kms-key-id": {
+                "type": "string"
+              },
+              "metadata": {
+                "additionalProperties": {},
+                "properties": {},
+                "type": "object"
+              },
+              "name": {
+                "type": "string"
+              },
+              "namespace": {
+                "type": "string"
+              },
+              "object-events-enabled": {
+                "type": "boolean"
+              },
+              "object-lifecycle-policy-etag": {
+                "type": "string"
+              },
+              "public-access-type": {
+                "type": "string"
+              },
+              "replication-enabled": {
+                "type": "boolean"
+              },
+              "storage-tier": {
+                "type": "string"
+              },
+              "time-created": {
+                "type": "string"
+              },
+              "versioning": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.object_storage.ObjectStorageClient.get_bucket",
+      "sdk_return": "oci.object_storage.models.Bucket"
+    },
+    "os bucket list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "bucket-scope": {
+                  "type": "string"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "created-by": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "etag": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "time-created": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.object_storage.ObjectStorageClient.list_buckets",
+      "sdk_return": "list of oci.object_storage.models.BucketSummary"
+    },
+    "os object list": {
+      "cli_adapter": "objectstorage_cli_extended.object_list: render(all_objects, metadata, ctx, display_all_headers=True)",
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "archival-state": {
+                  "type": "string"
+                },
+                "etag": {
+                  "type": "string"
+                },
+                "md5": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "storage-tier": {
+                  "type": "string"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-modified": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "next-start-with": {
+            "type": "string"
+          },
+          "prefixes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.object_storage.ObjectStorageClient.list_objects",
+      "sdk_return": "oci.object_storage.models.ListObjects"
+    },
+    "os object-lifecycle-policy get": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": {
+                      "type": "string"
+                    },
+                    "is-enabled": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object-name-filter": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "exclusion-patterns": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "inclusion-patterns": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "inclusion-prefixes": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "time-amount": {
+                      "type": "number"
+                    },
+                    "time-unit": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "time-created": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.object_storage.ObjectStorageClient.get_object_lifecycle_policy",
+      "sdk_return": "oci.object_storage.models.ObjectLifecyclePolicy"
+    },
+    "resource-manager job list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "apply-job-plan-resolution": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "is-auto-approved": {
+                      "type": "boolean"
+                    },
+                    "is-use-latest-job-id": {
+                      "type": "boolean"
+                    },
+                    "plan-job-id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "compartment-id": {
+                  "type": "string"
+                },
+                "defined-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "display-name": {
+                  "type": "string"
+                },
+                "freeform-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "job-operation-details": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "operation": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "lifecycle-state": {
+                  "type": "string"
+                },
+                "operation": {
+                  "type": "string"
+                },
+                "resolved-plan-job-id": {
+                  "type": "string"
+                },
+                "stack-id": {
+                  "type": "string"
+                },
+                "system-tags": {
+                  "additionalProperties": {},
+                  "properties": {},
+                  "type": "object"
+                },
+                "time-created": {
+                  "type": "string"
+                },
+                "time-finished": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.resource_manager.ResourceManagerClient.list_jobs",
+      "sdk_return": "list of oci.resource_manager.models.JobSummary"
+    },
+    "search resource structured-search": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "additional-details": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "availability-domain": {
+                      "type": "string"
+                    },
+                    "compartment-id": {
+                      "type": "string"
+                    },
+                    "defined-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "display-name": {
+                      "type": "string"
+                    },
+                    "freeform-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "identifier": {
+                      "type": "string"
+                    },
+                    "identity-context": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "lifecycle-state": {
+                      "type": "string"
+                    },
+                    "resource-type": {
+                      "type": "string"
+                    },
+                    "search-context": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "highlights": {
+                          "additionalProperties": {},
+                          "properties": {},
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "system-tags": {
+                      "additionalProperties": {},
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "time-created": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.resource_search.ResourceSearchClient.search_resources",
+      "sdk_return": "oci.resource_search.models.ResourceSummaryCollection"
+    },
+    "usage-api usage-summary request-summarized-usages": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "group-by": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "items": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "ad": {
+                      "type": "string"
+                    },
+                    "attributed-cost": {
+                      "type": "string"
+                    },
+                    "attributed-usage": {
+                      "type": "string"
+                    },
+                    "compartment-id": {
+                      "type": "string"
+                    },
+                    "compartment-name": {
+                      "type": "string"
+                    },
+                    "compartment-path": {
+                      "type": "string"
+                    },
+                    "computed-amount": {
+                      "type": "number"
+                    },
+                    "computed-quantity": {
+                      "type": "number"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "is-forecast": {
+                      "type": "boolean"
+                    },
+                    "list-rate": {
+                      "type": "number"
+                    },
+                    "overage": {
+                      "type": "string"
+                    },
+                    "overages-flag": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string"
+                    },
+                    "region": {
+                      "type": "string"
+                    },
+                    "resource-id": {
+                      "type": "string"
+                    },
+                    "resource-name": {
+                      "type": "string"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "shape": {
+                      "type": "string"
+                    },
+                    "sku-name": {
+                      "type": "string"
+                    },
+                    "sku-part-number": {
+                      "type": "string"
+                    },
+                    "subscription-id": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "namespace": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "tenant-id": {
+                      "type": "string"
+                    },
+                    "tenant-name": {
+                      "type": "string"
+                    },
+                    "time-usage-ended": {
+                      "type": "string"
+                    },
+                    "time-usage-started": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "unit-price": {
+                      "type": "number"
+                    },
+                    "weight": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.usage_api.UsageapiClient.request_summarized_usages",
+      "sdk_return": "oci.usage_api.models.UsageAggregation"
+    },
+    "work-requests work-request list": {
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "compartment-id": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "operation-type": {
+                  "type": "string"
+                },
+                "percent-complete": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "time-accepted": {
+                  "type": "string"
+                },
+                "time-finished": {
+                  "type": "string"
+                },
+                "time-started": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "sdk_method": "oci.work_requests.WorkRequestClient.list_work_requests",
+      "sdk_return": "list of oci.work_requests.models.WorkRequestSummary"
+    }
+  },
+  "format_version": 1,
+  "model_source_sha256": {
+    "oci.audit.models.audit_event": "0978745b1e5861a75cd24b0a06db79c532ea1e78123b6dff4323e7bcb9aa6367",
+    "oci.audit.models.data": "811b8110b9624afcd7edcccc95bac24474cf783029a331887ba3de191630d3a2",
+    "oci.audit.models.identity": "424d06d1790e4d80a690d356e81f5b57d3788d788a4621ce4a6c877a025c2e90",
+    "oci.audit.models.request": "8b8c0e09b5f5ce3c8cc86fec1b6946249ce922626cf2ba1dd01e3eedabb814c0",
+    "oci.audit.models.response": "84752ea5f8481faec69c0faea0525e54ab873aead0e6acf610e02ad9bbdccd4d",
+    "oci.audit.models.state_change": "81714efbe769ace82874d38e9df1f3ff6a37ab797e4626e23f44c0da9023444a",
+    "oci.bastion.models.session_summary": "1747dd542252ed835be6cab2e27ab4d79b24a04543b926568ce3a1aae8e68513",
+    "oci.bastion.models.target_resource_details": "5967e8333e7f33d9bf9360a887279faed615afac9915345fe9b57a2f6b77f354",
+    "oci.budget.models.budget_summary": "7412f6ffad01d0787aff0cecf1f06277d9fbeb733fa979416e38fcc4e7569a76",
+    "oci.cloud_guard.models.problem_collection": "f5cbc0a807fd03a564abda080dba856dcda726411387cc701384fc1d37e37952",
+    "oci.cloud_guard.models.problem_summary": "5cd8a45f536377b77d8263d2b7389e00c0722d8c23e11328fb357e9e86b67047",
+    "oci.cloud_guard.models.resource_lock": "45ee48d4bac598e46c301b1e165eb27b0cb535885a6d34cdf41d9ab687b2c2cf",
+    "oci.container_engine.models.add_on_options": "d8a06c38034b635a4e9aa9a5b8105703445f968adc8879eb2ded3750bcd29315",
+    "oci.container_engine.models.admission_controller_options": "3d55d9ba02dc3756b4711d2b6809b078fb3be853223aadfb512f830d16fdc527",
+    "oci.container_engine.models.cluster_create_options": "5d20013116cc6bcbf0aeb01050ed7bc61d1a9e0d22493f9c1579a75033699ee1",
+    "oci.container_engine.models.cluster_endpoint_config": "926ea6e0cbc59195031b856aeeab28808baeccf2534e647fa55e58b47a4dfb03",
+    "oci.container_engine.models.cluster_endpoints": "6fd66eebe4954327e2b0215d663c75492da9d1a8988b808a58038d2726a3c641",
+    "oci.container_engine.models.cluster_metadata": "e0909ac4fbae09e1192fc3ef5398386ccc561e1da64cafcbfb72ecc7f3dc8e77",
+    "oci.container_engine.models.cluster_pod_network_option_details": "f19e7c725b9ef4a721d8cd3352e9775ded2e5952fde57ea8280ecda9b6a76505",
+    "oci.container_engine.models.cluster_summary": "57f717ec68e7039e7d8e576023e05c7b12c15da129404836e55868877b073dc2",
+    "oci.container_engine.models.create_vnic_details": "c1d246e3f66035b1e578e12ba92c29d006101b6a3f574f94beb49f999112a52b",
+    "oci.container_engine.models.image_policy_config": "ee251a44085a33c4bd57669bfd87069d6173c2f446efc47f338aab9e63207428",
+    "oci.container_engine.models.ipv6_address_ipv6_subnet_cidr_pair_details": "121ebd10c3418a9b39e0b7e4834405b4452acbd8d55f4f0b60364a6a3f5aa46f",
+    "oci.container_engine.models.key_details": "5b3ddfb618b3ad0b5bd45eeabadac395720969ccba6780f2e3a3d0297221dc4d",
+    "oci.container_engine.models.key_value": "e5a8b0ce8a33380a912018c1a5e934fb2247074b98776b4a2f7ef6560758cb6e",
+    "oci.container_engine.models.kubernetes_network_config": "254a756d67ce2330951b6956ac2a52e169e606a8f0a223d82b33d2c2ab8427a9",
+    "oci.container_engine.models.node_eviction_node_pool_settings": "3b556c498ed2094e8a876f5561ccf50e00e2ef1dcc70a264003d78f5bbb59839",
+    "oci.container_engine.models.node_pool_cycling_details": "e168765639f50129b1423b22bbd0ea1faadfe4f36e3a3a66abe4ea1a4c99fee8",
+    "oci.container_engine.models.node_pool_node_config_details": "f7a8c2bc15244ef4cd5d26f450915e65a5de29bd6faa6f274249f0521aa4df26",
+    "oci.container_engine.models.node_pool_placement_config_details": "ddeb203046e5e38f5dc74aef6195e2eff8ba766acdf963d080bf5c71838fef71",
+    "oci.container_engine.models.node_pool_pod_network_option_details": "814cdb0acb6aeecfaa423debc499dd32ccf56e110cb819d5a2e3d511baa31e7c",
+    "oci.container_engine.models.node_pool_primary_vnic_details": "f94b0a36abd9b89a3ea4f0a3616243f4248b6b4267977418f2d856dbf3c17cec",
+    "oci.container_engine.models.node_pool_secondary_vnic_details": "abae7142e1a5e3590bc087c69c1158cc99c053952971f1b07e0b7ff39433ed08",
+    "oci.container_engine.models.node_pool_summary": "d35427c3a398b3b994d576700b6f789e883763deeb6e30be7fd0ccc724ad4404",
+    "oci.container_engine.models.node_shape_config": "d561bcc049a405f2594a380a73224851dc5b5437e474c1ab721de8650f98de69",
+    "oci.container_engine.models.node_source_details": "d53af800615acef9b654fb8e01cc30785dad68d014fc920bc5e4aa4f5954475b",
+    "oci.container_engine.models.node_source_option": "d24d0c8823963f355d4b62df00df8505d717a437820a7eea983f865c13586d6f",
+    "oci.container_engine.models.open_id_connect_discovery": "476f86ed001686c8bf966dd2a33f1034c935dfbb0d2a049c23c0b55e994f913f",
+    "oci.container_engine.models.open_id_connect_token_authentication_config": "d56e7ece2e15ed3f4d1844899260a3675c64f2236294e6c37b1056c968c6dc84",
+    "oci.container_engine.models.persistent_volume_config_details": "1d1063ef193df8010fcd02e2485a678c65ca80628f15ee0cb7a75194e8afa09d",
+    "oci.container_engine.models.preemptible_node_config_details": "d6f0606d31aa670ce9ffe70d96e2b9b7eb3ec0f887f628f96c121087ece82fe1",
+    "oci.container_engine.models.preemption_action": "19895df392d79685b43856a7d02ea3921725885ff1b9bf553cda5833ddaeea7b",
+    "oci.container_engine.models.service_lb_config_details": "01f8782d9b6e8f0730d84e9da0e61e54125c3d8391a74eaf45c3184f08bd0bda",
+    "oci.core.models.autotune_policy": "799d275a2458caa889953685b3d2bef001c0eb9c4252706bd926af79c976c6bd",
+    "oci.core.models.block_volume_replica_info": "5e7209ff88c78c0dbd79271b9a72e97e82613674d982f1d7d0a6e5a5062a18a9",
+    "oci.core.models.boot_volume_backup": "eb057643fa0f6edac75f70445311aca7c7d665a9246c5bc049cadf000fced101",
+    "oci.core.models.egress_security_rule": "d9a5ed615e384a3f56e0b956e212d86ef51a900f94a258547bce291703371673",
+    "oci.core.models.icmp_options": "ae0ed1bb55df03cb85a5b5679d1ee5cd73ba362dfff30c776ed3d4c736081edb",
+    "oci.core.models.ingress_security_rule": "2ce76c3e0b847098b1847ead1fde2072ab979acd409dd73feb86cf2c7e5bc6e0",
+    "oci.core.models.instance": "d8f6ab9c3c7d6908bc1bfb6a96ca69d25f7081ce20ae6839728459ae64609300",
+    "oci.core.models.instance_agent_config": "01db0440e607f0d4c00365ad84f0fb7737042f1550b32f3261285876ca3e8afa",
+    "oci.core.models.instance_agent_plugin_config_details": "56d2b41e9ed624ddd5bee1b5623a5eb7bf7643d3cc60a15d180b9586d50e7768",
+    "oci.core.models.instance_availability_config": "a165b23f3370c5484b1ce5a17e69a0f197e8de504d1b09d887827f6e6ce2765b",
+    "oci.core.models.instance_options": "87b6e2cc61212894ecfaac88cd999d20c00d54e371b19eeb31bfcfd9037fb5b6",
+    "oci.core.models.instance_shape_config": "9abe32572464e5d664ac0ffdaca50bb7dcf49aa8a41640457e6cc53a23fedf0d",
+    "oci.core.models.instance_source_details": "7d01da52f07dc2c3a0468fc88ab5aafd11e860e1cea652ef3aa825cc3efd33bd",
+    "oci.core.models.launch_options": "8324085ce4e9f36f76a74e89f476c37db36d88038f72a8764c6cbc2c23d95846",
+    "oci.core.models.licensing_config": "f90711a88d4f8a393bdbbb7e9e68a908b8743743ecb93745caa669d09a08acaa",
+    "oci.core.models.percentage_of_cores_enabled_options": "034e55be181bf11bbb8c317bab23c28d30220d35488dcb4f79d40933e0d2feb4",
+    "oci.core.models.placement_constraint_details": "e0232e326acc154f85bf1b0cb1aab0bf3c4470802dded9942e0c58f8f90adfe7",
+    "oci.core.models.platform_config": "219a935c3fa3f7b95d87730b55c900e2e5c157c2a2a39bbb62d1b6d7d9ba0eaf",
+    "oci.core.models.port_range": "b0adc60952cf73ddea0b1a663a6c175f27729fcbc7530867cb4e58cbf6118f82",
+    "oci.core.models.preemptible_instance_config_details": "5960dda00c12b22680603c8d9745fa6f4eaff21019c79d976ecbb2a2e58723b9",
+    "oci.core.models.preemption_action": "4e9f880d44ce00b2716f4b172806dfaa8b737ba425d93c68b15a0d97e21b01d7",
+    "oci.core.models.retention_duration": "2a2256896487f6583301fd5515554d8ce2c6e511c6e3ec5383f4c13a854cf39a",
+    "oci.core.models.route_rule": "0c27192f10403419491e105ea9fdb9d3df502e9081c02b141fb658033de43060",
+    "oci.core.models.route_table": "67f42bdb1899ef0808dd7f550895ebc858a3705a4abc8fb9f9f8dcba348bbc11",
+    "oci.core.models.security_list": "89d7dbf7b873ac868e85b13639a5e6c9772bfa363189245bd779aa0d102fc60d",
+    "oci.core.models.security_rule": "798d3a2031e5fa286b63a50606fb6f534bd513cb86c41f7112e8aa1ba4ddbedb",
+    "oci.core.models.shape": "223238783973a6f850c9df583a15aa9e7b2b7659cb6581a758758d45013f83d5",
+    "oci.core.models.shape_access_control_service_enabled_platform_options": "a5ca02422d35805904687b19a5d6120c55b92fc4a0052111e1b2add5fb262ef6",
+    "oci.core.models.shape_alternative_object": "1b211258c7c69f301fe02919c077ee1968e7343bf61059f64b900845ef1dd290",
+    "oci.core.models.shape_input_output_memory_management_unit_enabled_platform_options": "f81104c5fd6f02e87edb556c98fc553e833082841ec996208b9094cee76d9af5",
+    "oci.core.models.shape_max_vnic_attachment_options": "52d77a5828567203f56833d3b82ee583ffd411fe7d3683d8e90c2aacfefd4a58",
+    "oci.core.models.shape_measured_boot_options": "141781dcd3268887df75bb90f7e6d7decb25e55c63a05501f0070ab8424a6246",
+    "oci.core.models.shape_memory_encryption_options": "a4a244cbe222a85d2d01fa8643d554b5ab687645187f87ddb201353a7c27a901",
+    "oci.core.models.shape_memory_options": "f01e2a89e2669527f94d80ed1a20bd279f90cfa666d6a49641dcc47462aedd70",
+    "oci.core.models.shape_networking_bandwidth_options": "fd56a393fd381d4d0c1b74b5d625e8154f23a0b36f41172d941833d4e0e99f02",
+    "oci.core.models.shape_numa_nodes_per_socket_platform_options": "3153daa7de06a4ca64666939571970e29572781dc0611393de35d05c1ecd84d9",
+    "oci.core.models.shape_ocpu_options": "6f436c3e478263f03a51b2925312495f7f49fd51d6c922564dfd9ee155b4c6a4",
+    "oci.core.models.shape_platform_config_options": "e22dcdf9ce8f2ea9a97ad8ee7095ba7e55b75dcccc8f3b8c5dc3fb539af83bcf",
+    "oci.core.models.shape_secure_boot_options": "36a28991c0fd5eb453a668353092834304b9d8979bad545cc3c6463acb543bfc",
+    "oci.core.models.shape_symmetric_multi_threading_enabled_platform_options": "b9ee35f1117d6511f178069a642621398956fb0ea209d8a7fde033e131a034e6",
+    "oci.core.models.shape_trusted_platform_module_options": "997fb9fff615c6832c73bc8a11ae597608063155b01c08e28ab30628cd95bf36",
+    "oci.core.models.shape_virtual_instructions_enabled_platform_options": "780c39f3c1687d25cafd5e9f552ae5c62f6b221fe9c1df5f26561f9f40f34c1a",
+    "oci.core.models.tcp_options": "ed4f3f14a8f58af1afee1ab3f09d8c8df961afae0c48c16935ec8631eacbf3fc",
+    "oci.core.models.udp_options": "19d3a82e0a3002a41e8dbad7041457de556f8f2e57b29691e2814678902907c1",
+    "oci.core.models.vnic": "a158e4038d8fc6066638a9b7e03168f455b265df9d039cb52eb0dfbaa82d8920",
+    "oci.core.models.volume": "411267f3efa52bc727bfd2547383d21f419dc7aef867ab1fad7b6ae6cbd7a491",
+    "oci.core.models.volume_source_details": "ae31bb8b3d245b223207404c6972bc78a57b145bba7aff9fac9fc7f9287cc663",
+    "oci.database.models.autonomous_database_apex": "444e4bbe4d57e4c1600dd07d5c9009ab21e768d2883feaae42e26e6f48d413bd",
+    "oci.database.models.autonomous_database_backup_config": "9054f74dc53ce3d95250b8f5d8064dd72d4d3cfd1179b2fcf76505f463fb8090",
+    "oci.database.models.autonomous_database_connection_strings": "739f29ab0daa08015eaca67dce8ca3e7f68b3b7a67160dfa6ebce2ad266efad6",
+    "oci.database.models.autonomous_database_connection_urls": "9ef3b56eb4336c0604d338bd9d77d1c6ccb470265680746c927ac58b64039bf4",
+    "oci.database.models.autonomous_database_encryption_key_details": "5fe1ea6335ba8316a7bd60b00c5fee94541c3d452c94737480cec62f51dc72f5",
+    "oci.database.models.autonomous_database_encryption_key_history_entry": "7e61acf3f5bc79c29b46cb76bc8fb27cc5616ce492d59c02afecff24cf87b242",
+    "oci.database.models.autonomous_database_key_history_entry": "33939fefbfca5dcfd96b6da9215d3a72294efedd3f87673c6e4324bbc6f49dd5",
+    "oci.database.models.autonomous_database_maintenance_window_summary": "e3e004b4bd602de935fc5dd634f1aae89a1ddd678ebeee2b64b0a7f340bb35a6",
+    "oci.database.models.autonomous_database_standby_summary": "60beb3c1f8cb8e084ae35265eb28d2030b75b4d180c561dec14ec53522e41c7c",
+    "oci.database.models.autonomous_database_summary": "54d15c72b5ae6dadbeb96ba8bba91e5f57d20290496ea4a659adb0706076d45c",
+    "oci.database.models.customer_contact": "491e05c1a77295eae11d7d41407354a75db113a4eb594f1eb68847795d8f1ca7",
+    "oci.database.models.database_connection_string_profile": "ce2e335980c936062db1ea624d73d6f9893a03d9d0b1b8e8a3c903fd0e3d79e7",
+    "oci.database.models.database_tool": "ad7b18815500076300ff4367a6f525463afe686563932216c27533fc5032f0e2",
+    "oci.database.models.day_of_week": "75100709b6202acd68d8c42c526919fdb0144dfeb6256a31269ea0ae7a79aa3c",
+    "oci.database.models.disaster_recovery_configuration": "6db1646aae969243e4229a640f0f197346325bb47bc0aac8d16eb2b5ea13a326",
+    "oci.database.models.encryption_key_location_details": "187081d1c1b0de9afe51e9fe92d3fbc74eaad290ad6a03fdb17757a3ce81adcd",
+    "oci.database.models.long_term_back_up_schedule_details": "95543cbcb1eb40b27ba9c30a595ecd568ec51268a75f9c74e75047ff7649837c",
+    "oci.database.models.resource_pool_summary": "e7076f2127fc748e9ebb7ba018e2e772a01df27aba3bd1452182a1bda8d240b7",
+    "oci.database.models.scheduled_operation_details": "9c235fc1e3e54f3f7fa89a4b042bdb5635fd654ed01fe226fec06283d59f0572",
+    "oci.database.models.vanity_url_details": "87e505f2835df443035e1a8208c2bf80e0be8dd1355065aabafac150daea8c18",
+    "oci.file_storage.models.file_system_summary": "c071fc3e11a31fa31f0261ba12f47e88867307d2b3e122800bf73aa893c8cb71",
+    "oci.file_storage.models.resource_lock": "da809d5e89d1d6098da81c35e948b824e10d6771d63a9ce776a93622e9f57264",
+    "oci.file_storage.models.source_details": "6e0bc39f72846955eb0dc499797e4530aa5b816ca20a4756411a44bf320aef94",
+    "oci.identity.models.compartment": "45ffc1ef624957231de80aeca3acde8986afa86e72ffd96a18572713bf9e59e7",
+    "oci.identity.models.dynamic_group": "f79c8b4c6392f627a3b8c3b4053dbaedef4a2e8cc11db12d13bfea96373cba51",
+    "oci.identity.models.policy": "00c28546b919365e377788cd190a11d1800698bdc7ad947489c87baf86d417fc",
+    "oci.identity.models.user": "31982eeffc1e80559d0c0f8ad2da6722dcded42b3d512b069d4af78634fbee2b",
+    "oci.identity.models.user_capabilities": "83e2378c9df8f13b69aaa2dd6d7f626a32e43032ce36d4c71155cd58beea0e22",
+    "oci.key_management.models.external_key_manager_metadata_summary": "0344027f59c288729c8c8b0cc4161d8046bc10bbee3874d68e7ae93d53742fd8",
+    "oci.key_management.models.oauth_metadata_summary": "5650099383346e92ea1037dbf56179dfc5ab0e9e644bbb8976b944b63411cab9",
+    "oci.key_management.models.vault_summary": "948356e7d19165e4c20057c2bc6d9c9ea00ab321d5b18232e7b05c4b1c01e938",
+    "oci.limits.models.limit_value_summary": "6827f79105cb9621b7d4740aebac6ca945c995de40f36be5b8a01318eee50756",
+    "oci.limits.models.resource_availability": "69cc9243b010c780a0a73588e42aed6bab0678d8537ce83f53b28a87c975e92a",
+    "oci.logging.models.log_group_summary": "6896efc850b1468c637be3fd72c65f12a9d5aa1b20e889c54fe7e016ce74a8c8",
+    "oci.loggingsearch.models.field_info": "a8ecbc7090b1cdd820089302413684835ccfef1950004990a1b24e243960f8c4",
+    "oci.loggingsearch.models.search_response": "0d52da613be7c492367bd5dcafbdf1373e5da96942550a394ef794491bedbf37",
+    "oci.loggingsearch.models.search_result": "43b3ea3d1febf9ade77efd28d9a62085161a04e7bddbec51b8292c4880f99e2e",
+    "oci.loggingsearch.models.search_result_summary": "6117bcfb26b2fe800a88f83c0f802bd3d28f3e13ccbc55918436e718b5111461",
+    "oci.monitoring.models.aggregated_datapoint": "deefcf3992c8c06db8df1260a5f0fa2be362fd30812387f1e10af486a231f919",
+    "oci.monitoring.models.alarm_override": "c7fb03b00be97d5b2be7ba58c1a843ca75726853ce50ab1988fc72a26084ad95",
+    "oci.monitoring.models.alarm_summary": "c5ea592993fcb839c46d53d001373abb24f9f997cc15c3035e75bbef218d8972",
+    "oci.monitoring.models.metric_data": "9974b3cca6fc119b6434bba6d13e2ab7a11f6b907f7affeeca5a95e506eb07f7",
+    "oci.monitoring.models.suppression": "09415060cd1720251928e2d499db32ff65e0c97d543e5ec5762cf4bee9a72e88",
+    "oci.object_storage.models.bucket": "abcfd1b76854cac582ffaf681bb113809d65fc584e7e0f9073bf2e07eb76446e",
+    "oci.object_storage.models.bucket_summary": "4c6791bc3211eba2f8fedba35b8e3243825d361076c0910ff8086db39aa809fd",
+    "oci.object_storage.models.list_objects": "39ea2ee167a3f28597fce49892cc8f718f9831bd574524c3f679e9043d537c43",
+    "oci.object_storage.models.object_lifecycle_policy": "27b27524b692f11975596b38c27fa955af0af88fb7fa4b6eb580fb9934bc60a9",
+    "oci.object_storage.models.object_lifecycle_rule": "8f6f686955a94a567abd84be5aecbca494004fadf599ad84df8f44394511ec8f",
+    "oci.object_storage.models.object_name_filter": "8ecaf70b60fd71c0de76c6fc19e32567499c4e16030100fd445d5c4f79ed7716",
+    "oci.object_storage.models.object_summary": "8486630e9f8e840b3e4096e800f156130b410b26ed526acf025f276db2b34394",
+    "oci.resource_manager.models.apply_job_plan_resolution": "1a07c2fb2e5322aa70414c4523ab42e05df4c74e5d2b9b3666245ce8df740e8a",
+    "oci.resource_manager.models.job_operation_details_summary": "c08c12faed9b739e7d1b782c420d7a9c21d4905ba896a0db40dad1ebc22a02f6",
+    "oci.resource_manager.models.job_summary": "5dd99eb728b56da365b21c60a056c47f0f3ceec40f997f3aa07aeaa23274b7a4",
+    "oci.resource_search.models.resource_summary": "5ae7b76f838e7d8c9019b6c04f5d141a85c7e3bd00bf28f0d08a416af6770d9d",
+    "oci.resource_search.models.resource_summary_collection": "5f5d6983fe5b2ea07f0941bdca42d32bd18b389b01c8145a0159ab9483ec162e",
+    "oci.resource_search.models.search_context": "002185273ef26f7d3e6931e023444ddec1c04d222b70e2a812a89fd4a6bfd81f",
+    "oci.usage_api.models.tag": "e12b1f0f02fe15edcc985e83e71136a6fe45af3573f75207f01817341f6e1c69",
+    "oci.usage_api.models.usage_aggregation": "513147fab54bd8a9a27e290a447eccc6dcf7d09bbdd8e915b04829dd9475da11",
+    "oci.usage_api.models.usage_summary": "53d390b19ea1c3fa0968a4e4475ffe66fdc1ea8cb80451231f442292e236c94f",
+    "oci.work_requests.models.work_request_summary": "e04b4a9aa009c695b9ecfc01a29a09a3437e898671812911ec1657163ede62d3"
+  },
+  "scope": "SDK response fields converted by the installed CLI serializer. Command-to-SDK mappings are reviewed; composite list-vnics uses Vnic objects. Unknown/dynamic or recursive shapes remain unverified. No service request or response is generated.",
+  "sdk_version": "2.185.0"
+}

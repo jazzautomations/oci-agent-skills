@@ -8,6 +8,7 @@ import random
 
 import jsonschema
 import checked_task_benchmark as benchmark
+from audit_query_fields import audit as audit_fields
 
 ARMS = ('pack', 'oracle', 'adibirzu')
 
@@ -95,8 +96,10 @@ def verify(report, *, case_ids=None):
     supported = scores['pack']['passed'] >= 32 and all(len(c['pack_only']) > len(c['opponent_only']) and c['p_holm'] < .05 for c in comparisons)
     require(report['arms'] == scores and report['paired_comparisons'] == comparisons and
             report['supported_superiority_in_this_experiment'] is supported, 'Aggregate/statistical claim changed')
+    field_audit = audit_fields(report, json.loads((benchmark.ROOT / 'evals/query-response-contracts.json').read_text()))
     return {'verified': True, 'current_sources': True, 'collected_all': True, 'arms': scores,
             'paired_comparisons': comparisons, 'supported_superiority_in_this_experiment': supported,
+            'query_field_audit': {'arms': field_audit['arms'], 'scope': field_audit['scope']},
             'model_calls': 0, 'cloud_calls': 0,
             'scope': 'Recorded answer/schema/receipt/command checks. Does not attest agent isolation, complete context delivery, native plugin behavior, query semantics or billing.'}
 

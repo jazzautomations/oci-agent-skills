@@ -2,6 +2,14 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
+Audit all 106 Luna command queries against 35 pinned CLI/SDK response contracts.
+Retain six field errors for this package, one for Oracle and six for adibirzu;
+the original 40/40 score is not command-semantic certification. Add contract
+regeneration, authored-query CI checks and 14 regression cases. Recheck live
+prerequisites: Cloud Guard disabled, Support 403, empty budget/cost samples and
+no actual scheduled drift run. See the
+[query validation follow-up](docs/query-validation-2026-09-13.md).
+
 Complete the user-requested GPT Luna comparison: this package 40/40, official
 Oracle skills 36/40, adibirzu 36/40. Preserve all 120 outcomes, independent offline
 grading and 554 replayed broker events. This is exploratory: both competing arms

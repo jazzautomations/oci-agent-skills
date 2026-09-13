@@ -1,0 +1,97 @@
+{
+  "checked_at": "2026-09-13T17:39:23.946910+00:00",
+  "source_commit": "01dc8e91367229edef9e92ccc67d54d308020c4a",
+  "service_checks": {
+    "checked_at": "2026-09-13T17:31:57.809983+00:00",
+    "model_calls": 0,
+    "account_mutations": 0,
+    "scope": "DEFAULT profile; selected tenancy root and configured region; single bounded page. Raw account data retained privately only.",
+    "checks": [
+      {
+        "check": "region-subscriptions",
+        "ok": true,
+        "seconds": 1.43,
+        "home_matches_selected": true
+      },
+      {
+        "check": "cloud-guard-configuration",
+        "ok": true,
+        "seconds": 2.6,
+        "state": "DISABLED"
+      },
+      {
+        "check": "support-incidents",
+        "ok": false,
+        "seconds": 4.64,
+        "http_status": 403
+      },
+      {
+        "check": "budgets",
+        "ok": true,
+        "seconds": 1.42,
+        "sample_count": 0
+      },
+      {
+        "check": "selected-user",
+        "ok": true,
+        "seconds": 1.36,
+        "email_present": true,
+        "email_verified": true
+      },
+      {
+        "check": "settled-cost",
+        "ok": false,
+        "seconds": 1.24,
+        "http_status": 400,
+        "note": "Collector request omitted the required filter operator; 400 retained. Corrected request adds operator AND and uses documented service/region grouping. This is a collector repair, not a service-access failure."
+      },
+      {
+        "check": "settled-cost-corrected",
+        "ok": true,
+        "seconds": 1.61,
+        "sample_count": 0,
+        "page_present": false
+      }
+    ]
+  },
+  "scheduled_workflow": {
+    "state": "active",
+    "scheduled_runs": [],
+    "recent_runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-11T18:24:57Z",
+        "databaseId": 34633132562,
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34633132562"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-11T18:20:18Z",
+        "databaseId": 34632699299,
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34632699299"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-10T04:17:35Z",
+        "databaseId": 34436615438,
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "url": "https://github.com/jazzautomations/oci-agent-skills/actions/runs/34436615438"
+      }
+    ],
+    "next_nominal_trigger": "2026-09-15T06:17:00Z",
+    "status": "PARTIAL"
+  },
+  "account_mutations": 0,
+  "new_model_calls": 0,
+  "remaining_release_gates": [
+    "V24",
+    "V25",
+    "V27",
+    "V28"
+  ]
+}

@@ -80,6 +80,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/ci/check_query_fields.py",
+      "sha256": "192e7d80268546aacba65ef0368ac8a93b77b55cbef18d75a9d60bf39b4c0ade",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/ci/check_refs.py",
       "sha256": "edb858d1b7ac3ac1ae04e1fddf990e2d7332cb0f5f3bd99a9e3616cc30d08067",
       "mode": "read-only",
@@ -166,6 +172,12 @@
     {
       "path": "scripts/eval/audit_native_commands.py",
       "sha256": "70dd1e8ea20eb00ed93e4813aa90481968302d0f8a230e24d67d6bd995157b8e",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/eval/audit_query_fields.py",
+      "sha256": "a3875249ea59ee8a37b2246396996573bc9d4cf50f137d0fb07a9503ac6a3ccd",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -285,7 +297,7 @@
     },
     {
       "path": "scripts/eval/verify_luna_package_benchmark.py",
-      "sha256": "5b38c23677c4e69b62ef2bd659cb812143b2f5205b958754f57dbec3a08fe312",
+      "sha256": "e94062af830fe46e7689cf30a08ce2707de2c472adae2a8dc38816fd0b6949e3",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -322,6 +334,12 @@
     {
       "path": "scripts/foundation_report.py",
       "sha256": "e0813134250edb5e8cbd2a3ac68aab798a4862da05cb51cf35b1dfdbe8926e22",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
+      "path": "scripts/generate_query_response_contracts.py",
+      "sha256": "457059cb6057cf893121b3042662dc35c904eb2abf8b1e320977bbbc7ec64a6a",
       "mode": "read-only",
       "oci_calls": []
     },

@@ -1,6 +1,11 @@
 # Final validation matrix — 2026-09-13
 
 Branch: `main`. **Not release-ready: 24 PASS, four nonpassing gates.**
+
+The [September 13 query follow-up](query-validation-2026-09-13.md) audits all 106
+Luna command proposals and finds six field errors in this package. The original
+40/40 fixture score does not certify those commands. New response-field CI checks
+and fresh service/scheduler reads retain V24/V25/V27/V28 as open.
 The [September 13 follow-up](validation-closeout-2026-09-13.md) rechecks service
 prerequisites and the actual weekly schedule. Its standalone suite passes 589
 tests; the installation/adapter suite passes 20. Cloud Guard remains disabled,

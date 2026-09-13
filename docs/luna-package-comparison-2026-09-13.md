@@ -1,5 +1,10 @@
 # GPT Luna package comparison — September 13, 2026
 
+**Subsequent command audit found six faulty queries in this package's proposals.**
+The 40/40 below is the original fixture/command-syntax score, not successful OCI
+command execution. Read the [query validation follow-up](query-validation-2026-09-13.md)
+before interpreting this comparison. It does not establish superiority.
+
 **This package achieved the highest observed score: 40/40, versus 36/40 for
 official Oracle skills and 36/40 for adibirzu. This is an exploratory result.**
 Both competing agents reported truncated skill output and an initial workspace
