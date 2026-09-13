@@ -14,8 +14,11 @@ production certification.
 The seven-page Portuguese briefing explains the product through a networking
 scenario, separates skill guidance from execution, maps the nine coverage areas
 and walks through recorded component evidence. Illustrative workflows and
-measured outcomes are explicitly distinguished. Edition 06 reports the ownership repair and the unmeasured task-evaluation alternative, using embedded fonts
-and a layout designed for reading on screen or sharing as a document.
+measured outcomes are explicitly distinguished. Edition 06 is a preserved review
+snapshot, using embedded fonts and a layout designed for reading on screen or
+sharing as a document. Its counts and open issues are historical; use the
+[current validation follow-up](../validation-closeout-2026-09-13.md) and release
+matrix for the latest status.
 
 ## The problem and approach
 
@@ -40,13 +43,16 @@ boundary. Other host adapters do not receive the Claude shell hook.
 
 ## What the evidence supports
 
-- The recorded full suite passes 453 tests; syntax lint accepts 285 authored OCI
-  fences. Neither establishes end-to-end deployment success.
+- The current suite and authored-command lint results are recorded in the
+  [release matrix](../validation-matrix.md). Neither establishes end-to-end
+  deployment success; the PDF's earlier test counts remain dated evidence.
 - Classifier replay denies all 278 critical-labelled leaves and allows zero
   operations outside the strict read-only set. The severity snapshot and catalog
   share a generator; non-OCI rules are outside that measured matrix.
 - Selected live reads use one API-key profile, region and commercial realm.
-  The helper sweep records 28 passed entrypoints, including six offline helpers.
+  The [lab reports](../second-validation-2026-09-11.md) and
+  [latest prerequisite reads](../validation-closeout-2026-09-13.md) distinguish
+  successful integration checks from missing service access and cost data.
 - The component walkthrough starts the actual MCP stdio server without valid OCI
   config, discovers its surface and rejects invalid scope. It classifies proposed
   argv as inert data; it does not execute a launch or measure an agent.
@@ -60,13 +66,13 @@ uses frozen snapshots and is not a live superiority claim over upstream projects
 
 | Area | Current limit | Useful feedback |
 |---|---|---|
-| Routing and agent behavior | Semantic selection passes both recorded trials; native host task evaluation and behavioral comparison incomplete | Representative tasks and a reproducible host evaluation method |
-| Live coverage | Cloud Guard 404 / Support 403 in scoped triage; missing fixtures and metric data | Correct prerequisites and representative test environments |
+| Routing and agent behavior | Recorded semantic selection passes; changed skills still need a new full 40-task measurement and the native four-arm comparison | Representative tasks and a reproducible host evaluation method |
+| Live coverage | Latest reads show Cloud Guard disabled, Support 403 and no settled cost rows in the selected window | Correct prerequisites and representative test environments |
 | Auth and platforms | Other principals, second region, Windows and deployed workflows incomplete | Priority environments and service-specific pitfalls |
-| Distribution | Local checks pass; scheduled drift/issue path unmeasured | Packaging and maintenance expectations |
-| Public release | Historical patch email occurrences need owner-reviewed cleanup | Review current snapshot before public-history preparation |
+| Distribution | Manual drift notification and duplicate handling have evidence; the actual weekly scheduled trigger remains unobserved | Packaging and maintenance expectations |
+| History hygiene | Published-history cleanup and current-file/full-history scans pass | Preserve clean history and provenance in future changes |
 
-There are 23 passing and five open release gates. Review does not require closing
+There are 24 passing and four open release gates. Review does not require closing
 them in advance; a production-ready or complete Oracle coverage claim would.
 
 ## Requested review

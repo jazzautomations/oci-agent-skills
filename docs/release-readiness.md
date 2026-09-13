@@ -1,4 +1,16 @@
-# Release readiness — September 11, 2026
+# Release readiness — September 13, 2026
+
+## September 13 follow-up
+
+The [current follow-up](validation-closeout-2026-09-13.md) records 589 passing
+standalone tests and 20 passing installation/adapter tests. Seven fresh scoped
+OCI reads retain disabled Cloud Guard, Support 403 and no settled cost rows in
+the selected window. The weekly drift workflow is active, but no actual scheduled
+run is recorded. Its next nominal trigger is September 15 at 06:17 UTC.
+
+The review guide and roadmap no longer list the completed history cleanup as an
+open gate. V24/V25/V27/V28 remain open. No new model calls or account mutations
+were made in this follow-up; current full-task behavior still needs new evidence.
 
 ## September 11 follow-up
 

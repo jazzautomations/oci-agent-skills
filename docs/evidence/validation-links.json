@@ -97,6 +97,11 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Balance/Reference/loadbalancermetrics.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/Billing/Concepts/budgetsoverview.htm",
       "status": 200,
       "expected": 200
@@ -117,7 +122,22 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/blockvolumebackups.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/blockvolumeperformance.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/bootvolumes.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Block/References/volumemetrics-reference.htm",
       "status": 200,
       "expected": 200
     },
@@ -127,7 +147,22 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/CloudAdvisor/Concepts/recommendations-costmanagement.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/ComplianceDocuments/Concepts/compliancedocsoverview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/importingcustomimagelinux.htm",
       "status": 200,
       "expected": 200
     },
@@ -192,7 +227,17 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/usingsupport.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/support/getting-help.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/GSG/support/list-incidents.htm",
       "status": 200,
       "expected": 200
     },
@@ -317,6 +362,16 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/NetworkLoadBalancer/Metrics/metrics.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/To_delete_uncommitted_multipart_uploads.htm",
       "status": 200,
       "expected": 200
@@ -348,6 +403,11 @@
     },
     {
       "url": "https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Reference/terraformversions.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/managingstacksandjobs.htm",
       "status": 200,
       "expected": 200
     },
@@ -392,6 +452,21 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-guard/using/part-start.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-guard/using/trouble.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-migration/cloud-migration-requirements-specifications.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/cloud-migration/home.htm",
       "status": 200,
       "expected": 200
@@ -427,6 +502,16 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/adk/api-reference/quickstart.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/api-calling-tool-guidelines.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/overview.htm",
       "status": 200,
       "expected": 200
@@ -458,6 +543,11 @@
     },
     {
       "url": "https://docs.oracle.com/en-us/iaas/Content/network-firewall/home.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/postgresql/",
       "status": 200,
       "expected": 200
     },
@@ -512,7 +602,17 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/application-integration/doc/stopping-and-starting-instance.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/application-integration/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/adb-audit.html",
       "status": 200,
       "expected": 200
     },
@@ -553,6 +653,11 @@
     },
     {
       "url": "https://docs.oracle.com/en-us/iaas/data-safe/index.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/database-management/doc/database-management-external-database-systems.html",
       "status": 200,
       "expected": 200
     },
@@ -617,7 +722,17 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/fusion-apps.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/identity-domains.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/wlms.html",
       "status": 200,
       "expected": 200
     },
@@ -638,6 +753,21 @@
     },
     {
       "url": "https://docs.oracle.com/en-us/iaas/wlms/doc/overview.htm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/cloud/iaas-classic/compute-iaas-cloud/stopc/general-syntax-cli-commands.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/cloud/paas/application-integration/rest-api/SendRequests.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/cloud/saas/financials/26b/farfa/api-workflow-notification-contents-approval-activities.html",
       "status": 200,
       "expected": 200
     },
@@ -667,6 +797,11 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/query-hybrid-vector-indexes-end-end-example.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.1/orddg/ORDS-reference.html",
       "status": 200,
       "expected": 200
@@ -678,6 +813,11 @@
     },
     {
       "url": "https://docs.oracle.com/en/database/oracle/sql-developer-command-line/26.1/sqcug/apexlang.html",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/database/oracle/sql-developer-command-line/26.2/sqcug/monitoring-sqlcl-mcp-server.html",
       "status": 200,
       "expected": 200
     },
@@ -737,6 +877,21 @@
       "expected": 200
     },
     {
+      "url": "https://docs.oracle.com/en/solutions/oci-for-aws-professionals/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-for-azure-professionals/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "url": "https://docs.oracle.com/en/solutions/oci-for-gcp-professionals/",
+      "status": 200,
+      "expected": 200
+    },
+    {
       "url": "https://docs.oracle.com/iaas/Content/GSG/Tasks/signingup_topic-What_Happens_When_the_Promotion_Expires.htm",
       "status": 200,
       "expected": 200
@@ -747,5 +902,5 @@
       "expected": 200
     }
   ],
-  "validated_at": "2026-09-09T20:58:47.109285+00:00"
+  "validated_at": "2026-09-13T03:56:03.984378+00:00"
 }

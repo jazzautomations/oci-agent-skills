@@ -121,21 +121,21 @@
     },
     {
       "id": "V14",
-      "command": "UV_LINK_MODE=symlink uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests --tb=short",
-      "result": "PASS",
+      "command": "uv run --frozen --project runtime pytest -q tests skills/oci-incident-triage/tests skills/oci-security-posture/tests skills/oci-sdk-patterns/tests",
+      "result": "FAIL",
       "date": "2026-09-13",
-      "exit_code": 0,
-      "detail": "Standalone rerun: 589 passed, 3 warnings in 61.85s. Combined-run failures retained separately; see docs/evidence/validation-closeout-2026-09-13.json.",
-      "owner": null
+      "exit_code": 1,
+      "detail": "588 passed, 3 warnings in 107.79s (0:01:47)",
+      "owner": "repository maintainers"
     },
     {
       "id": "V15",
-      "command": "UV_LINK_MODE=symlink uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py -x --tb=short",
-      "result": "PASS",
+      "command": "uv run --frozen --project runtime pytest -q tests/test_packaging.py tests/test_installer.py",
+      "result": "FAIL",
       "date": "2026-09-13",
-      "exit_code": 0,
-      "detail": "Standalone rerun: 20 passed, 1 warning in 70.76s. Fresh copied source is checked before runtime dependency setup; see docs/evidence/validation-closeout-2026-09-13.json.",
-      "owner": null
+      "exit_code": 1,
+      "detail": "Command failed; inspect local output by rerunning the command. Fresh copied tree: all source skills, shared refs, hooks, MCP config and notices; find . -type l empty.",
+      "owner": "repository maintainers"
     },
     {
       "id": "V16",
@@ -213,8 +213,8 @@
       "id": "V24",
       "command": "CLI_PYTHON scripts/ci/cli_drift.py; .github/workflows/cli-drift.yml; CLI_PYTHON scripts/ci/cli_drift.py",
       "result": "PARTIAL",
-      "date": "2026-09-11",
-      "detail": "Hosted publication run 34632699299 passed and created issue #1. Manual preview and mocked duplicate-handling tests remain recorded. The actual Tuesday scheduled trigger is not yet observed. See docs/evidence/hosted-drift-publication-2026-09-11.json. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence. September 11 follow-up: GitHub returned zero scheduled runs; no new dispatch.",
+      "date": "2026-09-13",
+      "detail": "Local drift check and recorded hosted issue publication passed; actual Tuesday scheduler event remains unobserved. See docs/evidence/hosted-drift-publication-2026-09-11.json. Subcheck V24-local: PASS.",
       "owner": "repository CI maintainers"
     },
     {
@@ -222,7 +222,7 @@
       "command": "CLI_PYTHON scripts/check_examples.py --live --profile DEFAULT --region us-chicago-1 --report docs/evidence/validation-cli.json",
       "result": "FAIL",
       "date": "2026-09-11",
-      "detail": "36 CLI reads passed; 232 syntax-only examples. Paid-lab sweep: 38 passed, two triage failures (Cloud Guard 404/Support 403), two FinOps coverage gaps, four inert SQL files. See docs/live-validation-2026-09-11.md. Current offline recheck: docs/evidence/second-lab-release-gate-2026-09-11.json; retained live evidence, not a new fixture deployment. The second separate setup attempt returned Cloud Guard HTTP 500 after policy propagation; the temporary policy was removed and disabled state independently confirmed. Latest offline recheck: docs/evidence/task-repair-release-gate-2026-09-11.json; retained dated live evidence.",
+      "detail": "Recorded evidence from this handoff; see docs/evidence/validation-cli.json. Skill execution: FAIL; see docs/evidence/validation-scripts.json.",
       "owner": "OCI operator / skill maintainers"
     },
     {
@@ -235,7 +235,7 @@
     },
     {
       "id": "V27",
-      "command": "Recorded evals/results/host.json (no inference); uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+      "command": "claude plugin eval . --threshold 0.8 --json SCRATCH/run.json --output-dir SCRATCH --no-publish --no-scaffold --mocks record --max-cost-usd 1 --runs 1; uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json; CLI_PYTHON scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json; uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
       "result": "UNMEASURED",
       "date": "2026-09-11",
       "detail": "Skills and checker changed after the 35/40 measurement. The full report and five-case regression retain their historical scores, not current behavioral certification. New inference is paused; the default gate replays evidence only. See docs/offline-followup-2026-09-11.md. Subcheck V27-reference: PASS. Subcheck V27-syntax: PASS. Subcheck V27-checked: PASS. Subcheck V27-checked-syntax: PASS. Subcheck V27-repair: PASS.",
@@ -245,7 +245,7 @@
       "id": "V28",
       "command": "uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/head_to_head.py; uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
       "result": "PARTIAL",
-      "date": "2026-09-11",
+      "date": "2026-09-13",
       "detail": "Four offline arms and a separate controlled model-backed synthetic MCP measurement are recorded. See docs/tool-task-benchmark.md for 160 attempts, grades, costs and limitations. Original native four-product deployment comparison remains unmeasured. Subcheck V28-offline: PASS. Subcheck V28-fixtures: PASS.",
       "owner": "evaluation maintainers"
     }
@@ -351,11 +351,5 @@
       "detail": "Command passed.",
       "owner": null
     }
-  ],
-  "followup_evidence": "docs/evidence/validation-closeout-2026-09-13.json",
-  "validation_provenance": {
-    "combined_attempt": "docs/evidence/validation-runner-attempt-2026-09-13.json",
-    "successful_rechecks": "docs/evidence/validation-closeout-2026-09-13.json",
-    "note": "V14/V15 use subsequent successful isolated tests; a fresh parallel rerun also passed. Other PASS rows use the combined run. Live and behavioral measurements retain their original scope and dates."
-  }
+  ]
 }

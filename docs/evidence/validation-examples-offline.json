@@ -1,6 +1,6 @@
 {
   "mode": "offline_help",
-  "validated_at": "2026-09-11T17:45:14.206713+00:00",
+  "validated_at": "2026-09-13T03:49:49.321534+00:00",
   "cli_version": "3.91.0",
   "sdk_version": "2.185.0",
   "region": null,
@@ -621,6 +621,10 @@
     },
     {
       "id": "oci-networking-5",
+      "status": "help_validated"
+    },
+    {
+      "id": "oci-networking-default-routes",
       "status": "help_validated"
     },
     {

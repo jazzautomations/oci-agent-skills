@@ -1,0 +1,167 @@
+{
+  "checked_at": "2026-09-13T03:48:56.140563+00:00",
+  "source_commit": "46c56d1e7ec4549a40041515215999e9a83f119a",
+  "scope": "Validation follow-up; selected tenancy root and configured home region, bounded reads only. No resource identifiers or raw service responses retained.",
+  "fresh_model_calls": 0,
+  "account_mutations": 0,
+  "service_prerequisites": {
+    "checked_at": "2026-09-13T03:45:36.917333+00:00",
+    "scope": "Selected tenancy root and configured region; one bounded page; values discarded.",
+    "model_calls": 0,
+    "mutations": 0,
+    "checks": [
+      {
+        "check": "region-subscriptions",
+        "ok": true,
+        "truncated": false,
+        "home_matches_selected": true
+      },
+      {
+        "check": "cloud-guard-configuration",
+        "ok": true,
+        "truncated": false,
+        "state": "DISABLED"
+      },
+      {
+        "check": "support-incidents",
+        "ok": false,
+        "truncated": false,
+        "error": {
+          "kind": "service",
+          "status": 403
+        },
+        "user_and_home_supplied": true
+      },
+      {
+        "check": "budgets",
+        "ok": true,
+        "truncated": false,
+        "sample_count": 0
+      },
+      {
+        "check": "cost-tracking-tags",
+        "ok": true,
+        "truncated": false,
+        "sample_count": 1
+      },
+      {
+        "check": "settled-regional-cost",
+        "ok": true,
+        "truncated": false,
+        "sample_count": 0
+      }
+    ]
+  },
+  "user_context": {
+    "checked_at": "2026-09-13T03:45:42.171683+00:00",
+    "check": "selected-profile-user-context",
+    "ok": true,
+    "scope": "Selected profile user only; values discarded.",
+    "model_calls": 0,
+    "mutations": 0,
+    "email_present": true,
+    "email_verified": true,
+    "identity_domain_field_present": false
+  },
+  "hosted_schedule": {
+    "repository": "jazzautomations/oci-agent-skills",
+    "workflow": ".github/workflows/cli-drift.yml",
+    "state": "active",
+    "schedule": "17 6 * * 2",
+    "scheduled_runs": [],
+    "manual_issue_publication_previously_verified": true,
+    "status": "PARTIAL",
+    "next_nominal_trigger": "2026-09-15T06:17:00Z",
+    "note": "Next nominal cron time, not guaranteed GitHub dispatch time."
+  },
+  "local_validation": {
+    "state": "complete",
+    "dependency_link_mode": "symlink",
+    "distribution_source_mode": "copy; checked before runtime setup",
+    "full_suite": {
+      "result": "PASS",
+      "tests_passed": 589,
+      "warnings": 3,
+      "duration_seconds": 61.85,
+      "log_sha256": "9266318abcee4bf4d2faec6ff8d4d65a979553d95400c182b7b6361a206031b1"
+    },
+    "installation_suite": {
+      "result": "PASS",
+      "tests_passed": 20,
+      "warnings": 1,
+      "duration_seconds": 70.76,
+      "log_sha256": "de93b10cc1da311916421de93fffd27fb6accc532ae3ae0c3ad523ee61cc64f8"
+    },
+    "first_attempt": "Interrupted after disk exhaustion. Regenerable npm/pip caches and completed temporary test copies removed.",
+    "combined_retry": "V14/V15 failed in the combined runner; both then passed in isolated runs and a fresh parallel rerun with unchanged timeout limits. The initial runner did not preserve detailed failure output; no cause is asserted beyond the separately observed disk exhaustion.",
+    "parallel_recheck": [
+      {
+        "gate": "V14",
+        "command": [
+          "-m",
+          "pytest",
+          "-q",
+          "tests",
+          "skills/oci-incident-triage/tests",
+          "skills/oci-security-posture/tests",
+          "skills/oci-sdk-patterns/tests",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 52.847,
+        "timeout_seconds": 240,
+        "tests_passed": 589,
+        "warnings": 3,
+        "pytest_duration_seconds": 50.33,
+        "log_sha256": "9957056d8bd86ea7dae0ecb29ab4c75862fcf815b1baad9d85c03c705aacedb4"
+      },
+      {
+        "gate": "V15",
+        "command": [
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_packaging.py",
+          "tests/test_installer.py",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 29.084,
+        "timeout_seconds": 360,
+        "tests_passed": 20,
+        "warnings": 1,
+        "pytest_duration_seconds": 26.75,
+        "log_sha256": "30dec5c73cc315ef62261d632839191a82308ebdd58133bf5da5269fdecc51f4"
+      }
+    ],
+    "raw_runner_matrix": "docs/evidence/validation-runner-attempt-2026-09-13.json",
+    "extra_checks_passed": [
+      "template provenance",
+      "manifests",
+      "script/example inventory",
+      "reader catalogs",
+      "recorded routing diagnostics",
+      "changed-document references",
+      "changed-file secret scan"
+    ],
+    "cli_help": "PASS; all authored command fences inspected with leaf-only CLI help, no example execution",
+    "public_links": {
+      "result": "PASS",
+      "urls_checked": 180,
+      "evidence": "docs/evidence/validation-links.json"
+    },
+    "accepted_gate_counts": {
+      "PASS": 24,
+      "PARTIAL": 2,
+      "FAIL": 1,
+      "UNMEASURED": 1
+    }
+  },
+  "open_gates": [
+    "V24",
+    "V25",
+    "V27",
+    "V28"
+  ],
+  "completed_at": "2026-09-13T03:57:55.986292+00:00"
+}

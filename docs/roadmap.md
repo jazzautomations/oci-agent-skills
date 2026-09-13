@@ -6,15 +6,18 @@ version or increasing the skill count. All current evidence is scoped and dated.
 
 | Work | Acceptance evidence | Owner / prerequisite |
 |---|---|---|
-| V22 history hygiene | Reviewed cleanup of reachable historical patch content; current-file and full-history scans pass | Repository owner; published-history coordination |
-| V24 hosted drift | Capture a hosted scheduled run and exercise issue creation without duplicate issues | CI maintainers; GitHub Actions access |
-| V25 script coverage | Remaining triage reads return Cloud Guard 404 / Support 403; supply three missing resource prerequisites and resolve two no-data metric checks. Multipart discovery now finds a real bucket in the selected root; other corrected helpers have dated passing evidence | Skill maintainers and OCI operator |
-| V27 host task evaluation | Run the qualifying host evaluation with recorded host/model versions, run IDs and ≥0.8 task score | Evaluation maintainers; supported evaluator access |
-| V28 behavioral comparison | Same prompts and budgets across four arms; publish task completion, generated-command validity and safety outcomes | Evaluation maintainers; controlled test environment |
+| V24 hosted drift | Capture a successful actual scheduled run; manual issue publication and duplicate handling already have evidence | CI maintainers; active Tuesday GitHub Actions schedule |
+| V25 script coverage | Resolve disabled Cloud Guard and Support 403, then collect successful scoped reads and sufficient settled cost/forecast/budget evidence | Skill maintainers and OCI operator; service access and real billing history |
+| V27 host task evaluation | Repeat all 40 tasks on current skills with recorded host/model versions and ≥0.8 task score; preserve exact-answer failures and distinguish fixture evidence from complete task semantics | Evaluation maintainers; explicit model budget and supported evaluation method |
+| V28 behavioral comparison | Deploy the native alternatives with the same prompts and budgets; publish task completion, generated-command validity and safety outcomes | Evaluation maintainers; controlled test environment and bounded budget |
 
-V19/V20 now pass on recorded semantic-description selections: 79/80 and 77/80,
-zero negative firings and all four overlap pairs in both trials. Source changes
-invalidate this evidence. The [investigation](semantic-routing.md) covers blind
+V22 is closed: published-history cleanup and the current-file/full-history scans
+pass. See the [latest follow-up](validation-closeout-2026-09-13.md) for dated
+verification and the remaining four gates.
+
+V19/V20 pass on the recorded semantic-description selections in the
+[release matrix](validation-matrix.md). Relevant input changes invalidate this
+evidence. The [investigation](semantic-routing.md) covers blind
 inputs, scope repairs, failed development trials and remaining generalization gaps.
 
 ## Environment-dependent validation
