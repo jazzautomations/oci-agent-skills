@@ -2,12 +2,20 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
+Complete the user-requested GPT Luna comparison: this package 40/40, official
+Oracle skills 36/40, adibirzu 36/40. Preserve all 120 outcomes, independent offline
+grading and 554 replayed broker events. This is exploratory: both competing arms
+reported truncated skill output and a workspace filename listing outside the
+instructed boundary. Holm-adjusted p=0.25 does not support superiority. Add an
+offline verifier and 12 regression tests. See the
+[dated report](docs/luna-package-comparison-2026-09-13.md).
+
 Correct OpenCode MCP configuration to map server names directly under `mcp`.
 Validate the generated configuration against the native 1.18.30 schema, including
 a regression rejecting the old nesting. A local deterministic host test activated
 skills and read references from both OCI packages without external inference.
 The [native comparison protocol](docs/native-package-comparison-2026-09-13.md)
-records fixed criteria and the outstanding external-data authorization.
+records fixed criteria and the unexecuted Zen/MiMo experiment, superseded by Luna.
 
 September 13 scope repair: query capacity headroom in the explicit target
 compartment, derive AD handling from exact limit metadata, and distinguish quota

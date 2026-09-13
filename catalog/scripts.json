@@ -284,6 +284,12 @@
       "oci_calls": []
     },
     {
+      "path": "scripts/eval/verify_luna_package_benchmark.py",
+      "sha256": "5b38c23677c4e69b62ef2bd659cb812143b2f5205b958754f57dbec3a08fe312",
+      "mode": "read-only",
+      "oci_calls": []
+    },
+    {
       "path": "scripts/eval/verify_native_command_audit.py",
       "sha256": "a6c7e88004a35a2377161db491041d16d2af01927cf9cee70e1e910688cee3fd",
       "mode": "read-only",

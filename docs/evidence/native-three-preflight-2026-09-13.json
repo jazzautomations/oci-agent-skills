@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "external_model_calls": 0,
+  "cloud_calls": 0,
+  "scope": "Deterministic loopback provider; not model capability evidence",
+  "adapter_sha256": "67257de1508ac6341a5d5f984c0f52c593fde353c71bd097d3b360c659f1ed1b",
+  "results": [
+    {
+      "arm": "pack",
+      "registered": 37,
+      "loaded": [
+        "oci-compute"
+      ],
+      "linked_reference_read": true,
+      "private_result_sha256": "7146667f966a50978ee373a8d1a61ff4dffc2b8d650cd8cee956b575482d88a9"
+    },
+    {
+      "arm": "oracle",
+      "registered": 14,
+      "loaded": [
+        "oci"
+      ],
+      "linked_reference_read": true,
+      "private_result_sha256": "2ffcd7c7bdd714646a5c1acce02f110e22a491c191ad072fca5c89452789190e"
+    },
+    {
+      "arm": "adibirzu",
+      "registered": 27,
+      "loaded": [
+        "oci-networking-compute"
+      ],
+      "linked_reference_read": true,
+      "private_result_sha256": "db75591ffb4e3f8cb4b8782a1f7d6bd6a78819dc55bc6616e717a73092fa30af"
+    }
+  ]
+}
