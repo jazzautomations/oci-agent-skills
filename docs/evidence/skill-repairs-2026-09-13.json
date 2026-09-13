@@ -1,0 +1,270 @@
+{
+  "date": "2026-09-13",
+  "scope": "Development repairs, independent review and targeted native regressions; not release certification.",
+  "pytest": {
+    "passed": 613,
+    "warnings": 3,
+    "seconds": 36.09,
+    "log_sha256": "1f63b11af32755454571f19d69751464dcf0244069774f5e21fa73647339bc55",
+    "failed_disk_attempt_log_sha256": "5f134ba501d4708922f531f56dab4d0fb619628f2873b54587f50d7d65eb0b05",
+    "prior_success": {
+      "passed": 608,
+      "warnings": 3,
+      "seconds": 38.14,
+      "log_sha256": "83d58f19ab6735ff7df52a771bc3e5e85a90bc4185cc6784b9b1e7a6ffb44d29",
+      "failed_disk_attempt_log_sha256": "5f134ba501d4708922f531f56dab4d0fb619628f2873b54587f50d7d65eb0b05"
+    },
+    "intermediate_generic_copy_failure": {
+      "passed": 607,
+      "failed": 1,
+      "log_sha256": "fe8b80f321d6f30f89c65ca8ffa4f3675fcc654da7fddf67444fa60966315a33",
+      "cause": "Underlying I/O error not captured by the old installer message."
+    }
+  },
+  "numeric_readjudication": {
+    "original_report_sha256": "ebc07f8922fd4b7ebc9a149e88cea6200fe53db514b1b07691673339e8f6e948",
+    "original_report_preserved": true,
+    "method": "Offline readjudication of identical completed observed answers with finite numeric value equivalence; original digests, fixtures, receipts and command syntax checks preserved. Not a new model trial.",
+    "changed_rows": [
+      {
+        "case": "T23",
+        "arm": "native-skills",
+        "original": {
+          "answer_correct": false,
+          "required_evidence_read": true,
+          "passed": false,
+          "commands_valid": true,
+          "contract_valid": true,
+          "each_final_command_checked": true
+        },
+        "numeric_equality_regrade": {
+          "answer_correct": true,
+          "required_evidence_read": true,
+          "passed": true,
+          "commands_valid": true,
+          "contract_valid": true,
+          "each_final_command_checked": true
+        }
+      }
+    ]
+  },
+  "independent_review": {
+    "distinct_realistic_cases": 4,
+    "scope": "Qualitative review with relevant skills and synthetic inputs, no model-visible gold answers or cloud calls. Three additional contradictions found and fixed; follow-up confirmed fixes and preservation of material untrusted-output constraints. Not OpenCode certification or a measured improvement rate."
+  },
+  "native_regression": {
+    "protocol": "repair-native-regression-v1",
+    "model": "opencode/mimo-v2.5-free",
+    "report_sha256": "294cdd035f0a1b2cd0110e382595cd7dca8dce3b8ad4a3e23f2a14fe585ac1aa",
+    "collector_sha256": "58e5770210917a8fc2196ad025dfb983262372ccc7c413a599507e663964bb6b",
+    "adapter_sha256": "fef99b0203fe30b94f7893f1c0dfa9caf8cf27c0964b491915c9d934a8725e5b",
+    "fresh_copy_symlinks": 0,
+    "source_fingerprints_verified": true,
+    "input_receipt_score_and_archive_verification": true,
+    "cases_declared": [
+      "T23",
+      "T39",
+      "T37"
+    ],
+    "results": [
+      {
+        "case": "T23",
+        "completed": true,
+        "passed": true,
+        "input_sha256": "b0b0e3e5a5886c19dc5374b16ce5d70372a38a9c737703fd19102eda088584ae",
+        "loaded_skills": [
+          "oci-monitoring-alarms"
+        ],
+        "native_skill_activated": true,
+        "stream_sha256": "10c77cd70c9061b395476d2e7407bc4a88f6be6749b342763003fa4c97cfb982",
+        "observations_sha256": "3084f197d395f4b0f96f9d9637ca658d122212a06cd5e349f32f856a33e7155f",
+        "requests_sha256": "78b29df4c2ac3a20909c8a7d0d6eb998281e8387e9fd895712f5f3122ff00276",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "wall_seconds": 76.144
+      },
+      {
+        "case": "T39",
+        "completed": false,
+        "passed": false,
+        "input_sha256": "ab9ac595c0549b3069b87e822043eaf3f9017e4f21e6ddcdbcab42a1694af2d0",
+        "loaded_skills": [],
+        "native_skill_activated": false,
+        "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "stream_sha256": "8b770b37d062a30f2e45ce6c7469d1ec30212c10a0cb70b3388ac3bff3f54ae9",
+        "requests_sha256": "5432c4c1ec447e6482edfedfae651d90658080f34adc47a1a9934c687ea2ec67",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "wall_seconds": 32.142
+      },
+      {
+        "case": "T37",
+        "completed": false,
+        "passed": false,
+        "input_sha256": "54ca2190237373438e1d81e559329d5fa6923a06213f9ce80cdb832ab9fb735f",
+        "loaded_skills": [
+          "oci-compute"
+        ],
+        "native_skill_activated": true,
+        "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "stream_sha256": "101780534fb56cc14da88b50ce7de8c58877adfe75845dfef8229350a7f4051c",
+        "requests_sha256": "195a9c0469a5bcdae863ac8d18c118c80da8c5766f32870aa63bb7e47241e772",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "wall_seconds": 37.977
+      }
+    ],
+    "scope": "One current-source native attempt per three known development cases. Original prompts, fixtures and syntax checker. JSON numeric equality repaired; no OCI execution, holdout, full-suite or product comparison certification. Free native OpenCode endpoint, no payment or paid fallback.",
+    "subsequent_source_change": {
+      "path": "references/error-corpus.json",
+      "entry": 45,
+      "change": "Remove automatic administrator/root retry; preserve selected identity and agreed scope.",
+      "scope": "Targeted host evidence is historical after this final corpus correction; not final-source model certification.",
+      "also_changed": "references/auth-modes.md: a visible user record is not signer proof",
+      "installer_change": "installers/install.py: fixed, path-free messages for storage and permission errors"
+    }
+  },
+  "strict_ci_validation": {
+    "commands": 28,
+    "failed": 0,
+    "results": [
+      {
+        "command": "python scripts/generate_read_contracts.py --check",
+        "returncode": 0,
+        "seconds": 14.71
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json",
+        "returncode": 0,
+        "seconds": 0.66
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json",
+        "returncode": 0,
+        "seconds": 0.24
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.51
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 2.11
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-task-benchmark-2026-09-11.json evals/results/native-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 19.32
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.26
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 18.76
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.39
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.39
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 15.09
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
+        "returncode": 0,
+        "seconds": 0.2
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
+        "returncode": 0,
+        "seconds": 0.16
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check",
+        "returncode": 0,
+        "seconds": 1.96
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help",
+        "returncode": 0,
+        "seconds": 213.56
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py",
+        "returncode": 0,
+        "seconds": 1.1
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+        "returncode": 0,
+        "seconds": 6.76
+      },
+      {
+        "command": "python scripts/inventory.py --format jsonl --index --check",
+        "returncode": 0,
+        "seconds": 12.64
+      },
+      {
+        "command": "uv run --frozen --project runtime oci-readonly-smoke",
+        "returncode": 0,
+        "seconds": 3.24
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_portable.py",
+        "returncode": 0,
+        "seconds": 0.15
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_budget.py",
+        "returncode": 0,
+        "seconds": 1.5
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_licenses.py",
+        "returncode": 0,
+        "seconds": 0.05
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py",
+        "returncode": 0,
+        "seconds": 0.63
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_template.py",
+        "returncode": 0,
+        "seconds": 0.04
+      },
+      {
+        "command": "python scripts/inventory.py --scripts --examples --check",
+        "returncode": 0,
+        "seconds": 0.3
+      },
+      {
+        "command": "python scripts/ci/check_manifests.py",
+        "returncode": 0,
+        "seconds": 0.06
+      },
+      {
+        "command": "python scripts/check_examples.py",
+        "returncode": 0,
+        "seconds": 11.76
+      },
+      {
+        "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
+        "returncode": 0,
+        "seconds": 0.55
+      }
+    ]
+  }
+}

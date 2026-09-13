@@ -1,5 +1,5 @@
 # Operator contract
-Purpose: the scope, bounded-read, change/recovery and evidence discipline every skill inherits, plus Cloud Shell / Code Editor hand-off and the CLI-pin cadence.
+Purpose: shared scope, reads, changes, evidence, host hand-off and CLI cadence.
 Source: research/A1 (docs/operations.md), research/12 §C, research/16 §E.3; generated 2026-09-08; verified-on CLI 3.91.0.
 
 ## 1. Establish the target
@@ -28,6 +28,10 @@ are advisory.
   request and its effects, never fake a simulation.
 
 ## 3. Changes and recovery
+
+Respect host permissions and the requested response format, including blocked
+outcomes. Do not add excluded commands or unrequested discovery. Read examples
+are optional diagnostics. Existing authorization covers its agreed scope only.
 
 | Phase | Requirement |
 |---|---|
@@ -69,10 +73,8 @@ are weekly and the surface grows ~1 %/quarter `[verified]`.
 | Quarterly | live-safe subset (`--limit 1`) on a real tenancy; refresh leaf/region data |
 | `[BREAKING]` on a shipped path | patch the skill in the PR that bumps the pin |
 
-**Grep `[BREAKING]`, not `Removed`:** 139 markers vs 5 `Removed` headers ever, 53 in the
-last 52 releases `[verified]`. Two recent ones made a flag required, breaking examples
-without changing a path; 3.65.0 deleted `oci dts`, `service-mesh`, `anomaly-detection`
-and `os-management` `[verified]`.
+Search `[BREAKING]`: required-flag changes can break examples even when paths
+remain unchanged. Removed command groups also require updates.
 
 ## Links (HTTP 200, 2026-09-08)
 

@@ -2,6 +2,7 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+from decimal import Decimal
 import hashlib
 import json
 import os
@@ -59,10 +60,32 @@ def payload(task,fixture,arm):
     return {'request':task['prompt'],'output_schema':schema(fixture['expected']),'reference':references(task,arm)}
 
 
+def same_json_value(actual, expected):
+    """Compare JSON values, preserving types except equivalent finite numbers.
+
+    JSON Schema's numeric type does not distinguish 20 from 20.0. Digests still
+    bind the original bytes/inputs elsewhere; they are not answer comparators.
+    No tolerance, string coercion, list sorting or extra-field removal is used.
+    """
+    if type(actual) in (int, float) and type(expected) in (int, float):
+        left, right = Decimal(str(actual)), Decimal(str(expected))
+        return left.is_finite() and right.is_finite() and left == right
+    if type(actual) is not type(expected):
+        return False
+    if isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            same_json_value(actual[key], value) for key, value in expected.items())
+    if isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            same_json_value(left, right) for left, right in zip(actual, expected))
+    return (expected is None or type(expected) in (str, bool)) and actual == expected
+
+
 def grade(fixture,answer,receipts):
     evidence_read=fixture['topic'] is None or any(r.get('topic')==fixture['topic'] and r.get('ok') for r in receipts)
-    return {'answer_correct':digest(answer)==digest(fixture['expected']),'required_evidence_read':evidence_read,
-            'passed':digest(answer)==digest(fixture['expected']) and evidence_read}
+    correct = same_json_value(answer, fixture['expected'])
+    return {'answer_correct':correct,'required_evidence_read':evidence_read,
+            'passed':correct and evidence_read}
 
 
 def attempt(job):

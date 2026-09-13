@@ -3,8 +3,8 @@
 The installed Devin CLI and OpenCode were exercised after the previous Claude
 runner could not complete authentication. These are separate host/model
 experiments. They do not replace the four-product comparison, live service
-coverage or full task semantics. The original task prompts, expected answers and
-command grader remain unchanged. The [sanitized evidence](evidence/alternative-host-attempts-2026-09-13.json)
+coverage or full task semantics. Each experiment used the then-current task prompts, expected answers and
+command grader. Subsequent repairs are recorded separately. The [sanitized evidence](evidence/alternative-host-attempts-2026-09-13.json)
 records the partial attempts, source revision, score replay and local checks.
 
 ## Devin
@@ -59,7 +59,15 @@ advertised no resources or resource templates. No generated OCI command ran.
 The model is Nemotron 3.5 Lightning 30B-A3B Q4_0 behind the local `jazz-coder`
 alias. This uses existing Compute capacity; no model API plan, new instance or
 credit purchase was created. Existing Compute billing continues independently.
-Access preflight is not a completed paired measurement or a passing task score.
+The later local-model collector checkpointed four rows: three native attempts
+(one pass, two failures) and one baseline failure. One native failure proposed an
+invalid command without invoking a skill; another loaded a skill but returned
+an invalid, unchecked query. The passing native row loaded a skill and satisfied
+the original grader. A fifth in-flight archive has no recorded final score.
+The collector session was unavailable when work resumed; its termination cause
+is not established. The separately declared nine-native-failure stop was never
+reached. All partial rows and original scores remain preserved. This is not a
+completed paired measurement or evidence of an improvement rate.
 
 The fresh local suite passed **589 tests, three warnings, in 46.91 seconds**.
 All **28 strict CI validator commands** passed, including full CLI-help lint and
@@ -69,3 +77,22 @@ in the private logs; the original complete suite was rerun successfully.
 V24 still needs the actual Tuesday scheduled event. V25 still needs live service
 access and data. V27 needs a qualifying current task measurement; V28 needs the
 original native-product comparison. None of these criteria was waived.
+
+## OpenCode Zen and subsequent repairs
+
+A separate native OpenCode run used `opencode/mimo-v2.5-free`. Its checkpoint
+contains **27 of 80 pairs**: nine native attempts (seven completed, five original
+passes) and eighteen baseline attempts (ten completed, seven passes). The collector
+terminated with `ENOSPC` while copying an installed skill tree. The original
+report, failure log and hashes are preserved; its input/score replay passed before
+source changes. This partial, unbalanced sample cannot establish an improvement.
+
+No model API payment or paid fallback was used. The [Zen documentation](https://opencode.ai/docs/zen/)
+marks this model free and permits model-improvement use of its content. Only
+package documents and synthetic fixtures were supplied; no generated OCI command
+executed. The free offering may change.
+
+The [repair follow-up](skill-repairs-2026-09-13.md) records corrections motivated
+by this run and independent review. In particular, one original false negative
+compared `20.0` with `20` by serialized digest. Its separately labelled numeric
+readjudication does not overwrite the historical report or constitute a new trial.

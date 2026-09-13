@@ -273,7 +273,7 @@
     },
     {
       "path": "scripts/eval/tool_task_benchmark.py",
-      "sha256": "6c697d5acf64d24ee2cab547188f3cf5fe7b0b68a89060c6840250f4b3cc2a80",
+      "sha256": "85b39acb54f68075b1489155725948f705edffeb584e473ed289f1b18606d8d0",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -550,7 +550,7 @@
     },
     {
       "path": "skills/oci-free-tier/scripts/freetier_audit.sh",
-      "sha256": "5809c9c3097444a61d2d929d267b8bf7325d8532027e0089b78f85c39e510dd3",
+      "sha256": "e3f4f7821b6a858609605d9c553ab84a054506024b41b0175f9bc7493f8d6889",
       "mode": "read-only",
       "oci_calls": []
     },

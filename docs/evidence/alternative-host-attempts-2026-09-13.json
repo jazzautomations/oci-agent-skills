@@ -403,5 +403,148 @@
     "V28"
   ],
   "visibility_change": false,
-  "license_change": false
+  "license_change": false,
+  "opencode_local": {
+    "protocol": "opencode-local-native-v4",
+    "model": "jazz-local/jazz-coder",
+    "underlying_model": "NVIDIA Nemotron 3.5 Lightning 30B-A3B Q4_0; llama.cpp b10917",
+    "report_sha256": "706b5e032890909249f9b2d67af7e7fd26c23a1f0396e8346682ecb2728b65b1",
+    "arms": {
+      "native-skills": {
+        "attempts": 3,
+        "completed": 3,
+        "passed": 1,
+        "native_activations": 2
+      },
+      "without-skills": {
+        "attempts": 1,
+        "completed": 1,
+        "passed": 0,
+        "native_activations": 0
+      }
+    },
+    "score_replay": {
+      "report_sha256": "706b5e032890909249f9b2d67af7e7fd26c23a1f0396e8346682ecb2728b65b1",
+      "verified_original_inputs_and_scores": true,
+      "arms": {
+        "native-skills": {
+          "attempts": 3,
+          "completed": 3,
+          "passed": 1
+        },
+        "without-skills": {
+          "attempts": 1,
+          "completed": 1,
+          "passed": 0
+        }
+      }
+    },
+    "complete": false,
+    "interruption": "Collector session unavailable on continuation; four rows checkpointed, plus an unscored in-flight T29 archive. Termination cause is not established.",
+    "early_failure_rule_reached": false,
+    "api_billing_scope": "Existing owner-operated OCI Compute model through its local gateway. No hosted model API, new instance, subscription, credit purchase or paid feature. Existing Compute charges continue independently.",
+    "rows": [
+      {
+        "case": "T18",
+        "arm": "native-skills",
+        "completed": true,
+        "passed": false,
+        "answer_correct": true,
+        "contract_valid": false,
+        "each_final_command_checked": false,
+        "loaded_skills": [],
+        "input_sha256": "3e65d61fa5fc59033090edad3cb51f66a32ae312440fb0b2043f82906a2bb8ab",
+        "stream_sha256": "5850761fa5f7b7dc0eb810193e885c3a18ab941d97b1e833d484635761a4cf42"
+      },
+      {
+        "case": "T04",
+        "arm": "without-skills",
+        "completed": true,
+        "passed": false,
+        "answer_correct": false,
+        "contract_valid": true,
+        "each_final_command_checked": true,
+        "loaded_skills": [],
+        "input_sha256": "e71349eeb9b51b23f870f158594ebb3c1f3137d4411baa47620c9b287b8a77a2",
+        "stream_sha256": "32865fd09c39cb5ab48238baa47620cb2fc7946203209305529e5a4062078e70"
+      },
+      {
+        "case": "T28",
+        "arm": "native-skills",
+        "completed": true,
+        "passed": false,
+        "answer_correct": true,
+        "contract_valid": false,
+        "each_final_command_checked": false,
+        "loaded_skills": [
+          "oci-oke"
+        ],
+        "input_sha256": "d03beb1204fde1cd9f581b88c4185437d87f00759982aabe286948ac0562c97a",
+        "stream_sha256": "1a090a26ffb501205f899764f2d2c81ff71787b2b28dfd7d1155d10bfaefea03"
+      },
+      {
+        "case": "T37",
+        "arm": "native-skills",
+        "completed": true,
+        "passed": true,
+        "answer_correct": true,
+        "contract_valid": true,
+        "each_final_command_checked": true,
+        "loaded_skills": [
+          "oci-compute"
+        ],
+        "input_sha256": "54ca2190237373438e1d81e559329d5fa6923a06213f9ce80cdb832ab9fb735f",
+        "stream_sha256": "150579ae573465c8e78532468483a0d1b4d4ec9399af6557d95dfffcf09137e5"
+      }
+    ]
+  },
+  "opencode_zen": {
+    "source_commit": "11f28a77b2e7b044b1ca457c2d4b6f39164bb0f5",
+    "protocol": "opencode-zen-native-v1",
+    "host_version": "1.18.30",
+    "model": "opencode/mimo-v2.5-free",
+    "planned_pairs": 80,
+    "checkpointed_pairs": 27,
+    "arms": {
+      "native-skills": {
+        "attempts": 9,
+        "completed": 7,
+        "passed": 5,
+        "native_activations": 7
+      },
+      "without-skills": {
+        "attempts": 18,
+        "completed": 10,
+        "passed": 7,
+        "native_activations": 0
+      }
+    },
+    "collected_all": false,
+    "interruption": {
+      "reason": "Collector terminated with shutil.Error: ENOSPC while copying native installed skills. No active collector remains.",
+      "checkpointed_results": 27,
+      "report_sha256": "ebc07f8922fd4b7ebc9a149e88cea6200fe53db514b1b07691673339e8f6e948",
+      "log_sha256": "65070e1993de4dcbce1c52331610937a9c976fa4e153a749cecb62be126c5831",
+      "original_scores_preserved": true,
+      "not_full_run": true
+    },
+    "original_input_and_score_replay": {
+      "report_sha256": "ebc07f8922fd4b7ebc9a149e88cea6200fe53db514b1b07691673339e8f6e948",
+      "verified_original_inputs_and_scores": true,
+      "arms": {
+        "native-skills": {
+          "attempts": 9,
+          "completed": 7,
+          "passed": 5
+        },
+        "without-skills": {
+          "attempts": 18,
+          "completed": 10,
+          "passed": 7
+        }
+      }
+    },
+    "new_model_api_charges_usd": 0,
+    "scope": "Partial historical development sample; ENOSPC interrupted collection. Free native endpoint with synthetic observations and package docs only. No native-product comparison or full task certification."
+  }
 }

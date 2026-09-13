@@ -1,5 +1,12 @@
 # Release readiness — September 13, 2026
 
+## September 13 skill repairs
+
+The [repair follow-up](skill-repairs-2026-09-13.md) corrects A1 price/entitlement
+claims, identity/scope handling and numeric task grading. The complete local suite
+passes 613 tests. Historical host scores remain historical; V24/V25/V27/V28 are
+not closed by these repairs.
+
 ## September 13 alternative-host follow-up
 
 The [alternative-host record](alternative-host-validation-2026-09-13.md) preserves

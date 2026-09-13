@@ -1,12 +1,14 @@
-Purpose: what an OCI tenancy actually gets for $0 in 2026, and how to confirm it from the
-tenancy instead of quoting a doc. Source: research/04b §15, research/06c §1, §7.
+Purpose: distinguish documented Always Free allowances, tenancy service limits and
+remaining billable usage. Source: research/04b §15, research/06c §1, §7.
 Verified 2026-09-09 on CLI 3.91.0 against a Free-Tier tenancy in us-chicago-1.
 
 ## Contents
 Reading it live · Compute · Storage · Database · Network · Other · Traps
 
 ## Reading it live
-Docs go stale; the tenancy does not. `oci limits value list` is the entitlement of record, and
+Use current service documentation for free allowances and the selected tenancy's
+billing/usage data for consumption. `oci limits value list` reports a service limit;
+it does not establish free pricing, remaining monthly allowance or an actual bill.
 `--name` filters server-side, but the explicit page cap still applies:
 
 ```bash
@@ -21,11 +23,13 @@ only exists in the home region, so a value read in a subscribed region says noth
 
 ## Compute
 - `VM.Standard.A1.Flex` (Ampere): **1,500 OCPU-hours and 9,000 GB-hours per month**, i.e.
-  2 OCPUs and 12 GB, splittable 1x2 or 2x1. Halved from 4/24 in 2026 with no announcement;
-  the price-list API still encodes the old tier (`B93297` rangeMax 3000) `[unverified]`.
-  Never promise the old numbers.
+  2 OCPUs and 12 GB, splittable 1x2 or 2x1, documented on 2026-09-13.
+  The PAYG Price List API simultaneously reports a zero-price band up to 3,000
+  OCPU-hours for `B93297`. Preserve that source disagreement; the public SKU band
+  does not establish a particular tenancy's free entitlement. Do not promise 4/24
+  at no charge or infer when or why the published allowance changed.
 - 2x `VM.Standard.E2.1.Micro` (AMD, 1/8 OCPU burstable, 1 GB, 1 VNIC, 1 public IP).
-- Live shape of that entitlement, us-chicago-1, `[verified]`: `standard-a1-core-count` = **2 in
+- Observed service limits, us-chicago-1, `[verified]`: `standard-a1-core-count` = **2 in
   every AD**, while `standard-e2-micro-core-count` = **2 in AD-2 and 0 in AD-1 and AD-3**. The
   micro allotment is pinned to one AD; A1 is not. Both limits report `scope-type: AD` and
   `is-dynamic: false`.
@@ -72,7 +76,7 @@ ingestion and 1B retrieval datapoints · Notifications 1M HTTPS + 1,000 email ·
 concurrent jobs.
 
 ## Traps
-1. A limit value is entitlement, not availability. `standard-e2-micro-core-count` = 2 in AD-2
+1. A service limit is a provisioning bound, not capacity or free pricing. `standard-e2-micro-core-count` = 2 in AD-2
    while `oci compute shape list --availability-domain <AD-2>` returns no `Micro` shape at all
    `[verified]` — only `VM.Standard.A1.Flex` and `BM.Standard.A1.160`. Check both gates.
 2. `resource-availability get` can return a **negative** `available`. Live `[verified]`:

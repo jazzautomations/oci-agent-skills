@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 if [[ "${1:-}" == "--help" ]]; then
-  printf "%s\n" 'Set PROFILE REGION TENANCY_ID AD LIMIT_NAME; reads home region, the Always Free allotment, its scope-type, headroom (negative = already over), and whether the shape is offered. Entitlement is not capacity, and a limit is not an offer.'
+  printf "%s\n" 'Set PROFILE REGION TENANCY_ID AD LIMIT_NAME; reads home-region metadata, service limits, their scope, headroom (negative = already over), and offered shapes. These capacity signals do not establish Always Free eligibility, remaining monthly allowance, an actual bill or available physical capacity.'
   exit 0
 fi
 LIB="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../scripts/lib" && pwd)"

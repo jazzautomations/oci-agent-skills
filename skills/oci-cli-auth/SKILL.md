@@ -47,7 +47,8 @@ oci iam region-subscription list --tenancy-id "$T" \
   --query 'data[].{region:"region-name",key:"region-key",home:"is-home-region"}'
 ```
 
-The human behind `api_key`/`security_token`; 404 = the principal has no user OCID:
+User lookup for `api_key`/`security_token`; 404 means absent or not visible.
+Do not use this to identify instance, resource or workload principals:
 
 ```bash
 oci iam user get --user-id "$U" --query 'data.{name:name,mfa:"is-mfa-activated"}'

@@ -19,8 +19,13 @@ observability · 6. Two worked stacks
 | X9 (Intel) | B94176 / B94177 | $0.04 | $0.0015 |
 | Windows uplift | B88318 | **+$0.092** | — |
 
-The A1 tier *is* the Always Free allowance, expressed inside the paid price list. The Windows
-uplift is ~3.7x the E4 OCPU price and is the classic bill shock.
+The A1 row records public PAYG price bands, not verified account eligibility. A
+2026-09-13 API read still returned the 3,000 OCPU-hour band, while Oracle's current
+[Always Free documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm)
+states 1,500 OCPU-hours and 9,000 GB-hours (2 OCPUs / 12 GB). Keep these distinct;
+do not turn either a price-band calculation or a larger service limit into a
+zero-bill guarantee. Check applicable eligibility and remaining monthly usage.
+The Windows uplift is ~3.7x the E4 OCPU price.
 
 **GPU, per GPU-hr:** A10 $2.00 (B95909) · A100-80 v2 $4.00 (B95907) · L40S $3.50 (B109479) ·
 H100 $10.00 (B98415) · H200 $10.00 (B110519) · MI300X $6.00 (B109485) · B200 $14.00 (B110978) ·
@@ -88,10 +93,13 @@ the free one.
 
 ## 6. Two worked stacks
 
-**Always Free maximal** — 4 A1 OCPU (2,920 OCPU-hr vs 3,000 free), 24 GB (17,520 vs 18,000),
-200 GB volumes, 10 GB object storage, 1 LB (730 vs 744 LB-hr), 2 Free ADBs, <10 TB egress:
-**$0.00**. The bundle sits exactly one unit below every boundary — a 5th A1 OCPU or a 2nd LB
-starts billing. On a 744-hour month 4 OCPU is 2,976 OCPU-hr: still under, by 0.8%.
+**Always Free planning example** — 2 A1 OCPUs for 730 hours consume 1,460
+OCPU-hours; 12 GB consumes 8,760 GB-hours. Both fit the documented 1,500/9,000
+monthly allowance if it is applicable and unconsumed. At 744 hours the figures
+are 1,488 and 8,928. Check home-region eligibility and the shared remaining
+allowances for compute, volumes, storage, load balancing, databases and egress
+separately. Four OCPUs / 24 GB exceeds this documented allowance; neither this
+example nor the public price API proves a particular account's final bill is zero.
 
 **Typical small PAYG stack** — E5 2 OCPU + 16 GB ($67.16) + 100 GB Balanced block ($4.25) +
 50 GB object ($1.02) + 1 LB ($0) + 200 GB US egress ($0) ~ **$72.43/mo**. Quote these deltas

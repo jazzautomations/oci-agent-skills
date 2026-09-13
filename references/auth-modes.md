@@ -1,4 +1,4 @@
-Purpose: choose an OCI principal and prove which one signs — the six `--auth` values, session lifecycle, env vars, identity probes.
+Purpose: select and identify an OCI signer; auth modes, sessions and probes.
 Source: research/04a-cli-auth-ergonomics.md §1–2; generated 2026-09-08; verified-on CLI 3.91.0
 
 ## 1. The six `--auth` values
@@ -7,11 +7,11 @@ Six in CLI 3.91.0, same values via `OCI_CLI_AUTH` [verified — `oci --help`, `c
 
 | Value | Where it works | Credential source | Agent note |
 |---|---|---|---|
-| `api_key` (default) | anywhere | profile `user`, `tenancy`, `fingerprint`, `key_file`\|`key_content`, `pass_phrase` | long-lived; only mode surviving unattended runs |
+| `api_key` (default) | anywhere | profile `user`, `tenancy`, `fingerprint`, `key_file`\|`key_content`, `pass_phrase` | long-lived user key; protect and rotate |
 | `security_token` | workstation, Cloud Shell | `security_token_file` from `oci session authenticate` | expires ≤60 min — see §2 |
-| `instance_principal` | OCI compute instance | instance metadata service + dynamic group + policy | no keys on disk; fails without a matching dynamic group |
+| `instance_principal` | OCI compute instance | instance metadata service + dynamic group + policy | service-managed credentials; selected instance and grants determine access |
 | `instance_obo_user` | Cloud Shell, delegation | `delegation_token_file` | Cloud Shell default: instance principal for the signed-in user |
-| `resource_principal` | Functions, Data Science, Data Flow | the RP env vars of §3 [verified — `cli_util.py:424-443`] | no keys on disk; RP vars must already be in the env [unverified] |
+| `resource_principal` | Functions, Data Science, Data Flow | the RP env vars of §3 [verified — `cli_util.py:424-443`] | runtime-managed credentials; no user API key |
 | `oke_workload_identity` | OKE pod | projected SA token [verified — `cli_constants.py:27-28`] | needs the flag **and** usually explicit `--region`: no config file in the pod |
 
 Companions: `--auth-purpose`; `--federation-endpoint`/`OCI_CLI_FEDERATION_ENDPOINT` for `instance_principal` [verified].
@@ -26,7 +26,10 @@ Companions: `--auth-purpose`; `--federation-endpoint`/`OCI_CLI_FEDERATION_ENDPOI
 | move | `oci session export --output-file P` / `import --session-archive P` | the archive is a credential — never commit [verified] |
 | end | `oci session terminate` | removes the profile **and its keys** [verified] |
 
-**Rule.** Runs over ~50 min: use `api_key`, `instance_principal` or `resource_principal`; on `security_token`, gate calls with `oci session validate --local || oci session refresh`.
+For unattended work, use the runtime-supported identity authorized for the task;
+duration alone does not require an API key. Validate or refresh the same explicit
+session profile within its refresh window; otherwise reauthenticate. Never
+silently switch profiles or principal types.
 
 ## 3. Principal env vars (9) — read out of the installed 3.91.0 [verified]
 
@@ -46,18 +49,19 @@ Also `OCI_CLI_PROFILE`/`CONFIG_FILE`/`REGION` + per-key `OCI_CLI_TENANCY`/`USER`
 
 ## 4. Detecting the active identity
 
-No `oci whoami` exists. Six probes, cheapest first:
+No `oci whoami` exists. Inspect the selected identity without trying alternatives:
 
 | # | Probe | Reads |
 |---|---|---|
-| 1 | `grep -E '^\[\|^(user\|tenancy\|security_token_file\|key_file)' ~/.oci/config` | offline: `security_token_file` + no `user` = session profile |
-| 2 | `oci session validate --local` | offline: session alive or expired [verified] |
-| 3 | `oci iam user get --user-id "$U" --query 'data.{name:name,mfa:"is-mfa-activated"}'` (`U` = profile `user`) | human behind `api_key`/`security_token`; fails under instance/resource principals [verified live] |
-| 4 | `oci iam region-subscription list --query 'data[].{region:"region-name",home:"is-home-region"}'` | any principal; also names the home region [verified live] |
-| 5 | rerun one read with `--auth api_key`, then `--auth instance_principal` | failing one not configured |
-| 6 | `oci --debug <cmd> 2>&1 \| head` | signer class + endpoint; definitive, but `--debug` leaks signing detail — forbidden by `redaction.md` |
+| 1 | Inspect only auth-mode and required-field presence for the explicit profile | redact credentials and identifiers; field presence is not signer proof |
+| 2 | `oci session validate --local --profile "$PROFILE"` | offline: selected session alive or expired [verified] |
+| 3 | `oci iam user get --user-id "$U" --query 'data.{name:name,mfa:"is-mfa-activated"}'` (`U` = profile `user`) | selected user record if visible; not proof of which principal signed |
+| 4 | A permitted, scoped region-subscription read using the already selected identity | reports subscriptions; success alone does not identify the signer |
+| 5 | Inspect the explicitly selected signer configuration or application metadata | never try alternate identities to discover which succeeds |
 
-Probe 3 under an instance principal fails `NotAuthorizedOrNotFound`: means no user on the principal, not a wrong tenancy.
+User lookups do not identify machine principals. A 404 cannot distinguish a
+missing resource from missing permission or identify the signer. Exclude raw
+`--debug` evidence: it can expose signing material.
 
 ## 5. Resolution order and traps
 

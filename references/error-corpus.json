@@ -531,9 +531,12 @@
       "retryable": null,
       "regex": "`(?i).*(service limit\\|limit.*exceeded).*(shape\\|ocpu\\|core).*`",
       "cause": "Tenancy shape/OCPU limit, distinct from physical capacity",
-      "fix": "`oci limits value list --compartment-id <tenancy> --service-name compute` then request an increase. Free-tier A1 cap is 4 OCPU / 24 GB total",
-      "urls": [],
-      "verified": "verified"
+      "fix": "Inspect the selected tenancy and region with a bounded compute-limit read. Service limits are provisioning bounds, not free pricing or physical capacity. As documented on 2026-09-13, the A1 Always Free allowance is 1,500 OCPU-hours and 9,000 GB-hours monthly; a larger limit or public zero-price band does not prove entitlement or remaining allowance. Request any limit increase separately within the agreed scope.",
+      "urls": [
+        "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm"
+      ],
+      "verified": "verified",
+      "guidance_reviewed_on": "2026-09-13"
     },
     {
       "id": 37,
@@ -659,9 +662,10 @@
       "retryable": null,
       "regex": "`.*not authorized.*quota.*`",
       "cause": "Quota policies are tenancy-level",
-      "fix": "Must be run as an admin against the root compartment",
+      "fix": "Identify the permission required for the selected quota operation in the agreed scope. If the operation requires tenancy-root scope or a grant outside that agreement, report the gap. Do not switch to an administrator, change principals or substitute the root compartment after a denial.",
       "urls": [],
-      "verified": "unverified"
+      "verified": "unverified",
+      "guidance_reviewed_on": "2026-09-13"
     },
     {
       "id": 46,

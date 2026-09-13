@@ -2,6 +2,7 @@
 """Copy the plugin and project-local host configuration into a new/empty target."""
 
 import argparse
+import errno
 import json
 import os
 import re
@@ -256,7 +257,12 @@ def main():
         message = (
             str(exc)
             if isinstance(exc, ValueError)
-            else "Unable to copy the installation"
+            else {
+                errno.ENOSPC: "Not enough disk space to copy the installation",
+                errno.EDQUOT: "Storage quota exceeded while copying the installation",
+                errno.EACCES: "Permission denied while copying the installation",
+                errno.EPERM: "Permission denied while copying the installation",
+            }.get(exc.errno, "Unable to copy the installation")
         )
         print(json.dumps({"ok": False, "error": message}))
         return 1

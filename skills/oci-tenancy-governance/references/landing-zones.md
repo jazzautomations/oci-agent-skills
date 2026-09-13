@@ -16,17 +16,24 @@ Source: research/13 §3.2 and §5.1, research/09c B2; asset status verified by `
 Rule: cite an `arch-*` stack as a worked example or diagram source; cite `oci-landing-zones/*`
 as something to actually run. Never call an `arch-*` stack "current".
 
-## The four things to say before proposing a landing zone
-1. **Free tier breaks CIS.** Cloud Guard and Security Zones do not exist in free-tier
-   tenancies, so a free-tier landing zone is CIS-non-compliant by construction.
+## Before proposing a landing zone
+1. **Check service prerequisites and the assessment scope.** Oracle's
+   [Cloud Guard prerequisites](https://docs.oracle.com/en-us/iaas/Content/cloud-guard/using/prerequisites.htm)
+   require a paid tenancy (checked 2026-09-13). Cloud Guard's base configuration and
+   activity features can be free of charge without being available to a free tenancy.
+   Record which controls are unavailable or untested for the requested CIS version
+   and profile; do not infer an entire compliance assessment from an account label.
 2. **An active ZPR Security Attribute Namespace blocks `terraform destroy`** until retired.
-3. **Offer the Resource Manager one-click, not a local apply.** The stack writes
-   root-compartment policies, i.e. tenancy-admin blast radius; the RM URL hands the operation
-   to a human in their own console and the agent never holds those credentials. Form:
+3. **Keep the user's chosen deployment workflow.** Resource Manager is an option;
+   an existing local Terraform workflow is also valid. Both can write root-compartment
+   policies. Review the exact saved plan, target and permissions before an authorized
+   apply; a Console hand-off does not reduce those effects. Resource Manager entry URL:
    `https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oci-landing-zones/terraform-oci-core-landingzone/archive/refs/heads/main.zip`
-4. **"Are we CIS compliant?" has a read-only answer.** `scripts/cis_reports.py` in the CIS
-   quickstart repo (release v3.4.1) is the only CIS-compliance evidence generator an agent may
-   run unattended. Do **not** enumerate CIS control numbers from memory — Oracle's docs do not
+4. **"Are we CIS compliant?" needs scoped evidence.** `scripts/cis_reports.py` in the CIS
+   quickstart repo (release v3.4.1 in the dated inventory above) is one assessment option.
+   Review and pin its revision, permissions, collection scope and private output destination
+   before a separately authorized run; its name is not permission to run arbitrary code.
+   Do **not** enumerate CIS control numbers from memory — Oracle's docs do not
    carry them, and the benchmark text is published by CIS. Its section breakdown (IAM,
    Networking, Logging and Monitoring, Object Storage, Asset Management, with Level 1/Level 2
    profiles) is `[unverified]` — asserted by secondary sources, not read from CIS.

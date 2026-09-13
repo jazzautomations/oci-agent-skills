@@ -65,8 +65,8 @@ Message text is not a stable contract; regex only when `code` is null/absent.
      -> silence/hang -> prompt in a non-TTY
    YES -> parse JSON, capture opc-request-id FIRST, then:
 2. 401 -> credentials, clock skew, region subscription. NEVER a policy fix
-3. 403 -> NotAllowed = wrong region (IAM writes are home-region-only)
-          NotAuthorized = drop the offending field
+3. 403 -> NotAllowed = operation requires home region; report target mismatch
+          NotAuthorized = inspect operation and denied field/permission; preserve scope
 4. 404 -> run the 5-step NAONF ladder (§4). Never say "does not exist"
 5. 409 -> IncorrectState/ExternalServerIncorrectState = wait + retry
           Conflict/ResourceLocked/InvalidatedRetryToken/AlreadyExists = no retry
@@ -84,8 +84,8 @@ Message text is not a stable contract; regex only when `code` is null/absent.
 | Status / code | Means | Fix |
 |---|---|---|
 | `401 NotAuthenticated` | "I don't know who you are" — never policy | bad credentials (classic: `key_file` points at the *public* key), clock skew > 5 min, bad `Authorization` header, or region not subscribed |
-| `403 NotAuthorized` | passed the resource check, failed on a *field* | strip it (usually `definedTags` or `compartmentId`) |
-| `403 NotAllowed` | wrong region for an IAM write | re-issue in the home region |
+| `403 NotAuthorized` | commonly an unauthorized update field; inspect the operation | identify the denied field/grant; omit an optional field only if the agreed operation stays unchanged; never strip scope selectors |
+| `403 NotAllowed` | operation requires home region | report the target mismatch; changing region requires matching user scope |
 | `404 NotAuthorizedOrNotFound` | ambiguous by design: "absent" and "invisible" merged so callers can't enumerate | ladder below |
 
 Ladder, in order: **1** OCID well-formed? `not-an-ocid` to `oci iam compartment get` returns NAONF/404, not `InvalidParameter` [verified — reproduced], so a NAONF proves nothing about existence — validate `ocid1\.<type>\.oc[0-9]+\.[a-z0-9-]*\..+` client-side. **2** Region mismatch — read `request_endpoint`. **3** Compartment mismatch (`list` returns empty, `get` NAONF). **4** Policy — map `operation_name` to a permission (Policy Reference). **5** Principal scoping: a dynamic-group principal can read compartments yet fail tenancy-level Identity calls (`list_compartments` OK, `list_users` NAONF) [unverified — community].
@@ -94,13 +94,11 @@ Ladder, in order: **1** OCID well-formed? `not-an-ocid` to `oci iam compartment 
 
 ## 5. Retryability and the corpus
 
-Backoff-retry ONLY on `429`, all `5xx`, and `409 IncorrectState` / `409 ExternalServerIncorrectState`. Everything else is `Retry: No`; retrying a NAONF or `InvalidParameter` is token burn. Carve-out: the Python SDK's retry config treats `400 QuotaExceeded` / `400 LimitExceeded` as retryable — a concurrent teardown can clear them.
+Use bounded backoff for `429`, documented transient `5xx`, and `409 IncorrectState` / `409 ExternalServerIncorrectState`; `501 MethodNotImplemented` is not retryable. Everything else is `Retry: No`; retrying a NAONF or `InvalidParameter` is token burn. Carve-out: the Python SDK's retry config treats `400 QuotaExceeded` / `400 LimitExceeded` as retryable — a concurrent teardown can clear them.
 
-`references/error-corpus.json` holds **125 entries** (`entry_count` agrees), each `{id, section, service, code, signal, http_status, regex, cause, fix, urls, verified, retryable}`, plus the 12-key `envelope_regexes` map. Skills cite failure modes by `id`. Regenerate:
-
-```bash
-cp research/data/error-corpus.json references/ && python3 -m json.tool references/error-corpus.json >/dev/null
-```
+`references/error-corpus.json` contains 125 dated entries and 12 envelope patterns.
+Skills cite entry IDs. Review source changes before regenerating; preserve dated
+evidence and updated operational guidance.
 
 Not in the corpus (no safe read-only repro): Streaming, Functions, Data Flow, Gen-AI; WAF/LB 5xx bodies; Vault/KMS crypto endpoints; Email SMTP.
 

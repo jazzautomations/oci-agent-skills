@@ -1,4 +1,5 @@
 import asyncio
+import errno
 import importlib.util
 import json
 import os
@@ -12,6 +13,30 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.mark.parametrize('number,message', [
+    (errno.ENOSPC, 'Not enough disk space to copy the installation'),
+    (errno.EDQUOT, 'Storage quota exceeded while copying the installation'),
+    (errno.EACCES, 'Permission denied while copying the installation'),
+    (errno.EPERM, 'Permission denied while copying the installation'),
+    (errno.EIO, 'Unable to copy the installation'),
+])
+def test_installation_io_errors_are_actionable_without_private_paths(
+        monkeypatch, capsys, number, message):
+    spec = importlib.util.spec_from_file_location('installer', ROOT / 'installers/install.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    def fail(*args, **kwargs):
+        raise OSError(number, 'private diagnostic detail', '/private/account/file')
+
+    monkeypatch.setattr(module, 'install', fail)
+    monkeypatch.setattr('sys.argv', ['install.py', '--target', '/unused'])
+    assert module.main() == 1
+    captured = capsys.readouterr()
+    assert json.loads(captured.out) == {'ok': False, 'error': message}
+    assert not captured.err
 
 
 @pytest.fixture(scope="module")
