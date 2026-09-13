@@ -45,7 +45,7 @@ Numbered, 3-6. Each: symptom (the literal error text or regex from
 Every entry cites an `id` from `references/error-corpus.json`.
 
 ## Hard rules
-- MUST establish identity/region/compartment before any call (`scripts/whoami.sh`).
+- Before live calls, establish identity, region and compartment with a scoped tool available in the host.
 - MUST redact full OCIDs, PAR access-uris, secret bundles and wallets from anything written
   down (`../../references/redaction.md`).
 - MUST NOT run a `# MUTATING` block; propose it, show the rollback, and wait for the user.

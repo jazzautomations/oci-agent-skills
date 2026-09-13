@@ -1,0 +1,246 @@
+{
+  "date": "2026-09-13",
+  "base_revision": "d457b5770978c22dd65e0ce570b01778e72a5d86",
+  "scope": "Offline repairs, local schema/transport tests and partial synthetic native model evidence; no OCI command execution.",
+  "pytest": {
+    "full_attempt_passed": 624,
+    "full_attempt_failed": 1,
+    "failure_reason": "Copy-installation ENOSPC",
+    "failed_case_rerun_passed": 1,
+    "passing_test_coverage": 625,
+    "new_regressions": 12,
+    "warnings": 3,
+    "assertions_relaxed": false
+  },
+  "strict_ci": {
+    "commands": [
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
+        "returncode": 0,
+        "seconds": 0.23
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
+        "returncode": 0,
+        "seconds": 0.32
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check",
+        "returncode": 0,
+        "seconds": 3.35
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help",
+        "returncode": 0,
+        "seconds": 388.1
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py",
+        "returncode": 0,
+        "seconds": 1.94
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+        "returncode": 0,
+        "seconds": 14.17
+      },
+      {
+        "command": "python scripts/inventory.py --format jsonl --index --check",
+        "returncode": 0,
+        "seconds": 30.61
+      },
+      {
+        "command": "uv run --frozen --project runtime oci-readonly-smoke",
+        "returncode": 0,
+        "seconds": 6.44
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_portable.py",
+        "returncode": 0,
+        "seconds": 0.29
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_budget.py",
+        "returncode": 0,
+        "seconds": 3.01
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_licenses.py",
+        "returncode": 0,
+        "seconds": 0.05
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py",
+        "returncode": 0,
+        "seconds": 1.18
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/ci/check_template.py",
+        "returncode": 0,
+        "seconds": 0.1
+      },
+      {
+        "command": "python scripts/inventory.py --scripts --examples --check",
+        "returncode": 0,
+        "seconds": 0.61
+      },
+      {
+        "command": "python scripts/ci/check_manifests.py",
+        "returncode": 0,
+        "seconds": 0.09
+      },
+      {
+        "command": "python scripts/check_examples.py",
+        "returncode": 0,
+        "seconds": 27.8
+      },
+      {
+        "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
+        "returncode": 0,
+        "seconds": 0.58
+      },
+      {
+        "command": "python scripts/generate_read_contracts.py --check",
+        "returncode": 0,
+        "seconds": 31.47
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json",
+        "returncode": 0,
+        "seconds": 1.92
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json",
+        "returncode": 0,
+        "seconds": 0.19
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.46
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.63
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-task-benchmark-2026-09-11.json evals/results/native-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 14.75
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json",
+        "returncode": 1,
+        "seconds": 0.54,
+        "rerun_passed": true
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 16.12
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.06
+      },
+      {
+        "command": "uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 1.12
+      },
+      {
+        "command": "python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json",
+        "returncode": 0,
+        "seconds": 13.13
+      }
+    ],
+    "passing_command_coverage": 28,
+    "updated_script_policy_passed": true,
+    "updated_registry_passed": true
+  },
+  "diagnostic": {
+    "model": "opencode/mimo-v2.5-free",
+    "host_version": "1.18.30",
+    "tasks": [
+      "T08",
+      "T09",
+      "T21",
+      "T30"
+    ],
+    "arms": {
+      "native-skills": {
+        "attempted": 4,
+        "completed": 4,
+        "passed": 3
+      },
+      "without-skills": {
+        "attempted": 4,
+        "completed": 1,
+        "passed": 0
+      }
+    },
+    "collected_all": false,
+    "stop_reason": "Stopped after independently confirming incorrect compartment scope in the capacity helper; repair before full comparison.",
+    "raw_report_sha256": "6988b4196a02972b0f115e25c87901a506aa907a6debf7b6a0ea7ddbbad8c961",
+    "offline_replay": true
+  },
+  "post_repair_probes": [
+    {
+      "case": "T08",
+      "arm": "native-skills",
+      "passed": true,
+      "skill_activated": false,
+      "causal_improvement_established": false
+    },
+    {
+      "case": "T02",
+      "arms": [
+        "native-skills",
+        "without-skills"
+      ],
+      "both_passed": true,
+      "skill_activated": false,
+      "scope": "Explicit StructuredOutput preflight, not full task comparison"
+    }
+  ],
+  "private_artifact_sha256": {
+    "pytest-final.log": "ac22a7901b30d3d65d285fc148b6e4f12359172337fbe47ec95562d4c5a9c448",
+    "pytest-copy-in-memory.log": "fb9eab2e9be43235f832f2e1ea81774c6515d986b40a1f7f9489b4fb98f9c9bc",
+    "reference-replay-final.json": "303f878b273a9043294495d1d9d461b615a63e71934bc0f6152c04d2458c7329",
+    "scripts-final.json": "b5aa1bdc21b8869a055eee53c3a872da32df46d853131899dfc09988e0df588b",
+    "inventory-final.log": "4e0a2ec62ed4c8e703b46882f6abdb6ec18dd1f817d4a7590d8aac80693136e5",
+    "structured-v4-preflight.log": "4cd907ec104edc49c668f3244ccec9c04205bf89b66d8038bb73aa76b1c3e183",
+    "post-repair-T08.log": "fcc8594d113376ef996595b292b786c0b30be4670eb698f2527ee4e3fd80459a"
+  },
+  "public_reference_revisions": [
+    {
+      "repository": "adibirzu/oci-skills",
+      "url": "https://github.com/adibirzu/oci-skills",
+      "revision": "a4fbf70fd26d1a1c820261a7d4761ebb55457c84",
+      "commit_date": "2026-08-24T19:30:08Z",
+      "tree_truncated": false
+    },
+    {
+      "repository": "oracle/skills",
+      "url": "https://github.com/oracle/skills",
+      "revision": "b0afa3bfd7c7e3547458d7fe52649ab1b59706b7",
+      "commit_date": "2026-09-10T13:31:09Z",
+      "tree_truncated": false
+    },
+    {
+      "repository": "oracle/mcp",
+      "url": "https://github.com/oracle/mcp",
+      "revision": "e3cdae7fad817173ef62882f4d04b6baa32f0be2",
+      "commit_date": "2026-09-03T14:00:32Z",
+      "tree_truncated": false
+    }
+  ],
+  "remaining_gates": [
+    "V24",
+    "V25",
+    "V27",
+    "V28"
+  ]
+}

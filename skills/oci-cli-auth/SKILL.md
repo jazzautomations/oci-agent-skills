@@ -94,7 +94,8 @@ oci work-requests work-request list --compartment-id "$C" \
    jitter; never raise `--max-retries`. Corpus `26`.
 
 ## Hard rules
-- MUST establish identity/region/compartment first (`scripts/whoami.sh`).
+- Before live reads, establish identity, region and compartment with an available scoped tool.
+  Use [the CLI helper](scripts/whoami.sh) only when script execution is permitted.
 - MUST redact OCIDs, PAR access-uris, secret bundles, wallets
   (`../../references/redaction.md`, `../../references/untrusted-output.md`). Never pass `--debug`: it leaks signing detail.
 - MUST NOT run a `# MUTATING` block; propose it with its rollback and wait. `oci setup

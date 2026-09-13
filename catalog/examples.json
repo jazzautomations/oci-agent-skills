@@ -4497,7 +4497,7 @@
         "resource-availability",
         "get",
         "--compartment-id",
-        "${TENANCY_ID}",
+        "${COMPARTMENT_ID}",
         "--service-name",
         "compute",
         "--limit-name",

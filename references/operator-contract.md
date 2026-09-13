@@ -1,11 +1,15 @@
 # Operator contract
-Purpose: shared scope, reads, changes, evidence, host hand-off and CLI cadence.
-Source: research/A1 (docs/operations.md), research/12 §C, research/16 §E.3; generated 2026-09-08; verified-on CLI 3.91.0.
+Source: research/A1, research/12 §C, research/16 §E.3; 2026-09-08, CLI 3.91.0.
 
 ## 1. Establish the target
 
 Resolve profile (or workload identity), tenancy, region and compartment **before the
-first call**; never fall back to `DEFAULT`.
+first live call**; never fall back to `DEFAULT`.
+
+Use available host tools; never invent a tool or bypass a denied capability.
+Reuse verified scope only for the same signer/target. If identity is unverified,
+state the gap before live reads. Document review and command drafting need no live
+preflight: retain supplied inputs/placeholders and label the work accordingly.
 
 | Rule | Why |
 |---|---|
@@ -29,9 +33,8 @@ are advisory.
 
 ## 3. Changes and recovery
 
-Respect host permissions and the requested response format, including blocked
-outcomes. Do not add excluded commands or unrequested discovery. Read examples
-are optional diagnostics. Existing authorization covers its agreed scope only.
+Respect host permissions and the response format, including refusals. Read examples
+are optional; add no excluded commands or unrequested discovery. Keep authorization scoped.
 
 | Phase | Requirement |
 |---|---|
@@ -45,9 +48,10 @@ are optional diagnostics. Existing authorization covers its agreed scope only.
 
 ## 4. Evidence and confidentiality
 
-Report scope, observation time, CLI version, truncation and verification status. Keep
-doc review, command-shape validation, live read and deployment test apart: a tool name or an HTTP 200 never proves a working app or a complete
-inventory. Names, OCIDs and tenancy structure are private data (`redaction.md`).
+Report scope, time, CLI version, truncation and verification status. Distinguish
+doc review, syntax checks, live reads and deployment tests. HTTP 200 proves neither
+a working app nor a complete inventory. Names, OCIDs and tenancy structure are
+private (`redaction.md`).
 
 ## 5. Cloud Shell and Code Editor
 
@@ -63,8 +67,7 @@ inventory. Names, OCIDs and tenancy structure are private data (`redaction.md`).
 
 ## 6. CLI pin and re-verification cadence
 
-Pin the CLI version in every skill; an unpinned example is undated evidence. Releases
-are weekly and the surface grows ~1 %/quarter `[verified]`.
+Pin the CLI version in every skill; date its verification.
 
 | Trigger | Action |
 |---|---|
@@ -73,8 +76,7 @@ are weekly and the surface grows ~1 %/quarter `[verified]`.
 | Quarterly | live-safe subset (`--limit 1`) on a real tenancy; refresh leaf/region data |
 | `[BREAKING]` on a shipped path | patch the skill in the PR that bumps the pin |
 
-Search `[BREAKING]`: required-flag changes can break examples even when paths
-remain unchanged. Removed command groups also require updates.
+Check required flags as well as changed or removed command paths.
 
 ## Links (HTTP 200, 2026-09-08)
 

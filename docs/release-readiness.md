@@ -1,5 +1,13 @@
 # Release readiness — September 13, 2026
 
+## September 13 structured-host and scope repairs
+
+The [latest repair record](structured-host-repairs-2026-09-13.md) corrects
+compartment headroom, AD handling, shape-listing evidence and missing helper
+references. All 625 tests have passing coverage across the full attempt and a
+separate RAM-backed copy-test rerun. Partial host diagnostics remain separate
+from a full current task comparison; no release gate is waived.
+
 ## September 13 skill repairs
 
 The [repair follow-up](skill-repairs-2026-09-13.md) corrects A1 price/entitlement

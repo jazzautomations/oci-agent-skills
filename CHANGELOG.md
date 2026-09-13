@@ -2,6 +2,14 @@
 
 ## Unreleased — live integration and reproducible benchmarks
 
+September 13 scope repair: query capacity headroom in the explicit target
+compartment, derive AD handling from exact limit metadata, and distinguish quota
+headroom from hardware capacity. Correct nonexistent helper references in eleven
+skills and remove unsupported capacity/Support claims. Add 12 behavioral tests;
+625 test cases have passing coverage across the full attempt and the separately
+rerun copy test. Preserve partial OpenCode diagnostics and historical Claude
+scores. See [the dated repair record](docs/structured-host-repairs-2026-09-13.md).
+
 Newest service follow-up: separate FinOps scope boundaries from failed evidence
 checks, retaining incomplete-estate and savings limits. Mark empty/insufficient
 cost, forecast and tagged-spend evidence as gaps. Recheck seven bounded account

@@ -1,10 +1,10 @@
 {
-  "source": "research/00-PLAN-V2.1.md",
+  "source": "identity-stencil-correction-2026-09-13.md",
   "section": "4.1",
-  "source_sha256": "b28912134f2690e7f32b64b7a5314dde42ab40e1590f5e610aa566a69c0ab0f6",
+  "source_sha256": "9e58736b676585571dbdd914bf0c0308e21dace67624fc156465a13d93c387dd",
   "applied_errata": [
     "B3: shared error corpus path",
     "N3: partial verification label"
   ],
-  "template_sha256": "3844c684825dff38f7401bf00f1cc712c610674631c0f30c5767f90382a655a7"
+  "template_sha256": "d7fb2dab9c790e7d4c34625bbada7f5df587a01daed85779c5d45ef9c7da21de"
 }

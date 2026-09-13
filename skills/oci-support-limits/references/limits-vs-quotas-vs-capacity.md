@@ -1,37 +1,43 @@
 Purpose: decide which of the three walls the user actually hit before anyone files anything.
-Source: research/12 A5, research/04a §2.10, research/09c B5, research/06c §2; verified-on CLI 3.91.0, us-chicago-1, 2026-09-09.
+Sources: Oracle CLI/API contracts and the official documentation linked below.
+Corrected 2026-09-13 against CLI 3.91.0 help and SDK 2.185.0 models. Earlier
+2026-09-09 observations remain historical; no new live reads accompanied this correction.
 
 ## 1. The three walls
 
 | Wall | Who sets it | How it reads | Who can move it |
 |---|---|---|---|
 | **Service limit** | Oracle, per tenancy/region/AD | `limits value list` | a limit-increase request |
-| **Compartment quota** | you, as tenancy policy | `limits quota list` | you, immediately |
-| **Physical capacity** | nobody | `resource-availability get`, or the launch itself | nothing but time |
+| **Compartment quota** | administrators, through quota policies | `limits quota list` | an authorized policy update |
+| **Physical capacity** | available hardware for the requested placement | Compute capacity information/reservations or an actual placement result | placement choices and available supply |
 
-A quota can only lower a service limit, never raise it. `effective-quota-value: null` in a
-`resource-availability get` response means no quota policy applies to that limit [verified]. Only
-quotas actually **prevent** consumption; limits and budgets report it (research/09c B5).
+A quota cannot raise a service limit. Both service limits and quotas can prevent
+resource creation; budgets provide tracking/alerts and do not reserve resources.
+`resource-availability get` reports limit/quota usage and headroom for its
+**requested compartment**, not free hardware. A returned effective quota describes
+that compartment and the selected region/AD, not every compartment in the tenancy.
+Use fractional usage/availability fields when present; the integer fields round.
 
 ## 2. Order of operations
 
-1. `limits service list` -> the programmatic service name (`compute`, not "Compute"). 128 services
-   on this tenancy [verified]; `ai-anomaly-detection` is still a limits service name although the
-   CLI group was removed in 3.65.0 [verified].
-2. `limits definition list --service-name <svc>` -> read **`scope-type`** (`GLOBAL|REGION|AD`) and
-   `is-dynamic` for the exact limit.
-3. `limits value list` -> the configured number, per AD when AD-scoped.
-4. `limits resource-availability get` -> `used`, `available`, `effective-quota-value`.
+1. Resolve the service's programmatic name and the exact limit name. Use a bounded
+   metadata read under the explicitly selected tenancy.
+2. Filter `limits definition list` by `--service-name` and `--name`; inspect the
+   returned `scope-type` (`GLOBAL|REGION|AD`). Do not infer scope from a shape name.
+3. Read that limit's configured value, matching its scope and AD where applicable.
+4. Read `limits resource-availability get` under the **target compartment**. A
+   tenancy-wide read cannot establish a child's effective quota or usage.
 
-**Never skip step 2.** Every `*-e4-*` and `*-e5t-*` compute limit is `"scope": "AD"` [verified], and
-an AD-scoped limit read without `--availability-domain` fails with a bare
-`InvalidParameter: Invalid parameter 'availabilityDomain'`, status 400 [verified, reproduced
-2026-09-09]. Adding the AD returns `{"available":0,"used":0,...}` for the same limit [verified].
-The converse also holds live: `custom-image-count` is `REGION`-scoped and reads fine with no AD
-at all [verified, 2026-09-09] — so do not pass one blindly either.
+For `AD`, require the requested availability domain. For `REGION` or `GLOBAL`,
+omit `--availability-domain`, even if an unrelated AD is set in the environment.
+Missing, ambiguous, truncated or unsupported scope metadata is a reason to stop
+and report the gap, not to guess. A dynamic-limit flag does not promise that an
+increase will arrive in time for the user's workload.
 
-A **dynamic** limit grows with consumption on its own — check `is-dynamic` before advising a
-request, or you file a ticket for something that was going to fix itself (research/12 A5 [doc]).
+The [capacity helper](../scripts/capacity.sh) implements these bounded reads.
+It requires `PROFILE`, `REGION`, `TENANCY_ID`, `COMPARTMENT_ID`, `SERVICE` and
+`LIMIT_NAME`; `AD` is conditional. Its single JSON report separates configured
+values from compartment headroom and explicitly leaves physical capacity unverified.
 
 ## 3. Reads
 
@@ -43,9 +49,10 @@ oci limits service list --compartment-id "$TENANCY_ID" --query 'data[].name' --p
 oci limits quota list --compartment-id "$TENANCY_ID" --limit 20 --query 'data[].{name:name,state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
 ```
 
-Quotas live in the **root** compartment and target children (`in compartment dev`); the verbs are
-`set`, `unset` and `zero`, and they are evaluated at request time, so a quota added later never
-reclaims what already exists (research/09c B5). Writing one is a mutation:
+Quota policies belong to a selected compartment and can target compartments using
+`set`, `unset` and `zero`. The example below deliberately uses the tenancy; that is
+not a requirement for every quota policy. New policies can take up to ten minutes
+to take effect and do not reclaim existing resources. Writing one is a mutation:
 
 ```bash
 # MUTATING — not run in this repo; [shape-verified] against CLI 3.91.0 --help
@@ -55,21 +62,22 @@ oci limits quota create --compartment-id "$TENANCY_ID" --name no-gpu-in-dev --de
 
 ## 4. Reading the answer back to the user
 
-- `available > 0` and the launch still fails -> physical capacity, not a limit. `Out of host
-  capacity` is a 500 with `InternalError`, endemic to Always-Free A1/ARM in the home region.
-  The community fix is a backoff retry loop, not a ticket; the real fix is upgrading to PAYG,
-  which keeps every Always Free allowance at $0 but moves the tenancy to a higher-priority pool
-  (research/06c §2 [doc]).
-- Always Free shapes exist **only in the home region** — subscribing to another region does not
-  make them appear there (research/06c §2 [doc]).
-- GPU limits start at **0** in a new tenancy and are per-region; A100/H100/L40S are largely
-  reservation-only and an increase runs 1–3 business days, so there is no weekend GPU
-  (research/06c §2 [doc]).
-- A 404 from `resource-availability get` means that limit does not support the availability API —
-  a documented data gap, not a broken command [verified, help text]. Degrade to `value list` and
-  say the usage figure is unavailable rather than reporting zero usage.
+- Positive headroom rules out neither authorization problems nor image, network,
+  placement or other prerequisite failures. Diagnose the actual error.
+- For a confirmed out-of-host-capacity error, review shape/AD/fault-domain
+  alternatives within the user's authorized scope. Do not launch in a retry loop
+  or promise that a paid-account upgrade guarantees capacity.
+- List only shapes returned by the scoped shape listing. An existing VM's shape,
+  a price catalog entry or a service-limit name is not an additional listing result.
+- Free-tier eligibility, current pricing and actual capacity are separate; use
+  the free-tier skill for the current allowance contract. Do not promise universal
+  GPU limits, provisioning timelines or reservation availability.
+- Some limits lack availability data. For a 404, retain the permission/resource
+  ambiguity and check whether that limit supports the API. A configured limit value
+  alone does not establish usage; unavailable measurements remain unknown, not zero.
 
-Docs (HTTP 200, 2026-09-09):
+Official references (reviewed 2026-09-13):
 https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm ·
 https://docs.oracle.com/en-us/iaas/Content/Quotas/Concepts/resourcequotas.htm ·
-https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/troubleshooting-out-of-host-capacity.htm
+https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/troubleshooting-out-of-host-capacity.htm ·
+https://docs.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/limits/resource-availability/get.html

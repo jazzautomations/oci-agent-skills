@@ -761,8 +761,50 @@
       "oci_calls": []
     },
     {
+      "path": "skills/oci-support-limits/scripts/capacity.py",
+      "sha256": "d4168dac429ae85b8eba02debf7faf9997e280e7eb78e69c0e29eb548e407fee",
+      "mode": "read-only",
+      "oci_calls": [
+        [
+          "limits",
+          "definition",
+          "list",
+          "--compartment-id",
+          "--service-name",
+          "--name",
+          "--limit",
+          "2",
+          "--query",
+          "data[].{name:name,scope:\"scope-type\"}"
+        ],
+        [
+          "limits",
+          "value",
+          "list",
+          "--compartment-id",
+          "--service-name",
+          "--name",
+          "--scope-type",
+          "--limit",
+          "2",
+          "--query",
+          "data[].{name:name,value:value,ad:\"availability-domain\"}"
+        ],
+        [
+          "limits",
+          "resource-availability",
+          "get",
+          "--compartment-id",
+          "--service-name",
+          "--limit-name",
+          "--query",
+          "data"
+        ]
+      ]
+    },
+    {
       "path": "skills/oci-support-limits/scripts/capacity.sh",
-      "sha256": "dd31d8ec27558a48259449fd372c970d9966ee3543971be1f75a541e1d571bea",
+      "sha256": "ea91b21732f1e819a396f5aa89a004a4118ac16c3be98f8bcd2b6097ee47f31e",
       "mode": "read-only",
       "oci_calls": []
     },
