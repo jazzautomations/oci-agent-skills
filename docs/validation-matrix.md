@@ -1,6 +1,11 @@
 # Final validation matrix — 2026-09-13
 
-Branch: `main`. **Not release-ready: 24 PASS, four nonpassing gates.**
+Branch: `main`. **Stable release not ready: 24 PASS, four nonpassing gates.**
+
+The owner-authorized public preview retains these gates and their failures.
+[Current semantic and trial validation](semantic-validation-2026-09-13.md) adds
+34 passing query replays (16 nonempty) and executable component regressions;
+it does not close the four full-release gates.
 
 The [September 13 query follow-up](query-validation-2026-09-13.md) audits all 106
 Luna command proposals and finds six field errors in this package. The original

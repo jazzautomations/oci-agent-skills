@@ -138,6 +138,8 @@ The frozen Oracle denylist comparison permits 374 destructive-labelled leaves un
 
 ## Evidence you can inspect
 
+[September 13 semantic validation](docs/semantic-validation-2026-09-13.md): 38 successful trial reads out of 39 requests; 34 query-result comparisons passed, including 16 with nonempty input. Offline regressions cover projections, joins, pagination and incomplete reads. These bounded checks do not certify every skill end to end.
+
 | Check | Recorded result | Scope |
 |---|---:|---|
 | Regression suite | See latest full run | Test count, warnings and date in the [validation matrix](docs/validation-matrix.md) |

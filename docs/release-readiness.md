@@ -1,5 +1,13 @@
 # Release readiness — September 13, 2026
 
+## Public preview scope
+
+The owner-authorized `0.2.1-preview.1` documents four open stable-release gates.
+[Current semantic and trial validation](semantic-validation-2026-09-13.md) records
+38 successful reads from 39 requests and 34 passing query replays (16 nonempty).
+Component regressions protect the repaired projections and helper workflows.
+Public preview availability does not establish stable-release readiness.
+
 ## September 13 structured-host and scope repairs
 
 The [latest repair record](structured-host-repairs-2026-09-13.md) corrects

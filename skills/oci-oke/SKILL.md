@@ -65,7 +65,7 @@ oci ce cluster list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data[
 Node pools
 
 ```bash
-oci ce node-pool list --compartment-id "$COMPARTMENT_ID" --cluster-id "$CLUSTER_ID" --limit 20 --query 'data[].{id:id,version:"kubernetes-version"}' --profile "$PROFILE" --region "$REGION"
+oci ce node-pool list --compartment-id "$COMPARTMENT_ID" --cluster-id "$CLUSTER_ID" --limit 20 --query 'data[].{id:id,name:name,version:"kubernetes-version",size:"node-config-details".size}' --profile "$PROFILE" --region "$REGION"
 ```
 
 Work-request errors

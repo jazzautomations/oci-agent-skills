@@ -41,19 +41,19 @@ Keep echoed dates and currency; never `--debug`.
 Where the money went
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by '["service"]' --limit 50 --query 'data.items[].[service,"computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by '["service"]' --limit 50 --query 'data.items[].{service:service,amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 Which day, which SKU
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity DAILY --group-by '["service","skuName"]' --limit 200 --query 'data.items[].["time-usage-started","sku-name","computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity DAILY --group-by '["service","skuName"]' --limit 200 --query 'data.items[].{service:service,sku:"sku-name",amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 Showback; **one** cost-tracking tag per call
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by-tag '[{"namespace":"Oracle-Tags","key":"CreatedBy"}]' --limit 50 --query 'data.items[].[tags[0].value,"computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by-tag '[{"namespace":"Oracle-Tags","key":"CreatedBy"}]' --limit 50 --query 'data.items[].{tags:tags,amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 Guardrails: read budget objects and alert rules separately. A budget amount is
@@ -86,7 +86,8 @@ oci os object list --namespace-name bling --bucket-name "$TENANCY_ID" --prefix '
    [unverified] HOURLY sweeps may hit 429; narrow them (ids 26, 47).
 
 IDs: [corpus](../../references/error-corpus.json). Evidence 2026-09-09, us-chicago-1: all five
-fences ran **live** (budgets empty; FOCUS non-empty); modes 1-3 reproduced live. Guide writes are
+then-current fences ran **live** (budgets empty; FOCUS non-empty); modes 1-3 reproduced live.
+September 13 currency/time/tag projection repairs are tested offline; no new nonempty cost sample. Guide writes are
 `[shape-verified]`.
 
 ## Hard rules

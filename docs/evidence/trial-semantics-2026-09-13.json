@@ -1,0 +1,1007 @@
+{
+  "date": "2026-09-13T18:01:46.030635+00:00",
+  "scope": "DEFAULT profile in configured region; tenancy root and at most two observed active compartments, at most 65 bounded reads; raw resources/errors remain private. Queries are replayed locally against actual CLI responses and compared with independent Python field/filter expectations.",
+  "account_mutations": 0,
+  "model_task_calls": 0,
+  "max_calls": 65,
+  "calls": [
+    {
+      "id": "user",
+      "path": "iam user get",
+      "ok": true,
+      "sample_count": null,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.59
+    },
+    {
+      "id": "regions",
+      "path": "iam region-subscription list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.38
+    },
+    {
+      "id": "compartments",
+      "path": "iam compartment list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.21
+    },
+    {
+      "id": "policies",
+      "path": "iam policy list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.22
+    },
+    {
+      "id": "dynamic-groups",
+      "path": "iam dynamic-group list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.31
+    },
+    {
+      "id": "shapes",
+      "path": "compute shape list",
+      "ok": true,
+      "sample_count": 10,
+      "nonempty_response": true,
+      "bounded_or_paginated": true,
+      "seconds": 1.92
+    },
+    {
+      "id": "ads",
+      "path": "iam availability-domain list",
+      "ok": true,
+      "sample_count": 3,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.26
+    },
+    {
+      "id": "namespace",
+      "path": "os ns get",
+      "ok": true,
+      "sample_count": null,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.29
+    },
+    {
+      "id": "scope0-compute-instance-list",
+      "path": "compute instance list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.64
+    },
+    {
+      "id": "scope0-bv-volume-list",
+      "path": "bv volume list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.74
+    },
+    {
+      "id": "scope0-compute-volume-attachment-list",
+      "path": "compute volume-attachment list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.84
+    },
+    {
+      "id": "scope0-network-vcn-list",
+      "path": "network vcn list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 4.21
+    },
+    {
+      "id": "scope0-network-subnet-list",
+      "path": "network subnet list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 3.22
+    },
+    {
+      "id": "scope0-network-route-table-list",
+      "path": "network route-table list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.85
+    },
+    {
+      "id": "scope0-network-security-list-list",
+      "path": "network security-list list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.81
+    },
+    {
+      "id": "scope0-monitoring-alarm-list",
+      "path": "monitoring alarm list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.39
+    },
+    {
+      "id": "scope0-monitoring-metric-list",
+      "path": "monitoring metric list",
+      "ok": true,
+      "sample_count": 10,
+      "nonempty_response": true,
+      "bounded_or_paginated": true,
+      "seconds": 1.48
+    },
+    {
+      "id": "scope0-ce-cluster-list",
+      "path": "ce cluster list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.73
+    },
+    {
+      "id": "scope0-kms-management-vault-list",
+      "path": "kms management vault list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.27
+    },
+    {
+      "id": "scope0-resource-manager-stack-list",
+      "path": "resource-manager stack list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.44
+    },
+    {
+      "id": "scope0-buckets",
+      "path": "os bucket list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.22
+    },
+    {
+      "id": "scope0-log-groups",
+      "path": "logging log-group list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.26
+    },
+    {
+      "id": "scope1-compute-instance-list",
+      "path": "compute instance list",
+      "ok": true,
+      "sample_count": 2,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.81
+    },
+    {
+      "id": "scope1-bv-volume-list",
+      "path": "bv volume list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.69
+    },
+    {
+      "id": "scope1-compute-volume-attachment-list",
+      "path": "compute volume-attachment list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.77
+    },
+    {
+      "id": "scope1-network-vcn-list",
+      "path": "network vcn list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.76
+    },
+    {
+      "id": "scope1-network-subnet-list",
+      "path": "network subnet list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.8
+    },
+    {
+      "id": "scope1-network-route-table-list",
+      "path": "network route-table list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.67
+    },
+    {
+      "id": "scope1-network-security-list-list",
+      "path": "network security-list list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.69
+    },
+    {
+      "id": "scope1-monitoring-alarm-list",
+      "path": "monitoring alarm list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.22
+    },
+    {
+      "id": "scope1-monitoring-metric-list",
+      "path": "monitoring metric list",
+      "ok": true,
+      "sample_count": 10,
+      "nonempty_response": true,
+      "bounded_or_paginated": true,
+      "seconds": 1.29
+    },
+    {
+      "id": "scope1-ce-cluster-list",
+      "path": "ce cluster list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.39
+    },
+    {
+      "id": "scope1-kms-management-vault-list",
+      "path": "kms management vault list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.29
+    },
+    {
+      "id": "scope1-resource-manager-stack-list",
+      "path": "resource-manager stack list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.41
+    },
+    {
+      "id": "scope1-buckets",
+      "path": "os bucket list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.33
+    },
+    {
+      "id": "scope1-bucket-0",
+      "path": "os bucket get",
+      "ok": true,
+      "sample_count": null,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.27
+    },
+    {
+      "id": "scope1-lifecycle-0",
+      "path": "os object-lifecycle-policy get",
+      "ok": false,
+      "http_status": 404,
+      "seconds": 1.29,
+      "service_code": "LifecyclePolicyNotFound"
+    },
+    {
+      "id": "scope1-objects-0",
+      "path": "os object list",
+      "ok": true,
+      "sample_count": 1,
+      "nonempty_response": true,
+      "bounded_or_paginated": false,
+      "seconds": 1.29
+    },
+    {
+      "id": "scope1-log-groups",
+      "path": "logging log-group list",
+      "ok": true,
+      "sample_count": 0,
+      "nonempty_response": false,
+      "bounded_or_paginated": false,
+      "seconds": 1.26
+    }
+  ],
+  "initial_semantic_replays": [
+    {
+      "read_id": "user",
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "source_sha256": "d39dfa266395360cb6cdcf19a09416aad69b9403624bb45e76833d071445d0a3",
+      "query_sha256": "e85d71ade477102b3aac9349a0e0af8e6b25d82e03c150282ba1935987c1d7b0",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "regions",
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "source_sha256": "d39dfa266395360cb6cdcf19a09416aad69b9403624bb45e76833d071445d0a3",
+      "query_sha256": "81667881ad9555af604fb6513e751e495164a7052dec488cf7ebb97c690dc92b",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "policies",
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "source_sha256": "866fb4af25599232a749212a1dc0d464858f55e9f443d2d3a989d2bdf5872ab0",
+      "query_sha256": "281190c24b0ecac574a4118b222bd28c970840b42638692d041a024ea1376275",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "policies",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "f1f458b80f3a0e7ab8d1987957432ae8049b65beb3f174ef17af360194e700b1",
+      "query_sha256": "9882f22c6063746c8ba3ece2d9667e70f4e06ff1bd0c478e5914fe7529204294",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "dynamic-groups",
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "source_sha256": "866fb4af25599232a749212a1dc0d464858f55e9f443d2d3a989d2bdf5872ab0",
+      "query_sha256": "0cdba8e9ad874744864776d92cb207c254b198a86c31537350da46988ba0ba19",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "shapes",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "dea41ebff99054ac62693a19a618fb416bff182cab896c72ed1d7f4dc3b528cf",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope0-compute-instance-list",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "392a926dd19b1781b66548b792102b079b7a313a56b4ff2c6fceab3aa1d9921c",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-bv-volume-list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "1850275788fd03ab6c0197781fa8761d914c8bdddb7d786e006f1790ada1ba92",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-compute-volume-attachment-list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "87aab28e8504783014852f14e4e2e1f671231d0d259361b272858d058c28955a",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-vcn-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "816bbcf1f4de30e4e1ba46d76d380be9a42dfdc5db0bec60a395c2b804eb62d4",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-subnet-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "db91d5b5ed4c7b4a66215c4372247d8b093d43a037aa748f4091a49482dafcae",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-route-table-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "afb488277b68856a3d6fe246c291be2b05ce50920890328d1ffcbeca8cfd3500",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-monitoring-alarm-list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6c305d099b8b25ceb5c2564be4c26c8f0580d3d4ede08cd961dc9b31f582fe16",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-monitoring-metric-list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6271b084080a53f3628a010bed3ef5f753d12218937d62d78bb28605f636f097",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope0-ce-cluster-list",
+      "source": "skills/oci-oke/SKILL.md",
+      "source_sha256": "4881cf60d562d511c658d0fa1349c8d058107e6dc8ac028917583767fe8cdb4b",
+      "query_sha256": "b52253048132a22232a9b27188a26f26ad9faf69f411bf3df0307da13b6d31f6",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-kms-management-vault-list",
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "source_sha256": "19748475f51b1ebbf69a0d3092a382c777154eabef77d0791afebd6240c2fac8",
+      "query_sha256": "2001b79f6f07f16bbb30deb8c57f80f37781e651f7a8edc52f5d34d53b2926f7",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-buckets",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "13e533a46858f4a06ef57ec42d641312e4447a783a9977f94ad18e8df4caa6fc",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-log-groups",
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "source_sha256": "354e28116925dee381d371b31272f80b5a22a41306e4d7ccc59522c2192b3137",
+      "query_sha256": "0fb9e1f2a9c15c3b74fc1c3fce2f28c25f5397578eab71cb4c8c276632ef17f5",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-compute-instance-list",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "392a926dd19b1781b66548b792102b079b7a313a56b4ff2c6fceab3aa1d9921c",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-bv-volume-list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "1850275788fd03ab6c0197781fa8761d914c8bdddb7d786e006f1790ada1ba92",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-compute-volume-attachment-list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "87aab28e8504783014852f14e4e2e1f671231d0d259361b272858d058c28955a",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-vcn-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "816bbcf1f4de30e4e1ba46d76d380be9a42dfdc5db0bec60a395c2b804eb62d4",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-subnet-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "db91d5b5ed4c7b4a66215c4372247d8b093d43a037aa748f4091a49482dafcae",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-route-table-list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "c25ce36cba6a26c12ee463f5db89f9abd249a8f14a736cd7fcd42c09698232bf",
+      "query_sha256": "afb488277b68856a3d6fe246c291be2b05ce50920890328d1ffcbeca8cfd3500",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-monitoring-alarm-list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6c305d099b8b25ceb5c2564be4c26c8f0580d3d4ede08cd961dc9b31f582fe16",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-monitoring-metric-list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6271b084080a53f3628a010bed3ef5f753d12218937d62d78bb28605f636f097",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope1-ce-cluster-list",
+      "source": "skills/oci-oke/SKILL.md",
+      "source_sha256": "4881cf60d562d511c658d0fa1349c8d058107e6dc8ac028917583767fe8cdb4b",
+      "query_sha256": "b52253048132a22232a9b27188a26f26ad9faf69f411bf3df0307da13b6d31f6",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-kms-management-vault-list",
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "source_sha256": "19748475f51b1ebbf69a0d3092a382c777154eabef77d0791afebd6240c2fac8",
+      "query_sha256": "2001b79f6f07f16bbb30deb8c57f80f37781e651f7a8edc52f5d34d53b2926f7",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-buckets",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "13e533a46858f4a06ef57ec42d641312e4447a783a9977f94ad18e8df4caa6fc",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-bucket-0",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "f1f458b80f3a0e7ab8d1987957432ae8049b65beb3f174ef17af360194e700b1",
+      "query_sha256": "f37bd18362f28ab8c9c34db790656c006aa642bc8b741ee445463cae5a4bf82b",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-objects-0",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "244e52f6adac71dd9777fe13a4be759b167436ae775f2a1e26dc38be5e970ef9",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-log-groups",
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "source_sha256": "354e28116925dee381d371b31272f80b5a22a41306e4d7ccc59522c2192b3137",
+      "query_sha256": "0fb9e1f2a9c15c3b74fc1c3fce2f28c25f5397578eab71cb4c8c276632ef17f5",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    }
+  ],
+  "semantic_replays": [
+    {
+      "read_id": "user",
+      "path": "iam user get",
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "source_sha256": "d39dfa266395360cb6cdcf19a09416aad69b9403624bb45e76833d071445d0a3",
+      "query_sha256": "e85d71ade477102b3aac9349a0e0af8e6b25d82e03c150282ba1935987c1d7b0",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "regions",
+      "path": "iam region-subscription list",
+      "source": "skills/oci-cli-auth/SKILL.md",
+      "source_sha256": "d39dfa266395360cb6cdcf19a09416aad69b9403624bb45e76833d071445d0a3",
+      "query_sha256": "81667881ad9555af604fb6513e751e495164a7052dec488cf7ebb97c690dc92b",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "policies",
+      "path": "iam policy list",
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "source_sha256": "866fb4af25599232a749212a1dc0d464858f55e9f443d2d3a989d2bdf5872ab0",
+      "query_sha256": "281190c24b0ecac574a4118b222bd28c970840b42638692d041a024ea1376275",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "policies",
+      "path": "iam policy list",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "9f3f81fda1b4b3e494879cf89aa748b88dbe6f659101c357ba394b489e95cdfe",
+      "query_sha256": "9882f22c6063746c8ba3ece2d9667e70f4e06ff1bd0c478e5914fe7529204294",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "dynamic-groups",
+      "path": "iam dynamic-group list",
+      "source": "skills/oci-iam-policy/SKILL.md",
+      "source_sha256": "866fb4af25599232a749212a1dc0d464858f55e9f443d2d3a989d2bdf5872ab0",
+      "query_sha256": "0cdba8e9ad874744864776d92cb207c254b198a86c31537350da46988ba0ba19",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "shapes",
+      "path": "compute shape list",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "dea41ebff99054ac62693a19a618fb416bff182cab896c72ed1d7f4dc3b528cf",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope0-compute-instance-list",
+      "path": "compute instance list",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "392a926dd19b1781b66548b792102b079b7a313a56b4ff2c6fceab3aa1d9921c",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-bv-volume-list",
+      "path": "bv volume list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "1850275788fd03ab6c0197781fa8761d914c8bdddb7d786e006f1790ada1ba92",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-compute-volume-attachment-list",
+      "path": "compute volume-attachment list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "87aab28e8504783014852f14e4e2e1f671231d0d259361b272858d058c28955a",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-vcn-list",
+      "path": "network vcn list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "816bbcf1f4de30e4e1ba46d76d380be9a42dfdc5db0bec60a395c2b804eb62d4",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-subnet-list",
+      "path": "network subnet list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "db91d5b5ed4c7b4a66215c4372247d8b093d43a037aa748f4091a49482dafcae",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-route-table-list",
+      "path": "network route-table list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "afb488277b68856a3d6fe246c291be2b05ce50920890328d1ffcbeca8cfd3500",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-network-security-list-list",
+      "path": "network security-list list",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "9f3f81fda1b4b3e494879cf89aa748b88dbe6f659101c357ba394b489e95cdfe",
+      "query_sha256": "fad3524e80050872558e6c0c4dfa414cecdc7ad825a53f8b125a9e0befeda114",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-monitoring-alarm-list",
+      "path": "monitoring alarm list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6c305d099b8b25ceb5c2564be4c26c8f0580d3d4ede08cd961dc9b31f582fe16",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-monitoring-metric-list",
+      "path": "monitoring metric list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6271b084080a53f3628a010bed3ef5f753d12218937d62d78bb28605f636f097",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope0-ce-cluster-list",
+      "path": "ce cluster list",
+      "source": "skills/oci-oke/SKILL.md",
+      "source_sha256": "8f348e334f96090987f0cefc41261c9d1f52b251a01acae82b0b6b8153aa5e6e",
+      "query_sha256": "b52253048132a22232a9b27188a26f26ad9faf69f411bf3df0307da13b6d31f6",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-kms-management-vault-list",
+      "path": "kms management vault list",
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "source_sha256": "19748475f51b1ebbf69a0d3092a382c777154eabef77d0791afebd6240c2fac8",
+      "query_sha256": "2001b79f6f07f16bbb30deb8c57f80f37781e651f7a8edc52f5d34d53b2926f7",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-buckets",
+      "path": "os bucket list",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "13e533a46858f4a06ef57ec42d641312e4447a783a9977f94ad18e8df4caa6fc",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope0-log-groups",
+      "path": "logging log-group list",
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "source_sha256": "354e28116925dee381d371b31272f80b5a22a41306e4d7ccc59522c2192b3137",
+      "query_sha256": "0fb9e1f2a9c15c3b74fc1c3fce2f28c25f5397578eab71cb4c8c276632ef17f5",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-compute-instance-list",
+      "path": "compute instance list",
+      "source": "skills/oci-compute/SKILL.md",
+      "source_sha256": "8d64cc0471175065a06d528c1bae9b0a46a14ca5fd08fe3e16f86259899f2de8",
+      "query_sha256": "392a926dd19b1781b66548b792102b079b7a313a56b4ff2c6fceab3aa1d9921c",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-bv-volume-list",
+      "path": "bv volume list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "1850275788fd03ab6c0197781fa8761d914c8bdddb7d786e006f1790ada1ba92",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-compute-volume-attachment-list",
+      "path": "compute volume-attachment list",
+      "source": "skills/oci-block-file-storage/SKILL.md",
+      "source_sha256": "cc4ca4766a3b53c128c22a7e6f79dc5de984722130f784b4fe0a180340314f04",
+      "query_sha256": "87aab28e8504783014852f14e4e2e1f671231d0d259361b272858d058c28955a",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-vcn-list",
+      "path": "network vcn list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "816bbcf1f4de30e4e1ba46d76d380be9a42dfdc5db0bec60a395c2b804eb62d4",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-subnet-list",
+      "path": "network subnet list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "db91d5b5ed4c7b4a66215c4372247d8b093d43a037aa748f4091a49482dafcae",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-route-table-list",
+      "path": "network route-table list",
+      "source": "skills/oci-networking/SKILL.md",
+      "source_sha256": "ea86ef6c7aab5438116601e24ff91878e7ba12e62d84ead10e4517ab1b715b12",
+      "query_sha256": "afb488277b68856a3d6fe246c291be2b05ce50920890328d1ffcbeca8cfd3500",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-network-security-list-list",
+      "path": "network security-list list",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "9f3f81fda1b4b3e494879cf89aa748b88dbe6f659101c357ba394b489e95cdfe",
+      "query_sha256": "fad3524e80050872558e6c0c4dfa414cecdc7ad825a53f8b125a9e0befeda114",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-monitoring-alarm-list",
+      "path": "monitoring alarm list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6c305d099b8b25ceb5c2564be4c26c8f0580d3d4ede08cd961dc9b31f582fe16",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-monitoring-metric-list",
+      "path": "monitoring metric list",
+      "source": "skills/oci-monitoring-alarms/SKILL.md",
+      "source_sha256": "b2e692e99743278ef592f74dc04aee98072e577350608a6fec6a346ffb4466e3",
+      "query_sha256": "6271b084080a53f3628a010bed3ef5f753d12218937d62d78bb28605f636f097",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": true
+    },
+    {
+      "read_id": "scope1-ce-cluster-list",
+      "path": "ce cluster list",
+      "source": "skills/oci-oke/SKILL.md",
+      "source_sha256": "8f348e334f96090987f0cefc41261c9d1f52b251a01acae82b0b6b8153aa5e6e",
+      "query_sha256": "b52253048132a22232a9b27188a26f26ad9faf69f411bf3df0307da13b6d31f6",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-kms-management-vault-list",
+      "path": "kms management vault list",
+      "source": "skills/oci-vault-certificates/SKILL.md",
+      "source_sha256": "19748475f51b1ebbf69a0d3092a382c777154eabef77d0791afebd6240c2fac8",
+      "query_sha256": "2001b79f6f07f16bbb30deb8c57f80f37781e651f7a8edc52f5d34d53b2926f7",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-buckets",
+      "path": "os bucket list",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "13e533a46858f4a06ef57ec42d641312e4447a783a9977f94ad18e8df4caa6fc",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-bucket-0",
+      "path": "os bucket get",
+      "source": "skills/oci-security-posture/SKILL.md",
+      "source_sha256": "9f3f81fda1b4b3e494879cf89aa748b88dbe6f659101c357ba394b489e95cdfe",
+      "query_sha256": "f37bd18362f28ab8c9c34db790656c006aa642bc8b741ee445463cae5a4bf82b",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-objects-0",
+      "path": "os object list",
+      "source": "skills/oci-object-storage/SKILL.md",
+      "source_sha256": "b04522158d500943b8614bac20e7549ca82faeb64e387ea2f38262a87aaa29ca",
+      "query_sha256": "244e52f6adac71dd9777fe13a4be759b167436ae775f2a1e26dc38be5e970ef9",
+      "passed": true,
+      "nonempty_input": true,
+      "bounded_or_paginated": false
+    },
+    {
+      "read_id": "scope1-log-groups",
+      "path": "logging log-group list",
+      "source": "skills/oci-logging-audit/SKILL.md",
+      "source_sha256": "354e28116925dee381d371b31272f80b5a22a41306e4d7ccc59522c2192b3137",
+      "query_sha256": "0fb9e1f2a9c15c3b74fc1c3fce2f28c25f5397578eab71cb4c8c276632ef17f5",
+      "passed": true,
+      "nonempty_input": false,
+      "bounded_or_paginated": false
+    }
+  ],
+  "replay_date": "2026-09-13T19:37:27.137951+00:00",
+  "replay_cloud_calls": 0,
+  "collection_base_revision": "eba3fd3c9c306230842333ce48b58b82624f77e1",
+  "limitations": [
+    "Bounded samples in one trial tenancy and its configured region, not an exhaustive inventory.",
+    "Empty collections do not establish nonempty service behavior.",
+    "Private source captures are withheld; public live evidence is a collector attestation, not independently replayable from this public artifact.",
+    "Offline tests use synthetic fixtures and do not establish model task performance."
+  ],
+  "summary": {
+    "calls": 39,
+    "read_successes": 38,
+    "semantic_replays": 34,
+    "semantic_passes": 34,
+    "nonempty_semantic_replays": 16
+  }
+}

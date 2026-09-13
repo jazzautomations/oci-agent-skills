@@ -80,7 +80,8 @@ validation additionally uses `claude plugin validate . --strict` and
 `uv run --frozen --project runtime python scripts/ci/release_gate.py` runs the
 full matrix and writes candidate reports outside the checkout. Review its diffs
 before updating evidence. Existing live-coverage and host-evaluation
-gaps remain release blockers; a nonzero exit is expected until they are resolved.
+gaps remain stable-release blockers; a nonzero exit is expected until they are resolved.
+The owner-authorized public preview documents these failures without waiving them.
 The default gate replays recorded host evidence without inference. `--probe-host`
 is a potentially paid opt-in, requiring separate model-provider budget approval;
 OCI credits and ordinary CI validation do not authorize it.

@@ -1,5 +1,9 @@
 # GPT Luna package comparison — September 13, 2026
 
+**Historical source snapshot:** subsequent semantic repairs changed skills. The
+offline verifier now replays this report at immutable `eba3fd3` and reports
+`current_sources: false`; these scores do not certify the current preview.
+
 **Subsequent command audit found six faulty queries in this package's proposals.**
 The 40/40 below is the original fixture/command-syntax score, not successful OCI
 command execution. Read the [query validation follow-up](query-validation-2026-09-13.md)

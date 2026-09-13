@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — live integration and reproducible benchmarks
+## 0.2.1-preview.1 — 2026-09-13
+
+Add authored-query and workflow semantic regressions. Repair currency/time/tag,
+NSG, public IPv6 rule and node-pool projections, plus posture truncation handling.
+Record 38 successful bounded trial reads from 39 requests and 34 passing query
+replays (16 nonempty). Preserve prior Luna scores at their immutable revision.
+See [scope and remaining gates](docs/semantic-validation-2026-09-13.md).
 
 Audit all 106 Luna command queries against 35 pinned CLI/SDK response contracts.
 Retain six field errors for this package, one for Oracle and six for adibirzu;

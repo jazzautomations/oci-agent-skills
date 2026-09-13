@@ -1,5 +1,8 @@
 # Roadmap and release criteria
 
+Latest: [semantic regressions and trial reads](semantic-validation-2026-09-13.md)
+support the public preview; the four stable-release gates remain open.
+
 The v2 skill set ships as package **0.2.1 preview**. The next release requires
 closing the [validation matrix](validation-matrix.md), not merely renaming the
 version or increasing the skill count. All current evidence is scoped and dated.

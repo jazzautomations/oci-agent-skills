@@ -24,6 +24,10 @@ def read(argv, flags):
     for flag in result['data'].get('flags', []):
         if flag not in flags:
             flags.append(flag)
+    if result.get('truncated') or result.get('page_saturated'):
+        if 'truncated' not in flags:
+            flags.append('truncated')
+        return None
     return result['data'].get('items')
 
 

@@ -71,7 +71,7 @@ oci os bucket get --namespace-name "$NAMESPACE" --bucket-name "$BUCKET" --query 
 Internet-facing ingress, and the port it opens.
 
 ```bash
-oci network security-list list --compartment-id "$COMPARTMENT_ID" --query 'data[].{n:"display-name",open:"ingress-security-rules"[?source==`0.0.0.0/0`].{port:"tcp-options"."destination-port-range".min}}' --limit 20
+oci network security-list list --compartment-id "$COMPARTMENT_ID" --query 'data[].{n:"display-name",open:"ingress-security-rules"[?source==`0.0.0.0/0` || source==`::/0`]}' --limit 20
 ```
 
 Open Cloud Guard problems, worst first.

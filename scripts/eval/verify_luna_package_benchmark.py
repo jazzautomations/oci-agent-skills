@@ -9,6 +9,7 @@ import random
 import jsonschema
 import checked_task_benchmark as benchmark
 from audit_query_fields import audit as audit_fields
+from historical_evidence import verify_historical
 
 ARMS = ('pack', 'oracle', 'adibirzu')
 
@@ -46,6 +47,10 @@ def paired(rows, order):
 
 
 def verify(report, *, case_ids=None):
+    if case_ids is None:
+        historical = verify_historical(report, "verify_luna_package_benchmark.py")
+        if historical is not None:
+            return historical
     tasks = {t['id']: t for t in json.loads((benchmark.ROOT / 'evals/tasks.json').read_text())}
     if case_ids is not None:
         require(case_ids and len(set(case_ids)) == len(case_ids) and set(case_ids) <= tasks.keys(), 'Invalid explicit test scope')

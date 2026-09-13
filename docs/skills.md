@@ -217,15 +217,15 @@ oci compute image list --compartment-id "$COMPARTMENT_ID" --operating-system "Or
 **Not for:** Always Free allotments (`oci-free-tier`).
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by '["service"]' --limit 50 --query 'data.items[].[service,"computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by '["service"]' --limit 50 --query 'data.items[].{service:service,amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity DAILY --group-by '["service","skuName"]' --limit 200 --query 'data.items[].["time-usage-started","sku-name","computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity DAILY --group-by '["service","skuName"]' --limit 200 --query 'data.items[].{service:service,sku:"sku-name",amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 ```bash
-oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by-tag '[{"namespace":"Oracle-Tags","key":"CreatedBy"}]' --limit 50 --query 'data.items[].[tags[0].value,"computed-amount"]'
+oci usage-api usage-summary request-summarized-usages --tenant-id "$TENANCY_ID" --time-usage-started "$FROM" --time-usage-ended "$TO" --granularity MONTHLY --group-by-tag '[{"namespace":"Oracle-Tags","key":"CreatedBy"}]' --limit 50 --query 'data.items[].{tags:tags,amount:"computed-amount",currency:currency,start:"time-usage-started",end:"time-usage-ended"}'
 ```
 
 </details>

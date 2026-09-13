@@ -1,20 +1,41 @@
-# Mensagem para apresentar o projeto
+# Texto para apresentar o preview à Oracle
 
-Texto preparado para envio pelo autor; nenhuma mensagem foi enviada.
+Rascunho para envio ao destino escolhido pelo autor; não enviado automaticamente.
 
-> Pessoal, preparei um projeto independente para agentes trabalharem com OCI:
-> são 37 skills de cloud engineering, Oracle Database, APEX, IA e DevOps, mais
-> 15 ferramentas MCP de leitura e um catálogo de comandos verificável.
->
-> Queria mostrar para vocês e receber uma revisão técnica antes de abrir o repo.
-> Separei um resumo curto, uma demonstração reproduzível e as evidências dos testes,
-> incluindo o que ainda falta validar. O projeto não é oficial da Oracle.
->
-> Se fizer sentido, queria principalmente ouvir onde há premissas erradas de
-> serviço, fluxos importantes faltando e qual cenário real vocês usariam para
-> avaliar a qualidade. Posso começar pelo PDF e demonstrar as peças em cinco minutos.
+Pessoal, publiquei o OCI Agent Skills como preview open source, sob Apache 2.0:
+https://github.com/jazzautomations/oci-agent-skills
 
-Repo: [OCI Agent Skills](https://github.com/jazzautomations/oci-agent-skills).
-O link exige acesso enquanto estiver privado. Use o PDF ou o snapshot ZIP para
-uma primeira avaliação sem acesso ao GitHub; os arquivos não incluem o histórico
-Git. O autor decide os destinatários e o acesso separadamente.
+São 37 skills para OCI, Oracle Database, APEX, IA e DevOps, com catálogo de
+comandos, 15 ferramentas MCP de leitura e testes reproduzíveis. A validação
+recente na nossa trial fez 39 leituras: 38 tiveram sucesso e uma retornou ausência
+de política de lifecycle. As 34 comparações de consultas passaram; 16 usaram
+dados presentes. Também adicionamos regressões para filtros, paginação e junções.
+
+É um projeto independente, sem afiliação ou endosso da Oracle. Documentamos
+as limitações de acesso e cobertura; o preview não é uma certificação de todos
+os fluxos. Gostaria de revisão técnica sobre premissas de serviço, casos de uso
+faltando e cenários reais para avaliar o projeto.
+
+Evidências: https://github.com/jazzautomations/oci-agent-skills/blob/main/docs/semantic-validation-2026-09-13.md
+
+# Texto para LinkedIn
+
+Publiquei o OCI Agent Skills: um projeto open source para ajudar agentes de
+coding a trabalhar com Oracle Cloud Infrastructure.
+
+São 37 skills, cobrindo infraestrutura, Oracle Database, APEX, IA e DevOps,
+mais 15 ferramentas MCP de leitura e um catálogo de comandos OCI.
+
+O trabalho foi além de escrever instruções: testamos as consultas, filtros,
+paginação e junções e validamos leituras na nossa conta trial. Encontramos e
+corrigimos problemas que uma simples checagem de sintaxe não pegava.
+
+Está disponível como preview sob Apache 2.0, com testes, evidências e limitações
+publicadas. É um projeto independente, sem afiliação com a Oracle.
+
+Quem trabalha com OCI e agentes: testem, critiquem e tragam cenários reais.
+Issues e contribuições são bem-vindas.
+
+https://github.com/jazzautomations/oci-agent-skills
+
+#OracleCloud #OCI #OpenSource #MCP #AI

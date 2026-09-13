@@ -1,0 +1,182 @@
+{
+  "date": "2026-09-13",
+  "pytest": {
+    "passed": 741,
+    "warnings": 9,
+    "seconds": 63.83,
+    "returncode": 0,
+    "log_sha256": "d97e542252bb7511143dcf37df5db7d651ad57a17822a239079d0c4b286fcf72"
+  },
+  "strict_ci": [
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_frontmatter.py",
+      "returncode": 0,
+      "seconds": 0.1
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_refs.py",
+      "returncode": 0,
+      "seconds": 0.16
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/doc-gen/catalogs.py --check",
+      "returncode": 0,
+      "seconds": 1.7
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/lint_fences.py --live-help",
+      "returncode": 0,
+      "seconds": 255.89
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_no_secrets.py",
+      "returncode": 0,
+      "seconds": 1.17
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_history.py",
+      "returncode": 0,
+      "seconds": 7.82
+    },
+    {
+      "command": "python scripts/inventory.py --format jsonl --index --check",
+      "returncode": 0,
+      "seconds": 12.57
+    },
+    {
+      "command": "uv run --frozen --project runtime oci-readonly-smoke",
+      "returncode": 0,
+      "seconds": 2.92
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_portable.py",
+      "returncode": 0,
+      "seconds": 0.14
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_budget.py",
+      "returncode": 0,
+      "seconds": 1.52
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_licenses.py",
+      "returncode": 0,
+      "seconds": 0.04
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_scripts_readonly.py",
+      "returncode": 0,
+      "seconds": 0.63
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_template.py",
+      "returncode": 0,
+      "seconds": 0.04
+    },
+    {
+      "command": "python scripts/inventory.py --scripts --examples --check",
+      "returncode": 0,
+      "seconds": 0.35
+    },
+    {
+      "command": "python scripts/ci/check_manifests.py",
+      "returncode": 0,
+      "seconds": 0.06
+    },
+    {
+      "command": "python scripts/check_examples.py",
+      "returncode": 0,
+      "seconds": 11.71
+    },
+    {
+      "command": "uv run --frozen --project runtime python evals/run_routing.py --negatives",
+      "returncode": 0,
+      "seconds": 0.68
+    },
+    {
+      "command": "python scripts/generate_read_contracts.py --check",
+      "returncode": 0,
+      "seconds": 34.7
+    },
+    {
+      "command": "python scripts/generate_query_response_contracts.py --check",
+      "returncode": 0,
+      "seconds": 1.76
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/ci/check_query_fields.py",
+      "returncode": 0,
+      "seconds": 0.32
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/run.py --json /tmp/oci-offline-evaluation.json",
+      "returncode": 0,
+      "seconds": 0.65
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/routing_diagnostics.py --check evals/results/routing-diagnostics.json",
+      "returncode": 0,
+      "seconds": 0.19
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_tool_task_benchmark.py evals/results/tool-task-benchmark-structured-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 1.26
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_native_task_benchmark.py evals/results/native-task-benchmark-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 1.04
+    },
+    {
+      "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-task-benchmark-2026-09-11.json evals/results/native-command-audit-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 21.96
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_native_reference_benchmark.py evals/results/native-reference-benchmark-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 1.14
+    },
+    {
+      "command": "python scripts/eval/verify_native_command_audit.py evals/results/native-reference-benchmark-2026-09-11.json evals/results/native-reference-command-audit-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 23.08
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_checked_task_benchmark.py evals/results/checked-task-benchmark-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 1.54
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 2.76
+    },
+    {
+      "command": "python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json",
+      "returncode": 0,
+      "seconds": 17.71
+    },
+    {
+      "command": "uv run --frozen --project runtime python scripts/eval/verify_luna_package_benchmark.py evals/results/luna-package-comparison-2026-09-13.json",
+      "returncode": 0,
+      "seconds": 1.29
+    }
+  ],
+  "native_plugin_validation": {
+    "root": "PASS",
+    "skills": "PASS"
+  },
+  "generic_skill_creator_validator": {
+    "result": "UNSUPPORTED_FRONTMATTER",
+    "fields": [
+      "compatibility",
+      "paths"
+    ],
+    "repository_frontmatter_validator": "PASS"
+  },
+  "cloud_mutations": 0,
+  "model_benchmark_calls": 0,
+  "evidence_scope": "Local test and strict CI commands; does not close four stable-release gates."
+}

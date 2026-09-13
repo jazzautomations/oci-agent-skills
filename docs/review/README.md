@@ -1,10 +1,10 @@
 # Technical review preview
 
-**OCI Agent Skills · private review · package 0.2.1**
+**OCI Agent Skills · public preview · package 0.2.1**
 
 This is an independent community project by Felipe Salvego / Jazz Automations.
 The purpose of this preview is to get technical feedback from Oracle engineers
-before public release. It does not imply Oracle affiliation, endorsement or
+during public preview. It does not imply Oracle affiliation, endorsement or
 production certification.
 
 [Portuguese briefing (PDF)](brief-pt.pdf) · [Five-minute walkthrough](demo.md) ·
@@ -17,7 +17,7 @@ and walks through recorded component evidence. Illustrative workflows and
 measured outcomes are explicitly distinguished. Edition 06 is a preserved review
 snapshot, using embedded fonts and a layout designed for reading on screen or
 sharing as a document. Its counts and open issues are historical; use the
-[current validation follow-up](../validation-closeout-2026-09-13.md) and release
+[current semantic validation](../semantic-validation-2026-09-13.md) and release
 matrix for the latest status.
 
 ## The problem and approach
@@ -89,12 +89,11 @@ offline walkthrough. Provisioning and IAM changes are outside this review demo.
 
 ## Access and snapshot scope
 
-The repository remains private. A link requires access granted separately by the
-repository owner. A source ZIP may be shared privately as an alternative; it is
-an exported current tree, contains no `.git` history, credentials or ignored
-research, and includes source, tests and notices. The snapshot's commit and digest
-are supplied alongside it. It cannot establish that the original Git history is
-clean. No reviewer invitations or messages are sent by preparing these files.
+The public preview includes source, tests, notices and sanitized evidence. A source
+ZIP exports the current tree without Git history or ignored research; source
+checks that verify immutable historical evidence require a full Git checkout.
+The PDF remains a dated review snapshot. Preparing the review material does not
+send messages or invitations to reviewers.
 
 For a ZIP, extract it and run the walkthrough from its root. Source checks that
 inspect Git history or tracked files require a repository checkout; the

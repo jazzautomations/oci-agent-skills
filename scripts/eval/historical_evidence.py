@@ -17,17 +17,19 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 COMMIT = '0cd2730f8677de909267db57baf8a135458646b2'
 REPAIR_COMMIT = 'eafde851d370a165ce9ef2dcbd4f9c9126a5fbac'
-COMMITS = {COMMIT, REPAIR_COMMIT}
+LUNA_COMMIT = 'eba3fd3c9c306230842333ce48b58b82624f77e1'
+COMMITS = {COMMIT, REPAIR_COMMIT, LUNA_COMMIT}
 VERIFIERS = {'verify_native_task_benchmark.py', 'verify_native_reference_benchmark.py',
              'verify_checked_task_benchmark.py', 'verify_tool_task_benchmark.py',
-             'verify_task_answer_pilot.py', 'task_repair_regression.py'}
+             'verify_task_answer_pilot.py', 'task_repair_regression.py',
+             'verify_luna_package_benchmark.py'}
 
 
 def digest(report):
     return hashlib.sha256(json.dumps(report, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
-@lru_cache(maxsize=2)
+@lru_cache(maxsize=3)
 def snapshot(root, revision=COMMIT):
     """Keep the temporary owner alive until process exit; never mutate the checkout."""
     if revision not in COMMITS:

@@ -60,6 +60,8 @@ jobs:
         run: uv run --frozen --project runtime python scripts/eval/task_repair_regression.py --report evals/results/task-repair-regression-2026-09-11.json
       - name: Recompute checked-task syntax audit (not the workflow score)
         run: python scripts/eval/verify_native_command_audit.py evals/results/checked-task-benchmark-2026-09-11.json evals/results/checked-task-command-audit-2026-09-11.json
+      - name: Replay historical Luna comparison and field failures (no model calls)
+        run: uv run --frozen --project runtime python scripts/eval/verify_luna_package_benchmark.py evals/results/luna-package-comparison-2026-09-13.json
       - name: Preserve evaluation evidence
         if: always()
         uses: actions/upload-artifact@v4

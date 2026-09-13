@@ -75,7 +75,7 @@ oci network nsg list --compartment-id "$COMPARTMENT_ID" --limit 20 --query 'data
 Security rules
 
 ```bash
-oci network nsg rules list --nsg-id "$NSG_ID" --limit 20 --query 'data[].{id:id,direction:direction,source:source,protocol:protocol}' --profile "$PROFILE" --region "$REGION"
+oci network nsg rules list --nsg-id "$NSG_ID" --limit 20 --query 'data[].{id:id,direction:direction,source:source,sourceType:"source-type",destination:destination,destinationType:"destination-type",protocol:protocol,tcp:"tcp-options",udp:"udp-options",icmp:"icmp-options",stateless:"is-stateless"}' --profile "$PROFILE" --region "$REGION"
 ```
 
 Backend health
