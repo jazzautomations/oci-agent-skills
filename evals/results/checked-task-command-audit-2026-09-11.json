@@ -1,7 +1,7 @@
 {
   "source_report_sha256": "bef19ab166ce1c39fbeecaa23c38dc2834d4447a7a9f16cd83e7034c957c6f22",
-  "auditor_sha256": "70dd1e8ea20eb00ed93e4813aa90481968302d0f8a230e24d67d6bd995157b8e",
-  "oci_cli": "3.91.0",
+  "auditor_sha256": "5906925a34f277d9f0cac2d70954eba22ba64ee4e8249036740614ca358786ef",
+  "oci_cli": "3.93.0",
   "results": [
     {
       "case": "T18",
