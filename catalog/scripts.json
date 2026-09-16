@@ -351,7 +351,7 @@
     },
     {
       "path": "scripts/guard_lib.py",
-      "sha256": "2748986bbcfc4d15f14b3cc078ddb37559e1596f0fc7a775cdf5ef01ffc65c28",
+      "sha256": "e06483ad47f2ef7c31eaf18037a09d1bf8bac594e0f0c6e5e510ec9800b2eed2",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -381,7 +381,7 @@
     },
     {
       "path": "scripts/lib/oci_ro.py",
-      "sha256": "e4a7614d6ee1c68b1d4278988f171fddff8eba716886b5f1e2fc67caa26aa573",
+      "sha256": "e91e592b889dd538232f2fcab19d1a5a7c10f0bd77c65e221394cbc34d67f254",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -685,7 +685,7 @@
     },
     {
       "path": "skills/oci-sdk-patterns/scripts/fetch_spec.py",
-      "sha256": "25cf8e1d886e497e94c0ffaf17eb2ab30bea46a0d931811e3451d8c2d5c8aa06",
+      "sha256": "f5247f01f2cdccb6fa40ce893757111bd56da92c1dc0e541a2dc32bb8102288f",
       "mode": "read-only",
       "oci_calls": []
     },

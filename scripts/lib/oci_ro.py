@@ -102,7 +102,10 @@ def run_process(argv, *, executable=None, **kwargs):
     prepared = prepare(argv, profile=kwargs.pop('profile', None), region=kwargs.pop('region', None), allow_all=kwargs.pop('allow_all', False))
     environment = dict(kwargs.pop('env', os.environ))
     for key in ('OCI_CLI_AUTO_PROMPT', 'OCI_CLI_ENDPOINT', 'OCI_ENDPOINT',
-                'OCI_CLI_RC_FILE', 'OCI_CLI_DEFAULTS_FILE'):
+                'OCI_CLI_RC_FILE', 'OCI_CLI_DEFAULTS_FILE', 'OCI_CLI_CERT_BUNDLE',
+                'REQUESTS_CA_BUNDLE', 'CURL_CA_BUNDLE', 'SSL_CERT_FILE',
+                'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY',
+                'http_proxy', 'https_proxy', 'all_proxy'):
         environment.pop(key, None)
     if kwargs.pop('shell', False):
         raise ReadOnlyRefusal('flag')

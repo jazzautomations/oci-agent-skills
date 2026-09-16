@@ -5,9 +5,23 @@ import re
 import shlex
 from functools import lru_cache
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 RANK = {'allow': 0, 'ask': 1, 'deny': 2}
+
+# Realm second-level domains across commercial, government and sovereign OCI realms.
+ORACLE_HOST = re.compile(r'(^|\.)(oraclecloud|oraclegovcloud)\d*\.(com|net|eu|uk)$', re.I)
+
+
+def oracle_https(value):
+    """https URL whose host sits inside a published Oracle realm domain."""
+    try:
+        parsed = urlparse(value if isinstance(value, str) else '')
+    except ValueError:
+        return False
+    host = parsed.hostname or ''
+    return parsed.scheme == 'https' and bool(ORACLE_HOST.search(host))
 
 
 @lru_cache(maxsize=1)
@@ -54,15 +68,23 @@ def readonly_argv(argv):
         leaves, _ = catalog_data()
         # Endpoint/config aliases and prompt modes can alter interpretation or execution.
         forbidden = {'--cli-auto-prompt', '--cli-rc-file', '--defaults-file',
-                     '--from-json', '--debug', '--proxy', '--federation-endpoint', '--force'}
+                     '--from-json', '--debug', '--proxy', '--federation-endpoint', '--force',
+                     '--cert-bundle'}
         if forbidden & opts.keys():
+            return False
+        # The read-only door must also pin the destination: signed requests and their
+        # responses stay inside Oracle realm hosts, over TLS.
+        if '--endpoint' in opts and not oracle_https(opts['--endpoint']):
+            return False
+        if opts.get('--output') not in (None, 'json'):
             return False
         if any(k in opts for k in ('--help', '-h', '-?')):
             return path in leaves or any(p.startswith(path + ' ') for p in leaves) or not path
         if '--generate-full-command-json-input' in opts or '--generate-param-json-input' in opts:
             return path in leaves
         if path == 'raw-request':
-            return opts.get('--http-method', '').upper() in {'GET', 'HEAD'} and bool(opts.get('--target-uri'))
+            return (opts.get('--http-method', '').upper() in {'GET', 'HEAD'}
+                    and oracle_https(opts.get('--target-uri')))
         return bool(leaves.get(path, {}).get('read_only'))
     except (ValueError, OSError, KeyError):
         return False
@@ -102,6 +124,15 @@ def classify_oci(argv):
     tier = classify_leaf(path) if path in leaves else 'ask'
     if path == 'raw-request':
         tier = 'allow' if readonly_argv(argv) else 'ask'
+    # The wrapper pins request destinations; a literal non-Oracle endpoint or a
+    # custom CA bundle is denied outright, while '$VAR' values stay reviewable.
+    refused = ('--cert-bundle' in opts or
+               ('--endpoint' in opts and not oracle_https(opts['--endpoint'])))
+    if refused:
+        literal = all('$' not in str(opts.get(k, '')) for k in ('--cert-bundle', '--endpoint'))
+        tier = 'deny' if literal else max(tier, 'ask', key=RANK.get)
+    elif opts.get('--output') not in (None, 'json'):
+        tier = max(tier, 'ask', key=RANK.get)
     dangerous = '--force' in opts or any(k.startswith('--empty-bucket') for k in opts) or 'bulk-delete' in path
     if dangerous:
         tier = {'allow': 'ask', 'ask': 'deny', 'deny': 'deny'}[tier]
