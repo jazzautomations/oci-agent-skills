@@ -54,12 +54,12 @@
   "non_oci_measurement": "Unmeasured hand rules; shell fixture tests are not a confusion matrix.",
   "measured_leaf_matrix": {
     "destructive/allow": 1,
-    "destructive/ask": 997,
-    "destructive/deny": 328,
-    "mutating/ask": 3781,
-    "read/allow": 3596,
-    "read/ask": 112,
+    "destructive/ask": 1002,
+    "destructive/deny": 329,
+    "mutating/ask": 3792,
+    "read/allow": 3612,
+    "read/ask": 115,
     "unknown/allow": 2,
-    "unknown/ask": 328
+    "unknown/ask": 332
   }
 }

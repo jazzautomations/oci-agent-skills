@@ -11,13 +11,13 @@ from catalog_rules import annotate  # noqa: E402
 
 def test_catalog_integrity():
     data = rows()
-    assert len(data) == 9145
+    assert len(data) == 9185
     assert len({r['path'] for r in data}) == len(data)
     assert data == sorted(data, key=lambda r: r['path'])
     assert rows(True) == [r for r in data if r['read_only']]
     for row in data:
         assert set(row['required']) <= set(row['flags'])
-        assert row['cli_version'] == '3.91.0'
+        assert row['cli_version'] == '3.93.0'
         assert all(row[k] == v for k, v in annotate(row['path']).items())
     index = json.loads((ROOT / 'catalog/index.json').read_text())
     assert not index['import_errors']

@@ -9,7 +9,7 @@
 [![CI](https://github.com/jazzautomations/oci-agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/jazzautomations/oci-agent-skills/actions/workflows/validate.yml)
 [![Skills: 37](https://img.shields.io/badge/skills-37-C74634)](docs/skills.md)
 [![MCP tools: 15](https://img.shields.io/badge/MCP_tools-15-315C60)](docs/mcp-tools.md)
-[![CLI baseline: 3.91.0](https://img.shields.io/badge/OCI_CLI-3.91.0-555555)](docs/audit.md)
+[![CLI baseline: 3.93.0](https://img.shields.io/badge/OCI_CLI-3.93.0-555555)](docs/audit.md)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-555555)](LICENSE)
 
 **v2 skill set · package 0.2.1 (preview)** — [24 validation gates pass; 4 remain open](docs/validation-matrix.md). Independent community project, not affiliated with Oracle.
@@ -32,7 +32,7 @@ Reads retain explicit scope and bounded output. The Claude Bash guard reviews re
 
 ## Get started
 
-Prerequisites: Python 3.13+, `uv`, and OCI CLI 3.91.0 for the reproducible baseline. Configure your OCI profile outside the checkout when you need credentialed reads. Offline smoke tests require no cloud credentials.
+Prerequisites: Python 3.13+, `uv`, and OCI CLI 3.93.0 for the reproducible baseline. Configure your OCI profile outside the checkout when you need credentialed reads. Offline smoke tests require no cloud credentials.
 
 Clone this repository, then run these two commands from its root:
 

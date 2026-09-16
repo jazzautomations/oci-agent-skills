@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def generate():
     import click
     from oci_cli.custom_types.cli_case_insensitive_choice import CliCaseInsensitiveChoice
-    if version('oci-cli') != '3.91.0':
-        raise ValueError('Use pinned OCI CLI 3.91.0')
+    if version('oci-cli') != '3.93.0':
+        raise ValueError('Use pinned OCI CLI 3.93.0')
     cli, errors = load_cli()
     if errors:
         raise ValueError('Incomplete CLI metadata')

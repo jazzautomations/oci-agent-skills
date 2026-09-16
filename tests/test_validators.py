@@ -117,9 +117,9 @@ def test_refs_non_markdown_exempt_and_route_names(tmp_path):
 
 def test_cli_breaking_uses_new_versions_and_shipped_paths():
     parser = module('cli_breaking')
-    text = '3.92.0 - 2026-09-09\n\n* [BREAKING] Changed `oci compute instance list`.\n\n* [BREAKING] Changed `oci unrelated get`.\n\n3.91.0 - 2026-09-01\n\n* [BREAKING] Old `oci compute instance list`.\n'
+    text = '3.94.0 - 2026-09-09\n\n* [BREAKING] Changed `oci compute instance list`.\n\n* [BREAKING] Changed `oci unrelated get`.\n\n3.93.0 - 2026-09-01\n\n* [BREAKING] Old `oci compute instance list`.\n'
     result = parser.matching_blocks(text, [{'argv': ['compute', 'instance', 'list', '--limit', '1']}])
-    assert len(result) == 1 and result[0]['version'] == '3.92.0'
+    assert len(result) == 1 and result[0]['version'] == '3.94.0'
 
 
 def test_link_extraction_quoted_urls_and_template_paths():

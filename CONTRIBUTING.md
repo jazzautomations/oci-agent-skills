@@ -6,7 +6,7 @@ Help make OCI workflows precise, reproducible and easy to inspect. Start with th
 
 ## Set up
 
-Use Python 3.13+, `uv` and OCI CLI 3.91.0. Keep OCI CLI in its own environment;
+Use Python 3.13+, `uv` and OCI CLI 3.93.0. Keep OCI CLI in its own environment;
 the locked MCP runtime does not install it. From the repository root:
 
 ```bash

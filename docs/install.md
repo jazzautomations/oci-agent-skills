@@ -1,6 +1,6 @@
 # Install OCI Agent Skills
 
-Python 3.13+, `uv`, and OCI CLI 3.91.0 are the reproducible baseline. OCI credentials
+Python 3.13+, `uv`, and OCI CLI 3.93.0 are the reproducible baseline. OCI credentials
 are needed only when calling credentialed tools. The bundled MCP exposes
 15 shipped tools (14 credentialed + oci_price_lookup, credential-free).
 
