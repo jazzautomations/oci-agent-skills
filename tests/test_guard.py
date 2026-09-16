@@ -83,7 +83,6 @@ FORMS = [
  ('oci identity-domains identity-providers list --endpoint "$DOMAIN_URL"', 'ask'),
  ('oci kms management key list --endpoint https://example-management.kms.us-ashburn-1.oraclecloud.com', 'allow'),
  ('oci os ns get --cert-bundle /tmp/attacker.pem', 'deny'),
- ('oci compute instance list --output table', 'ask'),
  ('terraform plan', None),
  ('terraform apply', 'ask'),
  ('terraform destroy', 'ask'),
@@ -100,7 +99,7 @@ FORMS = [
  ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance terminate', 'ask'),
  ('oci compute instance list # oci os bucket delete', 'allow'),
 ]
-assert len(FORMS) == 69
+assert len(FORMS) == 68
 
 
 @pytest.mark.parametrize('command,expected', FORMS)

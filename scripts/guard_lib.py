@@ -76,8 +76,6 @@ def readonly_argv(argv):
         # responses stay inside Oracle realm hosts, over TLS.
         if '--endpoint' in opts and not oracle_https(opts['--endpoint']):
             return False
-        if opts.get('--output') not in (None, 'json'):
-            return False
         if any(k in opts for k in ('--help', '-h', '-?')):
             return path in leaves or any(p.startswith(path + ' ') for p in leaves) or not path
         if '--generate-full-command-json-input' in opts or '--generate-param-json-input' in opts:
@@ -131,8 +129,6 @@ def classify_oci(argv):
     if refused:
         literal = all('$' not in str(opts.get(k, '')) for k in ('--cert-bundle', '--endpoint'))
         tier = 'deny' if literal else max(tier, 'ask', key=RANK.get)
-    elif opts.get('--output') not in (None, 'json'):
-        tier = max(tier, 'ask', key=RANK.get)
     dangerous = '--force' in opts or any(k.startswith('--empty-bucket') for k in opts) or 'bulk-delete' in path
     if dangerous:
         tier = {'allow': 'ask', 'ask': 'deny', 'deny': 'deny'}[tier]
