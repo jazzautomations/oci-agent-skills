@@ -50,7 +50,7 @@
     "runs_per_configuration": 1,
     "upstream_commit": "34040c9c568585f6929bedeaad110ad08f079624",
     "source_report_sha256": "ba40f1e078e48d88770135a2e3d6e711b8b27a71a536a3f6a4c240d4726419b4",
-    "audit_sha256": "45743b5fda6579f60b5273fbaf43e235718eb3bd330ef4633cdf7253f40f1cdd"
+    "audit_sha256": "b38a25a12be1741e0c1c2e8a98523f9c821206aba4de1426fc0a6a9c993030fb"
   },
   "runs": [
     {
