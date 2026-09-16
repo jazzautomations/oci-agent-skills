@@ -1,5 +1,6 @@
 """Auth probes must honor selection; public spec paths remain fixed-origin."""
 import argparse
+import hashlib
 import importlib.util
 from pathlib import Path
 import pytest
@@ -36,3 +37,21 @@ def test_spec_resolution_rejects_non_hash_paths():
     for path in ['../config', 'https://example.com/spec.yaml', './specs/not-a-hash.yaml']:
         with pytest.raises(ValueError):
             fetch.resolve({'specs': [path]})
+
+
+def test_cached_spec_must_hash_to_its_filename(tmp_path, monkeypatch):
+    fetch = module('fetch_spec')
+    monkeypatch.setattr(fetch, 'CACHE', tmp_path)
+    payload = b'openapi: 2.0\n'
+    url = fetch.ORIGIN + hashlib.sha256(payload).hexdigest() + '.yaml'
+    # A planted file with mismatched content is never served; a verified fetch replaces it.
+    (tmp_path / Path(url).name).write_bytes(b'forged')
+    monkeypatch.setattr(fetch, 'get', lambda *a, **k: payload)
+    assert Path(fetch.cached(url)).read_bytes() == payload
+    # Correct content is served without touching the network.
+    monkeypatch.setattr(fetch, 'get', lambda *a, **k: pytest.fail('unexpected download'))
+    assert Path(fetch.cached(url)).read_bytes() == payload
+    # A download that does not match the hash in its own name is refused.
+    monkeypatch.setattr(fetch, 'get', lambda *a, **k: b'forged')
+    with pytest.raises(ValueError):
+        fetch.cached(fetch.ORIGIN + '0' * 64 + '.yaml')
