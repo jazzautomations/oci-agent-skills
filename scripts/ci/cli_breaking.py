@@ -7,7 +7,7 @@ from pathlib import Path
 from common import ROOT
 
 
-def matching_blocks(text, examples, baseline='3.91.0'):
+def matching_blocks(text, examples, baseline='3.93.0'):
     floor = tuple(map(int, baseline.split('.')))
     prefixes = set()
     for example in examples:
@@ -32,7 +32,7 @@ def matching_blocks(text, examples, baseline='3.91.0'):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('changelog', type=Path)
-    parser.add_argument('--baseline', default='3.91.0')
+    parser.add_argument('--baseline', default='3.93.0')
     args = parser.parse_args()
     examples = json.loads((ROOT / 'catalog/examples.json').read_text())['examples']
     matches = matching_blocks(args.changelog.read_text(), examples, args.baseline)

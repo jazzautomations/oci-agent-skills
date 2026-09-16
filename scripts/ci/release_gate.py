@@ -177,7 +177,7 @@ def main():
     add('V2',['claude','plugin','validate','./skills','--strict'])
     check('V3','check_frontmatter'); check('V4','check_portable'); check('V5','check_refs')
     check('V6','lint_fences','skills','docs','references','README.md', *(['--live-help'] if args.live_help else []),timeout=1200)
-    test('V8','tests/test_guard.py',note='Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 278 critical leaves denied. Non-OCI rules are unmeasured.')
+    test('V8','tests/test_guard.py',note='Severity matrix: docs/evidence/guard-severity-matrix.json, measured against a sha-pinned snapshot derived from the same generator as the catalog. Independent check: zero allows outside the strict read-only set; after deny rules, classify_leaf returns ask whenever read_only is false. All 279 critical leaves denied. Non-OCI rules are unmeasured.')
     test('V9','tests','-k','parse')
     test('V10','tests','-k','plugin_script')
     check('V11','check_scripts_readonly')

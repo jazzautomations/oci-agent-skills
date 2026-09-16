@@ -164,8 +164,8 @@ def main():
         print("Script/example artifacts verified." if options.check else "Script/example artifacts generated.")
         return
     result = cli_inventory()
-    if result["cli_version"] != "3.91.0":
-        raise SystemExit("Catalog requires OCI CLI 3.91.0")
+    if result["cli_version"] != "3.93.0":
+        raise SystemExit("Catalog requires OCI CLI 3.93.0")
     if options.check:
         with tempfile.TemporaryDirectory() as directory:
             generated = Path(directory)

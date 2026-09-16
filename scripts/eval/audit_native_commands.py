@@ -59,7 +59,7 @@ def inspect(command,aliases,choices):
 def main():
     from importlib.metadata import version
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('report',type=Path);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    if version('oci-cli')!='3.91.0':raise ValueError('Use pinned OCI CLI 3.91.0 environment')
+    if version('oci-cli')!='3.93.0':raise ValueError('Use pinned OCI CLI 3.93.0 environment')
     if a.out.exists():raise ValueError('Existing audit preserved')
     report=json.loads(a.report.read_text());aliases,choices=metadata()
     fixtures={c['id']:c for c in json.loads((ROOT/'evals/tool-task-fixtures.json').read_text())['cases']}

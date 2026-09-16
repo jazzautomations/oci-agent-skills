@@ -17,13 +17,13 @@ from redact import redact  # noqa: E402
 
 def test_leaf_confusion_matrix():
     data = rows()
-    assert len(data) == 9145
+    assert len(data) == 9185
     matrix = Counter((r['kind'], classify_leaf(r['path'])) for r in data)
     print('\nOCI leaf classifier ONLY:', json.dumps({'/'.join(k): v for k, v in sorted(matrix.items())}, sort_keys=True))
     assert {'/'.join(k): v for k, v in sorted(matrix.items())} == rules()['measured_leaf_matrix']
     assert matrix[('mutating', 'allow')] == 0
-    assert matrix[('read', 'allow')] == 3596
-    assert matrix[('read', 'ask')] == 112
+    assert matrix['read', 'allow'] == 3612
+    assert matrix['read', 'ask'] == 115
     assert matrix[('destructive', 'allow')] == 1  # estimate-release-data-size is a census false positive.
     assert all(classify_leaf(r['path']) == 'deny' for r in data if r['severity'] == 'CRITICAL')
 

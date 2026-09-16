@@ -13,11 +13,11 @@ from lib.redact import redact  # noqa: E402
 
 def test_wrapper_replays_all_catalog_leaves():
     rows = [json.loads(line) for line in (ROOT / 'catalog/cli.jsonl').read_text().splitlines()]
-    assert len(rows) == 9145
+    assert len(rows) == 9185
     for row in rows:
         assert check(row['path'].split())[0] == row['read_only'], row['path']
     assert not check(['ce', 'cluster', 'create-kubeconfig'])[0]
-    assert sum(row['read_only'] for row in rows) == 3601
+    assert sum(row['read_only'] for row in rows) == 3617
 
 
 def test_wrapper_service_errors_never_echo_raw_output(monkeypatch):

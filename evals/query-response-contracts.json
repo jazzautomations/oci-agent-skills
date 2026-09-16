@@ -1,9 +1,9 @@
 {
   "cli_source_sha256": {
     "objectstorage_cli_extended.py": "dbfdd71df755be78424e87b8eae0036f37cca18583e04d545e159cc9e4641b03",
-    "oci_cli.cli_util": "66cfac179d1b28dffad9c0296b824f37a2722ad616ea8dbb21d27268c3a069fe"
+    "oci_cli.cli_util": "71b304284f129bfd8ed95bd9f1dbde7302d700faeb3a4cc73760d7fcc6c300f5"
   },
-  "cli_version": "3.91.0",
+  "cli_version": "3.93.0",
   "contracts": {
     "audit event list": {
       "response": {
@@ -2163,6 +2163,9 @@
                 "autonomous-database-maintenance-window": {
                   "additionalProperties": false,
                   "properties": {
+                    "availability-domain": {
+                      "type": "string"
+                    },
                     "day-of-week": {
                       "additionalProperties": false,
                       "properties": {
@@ -2171,6 +2174,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "is-maintenance-window-change-scheduled": {
+                      "type": "boolean"
                     },
                     "maintenance-end-time": {
                       "type": "string"
@@ -2757,6 +2763,33 @@
                 "role": {
                   "type": "string"
                 },
+                "scheduled-maintenance-window": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "availability-domain": {
+                      "type": "string"
+                    },
+                    "day-of-week": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "is-maintenance-window-change-scheduled": {
+                      "type": "boolean"
+                    },
+                    "maintenance-end-time": {
+                      "type": "string"
+                    },
+                    "maintenance-start-time": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
                 "scheduled-operations": {
                   "items": {
                     "additionalProperties": false,
@@ -2915,6 +2948,9 @@
                   "type": "string"
                 },
                 "time-scheduled-db-version-upgrade": {
+                  "type": "string"
+                },
+                "time-scheduled-maintenance-window-update": {
                   "type": "string"
                 },
                 "time-undeleted": {
@@ -4966,9 +5002,9 @@
     "oci.database.models.autonomous_database_encryption_key_details": "5fe1ea6335ba8316a7bd60b00c5fee94541c3d452c94737480cec62f51dc72f5",
     "oci.database.models.autonomous_database_encryption_key_history_entry": "7e61acf3f5bc79c29b46cb76bc8fb27cc5616ce492d59c02afecff24cf87b242",
     "oci.database.models.autonomous_database_key_history_entry": "33939fefbfca5dcfd96b6da9215d3a72294efedd3f87673c6e4324bbc6f49dd5",
-    "oci.database.models.autonomous_database_maintenance_window_summary": "e3e004b4bd602de935fc5dd634f1aae89a1ddd678ebeee2b64b0a7f340bb35a6",
+    "oci.database.models.autonomous_database_maintenance_window_summary": "1340fed6a988b43fd61cefa965d92eec479b60982b27290a9442afe8758adc9b",
     "oci.database.models.autonomous_database_standby_summary": "60beb3c1f8cb8e084ae35265eb28d2030b75b4d180c561dec14ec53522e41c7c",
-    "oci.database.models.autonomous_database_summary": "54d15c72b5ae6dadbeb96ba8bba91e5f57d20290496ea4a659adb0706076d45c",
+    "oci.database.models.autonomous_database_summary": "1af2b365f3eeee3e2eaf46085e3b2b69f35141ff0191b61a31544cf706cf4fa5",
     "oci.database.models.customer_contact": "491e05c1a77295eae11d7d41407354a75db113a4eb594f1eb68847795d8f1ca7",
     "oci.database.models.database_connection_string_profile": "ce2e335980c936062db1ea624d73d6f9893a03d9d0b1b8e8a3c903fd0e3d79e7",
     "oci.database.models.database_tool": "ad7b18815500076300ff4367a6f525463afe686563932216c27533fc5032f0e2",
@@ -5021,5 +5057,5 @@
     "oci.work_requests.models.work_request_summary": "e04b4a9aa009c695b9ecfc01a29a09a3437e898671812911ec1657163ede62d3"
   },
   "scope": "SDK response fields converted by the installed CLI serializer. Command-to-SDK mappings are reviewed; composite list-vnics uses Vnic objects. Unknown/dynamic or recursive shapes remain unverified. No service request or response is generated.",
-  "sdk_version": "2.185.0"
+  "sdk_version": "2.186.0"
 }

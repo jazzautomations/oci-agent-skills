@@ -1,5 +1,5 @@
 {
-  "catalog_sha256": "506bbfc7db8da3666bf704bc67d1117018b06106fd69a9530b5393e22d2ea546",
+  "catalog_sha256": "cb3d70f98cf97c34478619ee3c6b0f106fe4431141b17ae00caeb466aa48a44b",
   "commands": {
     "access-governance-cp governance-instance get": {
       "aliases": {
@@ -9155,6 +9155,129 @@
           "case_sensitive": false,
           "values": [
             "timeAccepted"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "cluster-health diagnosis-store get": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "cluster-health diagnosis-store list": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--lifecycle-state": {
+          "case_sensitive": false,
+          "values": [
+            "CREATING",
+            "UPDATING",
+            "ACTIVE",
+            "DELETING",
+            "DELETED",
+            "FAILED"
+          ]
+        },
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timeCreated",
+            "displayName"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "cluster-health work-request get": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "cluster-health work-request list": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timeAccepted"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        },
+        "--status": {
+          "case_sensitive": false,
+          "values": [
+            "ACCEPTED",
+            "IN_PROGRESS",
+            "WAITING",
+            "NEEDS_ATTENTION",
+            "FAILED",
+            "SUCCEEDED",
+            "CANCELING",
+            "CANCELED"
+          ]
+        }
+      }
+    },
+    "cluster-health work-request-error list": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timestamp"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "cluster-health work-request-log-entry list-work-request-logs": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timestamp"
           ]
         },
         "--sort-order": {
@@ -23418,6 +23541,91 @@
       },
       "choices": {}
     },
+    "database-migration migration data-verification get-detail": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "database-migration migration data-verification list-object-statuses": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "isMatch",
+            "owner",
+            "objectType",
+            "objectName"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "database-migration migration data-verification list-object-type-counts": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "deltaPercent",
+            "schemaName",
+            "objectType",
+            "sourceObjectCount",
+            "targetObjectCount",
+            "sourceInvalidCount",
+            "targetInvalidCount"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "database-migration migration data-verification list-table-row-counts": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "variancePercent",
+            "owner",
+            "tableName",
+            "timeLastSourceStatisticsCollection",
+            "timeLastTargetStatisticsCollection",
+            "sourceRowCount",
+            "targetRowCount"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
     "database-migration migration get": {
       "aliases": {
         "-?": "--help",
@@ -24303,6 +24511,13 @@
       }
     },
     "db autonomous-database list-autonomous-database-peers": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "db autonomous-database list-available-maintenance-windows": {
       "aliases": {
         "-?": "--help",
         "-h": "--help"
@@ -26074,6 +26289,47 @@
           "case_sensitive": false,
           "values": [
             "NAME"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "db gi-home get": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "db gi-home list": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--lifecycle-state": {
+          "case_sensitive": false,
+          "values": [
+            "PROVISIONING",
+            "AVAILABLE",
+            "UPDATING",
+            "TERMINATING",
+            "TERMINATED",
+            "FAILED",
+            "INACTIVE"
+          ]
+        },
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timeCreated",
+            "displayName"
           ]
         },
         "--sort-order": {
@@ -42982,6 +43238,54 @@
             "DEVELOPMENT",
             "STANDARD",
             "LIGHTWEIGHT"
+          ]
+        }
+      }
+    },
+    "iot flow-runtime get": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "iot flow-runtime get-flows": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {}
+    },
+    "iot flow-runtime list": {
+      "aliases": {
+        "-?": "--help",
+        "-h": "--help"
+      },
+      "choices": {
+        "--lifecycle-state": {
+          "case_sensitive": false,
+          "values": [
+            "CREATING",
+            "UPDATING",
+            "ACTIVE",
+            "INACTIVE",
+            "DELETING",
+            "DELETED",
+            "FAILED"
+          ]
+        },
+        "--sort-by": {
+          "case_sensitive": false,
+          "values": [
+            "timeCreated",
+            "displayName"
+          ]
+        },
+        "--sort-order": {
+          "case_sensitive": false,
+          "values": [
+            "ASC",
+            "DESC"
           ]
         }
       }
@@ -69790,5 +70094,5 @@
       }
     }
   },
-  "oci_cli": "3.91.0"
+  "oci_cli": "3.93.0"
 }

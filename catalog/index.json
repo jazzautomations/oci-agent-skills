@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "cli_version": "3.91.0",
-  "sdk_version": "2.185.0",
+  "cli_version": "3.93.0",
+  "sdk_version": "2.186.0",
   "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
-  "root_command_count": 174,
-  "group_count": 2439,
-  "command_count": 9145,
+  "root_command_count": 175,
+  "group_count": 2450,
+  "command_count": 9185,
   "global_options": {
     "flags": [
       "--auth",
@@ -399,6 +399,16 @@
       "purpose": "Oracle Cloud Migrations"
     },
     {
+      "name": "cluster-health",
+      "ops": 14,
+      "read": 8,
+      "mutating": 4,
+      "destructive": 2,
+      "unknown": 0,
+      "read_only": 6,
+      "purpose": "ITV Control Plane - Diagnosis Store"
+    },
+    {
       "name": "compute",
       "ops": 144,
       "read": 66,
@@ -550,12 +560,12 @@
     },
     {
       "name": "database-migration",
-      "ops": 89,
-      "read": 32,
-      "mutating": 38,
+      "ops": 95,
+      "read": 36,
+      "mutating": 40,
       "destructive": 12,
       "unknown": 7,
-      "read_only": 31,
+      "read_only": 35,
       "purpose": "Database Migration"
     },
     {
@@ -571,11 +581,11 @@
     {
       "name": "db",
       "ops": 535,
-      "read": 177,
-      "mutating": 216,
-      "destructive": 92,
+      "read": 180,
+      "mutating": 212,
+      "destructive": 93,
       "unknown": 50,
-      "read_only": 171,
+      "read_only": 174,
       "purpose": "Database Service"
     },
     {
@@ -780,9 +790,9 @@
     },
     {
       "name": "fn",
-      "ops": 17,
+      "ops": 18,
       "read": 9,
-      "mutating": 6,
+      "mutating": 7,
       "destructive": 2,
       "unknown": 0,
       "read_only": 9,
@@ -940,12 +950,12 @@
     },
     {
       "name": "iot",
-      "ops": 46,
-      "read": 18,
-      "mutating": 21,
-      "destructive": 6,
+      "ops": 56,
+      "read": 21,
+      "mutating": 26,
+      "destructive": 8,
       "unknown": 1,
-      "read_only": 18,
+      "read_only": 21,
       "purpose": "Internet of Things"
     },
     {
@@ -1260,11 +1270,11 @@
     },
     {
       "name": "ocvs",
-      "ops": 66,
+      "ops": 69,
       "read": 20,
-      "mutating": 31,
+      "mutating": 33,
       "destructive": 12,
-      "unknown": 3,
+      "unknown": 4,
       "read_only": 20,
       "purpose": "Oracle Cloud VMware Solution"
     },
@@ -1490,11 +1500,11 @@
     },
     {
       "name": "redis",
-      "ops": 44,
+      "ops": 47,
       "read": 19,
       "mutating": 19,
-      "destructive": 6,
-      "unknown": 0,
+      "destructive": 7,
+      "unknown": 2,
       "read_only": 19,
       "purpose": "OCI Cache"
     },
@@ -1580,11 +1590,11 @@
     },
     {
       "name": "self",
-      "ops": 19,
-      "read": 9,
-      "mutating": 6,
+      "ops": 22,
+      "read": 10,
+      "mutating": 7,
       "destructive": 3,
-      "unknown": 1,
+      "unknown": 2,
       "read_only": 8,
       "purpose": "SELF Service"
     },

@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "cli_version": "3.91.0",
-  "sdk_version": "2.185.0",
+  "cli_version": "3.93.0",
+  "sdk_version": "2.186.0",
   "scope": "Installed Click command definitions including aliases; command leaves only. Required flags come from Click required or the CLI [required] help marker. No safety or authorization classification. Conditional requirements may exist in callbacks.",
-  "root_command_count": 174,
-  "group_count": 2439,
-  "command_count": 9145,
+  "root_command_count": 175,
+  "group_count": 2450,
+  "command_count": 9185,
   "global_options": {
     "flags": [
       "--auth",

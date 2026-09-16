@@ -105,7 +105,7 @@
     },
     {
       "path": "scripts/ci/cli_breaking.py",
-      "sha256": "debdaa51b1de45a732e173325bc8bf83b44ab6adc90273eca60c3af61c9a926a",
+      "sha256": "0e2d80ae239296b24d14645296c500b60313ab2af3259e5b435e64402438761d",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -141,7 +141,7 @@
     },
     {
       "path": "scripts/ci/release_gate.py",
-      "sha256": "93296c27703ddb5826029204013e705a53318bb450e8f22a99363ed8872ab7c9",
+      "sha256": "ec5ae5cc62a22d883ca9388426a5587e814cbf5a68621baf48a5dc60b6917e5d",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -171,7 +171,7 @@
     },
     {
       "path": "scripts/eval/audit_native_commands.py",
-      "sha256": "70dd1e8ea20eb00ed93e4813aa90481968302d0f8a230e24d67d6bd995157b8e",
+      "sha256": "5906925a34f277d9f0cac2d70954eba22ba64ee4e8249036740614ca358786ef",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -345,7 +345,7 @@
     },
     {
       "path": "scripts/generate_read_contracts.py",
-      "sha256": "b85916ce7f4af6a447611a2db2c4a9ddb1cdaba475b45e84e491a48843324b71",
+      "sha256": "43861f818631f2219faab5e479228a46b46ca64532651b030e17be0725daa1a7",
       "mode": "read-only",
       "oci_calls": []
     },
@@ -363,7 +363,7 @@
     },
     {
       "path": "scripts/inventory.py",
-      "sha256": "3c61cdd7c35a1b552d64e6cd168a0f9b9d2e00e11758eeff7a00f23030b0d431",
+      "sha256": "c1c62233f0578fc95b6582946b69ad1fa8971d9add4de69577abb59c3fd0b03a",
       "mode": "read-only",
       "oci_calls": []
     },
