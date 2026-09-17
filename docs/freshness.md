@@ -74,3 +74,28 @@ local `aws ec2 describe-instance-types help` also passed without account access.
 
 The refreshed baseline records reviewed observations, not dependency upgrades or
 new live-cloud validation. Real source changes still require review.
+
+## September 17 source review
+
+The scheduled runs of September 15, 16 and 17 failed on four changed sources.
+No source was unavailable. Review outcome:
+
+- **OCI CLI 3.92.1 → 3.93.0** and **Python SDK 2.185.2 → 2.186.0**: already
+  reviewed and pinned by the CLI bump (PR #3, `catalog/cli-meta.json`); the
+  observed-source baseline had simply not been refreshed with it. The 2.186.0
+  breaking notes (removal of `usage_record_id` in Service Enablement Lifecycle
+  Framework; stricter `KMSMasterKeyProvider` client-side decryption) touch no
+  code, fixture or reference in this repository.
+- **AWS `describe-instance-types` reference**: the banner now reads CLI 2.36.47
+  and is already normalized, so this is a real text change elsewhere on the page.
+  The page still documents `VCpuInfo.DefaultVCpus/DefaultCores/DefaultThreadsPerCore`
+  and `MemoryInfo.SizeInMiB`, the only fields the inventory normalizer reads.
+  A Wayback comparison was attempted and rate-limited (HTTP 429); the exact
+  delta is not identified, as the previous full page was not retained.
+- **GCP `machine-types describe` reference**: the page still shows
+  "Last updated 2026-05-27", so the fingerprint change is site chrome
+  (navigation/product list), not command text. `guestCpus`, `memoryMb` and
+  `architecture` remain the fields consumed by the normalizer.
+
+Freshness and catalog tests passed (21). The baseline was rewritten with
+`--write-baseline` after this review; no dependency pin changed here.
