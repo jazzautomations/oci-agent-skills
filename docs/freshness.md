@@ -99,3 +99,34 @@ No source was unavailable. Review outcome:
 
 Freshness and catalog tests passed (21). The baseline was rewritten with
 `--write-baseline` after this review; no dependency pin changed here.
+
+## September 22 source review
+
+The scheduled run of September 22 failed on two changed sources; a third
+(`oracle_hybrid_search`) changed between that run and this review. No source was
+unavailable. Review outcome:
+
+- **OCI CLI 3.93.0 → 3.94.0** (released 2026-09-22): the two `[BREAKING]` notes
+  (`oci distributed-database-v26` renamed to `oci distributed-database`; required
+  `--date-range` removed from `oci marketplace-publisher
+  customer-instance-report-record-collection list-customer-instance-report-records`)
+  touch no shipped example, fixture or reference; `scripts/ci/cli_breaking.py`
+  reports no match. One change filed under *Added* does affect a shipped shape:
+  `oci fn function create` and `oci fn function update` became command groups
+  (`container-function`, `archive-function`, `pbf-function`), verified with
+  `--help` in an isolated 3.94.0 environment. The pinned 3.93.0 still accepts
+  `oci fn function create --image ...`, so the `oci-serverless` example stays
+  valid for the baseline and now carries a note for unpinned CLIs. The guard
+  prefix `fn function create` still matches the new subcommands.
+- **Python SDK 2.186.0 → 2.187.0**: breaking notes (`oci.distributed_database_v26`
+  rename; `image`/`image_digest` removed from Functions models; `activate_target_database`
+  parameter now optional; Marketplace Publisher field/constant removals) touch no
+  code, fixture or reference in this repository.
+- **Oracle 26ai hybrid vector search example**: the page still documents
+  `DBMS_HYBRID_VECTOR.SEARCH`, `hybrid_index_name`, `search_text`, `search_fusion`,
+  `search_scorer`, `search_mode`, `aggregator`, `return`/`topN` and
+  `CREATE HYBRID VECTOR INDEX`, the only constructs `demos/26ai-rag` relies on. The
+  exact delta is not identified, as the previous full page was not retained.
+
+Repository tests passed (750). The baseline was rewritten with `--write-baseline`
+after this review; no dependency pin changed here.

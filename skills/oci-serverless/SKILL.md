@@ -74,6 +74,7 @@ Proposed function
 ```bash
 # MUTATING — not run in this repo; [shape-verified] against CLI 3.91.0 --help
 # rollback: oci fn function delete --function-id "$NEW_FUNCTION_ID" --profile "$PROFILE" --region "$REGION" # before callers depend on it
+# CLI >= 3.94.0 (unpinned): `oci fn function create` became a group; the same flags live under `oci fn function create container-function` (source review 2026-09-22)
 oci fn function create --application-id "$APPLICATION_ID" --display-name proposed-function --memory-in-mbs 256 --timeout-in-seconds 120 --image "$IMAGE_URI" --image-digest "$IMAGE_DIGEST" --query 'data.{id:id,state:"lifecycle-state"}' --profile "$PROFILE" --region "$REGION"
 ```
 
