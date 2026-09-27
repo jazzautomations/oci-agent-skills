@@ -130,3 +130,25 @@ unavailable. Review outcome:
 
 Repository tests passed (750). The baseline was rewritten with `--write-baseline`
 after this review; no dependency pin changed here.
+
+## September 27 source review
+
+The scheduled runs of September 23–26 failed on four changed sources. No source was
+unavailable. Review outcome:
+
+- **python-oracledb 26.0.0 → 26.0.1**: release notes list bug fixes only (TLS
+  renegotiation regression, bind/fetch fixes, `ConnectParams.transaction_priority`
+  default); no API change affects `demos/26ai-rag` or any reference.
+- **OCI Cloud Migrations requirements**: sources are still VMware vSphere and AWS EC2
+  x86 (EBS backed), targets OCI Compute or OLVM; Windows BYOL on shared hosts is
+  still not permitted. The `oci-migration-map` warnings (no OCM rehost for
+  GCP/Azure/Arm/instance-store; licensing evidence required) remain accurate. The
+  exact delta is not identified, as the previous full page was not retained.
+- **AWS `ec2 describe-instance-types`**: page now titled AWS CLI 2.37.x; `--instance-types`
+  and `--max-items` still documented, so `inventory-aws.md` is unaffected.
+- **GCP `compute machine-types describe`**: synopsis `machine-types describe NAME
+  --zone` unchanged and the page still reports "Last updated 2026-05-27"; the hash
+  change is page chrome.
+
+The baseline was rewritten with `--write-baseline` after this review; no dependency
+pin changed here.

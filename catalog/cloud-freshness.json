@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-09-22T15:15:29.706431+00:00",
+  "checked_at": "2026-09-27T05:19:15.888278+00:00",
   "facts": {
     "aws_instance_contract": {
-      "content_sha256": "21db755f1d30e46e12e01740552e170139b5436b40d9be636feb55e7f35ed392"
+      "content_sha256": "5a7bab9b65786ebabca42161753651866cf8bae4c83dee355f90fb87e13dee3b"
     },
     "azure_price_contract": {
       "content_sha256": "6f1105a3948aafc596ee260e492ac448fa19905a7a03cf97fe894f9367846161"
@@ -11,7 +11,7 @@
       "content_sha256": "112eabbddf1e9f064a38a2243c791eee2277986c075422baa124f7287a7863c6"
     },
     "gcp_machine_contract": {
-      "content_sha256": "bb690797fe41a089f2d2097abf2139e5ddfe6fe663ccbe4dad3a290653520b62"
+      "content_sha256": "6a029c94b444dd6289ec6e3099b44e64fa43126ac7da001c3ae1a5d6ec04c0c6"
     },
     "oci_block_performance": {
       "content_sha256": "5ef6f40dbf59071e440e0c4852e3e4e6f3de973b947be7f0c3270c6854f24c5f"
@@ -20,7 +20,7 @@
       "version": "3.94.0"
     },
     "oci_migration_support": {
-      "content_sha256": "7fae7a6fafcb3923c9a708f049e615bf2ff89908c4da7a5b08f8eeceefc7a5f3"
+      "content_sha256": "14398a73f50cb4f9328e746bfb73d4d10859092d078161e896da812274e78138"
     },
     "oci_prices": {
       "B109529": [
@@ -171,7 +171,7 @@
       "content_sha256": "a24ce5e2dd4549028861f1bfabf160ee1e171f5db26b3c0445fa8e8a6d3e95ef"
     },
     "oracledb": {
-      "version": "26.0.0"
+      "version": "26.0.1"
     }
   }
 }
