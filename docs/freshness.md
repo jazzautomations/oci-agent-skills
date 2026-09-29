@@ -152,3 +152,29 @@ unavailable. Review outcome:
 
 The baseline was rewritten with `--write-baseline` after this review; no dependency
 pin changed here.
+
+## September 29 source review
+
+The scheduled run of September 29 failed on two more sources on top of the
+September 27 review (Oracle's weekly Tuesday release). Review outcome:
+
+- **OCI CLI 3.94.0 → 3.94.1**: the changelog section is *Added* only — no
+  *Changed*, *Removed* or `[BREAKING]` entries. New material: dual-stack
+  `oci session authenticate --enable-dual-stack`; optional
+  `--memory-per-oracle-compute-unit-in-gbs` / `--sga-percentage` on
+  `db autonomous-vm-cluster update` and `db cloud-autonomous-vm-cluster update`;
+  Data Safe registration-policy, `target-database manage-privileges` and the
+  data-subsetting command groups; `network drg-nat-policy` / `drg-nat-rule` and
+  optional `--drg-nat-policy-id` on `drg-attachment create|update`; and a new
+  `--auth pkcs11` mode for PKCS#11 hardware keys. The shipped read commands
+  (`data-safe target-database list`, `drg-attachment` listings, the auth matrix
+  in `references/auth-modes.md`) keep their existing syntax and output shape.
+  `pkcs11` is not added to the auth matrix: that table is verified against the
+  pinned 3.93.0 and the new mode has not been exercised live.
+- **OCI Python SDK 2.187.0 → 2.187.1**: the same four service additions (Data
+  Safe subsetting and Exadata registration, AVM cluster memory ratio, DRG NAT);
+  no signer or client-construction change, so `oci-sdk-patterns` is unaffected.
+
+The baseline was rewritten with `--write-baseline` after this review; the CLI pin
+stays at 3.93.0 and the SDK pin at 2.186.0 (baseline acceptance is not a
+dependency upgrade).
