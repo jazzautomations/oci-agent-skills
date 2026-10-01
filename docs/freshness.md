@@ -178,3 +178,18 @@ September 27 review (Oracle's weekly Tuesday release). Review outcome:
 The baseline was rewritten with `--write-baseline` after this review; the CLI pin
 stays at 3.93.0 and the SDK pin at 2.186.0 (baseline acceptance is not a
 dependency upgrade).
+
+## October 1 source review
+
+The scheduled runs of September 30 and October 1 failed on one changed source
+(`gcp_machine_contract`); no source was unavailable. Review outcome:
+
+- **GCP `compute machine-types describe`**: the synopsis is still
+  `machine-types describe NAME [--zone=ZONE]`, the wide flags `--project` and
+  `--format` are still documented, and the page still reports
+  "Last updated 2026-05-27 UTC", so the hash change is page chrome again (as on
+  September 27) and `inventory-gcp.md` is unaffected. The exact delta is not
+  identified, as the previous full page was not retained.
+
+The baseline was rewritten with `--write-baseline` after this review; only this
+one source differed at acceptance time and no dependency pin changed here.
