@@ -193,3 +193,36 @@ The scheduled runs of September 30 and October 1 failed on one changed source
 
 The baseline was rewritten with `--write-baseline` after this review; only this
 one source differed at acceptance time and no dependency pin changed here.
+
+## October 7 source review
+
+The scheduled runs of October 5 and 6 failed on three changed sources; no source
+was unavailable. At acceptance time a fourth source (`gcp_machine_contract`)
+differed as well. Review outcome:
+
+- **oci-cli 3.94.1 → 3.94.2** (PyPI): additive release notes — new
+  `oci oci-product-catalog` service, NVMe volume-attachment options under
+  `compute`, and a `--public-access-path-patterns` flag under `generative-ai`.
+  Verified with a real install: `lint_fences.py --live-help` reports 199/199
+  clean on the 3.93.0 validation pin, and exactly one expected
+  `live_help_failed` on 3.94.2 — `oci fn function create` is a command group
+  since 3.94.0, which the `oci-serverless` fence comment already records
+  (source review 2026-09-22).
+- **oci (Python SDK) 2.187.1 → 2.187.2** (PyPI): additive — same Product
+  Catalog/NVMe/OAuth surface. The locked MCP runtime pins `oci==2.185.1`;
+  unchanged by this acceptance.
+- **OCI Cloud Migrations requirements spec**: the page still documents the same
+  source/target matrix (VMware→OCI, AWS EC2→OCI, VMware→OLVM) and licensing
+  section; the hash change is content churn. The exact delta is not identified,
+  as the previous full page was not retained.
+  `oci-migration-map/references/warnings.md` cites it as a reviewed source for
+  generic trigger warnings — no claim invalidated.
+- **GCP `compute machine-types describe`**: synopsis still
+  `machine-types describe NAME [--zone=ZONE]`, wide flags `--project` and
+  `--format` still documented, still "Last updated 2026-05-27 UTC" — page
+  chrome again, as on September 27 and October 1.
+
+Full local suite passes: 750 tests, every strict CI validator green,
+`lint_fences.py --live-help` clean on the pinned 3.93.0, routing evals and
+diagnostics pass, `oci-readonly-smoke` ok. The baseline was rewritten with
+`--write-baseline` after this review; no dependency pin changed here.
