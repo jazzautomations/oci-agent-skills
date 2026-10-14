@@ -102,3 +102,32 @@ def test_aws_reference_still_detects_contract_changes(before,after):
     previous = {'aws_instance_contract':freshness.summarize('aws_instance_contract',old)}
     current = {'aws_instance_contract':freshness.summarize('aws_instance_contract',old.replace(before,after))}
     assert freshness.compare(previous,current)[0]['source']=='aws_instance_contract'
+
+
+def gcp_reference(header='Skip to main content Get Started', footer='Sign up for the newsletter'):
+    return (f'<header>{header}</header><main>NAME gcloud compute machine-types describe - '
+            'describe a Compute Engine machine type SYNOPSIS gcloud compute machine-types describe NAME '
+            '[ --zone = ZONE ] [ GCLOUD_WIDE_FLAG … ] GCLOUD WIDE FLAGS --format , --project . '
+            'Last updated 2026-05-27 UTC.</main>'
+            f'<footer>["Last updated 2026-05-27 UTC."] {footer}</footer>')
+
+
+def test_gcp_reference_ignores_site_chrome():
+    old = gcp_reference()
+    new = gcp_reference('Skip to main content Product List', 'Our third decade of climate action')
+    assert freshness.summarize('gcp_machine_contract',old)==freshness.summarize('gcp_machine_contract',new)
+    # The exception is scoped to this source.
+    assert freshness.summarize('oci_shapes',old)!=freshness.summarize('oci_shapes',new)
+
+
+@pytest.mark.parametrize('before,after', [
+    ('[ --zone = ZONE ]','[ --zone = ZONE ] [ --region = REGION ]'),
+    ('--project','--billing-project'),
+    ('Last updated 2026-05-27 UTC.</main>','Last updated 2026-10-14 UTC.</main>'),
+    ('NAME gcloud compute machine-types describe','NAME gcloud compute machine-types show'),
+])
+def test_gcp_reference_still_detects_manual_changes(before,after):
+    old = gcp_reference()
+    previous = {'gcp_machine_contract':freshness.summarize('gcp_machine_contract',old)}
+    current = {'gcp_machine_contract':freshness.summarize('gcp_machine_contract',old.replace(before,after,1))}
+    assert freshness.compare(previous,current)[0]['source']=='gcp_machine_contract'

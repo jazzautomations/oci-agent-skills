@@ -52,6 +52,12 @@ def summarize(name,body):
         # and every version/value in the actual command contract visible.
         text=re.sub(r'\bAWS CLI ([0-9]+\.[0-9]+)\.[0-9]+ Command Reference\b',
                     r'AWS CLI \1.x Command Reference',text)
+    if name=='gcp_machine_contract':
+        # The devsite header/footer (navigation, promos, feedback widget) churns
+        # without the reference changing. Keep the manual from NAME through its
+        # "Last updated" stamp; if either marker moves, hash the whole page.
+        body=re.search(r'\bNAME gcloud compute machine-types describe\b.*?\bLast updated \d{4}-\d{2}-\d{2} UTC\.',text)
+        if body:text=body.group(0)
     return {'content_sha256':hashlib.sha256(text.encode()).hexdigest()}
 
 

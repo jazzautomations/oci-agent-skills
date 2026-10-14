@@ -226,3 +226,43 @@ Full local suite passes: 750 tests, every strict CI validator green,
 `lint_fences.py --live-help` clean on the pinned 3.93.0, routing evals and
 diagnostics pass, `oci-readonly-smoke` ok. The baseline was rewritten with
 `--write-baseline` after this review; no dependency pin changed here.
+
+## October 14 source review
+
+The scheduled runs of October 13 and 14 failed on four changed sources; no
+source was unavailable. Review outcome:
+
+- **oci-cli 3.94.2 → 3.95.0** (PyPI, released 2026-10-13): *Added* covers the
+  new `oci ccd-offers` service, OpenSearch master-user auth, DB@AWS key pools,
+  Spatial Studio and AWS encryption keys on Autonomous/Exadata, Data Safe
+  registration on `db database`, `--is-older-version-acknowledged` across DB
+  create/upgrade commands, Data Science model-artifact signatures, and an invoke
+  endpoint cache on `fn function invoke`. The one `[BREAKING]` note removes
+  `--patch-options`, `--managed-software-update-details` and
+  `--auto-failover-configuration` from `oci db database update`; no skill,
+  reference, fixture or example uses them (only the generated 3.93.0 snapshot
+  lists them) and `scripts/ci/cli_breaking.py` reports no match. Verified with a
+  real 3.95.0 install: `lint_fences.py --live-help` reports exactly one expected
+  `live_help_failed` — `oci fn function create` is a command group since
+  3.94.0, already recorded in the `oci-serverless` fence comment (source review
+  2026-09-22). Nine cold-start `--help` timeouts on the first pass all
+  returned 0 with leaf help when re-run.
+- **oci (Python SDK) 2.187.2 → 2.188.0**: same service additions; the one
+  breaking note makes `model_deployment_resource_configuration` required on the
+  Data Science `ManagedComputeClusterModelDeployInfrastructureConfigDetails`
+  model, which no code here constructs. The locked MCP runtime pin is unchanged.
+- **AWS `ec2 describe-instance-types`**: the banner moved to AWS CLI 2.38.0, a
+  minor bump the checker reports by design. `--instance-types`, `--max-items`
+  and the `VCpuInfo`/`MemoryInfo` fields used by `inventory-aws.md` are still
+  documented.
+- **GCP `compute machine-types describe`**: synopsis, `--zone`, the wide
+  `--project`/`--format` flags and "Last updated 2026-05-27 UTC" are unchanged —
+  site chrome for the fifth review in a row. The checker now fingerprints only
+  the manual text from `NAME gcloud compute machine-types describe` through the
+  first `Last updated YYYY-MM-DD UTC.` stamp, so the devsite header, footer and
+  feedback widget no longer alert. Synopsis, flags, notes and the update date
+  still change the hash; if either marker disappears the whole page is hashed
+  again. Regression tests cover both boundaries.
+
+Freshness tests pass (20). The baseline was rewritten with `--write-baseline`
+after this review; no dependency pin changed here.
