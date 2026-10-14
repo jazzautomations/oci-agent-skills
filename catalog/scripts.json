@@ -33,7 +33,7 @@
     },
     {
       "path": "scripts/ci/check_cloud_freshness.py",
-      "sha256": "6eb80d2154615b7bf8726ef1f5e8c2cf631f45370d7fc9c5486f498ff056239e",
+      "sha256": "86b5eea7105cd62a6b42ea149ce71cbd2bc2005d72cbc733c78f9f13db59a3cc",
       "mode": "read-only",
       "oci_calls": []
     },
