@@ -266,3 +266,34 @@ source was unavailable. Review outcome:
 
 Freshness tests pass (20). The baseline was rewritten with `--write-baseline`
 after this review; no dependency pin changed here.
+
+## October 20 source review
+
+The October 20 scheduled run failed on four changed sources; none was unavailable.
+Review outcome:
+
+- **oci-cli 3.95.0 → 3.95.1**: the release notes contain additions only, including
+  PostgreSQL upgrades, new Generative AI operations and NVMe volume attachments.
+  No shipped command or example depends on a changed contract.
+- **oci (Python SDK) 2.188.0 → 2.189.0**: the release adds service operations and
+  renames `certificate_id` to `ca_bundle_id` in
+  `RemoteReindexSourceDetails`. A repository search found no use of that model or
+  either field. The release also raises the minimum PyJWT and urllib3 versions to
+  address security vulnerabilities. The runtime remains pinned to OCI SDK 2.185.1
+  with PyJWT 2.13.0 and urllib3 2.7.0 in its lock; accepting this observed-source
+  baseline does not claim those dependency fixes are present or upgrade them.
+- **OCI Cloud Migrations requirements**: the current page still frames supported
+  guest OS coverage as validated for VMware/AWS and warns that unlisted systems
+  may work but are not validated. It retains the shared-host Windows licensing
+  restriction and the Amazon Linux Virtio/initramfs prerequisite. The migration
+  skill's warnings remain verification triggers rather than support guarantees.
+  The previous full page was not archived, so the exact text delta is unknown.
+- **AWS `ec2 describe-instance-types`**: the page now identifies AWS CLI 2.38.2.
+  The current synopsis retains `--instance-types` and `--max-items`, and the
+  output still documents the `VCpuInfo` and `MemoryInfo` fields consumed by the
+  inventory normalizer. The prior page text was not archived, so the exact
+  content delta behind the hash change is unknown.
+
+The baseline was rewritten with `--write-baseline` after this review; no
+dependency pin changed here. The SDK's security-related dependency floor remains
+an explicit follow-up, not a result of baseline acceptance.

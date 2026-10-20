@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-10-14T14:07:45.819368+00:00",
+  "checked_at": "2026-10-20T13:47:28.557528+00:00",
   "facts": {
     "aws_instance_contract": {
-      "content_sha256": "6dbe00da6e3c8ab1dd034e76a1a77190e5af15a6faccbdc193db2c39f9dec681"
+      "content_sha256": "6bc18df20238c920aa334317011d75c3789630fbb4e413ec44107a4e5a641d0d"
     },
     "azure_price_contract": {
       "content_sha256": "6f1105a3948aafc596ee260e492ac448fa19905a7a03cf97fe894f9367846161"
@@ -17,10 +17,10 @@
       "content_sha256": "5ef6f40dbf59071e440e0c4852e3e4e6f3de973b947be7f0c3270c6854f24c5f"
     },
     "oci_cli": {
-      "version": "3.95.0"
+      "version": "3.95.1"
     },
     "oci_migration_support": {
-      "content_sha256": "d6ccfc9255518d37ab66731d08a6c03afd9a221cdde330a11aad552be938c113"
+      "content_sha256": "ae5c8d98fd4642d2fc67e28ddba656392ef4e952fa670bbd96a673ce3f26df15"
     },
     "oci_prices": {
       "B109529": [
@@ -162,7 +162,7 @@
       ]
     },
     "oci_sdk": {
-      "version": "2.188.0"
+      "version": "2.189.0"
     },
     "oci_shapes": {
       "content_sha256": "0275e705e3f780faa286670700c199c40894ae50bba8917c01389a513ce03fe7"
