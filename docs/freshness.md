@@ -297,3 +297,17 @@ Review outcome:
 The baseline was rewritten with `--write-baseline` after this review; no
 dependency pin changed here. The SDK's security-related dependency floor remains
 an explicit follow-up, not a result of baseline acceptance.
+
+## October 21 source review
+
+- **Core Landing Zone `variables_general.tf`**: upstream Release 1.6.1
+  (commit `672037a`, 2026-10-20) adds one variable,
+  `display_ai_infra_settings` (bool, default `false`), documented as a
+  Resource Manager UI toggle for OCI managed AI service options. No variable
+  was removed or retyped, and `define_net` still defaults to `false`. The same
+  release expands IAM, hub, Exadata, OKE and three-tier network variable files;
+  every one of the 17 tfvars keys emitted by the landing-zone generator still
+  exists in the release, so the generated draft keeps its contract.
+
+The baseline was rewritten with `--write-baseline` after this review; no
+dependency pin changed here.

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T13:47:28.557528+00:00",
+  "checked_at": "2026-10-21T13:23:35.841574+00:00",
   "facts": {
     "aws_instance_contract": {
       "content_sha256": "6bc18df20238c920aa334317011d75c3789630fbb4e413ec44107a4e5a641d0d"
@@ -8,7 +8,7 @@
       "content_sha256": "6f1105a3948aafc596ee260e492ac448fa19905a7a03cf97fe894f9367846161"
     },
     "core_lz_variables": {
-      "content_sha256": "112eabbddf1e9f064a38a2243c791eee2277986c075422baa124f7287a7863c6"
+      "content_sha256": "28d51da1bffc06d500d7a0c9655ee44aced9b6a49cef5c9847563e985a2f4a19"
     },
     "gcp_machine_contract": {
       "content_sha256": "1747b380c1613b1f2e60decf4970d6c42a0e8e3672616026d7458dde7dd4ea9c"
