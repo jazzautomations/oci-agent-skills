@@ -311,3 +311,54 @@ an explicit follow-up, not a result of baseline acceptance.
 
 The baseline was rewritten with `--write-baseline` after this review; no
 dependency pin changed here.
+
+## November 9 source review
+
+The scheduled runs of November 5–9 failed on four changed sources; no source
+was unavailable. Review outcome:
+
+- **oci-cli 3.95.1 → 3.96.0** (released 2026-11-03): additions cover container
+  registry top-level/pull-through/multi-region settings, the Generative AI
+  Sandbox service, `listingId` usage reporting in the SELF service and the
+  `PARTIALLY_SUCCEEDED` work-request state in Data Science. The two `[BREAKING]`
+  notes touch no shipped example, fixture or reference, and
+  `scripts/ci/cli_breaking.py` reports no match: `ListingId` is a new required
+  **CSV column** (not a CLI flag) for `oci self partner-integeration
+  create-subscription-usage-record-details submit-subscription-usage-batch`,
+  and `oci data-science model-artifact-signature update --wait-for-state` now
+  waits on lifecycle states (`ACTIVE|CREATING|DELETED|FAILED`) instead of work
+  request states — both verified with `--help` on a real 3.96.0 install. No
+  command in `catalog/examples.json` invokes either path. `lint_fences.py
+  --live-help` on 3.96.0 reports 199/199 checked with exactly one expected
+  `live_help_failed` — `oci fn function create` is a command group since
+  3.94.0, already recorded in the `oci-serverless` fence comment (source review
+  2026-09-22). The validation pin stays at 3.93.0.
+- **oci (Python SDK) 2.189.0 → 2.190.0** (released 2026-11-03): the same
+  Container Registry, SELF and Data Science additions. Its two breaking notes —
+  required `listing_id` on `CreateSubscriptionUsageRecordDetails` and the
+  `update_model_artifact_signature_and_wait_for_state` waiter moving to
+  `ModelArtifactSignature.lifecycle_state` — match no code, fixture or
+  reference in this repository. The locked MCP runtime stays pinned to
+  `oci==2.185.1` and the demo to `oci==2.182.1`.
+- **python-oracledb 26.0.1 → 26.1.0** (October 2026): additions cover
+  encryption-only zero-configuration TLS (ezTLS), OpenTelemetry tracing via
+  `Connection.set_opentelemetry_trace_context()`, and automatic config-cache
+  updates for the AWS/GCP centralized configuration providers. The one
+  signature change makes `end_user_identity` optional and `end_user_identity`,
+  `data_roles`, `attributes` keyword-only in
+  `oracledb.create_end_user_security_context()`; nothing in this repository
+  calls that function. The demo's only driver use is `oracledb.connect()`
+  pinned at `oracledb==4.0.2`, which keeps its live-tested evidence label.
+- **AWS `ec2 describe-instance-types`**: a Wayback snapshot from 2026-10-22
+  reproduces the previous baseline fingerprint exactly, so the delta is
+  identified this time: the banner moved from AWS CLI 2.38.4 to 2.39.6 (a
+  minor bump the checker reports by design), the page gained a `--help
+  (boolean)` global-option block, and the Example 2 prose was reordered. The
+  command contract is unchanged — `--instance-types`, `--max-items` and the
+  `VCpuInfo`/`MemoryInfo` output fields consumed by `inventory-aws.md` are all
+  still documented.
+
+Full local suite passes: 755 tests; `lint_fences.py --live-help` on the real
+3.96.0 install reports only the known `fn function create` finding above. The
+baseline was rewritten with `--write-baseline` after this review; no dependency
+pin changed here.
